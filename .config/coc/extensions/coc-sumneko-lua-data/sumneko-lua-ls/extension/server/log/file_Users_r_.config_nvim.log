@@ -1,0 +1,262 @@
+[18:57:44.362][info] [#0:/Users/r/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:65]: Lua Lsp startup, root: 	/Users/r/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
+[18:57:44.363][info] [#0:/Users/r/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:66]: ROOT:	/Users/r/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
+[18:57:44.363][info] [#0:/Users/r/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:67]: LOGPATH:	/Users/r/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log
+[18:57:44.363][info] [#0:/Users/r/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:68]: METAPATH:	/Users/r/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta
+[18:57:44.363][info] [#0:/Users/r/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:69]: VERSION:	3.5.2
+[18:57:44.382][info] [#0:script/service/service.lua:141]: 
+========= Medical Examination Report =========
+    --------------- Memory ---------------
+        Total: 1.761 MB
+        # 00 : 1.761 MB
+        # 01 : 0.000 MB
+        # 02 : 0.000 MB
+        # 03 : 0.000 MB
+        # 04 : 0.000 MB
+    --------------- Coroutine ---------------
+        Total:     0
+        Running:   0
+        Suspended: 0
+        Normal:    0
+        Dead:      0
+    --------------- Cache ---------------
+        Total: 1
+        Dead:  0
+    ---------------  RPC  ---------------
+        Holdon:   0
+        Waiting:  0
+==============================================
+[18:57:44.492][info] [#0:script/language.lua:137]: VSC language: en-us
+[18:57:44.492][info] [#0:script/language.lua:138]: LS  language: en-us
+[18:57:44.492][info] [#0:script/workspace/workspace.lua:38]: Workspace init root: 	file:///Users/r/.config/nvim
+[18:57:44.492][info] [#0:script/workspace/workspace.lua:42]: Log path: 	/Users/r/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log/file_Users_r_.config_nvim.log
+[18:57:44.493][info] [#0:script/workspace/workspace.lua:51]: Workspace create: 	file:///Users/r/.config/nvim
+[18:57:44.701][info] [#0:script/provider/provider.lua:42]: Load config from client	file:///Users/r/.config/nvim
+[18:57:44.701][info] [#0:script/provider/provider.lua:43]: {
+  Lua = {
+    completion = {
+      autoRequire = true,
+      callSnippet = "Disable",
+      displayContext = 0,
+      enable = true,
+      keywordSnippet = "Replace",
+      postfix = "@",
+      requireSeparator = ".",
+      showParams = true,
+      showWord = "Fallback",
+      workspaceWord = true
+    },
+    diagnostics = {
+      disable = {},
+      disableScheme = { "git" },
+      enable = true,
+      globals = {},
+      ignoredFiles = "Opened",
+      libraryFiles = "Opened",
+      unusedLocalExclude = {},
+      workspaceDelay = 3000,
+      workspaceRate = 100
+    },
+    format = {
+      defaultConfig = {},
+      enable = true
+    },
+    hint = {
+      arrayIndex = "Auto",
+      await = true,
+      enable = true,
+      paramName = "All",
+      paramType = true,
+      semicolon = "SameLine",
+      setType = false
+    },
+    hover = {
+      enable = true,
+      enumsLimit = 5,
+      expandAlias = true,
+      previewFields = 50,
+      viewNumber = true,
+      viewString = true,
+      viewStringMax = 1000
+    },
+    misc = {
+      parameters = {}
+    },
+    runtime = {
+      fileEncoding = "utf8",
+      meta = "${version} ${language} ${encoding}",
+      nonstandardSymbol = {},
+      path = { "?.lua", "?/init.lua" },
+      pathStrict = false,
+      plugin = "",
+      pluginArgs = {},
+      special = {},
+      unicodeName = false,
+      version = "Lua 5.4"
+    },
+    semantic = {
+      annotation = true,
+      enable = true,
+      keyword = false,
+      variable = true
+    },
+    signatureHelp = {
+      enable = true
+    },
+    spell = {
+      dict = {}
+    },
+    telemetry = {
+      enable = true
+    },
+    type = {
+      castNumberToInteger = true,
+      weakNilCheck = false,
+      weakUnionCheck = false
+    },
+    window = {
+      progressBar = true,
+      statusBar = true
+    },
+    workspace = {
+      checkThirdParty = true,
+      ignoreDir = { ".vscode" },
+      ignoreSubmodules = true,
+      library = { "/opt/homebrew/Cellar/neovim/0.7.2_1/share/nvim/runtime/lua", "/Users/r/.config/coc/extensions/node_modules/coc-sumneko-lua/nvim_lua_types" },
+      maxPreload = 5000,
+      preloadFileSize = 500,
+      supportScheme = { "file", "untitled", "git" },
+      useGitIgnore = true,
+      userThirdParty = {}
+    }
+  }
+}
+[18:57:44.807][info] [#0:script/provider/provider.lua:57]: Load config from client	fallback
+[18:57:44.807][info] [#0:script/provider/provider.lua:58]: {
+  Lua = {
+    completion = {
+      autoRequire = true,
+      callSnippet = "Disable",
+      displayContext = 0,
+      enable = true,
+      keywordSnippet = "Replace",
+      postfix = "@",
+      requireSeparator = ".",
+      showParams = true,
+      showWord = "Fallback",
+      workspaceWord = true
+    },
+    diagnostics = {
+      disable = {},
+      disableScheme = { "git" },
+      enable = true,
+      globals = {},
+      ignoredFiles = "Opened",
+      libraryFiles = "Opened",
+      unusedLocalExclude = {},
+      workspaceDelay = 3000,
+      workspaceRate = 100
+    },
+    format = {
+      defaultConfig = {},
+      enable = true
+    },
+    hint = {
+      arrayIndex = "Auto",
+      await = true,
+      enable = true,
+      paramName = "All",
+      paramType = true,
+      semicolon = "SameLine",
+      setType = false
+    },
+    hover = {
+      enable = true,
+      enumsLimit = 5,
+      expandAlias = true,
+      previewFields = 50,
+      viewNumber = true,
+      viewString = true,
+      viewStringMax = 1000
+    },
+    misc = {
+      parameters = {}
+    },
+    runtime = {
+      fileEncoding = "utf8",
+      meta = "${version} ${language} ${encoding}",
+      nonstandardSymbol = {},
+      path = { "?.lua", "?/init.lua" },
+      pathStrict = false,
+      plugin = "",
+      pluginArgs = {},
+      special = {},
+      unicodeName = false,
+      version = "Lua 5.4"
+    },
+    semantic = {
+      annotation = true,
+      enable = true,
+      keyword = false,
+      variable = true
+    },
+    signatureHelp = {
+      enable = true
+    },
+    spell = {
+      dict = {}
+    },
+    telemetry = {
+      enable = true
+    },
+    type = {
+      castNumberToInteger = true,
+      weakNilCheck = false,
+      weakUnionCheck = false
+    },
+    window = {
+      progressBar = true,
+      statusBar = true
+    },
+    workspace = {
+      checkThirdParty = true,
+      ignoreDir = { ".vscode" },
+      ignoreSubmodules = true,
+      library = { "/opt/homebrew/Cellar/neovim/0.7.2_1/share/nvim/runtime/lua", "/Users/r/.config/coc/extensions/node_modules/coc-sumneko-lua/nvim_lua_types" },
+      maxPreload = 5000,
+      preloadFileSize = 500,
+      supportScheme = { "file", "untitled", "git" },
+      useGitIgnore = true,
+      userThirdParty = {}
+    }
+  }
+}
+[18:57:44.910][info] [#0:script/library.lua:207]: Init builtin library at:	file:///Users/r/.config/nvim
+[18:57:44.923][info] [#0:script/plugin.lua:86]: plugin path:	/Users/r/.config/nvim
+[18:57:44.923][warn] [#0:script/plugin.lua:101]: plugin not found:	/Users/r/.config/nvim
+[18:57:44.923][info] [#0:script/library.lua:207]: Init builtin library at:	nil
+[18:57:44.933][info] [#0:script/provider/completion.lua:43]: Enable completion.
+[18:57:44.933][info] [#0:script/workspace/workspace.lua:305]: Preload start:	file:///Users/r/.config/nvim
+[18:57:44.934][info] [#0:script/workspace/workspace.lua:311]: Scan files at:	file:///Users/r/.config/nvim
+[18:57:44.934][info] [#0:script/workspace/workspace.lua:305]: Preload start:	<fallback>
+[18:57:44.936][info] [#0:script/workspace/workspace.lua:328]: Scan library at:	file:///Users/r/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8
+[18:57:44.938][info] [#0:script/workspace/workspace.lua:328]: Scan library at:	file:///Users/r/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8
+[18:57:44.938][info] [#0:script/workspace/workspace.lua:328]: Scan library at:	file:///opt/homebrew/Cellar/neovim/0.7.2_1/share/nvim/runtime/lua
+[18:57:44.939][info] [#0:script/workspace/workspace.lua:328]: Scan library at:	file:///opt/homebrew/Cellar/neovim/0.7.2_1/share/nvim/runtime/lua
+[18:57:44.942][info] [#0:script/workspace/workspace.lua:328]: Scan library at:	file:///Users/r/.config/coc/extensions/node_modules/coc-sumneko-lua/nvim_lua_types
+[18:57:44.943][info] [#0:script/workspace/workspace.lua:328]: Scan library at:	file:///Users/r/.config/coc/extensions/node_modules/coc-sumneko-lua/nvim_lua_types
+[18:57:45.050][info] [#0:script/workspace/workspace.lua:348]: Found 69 files at:	<fallback>
+[18:57:45.050][info] [#0:script/workspace/loading.lua:152]: Load files from disk:	<fallback>
+[18:57:45.050][info] [#0:script/workspace/workspace.lua:348]: Found 73 files at:	file:///Users/r/.config/nvim
+[18:57:45.050][info] [#0:script/workspace/loading.lua:152]: Load files from disk:	file:///Users/r/.config/nvim
+[18:57:46.396][info] [#0:script/workspace/loading.lua:164]: Loaded files takes [0.031] sec: <fallback>
+[18:57:46.396][info] [#0:script/workspace/loading.lua:173]: Compile files takes [0.000] sec: <fallback>
+[18:57:46.396][info] [#0:script/workspace/loading.lua:174]: Loaded finish:	<fallback>
+[18:57:46.396][info] [#0:script/workspace/workspace.lua:350]: Preload finish at:	<fallback>
+[18:57:46.414][info] [#0:script/workspace/loading.lua:164]: Loaded files takes [0.049] sec: file:///Users/r/.config/nvim
+[18:57:46.414][info] [#0:script/workspace/loading.lua:173]: Compile files takes [0.000] sec: file:///Users/r/.config/nvim
+[18:57:46.414][info] [#0:script/workspace/loading.lua:174]: Loaded finish:	file:///Users/r/.config/nvim
+[18:57:46.414][info] [#0:script/workspace/workspace.lua:350]: Preload finish at:	file:///Users/r/.config/nvim
+[18:57:46.727][info] [#0:script/provider/diagnostic.lua:486]: Diagnostics scope [<fallback>], files count:[73]
+[18:57:46.727][info] [#0:script/provider/diagnostic.lua:486]: Diagnostics scope [file:///Users/r/.config/nvim], files count:[73]
+[18:57:46.863][info] [#0:script/provider/diagnostic.lua:503]: Diagnostics scope [<fallback>] finished, takes [0.133] sec.
+[18:57:46.863][info] [#0:script/provider/diagnostic.lua:503]: Diagnostics scope [file:///Users/r/.config/nvim] finished, takes [0.133] sec.
