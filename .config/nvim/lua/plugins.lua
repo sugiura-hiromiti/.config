@@ -1,6 +1,6 @@
 require 'packer'.startup(function(use)
    use 'wbthomason/packer.nvim'
-   use { 'catppuccin/nvim', as = 'catppuccin' } --colorscheme
+   use { 'catppuccin/nvim', as = 'catppuccin', run = ':CatppuccinCompile' } --colorscheme
    use 'folke/tokyonight.nvim'
    use 'google/vim-colorscheme-primary'
    use 'chriskempson/vim-tomorrow-theme'
@@ -9,7 +9,7 @@ require 'packer'.startup(function(use)
    use 'NLKNguyen/papercolor-theme'
    use 'ah-y/flatui.vim'
    use 'ah-y/iceberg.vim'
-   use 'zanglg/nova.vim'
+   use 'zanglg/nova.nvim'
    use 'sainnhe/edge'
    use 'freeo/vim-kalisi'
    use 'arcticicestudio/nord-vim'
@@ -23,3 +23,15 @@ require 'packer'.startup(function(use)
    use { 'neoclide/coc.nvim', branch = 'release' }
    use 'mfussenegger/nvim-dap'
 end)
+
+--setup of catppuccin moved to color_randomizer
+
+require 'lualine'.setup({
+   options = {
+      always_divide_middle = false,
+      globalstatus = true,
+   },
+   extensions = {
+      'nvim-dap-ui', 'quickfix'
+   }
+})

@@ -42,6 +42,7 @@
    "coc.preferences.formatOnSaveFiletypes": [
       "*"
    ],
+   "coc.preferences.jumpCommand": "vsplit",
    "semanticTokens.filetypes": [
       "*"
    ],

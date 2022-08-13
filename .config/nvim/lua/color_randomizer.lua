@@ -13,18 +13,42 @@ end
 math.randomseed(os.time())
 local rnd = math.random(table.maxn(colors))
 local color = table.remove(colors, rnd)
+vim.g.colors_name = color
 
 --custom edge case
 if color == 'catppuccin' then
-   local catppuccin_flavors = { 'latte', 'frappe', 'macchiato', 'mocha' }
+   local catppuccin_flavours = { 'latte', 'frappe', 'macchiato', 'mocha' }
    math.randomseed(os.time())
-   rnd = math.random(table.maxn(catppuccin_flavors))
-   vim.g.catppuccin_flavor = table.remove(catppuccin_flavors, rnd)
+   rnd = math.random(table.maxn(catppuccin_flavours))
+   vim.g.catppuccin_flavour = table.remove(catppuccin_flavours, rnd)
+
+   require 'catppuccin'.setup({
+      dim_inactive = {
+         enabled = true,
+         percentage = 0.3
+      },
+      compile = {
+         enabled = true,
+         path = vim.fn.stdpath 'cache' .. '/catppuccin'
+      },
+      styles = {
+         functions = { 'bold' },
+         variables = { 'italic' }
+      },
+      integrations = {
+         coc_nvim = true,
+         dap = {
+            enabled = true,
+            enable_ui = true
+         }
+      }
+   })
+
 elseif color == 'edge' then
    local edge_styles = { 'default', 'aura', 'neon' }
    math.randomseed(os.time())
    rnd = math.random(table.maxn(edge_styles))
-   vim.g.tokyonight_style = table.remove(edge_styles, rnd)
+   vim.g.edge_style = table.remove(edge_styles, rnd)
 elseif color == 'tokyonight' then
    local tokyonight_styles = { 'storm', 'night', 'day' }
    math.randomseed(os.time())
@@ -32,5 +56,3 @@ elseif color == 'tokyonight' then
    vim.g.tokyonight_style = table.remove(tokyonight_styles, rnd)
 end
 
---make sure that this is end of file
-vim.g.colors_name = color
