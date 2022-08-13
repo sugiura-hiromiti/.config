@@ -66,5 +66,5 @@ map('i', '<c-p>', [[coc#pum#visible() ? coc#pum#prev(1) : "\<up>"]], { expr = tr
 map('i', '<c-c>', [[coc#pum#visible() ? coc#pum#confirm() : "\<c-c>"]], { expr = true })
 
 --filer
-map('n', '<space>e', [[<cmd> CocCommand explorer --sources=buffer+,file+ --width=35 --position=right<cr>]])
+map('n', '<space>e', [[<cmd> CocCommand explorer --sources=buffer+,file+ --position=floating<cr>]])
 map('n', '<space>ie', ':e $MYVIMRC<cr>')
