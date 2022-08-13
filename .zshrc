@@ -4,7 +4,7 @@ setopt auto_cd
 autoload -Uz compinit && compinit
 
 #basic commands
-alias s='exa -lah --icons --group-directories-first --sort=extension --time-style=iso'
+alias s='exa -lahF --icons --group-directories-first --sort=extension --time-style=iso --git --no-permissions'
 alias nv='nvim'
 alias gi='git init'
 alias ga='git add . ; git commit'
