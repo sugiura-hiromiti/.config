@@ -1,17 +1,18 @@
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zprofile.pre.zsh" ]] && . "$HOME/.fig/shell/zprofile.pre.zsh"
-eval "$(brew shellenv)"
-export PATH=$PATH:$HOME/.cargo/env
-export PATH=$PATH:$HOME/.cargo/bin
 
 typeset -gU cdpath fpath mailpath path
 
 path=(
 	$HOME/{,s}bin(N)
-	/opt/{homebrew, local}/{,s}bin(N)
+	/opt/homebrew/{,s}bin(N)
 	/usr/local/{,s}bin(N)
 	$path
 )
+
+eval "$(brew shellenv)"
+export PATH=$PATH:$HOME/.cargo/env
+export PATH=$PATH:$HOME/.cargo/bin
 
 #path to llvm
 PATH="$(brew --prefix llvm)/bin:$PATH"
