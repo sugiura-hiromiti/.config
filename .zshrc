@@ -7,7 +7,7 @@ autoload -Uz compinit && compinit
 alias s='exa -lahF --icons --group-directories-first --sort=extension --time-style=iso --git --no-permissions'
 alias nv='nvim'
 alias gi='git init'
-alias ga='git add . ; git commit'
+alias ga='git add . ; git commit -m'
 alias gp='git push'
 alias gc='git clone'
 alias gl='git pull'
