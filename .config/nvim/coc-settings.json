@@ -34,9 +34,10 @@
    "links.tooltip": true,
    "diagnostic.virtualText": true,
    "diagnostic.virtualTextCurrentLineOnly": false,
+   "diagnostic.virtualTextLineSeparator": " |",
    "codeLens.enable": true,
-   "codeLens.position": "right_align",
-   "codeLens.separator": "|",
+   "codeLens.position": "eol",
+   "codeLens.separator": "\\-",
    "list.previewSplitRight": true,
    "coc.preferences.extensionUpdateCheck": "weekly",
    "coc.preferences.formatOnSaveFiletypes": [
@@ -61,7 +62,6 @@
    "explorer.diagnostic.enableSubscriptNumber": true,
    "rust-analyzer.restartServerOnConfigChange": true,
    "rust-analyzer.updates.channel": "nightly",
-   "rust-analyzer.completion.privateEditable.enable": true,
    "rust-analyzer.inlayHints.bindingModeHints.enable": true,
    "rust-analyzer.inlayHints.closureReturnTypeHints.enable": true,
    "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "always",
@@ -71,6 +71,53 @@
    "rust-analyzer.lens.references.method.enable": true,
    "rust-analyzer.lens.references.trait.enable": true,
    "rust-analyzer.rustfmt.rangeFormatting.enable": true,
+   "rust-analyzer.completion.snippets.custom": {
+      "Arc::new": {
+         "postfix": "arc",
+         "body": "Arc::new(${receiver})",
+         "requires": "std::sync::Arc",
+         "description": "Put the expression into an `Arc`",
+         "scope": "expr"
+      },
+      "Rc::new": {
+         "postfix": "rc",
+         "body": "Rc::new(${receiver})",
+         "requires": "std::rc::Rc",
+         "description": "Put the expression into an `Rc`",
+         "scope": "expr"
+      },
+      "Box::pin": {
+         "postfix": "pinbox",
+         "body": "Box::pin(${receiver})",
+         "requires": "std::boxed::Box",
+         "description": "Put the expression into a pinned `Box`",
+         "scope": "expr"
+      },
+      "Ok": {
+         "postfix": "ok",
+         "body": "Ok(${receiver})",
+         "description": "Wrap the expression in a `Result::Ok`",
+         "scope": "expr"
+      },
+      "Err": {
+         "postfix": "err",
+         "body": "Err(${receiver})",
+         "description": "Wrap the expression in a `Result::Err`",
+         "scope": "expr"
+      },
+      "Some": {
+         "postfix": "some",
+         "body": "Some(${receiver})",
+         "description": "Wrap the expression in an `Option::Some`",
+         "scope": "expr"
+      },
+      "todo_macro":{
+         "postfix":"todo",
+         "body":"\ntodo!(\"====================================\n[${receiver}]\n| ${2:short, concrete, logical}\n====================================\")\n",
+         "description":"custom todo! snippet",
+         "scope":"item"
+      }
+   },
    "Lua.telemetry.enable": true,
    "sumneko-lua.enableNvimLuaDev": true
 }
