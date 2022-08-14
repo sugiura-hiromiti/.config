@@ -7,8 +7,8 @@ autoload -Uz compinit && compinit
 alias s='exa -lahF --icons --group-directories-first --sort=extension --time-style=iso --git --no-permissions --no-user'
 alias nv='nvim'
 alias gi='git init ; git add . ; git commit'
-alias ga='git add . ; git commit -m'
-alias gp='git push'
+#alias ga='git add . ; git commit -m'
+#alias gp='git push'
 alias gl='git pull'
 alias bu='brew upgrade'
 alias bi='brew install'
@@ -23,6 +23,12 @@ alias so='source'
 #functions
 gc () {
   git clone https://github.com/$1
+}
+
+ga(){
+   git add .
+   git commit -m $1
+   git push
 }
 
 #eval
