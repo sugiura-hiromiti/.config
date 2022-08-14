@@ -3,13 +3,12 @@
 setopt auto_cd
 autoload -Uz compinit && compinit
 
-#basic commands
-alias s='exa -lahF --icons --group-directories-first --sort=extension --time-style=iso --git --no-permissions'
+#aliases
+alias s='exa -lahF --icons --group-directories-first --sort=extension --time-style=iso --git --no-permissions --no-user'
 alias nv='nvim'
-alias gi='git init'
+alias gi='git init ; git add . ; git commit'
 alias ga='git add . ; git commit -m'
 alias gp='git push'
-alias gc='git clone'
 alias gl='git pull'
 alias bu='brew upgrade'
 alias bi='brew install'
@@ -18,6 +17,13 @@ alias bs='brew search'
 alias cr='cargo run'
 alias cb='cargo build'
 alias ct='cargo test'
+alias wh='which -a'
+alias so='source'
+
+#functions
+gc () {
+  git clone https://github.com/$1
+}
 
 #eval
 eval $(starship init zsh)
