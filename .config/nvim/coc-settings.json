@@ -62,7 +62,7 @@
    "explorer.diagnostic.enableSubscriptNumber": true,
    "rust-analyzer.restartServerOnConfigChange": true,
    "rust-analyzer.updates.channel": "nightly",
-   "rust-analyzer.inlayHints.bindingModeHints.enable": true,
+   "rust-analyzer.inlayHints.bindingModeHints.enable": false,
    "rust-analyzer.inlayHints.closureReturnTypeHints.enable": true,
    "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "always",
    "rust-analyzer.inlayHints.reborrowHints.enable": "always",
@@ -111,11 +111,19 @@
          "description": "Wrap the expression in an `Option::Some`",
          "scope": "expr"
       },
-      "todo_macro":{
-         "postfix":"todo",
-         "body":"\ntodo!(\"====================================\n[${receiver}]\n| ${2:short, concrete, logical}\n====================================\")\n",
-         "description":"custom todo! snippet",
-         "scope":"item"
+      "TodoMacro": {
+         "postfix": [
+            "todo",
+            "todo_macro"
+         ],
+         "body": [
+            "\ntodo!(\"==============================================================",
+            "[${receiver}]\n",
+            "\t${1:simple, concrete, logical}",
+            "\t==============================================================\")\n"
+         ],
+         "description": "custom todo! snippet",
+         "scope": "expr"
       }
    },
    "Lua.telemetry.enable": true,
