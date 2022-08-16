@@ -1,3 +1,8 @@
+# Fig pre block. Keep at the top of this file.
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+fi
+
 set -o autocd
 autoload -U compinit ; compinit
 #aliases
@@ -30,6 +35,9 @@ ga(){
 
 if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
 eval $(starship init zsh)
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
 fi
 
 #!!!!!!!!!! Make sure that PATHs are in .zshenv!!!!!!!!!
+
