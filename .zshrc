@@ -6,9 +6,7 @@ autoload -Uz compinit && compinit
 #aliases
 alias s='exa -lahF --icons --group-directories-first --sort=extension --time-style=iso --git --no-permissions --no-user'
 alias nv='nvim'
-alias gi='git init ; git add . ; git commit'
-#alias ga='git add . ; git commit -m'
-#alias gp='git push'
+alias gi='git init ; git add . ; git commit -m'
 alias gl='git pull'
 alias bu='brew upgrade'
 alias bi='brew install'
@@ -31,16 +29,11 @@ ga(){
    git push
 }
 
-#eval
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
 eval $(starship init zsh)
+fi
 
-#exports
-export EDITOR=nvim
-export VISUAL=nvim
-export RUBY_HOST=$(which neovim-ruby-host)
-#export XDG_CONFIG_HOME=$HOME/dotfiles
-
-#!!!!!!!!!! Make sure that PATHs are in .zprofile!!!!!!!!!
+#!!!!!!!!!! Make sure that PATHs are in .zshenv!!!!!!!!!
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"

@@ -1,6 +1,6 @@
 require 'packer'.startup(function(use)
    use 'wbthomason/packer.nvim'
-   use 'overcache/NeoSolarized'--colorscheme
+   use 'overcache/NeoSolarized' --colorscheme
    use 'NLKNguyen/papercolor-theme'
    use 'chriskempson/vim-tomorrow-theme'
    use { 'catppuccin/nvim', as = 'catppuccin', run = ':CatppuccinCompile' }
@@ -15,14 +15,14 @@ require 'packer'.startup(function(use)
    use 'google/vim-colorscheme-primary'
    use 'jsit/toast.vim'
    use 'folke/tokyonight.nvim'
-   use 'nvim-lualine/lualine.nvim'--UI related
+   use 'nvim-lualine/lualine.nvim' --UI related
    use 'norcalli/nvim-colorizer.lua'
    use 'kyazdani42/nvim-web-devicons'
    use 'amdt/sunset'
    use 'tribela/vim-transparent'
-   use 'cohama/lexima.vim'--utility
-   use { 'neoclide/coc.nvim', branch = 'release' }--lsp
-   use 'mfussenegger/nvim-dap'--dap
+   use 'cohama/lexima.vim' --utility
+   use { 'neoclide/coc.nvim', branch = 'release' } --lsp
+   use 'mfussenegger/nvim-dap' --dap
 end)
 
 --setup of catppuccin moved to color_randomizer
@@ -36,3 +36,39 @@ require 'lualine'.setup({
       'nvim-dap-ui', 'quickfix'
    }
 })
+
+local dap = require 'dap'
+dap.adapters.lldb = {
+   type = 'executable',
+   command = function()
+      local hndl = io.popen('which lldb-vscode')
+      if not hndl then return nil end
+      local rslt = hndl:read 'a'
+      hndl:close()
+      return rslt
+   end
+   ,
+   name = 'lldb'
+}
+
+dap.configurations.rust = {
+   {
+      name = 'Launch',
+      type = 'lldb',
+      request = 'launch',
+      program = function()
+         return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/', 'file')
+      end,
+      cwd = '${workspaceFolder}',
+      stopOnEntry = false,
+      args = {},
+   },
+}
+
+dap.configurations.c = dap.configurations.rust
+dap.configurations.c = { {
+   program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+   end
+} }
+dap.configurations.cpp = dap.configurations.c
