@@ -1,4 +1,5 @@
 set -o autocd
+autoload -U compinit ; compinit
 #aliases
 alias s='exa -lahF --icons --group-directories-first --sort=extension --time-style=iso --git --no-permissions --no-user'
 alias nv='nvim'
@@ -24,6 +25,8 @@ ga(){
    git commit -m $1
    git push
 }
+
+
 
 if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
 eval $(starship init zsh)
