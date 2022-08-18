@@ -12,8 +12,8 @@ map('n', '<esc>', ':noh<cr>') --<esc> to noh
 map('n', 'W', 'wi') --move & insert
 map('n', 'E', 'ea')
 map('n', 'B', 'bi')
-map(nv, '<c-k>', ':bprev<cr>') --buffer
-map(nv, '<c-j>', ':bnext<cr>')
+map('n', '<a-k>', ':bprev<cr>') --buffer
+map('n', '<a-j>', ':bnext<cr>')
 map('n', '<up>', '"zdd<up>"zP') --move line
 map('n', '<down>', '"zdd"zp')
 map('v', '<up>', '"zx<up>"zP`[V`]')
@@ -55,8 +55,8 @@ map('n', '<space>a', '<plug>(coc-codeaction)')
 map('v', '<space>a', '<plug>(coc-codeaction-selected)')
 map('n', '<space>f', '<plug>(coc-refactor)')
 map('n', '<space>l', '<plug>(coc-codelens-action)')
-map('n', '<a-j>', '<plug>(coc-diagnostic-next)')
-map('n', '<a-k>', '<plug>(coc-diagnostic-prev)')
+map('n', '<c-j>', '<plug>(coc-diagnostic-next)')
+map('n', '<c-k>', '<plug>(coc-diagnostic-prev)')
 
 --coc completion
 map('i', '<down>', [[coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<down>"]], { expr = true })
