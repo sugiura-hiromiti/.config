@@ -37,6 +37,8 @@ if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
 eval $(starship init zsh)
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+
+source ~/.iterm2_shell_integration.zsh
 fi
 
 #!!!!!!!!!! Make sure that PATHs are in .zshenv!!!!!!!!!
