@@ -1,3 +1,5 @@
+#zshenv is mainly for exporting paths, environment variables
+
 export PATH=$PATH:$HOME/.cargo/env
 export PATH=$PATH:$HOME/.cargo/bin
 
@@ -23,5 +25,5 @@ export VISUAL=nvim
 export RUBY_HOST=$(which neovim-ruby-host)
 #export XDG_CONFIG_HOME=$HOME/dotfiles
 
+
 #eval $(starship init zsh) is in zshrc
-eval $(brew shellenv)

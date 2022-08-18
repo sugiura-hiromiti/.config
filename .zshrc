@@ -1,10 +1,13 @@
+#zshrc is mainly for personal customizations like options, aliases, functions, eval ..
+
 # Fig pre block. Keep at the top of this file.
 if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 fi
 
-set -o autocd
 autoload -U compinit ; compinit
+set -o autocd
+
 #aliases
 alias s='exa -lahF --icons --group-directories-first --sort=extension --time-style=iso --git --no-permissions --no-user'
 alias nv='nvim'
@@ -21,7 +24,7 @@ alias wh='which -a'
 alias so='source'
 
 #functions
-gc () {
+gc(){
   git clone https://github.com/$1
 }
 
@@ -31,13 +34,15 @@ ga(){
    git push
 }
 
+z(){
+   cd $1
+   s
+}
 
+eval $(brew shellenv)
 
 if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
 eval $(starship init zsh)
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
 fi
-
-#!!!!!!!!!! Make sure that PATHs are in .zshenv!!!!!!!!!
-
