@@ -1,2 +1,3 @@
 ---
-"pane_group:add_left": alt-cmd-d
+"pane_group:add_right": alt-cmd-d
+"pane_group:add_left": cmd-d
