@@ -3,7 +3,6 @@ if filenam == '' then
    vim.cmd [[e $MYVIMRC]]
 end
 
-
 -----------------------------------------------------set variables
 local opt = vim.opt
 opt.number = true
