@@ -146,7 +146,7 @@ map('i', '<c-p>', [[coc#pum#visible() ? coc#pum#prev(1) : "\<up>"]], { expr = tr
 map('i', '<c-c>', [[coc#pum#visible() ? coc#pum#confirm() : "\<c-c>"]], { expr = true })
 
 --dap nvim shortcut commands. USE FN KEYS FOR DEBUG RELATED KEYMAP.
-map('n', '<f7>', [[<cmd> lua require'dap'.toggle_breakpoint()<cr>]])
-map('n', '<f8>', [[<cmd> lua require'dap'.continue()<cr>]])
-map('n', '<f9>', [[<cmd> lua require'dap'.step_into()<cr>]])
-map('n', '<f10>', [[<cmd> lua require'dap'.step_over()<cr>]])
+map('n', '<f3>', [[<cmd> lua require'dap'.toggle_breakpoint()<cr>]])
+map('n', '<f4>', [[<cmd> lua require'dap'.continue()<cr>]])
+map('n', '<f5>', [[<cmd> lua require'dap'.step_into()<cr>]])
+map('n', '<f6>', [[<cmd> lua require'dap'.step_over()<cr>]])

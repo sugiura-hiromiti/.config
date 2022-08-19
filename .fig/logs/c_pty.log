@@ -1,0 +1,71 @@
+set +m +b +o history
+
+unset HISTFILE
+
+export PATH='/usr/local/bin:/usr/sbin:/opt/homebrew/bin:/usr/bin:/sbin:/bin'
+
+export HOME=/Users/r
+
+
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034hbash-3.2$ set +m +b +o history
+bash-3.2$ 
+bash-3.2$ unset HISTFILE
+bash-3.2$ 
+bash-3.2$ export PATH='/usr/local/bin:/usr/sbin:/opt/homebrew/bin:/usr/bin:/sbin :/bin'
+bash-3.2$ 
+bash-3.2$ export HOME=/Users/r
+bash-3.2$ 
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq5ndj64l04 n3_17jnwvq40000gn/T/179.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn /T/179.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-universal' _ cal lback 179 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/179 $? ; } &
+[1] 6102
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/.config/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq5 ndj64l04n3_17jnwvq40000gn/T/207.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnwv q40000gn/T/207.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-universa l' _ callback 207 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/207 $? ; } &
+[2] 6110
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/.config/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq5 ndj64l04n3_17jnwvq40000gn/T/230.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnwv q40000gn/T/230.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-universa l' _ callback 230 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/230 $? ; } &
+[3] 6126
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/.config/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq5 ndj64l04n3_17jnwvq40000gn/T/248.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnwv q40000gn/T/248.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-universa l' _ callback 248 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/248 $? ; } &
+[4] 6131
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/.config/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq5 ndj64l04n3_17jnwvq40000gn/T/267.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnwv q40000gn/T/267.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-universa l' _ callback 267 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/267 $? ; } &
+[5] 6136
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/.config/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq5 ndj64l04n3_17jnwvq40000gn/T/279.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnwv q40000gn/T/279.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-universa l' _ callback 279 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/279 $? ; } &
+[6] 6143
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq5ndj64l04 n3_17jnwvq40000gn/T/318.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn /T/318.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-universal' _ cal lback 318 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/318 $? ; } &
+[7] 6159
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq 5ndj64l04n3_17jnwvq40000gn/T/334.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnw vq40000gn/T/334.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-univers al' _ callback 334 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/334 $? ; } & [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K&
+[8] 6165
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq 5ndj64l04n3_17jnwvq40000gn/T/358.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnw vq40000gn/T/358.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-univers al' _ callback 358 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/358 $? ; } & [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K&
+[9] 6181
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq 5ndj64l04n3_17jnwvq40000gn/T/380.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnw vq40000gn/T/380.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-univers al' _ callback 380 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/380 $? ; } & [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K&
+[10] 6187
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq 5ndj64l04n3_17jnwvq40000gn/T/432.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnw vq40000gn/T/432.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-univers al' _ callback 432 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/432 $? ; } & [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K&
+[11] 6250
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles && compgen -c | grep git- | cut -c5- | sort - u | cat ) 1> /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/610.stdout 2> /var /folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/610.stderr; '/Applications/Fig.app/ Contents/MacOS/fig-darwin-universal' _ callback 610 /var/folders/_2/q8xq5ndj64l0 4n3_17jnwvq40000gn/T/610 $? ; } &
+[12] 6596
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles && git --no-optional-locks config --get-regex p '^alias.' | cat ) 1> /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/612.stdo ut 2> /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/612.stderr; '/Application s/Fig.app/Contents/MacOS/fig-darwin-universal' _ callback 612 /var/folders/_2/q8 xq5ndj64l04n3_17jnwvq40000gn/T/612 $? ; } &
+[13] 6604
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles && compgen -c | grep git- | cut -c5- | sort - u | cat ) 1> /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/632.stdout 2> /var /folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/632.stderr; '/Applications/Fig.app/ Contents/MacOS/fig-darwin-universal' _ callback 632 /var/folders/_2/q8xq5ndj64l0 4n3_17jnwvq40000gn/T/632 $? ; } &
+[14] 6609
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles && git --no-optional-locks status --short | c at ) 1> /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/633.stdout 2> /var/fold ers/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/633.stderr; '/Applications/Fig.app/Conte nts/MacOS/fig-darwin-universal' _ callback 633 /var/folders/_2/q8xq5ndj64l04n3_1 7jnwvq40000gn/T/633 $? ; } &
+[15] 6618
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq 5ndj64l04n3_17jnwvq40000gn/T/634.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnw vq40000gn/T/634.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-univers al' _ callback 634 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/634 $? ; } & [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K&
+[16] 6622
+bash-3.2$ 
+bash-3.2$ 

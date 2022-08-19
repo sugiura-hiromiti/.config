@@ -51,6 +51,7 @@ g.everforest_background = 'hard'
 g.everforest_enable_italic = true
 g.everforest_ui_contrast = 'high'
 g.everforest_diagnostic_text_highlight = true
+g.palenight_terminal_italics=true
 g.sunset_latitude = 35.02
 g.sunset_longitude = 135
 g.lexima_ctrlh_as_backspace = true

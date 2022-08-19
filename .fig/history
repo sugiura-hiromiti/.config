@@ -1,0 +1,61 @@
+
+- command: z
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/.fig/shell
+  time: 1660952845
+- command: z .config/
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r
+  time: 1660952862
+- command: z
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles/.config
+  time: 1660952887
+- command: z dotfiles/
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r
+  time: 1660952987
+- command: mv .zlogin .zprofile
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953015
+- command: s
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953053
+- command: nv .zprofile
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953057
+- command: nv .zprofile
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953057
+- command: nv .zprofile
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953057
+- command: nv .zprofile
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953057
