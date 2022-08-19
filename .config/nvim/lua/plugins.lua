@@ -1,6 +1,13 @@
 require 'packer'.startup(function(use)
    use 'wbthomason/packer.nvim'
    use 'overcache/NeoSolarized' --colorscheme
+   use 'drewtempelmeyer/palenight.vim'
+   use 'adrian5/oceanic-next-vim'
+   use 'cormacrelf/vim-colors-github'
+   use 'FrenzyExists/aquarium-vim'
+   use 'GertjanReynaert/cobalt2-vim-theme'
+   use 'saltdotac/citylights.vim'
+   use 'haishanh/night-owl.vim'
    use 'NLKNguyen/papercolor-theme'
    use 'chriskempson/vim-tomorrow-theme'
    use { 'catppuccin/nvim', as = 'catppuccin', run = ':CatppuccinCompile' }
