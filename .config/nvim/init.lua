@@ -23,6 +23,7 @@ local g = vim.g
 g.python3_host_prog = os.getenv('HOMEBREW_PREFIX') .. '/bin/python3'
 g.node_host_prog = os.getenv('HOMEBREW_PREFIX') .. '/bin/neovim-node-host'
 g.ruby_host_prog = os.getenv('RUBY_HOST')
+g.mapleader="<cr>"
 g.tokyonight_day_brightness = 0.24
 g.tokyonight_lualine_bold = true
 g.PaperColor_Theme_Options = {
