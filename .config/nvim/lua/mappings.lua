@@ -1,7 +1,6 @@
 local map = vim.keymap.set
 local nv = { 'n', 'v' }
 
---utility
 --[[map(nv, ':tb', function()
    return vim.o.background == 'dark' and ':set background=light' or ':set background=dark'
 end, { expr = true }) 

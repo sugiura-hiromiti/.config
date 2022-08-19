@@ -8,7 +8,7 @@ require 'packer'.startup(function(use)
    use 'sainnhe/everforest'
    use 'ah-y/flatui.vim'
    use 'humanoid-colors/vim-humanoid-colorscheme'
-   use 'ah-y/iceberg.vim'
+   use 'cocopon/iceberg.vim'
    use 'freeo/vim-kalisi'
    use 'arcticicestudio/nord-vim'
    use 'zanglg/nova.nvim'
