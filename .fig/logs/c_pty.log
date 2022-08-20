@@ -209,4 +209,31 @@ bash-3.2$
 bash-3.2$ { ( cd /Users/r/dotfiles/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq 5ndj64l04n3_17jnwvq40000gn/T/1466.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jn wvq40000gn/T/1466.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-unive rsal' _ callback 1466 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/1466 $? ;  } &
 [63] 8157
 bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles && compgen -c | grep git- | cut -c5- | sort - u | cat ) 1> /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/1493.stdout 2> /va r/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/1493.stderr; '/Applications/Fig.ap p/Contents/MacOS/fig-darwin-universal' _ callback 1493 /var/folders/_2/q8xq5ndj6 4l04n3_17jnwvq40000gn/T/1493 $? ; } &
+[64] 8251
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq 5ndj64l04n3_17jnwvq40000gn/T/1550.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jn wvq40000gn/T/1550.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-unive rsal' _ callback 1550 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/1550 $? ;  } &
+[65] 8397
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq 5ndj64l04n3_17jnwvq40000gn/T/1560.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jn wvq40000gn/T/1560.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-unive rsal' _ callback 1560 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/1560 $? ;  } &
+[66] 8402
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/.config/ && \ls -1ApL | cat ) 1> /var/folders /_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/1571.stdout 2> /var/folders/_2/q8xq5ndj64l0 4n3_17jnwvq40000gn/T/1571.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darw in-universal' _ callback 1571 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/1 571 $? ; } &
+[67] 8408
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/.config/ && \ls -1ApL | cat ) 1> /var/folders /_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/1588.stdout 2> /var/folders/_2/q8xq5ndj64l0 4n3_17jnwvq40000gn/T/1588.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darw in-universal' _ callback 1588 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/1 588 $? ; } &
+[68] 8413
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq 5ndj64l04n3_17jnwvq40000gn/T/1591.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jn wvq40000gn/T/1591.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-unive rsal' _ callback 1591 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/1591 $? ;  } &
+[69] 8418
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/.config/ && \ls -1ApL | cat ) 1> /var/folders /_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/1633.stdout 2> /var/folders/_2/q8xq5ndj64l0 4n3_17jnwvq40000gn/T/1633.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darw in-universal' _ callback 1633 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/1 633 $? ; } &
+[70] 8435
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/.config/ && \ls -1ApL | cat ) 1> /var/folders /_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/1806.stdout 2> /var/folders/_2/q8xq5ndj64l0 4n3_17jnwvq40000gn/T/1806.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darw in-universal' _ callback 1806 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/1 806 $? ; } &
+[71] 8939
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/.config/ && \ls -1ApL | cat ) 1> /var/folders /_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/1886.stdout 2> /var/folders/_2/q8xq5ndj64l0 4n3_17jnwvq40000gn/T/1886.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darw in-universal' _ callback 1886 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/1 886 $? ; } &
+[72] 8960
+bash-3.2$ 
 bash-3.2$ 
