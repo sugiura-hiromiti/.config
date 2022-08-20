@@ -25,5 +25,6 @@ export VISUAL=nvim
 export RUBY_HOST=$(which neovim-ruby-host)
 #export XDG_CONFIG_HOME=$HOME/dotfiles
 
+set -o emacs
 
 #eval $(starship init zsh) is in zshrc

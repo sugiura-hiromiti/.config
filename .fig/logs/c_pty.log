@@ -68,4 +68,40 @@ bash-3.2$
 bash-3.2$ { ( cd /Users/r/dotfiles/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq 5ndj64l04n3_17jnwvq40000gn/T/634.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnw vq40000gn/T/634.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-univers al' _ callback 634 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/634 $? ; } & [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K&
 [16] 6622
 bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles && git --no-optional-locks config --get-regex p '^alias.' | cat ) 1> /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/650.stdo ut 2> /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/650.stderr; '/Application s/Fig.app/Contents/MacOS/fig-darwin-universal' _ callback 650 /var/folders/_2/q8 xq5ndj64l04n3_17jnwvq40000gn/T/650 $? ; } &
+[17] 6698
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles && compgen -c | grep git- | cut -c5- | sort - u | cat ) 1> /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/686.stdout 2> /var /folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/686.stderr; '/Applications/Fig.app/ Contents/MacOS/fig-darwin-universal' _ callback 686 /var/folders/_2/q8xq5ndj64l0 4n3_17jnwvq40000gn/T/686 $? ; } &
+[18] 6706
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq 5ndj64l04n3_17jnwvq40000gn/T/697.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnw vq40000gn/T/697.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-univers al' _ callback 697 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/697 $? ; } & [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K&
+[19] 6724
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/.fig/ && \ls -1ApL | cat ) 1> /var/folders/_2 /q8xq5ndj64l04n3_17jnwvq40000gn/T/710.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_ 17jnwvq40000gn/T/710.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-un iversal' _ callback 710 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/710 $?  ; } &
+[20] 6730
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq 5ndj64l04n3_17jnwvq40000gn/T/722.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnw vq40000gn/T/722.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-univers al' _ callback 722 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/722 $? ; } & [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K&
+[21] 6740
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq 5ndj64l04n3_17jnwvq40000gn/T/733.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnw vq40000gn/T/733.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-univers al' _ callback 733 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/733 $? ; } & [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K&
+[22] 6754
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq 5ndj64l04n3_17jnwvq40000gn/T/778.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnw vq40000gn/T/778.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-univers al' _ callback 778 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/778 $? ; } & [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K&
+[23] 6836
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles && git --no-optional-locks config --get-regex p '^alias.' | cat ) 1> /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/792.stdo ut 2> /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/792.stderr; '/Application s/Fig.app/Contents/MacOS/fig-darwin-universal' _ callback 792 /var/folders/_2/q8 xq5ndj64l04n3_17jnwvq40000gn/T/792 $? ; } &
+[24] 6841
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles && compgen -c | grep git- | cut -c5- | sort - u | cat ) 1> /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/805.stdout 2> /var /folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/805.stderr; '/Applications/Fig.app/ Contents/MacOS/fig-darwin-universal' _ callback 805 /var/folders/_2/q8xq5ndj64l0 4n3_17jnwvq40000gn/T/805 $? ; } &
+[25] 6848
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles && git --no-optional-locks config --get-regex p '^alias.' | cat ) 1> /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/811.stdo ut 2> /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/811.stderr; '/Application s/Fig.app/Contents/MacOS/fig-darwin-universal' _ callback 811 /var/folders/_2/q8 xq5ndj64l04n3_17jnwvq40000gn/T/811 $? ; } &
+[26] 6865
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles && git --no-optional-locks status --short | c at ) 1> /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/823.stdout 2> /var/fold ers/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/823.stderr; '/Applications/Fig.app/Conte nts/MacOS/fig-darwin-universal' _ callback 823 /var/folders/_2/q8xq5ndj64l04n3_1 7jnwvq40000gn/T/823 $? ; } &
+[27] 6871
+bash-3.2$ 
+bash-3.2$ { ( cd /Users/r/dotfiles/ && \ls -1ApL | cat ) 1> /var/folders/_2/q8xq 5ndj64l04n3_17jnwvq40000gn/T/824.stdout 2> /var/folders/_2/q8xq5ndj64l04n3_17jnw vq40000gn/T/824.stderr; '/Applications/Fig.app/Contents/MacOS/fig-darwin-univers al' _ callback 824 /var/folders/_2/q8xq5ndj64l04n3_17jnwvq40000gn/T/824 $? ; } & [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K&
+[28] 6875
+bash-3.2$ 
 bash-3.2$ 
