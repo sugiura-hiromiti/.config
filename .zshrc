@@ -2,10 +2,6 @@
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 #zshrc is mainly for personal customizations like options, aliases, functions, eval ..
 
-# Fig pre block. Keep at the top of this file.
-if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
-fi
-
 autoload -U compinit ; compinit
 set -o autocd
 
@@ -44,10 +40,8 @@ z(){
 
 eval $(brew shellenv)
 
-if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
 eval $(starship init zsh)
 source ~/.iterm2_shell_integration.zsh
-fi
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"

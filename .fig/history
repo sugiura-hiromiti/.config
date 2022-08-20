@@ -95,3 +95,165 @@
   session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
   cwd: /Users/r/dotfiles
   time: 1660953666
+- command: git add .
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953674
+- command: git add .
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953674
+- command: git add .
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953674
+- command: git commit -m 'before merge'
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953699
+- command: git merge
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953710
+- command: gp
+  exit_code: 127
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953713
+- command: git push
+  exit_code: 1
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953716
+- command: git pull
+  exit_code: 128
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953724
+- command: git merge
+  exit_code: 128
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953732
+- command: nv .gitignore
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953753
+- command: s
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953770
+- command: z .config/
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953792
+- command: git merge
+  exit_code: 128
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles/.config
+  time: 1660953899
+- command: rm -rf iterm2/
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles/.config
+  time: 1660953920
+- command: ..
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles/.config
+  time: 1660953922
+- command: git merge
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953924
+- command: z .
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953953
+- command: z .config/
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953961
+- command: z ..
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles/.config
+  time: 1660953969
+- command: nv .gitignore
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660953979
+- command: nv .gitignore
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660954005
+- command: nv .gitignore
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660954005
+- command: nv .gitignore
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660954005
+- command: nv .gitignore
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660954005
+- command: git rm -r .fig/logs
+  exit_code: 1
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660954136
+- command: set -o emacs
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660954142
+- command: s
+  exit_code: 0
+  shell: zsh
+  session_id: w0t0p1:A6B9493E-FA4C-460D-8381-31C28E3F959D
+  cwd: /Users/r/dotfiles
+  time: 1660954310
