@@ -2,9 +2,6 @@
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 #zshrc is mainly for personal customizations like options, aliases, functions, eval ..
 
-autoload -U compinit ; compinit
-set -o autocd
-
 #aliases
 alias s='exa -lahF --icons --group-directories-first --sort=extension --time-style=iso --git --no-permissions --no-user'
 alias nv='nvim'
@@ -39,9 +36,11 @@ z(){
 }
 
 eval $(brew shellenv)
-
 eval $(starship init zsh)
 source ~/.iterm2_shell_integration.zsh
+
+#make sure that /opt/homebrew/opt/llvm/bin/ is head of path
+export PATH=$(brew --prefix llvm)/bin:$PATH
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"

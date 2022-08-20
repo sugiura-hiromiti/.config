@@ -3,6 +3,7 @@ require 'packer'.startup(function(use)
    use 'overcache/NeoSolarized' --colorscheme
    use 'NLKNguyen/papercolor-theme'
    use 'chriskempson/vim-tomorrow-theme'
+   use 'rafalbromirski/vim-aurora'
    use 'FrenzyExists/aquarium-vim'
    use { 'catppuccin/nvim', as = 'catppuccin', run = ':CatppuccinCompile' }
    use 'saltdotac/citylights.vim'
@@ -12,8 +13,10 @@ require 'packer'.startup(function(use)
    use 'ah-y/flatui.vim'
    use 'cormacrelf/vim-colors-github'
    use 'humanoid-colors/vim-humanoid-colorscheme'
+   use 'w0ng/vim-hybrid'
    use 'cocopon/iceberg.vim'
    use 'freeo/vim-kalisi'
+   use 'jonathanfilip/vim-lucius'
    use 'haishanh/night-owl.vim'
    use 'arcticicestudio/nord-vim'
    use 'zanglg/nova.nvim'
@@ -22,11 +25,12 @@ require 'packer'.startup(function(use)
    use 'google/vim-colorscheme-primary'
    use 'jsit/toast.vim'
    use 'folke/tokyonight.nvim'
+   use 'arzg/vim-colors-xcode'
    use 'nvim-lualine/lualine.nvim' --UI related
    use 'norcalli/nvim-colorizer.lua'
    use 'kyazdani42/nvim-web-devicons'
    use 'amdt/sunset'
-   use 'tribela/vim-transparent'
+   use 'ah-y/vim-transparent'
    use 'cohama/lexima.vim' --utility
    use { 'neoclide/coc.nvim', branch = 'release' } --lsp
    use 'mfussenegger/nvim-dap' --dap
@@ -44,17 +48,18 @@ require 'lualine'.setup({
    }
 })
 
+local function lldb_path()
+   local hndl = io.popen('which lldb-vscode')
+   if not hndl then return nil end
+   local rslt = hndl:read 'a'
+   hndl:close()
+   return rslt
+end
+
 local dap = require 'dap'
 dap.adapters.lldb = {
    type = 'executable',
-   command = function()
-      local hndl = io.popen('which lldb-vscode')
-      if not hndl then return nil end
-      local rslt = hndl:read 'a'
-      hndl:close()
-      return rslt
-   end
-   ,
+   command = lldb_path(),
    name = 'lldb'
 }
 

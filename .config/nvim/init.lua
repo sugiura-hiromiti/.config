@@ -3,6 +3,7 @@ if filenam == '' then
    vim.cmd [[e $MYVIMRC]]
 end
 
+
 -----------------------------------------------------set variables
 local opt = vim.opt
 opt.number = true
@@ -23,7 +24,7 @@ local g = vim.g
 g.python3_host_prog = os.getenv('HOMEBREW_PREFIX') .. '/bin/python3'
 g.node_host_prog = os.getenv('HOMEBREW_PREFIX') .. '/bin/neovim-node-host'
 g.ruby_host_prog = os.getenv('RUBY_HOST')
-g.mapleader="<cr>"
+g.mapleader = "<cr>"
 g.tokyonight_day_brightness = 0.24
 g.tokyonight_lualine_bold = true
 g.PaperColor_Theme_Options = {
@@ -51,7 +52,7 @@ g.everforest_background = 'hard'
 g.everforest_enable_italic = true
 g.everforest_ui_contrast = 'high'
 g.everforest_diagnostic_text_highlight = true
-g.palenight_terminal_italics=true
+g.palenight_terminal_italics = true
 g.sunset_latitude = 35.02
 g.sunset_longitude = 135
 g.lexima_ctrlh_as_backspace = true
@@ -90,12 +91,26 @@ autocmd('colorschemepre', {
    pattern = 'edge',
    command = 'highlight link CocSemDocumentation CocSemBoolean'
 })
+autocmd('colorschemepre', {
+   pattern = 'cobalt2',
+   command = 'highlight CursorLine ctermbg=None guibg=None'
+})
+autocmd('colorschemepre', {
+   pattern = 'cobalt2',
+   command = 'highlight CursorColumn ctermbg=None guibg=None'
+})
 autocmd('bufleave', {
    command = 'update'
 })
 autocmd('insertleave', {
    command = 'update'
 })
+autocmd('vimenter',{
+   command=[[luado if os.getenv'PROFILE_NAME'=='hotkey' then vim.o.background='dark' end]]
+})
+
+-----------------------------------------------------usercmd
+local mycmd=vim.api.nvim_buf_create_user_command
 
 require 'plugins'
 require 'mappings'

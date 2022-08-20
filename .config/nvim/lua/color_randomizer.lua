@@ -13,6 +13,7 @@ end
 math.randomseed(os.time())
 local rnd = math.random(table.maxn(colors))
 local color = table.remove(colors, rnd)
+print(color)
 vim.g.colors_name = color
 
 --custom edge case
