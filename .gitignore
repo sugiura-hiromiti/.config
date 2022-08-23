@@ -8,3 +8,4 @@ logs/
 bin/
 history
 fig.history
+.warp/

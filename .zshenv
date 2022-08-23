@@ -1,7 +1,6 @@
 #zshenv is mainly for exporting paths, environment variables
 
 autoload -U compinit ; compinit
-set -o autocd
 set -o emacs
 
 export PATH=$PATH:$HOME/.cargo/env

@@ -53,6 +53,8 @@ g.everforest_enable_italic = true
 g.everforest_ui_contrast = 'high'
 g.everforest_diagnostic_text_highlight = true
 g.palenight_terminal_italics = true
+g.oceanic_next_terminal_italic = true
+g.oceanic_next_terminal_bold = true
 g.sunset_latitude = 35.02
 g.sunset_longitude = 135
 g.lexima_ctrlh_as_backspace = true
@@ -70,47 +72,48 @@ local autocmd = vim.api.nvim_create_autocmd
 autocmd('cursorhold', {
    command = 'call CocActionAsync(\'highlight\')'
 })
-autocmd('colorschemepre', {
+autocmd('colorscheme', {
    command = 'highlight CocHighlightText ctermbg=DarkGray guibg=DarkGray'
 })
-autocmd('colorschemepre', {
+autocmd('colorscheme', {
    command = 'highlight link CocSemDocumentation Special'
 })
-autocmd('colorschemepre', {
+autocmd('colorscheme', {
    command = 'highlight link CocSemFunction Function'
 })
-autocmd('colorschemepre', {
-   pattern = 'edge',
-   command = 'highlight link CocSemVariable CocSemMacro'
-})
-autocmd('colorschemepre', {
+autocmd('colorscheme', {
    pattern = 'edge',
    command = 'highlight link CocSemNamespace CocSemMacro'
 })
-autocmd('colorschemepre', {
+autocmd('colorscheme', {
    pattern = 'edge',
    command = 'highlight link CocSemDocumentation CocSemBoolean'
 })
-autocmd('colorschemepre', {
-   pattern = 'cobalt2',
-   command = 'highlight CursorLine ctermbg=None guibg=None'
+autocmd('colorscheme', {
+   pattern = 'OceanicNext',
+   command = 'highlight link CocSemStruct CocSemInterface'
 })
-autocmd('colorschemepre', {
-   pattern = 'cobalt2',
-   command = 'highlight CursorColumn ctermbg=None guibg=None'
+autocmd('colorscheme', {
+   pattern = 'OceanicNext',
+   command = 'highlight link CocSemMacro CocSemFunction'
 })
+autocmd('colorscheme', {
+   pattern = 'OceanicNext',
+   command = 'highlight link CocSemOperator CocSemNumber'
+})
+
 autocmd('bufleave', {
    command = 'update'
 })
 autocmd('insertleave', {
    command = 'update'
 })
-autocmd('vimenter',{
-   command=[[luado if os.getenv'PROFILE_NAME'=='hotkey' then vim.o.background='dark' end]]
+autocmd('vimenter', {
+   command = [[luado if os.getenv'PROFILE_NAME'=='hotkey' then vim.o.background='dark' end]]
 })
 
 -----------------------------------------------------usercmd
-local mycmd=vim.api.nvim_buf_create_user_command
+--local mycmd=vim.api.nvim_buf_create_user_command
 
 require 'plugins'
 require 'mappings'

@@ -14,7 +14,8 @@ math.randomseed(os.time())
 local rnd = math.random(table.maxn(colors))
 local color = table.remove(colors, rnd)
 print(color)
-vim.g.colors_name = color
+--vim.g.colors_name = color
+vim.cmd('colorscheme ' .. color)
 
 --custom edge case
 if color == 'catppuccin' then
@@ -56,4 +57,3 @@ elseif color == 'tokyonight' then
    rnd = math.random(table.maxn(tokyonight_styles))
    vim.g.tokyonight_style = table.remove(tokyonight_styles, rnd)
 end
-

@@ -62,7 +62,7 @@
    "rust-analyzer.restartServerOnConfigChange": true,
    "rust-analyzer.updates.channel": "nightly",
    "rust-analyzer.inlayHints.bindingModeHints.enable": true,
-   "rust-analyzer.inlayHints.closureReturnTypeHints.enable": false,
+   "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "with_block",
    "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "always",
    "rust-analyzer.inlayHints.reborrowHints.enable": "mutable",
    "rust-analyzer.lens.references.adt.enable": true,
@@ -112,7 +112,7 @@
       },
       "TodoMacro": {
          "postfix": [
-            "todo",
+            "td",
             "todo_macro"
          ],
          "body": [

@@ -1,5 +1,12 @@
 local map = vim.keymap.set
 local nv = { 'n', 'v' }
+local conf_home = os.getenv 'XDG_CONFIG_HOME'
+local clr_rndm;
+if conf_home then
+   clr_rndm = conf_home .. '/nvim/lua/color_randomizer.lua'
+else
+   clr_rndm = '~/.config/nvim/lua/color_randomizer.lua'
+end
 
 map(nv, ':', ';') --exchange : & ;
 map(nv, ';', ':')
@@ -23,6 +30,7 @@ map('n', '<tab>b',
 map('n', '<tab>r', '<cmd> e $MYVIMRC<cr>')
 map('n', '<tab>w', '<cmd> w<cr>')
 map('n', '<tab>d', '<cmd> bd<cr>')
+map('n', '<tab>c', '<cmd> so ' .. clr_rndm .. '<cr>')
 
 --emacs keybind
 map('i', '<c-b>', '<left>')
