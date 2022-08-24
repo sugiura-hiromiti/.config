@@ -11,8 +11,8 @@ typeset -gU cdpath fpath mailpath path
 path=(
    /opt/homebrew/bin(N)
    /opt/homebrew/sbin(N)
-	$HOME/bin(N)
-	$HOME/sbin(N)
+   /usr/local/bin(N)
+   /usr/local/sbin(N)
 	$path
 )
 
@@ -20,7 +20,7 @@ path=(
 export LDFLAGS="-L$(brew --prefix llvm)/lib"
 export CPPFLAGS="$(brew --prefix llvm)/include"
 
+#environment variables
 export EDITOR=nvim
 export VISUAL=nvim
 export RUBY_HOST=$(which neovim-ruby-host)
-#export XDG_CONFIG_HOME=$HOME/dotfiles

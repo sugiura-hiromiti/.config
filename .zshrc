@@ -14,6 +14,7 @@ alias bs='brew search'
 alias cr='cargo run'
 alias cb='cargo build'
 alias ct='cargo test'
+#alias cf='cargo fix'
 alias wh='which -a'
 alias so='source'
 
