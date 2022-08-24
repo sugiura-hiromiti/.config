@@ -101,7 +101,6 @@ autocmd('colorscheme', {
    pattern = 'OceanicNext',
    command = 'highlight link CocSemOperator CocSemNumber'
 })
-
 autocmd('bufleave', {
    command = 'update'
 })
@@ -113,7 +112,8 @@ autocmd('vimenter', {
 })
 
 -----------------------------------------------------usercmd
---local mycmd=vim.api.nvim_buf_create_user_command
+local mycmd=vim.api.nvim_create_user_command
+mycmd('Tokyonight', '',{})
 
 require 'plugins'
 require 'mappings'

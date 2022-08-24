@@ -6,6 +6,7 @@ require 'packer'.startup(function(use)
    use 'chriskempson/vim-tomorrow-theme'
    use 'rafalbromirski/vim-aurora'
    use 'FrenzyExists/aquarium-vim'
+   use 'jamespwilliams/bat.vim'
    use { 'catppuccin/nvim', as = 'catppuccin', run = ':CatppuccinCompile' }
    use 'saltdotac/citylights.vim'
    use 'GertjanReynaert/cobalt2-vim-theme'
@@ -13,6 +14,7 @@ require 'packer'.startup(function(use)
    use 'sainnhe/everforest'
    use 'ah-y/flatui.vim'
    use 'cormacrelf/vim-colors-github'
+   use 'habamax/vim-habaurora'
    use 'humanoid-colors/vim-humanoid-colorscheme'
    use 'w0ng/vim-hybrid'
    use 'cocopon/iceberg.vim'
