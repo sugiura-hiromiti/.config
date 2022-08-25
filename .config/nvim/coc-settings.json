@@ -32,6 +32,10 @@
       "default": "\uf29c"
    },
    "links.tooltip": true,
+   "diagnostic.errorSign": "\uf057",
+   "diagnostic.infoSign": "\ufb4d",
+   "diagnostic.hintSign": "\uf128",
+   "diagnostic.refreshOnInsertMode": true,
    "diagnostic.virtualText": true,
    "diagnostic.virtualTextCurrentLineOnly": false,
    "diagnostic.virtualTextLineSeparator": " |",
