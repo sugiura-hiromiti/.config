@@ -15,6 +15,7 @@ local rnd = math.random(table.maxn(colors))
 local color = table.remove(colors, rnd)
 print(color)
 vim.g.colors_name = color
+vim.cmd('colorscheme ' .. color)
 
 --custom edge case
 if color == 'catppuccin' then

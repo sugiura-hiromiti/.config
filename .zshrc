@@ -38,7 +38,6 @@ z(){
 
 eval $(brew shellenv)
 eval $(starship init zsh)
-source ~/.iterm2_shell_integration.zsh
 
 #make sure that /opt/homebrew/opt/llvm/bin/ is head of path
 export PATH=$(brew --prefix llvm)/bin:$PATH
