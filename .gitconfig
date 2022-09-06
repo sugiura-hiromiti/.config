@@ -3,3 +3,5 @@
 	name = ah-y
 [core]
 	editor = nvim
+[init]
+	defaultBranch = master
