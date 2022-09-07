@@ -32,10 +32,6 @@ elseif color == 'tokyonight' then
 elseif color == 'wwdc17' then
 	rnd = math.random(16) - 1
 	vim.g.wwdc17_frame_color = rnd
-elseif color == 'material' then
-	local material_styles = { 'default', 'palenight', 'ocean', 'lighter', 'darker' }
-	rnd = math.random(table.maxn(material_styles))
-	vim.g.material_theme_style = table.remove(material_styles, rnd)
 end
 
 --Make sure that this sentence is at the bottom of the file

@@ -1,11 +1,12 @@
 local map = vim.keymap.set
+
 local nv = { 'n', 'v' }
 local conf_home = os.getenv 'XDG_CONFIG_HOME'
 local clr_rndm;
 if conf_home then
-   clr_rndm = conf_home .. '/nvim/lua/color_randomizer.lua'
+	clr_rndm = conf_home .. '/nvim/lua/color_randomizer.lua'
 else
-   clr_rndm = '~/.config/nvim/lua/color_randomizer.lua'
+	clr_rndm = '~/.config/nvim/lua/color_randomizer.lua'
 end
 
 map(nv, ':', ';') --exchange : & ;
@@ -21,18 +22,20 @@ map('n', '<down>', '"zdd"zp')
 map('v', '<up>', '"zx<up>"zP`[V`]')
 map('v', '<down>', '"zx"zp`[V`]')
 --ideas:mapping something to <left> & <right> in normal mode
-map('n', 'm', ':w<cr>:make<cr>') --make shortcut
+--map('n', 'm', ':w<cr>:make<cr>') --make shortcut
 map(nv, ',', '@:') --like '.', repeat previous command
 
 --use <tab> instead <space> with non coc commands
 map('n', '<tab>b',
-   [[<cmd> lua if vim.o.background=='dark' then vim.o.background='light' else vim.o.background='dark' end<cr>]])
+	[[<cmd> lua if vim.o.background=='dark' then vim.o.background='light' else vim.o.background='dark' end<cr>]])
 map('n', '<tab>r', '<cmd> e $MYVIMRC<cr>')
-map('n', '<tab>w', '<cmd> w<cr>')
+map('n', '<tab>w', '<cmd> wa | lua vim.lsp.buf.formatting()<cr>')
 map('n', '<tab>d', '<cmd> bd<cr>')
 map('n', '<tab>c', '<cmd> so ' .. clr_rndm .. '<cr>')
 
 --emacs keybind
+map('i', '<c-n>', '<down>')
+map('i', '<c-p>', '<up>')
 map('i', '<c-b>', '<left>')
 map('i', '<c-f>', '<right>')
 map('i', '<c-a>', '<c-c>^i')
@@ -55,24 +58,41 @@ map(nv, '-', '<c-w><')
 map(nv, '\\', '<c-w>+')
 map(nv, '=', '<c-w>-')
 
---coc commands
-map(nv, '<space>o', '<cmd> CocList outline<cr>')
-map('n', '<space>h', [[<cmd> call CocActionAsync('doHover')<cr>]])
-map('n', '<space>d', '<plug>(coc-definition)')
-map('n', '<space>r', '<plug>(coc-references)')
-map('n', '<space>i', '<plug>(coc-implementation)')
-map('n', '<space>n', '<plug>(coc-rename)')
-map('n', '<space>a', '<plug>(coc-codeaction)')
-map('v', '<space>a', '<plug>(coc-codeaction-selected)')
-map('n', '<space>f', '<plug>(coc-refactor)')
-map('n', '<space>l', '<plug>(coc-codelens-action)')
-map('n', '<space>e', [[<cmd> CocCommand explorer --sources=buffer+,file+ --position=floating<cr>]])
-map('n', '<c-j>', '<plug>(coc-diagnostic-next)')
-map('n', '<c-k>', '<plug>(coc-diagnostic-prev)')
+--lsp related config moves to lsp.lua
+----lsp saga
+local keymap = vim.keymap.set
+-- Lsp finder find the symbol definition implement reference
+-- when you use action in finder like open vsplit then you can
+-- use <C-t> to jump back
+keymap("n", "<space>f", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
 
---coc completion
-map('i', '<down>', [[coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<down>"]], { expr = true })
-map('i', '<up>', [[coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<up>"]], { expr = true })
-map('i', '<c-n>', [[coc#pum#visible() ? coc#pum#next(1) : "\<down>"]], { expr = true })
-map('i', '<c-p>', [[coc#pum#visible() ? coc#pum#prev(1) : "\<up>"]], { expr = true })
-map('i', '<c-c>', [[coc#pum#visible() ? coc#pum#confirm() : "\<c-c>"]], { expr = true })
+-- Code action
+keymap("n", "<space>a", "<cmd>Lspsaga code_action<CR>", { silent = true })
+keymap("v", "<space>a", "<cmd>Lspsaga range_code_action<CR>", { silent = true })
+
+-- Rename
+keymap("n", "<space>n", "<cmd>Lspsaga rename<CR>", { silent = true })
+
+-- Definition preview
+keymap("n", "<space>p", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
+
+-- Diagnsotic jump can use `<c-o>` to jump back
+keymap("n", "<c-k>", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
+keymap("n", "<c-j>", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
+
+--+---------------------------------------------------------------------------+
+--|If you want only jump to error, see https://github.com/glepnir/lspsaga.nvim|
+--+---------------------------------------------------------------------------+
+
+-- Outline
+keymap("n", "<space>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
+
+-- Hover Doc
+keymap("n", "<space>h", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+
+-- Float terminal
+keymap("n", "<A-t>", "<cmd>Lspsaga open_floaterm<CR>", { silent = true })
+-- if you want pass somc cli command into terminal you can do like this. Open lazygit in lspsaga float terminal
+--keymap("n", "<A-d>", "<cmd>Lspsaga open_floaterm lazygit<CR>", { silent = true })
+-- close floaterm
+keymap("t", "<A-t>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })

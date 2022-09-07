@@ -30,7 +30,7 @@ g.xcodelighthc_green_comments = true
 g.xcodedark_green_comments = true
 g.xcodedarkhc_green_comments = true
 g.material_terminal_italic = true
-g.tokyonight_day_brightness = 0.303
+g.tokyonight_day_brightness = 0.315
 g.tokyonight_lualine_bold = true
 g.PaperColor_Theme_Options = {
 	theme = {
@@ -63,54 +63,9 @@ g.oceanic_next_terminal_bold = true
 g.sunset_latitude = 35.02
 g.sunset_longitude = 135
 g.lexima_ctrlh_as_backspace = true
-g.coc_global_extensions = {
-	'coc-lists',
-	'coc-json',
-	'coc-clangd',
-	'coc-clang-format-style-options',
-	'coc-rust-analyzer',
-	'coc-explorer',
-	'coc-sumneko-lua'
-}
 
 -----------------------------------------------------autocmd
 local autocmd = vim.api.nvim_create_autocmd
-autocmd('cursorhold', {
-	command = 'call CocActionAsync(\'highlight\')'
-})
-autocmd('colorscheme', {
-	command = 'highlight CocHighlightText ctermbg=DarkGray guibg=DarkGray'
-})
-autocmd('colorscheme', {
-	command = 'highlight link CocSemDocumentation Special'
-})
-autocmd('colorscheme', {
-	command = 'highlight link CocSemFunction Function'
-})
-autocmd('colorscheme', {
-	pattern = 'edge',
-	command = 'highlight link CocSemNamespace CocSemMacro'
-})
-autocmd('colorscheme', {
-	pattern = 'edge',
-	command = 'highlight link CocSemDocumentation CocSemBoolean'
-})
-autocmd('colorscheme', {
-	pattern = 'OceanicNext',
-	command = 'highlight link CocSemStruct CocSemInterface'
-})
-autocmd('colorscheme', {
-	pattern = 'OceanicNext',
-	command = 'highlight link CocSemMacro CocSemFunction'
-})
-autocmd('colorscheme', {
-	pattern = 'OceanicNext',
-	command = 'highlight link CocSemOperator CocSemNumber'
-})
-autocmd('colorscheme', {
-	pattern = 'iceberg',
-	command = 'highlight link CocSemFunction Title'
-})
 autocmd('colorscheme', {
 	pattern = 'cobalt2',
 	command = 'hi CursorLine guibg=#001122'
@@ -123,12 +78,14 @@ autocmd('colorscheme', {
 	pattern = 'cobalt2',
 	command = 'hi CursorColumn guibg=#001122'
 })
+--[[
 autocmd('bufleave', {
 	command = 'update'
 })
 autocmd('insertleave', {
 	command = 'update'
 })
+]] --
 autocmd('vimenter', {
 	command = [[luado if os.getenv'PROFILE_NAME'=='hotkey' then vim.o.background='dark' end]]
 })
@@ -141,18 +98,14 @@ autocmd('vimenter', {
 autocmd('vimenter', {
 	command = 'set shiftwidth=3'
 })
+autocmd({ 'insertleave', 'bufwritepre' }, {
+	pattern = { '*.rs', '*.lua', '*.cpp' },
+	callback = function() vim.lsp.buf.formatting_sync()
+	end
+})
 
 -----------------------------------------------------usercmd
 local mycmd = vim.api.nvim_create_user_command
-mycmd('Tokyonight', function(opts)
-	g.tokyonight_style = opts.args
-	vim.cmd 'colorscheme tokyonight'
-end, {
-	nargs = 1,
-	complete = function(ArgLead, CmdLine, CursorPos)
-		return { 'storm', 'day', 'night' }
-	end
-})
 mycmd('Edge', function(opts)
 	g.edge_style = opts.args
 	vim.cmd 'colorscheme edge'
@@ -171,16 +124,9 @@ end, {
 		return { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15' }
 	end
 })
-mycmd('Material', function(opts)
-	g.material_theme_style = opts.args
-	vim.cmd 'colorscheme material'
-end, {
-	nargs = 1,
-	complete = function(ArgLead, CmdLine, CursorPos)
-		return { 'default', 'palenight', 'ocean', 'lighter', 'darker' }
-	end
-})
 
-require 'plugins'
 require 'mappings'
+require 'plugins'
+require 'lsp'
+require 'fuzzy'
 require 'color_randomizer'
