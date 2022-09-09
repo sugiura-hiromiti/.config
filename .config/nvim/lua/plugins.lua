@@ -1,54 +1,18 @@
 require 'packer'.startup(function(use)
 	use 'wbthomason/packer.nvim'
-	use 'mhartington/oceanic-next'
-	use 'NLKNguyen/papercolor-theme'
-	use 'muellan/am-colors'
-	use 'rafalbromirski/vim-aurora'
-	use 'jamespwilliams/bat.vim'
-	use 'cange/vim-theme-bronkow'
-	use 'vinodshelke82/carbonized'
-	use { 'catppuccin/nvim', as = 'catppuccin', run = ':CatppuccinCompile' }
-	use 'sainnhe/edge'
-	use 'sainnhe/everforest'
-	use 'willian/envylabs.vim'
-	use 'balanceiskey/vim-framer-syntax' --Sub
-	use 'schickele/vim-fruchtig'
-	use 'ah-y/flatui.vim'
-	use 'vim-scripts/guepardo.vim'
-	use 'habamax/vim-habaurora'
-	use 'humanoid-colors/vim-humanoid-colorscheme'
-	use 'cocopon/iceberg.vim'
-	use 'yuttie/inkstained-vim'
-	use 'fabi1cazenave/kalahari.vim'
-	use 'freeo/vim-kalisi'
-	use 'wimstefan/Lightning'
-	use 'mkarmona/materialbox'
-	use 'arcticicestudio/nord-vim'
-	use 'zanglg/nova.nvim'
-	use 'yous/vim-open-color'
-	use 'drewtempelmeyer/palenight.vim'
-	use 'google/vim-colorscheme-primary'
-	use 'AndrewVos/vim-pinata'
-	use 'vimpostor/vim-prism' --Sub
-	use 'aonemd/quietlight.vim'
-	use 'd11wtq/subatomic256.vim'
-	use 'ku-s-h/summerfruit256.vim'
-	use 'jsit/toast.vim'
-	use 'folke/tokyonight.nvim'
-	use 'lifepillar/vim-wwdc17-theme'
-	use 'arzg/vim-colors-xcode' --Sub
+	use 'NLKNguyen/papercolor-theme' --colorscheme
 	use 'nvim-lualine/lualine.nvim' --UI related
 	use 'kyazdani42/nvim-web-devicons'
 	use 'amdt/sunset'
 	use 'ah-y/vim-transparent'
 	use 'windwp/nvim-autopairs' --utility
+	use 'rcarriga/nvim-notify'
 	use 'nvim-lua/plenary.nvim'
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' } --telescope
 	use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 	use { 'nvim-telescope/telescope-frecency.nvim',
 		config = function()
-			require 'telescope'.load_extension('frecency')
 		end,
 		requires = { 'kkharji/sqlite.lua' } }
 	use 'nvim-telescope/telescope-file-browser.nvim'
@@ -60,21 +24,20 @@ require 'packer'.startup(function(use)
 		branch = "main",
 		config = function()
 			local saga = require("lspsaga")
-
 			saga.init_lsp_saga({
 				-- your configuration
 				symbol_in_winbar = {
-					enable = true,
+					in_custom = true
 				},
 				show_outline = {
 					win_width = 36
 				},
-				definition_preview_icon = " "
 			})
 		end,
 	})
-	use 'hrsh7th/nvim-cmp'
+	use 'hrsh7th/nvim-cmp' --completion source
 	use 'hrsh7th/cmp-nvim-lsp'
+	use 'hrsh7th/cmp-nvim-lua'
 	use 'hrsh7th/cmp-nvim-lsp-signature-help'
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
@@ -83,28 +46,6 @@ require 'packer'.startup(function(use)
 	use 'L3MON4D3/LuaSnip'
 	use 'mfussenegger/nvim-dap' --dap
 end)
-
----------------------catppuccin
-require 'catppuccin'.setup({
-	dim_inactive = {
-		enabled = true,
-		percentage = 0.3
-	},
-	compile = {
-		enabled = true,
-		path = vim.fn.stdpath 'cache' .. '/catppuccin'
-	},
-	styles = {
-		functions = { 'bold' },
-		variables = { 'italic' }
-	},
-	integrations = {
-		dap = {
-			enabled = true,
-			enable_ui = true
-		}
-	}
-})
 
 ---------------------lualine
 require 'lualine'.setup({
@@ -129,7 +70,36 @@ cmp.event:on(
 	cmp_autopairs.on_confirm_done()
 )
 
---config of telescope moved to fuzzy.lua
+---------------------notify
+local notify = require 'notify'
+notify.setup({
+	background_colour = '#000000',
+})
+vim.notify = notify
+
+---------------------telescope
+require 'telescope'.setup {
+	extensions = {
+		file_browser = {
+			hijack_netrw = true,
+			hidden = true
+		}
+	}
+}
+require 'telescope'.load_extension 'frecency'
+require 'telescope'.load_extension 'file_browser'
+require 'telescope'.load_extension 'fzf'
+
+---------------------treesitter
+require 'nvim-treesitter.configs'.setup {
+	ensure_installed = { 'rust', 'lua', 'markdown', 'toml' },
+	sync_install = true,
+	auto_install = true,
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = false
+	}
+}
 
 ---------------------dap
 local function lldb_path()

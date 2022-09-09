@@ -23,4 +23,5 @@ export CPPFLAGS="$(brew --prefix llvm)/include"
 #environment variables
 export EDITOR=nvim
 export VISUAL=nvim
+export MANPAGER=nvim
 export RUBY_HOST=$(which neovim-ruby-host)

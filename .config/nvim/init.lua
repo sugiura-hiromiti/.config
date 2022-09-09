@@ -1,6 +1,16 @@
+vim.cmd 'colo PaperColor'
+
+-----------------------------------------------------open vimrc if no path given
 local filenam = vim.fn.expand("%:p")
 if filenam == '' then
 	vim.cmd [[e $MYVIMRC]]
+end
+
+-----------------------------------------------------change severity signs
+local signs = { Error = "", Warn = "", Hint = "", Info = "" }
+for type, icon in pairs(signs) do
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 -----------------------------------------------------set variables
@@ -10,7 +20,7 @@ opt.cursorline = true
 opt.cursorcolumn = true
 opt.swapfile = false
 opt.writebackup = false
-opt.updatetime = 100
+opt.updatetime = 50
 opt.mouse = 'a'
 opt.autowriteall = true
 opt.termguicolors = true
@@ -24,14 +34,7 @@ local g = vim.g
 g.python3_host_prog = os.getenv('HOMEBREW_PREFIX') .. '/bin/python3'
 g.node_host_prog = os.getenv('HOMEBREW_PREFIX') .. '/bin/neovim-node-host'
 g.ruby_host_prog = os.getenv('RUBY_HOST')
-g.mapleader = "<cr>"
-g.xcodelight_green_comments = true
-g.xcodelighthc_green_comments = true
-g.xcodedark_green_comments = true
-g.xcodedarkhc_green_comments = true
-g.material_terminal_italic = true
-g.tokyonight_day_brightness = 0.315
-g.tokyonight_lualine_bold = true
+--g.mapleader = "<cr>"
 g.PaperColor_Theme_Options = {
 	theme = {
 		default = {
@@ -48,44 +51,11 @@ g.PaperColor_Theme_Options = {
 		}
 	}
 }
-g.edge_menu_selection_background = 'green'
-g.neosolarized_contrast = 'high'
-g.neosolarized_visibility = 'high'
-g.neosolarized_vertSplitBgTrans = true
-g.neosoloarized_italic = true
-g.everforest_background = 'hard'
-g.everforest_enable_italic = true
-g.everforest_ui_contrast = 'high'
-g.everforest_diagnostic_text_highlight = true
-g.palenight_terminal_italics = true
-g.oceanic_next_terminal_italic = true
-g.oceanic_next_terminal_bold = true
 g.sunset_latitude = 35.02
 g.sunset_longitude = 135
-g.lexima_ctrlh_as_backspace = true
 
 -----------------------------------------------------autocmd
 local autocmd = vim.api.nvim_create_autocmd
-autocmd('colorscheme', {
-	pattern = 'cobalt2',
-	command = 'hi CursorLine guibg=#001122'
-})
-autocmd('colorscheme', {
-	pattern = 'cobalt2',
-	command = 'hi CursorLineNr guibg=#001122'
-})
-autocmd('colorscheme', {
-	pattern = 'cobalt2',
-	command = 'hi CursorColumn guibg=#001122'
-})
---[[
-autocmd('bufleave', {
-	command = 'update'
-})
-autocmd('insertleave', {
-	command = 'update'
-})
-]] --
 autocmd('vimenter', {
 	command = [[luado if os.getenv'PROFILE_NAME'=='hotkey' then vim.o.background='dark' end]]
 })
@@ -100,33 +70,37 @@ autocmd('vimenter', {
 })
 autocmd({ 'insertleave', 'bufwritepre' }, {
 	pattern = { '*.rs', '*.lua', '*.cpp' },
-	callback = function() vim.lsp.buf.formatting_sync()
+	callback = function() vim.lsp.buf.format { async = true }
 	end
 })
 
+local function exclude_ft()
+	local blacklist = { 'TelescopePrompt', 'TelescopeResults', 'frecency' }
+	local ft = vim.bo.filetype
+	local is_black --nil on init
+	for _, value in ipairs(blacklist) do
+		if ft == value then
+			is_black = true
+			break
+		end
+	end
+	if not is_black then
+		vim.cmd 'update'
+	end
+end
+
+autocmd({ 'insertleave', 'bufwritepre' }, {
+	callback = function() exclude_ft() end
+})
+
+autocmd({ 'cmdwinenter' }, {
+	command = 'wincmd L'
+})
+
 -----------------------------------------------------usercmd
-local mycmd = vim.api.nvim_create_user_command
-mycmd('Edge', function(opts)
-	g.edge_style = opts.args
-	vim.cmd 'colorscheme edge'
-end, {
-	nargs = 1,
-	complete = function(ArgLead, CmdLine, CursorPos)
-		return { 'default', 'aura', 'neon' }
-	end
-})
-mycmd('Wwdc17', function(opts)
-	g.wwdc17_frame_color = opts.args
-	vim.cmd 'colorscheme wwdc17'
-end, {
-	nargs = 1,
-	complete = function(ArgLead, CmdLine, CursorPos)
-		return { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15' }
-	end
-})
+--local mycmd = vim.api.nvim_create_user_command
 
 require 'mappings'
 require 'plugins'
 require 'lsp'
-require 'fuzzy'
-require 'color_randomizer'
+--require 'color_randomizer'

@@ -1,41 +1,3 @@
----------------------change severity signs
---local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-local signs = { Error = "", Warn = "", Hint = "", Info = "" }
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
---[[used for cmp.setup.formatting
-local kind_icons = {
-	Class = "ﴯ",
-	Color = "",
-	Constant = "",
-	Constructor = "",
-	Enum = "",
-	EnumMember = "",
-	Event = "",
-	Field = "",
-	File = "",
-	Folder = "",
-	Function = "",
-	Interface = "",
-	Keyword = "",
-	Method = "",
-	Module = "",
-	Operator = "",
-	Property = "ﰠ",
-	Reference = "",
-	Snippet = "",
-	Struct = "",
-	Text = "",
-	TypeParameter = "",
-	Unit = "",
-	Value = "",
-	Variable = "",
-}
-]] --
-
 ---------------------mason
 require 'mason'.setup({
 	ui = {
@@ -66,20 +28,18 @@ cmp.setup {
 	},
 	formatting = {
 		format = function(entry, vim_item)
-			-- Kind icons
-			--vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) --Concatonate the icons with name of the item-kind
 			vim_item.menu = ({
-				--			nvim_lsp = "[LSP]",
-				spell = "Spl",
-				zsh = "Zsh",
-				buffer = "Buf",
-				luasnip = "Snp",
-				treesitter = "TS",
-				--				calc = "[Calculator",
-				nvim_lua = "Lua",
-				path = "Path",
-				nvim_lsp_signature_help = "Sign",
-				cmdline = "Vim"
+				nvim_lsp = 'LSP',
+				spell = 'Spl',
+				zsh = 'Zsh',
+				buffer = 'Buf',
+				luasnip = 'Snp',
+				treesitter = 'TS',
+				--				calc = '[Calculator',
+				nvim_lua = 'Lua',
+				path = 'Path',
+				nvim_lsp_signature_help = 'Sign',
+				cmdline = 'Vim'
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -88,7 +48,7 @@ cmp.setup {
 		['<a-k>'] = cmp.mapping.scroll_docs(-10),
 		['<a-j>'] = cmp.mapping.scroll_docs(10),
 		--		['<C-Space>'] = cmp.mapping.complete(),
-		['<c-c>'] = cmp.mapping.confirm {
+		['<tab>'] = cmp.mapping.confirm {
 			behavior = cmp.ConfirmBehavior.Insert,
 			select = true,
 		},
@@ -116,6 +76,7 @@ cmp.setup {
 	},
 	sources = {
 		{ name = 'nvim_lsp' },
+		{ name = 'nvim_lua' },
 		{ name = 'luasnip' },
 		{ name = 'buffer' },
 		{ name = 'nvim_lsp_signature_help' }
@@ -140,6 +101,25 @@ cmp.setup.cmdline(':', {
 local on_attach = function(client, bufnr)
 	local bufopts = { silent = true, buffer = bufnr }
 	vim.keymap.set('n', '<space>s', vim.lsp.buf.signature_help, bufopts)
+
+	if client.server_capabilities.document_highlight then
+		vim.cmd [[
+      hi! LspReferenceRead gui=bold cterm=bold guibg=DarkGray
+      hi! LspReferenceText gui=bold cterm=bold guibg=DarkGray
+      hi! LspReferenceWrite gui=bold cterm=bold guibg=DarkGray
+    ]]
+		vim.api.nvim_create_augroup('lsp_document_highlight', {})
+		vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+			group = 'lsp_document_highlight',
+			buffer = 0,
+			callback = vim.lsp.buf.document_highlight,
+		})
+		vim.api.nvim_create_autocmd('CursorMoved', {
+			group = 'lsp_document_highlight',
+			buffer = 0,
+			callback = vim.lsp.buf.clear_references,
+		})
+	end
 end
 
 local lsp_flags = {
@@ -150,69 +130,93 @@ local lsp_flags = {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
---lspsaga
---requires nightly
---[[
-local function get_file_name(include_path)
-	local file_name = require('lspsaga.symbolwinbar').get_file_name()
-	if vim.fn.bufname '%' == '' then return '' end
-	if include_path == false then return file_name end
-	-- Else if include path: ./lsp/saga.lua -> lsp > saga.lua
-	local sep = vim.loop.os_uname().sysname == 'Windows' and '\\' or '/'
-	local path_list = vim.split(string.gsub(vim.fn.expand '%:~:.:h', '%%', ''), sep)
-	local file_path = ''
-	for _, cur in ipairs(path_list) do
-		file_path = (cur == '.' or cur == '~') and '' or
-			 file_path .. cur .. ' ' .. '%#LspSagaWinbarSep#>%*' .. ' %*'
-	end
-	return file_path .. file_name
-end
-
-local function config_winbar_or_statusline()
-	local exclude = {
-		['teminal'] = true,
-		['toggleterm'] = true,
-		['prompt'] = true,
-		['NvimTree'] = true,
-		['help'] = true,
-	} -- Ignore float windows and exclude filetype
-	if vim.api.nvim_win_get_config(0).zindex or exclude[vim.bo.filetype] then
-		vim.wo.winbar = ''
-	else
-		local ok, lspsaga = pcall(require, 'lspsaga.symbolwinbar')
-		local sym
-		if ok then sym = lspsaga.get_symbol_node() end
-		local win_val = ''
-		win_val = get_file_name(true) -- set to true to include path
-		if sym ~= nil then win_val = win_val .. sym end
-		-- if work in statusline
-		vim.wo.stl = win_val
-	end
-end
-
-local events = { 'BufEnter', 'BufWinEnter', 'CursorMoved' }
-
-vim.api.nvim_create_autocmd(events, {
-	pattern = '*',
-	callback = function() config_winbar_or_statusline() end,
-})
-
-vim.api.nvim_create_autocmd('User', {
-	pattern = 'LspsagaUpdateSymbol',
-	callback = function() config_winbar_or_statusline() end,
-})
-]] --
-
 --rust_analyzer
-require('lspconfig')['rust_analyzer'].setup {
+require('lspconfig').rust_analyzer.setup {
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
 	-- Server-specific settings...
 	settings = {
 		["rust-analyzer"] = {
-			procMacro = {
-				enable = true
+			completion = {
+				snippets = {
+					custom = {
+						todo = {
+							postfix = 'td',
+							body = [[todo!(==============================================================
+				[${receiver}]
+				   ${1=simple, concrete, logical}.
+					==============================================================);]],
+							description = 'custom todo! snippet',
+							scope = 'expr'
+						}
+					}
+				}
+			},
+			hover = {
+				actions = {
+					reference = {
+						enable = true
+					}
+				}
+			},
+			inlayHints = {
+				closingBraceHints = {
+					minLines = 0
+				},
+				lifetimeElisionHints = {
+					enable = 'always',
+					useParameterNames = true
+				},
+				maxLength = 0,
+				typeHints = {
+					hideNamedConstructor = false
+				}
+			},
+			lens = {
+				implementations = {
+					enable = false
+				}
+				--[[
+				references = {
+					adt = {
+						enable = true
+					},
+					enumVariant = {
+						enable = true
+					},
+					method = {
+						enable = true
+					},
+					trait = {
+						enable = true
+					}
+				}
+			]] --
+			},
+			rustfmt = {
+				rangeFormatting = {
+					enable = true
+				}
+			},
+			semanticHighlighting = {
+				operator = {
+					specialization = {
+						enable = true
+					}
+				}
+			},
+			typing = {
+				autoClosingAngleBrackets = {
+					enable = true
+				}
+			},
+			workspace = {
+				symbol = {
+					search = {
+						kind = 'all_symbols'
+					}
+				}
 			}
 		}
 	}

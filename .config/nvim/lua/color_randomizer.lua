@@ -1,6 +1,7 @@
 local colors = vim.fn.getcompletion('', 'color')
-local dflts = { 'blue', 'darkblue', 'default', 'delek', 'desert', 'elflord', 'evening', 'industry', 'koehler', 'morning',
-	'murphy', 'pablo', 'peachpuff', 'ron', 'shine', 'slate', 'torte', 'zellner' }
+local dflts = { 'blue', 'darkblue', 'default', 'delek', 'desert', 'elflord', 'evening', 'industry', 'koehler'
+, 'morning',
+	'murphy', 'pablo', 'peachpuff', 'quiet', 'ron', 'shine', 'slate', 'torte', 'zellner' }
 
 for _, dflt in ipairs(dflts) do
 	for i, color in ipairs(colors) do
@@ -20,7 +21,6 @@ if color == 'catppuccin' then
 	local catppuccin_flavours = { 'latte', 'frappe', 'macchiato', 'mocha' }
 	rnd = math.random(table.maxn(catppuccin_flavours))
 	vim.g.catppuccin_flavour = table.remove(catppuccin_flavours, rnd)
-
 elseif color == 'edge' then
 	local edge_styles = { 'default', 'aura', 'neon' }
 	rnd = math.random(table.maxn(edge_styles))
