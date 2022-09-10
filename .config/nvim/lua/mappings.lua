@@ -1,12 +1,7 @@
 local map = vim.keymap.set
 local nv = { 'n', 'v' }
-local conf_home = os.getenv 'XDG_CONFIG_HOME'
-local clr_rndm
-if conf_home then
-	clr_rndm = conf_home .. '/nvim/lua/color_randomizer.lua'
-else
-	clr_rndm = '~/.config/nvim/lua/color_randomizer.lua'
-end
+
+--See commit c3364a3 for color_randomize
 
 map(nv, ':', ';') --exchange : & ;
 map(nv, ';', ':')
@@ -21,16 +16,19 @@ map('n', '<down>', '"zdd"zp')
 map('v', '<up>', '"zx<up>"zP`[V`]')
 map('v', '<down>', '"zx"zp`[V`]')
 --ideas:mapping something to <left> & <right> in normal mode
---map('n', 'm', ':w<cr>:make<cr>') --make shortcut
 map(nv, ',', '@:') --like '.', repeat previous command
 
 --use <tab> instead <space> with neither lsp nor fuzzy commands
 map('n', '<tab>b',
-	[[<cmd> lua if vim.o.background=='dark' then vim.o.background='light' else vim.o.background='dark' end<cr>]])
-map('n', '<tab>r', '<cmd> e $MYVIMRC<cr>')
-map('n', '<tab>w', '<cmd> wa | lua vim.lsp.buf.format{ async = true }<cr>')
-map('n', '<tab>d', '<cmd> bd<cr>')
-map('n', '<tab>c', '<cmd> so ' .. clr_rndm .. '<cr>')
+	function()
+		if vim.o.background == 'light' then
+			vim.o.background = 'dark'
+		else
+			vim.o.background = 'light'
+		end
+	end)
+map('n', '<tab>f', vim.lsp.buf.format)
+map('n', '<tab>d', '<cmd>bd<cr>')
 
 --emacs keybind
 map('i', '<c-n>', '<down>')
@@ -58,18 +56,17 @@ map(nv, '\\', '<c-w>+')
 map(nv, '=', '<c-w>-')
 
 --Telescope
-map('n', '<space>e', [[<cmd>Telescope file_browser<cr>]])
-map('n', '<space>t', [[<cmd>Telescope<cr>]])
-map('n', '<space>f', [[<cmd>Telescope frecency<cr>]])
-map('n', '<space>o', [[<cmd>Telescope lsp_document_symbols<cr>]])
-map('n', '<space>r', [[<cmd>Telescope lsp_references<cr>]])
+map('n', '<space>e', require 'telescope'.extensions.file_browser.file_browser)
+map('n', '<space>t', require 'telescope.builtin'.builtin)
+map('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
+map('n', '<space>o', require 'telescope.builtin'.lsp_document_symbols)
+map('n', '<space>r', require 'telescope.builtin'.lsp_references)
+map('n', '<space>d', require 'telescope.builtin'.diagnostics)
 
 --lspsaga
 map("n", "<space>a", "<cmd>Lspsaga code_action<CR>")
 map("v", "<space>a", "<cmd>Lspsaga range_code_action<CR>")
 map("n", "<space>n", "<cmd>Lspsaga rename<CR>")
-map("n", "<c-k>", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
-map("n", "<c-j>", "<cmd>Lspsaga diagnostic_jump_next<CR>")
 map("n", "<space>h", "<cmd>Lspsaga hover_doc<CR>")
 map("n", "<A-t>", "<cmd>Lspsaga open_floaterm<CR>")
 map("t", "<A-t>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]])

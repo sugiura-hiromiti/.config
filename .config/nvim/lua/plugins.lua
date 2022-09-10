@@ -1,7 +1,7 @@
 require 'packer'.startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'NLKNguyen/papercolor-theme' --colorscheme
-	use 'nvim-lualine/lualine.nvim' --UI related
+	--use 'nvim-lualine/lualine.nvim' --UI related
 	use 'kyazdani42/nvim-web-devicons'
 	use 'amdt/sunset'
 	use 'ah-y/vim-transparent'
@@ -29,12 +29,16 @@ require 'packer'.startup(function(use)
 				symbol_in_winbar = {
 					in_custom = true
 				},
+				code_action_lightbulb = {
+					sign = false
+				},
 				show_outline = {
 					win_width = 36
 				},
 			})
 		end,
 	})
+	use 'onsails/lspkind.nvim'
 	use 'hrsh7th/nvim-cmp' --completion source
 	use 'hrsh7th/cmp-nvim-lsp'
 	use 'hrsh7th/cmp-nvim-lua'
@@ -47,16 +51,26 @@ require 'packer'.startup(function(use)
 	use 'mfussenegger/nvim-dap' --dap
 end)
 
+--[[
 ---------------------lualine
 require 'lualine'.setup({
 	options = {
 		always_divide_middle = false,
 		globalstatus = true,
 	},
+	sections = {
+		lualine_a = { 'location' },
+		lualine_b = { 'mode' },
+		lualine_c = { '@%' },
+		lualine_x = { 'diagnostics' },
+		lualine_y = { 'branch' },
+		lualine_z = { 'filetype' },
+	},
 	extensions = {
-		'nvim-dap-ui', 'quickfix'
+		'nvim-dap-ui', 'quickfix',
 	}
 })
+]] --
 
 ---------------------autopairs
 require 'nvim-autopairs'.setup({
@@ -83,6 +97,9 @@ require 'telescope'.setup {
 		file_browser = {
 			hijack_netrw = true,
 			hidden = true
+		},
+		fzf = {
+			fuzzy = true,
 		}
 	}
 }
@@ -96,10 +113,64 @@ require 'nvim-treesitter.configs'.setup {
 	sync_install = true,
 	auto_install = true,
 	highlight = {
-		enable = true,
+		enable = false,
 		additional_vim_regex_highlighting = false
 	}
 }
+
+--lspsaga
+local function get_file_name(include_path)
+	local file_name = require('lspsaga.symbolwinbar').get_file_name()
+	if vim.fn.bufname '%' == '' then return '' end
+	if include_path == false then return file_name end
+	-- Else if include path: ./lsp/saga.lua -> lsp > saga.lua
+	local sep = vim.loop.os_uname().sysname == 'Windows' and '\\' or '/'
+	local path_list = vim.split(string.gsub(vim.fn.expand '%:~:.:h', '%%', ''), sep)
+	local file_path = ''
+	for _, cur in ipairs(path_list) do
+		file_path = (cur == '.' or cur == '~') and '' or
+			 file_path .. cur .. ' ' .. '%#LspSagaWinbarSep#>%*' .. ' %*'
+	end
+	return file_path .. file_name
+end
+
+local function config_winbar_or_statusline()
+	local exclude = {
+		['teminal'] = true,
+		['toggleterm'] = true,
+		['prompt'] = true,
+		['NvimTree'] = true,
+		['help'] = true,
+		['TelescopePrompt'] = true,
+		['TelescopeResults'] = true,
+		['frecency'] = true,
+	} -- Ignore float windows and exclude filetype
+	if vim.api.nvim_win_get_config(0).zindex or exclude[vim.bo.filetype] then
+		vim.wo.winbar = ''
+	else
+		local ok, lspsaga = pcall(require, 'lspsaga.symbolwinbar')
+		local sym
+		if ok then sym = lspsaga.get_symbol_node() end
+		local win_val = ''
+		win_val = get_file_name(true) -- set to true to include path
+		if sym ~= nil then win_val = win_val .. sym end
+		--		vim.wo.winbar = win_val
+		-- if work in statusline
+		vim.wo.stl = win_val
+	end
+end
+
+local events = { 'BufEnter', 'BufWinEnter', 'CursorMoved', 'CursorMovedI' }
+
+vim.api.nvim_create_autocmd(events, {
+	pattern = '*',
+	callback = function() config_winbar_or_statusline() end,
+})
+
+vim.api.nvim_create_autocmd('User', {
+	pattern = 'LspsagaUpdateSymbol',
+	callback = function() config_winbar_or_statusline() end,
+})
 
 ---------------------dap
 local function lldb_path()

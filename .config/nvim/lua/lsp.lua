@@ -18,6 +18,9 @@ require 'mason-lspconfig'.setup({
 -- luasnip setup
 local luasnip = require 'luasnip'
 
+--lspkind setup
+local lspkind = require 'lspkind'
+
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
@@ -27,26 +30,29 @@ cmp.setup {
 		end,
 	},
 	formatting = {
-		format = function(entry, vim_item)
-			vim_item.menu = ({
-				nvim_lsp = 'LSP',
-				spell = 'Spl',
-				zsh = 'Zsh',
-				buffer = 'Buf',
-				luasnip = 'Snp',
-				treesitter = 'TS',
-				--				calc = '[Calculator',
-				nvim_lua = 'Lua',
-				path = 'Path',
-				nvim_lsp_signature_help = 'Sign',
-				cmdline = 'Vim'
-			})[entry.source.name]
-			return vim_item
-		end,
+		format = lspkind.cmp_format({
+			mode = 'symbol',
+			before = function(entry, vim_item)
+				vim_item.menu = ({
+					nvim_lsp = 'LSP',
+					spell = 'Spl',
+					zsh = 'Zsh',
+					buffer = 'Buf',
+					luasnip = 'Snp',
+					treesitter = 'TS',
+					--				calc = '[Calculator',
+					nvim_lua = 'Lua',
+					path = 'Path',
+					nvim_lsp_signature_help = 'Sign',
+					cmdline = 'Vim'
+				})[entry.source.name]
+				return vim_item
+			end,
+		}),
 	},
 	mapping = cmp.mapping.preset.insert({
-		['<a-k>'] = cmp.mapping.scroll_docs(-10),
-		['<a-j>'] = cmp.mapping.scroll_docs(10),
+		['<up>'] = cmp.mapping.scroll_docs(-10),
+		['<down>'] = cmp.mapping.scroll_docs(10),
 		--		['<C-Space>'] = cmp.mapping.complete(),
 		['<tab>'] = cmp.mapping.confirm {
 			behavior = cmp.ConfirmBehavior.Insert,
@@ -227,6 +233,7 @@ require 'lspconfig'.sumneko_lua.setup {
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
+	-- Server-specific settings...
 	settings = {
 		Lua = {
 			runtime = {
