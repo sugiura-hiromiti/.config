@@ -27,7 +27,6 @@ map('n', '<tab>b',
 			vim.o.background = 'light'
 		end
 	end)
-map('n', '<tab>f', vim.lsp.buf.format)
 map('n', '<tab>d', '<cmd>bd<cr>')
 
 --emacs keybind

@@ -114,16 +114,16 @@ _G.packer_plugins = {
     path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["lspkind.nvim"] = {
+    loaded = true,
+    path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
+    url = "https://github.com/onsails/lspkind.nvim"
+  },
   ["lspsaga.nvim"] = {
-    config = { "\27LJ\2\nè\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\3B\1\2\1K\0\1\0\17show_outline\1\0\1\14win_width\3$\21symbol_in_winbar\1\0\0\1\0\1\14in_custom\2\18init_lsp_saga\flspsaga\frequire\0" },
+    config = { "\27LJ\2\n∂\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\0035\4\b\0=\4\t\3B\1\2\1K\0\1\0\17show_outline\1\0\1\14win_width\3$\26code_action_lightbulb\1\0\1\tsign\1\21symbol_in_winbar\1\0\0\1\0\1\14in_custom\2\18init_lsp_saga\flspsaga\frequire\0" },
     loaded = true,
     path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
     url = "https://github.com/glepnir/lspsaga.nvim"
-  },
-  ["lualine.nvim"] = {
-    loaded = true,
-    path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/lualine.nvim",
-    url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
@@ -176,6 +176,7 @@ _G.packer_plugins = {
     url = "https://github.com/wbthomason/packer.nvim"
   },
   ["papercolor-theme"] = {
+    config = { "\27LJ\2\n€\1\0\0\4\0\14\0\0156\0\0\0009\0\1\0005\1\6\0005\2\4\0005\3\3\0=\3\5\2=\2\a\0015\2\t\0005\3\b\0=\3\n\0025\3\v\0=\3\f\2=\2\r\1=\1\2\0K\0\1\0\rlanguage\6c\1\0\1\23highlight_builtins\2\bcpp\1\0\0\1\0\1\31highlight_standard_library\2\ntheme\1\0\0\fdefault\1\0\0\1\0\2\17allow_italic\2\15allow_bold\2\29PaperColor_Theme_Options\6g\bvim\0" },
     loaded = true,
     path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/papercolor-theme",
     url = "https://github.com/NLKNguyen/papercolor-theme"
@@ -191,6 +192,7 @@ _G.packer_plugins = {
     url = "https://github.com/kkharji/sqlite.lua"
   },
   sunset = {
+    config = { "\27LJ\2\nT\0\0\2\0\4\1\a6\0\0\0009\0\1\0*\1\0\0=\1\2\0)\1á\0=\1\3\0K\0\1\0\21sunset_longitude\20sunset_latitude\6g\bvimá◊«¬\vèÖÜÇ\4\0" },
     loaded = true,
     path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/sunset",
     url = "https://github.com/amdt/sunset"
@@ -201,7 +203,6 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
   },
   ["telescope-frecency.nvim"] = {
-    config = { "\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0" },
     loaded = true,
     path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/telescope-frecency.nvim",
     url = "https://github.com/nvim-telescope/telescope-frecency.nvim"
@@ -217,21 +218,30 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["vim-transparent"] = {
+    config = { "\27LJ\2\nl\0\0\3\0\a\0\v6\0\0\0009\0\1\0'\2\2\0B\0\2\2\a\0\3\0X\0\4Ä6\0\4\0009\0\5\0'\2\6\0B\0\2\1K\0\1\0\23TransparentDisable\bcmd\bvim\vhotkey\17PROFILE_NAME\vgetenv\aos\0" },
     loaded = true,
     path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/vim-transparent",
-    url = "https://github.com/ah-y/vim-transparent"
+    url = "https://github.com/tribela/vim-transparent"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: telescope-frecency.nvim
-time([[Config for telescope-frecency.nvim]], true)
-try_loadstring("\27LJ\2\n\v\0\0\1\0\0\0\1K\0\1\0\0", "config", "telescope-frecency.nvim")
-time([[Config for telescope-frecency.nvim]], false)
 -- Config for: lspsaga.nvim
 time([[Config for lspsaga.nvim]], true)
-try_loadstring("\27LJ\2\nè\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\3B\1\2\1K\0\1\0\17show_outline\1\0\1\14win_width\3$\21symbol_in_winbar\1\0\0\1\0\1\14in_custom\2\18init_lsp_saga\flspsaga\frequire\0", "config", "lspsaga.nvim")
+try_loadstring("\27LJ\2\n∂\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\4\0005\4\3\0=\4\5\0035\4\6\0=\4\a\0035\4\b\0=\4\t\3B\1\2\1K\0\1\0\17show_outline\1\0\1\14win_width\3$\26code_action_lightbulb\1\0\1\tsign\1\21symbol_in_winbar\1\0\0\1\0\1\14in_custom\2\18init_lsp_saga\flspsaga\frequire\0", "config", "lspsaga.nvim")
 time([[Config for lspsaga.nvim]], false)
+-- Config for: sunset
+time([[Config for sunset]], true)
+try_loadstring("\27LJ\2\nT\0\0\2\0\4\1\a6\0\0\0009\0\1\0*\1\0\0=\1\2\0)\1á\0=\1\3\0K\0\1\0\21sunset_longitude\20sunset_latitude\6g\bvimá◊«¬\vèÖÜÇ\4\0", "config", "sunset")
+time([[Config for sunset]], false)
+-- Config for: papercolor-theme
+time([[Config for papercolor-theme]], true)
+try_loadstring("\27LJ\2\n€\1\0\0\4\0\14\0\0156\0\0\0009\0\1\0005\1\6\0005\2\4\0005\3\3\0=\3\5\2=\2\a\0015\2\t\0005\3\b\0=\3\n\0025\3\v\0=\3\f\2=\2\r\1=\1\2\0K\0\1\0\rlanguage\6c\1\0\1\23highlight_builtins\2\bcpp\1\0\0\1\0\1\31highlight_standard_library\2\ntheme\1\0\0\fdefault\1\0\0\1\0\2\17allow_italic\2\15allow_bold\2\29PaperColor_Theme_Options\6g\bvim\0", "config", "papercolor-theme")
+time([[Config for papercolor-theme]], false)
+-- Config for: vim-transparent
+time([[Config for vim-transparent]], true)
+try_loadstring("\27LJ\2\nl\0\0\3\0\a\0\v6\0\0\0009\0\1\0'\2\2\0B\0\2\2\a\0\3\0X\0\4Ä6\0\4\0009\0\5\0'\2\6\0B\0\2\1K\0\1\0\23TransparentDisable\bcmd\bvim\vhotkey\17PROFILE_NAME\vgetenv\aos\0", "config", "vim-transparent")
+time([[Config for vim-transparent]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

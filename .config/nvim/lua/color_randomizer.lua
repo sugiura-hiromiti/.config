@@ -1,6 +1,6 @@
 local colors = vim.fn.getcompletion('', 'color')
 local dflts = { 'blue', 'darkblue', 'default', 'delek', 'desert', 'elflord', 'evening', 'industry', 'koehler'
-, 'morning',
+	, 'morning',
 	'murphy', 'pablo', 'peachpuff', 'quiet', 'ron', 'shine', 'slate', 'torte', 'zellner' }
 
 for _, dflt in ipairs(dflts) do
