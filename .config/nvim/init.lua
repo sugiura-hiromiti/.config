@@ -1,7 +1,6 @@
---[[
-╭───────────────────────────────────────────╮
-│Write Unclassifiable settings into init.lua│
-╰───────────────────────────────────────────╯]] --
+-- ╭──────────────────────────────────────────────────────────╮
+-- │ Write Unclassifiable settings into init.lua              │
+-- ╰──────────────────────────────────────────────────────────╯
 vim.cmd 'colo PaperColor'
 
 -----------------------------------------------------open vimrc if no path given
@@ -17,9 +16,9 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
+require 'plugins'
 require 'variables'
 require 'commands'
 require 'mappings'
-require 'plugins'
 require 'lsp'
---require 'color_randomizer'
+require 'color_randomizer'

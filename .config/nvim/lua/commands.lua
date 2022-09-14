@@ -1,12 +1,13 @@
 local autocmd = vim.api.nvim_create_autocmd
+--local blacklist = { 'TelescopePrompt', 'TelescopeResults', 'frecency' }
 
-autocmd('vimenter', {
-	callback = function()
-		if os.getenv 'PROFILE_NAME' == 'hotkey' then
+if os.getenv 'PROFILE_NAME' == 'hotkey' then
+	autocmd('vimenter', {
+		callback = function()
 			vim.o.background = 'dark'
 		end
-	end
-})
+	})
+end
 autocmd('vimenter', {
 	command = 'set tabstop=3'
 })
@@ -16,40 +17,56 @@ autocmd('vimenter', {
 autocmd('vimenter', {
 	command = 'set shiftwidth=3'
 })
-autocmd('colorscheme', {
-	command = 'hi! link VertSplit Normal'
+autocmd({ 'vimenter', 'colorscheme' }, {
+	command = 'hi! link VertSplit Normal | hi! link WinBar StatusLine'
 })
 autocmd({ 'insertleave', 'bufwritepre' }, {
 	pattern = { '*.rs', '*.lua', '*.cpp' },
 	callback = function() vim.lsp.buf.format { async = true } end
 })
-autocmd({ 'insertleave', 'bufwritepre' }, {
-	callback = function()
-		local blacklist = { 'TelescopePrompt', 'TelescopeResults', 'frecency' }
-		local ft = vim.bo.filetype
-		local is_black --nil on init
-		for _, value in ipairs(blacklist) do
-			if ft == value then
-				is_black = true
-				break
-			end
-		end
-		if not is_black then
-			vim.cmd 'update'
-		end
-	end
-})
-autocmd({ 'winenter' }, {
+autocmd({ 'filetype' }, {
 	pattern = { 'terminal', 'help' },
 	command = 'wincmd H'
+})
+autocmd({ 'bufwritepost' }, {
+	pattern = { 'plugins.lua', 'lsp.lua' },
+	command = 'PackerCompile'
+})
+autocmd({ 'vimenter' }, {
+	command = 'PackerCompile'
 })
 
 local stl_refresh = { 'BufEnter', 'BufWinEnter', 'CursorMoved', 'CursorMovedI' }
 autocmd(stl_refresh, {
+	pattern = { '*.lua', '*.cpp', '*.rs', '*.txt' },
 	callback = function()
-		vim.wo.stl = require 'lspsaga.symbolwinbar'.get_symbol_node()
+		--local stl_l = [[%#Normal#%=%(]]
+		local stl_r = [[%=%(%v│%t│%{&filetype}%)]]
+		local sym = require 'lspsaga.symbolwinbar'.get_symbol_node()
+		if sym then
+			local start = string.find(sym, '')
+			if start ~= nil then
+				start = start + 4
+				sym = string.sub(sym, start)
+			end
+			sym = string.gsub(sym, '->', '')
+			sym = string.gsub(sym, '', '')
+		else
+			sym = ''
+		end
+		vim.wo.stl = sym .. stl_r
 	end
 })
 
------------------------------------------------------usercmd
---local mycmd = vim.api.nvim_create_user_command
+-----------------------------------------------------userdefined
+local mycmd = vim.api.nvim_create_user_command
+
+mycmd('Ayu', function(opts)
+	vim.g.ayucolor = opts.args
+	vim.cmd 'colo ayu'
+end, {
+	nargs = 1,
+	complete = function(ArgLead, CmdLine, CursorPos)
+		return { 'light', 'mirage', 'dark' }
+	end
+})

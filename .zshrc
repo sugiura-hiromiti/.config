@@ -1,5 +1,5 @@
 # Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 #zshrc is mainly for personal customizations like options, aliases, functions, eval ..
 
 #aliases
@@ -20,7 +20,7 @@ alias so='source'
 
 #functions
 gc(){
-  git clone https://github.com/ah-y/$1
+  git clone https://github.com/qkvx/$1
   cd $1
   s
 }
@@ -43,4 +43,4 @@ eval $(starship init zsh)
 export PATH=$(brew --prefix llvm)/bin:$PATH
 
 # Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"

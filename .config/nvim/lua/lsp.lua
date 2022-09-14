@@ -1,24 +1,4 @@
----------------------mason
-require 'mason'.setup({
-	ui = {
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗"
-		}
-	}
-})
-
----------------------mason-lspconfig
-require 'mason-lspconfig'.setup({
-	ensure_installed = { 'sumneko_lua', 'rust_analyzer' }
-})
-
----------------------lspconfig
--- luasnip setup
 local luasnip = require 'luasnip'
-
---lspkind setup
 local lspkind = require 'lspkind'
 
 -- nvim-cmp setup
@@ -40,7 +20,6 @@ cmp.setup {
 					buffer = 'Buf',
 					luasnip = 'Snp',
 					treesitter = 'TS',
-					--				calc = '[Calculator',
 					nvim_lua = 'Lua',
 					path = 'Path',
 					nvim_lsp_signature_help = 'Sign',
@@ -58,6 +37,7 @@ cmp.setup {
 			behavior = cmp.ConfirmBehavior.Insert,
 			select = true,
 		},
+		['<S-tab>'] = cmp.mapping.close(),
 		['<c-n>'] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
@@ -105,27 +85,6 @@ cmp.setup.cmdline(':', {
 
 --see more detail at https://github.com/neovim/nvim-lspconfig
 local on_attach = function(client, bufnr)
-	local bufopts = { silent = true, buffer = bufnr }
-	vim.keymap.set('n', '<space>s', vim.lsp.buf.signature_help, bufopts)
-
-	if client.server_capabilities.document_highlight then
-		vim.cmd [[
-      hi! LspReferenceRead gui=bold cterm=bold guibg=DarkGray
-      hi! LspReferenceText gui=bold cterm=bold guibg=DarkGray
-      hi! LspReferenceWrite gui=bold cterm=bold guibg=DarkGray
-    ]]
-		vim.api.nvim_create_augroup('lsp_document_highlight', {})
-		vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-			group = 'lsp_document_highlight',
-			buffer = 0,
-			callback = vim.lsp.buf.document_highlight,
-		})
-		vim.api.nvim_create_autocmd('CursorMoved', {
-			group = 'lsp_document_highlight',
-			buffer = 0,
-			callback = vim.lsp.buf.clear_references,
-		})
-	end
 end
 
 local lsp_flags = {
@@ -183,22 +142,6 @@ require('lspconfig').rust_analyzer.setup {
 				implementations = {
 					enable = false
 				}
-				--[[
-				references = {
-					adt = {
-						enable = true
-					},
-					enumVariant = {
-						enable = true
-					},
-					method = {
-						enable = true
-					},
-					trait = {
-						enable = true
-					}
-				}
-			]] --
 			},
 			rustfmt = {
 				rangeFormatting = {

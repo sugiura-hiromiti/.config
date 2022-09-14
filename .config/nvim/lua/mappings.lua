@@ -27,7 +27,9 @@ map('n', '<tab>b',
 			vim.o.background = 'light'
 		end
 	end)
-map('n', '<tab>d', '<cmd>bd<cr>')
+map('n', '<tab>d', function() require 'bufdelete'.bufdelete(0, false) end)
+
+--:TODO: here is todo
 
 --emacs keybind
 map('i', '<c-n>', '<down>')
@@ -67,5 +69,8 @@ map("n", "<space>a", "<cmd>Lspsaga code_action<CR>")
 map("v", "<space>a", "<cmd>Lspsaga range_code_action<CR>")
 map("n", "<space>n", "<cmd>Lspsaga rename<CR>")
 map("n", "<space>h", "<cmd>Lspsaga hover_doc<CR>")
+map('n', '<space>j', '<cmd>Lspsaga lsp_finder')
+map('n', '<c-k>', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
+map('n', '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
 map("n", "<A-t>", "<cmd>Lspsaga open_floaterm<CR>")
 map("t", "<A-t>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]])
