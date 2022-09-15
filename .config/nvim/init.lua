@@ -1,7 +1,7 @@
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Write Unclassifiable settings into init.lua              │
 -- ╰──────────────────────────────────────────────────────────╯
-vim.cmd 'colo PaperColor'
+vim.cmd 'colo bat'
 
 -----------------------------------------------------open vimrc if no path given
 local filenam = vim.fn.expand("%:p")

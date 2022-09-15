@@ -79,11 +79,6 @@ _G.packer_plugins = {
     path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  NightElf = {
-    loaded = true,
-    path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/NightElf",
-    url = "https://github.com/keqiZeng/NightElf"
-  },
   ["ayu-vim"] = {
     loaded = true,
     path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/ayu-vim",
@@ -158,7 +153,7 @@ _G.packer_plugins = {
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
   },
   ["mason.nvim"] = {
-    config = { "\27LJ\2\n›\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\aui\1\0\0\nicons\1\0\0\1\0\3\22package_installed\bâœ“\24package_uninstalled\bâœ—\20package_pending\bâžœ\nsetup\nmason\frequire\0" },
+    config = { "\27LJ\2\n›\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\aui\1\0\0\nicons\1\0\0\1\0\3\20package_pending\bâžœ\24package_uninstalled\bâœ—\22package_installed\bâœ“\nsetup\nmason\frequire\0" },
     loaded = true,
     path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
@@ -182,7 +177,7 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-dap"] = {
-    config = { "\27LJ\2\no\0\0\5\0\6\0\0166\0\0\0009\0\1\0'\2\2\0B\0\2\2\14\0\0\0X\1\2€+\1\0\0L\1\2\0\18\3\0\0009\1\3\0'\4\4\0B\1\3\2\18\4\0\0009\2\5\0B\2\2\1L\1\2\0\nclose\6a\tread\22which lldb-vscode\npopen\aion\0\0\5\0\a\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0006\3\0\0009\3\1\0039\3\4\3B\3\1\2'\4\5\0&\3\4\3'\4\6\0D\0\4\0\tfile\r/target/\vgetcwd\25Path to executable: \ninput\afn\bvimg\0\0\5\0\a\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0006\3\0\0009\3\1\0039\3\4\3B\3\1\2'\4\5\0&\3\4\3'\4\6\0D\0\4\0\tfile\6/\vgetcwd\25Path to executable: \ninput\afn\bvimË\2\1\0\6\0\17\0#3\0\0\0006\1\1\0'\3\2\0B\1\2\0029\2\3\0015\3\5\0\18\4\0\0B\4\1\2=\4\6\3=\3\4\0029\2\a\0014\3\3\0005\4\t\0003\5\n\0=\5\v\0044\5\0\0=\5\f\4>\4\1\3=\3\b\0029\2\a\0019\3\a\0019\3\b\3=\3\r\0029\2\a\0014\3\3\0005\4\15\0003\5\14\0=\5\v\4>\4\1\3=\3\r\0029\2\a\0019\3\a\0019\3\r\3=\3\16\2K\0\1\0\bcpp\1\0\0\0\6c\targs\fprogram\0\1\0\5\frequest\vlaunch\tname\vLaunch\ttype\tlldb\bcwd\23${workspaceFolder}\16stopOnEntry\1\trust\19configurations\fcommand\1\0\2\tname\tlldb\ttype\15executable\tlldb\radapters\bdap\frequire\0\0" },
+    config = { "\27LJ\2\no\0\0\5\0\6\0\0166\0\0\0009\0\1\0'\2\2\0B\0\2\2\14\0\0\0X\1\2€+\1\0\0L\1\2\0\18\3\0\0009\1\3\0'\4\4\0B\1\3\2\18\4\0\0009\2\5\0B\2\2\1L\1\2\0\nclose\6a\tread\22which lldb-vscode\npopen\aion\0\0\5\0\a\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0006\3\0\0009\3\1\0039\3\4\3B\3\1\2'\4\5\0&\3\4\3'\4\6\0D\0\4\0\tfile\r/target/\vgetcwd\25Path to executable: \ninput\afn\bvimg\0\0\5\0\a\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0006\3\0\0009\3\1\0039\3\4\3B\3\1\2'\4\5\0&\3\4\3'\4\6\0D\0\4\0\tfile\6/\vgetcwd\25Path to executable: \ninput\afn\bvimË\2\1\0\6\0\17\0#3\0\0\0006\1\1\0'\3\2\0B\1\2\0029\2\3\0015\3\5\0\18\4\0\0B\4\1\2=\4\6\3=\3\4\0029\2\a\0014\3\3\0005\4\t\0003\5\n\0=\5\v\0044\5\0\0=\5\f\4>\4\1\3=\3\b\0029\2\a\0019\3\a\0019\3\b\3=\3\r\0029\2\a\0014\3\3\0005\4\15\0003\5\14\0=\5\v\4>\4\1\3=\3\r\0029\2\a\0019\3\a\0019\3\r\3=\3\16\2K\0\1\0\bcpp\1\0\0\0\6c\targs\fprogram\0\1\0\5\16stopOnEntry\1\bcwd\23${workspaceFolder}\tname\vLaunch\frequest\vlaunch\ttype\tlldb\trust\19configurations\fcommand\1\0\2\tname\tlldb\ttype\15executable\tlldb\radapters\bdap\frequire\0\0" },
     loaded = true,
     path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/nvim-dap",
     url = "https://github.com/mfussenegger/nvim-dap"
@@ -225,19 +220,13 @@ _G.packer_plugins = {
     path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
-  ["papercolor-theme"] = {
-    config = { "\27LJ\2\n¸\2\0\0\a\0\19\0\0256\0\0\0009\0\1\0005\1\v\0005\2\t\0005\3\3\0006\4\4\0009\4\5\4'\6\6\0B\4\2\2\a\4\a\0X\4\2€+\4\2\0X\5\1€+\4\1\0=\4\b\3=\3\n\2=\2\f\0015\2\14\0005\3\r\0=\3\15\0025\3\16\0=\3\17\2=\2\18\1=\1\2\0K\0\1\0\rlanguage\6c\1\0\1\23highlight_builtins\2\bcpp\1\0\0\1\0\1\31highlight_standard_library\2\ntheme\1\0\0\fdefault\1\0\0\27transparent_background\vhotkey\17PROFILE_NAME\vgetenv\aos\1\0\2\17allow_italic\2\15allow_bold\2\29PaperColor_Theme_Options\6g\bvim\0" },
-    loaded = true,
-    path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/papercolor-theme",
-    url = "https://github.com/NLKNguyen/papercolor-theme"
-  },
   ["plenary.nvim"] = {
     loaded = true,
     path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["project.nvim"] = {
-    config = { "\27LJ\2\n¬\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\rpatterns\1\0\2\17silent_chdir\1\16show_hidden\2\1\t\0\0\t.git\v_darcs\b.hg\t.bzr\t.svn\rMakefile\17package.json\15Cargo.toml\nsetup\17project_nvim\frequire\0" },
+    config = { "\27LJ\2\n¬\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\rpatterns\1\0\2\16show_hidden\2\17silent_chdir\1\1\t\0\0\t.git\v_darcs\b.hg\t.bzr\t.svn\rMakefile\17package.json\15Cargo.toml\nsetup\17project_nvim\frequire\0" },
     loaded = true,
     path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/project.nvim",
     url = "https://github.com/ahmedkhalf/project.nvim"
@@ -274,33 +263,44 @@ _G.packer_plugins = {
     path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["toast.vim"] = {
+    loaded = true,
+    path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/toast.vim",
+    url = "https://github.com/jsit/toast.vim"
+  },
   ["vim-illuminate"] = {
-    config = { "\27LJ\2\n‘\1\0\0\3\0\4\0\t6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\1\0'\2\3\0B\0\2\1K\0\1\0003hi IlluminatedWordRead gui=bold guibg=DarkGray3hi IlluminatedWordText gui=bold guibg=DarkGray\bcmd\bvim\0" },
+    config = { "\27LJ\2\n’\1\0\0\3\0\4\0\t6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\1\0'\2\3\0B\0\2\1K\0\1\0004hi IlluminatedWordWrite gui=bold guibg=DarkGray3hi IlluminatedWordRead gui=bold guibg=DarkGray\bcmd\bvim\0" },
     loaded = true,
     path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/vim-illuminate",
     url = "https://github.com/RRethy/vim-illuminate"
+  },
+  ["vim-kalisi"] = {
+    loaded = true,
+    path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/vim-kalisi",
+    url = "https://github.com/freeo/vim-kalisi"
   },
   ["vim-wakatime"] = {
     loaded = true,
     path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/vim-wakatime",
     url = "https://github.com/wakatime/vim-wakatime"
   },
-  ["zephyr-nvim"] = {
+  ["vim-wwdc16-theme"] = {
     loaded = true,
-    path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/zephyr-nvim",
-    url = "https://github.com/glepnir/zephyr-nvim"
+    path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/vim-wwdc16-theme",
+    url = "https://github.com/lifepillar/vim-wwdc16-theme"
+  },
+  ["vim-wwdc17-theme"] = {
+    loaded = true,
+    path = "/Users/sugiurahiroshiiki/.local/share/nvim/site/pack/packer/start/vim-wwdc17-theme",
+    url = "https://github.com/lifepillar/vim-wwdc17-theme"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: vim-illuminate
-time([[Config for vim-illuminate]], true)
-try_loadstring("\27LJ\2\n‘\1\0\0\3\0\4\0\t6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\1\0'\2\3\0B\0\2\1K\0\1\0003hi IlluminatedWordRead gui=bold guibg=DarkGray3hi IlluminatedWordText gui=bold guibg=DarkGray\bcmd\bvim\0", "config", "vim-illuminate")
-time([[Config for vim-illuminate]], false)
--- Config for: project.nvim
-time([[Config for project.nvim]], true)
-try_loadstring("\27LJ\2\n¬\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\rpatterns\1\0\2\17silent_chdir\1\16show_hidden\2\1\t\0\0\t.git\v_darcs\b.hg\t.bzr\t.svn\rMakefile\17package.json\15Cargo.toml\nsetup\17project_nvim\frequire\0", "config", "project.nvim")
-time([[Config for project.nvim]], false)
+-- Config for: sunset
+time([[Config for sunset]], true)
+try_loadstring("\27LJ\2\nT\0\0\2\0\4\1\a6\0\0\0009\0\1\0*\1\0\0=\1\2\0)\1‡\0=\1\3\0K\0\1\0\21sunset_longitude\20sunset_latitude\6g\bvim‡×ÇÂ\v…†‚\4\0", "config", "sunset")
+time([[Config for sunset]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\2\nÉ\2\0\0\5\0\17\0)6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\0025\3\t\0005\4\b\0=\4\n\0035\4\v\0=\4\f\3=\3\r\2B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\14\0'\2\15\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\14\0'\2\n\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\14\0'\2\f\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\14\0'\2\16\0B\0\2\1K\0\1\0\rprojects\rfrecency\19load_extension\15extensions\bfzf\1\0\1\nfuzzy\2\17file_browser\1\0\0\1\0\2\vhidden\2\17hijack_netrw\2\fpickers\1\0\0\14findfiles\1\0\0\1\0\1\vhidden\2\nsetup\14telescope\frequire\0", "config", "telescope.nvim")
@@ -309,42 +309,42 @@ time([[Config for telescope.nvim]], false)
 time([[Config for nvim-scrollbar]], true)
 try_loadstring("\27LJ\2\ne\0\0\3\0\4\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\30scrollbar.handlers.search\nsetup\14scrollbar\frequire\0", "config", "nvim-scrollbar")
 time([[Config for nvim-scrollbar]], false)
--- Config for: sunset
-time([[Config for sunset]], true)
-try_loadstring("\27LJ\2\nT\0\0\2\0\4\1\a6\0\0\0009\0\1\0*\1\0\0=\1\2\0)\1‡\0=\1\3\0K\0\1\0\21sunset_longitude\20sunset_latitude\6g\bvim‡×ÇÂ\v…†‚\4\0", "config", "sunset")
-time([[Config for sunset]], false)
--- Config for: comment-box.nvim
-time([[Config for comment-box.nvim]], true)
-try_loadstring("\27LJ\2\nM\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\15line_width\3P\nsetup\16comment-box\frequire\0", "config", "comment-box.nvim")
-time([[Config for comment-box.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\nÁ\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\14highlight\1\0\2\venable\2&additional_vim_regex_highlighting\1\21ensure_installed\1\0\1\17sync_install\2\1\3\0\0\ttoml\thelp\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
-time([[Config for nvim-treesitter]], false)
--- Config for: nvim-notify
-time([[Config for nvim-notify]], true)
-try_loadstring("\27LJ\2\ng\0\0\4\0\5\0\t6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\3\0B\1\2\0016\1\4\0=\0\1\1K\0\1\0\bvim\1\0\2\bfps\3\30\22background_colour\f#000000\nsetup\vnotify\frequire\0", "config", "nvim-notify")
-time([[Config for nvim-notify]], false)
 -- Config for: lspsaga.nvim
 time([[Config for lspsaga.nvim]], true)
 try_loadstring("\27LJ\2\nÅ\1\0\0\4\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\17show_outline\1\0\1\14win_width\3$\26code_action_lightbulb\1\0\1\tsign\1\21symbol_in_winbar\1\0\0\1\0\2\18click_support\2\14in_custom\2\18init_lsp_saga\flspsaga\frequire\0", "config", "lspsaga.nvim")
 time([[Config for lspsaga.nvim]], false)
--- Config for: nvim-dap
-time([[Config for nvim-dap]], true)
-try_loadstring("\27LJ\2\no\0\0\5\0\6\0\0166\0\0\0009\0\1\0'\2\2\0B\0\2\2\14\0\0\0X\1\2€+\1\0\0L\1\2\0\18\3\0\0009\1\3\0'\4\4\0B\1\3\2\18\4\0\0009\2\5\0B\2\2\1L\1\2\0\nclose\6a\tread\22which lldb-vscode\npopen\aion\0\0\5\0\a\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0006\3\0\0009\3\1\0039\3\4\3B\3\1\2'\4\5\0&\3\4\3'\4\6\0D\0\4\0\tfile\r/target/\vgetcwd\25Path to executable: \ninput\afn\bvimg\0\0\5\0\a\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0006\3\0\0009\3\1\0039\3\4\3B\3\1\2'\4\5\0&\3\4\3'\4\6\0D\0\4\0\tfile\6/\vgetcwd\25Path to executable: \ninput\afn\bvimË\2\1\0\6\0\17\0#3\0\0\0006\1\1\0'\3\2\0B\1\2\0029\2\3\0015\3\5\0\18\4\0\0B\4\1\2=\4\6\3=\3\4\0029\2\a\0014\3\3\0005\4\t\0003\5\n\0=\5\v\0044\5\0\0=\5\f\4>\4\1\3=\3\b\0029\2\a\0019\3\a\0019\3\b\3=\3\r\0029\2\a\0014\3\3\0005\4\15\0003\5\14\0=\5\v\4>\4\1\3=\3\r\0029\2\a\0019\3\a\0019\3\r\3=\3\16\2K\0\1\0\bcpp\1\0\0\0\6c\targs\fprogram\0\1\0\5\frequest\vlaunch\tname\vLaunch\ttype\tlldb\bcwd\23${workspaceFolder}\16stopOnEntry\1\trust\19configurations\fcommand\1\0\2\tname\tlldb\ttype\15executable\tlldb\radapters\bdap\frequire\0\0", "config", "nvim-dap")
-time([[Config for nvim-dap]], false)
--- Config for: papercolor-theme
-time([[Config for papercolor-theme]], true)
-try_loadstring("\27LJ\2\n¸\2\0\0\a\0\19\0\0256\0\0\0009\0\1\0005\1\v\0005\2\t\0005\3\3\0006\4\4\0009\4\5\4'\6\6\0B\4\2\2\a\4\a\0X\4\2€+\4\2\0X\5\1€+\4\1\0=\4\b\3=\3\n\2=\2\f\0015\2\14\0005\3\r\0=\3\15\0025\3\16\0=\3\17\2=\2\18\1=\1\2\0K\0\1\0\rlanguage\6c\1\0\1\23highlight_builtins\2\bcpp\1\0\0\1\0\1\31highlight_standard_library\2\ntheme\1\0\0\fdefault\1\0\0\27transparent_background\vhotkey\17PROFILE_NAME\vgetenv\aos\1\0\2\17allow_italic\2\15allow_bold\2\29PaperColor_Theme_Options\6g\bvim\0", "config", "papercolor-theme")
-time([[Config for papercolor-theme]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+try_loadstring("\27LJ\2\nÁ\1\0\0\4\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\2B\0\2\1K\0\1\0\14highlight\1\0\2\venable\2&additional_vim_regex_highlighting\1\21ensure_installed\1\0\1\17sync_install\2\1\3\0\0\ttoml\thelp\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
+-- Config for: mason.nvim
+time([[Config for mason.nvim]], true)
+try_loadstring("\27LJ\2\n›\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\aui\1\0\0\nicons\1\0\0\1\0\3\20package_pending\bâžœ\24package_uninstalled\bâœ—\22package_installed\bâœ“\nsetup\nmason\frequire\0", "config", "mason.nvim")
+time([[Config for mason.nvim]], false)
 -- Config for: mason-lspconfig.nvim
 time([[Config for mason-lspconfig.nvim]], true)
 try_loadstring("\27LJ\2\n{\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\21ensure_installed\1\0\0\1\3\0\0\16sumneko_lua\18rust_analyzer\nsetup\20mason-lspconfig\frequire\0", "config", "mason-lspconfig.nvim")
 time([[Config for mason-lspconfig.nvim]], false)
--- Config for: mason.nvim
-time([[Config for mason.nvim]], true)
-try_loadstring("\27LJ\2\n›\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\aui\1\0\0\nicons\1\0\0\1\0\3\22package_installed\bâœ“\24package_uninstalled\bâœ—\20package_pending\bâžœ\nsetup\nmason\frequire\0", "config", "mason.nvim")
-time([[Config for mason.nvim]], false)
+-- Config for: project.nvim
+time([[Config for project.nvim]], true)
+try_loadstring("\27LJ\2\n¬\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\rpatterns\1\0\2\16show_hidden\2\17silent_chdir\1\1\t\0\0\t.git\v_darcs\b.hg\t.bzr\t.svn\rMakefile\17package.json\15Cargo.toml\nsetup\17project_nvim\frequire\0", "config", "project.nvim")
+time([[Config for project.nvim]], false)
+-- Config for: nvim-dap
+time([[Config for nvim-dap]], true)
+try_loadstring("\27LJ\2\no\0\0\5\0\6\0\0166\0\0\0009\0\1\0'\2\2\0B\0\2\2\14\0\0\0X\1\2€+\1\0\0L\1\2\0\18\3\0\0009\1\3\0'\4\4\0B\1\3\2\18\4\0\0009\2\5\0B\2\2\1L\1\2\0\nclose\6a\tread\22which lldb-vscode\npopen\aion\0\0\5\0\a\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0006\3\0\0009\3\1\0039\3\4\3B\3\1\2'\4\5\0&\3\4\3'\4\6\0D\0\4\0\tfile\r/target/\vgetcwd\25Path to executable: \ninput\afn\bvimg\0\0\5\0\a\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0006\3\0\0009\3\1\0039\3\4\3B\3\1\2'\4\5\0&\3\4\3'\4\6\0D\0\4\0\tfile\6/\vgetcwd\25Path to executable: \ninput\afn\bvimË\2\1\0\6\0\17\0#3\0\0\0006\1\1\0'\3\2\0B\1\2\0029\2\3\0015\3\5\0\18\4\0\0B\4\1\2=\4\6\3=\3\4\0029\2\a\0014\3\3\0005\4\t\0003\5\n\0=\5\v\0044\5\0\0=\5\f\4>\4\1\3=\3\b\0029\2\a\0019\3\a\0019\3\b\3=\3\r\0029\2\a\0014\3\3\0005\4\15\0003\5\14\0=\5\v\4>\4\1\3=\3\r\0029\2\a\0019\3\a\0019\3\r\3=\3\16\2K\0\1\0\bcpp\1\0\0\0\6c\targs\fprogram\0\1\0\5\16stopOnEntry\1\bcwd\23${workspaceFolder}\tname\vLaunch\frequest\vlaunch\ttype\tlldb\trust\19configurations\fcommand\1\0\2\tname\tlldb\ttype\15executable\tlldb\radapters\bdap\frequire\0\0", "config", "nvim-dap")
+time([[Config for nvim-dap]], false)
+-- Config for: vim-illuminate
+time([[Config for vim-illuminate]], true)
+try_loadstring("\27LJ\2\n’\1\0\0\3\0\4\0\t6\0\0\0009\0\1\0'\2\2\0B\0\2\0016\0\0\0009\0\1\0'\2\3\0B\0\2\1K\0\1\0004hi IlluminatedWordWrite gui=bold guibg=DarkGray3hi IlluminatedWordRead gui=bold guibg=DarkGray\bcmd\bvim\0", "config", "vim-illuminate")
+time([[Config for vim-illuminate]], false)
+-- Config for: comment-box.nvim
+time([[Config for comment-box.nvim]], true)
+try_loadstring("\27LJ\2\nM\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\15line_width\3P\nsetup\16comment-box\frequire\0", "config", "comment-box.nvim")
+time([[Config for comment-box.nvim]], false)
+-- Config for: nvim-notify
+time([[Config for nvim-notify]], true)
+try_loadstring("\27LJ\2\ng\0\0\4\0\5\0\t6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\3\0B\1\2\0016\1\4\0=\0\1\1K\0\1\0\bvim\1\0\2\bfps\3\30\22background_colour\f#000000\nsetup\vnotify\frequire\0", "config", "nvim-notify")
+time([[Config for nvim-notify]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-cmp ]]

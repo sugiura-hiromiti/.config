@@ -3,28 +3,10 @@ require 'packer'.startup(function(use)
 	use 'zanglg/nova.nvim'
 	use 'jamespwilliams/bat.vim'
 	use 'ayu-theme/ayu-vim'
-	use { 'NLKNguyen/papercolor-theme',
-		config = function()
-			local g = vim.g
-			g.PaperColor_Theme_Options = {
-				theme = {
-					default = {
-						allow_bold = true,
-						allow_italic = true,
-						transparent_background = os.getenv 'PROFILE_NAME' == 'hotkey' and true or false
-					}
-				},
-				language = {
-					cpp = {
-						highlight_standard_library = true
-					},
-					c = {
-						highlight_builtins = true
-					}
-				}
-			}
-		end }
-	--See d7f034d for lualine settings archive
+	use 'freeo/vim-kalisi'
+	use 'jsit/toast.vim'
+	use 'lifepillar/vim-wwdc16-theme'
+	use 'lifepillar/vim-wwdc17-theme'
 	use 'kyazdani42/nvim-web-devicons'
 	use { 'LudoPinelli/comment-box.nvim',
 		config = function()
@@ -35,9 +17,9 @@ require 'packer'.startup(function(use)
 	use 'famiu/bufdelete.nvim'
 	use { 'RRethy/vim-illuminate',
 		config = function()
-			vim.cmd 'hi IlluminatedWordText gui=bold guibg=DarkGray'
+			--	vim.cmd 'hi IlluminatedWordText gui=bold guibg=DarkGray'
 			vim.cmd 'hi IlluminatedWordRead gui=bold guibg=DarkGray'
-			--vim.cmd 'hi IlluminatedWordWrite gui=bold guibg=DarkGray'
+			vim.cmd 'hi IlluminatedWordWrite gui=bold guibg=DarkGray'
 		end }
 	use 'wakatime/vim-wakatime'
 	use { 'kevinhwang91/nvim-hlslens' }
@@ -79,7 +61,6 @@ require 'packer'.startup(function(use)
 			require 'nvim-treesitter.configs'.setup {
 				ensure_installed = { 'toml', 'help' },
 				sync_install = true,
-				--				auto_install = true,
 				highlight = {
 					enable = true,
 					additional_vim_regex_highlighting = false
