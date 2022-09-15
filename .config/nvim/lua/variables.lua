@@ -1,7 +1,6 @@
 local opt = vim.opt
 opt.relativenumber = true
 opt.number = true
-opt.signcolumn = 'no'
 opt.cursorline = true
 opt.cursorcolumn = true
 opt.swapfile = false

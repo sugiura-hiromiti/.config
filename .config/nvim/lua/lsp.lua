@@ -14,16 +14,11 @@ cmp.setup {
 			mode = 'symbol',
 			before = function(entry, vim_item)
 				vim_item.menu = ({
-					nvim_lsp = 'LSP',
-					spell = 'Spl',
-					zsh = 'Zsh',
-					buffer = 'Buf',
-					luasnip = 'Snp',
+					nvim_lsp = 'L',
+					buffer = 'B',
+					luasnip = 'S',
 					treesitter = 'TS',
 					nvim_lua = 'Lua',
-					path = 'Path',
-					nvim_lsp_signature_help = 'Sign',
-					cmdline = 'Vim'
 				})[entry.source.name]
 				return vim_item
 			end,
@@ -37,7 +32,7 @@ cmp.setup {
 			behavior = cmp.ConfirmBehavior.Insert,
 			select = true,
 		},
-		['<S-tab>'] = cmp.mapping.close(),
+		['<c-c>'] = cmp.mapping.close(),
 		['<c-n>'] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()

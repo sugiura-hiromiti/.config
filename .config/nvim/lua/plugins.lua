@@ -33,8 +33,12 @@ require 'packer'.startup(function(use)
 			}
 		end }
 	use 'famiu/bufdelete.nvim'
-	use { 'chentoast/marks.nvim' }
-	use { 'RRethy/vim-illuminate' }
+	use { 'RRethy/vim-illuminate',
+		config = function()
+			vim.cmd 'hi IlluminatedWordText gui=bold guibg=DarkGray'
+			vim.cmd 'hi IlluminatedWordRead gui=bold guibg=DarkGray'
+			--vim.cmd 'hi IlluminatedWordWrite gui=bold guibg=DarkGray'
+		end }
 	use 'wakatime/vim-wakatime'
 	use { 'kevinhwang91/nvim-hlslens' }
 	use { 'petertriho/nvim-scrollbar',
@@ -69,22 +73,6 @@ require 'packer'.startup(function(use)
 			})
 			vim.notify = notify
 		end }
-	use { 'camilledejoye/notifier.nvim',
-		config = function()
-			require('notifier').setup {
-				adapter = require('notifier.adapters.nvim-notify'), -- Which adapter to use
-				use_globally = true, -- Will configure `vim.notify` to use the adapter
-				extensions = {
-					lsp = {
-						enabled = true, -- Will show LSP progress messages
-						-- You can choose a specific adapter for the extension:
-						adapter = require('notifier.adapters.nvim-notify'),
-					},
-				},
-			}
-		end,
-	}
-	--:TODO: todo comments
 	use 'nvim-lua/plenary.nvim'
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate',
 		config = function()
