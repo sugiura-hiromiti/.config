@@ -4,7 +4,7 @@
 
 #aliases
 alias s='exa -lahF --icons --group-directories-first --sort=extension --time-style=iso --git --no-permissions --no-user'
-alias nv='nvim'
+alias n='nvim'
 alias gi='git init ; git add . ; git commit -m'
 alias gl='git pull'
 alias bu='brew upgrade'

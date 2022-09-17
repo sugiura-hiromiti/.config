@@ -1,13 +1,6 @@
 local autocmd = vim.api.nvim_create_autocmd
 --local blacklist = { 'TelescopePrompt', 'TelescopeResults', 'frecency' }
 
-if os.getenv 'PROFILE_NAME' == 'hotkey' then
-	autocmd('vimenter', {
-		callback = function()
-			vim.o.background = 'dark'
-		end
-	})
-end
 autocmd('vimenter', {
 	command = 'set tabstop=3'
 })
@@ -19,6 +12,15 @@ autocmd('vimenter', {
 })
 autocmd({ 'vimenter', 'colorscheme' }, {
 	command = 'hi! link VertSplit Normal | hi! link WinBar StatusLine'
+})
+autocmd({ 'vimenter', 'colorschemepre' }, {
+	callback = function()
+		if vim.o.background == 'light' then
+			vim.cmd 'let ayucolor="light"'
+		else
+			vim.cmd 'let ayucolor="mirage"'
+		end
+	end
 })
 autocmd({ 'insertleave', 'bufwritepre' }, {
 	pattern = { '*.rs', '*.lua', '*.cpp' },
@@ -34,28 +36,6 @@ autocmd({ 'bufwritepost' }, {
 })
 autocmd({ 'vimenter' }, {
 	command = 'PackerCompile'
-})
-
-local stl_refresh = { 'BufEnter', 'BufWinEnter', 'CursorMoved', 'CursorMovedI' }
-autocmd(stl_refresh, {
-	pattern = { '*.lua', '*.cpp', '*.rs', '*.txt' },
-	callback = function()
-		--local stl_l = [[%#Normal#%=%(]]
-		local stl_r = [[%=%(%v│%t│%{&filetype}%)]]
-		local sym = require 'lspsaga.symbolwinbar'.get_symbol_node()
-		if sym then
-			local start = string.find(sym, '')
-			if start ~= nil then
-				start = start + 4
-				sym = string.sub(sym, start)
-			end
-			sym = string.gsub(sym, '->', '')
-			sym = string.gsub(sym, '', '')
-		else
-			sym = ''
-		end
-		vim.wo.stl = sym .. stl_r
-	end
 })
 
 -----------------------------------------------------userdefined

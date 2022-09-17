@@ -1,12 +1,17 @@
 require 'packer'.startup(function(use)
 	use 'wbthomason/packer.nvim'
+	use { 'amdt/sunset',
+		config = function()
+			vim.g.sunset_latitude = 35.03
+			vim.g.sunset_longitude = 135.79
+		end }
+	use { 'akinsho/bufferline.nvim', tag = "v2.*",
+		config = function()
+			require 'bufferline'.setup {}
+		end }
 	use 'zanglg/nova.nvim'
-	use 'jamespwilliams/bat.vim'
 	use 'ayu-theme/ayu-vim'
-	use 'freeo/vim-kalisi'
 	use 'jsit/toast.vim'
-	use 'lifepillar/vim-wwdc16-theme'
-	use 'lifepillar/vim-wwdc17-theme'
 	use 'kyazdani42/nvim-web-devicons'
 	use { 'LudoPinelli/comment-box.nvim',
 		config = function()
@@ -17,8 +22,6 @@ require 'packer'.startup(function(use)
 	use 'famiu/bufdelete.nvim'
 	use { 'RRethy/vim-illuminate',
 		config = function()
-			--	vim.cmd 'hi IlluminatedWordText gui=bold guibg=DarkGray'
-			vim.cmd 'hi IlluminatedWordRead gui=bold guibg=DarkGray'
 			vim.cmd 'hi IlluminatedWordWrite gui=bold guibg=DarkGray'
 		end }
 	use 'wakatime/vim-wakatime'
@@ -27,13 +30,6 @@ require 'packer'.startup(function(use)
 		config = function()
 			require 'scrollbar'.setup()
 			require("scrollbar.handlers.search").setup()
-		end }
-	--use 'folke/todo-comments.nvim'
-	use { 'amdt/sunset',
-		config = function()
-			local g = vim.g
-			g.sunset_latitude = 35.02
-			g.sunset_longitude = 135
 		end }
 	use { 'windwp/nvim-autopairs', after = 'nvim-cmp',
 		config = function()
@@ -51,7 +47,6 @@ require 'packer'.startup(function(use)
 			local notify = require 'notify'
 			notify.setup({
 				background_colour = '#000000',
-				fps = 30,
 			})
 			vim.notify = notify
 		end }
@@ -185,5 +180,5 @@ require 'packer'.startup(function(use)
 				end
 			} }
 			dap.configurations.cpp = dap.configurations.c
-		end } --dap
+		end }
 end)

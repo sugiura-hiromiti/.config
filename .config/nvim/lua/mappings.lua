@@ -1,8 +1,6 @@
 local map = vim.keymap.set
 local nv = { 'n', 'v' }
 
---See commit c3364a3 for color_randomize
-
 map(nv, ':', ';') --exchange : & ;
 map(nv, ';', ':')
 map('n', '<esc>', ':noh<cr>') --<esc> to noh
@@ -28,8 +26,6 @@ map('n', '<tab>b',
 		end
 	end)
 map('n', '<tab>d', function() require 'bufdelete'.bufdelete(0, false) end)
-
---:TODO: here is todo
 
 --emacs keybind
 map('i', '<c-n>', '<down>')

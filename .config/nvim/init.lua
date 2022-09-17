@@ -1,7 +1,11 @@
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Write Unclassifiable settings into init.lua              │
 -- ╰──────────────────────────────────────────────────────────╯
-vim.cmd 'colo bat'
+if os.getenv 'PROFILE_NAME' == 'hotkey' then
+	vim.cmd 'colo toast'
+else
+	vim.cmd 'colo ayu'
+end
 
 -----------------------------------------------------open vimrc if no path given
 local filenam = vim.fn.expand("%:p")
