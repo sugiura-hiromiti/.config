@@ -3,8 +3,10 @@ coc/
 karabiner/
 fish/
 iterm2/
+iterm
 logs/
 bin/
 history
 fig.history
 .warp/
+.DS_Store

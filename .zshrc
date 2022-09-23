@@ -20,7 +20,7 @@ alias so='source'
 
 #functions
 gc(){
-  git clone https://github.com/qkvx/$1
+  git clone https://github.com/sugiura-hiromichi/$1
   cd $1
   s
 }

@@ -18,14 +18,14 @@ map(nv, ',', '@:') --like '.', repeat previous command
 
 --use <tab> instead <space> with neither lsp nor fuzzy commands
 map('n', '<tab>b',
-	function()
-		if vim.o.background == 'light' then
-			vim.o.background = 'dark'
-		else
-			vim.o.background = 'light'
-		end
-	end)
-map('n', '<tab>d', function() require 'bufdelete'.bufdelete(0, false) end)
+   function()
+      if vim.o.background == 'light' then
+         vim.o.background = 'dark'
+      else
+         vim.o.background = 'light'
+      end
+   end)
+map('n', '<tab>d', '<cmd>bd<cr>')
 
 --emacs keybind
 map('i', '<c-n>', '<down>')
@@ -59,13 +59,13 @@ map('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
 map('n', '<space>o', require 'telescope.builtin'.lsp_document_symbols)
 map('n', '<space>r', require 'telescope.builtin'.lsp_references)
 map('n', '<space>d', require 'telescope.builtin'.diagnostics)
+map('n', '<space>b', require 'telescope.builtin'.buffers)
 
 --lspsaga
-map("n", "<space>a", "<cmd>Lspsaga code_action<CR>")
-map("v", "<space>a", "<cmd>Lspsaga range_code_action<CR>")
+map(nv, "<space>a", "<cmd>Lspsaga code_action<CR>")
 map("n", "<space>n", "<cmd>Lspsaga rename<CR>")
-map("n", "<space>h", "<cmd>Lspsaga hover_doc<CR>")
-map('n', '<space>j', '<cmd>Lspsaga lsp_finder')
+map('n', '<space>j', '<cmd>Lspsaga lsp_finder<cr>')
+map('n', '<space>h', '<cmd>Lspsaga hover_doc<cr>')
 map('n', '<c-k>', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
 map('n', '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
 map("n", "<A-t>", "<cmd>Lspsaga open_floaterm<CR>")
