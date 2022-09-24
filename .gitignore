@@ -6,5 +6,6 @@ iterm2/
 logs/
 bin/
 history
-fig.history
 .warp/
+/.fig/*
+!/.fig/settings.json
