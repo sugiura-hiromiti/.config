@@ -1,6 +1,10 @@
 local opt = vim.opt
 opt.relativenumber = true
 opt.number = true
+opt.tabstop = 3
+opt.softtabstop = 3
+opt.shiftwidth = 3
+opt.expandtab = true
 opt.cursorline = true
 opt.cursorcolumn = true
 opt.swapfile = false
@@ -11,13 +15,8 @@ opt.autowriteall = true
 opt.termguicolors = true
 opt.laststatus = 0
 opt.clipboard:append { 'unnamedplus' }
-opt.list = true
-opt.ruler = false
-opt.cmdheight = 1
-opt.shortmess = 'atT'
-opt.listchars = {
-	tab = '│ ',
-}
+opt.autochdir = true
+--opt.cmdheight = 0
 
 local g = vim.g
 g.python3_host_prog = os.getenv('HOMEBREW_PREFIX') .. '/bin/python3'

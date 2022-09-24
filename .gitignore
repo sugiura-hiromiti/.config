@@ -3,9 +3,11 @@ coc/
 karabiner/
 fish/
 iterm2/
+iterm
 logs/
 bin/
 history
 .warp/
 /.fig/*
-!/.fig/settings.json
+!settings.json
+.DS_Store
