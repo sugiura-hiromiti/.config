@@ -7,7 +7,6 @@ require 'packer'.startup(function(use)
       end }
    use 'sugiura-hiromichi/ayu-vim'
    use 'kyazdani42/nvim-web-devicons'
-   use 'RRethy/vim-illuminate'
    use { 'windwp/nvim-autopairs', after = 'nvim-cmp',
       config = function()
          require 'nvim-autopairs'.setup {

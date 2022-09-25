@@ -7,6 +7,7 @@ iterm
 logs/
 bin/
 history
-fig.history
 .warp/
+/.fig/*
+!settings.json
 .DS_Store

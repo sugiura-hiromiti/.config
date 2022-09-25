@@ -137,7 +137,7 @@ _G.packer_plugins = {
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
   },
   ["mason.nvim"] = {
-    config = { "\27LJ\2\n›\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\aui\1\0\0\nicons\1\0\0\1\0\3\20package_pending\bâžœ\24package_uninstalled\bâœ—\22package_installed\bâœ“\nsetup\nmason\frequire\0" },
+    config = { "\27LJ\2\n›\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\aui\1\0\0\nicons\1\0\0\1\0\3\24package_uninstalled\bâœ—\20package_pending\bâžœ\22package_installed\bâœ“\nsetup\nmason\frequire\0" },
     loaded = true,
     path = "/Users/r/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
@@ -156,7 +156,7 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-dap"] = {
-    config = { "\27LJ\2\no\0\0\5\0\6\0\0166\0\0\0009\0\1\0'\2\2\0B\0\2\2\14\0\0\0X\1\2€+\1\0\0L\1\2\0\18\3\0\0009\1\3\0'\4\4\0B\1\3\2\18\4\0\0009\2\5\0B\2\2\1L\1\2\0\nclose\6a\tread\22which lldb-vscode\npopen\aion\0\0\5\0\a\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0006\3\0\0009\3\1\0039\3\4\3B\3\1\2'\4\5\0&\3\4\3'\4\6\0D\0\4\0\tfile\r/target/\vgetcwd\25Path to executable: \ninput\afn\bvimg\0\0\5\0\a\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0006\3\0\0009\3\1\0039\3\4\3B\3\1\2'\4\5\0&\3\4\3'\4\6\0D\0\4\0\tfile\6/\vgetcwd\25Path to executable: \ninput\afn\bvimË\2\1\0\6\0\17\0#3\0\0\0006\1\1\0'\3\2\0B\1\2\0029\2\3\0015\3\5\0\18\4\0\0B\4\1\2=\4\6\3=\3\4\0029\2\a\0014\3\3\0005\4\t\0003\5\n\0=\5\v\0044\5\0\0=\5\f\4>\4\1\3=\3\b\0029\2\a\0019\3\a\0019\3\b\3=\3\r\0029\2\a\0014\3\3\0005\4\15\0003\5\14\0=\5\v\4>\4\1\3=\3\r\0029\2\a\0019\3\a\0019\3\r\3=\3\16\2K\0\1\0\bcpp\1\0\0\0\6c\targs\fprogram\0\1\0\5\bcwd\23${workspaceFolder}\ttype\tlldb\frequest\vlaunch\16stopOnEntry\1\tname\vLaunch\trust\19configurations\fcommand\1\0\2\tname\tlldb\ttype\15executable\tlldb\radapters\bdap\frequire\0\0" },
+    config = { "\27LJ\2\no\0\0\5\0\6\0\0166\0\0\0009\0\1\0'\2\2\0B\0\2\2\14\0\0\0X\1\2€+\1\0\0L\1\2\0\18\3\0\0009\1\3\0'\4\4\0B\1\3\2\18\4\0\0009\2\5\0B\2\2\1L\1\2\0\nclose\6a\tread\22which lldb-vscode\npopen\aion\0\0\5\0\a\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0006\3\0\0009\3\1\0039\3\4\3B\3\1\2'\4\5\0&\3\4\3'\4\6\0D\0\4\0\tfile\r/target/\vgetcwd\25Path to executable: \ninput\afn\bvimg\0\0\5\0\a\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0006\3\0\0009\3\1\0039\3\4\3B\3\1\2'\4\5\0&\3\4\3'\4\6\0D\0\4\0\tfile\6/\vgetcwd\25Path to executable: \ninput\afn\bvimË\2\1\0\6\0\17\0#3\0\0\0006\1\1\0'\3\2\0B\1\2\0029\2\3\0015\3\5\0\18\4\0\0B\4\1\2=\4\6\3=\3\4\0029\2\a\0014\3\3\0005\4\t\0003\5\n\0=\5\v\0044\5\0\0=\5\f\4>\4\1\3=\3\b\0029\2\a\0019\3\a\0019\3\b\3=\3\r\0029\2\a\0014\3\3\0005\4\15\0003\5\14\0=\5\v\4>\4\1\3=\3\r\0029\2\a\0019\3\a\0019\3\r\3=\3\16\2K\0\1\0\bcpp\1\0\0\0\6c\targs\fprogram\0\1\0\5\tname\vLaunch\bcwd\23${workspaceFolder}\16stopOnEntry\1\ttype\tlldb\frequest\vlaunch\trust\19configurations\fcommand\1\0\2\tname\tlldb\ttype\15executable\tlldb\radapters\bdap\frequire\0\0" },
     loaded = true,
     path = "/Users/r/.local/share/nvim/site/pack/packer/start/nvim-dap",
     url = "https://github.com/mfussenegger/nvim-dap"
@@ -173,7 +173,7 @@ _G.packer_plugins = {
     url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-treesitter"] = {
-    config = { "\27LJ\2\né\1\0\0\4\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\vindent\1\0\1\venable\1\14highlight\1\0\2&additional_vim_regex_highlighting\1\venable\2\21ensure_installed\1\0\2\17auto_install\2\17sync_install\2\1\3\0\0\ttoml\thelp\nsetup\28nvim-treesitter.configs\frequire\0" },
+    config = { "\27LJ\2\né\1\0\0\4\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\vindent\1\0\1\venable\1\14highlight\1\0\2\venable\2&additional_vim_regex_highlighting\1\21ensure_installed\1\0\2\17auto_install\2\17sync_install\2\1\3\0\0\ttoml\thelp\nsetup\28nvim-treesitter.configs\frequire\0" },
     loaded = true,
     path = "/Users/r/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
@@ -220,51 +220,46 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
   ["telescope.nvim"] = {
-    config = { "\27LJ\2\n¨\2\0\0\5\0\16\0#6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\0025\3\t\0005\4\b\0=\4\n\0035\4\v\0=\4\f\3=\3\r\2B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\14\0'\2\15\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\14\0'\2\n\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\14\0'\2\f\0B\0\2\1K\0\1\0\rfrecency\19load_extension\15extensions\bfzf\1\0\1\nfuzzy\2\17file_browser\1\0\0\1\0\2\vhidden\2\17hijack_netrw\2\fpickers\1\0\0\14findfiles\1\0\0\1\0\1\vhidden\2\nsetup\14telescope\frequire\0" },
+    config = { "\27LJ\2\n¨\2\0\0\5\0\16\0#6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\0025\3\t\0005\4\b\0=\4\n\0035\4\v\0=\4\f\3=\3\r\2B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\14\0'\2\15\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\14\0'\2\n\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\14\0'\2\f\0B\0\2\1K\0\1\0\rfrecency\19load_extension\15extensions\bfzf\1\0\1\nfuzzy\2\17file_browser\1\0\0\1\0\2\17hijack_netrw\2\vhidden\2\fpickers\1\0\0\14findfiles\1\0\0\1\0\1\vhidden\2\nsetup\14telescope\frequire\0" },
     loaded = true,
     path = "/Users/r/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
-  },
-  ["vim-illuminate"] = {
-    loaded = true,
-    path = "/Users/r/.local/share/nvim/site/pack/packer/start/vim-illuminate",
-    url = "https://github.com/RRethy/vim-illuminate"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-try_loadstring("\27LJ\2\n¨\2\0\0\5\0\16\0#6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\0025\3\t\0005\4\b\0=\4\n\0035\4\v\0=\4\f\3=\3\r\2B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\14\0'\2\15\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\14\0'\2\n\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\14\0'\2\f\0B\0\2\1K\0\1\0\rfrecency\19load_extension\15extensions\bfzf\1\0\1\nfuzzy\2\17file_browser\1\0\0\1\0\2\vhidden\2\17hijack_netrw\2\fpickers\1\0\0\14findfiles\1\0\0\1\0\1\vhidden\2\nsetup\14telescope\frequire\0", "config", "telescope.nvim")
-time([[Config for telescope.nvim]], false)
--- Config for: mason.nvim
-time([[Config for mason.nvim]], true)
-try_loadstring("\27LJ\2\n›\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\aui\1\0\0\nicons\1\0\0\1\0\3\20package_pending\bâžœ\24package_uninstalled\bâœ—\22package_installed\bâœ“\nsetup\nmason\frequire\0", "config", "mason.nvim")
-time([[Config for mason.nvim]], false)
--- Config for: lspsaga.nvim
-time([[Config for lspsaga.nvim]], true)
-try_loadstring("\27LJ\2\n¶\1\0\0\4\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\17show_outline\1\0\1\14win_width\3$\26code_action_lightbulb\1\0\1\tsign\1\21symbol_in_winbar\1\0\0\1\0\1\14in_custom\2\18init_lsp_saga\flspsaga\frequire\0", "config", "lspsaga.nvim")
-time([[Config for lspsaga.nvim]], false)
--- Config for: sunset
-time([[Config for sunset]], true)
-try_loadstring("\27LJ\2\nf\0\0\2\0\4\2\t6\0\0\0009\0\1\0*\1\0\0=\1\2\0006\0\0\0009\0\1\0*\1\1\0=\1\3\0K\0\1\0\21sunset_longitude\20sunset_latitude\6g\bvimÉÂë£\1×‡†‚\4Ãë£á\21Çòƒƒ\4\0", "config", "sunset")
-time([[Config for sunset]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\né\1\0\0\4\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\vindent\1\0\1\venable\1\14highlight\1\0\2&additional_vim_regex_highlighting\1\venable\2\21ensure_installed\1\0\2\17auto_install\2\17sync_install\2\1\3\0\0\ttoml\thelp\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
-time([[Config for nvim-treesitter]], false)
--- Config for: nvim-dap
-time([[Config for nvim-dap]], true)
-try_loadstring("\27LJ\2\no\0\0\5\0\6\0\0166\0\0\0009\0\1\0'\2\2\0B\0\2\2\14\0\0\0X\1\2€+\1\0\0L\1\2\0\18\3\0\0009\1\3\0'\4\4\0B\1\3\2\18\4\0\0009\2\5\0B\2\2\1L\1\2\0\nclose\6a\tread\22which lldb-vscode\npopen\aion\0\0\5\0\a\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0006\3\0\0009\3\1\0039\3\4\3B\3\1\2'\4\5\0&\3\4\3'\4\6\0D\0\4\0\tfile\r/target/\vgetcwd\25Path to executable: \ninput\afn\bvimg\0\0\5\0\a\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0006\3\0\0009\3\1\0039\3\4\3B\3\1\2'\4\5\0&\3\4\3'\4\6\0D\0\4\0\tfile\6/\vgetcwd\25Path to executable: \ninput\afn\bvimË\2\1\0\6\0\17\0#3\0\0\0006\1\1\0'\3\2\0B\1\2\0029\2\3\0015\3\5\0\18\4\0\0B\4\1\2=\4\6\3=\3\4\0029\2\a\0014\3\3\0005\4\t\0003\5\n\0=\5\v\0044\5\0\0=\5\f\4>\4\1\3=\3\b\0029\2\a\0019\3\a\0019\3\b\3=\3\r\0029\2\a\0014\3\3\0005\4\15\0003\5\14\0=\5\v\4>\4\1\3=\3\r\0029\2\a\0019\3\a\0019\3\r\3=\3\16\2K\0\1\0\bcpp\1\0\0\0\6c\targs\fprogram\0\1\0\5\bcwd\23${workspaceFolder}\ttype\tlldb\frequest\vlaunch\16stopOnEntry\1\tname\vLaunch\trust\19configurations\fcommand\1\0\2\tname\tlldb\ttype\15executable\tlldb\radapters\bdap\frequire\0\0", "config", "nvim-dap")
-time([[Config for nvim-dap]], false)
--- Config for: mason-lspconfig.nvim
-time([[Config for mason-lspconfig.nvim]], true)
-try_loadstring("\27LJ\2\n†\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\21ensure_installed\1\0\0\1\5\0\0\16sumneko_lua\18rust_analyzer\thtml\ntaplo\nsetup\20mason-lspconfig\frequire\0", "config", "mason-lspconfig.nvim")
-time([[Config for mason-lspconfig.nvim]], false)
 -- Config for: nvim-notify
 time([[Config for nvim-notify]], true)
 try_loadstring("\27LJ\2\na\0\0\4\0\5\0\t6\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\3\0B\1\2\0016\1\4\0=\0\1\1K\0\1\0\bvim\1\0\1\22background_colour\f#000000\nsetup\vnotify\frequire\0", "config", "nvim-notify")
 time([[Config for nvim-notify]], false)
+-- Config for: lspsaga.nvim
+time([[Config for lspsaga.nvim]], true)
+try_loadstring("\27LJ\2\n¶\1\0\0\4\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\17show_outline\1\0\1\14win_width\3$\26code_action_lightbulb\1\0\1\tsign\1\21symbol_in_winbar\1\0\0\1\0\1\14in_custom\2\18init_lsp_saga\flspsaga\frequire\0", "config", "lspsaga.nvim")
+time([[Config for lspsaga.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+try_loadstring("\27LJ\2\né\1\0\0\4\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\vindent\1\0\1\venable\1\14highlight\1\0\2\venable\2&additional_vim_regex_highlighting\1\21ensure_installed\1\0\2\17auto_install\2\17sync_install\2\1\3\0\0\ttoml\thelp\nsetup\28nvim-treesitter.configs\frequire\0", "config", "nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
+-- Config for: mason-lspconfig.nvim
+time([[Config for mason-lspconfig.nvim]], true)
+try_loadstring("\27LJ\2\n†\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\21ensure_installed\1\0\0\1\5\0\0\16sumneko_lua\18rust_analyzer\thtml\ntaplo\nsetup\20mason-lspconfig\frequire\0", "config", "mason-lspconfig.nvim")
+time([[Config for mason-lspconfig.nvim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+try_loadstring("\27LJ\2\n¨\2\0\0\5\0\16\0#6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\0025\3\t\0005\4\b\0=\4\n\0035\4\v\0=\4\f\3=\3\r\2B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\14\0'\2\15\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\14\0'\2\n\0B\0\2\0016\0\0\0'\2\1\0B\0\2\0029\0\14\0'\2\f\0B\0\2\1K\0\1\0\rfrecency\19load_extension\15extensions\bfzf\1\0\1\nfuzzy\2\17file_browser\1\0\0\1\0\2\17hijack_netrw\2\vhidden\2\fpickers\1\0\0\14findfiles\1\0\0\1\0\1\vhidden\2\nsetup\14telescope\frequire\0", "config", "telescope.nvim")
+time([[Config for telescope.nvim]], false)
+-- Config for: nvim-dap
+time([[Config for nvim-dap]], true)
+try_loadstring("\27LJ\2\no\0\0\5\0\6\0\0166\0\0\0009\0\1\0'\2\2\0B\0\2\2\14\0\0\0X\1\2€+\1\0\0L\1\2\0\18\3\0\0009\1\3\0'\4\4\0B\1\3\2\18\4\0\0009\2\5\0B\2\2\1L\1\2\0\nclose\6a\tread\22which lldb-vscode\npopen\aion\0\0\5\0\a\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0006\3\0\0009\3\1\0039\3\4\3B\3\1\2'\4\5\0&\3\4\3'\4\6\0D\0\4\0\tfile\r/target/\vgetcwd\25Path to executable: \ninput\afn\bvimg\0\0\5\0\a\0\f6\0\0\0009\0\1\0009\0\2\0'\2\3\0006\3\0\0009\3\1\0039\3\4\3B\3\1\2'\4\5\0&\3\4\3'\4\6\0D\0\4\0\tfile\6/\vgetcwd\25Path to executable: \ninput\afn\bvimË\2\1\0\6\0\17\0#3\0\0\0006\1\1\0'\3\2\0B\1\2\0029\2\3\0015\3\5\0\18\4\0\0B\4\1\2=\4\6\3=\3\4\0029\2\a\0014\3\3\0005\4\t\0003\5\n\0=\5\v\0044\5\0\0=\5\f\4>\4\1\3=\3\b\0029\2\a\0019\3\a\0019\3\b\3=\3\r\0029\2\a\0014\3\3\0005\4\15\0003\5\14\0=\5\v\4>\4\1\3=\3\r\0029\2\a\0019\3\a\0019\3\r\3=\3\16\2K\0\1\0\bcpp\1\0\0\0\6c\targs\fprogram\0\1\0\5\tname\vLaunch\bcwd\23${workspaceFolder}\16stopOnEntry\1\ttype\tlldb\frequest\vlaunch\trust\19configurations\fcommand\1\0\2\tname\tlldb\ttype\15executable\tlldb\radapters\bdap\frequire\0\0", "config", "nvim-dap")
+time([[Config for nvim-dap]], false)
+-- Config for: mason.nvim
+time([[Config for mason.nvim]], true)
+try_loadstring("\27LJ\2\n›\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\aui\1\0\0\nicons\1\0\0\1\0\3\24package_uninstalled\bâœ—\20package_pending\bâžœ\22package_installed\bâœ“\nsetup\nmason\frequire\0", "config", "mason.nvim")
+time([[Config for mason.nvim]], false)
+-- Config for: sunset
+time([[Config for sunset]], true)
+try_loadstring("\27LJ\2\nf\0\0\2\0\4\2\t6\0\0\0009\0\1\0*\1\0\0=\1\2\0006\0\0\0009\0\1\0*\1\1\0=\1\3\0K\0\1\0\21sunset_longitude\20sunset_latitude\6g\bvimÉÂë£\1×‡†‚\4Ãë£á\21Çòƒƒ\4\0", "config", "sunset")
+time([[Config for sunset]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-cmp ]]
