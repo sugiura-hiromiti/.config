@@ -7,7 +7,6 @@ brew "exa"
 brew "fd"
 brew "fzf"
 brew "llvm"
-brew "lua"
 brew "neovim", args: ["HEAD"]
 brew "node"
 brew "ripgrep"

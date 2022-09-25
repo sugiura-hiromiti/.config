@@ -12,7 +12,7 @@ autocmd({ 'vimenter', 'colorscheme' }, {
    command = 'hi! link VertSplit Normal | hi! link WinBar StatusLine'
 })
 autocmd('bufwritepre', {
-   pattern = { '*.rs', '*.lua', '*.cpp', '*.md' ,'*.html'},
+   pattern = { '*.rs', '*.lua', '*.cpp', '*.md', '*.html', '*.toml' },
    callback = function() vim.lsp.buf.format { async = true } end
    --under Nvim v0.8.0 callback = vim.lsp.buf.formatting_sync
 })

@@ -5,14 +5,8 @@ require 'packer'.startup(function(use)
          vim.g.sunset_latitude = 35.03
          vim.g.sunset_longitude = 135.79
       end }
-   use 'sugiura-hiromichi/flatui.vim'
+   use 'sugiura-hiromichi/ayu-vim'
    use 'kyazdani42/nvim-web-devicons'
-   use { 'LudoPinelli/comment-box.nvim',
-      config = function()
-         require 'comment-box'.setup {
-            line_width = 80
-         }
-      end }
    use 'RRethy/vim-illuminate'
    use { 'windwp/nvim-autopairs', after = 'nvim-cmp',
       config = function()
@@ -91,7 +85,7 @@ require 'packer'.startup(function(use)
    use { 'williamboman/mason-lspconfig.nvim',
       config = function()
          require 'mason-lspconfig'.setup({
-            ensure_installed = { 'sumneko_lua', 'rust_analyzer', 'html' }
+            ensure_installed = { 'sumneko_lua', 'rust_analyzer', 'html' ,'taplo'}
          })
       end }
    use 'neovim/nvim-lspconfig'
