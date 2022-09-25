@@ -16,11 +16,8 @@ opt.termguicolors = true
 opt.laststatus = 0
 opt.clipboard:append { 'unnamedplus' }
 opt.autochdir = true
---opt.cmdheight = 0
 
 local g = vim.g
 g.python3_host_prog = os.getenv('HOMEBREW_PREFIX') .. '/bin/python3'
 g.node_host_prog = os.getenv('HOMEBREW_PREFIX') .. '/bin/neovim-node-host'
 g.ruby_host_prog = os.getenv('RUBY_HOST')
-g.ts_highlight_lua = true
---g.mapleader = ' '

@@ -1,11 +1,6 @@
 require 'packer'.startup(function(use)
    use 'wbthomason/packer.nvim'
-   use { 'amdt/sunset',
-      config = function()
-         vim.g.sunset_latitude = 35.03
-         vim.g.sunset_longitude = 135.79
-      end }
-   use 'sugiura-hiromichi/ayu-vim'
+   use 'arcticicestudio/nord-vim'
    use 'kyazdani42/nvim-web-devicons'
    use { 'windwp/nvim-autopairs', after = 'nvim-cmp',
       config = function()
@@ -27,22 +22,6 @@ require 'packer'.startup(function(use)
          vim.notify = notify
       end }
    use 'nvim-lua/plenary.nvim'
-   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate',
-      config = function()
-         require 'nvim-treesitter.configs'.setup {
-            ensure_installed = { 'toml', 'help' },
-            sync_install = true,
-            auto_install = true,
-            highlight = {
-               enable = true,
-               --disable = { 'rust' },
-               additional_vim_regex_highlighting = false
-            },
-            indent = {
-               enable = false
-            }
-         }
-      end }
    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0',
       config = function()
          require 'telescope'.setup {
@@ -84,7 +63,7 @@ require 'packer'.startup(function(use)
    use { 'williamboman/mason-lspconfig.nvim',
       config = function()
          require 'mason-lspconfig'.setup({
-            ensure_installed = { 'sumneko_lua', 'rust_analyzer', 'html' ,'taplo'}
+            ensure_installed = { 'sumneko_lua', 'rust_analyzer', 'html', 'taplo' }
          })
       end }
    use 'neovim/nvim-lspconfig'

@@ -16,19 +16,7 @@ map('v', '<down>', '"zx"zp`[V`]')
 --ideas:mapping something to <left> & <right> in normal mode
 map(nv, ',', '@:') --like '.', repeat previous command
 
---use <tab> instead <space> with neither lsp nor fuzzy commands
-map('n', '<tab>b',
-   function()
-      if vim.o.background == 'light' then
-         vim.o.background = 'dark'
-      else
-         vim.o.background = 'light'
-      end
-   end)
-map('n', '<tab>d', '<cmd>bd<cr>')
-
---emacs keybind
-map('i', '<c-n>', '<down>')
+map('i', '<c-n>', '<down>') --emacs keybind
 map('i', '<c-p>', '<up>')
 map('i', '<c-b>', '<left>')
 map('i', '<c-f>', '<right>')
@@ -42,8 +30,7 @@ map('i', '<a-d>', '<c-c>ciw')
 map('i', '<a-f>', '<c-right>')
 map('i', '<a-b>', '<c-left><left>')
 
---split pane and change size
-map(nv, '<', '<c-w>W')
+map(nv, '<', '<c-w>W') --split pane and change size
 map(nv, '>', '<c-w>w')
 map(nv, '_', ':<c-u>sp<cr>')
 map(nv, '<bar>', ':<c-u>vs<cr>')
@@ -52,17 +39,15 @@ map(nv, '-', '<c-w><')
 map(nv, '\\', '<c-w>+')
 map(nv, '=', '<c-w>-')
 
---Telescope
+map('n', '<space>t', require 'telescope.builtin'.builtin) --Telescope
 map('n', '<space>e', require 'telescope'.extensions.file_browser.file_browser)
-map('n', '<space>t', require 'telescope.builtin'.builtin)
 map('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
 map('n', '<space>o', require 'telescope.builtin'.lsp_document_symbols)
 map('n', '<space>r', require 'telescope.builtin'.lsp_references)
 map('n', '<space>d', require 'telescope.builtin'.diagnostics)
 map('n', '<space>b', require 'telescope.builtin'.buffers)
 
---lspsaga
-map(nv, "<space>a", "<cmd>Lspsaga code_action<CR>")
+map(nv, "<space>a", "<cmd>Lspsaga code_action<CR>") --lspsaga
 map("n", "<space>n", "<cmd>Lspsaga rename<CR>")
 map('n', '<space>j', '<cmd>Lspsaga lsp_finder<cr>')
 map('n', '<space>h', '<cmd>Lspsaga hover_doc<cr>')

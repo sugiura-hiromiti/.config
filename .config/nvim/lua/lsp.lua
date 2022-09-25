@@ -194,13 +194,6 @@ require 'lspconfig'.sumneko_lua.setup {
    },
 }
 
---ltex
-require 'lspconfig'.ltex.setup {
-   on_attach = on_attach,
-   flags = lsp_flags,
-   capabilities = capabilities
-}
-
 --html
 require 'lspconfig'.html.setup {
    on_attach = on_attach,
