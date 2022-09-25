@@ -8,6 +8,16 @@ autocmd({ 'filetype' }, {
    pattern = { 'terminal', 'help' },
    command = 'wincmd H'
 })
+if os.getenv 'PROFILE_NAME' == 'hotkey' then
+   autocmd('vimenter', {
+      callback = function()
+         vim.o.background = 'dark'
+      end
+   })
+end
+autocmd({ 'vimenter', 'colorscheme' }, {
+   command = 'hi! link VertSplit Normal | hi! link WinBar StatusLine'
+})
 
 -----------------------------------------------------userdefined
 local mycmd = vim.api.nvim_create_user_command

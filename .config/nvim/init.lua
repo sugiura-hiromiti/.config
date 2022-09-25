@@ -1,7 +1,7 @@
 -- ╭──────────────────────────────────────────────────────────╮
 -- │ Write Unclassifiable settings into init.lua              │
 -- ╰──────────────────────────────────────────────────────────╯
-vim.cmd'colo nord'
+vim.cmd.colorscheme'iceberg'
 
 local filenam = vim.fn.expand("%:p") --open vimrc if no path given
 if filenam == '' then
