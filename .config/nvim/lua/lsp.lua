@@ -1,26 +1,10 @@
 local luasnip = require 'luasnip'
-local lspkind = require 'lspkind'
-
 local cmp = require 'cmp' --XXX nvim-cmp
 cmp.setup {
    snippet = {
       expand = function(args)
          luasnip.lsp_expand(args.body)
       end,
-   },
-   formatting = {
-      format = lspkind.cmp_format({
-         mode = 'symbol',
-         before = function(entry, vim_item)
-            vim_item.menu = ({
-               nvim_lsp = 'L',
-               buffer = 'B',
-               luasnip = 'S',
-               nvim_lua = 'Lua',
-            })[entry.source.name]
-            return vim_item
-         end,
-      }),
    },
    mapping = cmp.mapping.preset.insert({
       ['<up>'] = cmp.mapping.scroll_docs(-10),
@@ -72,6 +56,11 @@ cmp.setup.cmdline(':', {
    })
 })
 
+require 'mason'.setup()
+require 'mason-lspconfig'.setup {
+   ensure_installed = { 'sumneko_lua', 'rust_analyzer@nightly' }
+}
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
@@ -80,21 +69,6 @@ require('lspconfig').rust_analyzer.setup {
    capabilities = capabilities,
    settings = {
       ["rust-analyzer"] = {
-         completion = {
-            snippets = {
-               custom = {
-                  todo = {
-                     postfix = 'td',
-                     body = [[todo!(==============================================================
-				[${receiver}]
-				   ${1=simple, concrete, logical}.
-					==============================================================);]],
-                     description = 'custom todo! snippet',
-                     scope = 'expr'
-                  }
-               }
-            }
-         },
          hover = {
             actions = {
                reference = {

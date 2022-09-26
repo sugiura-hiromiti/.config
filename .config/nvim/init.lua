@@ -1,6 +1,6 @@
-vim.cmd'colo iceberg'
+vim.cmd 'colo iceberg'
 
-local filenam = vim.fn.expand("%:p") --XXX            open vimrc if no path given
+local filenam = vim.fn.expand("%:p") --XXX            default open
 if filenam == '' then
    vim.cmd [[e $MYVIMRC]]
 end
@@ -18,8 +18,8 @@ autocmd({ 'filetype' }, {
 local opt = vim.opt --XXX                             variable
 opt.relativenumber = true
 opt.number = true
-opt.cursorline=true
-opt.cursorcolumn=true
+opt.cursorline = true
+opt.cursorcolumn = true
 opt.signcolumn = 'no'
 opt.softtabstop = 3
 opt.shiftwidth = 3
@@ -33,11 +33,11 @@ opt.termguicolors = true
 opt.clipboard:append { 'unnamedplus' }
 opt.autochdir = true
 opt.laststatus = 3
-opt.statusline='%{strftime("%m/%d %H:%M %a")}%#Normal#%=%#StatusLine#%t'
+opt.statusline = '%{strftime("%m/%d %H:%M %a")}%#Normal#%=%#StatusLine#%t'
 local g = vim.g
-g.python3_host_prog = os.getenv'HOMEBREW_PREFIX' .. '/bin/python3'
-g.node_host_prog = os.getenv'HOMEBREW_PREFIX' .. '/bin/neovim-node-host'
-g.ruby_host_prog = os.getenv'RUBY_HOST'
+g.python3_host_prog = os.getenv 'HOMEBREW_PREFIX' .. '/bin/python3'
+g.node_host_prog = os.getenv 'HOMEBREW_PREFIX' .. '/bin/neovim-node-host'
+g.ruby_host_prog = os.getenv 'RUBY_HOST'
 
 local map = vim.keymap.set --XXX                      mapping
 local nv = { 'n', 'v' }
