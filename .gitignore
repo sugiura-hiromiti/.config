@@ -6,8 +6,14 @@ iterm2/
 iterm
 logs/
 bin/
+apps/
+animations/
+shell/
+themes/
+tools/
+ssh
+tmux
 history
 .warp/
-/.fig/*
 !settings.json
 .DS_Store
