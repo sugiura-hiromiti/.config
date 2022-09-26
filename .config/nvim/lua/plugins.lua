@@ -12,19 +12,10 @@ require 'packer'.startup(function(use)
          require 'nvim-autopairs'.setup {
             map_c_h = true
          } --	 If you want insert `(` after select function or method item
-         local cmp_autopairs = require('nvim-autopairs.completion.cmp')
          require('cmp').event:on(
             'confirm_done',
-            cmp_autopairs.on_confirm_done()
+            require('nvim-autopairs.completion.cmp').on_confirm_done()
          )
-      end }
-   use { 'rcarriga/nvim-notify',
-      config = function()
-         local notify = require 'notify'
-         notify.setup({
-            background_colour = '#000000',
-         })
-         vim.notify = notify
       end }
    use 'nvim-lua/plenary.nvim'
    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -37,7 +28,6 @@ require 'packer'.startup(function(use)
             },
             extensions = {
                file_browser = {
-                  hijack_netrw = true,
                   hidden = true
                },
                fzf = {
@@ -48,48 +38,17 @@ require 'packer'.startup(function(use)
          require 'telescope'.load_extension 'frecency'
          require 'telescope'.load_extension 'file_browser'
          require 'telescope'.load_extension 'fzf'
-      end } --telescope
-   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+      end }
+   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } --XXX telescope
    use 'nvim-telescope/telescope-frecency.nvim'
    use 'nvim-telescope/telescope-file-browser.nvim'
    use 'kkharji/sqlite.lua'
-   use { 'williamboman/mason.nvim',
-      config = function()
-         require 'mason'.setup({
-            ui = {
-               icons = {
-                  package_installed = "✓",
-                  package_pending = "➜",
-                  package_uninstalled = "✗"
-               }
-            }
-         })
-      end } --lsp
-   use { 'williamboman/mason-lspconfig.nvim',
-      config = function()
-         require 'mason-lspconfig'.setup({
-            ensure_installed = { 'sumneko_lua', 'rust_analyzer', 'html', 'taplo' }
-         })
-      end }
+   use 'williamboman/mason.nvim' --XXX                                    lsp
+   use 'williamboman/mason-lspconfig.nvim'
    use 'neovim/nvim-lspconfig'
-   use { 'glepnir/lspsaga.nvim',
-      branch = 'main',
-      config = function()
-         require 'lspsaga'.init_lsp_saga({
-            symbol_in_winbar = {
-               in_custom = true
-            },
-            code_action_lightbulb = {
-               sign = false
-            },
-            show_outline = {
-               win_width = 36
-            },
-         })
-      end,
-   }
+   use { 'glepnir/lspsaga.nvim', branch = 'main' }
    use 'onsails/lspkind.nvim'
-   use 'hrsh7th/nvim-cmp' --completion source
+   use 'hrsh7th/nvim-cmp' --XXX                                           completion source
    use 'hrsh7th/cmp-nvim-lsp'
    use 'hrsh7th/cmp-nvim-lua'
    use 'hrsh7th/cmp-nvim-lsp-signature-help'
@@ -120,7 +79,7 @@ require 'packer'.startup(function(use)
                type = 'lldb',
                request = 'launch',
                program = function()
-                  return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/', 'file')
+                  return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
                end,
                cwd = '${workspaceFolder}',
                stopOnEntry = false,
@@ -128,11 +87,6 @@ require 'packer'.startup(function(use)
             },
          }
          dap.configurations.c = dap.configurations.rust
-         dap.configurations.c = { {
-            program = function()
-               return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-            end
-         } }
-         dap.configurations.cpp = dap.configurations.c
+         dap.configurations.cpp = dap.configurations.rust
       end }
 end)
