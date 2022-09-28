@@ -5,7 +5,7 @@ require 'packer'.startup(function(use)
          vim.g.sunset_latitude = 35.03
          vim.g.sunset_longitude = 135.79
       end }
-   use 'cocopon/iceberg.vim'
+   use 'sugiura-hiromichi/flatui.vim'
    use 'kyazdani42/nvim-web-devicons'
    use { 'windwp/nvim-autopairs', after = 'nvim-cmp',
       config = function()
