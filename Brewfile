@@ -9,6 +9,7 @@ brew "fzf"
 brew "llvm"
 brew "neovim", args: ["HEAD"]
 brew "node"
+brew "qemu"
 brew "ripgrep"
 brew "starship"
 brew "wget"

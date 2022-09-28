@@ -58,7 +58,7 @@ cmp.setup.cmdline(':', {
 
 require 'mason'.setup()
 require 'mason-lspconfig'.setup {
-   ensure_installed = { 'sumneko_lua', 'rust_analyzer@nightly' }
+   ensure_installed = { 'sumneko_lua', 'rust_analyzer@nightly', 'html', 'taplo', 'json-lsp', 'marksman' }
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -150,5 +150,15 @@ require 'lspconfig'.html.setup {
 
 --toml
 require 'lspconfig'.taplo.setup {
+   capabilities = capabilities
+}
+
+--json
+require 'lspconfig'.jsonls.setup {
+   capabilities = capabilities
+}
+
+--markdown
+require 'lspconfig'.marksman.setup {
    capabilities = capabilities
 }

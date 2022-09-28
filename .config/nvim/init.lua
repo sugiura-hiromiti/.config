@@ -7,7 +7,7 @@ end
 
 local autocmd = vim.api.nvim_create_autocmd --XXX     command
 autocmd('bufwritepre', {
-   pattern = { '*.rs', '*.lua', '*.cpp', '*.md', '*.html', '*.toml' },
+   pattern = { '*.rs', '*.lua', '*.cpp', '*.md', '*.html', '*.toml', '*.json' },
    callback = function() vim.lsp.buf.format { async = true } end
 })
 autocmd({ 'filetype' }, {
