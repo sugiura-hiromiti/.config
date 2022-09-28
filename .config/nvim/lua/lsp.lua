@@ -1,33 +1,14 @@
 local luasnip = require 'luasnip'
-local lspkind = require 'lspkind'
-
--- nvim-cmp setup
-local cmp = require 'cmp'
+local cmp = require 'cmp' --XXX nvim-cmp
 cmp.setup {
    snippet = {
       expand = function(args)
          luasnip.lsp_expand(args.body)
       end,
    },
-   formatting = {
-      format = lspkind.cmp_format({
-         mode = 'symbol',
-         before = function(entry, vim_item)
-            vim_item.menu = ({
-               nvim_lsp = 'L',
-               buffer = 'B',
-               luasnip = 'S',
-               treesitter = 'TS',
-               nvim_lua = 'Lua',
-            })[entry.source.name]
-            return vim_item
-         end,
-      }),
-   },
    mapping = cmp.mapping.preset.insert({
       ['<up>'] = cmp.mapping.scroll_docs(-10),
       ['<down>'] = cmp.mapping.scroll_docs(10),
-      --		['<C-Space>'] = cmp.mapping.complete(),
       ['<tab>'] = cmp.mapping.confirm {
          behavior = cmp.ConfirmBehavior.Insert,
          select = true,
@@ -52,9 +33,6 @@ cmp.setup {
          end
       end, { 'i', 's', 'c' }),
    }),
-   experimental = {
-      ghost_text = true
-   },
    sources = {
       { name = 'nvim_lsp' },
       { name = 'nvim_lua' },
@@ -78,13 +56,9 @@ cmp.setup.cmdline(':', {
    })
 })
 
---see more detail at https://github.com/neovim/nvim-lspconfig
-local on_attach = function(client, bufnr)
-end
-
-local lsp_flags = {
-   -- This is the default in Nvim 0.7+
-   debounce_text_changes = 150,
+require 'mason'.setup()
+require 'mason-lspconfig'.setup {
+   ensure_installed = { 'sumneko_lua', 'rust_analyzer@nightly', 'html', 'taplo', 'json-lsp', 'marksman' }
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -92,27 +66,9 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 --rust_analyzer
 require('lspconfig').rust_analyzer.setup {
-   on_attach = on_attach,
-   flags = lsp_flags,
    capabilities = capabilities,
-   -- Server-specific settings...
    settings = {
       ["rust-analyzer"] = {
-         completion = {
-            snippets = {
-               custom = {
-                  todo = {
-                     postfix = 'td',
-                     body = [[todo!(==============================================================
-				[${receiver}]
-				   ${1=simple, concrete, logical}.
-					==============================================================);]],
-                     description = 'custom todo! snippet',
-                     scope = 'expr'
-                  }
-               }
-            }
-         },
          hover = {
             actions = {
                reference = {
@@ -168,25 +124,18 @@ require('lspconfig').rust_analyzer.setup {
 
 --lua
 require 'lspconfig'.sumneko_lua.setup {
-   on_attach = on_attach,
-   flags = lsp_flags,
    capabilities = capabilities,
-   -- Server-specific settings...
    settings = {
       Lua = {
          runtime = {
-            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
             version = 'LuaJIT',
          },
          diagnostics = {
-            -- Get the language server to recognize the `vim` global
             globals = { 'vim' },
          },
          workspace = {
-            -- Make the server aware of Neovim runtime files
             library = vim.api.nvim_get_runtime_file("", true),
          },
-         -- Do not send telemetry data containing a randomized but unique identifier
          telemetry = {
             enable = false,
          },
@@ -196,8 +145,21 @@ require 'lspconfig'.sumneko_lua.setup {
 
 --html
 require 'lspconfig'.html.setup {
-   on_attach = on_attach,
-   flags = lsp_flags,
+   capabilities = capabilities
+}
+
+--toml
+require 'lspconfig'.taplo.setup {
+   capabilities = capabilities
+}
+
+--json
+require 'lspconfig'.jsonls.setup {
+   capabilities = capabilities
+}
+
+--markdown
+require 'lspconfig'.marksman.setup {
    capabilities = capabilities
 }
 

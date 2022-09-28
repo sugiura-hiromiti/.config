@@ -7,8 +7,15 @@ iterm2/
 iterm
 logs/
 bin/
+apps/
+animations/
+shell/
+themes/
+tools/
+user/
+ssh
+tmux
 history
 .warp/
-/.fig/*
 .DS_Store
 packer_compiled.lua
