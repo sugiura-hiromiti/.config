@@ -162,10 +162,3 @@ require 'lspconfig'.jsonls.setup {
 require 'lspconfig'.marksman.setup {
    capabilities = capabilities
 }
-
---toml
-require 'lspconfig'.taplo.setup {
-   on_attach = on_attach,
-   flags = lsp_flags,
-   capabilities = capabilities
-}
