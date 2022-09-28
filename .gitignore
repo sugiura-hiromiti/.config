@@ -1,3 +1,4 @@
+!settings.json
 .vim/
 coc/
 karabiner/
@@ -9,5 +10,5 @@ bin/
 history
 .warp/
 /.fig/*
-!settings.json
 .DS_Store
+packer_compiled.lua

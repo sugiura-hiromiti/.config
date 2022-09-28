@@ -84,7 +84,7 @@ require 'packer'.startup(function(use)
    use { 'williamboman/mason-lspconfig.nvim',
       config = function()
          require 'mason-lspconfig'.setup({
-            ensure_installed = { 'sumneko_lua', 'rust_analyzer', 'html' }
+            ensure_installed = { 'sumneko_lua', 'rust_analyzer', 'html', 'taplo' }
          })
       end }
    use 'neovim/nvim-lspconfig'
