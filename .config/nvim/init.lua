@@ -1,6 +1,6 @@
 vim.cmd 'colo flatui'
 
-local filenam = vim.fn.expand("%:p") --XXX            default open
+local filenam = vim.fn.expand('%:p') --XXX            default open
 if filenam == '' then
    vim.cmd [[e $MYVIMRC]]
 end
@@ -42,12 +42,13 @@ g.ruby_host_prog = os.getenv 'RUBY_HOST'
 local map = vim.keymap.set --XXX                      mapping
 local nv = { 'n', 'v' }
 map('n', '<esc>', ':noh<cr>') --<esc> to noh
-map('n', '<tab>', ':bprev<cr>') --buffer
 map('n', '<up>', '"zdd<up>"zP') --move line
 map('n', '<down>', '"zdd"zp')
 map('v', '<up>', '"zx<up>"zP`[V`]')
 map('v', '<down>', '"zx"zp`[V`]')
 map(nv, ',', '@:') --repeat previous command
+map(nv, '0', '$') --column move
+map(nv, '1', '^')
 map('i', '<c-n>', '<down>') --emacs keybind
 map('i', '<c-p>', '<up>')
 map('i', '<c-b>', '<left>')
@@ -76,14 +77,12 @@ map('n', '<space>o', require 'telescope.builtin'.lsp_document_symbols)
 map('n', '<space>d', require 'telescope.builtin'.diagnostics)
 map('n', '<space>b', require 'telescope.builtin'.buffers)
 map(nv, '<space>r', require 'telescope.builtin'.registers)
-map(nv, "<space>a", "<cmd>Lspsaga code_action<CR>") --lspsaga
-map("n", "<space>n", "<cmd>Lspsaga rename<CR>")
+map(nv, '<space>a', '<cmd>Lspsaga code_action<CR>') --lspsaga
+map('n', '<space>n',vim.lsp.buf.rename)
 map('n', '<space>j', '<cmd>Lspsaga lsp_finder<cr>')
-map('n', '<space>h', '<cmd>Lspsaga hover_doc<cr>')
-map('n', '<c-k>', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
-map('n', '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
-map("n", "<A-t>", "<cmd>Lspsaga open_floaterm<CR>")
-map("t", "<A-t>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]])
+map('n', '<space>h', vim.lsp.buf.hover)
+map('n', '<A-t>', '<cmd>Lspsaga open_floaterm<CR>')
+map('t', '<A-t>', [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]])
 
 require 'plugins'
 require 'lsp'
