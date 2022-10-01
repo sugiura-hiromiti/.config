@@ -33,7 +33,7 @@ opt.termguicolors = true
 opt.clipboard:append { 'unnamedplus' }
 opt.autochdir = true
 opt.laststatus = 3
-opt.statusline = '%{strftime("%m/%d %H:%M %a")}%#Normal#%=%#StatusLine#%t'
+opt.statusline = '%#Normal#%=%#StatusLine#%{strftime("%m/%d %H:%M %a")}'
 local g = vim.g
 g.python3_host_prog = os.getenv 'HOMEBREW_PREFIX' .. '/bin/python3'
 g.node_host_prog = os.getenv 'HOMEBREW_PREFIX' .. '/bin/neovim-node-host'
@@ -42,8 +42,7 @@ g.ruby_host_prog = os.getenv 'RUBY_HOST'
 local map = vim.keymap.set --XXX                      mapping
 local nv = { 'n', 'v' }
 map('n', '<esc>', ':noh<cr>') --<esc> to noh
-map('n', '<a-k>', ':bprev<cr>') --buffer
-map('n', '<a-j>', ':bnext<cr>')
+map('n', '<tab>', ':bprev<cr>') --buffer
 map('n', '<up>', '"zdd<up>"zP') --move line
 map('n', '<down>', '"zdd"zp')
 map('v', '<up>', '"zx<up>"zP`[V`]')
@@ -61,7 +60,7 @@ map('i', '<c-t>', '<c-c><left>"zx"zpa')
 map('i', '<c-y>', '<c-r>"')
 map('i', '<a-d>', '<c-c>ciw')
 map('i', '<a-f>', '<c-right>')
-map('i', '<a-b>', '<c-left><left>')
+map('i', '<a-b>', '<c-left>')
 map(nv, '<', '<c-w>W') --split pane and change size
 map(nv, '>', '<c-w>w')
 map(nv, '+', ':<c-u>sp<cr>')
@@ -74,9 +73,9 @@ map('n', 't', require 'telescope.builtin'.builtin) --Telescope
 map('n', '<space>e', require 'telescope'.extensions.file_browser.file_browser)
 map('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
 map('n', '<space>o', require 'telescope.builtin'.lsp_document_symbols)
-map('n', '<space>r', require 'telescope.builtin'.resume)
 map('n', '<space>d', require 'telescope.builtin'.diagnostics)
 map('n', '<space>b', require 'telescope.builtin'.buffers)
+map(nv, '<space>r', require 'telescope.builtin'.registers)
 map(nv, "<space>a", "<cmd>Lspsaga code_action<CR>") --lspsaga
 map("n", "<space>n", "<cmd>Lspsaga rename<CR>")
 map('n', '<space>j', '<cmd>Lspsaga lsp_finder<cr>')

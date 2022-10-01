@@ -28,7 +28,8 @@ require 'packer'.startup(function(use)
             },
             extensions = {
                file_browser = {
-                  hidden = true
+                  hidden = true,
+                  hide_parent_dir = true
                },
                fzf = {
                   fuzzy = true,
