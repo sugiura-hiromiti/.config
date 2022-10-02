@@ -33,7 +33,7 @@ opt.termguicolors = true
 opt.clipboard:append { 'unnamedplus' }
 opt.autochdir = true
 opt.laststatus = 3
-opt.statusline = '%#Normal#%=%#StatusLine#%{strftime("%m/%d %H:%M %a")}'
+opt.statusline = '%t%#Normal#%=%#StatusLine#%{strftime("%m/%d %H:%M %a")}'
 local g = vim.g
 g.python3_host_prog = os.getenv 'HOMEBREW_PREFIX' .. '/bin/python3'
 g.node_host_prog = os.getenv 'HOMEBREW_PREFIX' .. '/bin/neovim-node-host'
@@ -47,8 +47,8 @@ map('n', '<down>', '"zdd"zp')
 map('v', '<up>', '"zx<up>"zP`[V`]')
 map('v', '<down>', '"zx"zp`[V`]')
 map(nv, ',', '@:') --repeat previous command
-map(nv, '0', '$') --column move
-map(nv, '1', '^')
+map(nv, '<tab>', '^') --column move
+map(nv, '<bs>', '$')
 map('i', '<c-n>', '<down>') --emacs keybind
 map('i', '<c-p>', '<up>')
 map('i', '<c-b>', '<left>')
@@ -59,7 +59,7 @@ map('i', '<c-d>', '<del>')
 map('i', '<c-k>', '<right><c-c>v$hs')
 map('i', '<c-t>', '<c-c><left>"zx"zpa')
 map('i', '<c-y>', '<c-r>"')
-map('i', '<a-d>', '<c-c>ciw')
+map('i', '<a-d>', '<right><c-c>ves')
 map('i', '<a-f>', '<c-right>')
 map('i', '<a-b>', '<c-left>')
 map(nv, '<', '<c-w>W') --split pane and change size
@@ -78,9 +78,11 @@ map('n', '<space>d', require 'telescope.builtin'.diagnostics)
 map('n', '<space>b', require 'telescope.builtin'.buffers)
 map(nv, '<space>r', require 'telescope.builtin'.registers)
 map(nv, '<space>a', '<cmd>Lspsaga code_action<CR>') --lspsaga
-map('n', '<space>n',vim.lsp.buf.rename)
+map('n', '<space>n', '<cmd>Lspsaga rename<cr>')
 map('n', '<space>j', '<cmd>Lspsaga lsp_finder<cr>')
 map('n', '<space>h', vim.lsp.buf.hover)
+map('n', '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
+map('n', '<c-k>', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
 map('n', '<A-t>', '<cmd>Lspsaga open_floaterm<CR>')
 map('t', '<A-t>', [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]])
 

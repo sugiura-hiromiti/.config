@@ -13,7 +13,6 @@ cmp.setup {
          behavior = cmp.ConfirmBehavior.Insert,
          select = true,
       },
-      ['<c-e>'] = cmp.mapping.close(),
       ['<c-n>'] = cmp.mapping(function(fallback)
          if cmp.visible() then
             cmp.select_next_item()
