@@ -18,7 +18,7 @@ require 'packer'.startup(function(use)
          )
       end }
    use 'nvim-lua/plenary.nvim'
-   use { 'nvim-telescope/telescope.nvim', tag = '0.1.0',
+   use { 'nvim-telescope/telescope.nvim', tag = '0.1.0',--XXX telescope
       config = function()
          require 'telescope'.setup {
             pickers = {
@@ -31,16 +31,11 @@ require 'packer'.startup(function(use)
                   hidden = true,
                   hide_parent_dir = true
                },
-               fzf = {
-                  fuzzy = true,
-               }
             }
          }
          require 'telescope'.load_extension 'frecency'
          require 'telescope'.load_extension 'file_browser'
-         require 'telescope'.load_extension 'fzf'
       end }
-   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } --XXX telescope
    use 'nvim-telescope/telescope-frecency.nvim'
    use 'nvim-telescope/telescope-file-browser.nvim'
    use 'kkharji/sqlite.lua'
