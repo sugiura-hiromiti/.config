@@ -17,5 +17,6 @@ ssh
 tmux
 history
 .warp/
+fig.history
 .DS_Store
 packer_compiled.lua

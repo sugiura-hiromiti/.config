@@ -5,7 +5,6 @@ tap "homebrew/core"
 tap "homebrew/services"
 brew "exa"
 brew "fd"
-brew "fzf"
 brew "llvm"
 brew "neovim", args: ["HEAD"]
 brew "node"
