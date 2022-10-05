@@ -80,7 +80,7 @@ map(nv, '<space>r', require 'telescope.builtin'.registers)
 map(nv, '<space>a', '<cmd>Lspsaga code_action<CR>') --lspsaga
 map('n', '<space>n', '<cmd>Lspsaga rename<cr>')
 map('n', '<space>j', '<cmd>Lspsaga lsp_finder<cr>')
-map('n', '<space>h', vim.lsp.buf.hover)
+map('n', '<space>h', '<cmd>Lspsaga hover_doc<cr>')
 map('n', '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
 map('n', '<c-k>', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
 map('n', '<A-t>', '<cmd>Lspsaga open_floaterm<CR>')
