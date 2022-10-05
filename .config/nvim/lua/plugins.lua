@@ -52,36 +52,4 @@ require 'packer'.startup(function(use)
    use 'hrsh7th/cmp-cmdline'
    use 'saadparwaiz1/cmp_luasnip'
    use 'L3MON4D3/LuaSnip'
-   use { 'mfussenegger/nvim-dap',
-      config = function()
-         local function lldb_path()
-            local hndl = io.popen('which lldb-vscode')
-            if not hndl then return nil end
-            local rslt = hndl:read 'a'
-            hndl:close()
-            return rslt
-         end
-
-         local dap = require 'dap'
-         dap.adapters.lldb = {
-            type = 'executable',
-            command = lldb_path(),
-            name = 'lldb'
-         }
-         dap.configurations.rust = {
-            {
-               name = 'Launch',
-               type = 'lldb',
-               request = 'launch',
-               program = function()
-                  return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-               end,
-               cwd = '${workspaceFolder}',
-               stopOnEntry = false,
-               args = {},
-            },
-         }
-         dap.configurations.c = dap.configurations.rust
-         dap.configurations.cpp = dap.configurations.rust
-      end }
 end)
