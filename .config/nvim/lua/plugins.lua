@@ -1,10 +1,5 @@
 require 'packer'.startup(function(use)
    use 'wbthomason/packer.nvim'
-   use { 'amdt/sunset',
-      config = function()
-         vim.g.sunset_latitude = 35.03
-         vim.g.sunset_longitude = 135.79
-      end }
    use 'cocopon/iceberg.vim'
    use 'kyazdani42/nvim-web-devicons'
    use { 'windwp/nvim-autopairs', after = 'nvim-cmp',
