@@ -1,4 +1,4 @@
-vim.cmd 'colo flatui'
+vim.cmd 'colo iceberg'
 
 local filenam = vim.fn.expand('%:p') --XXX            default open
 if filenam == '' then
