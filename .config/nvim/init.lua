@@ -5,7 +5,6 @@ if filenam == '' then
 end
 
 local opt = vim.opt --XXX                             variable
-
 opt.relativenumber = true
 opt.signcolumn = 'no'
 opt.softtabstop = 3
@@ -20,7 +19,7 @@ opt.termguicolors = true
 opt.clipboard:append { 'unnamedplus' }
 opt.autochdir = true
 opt.laststatus = 0
---opt.statusline = '%t%#Normal#%=%#StatusLine#%{strftime("%m/%d %H:%M %a")}'
+
 local g = vim.g
 g.python3_host_prog = os.getenv 'HOMEBREW_PREFIX' .. '/bin/python3'
 g.node_host_prog = os.getenv 'HOMEBREW_PREFIX' .. '/bin/neovim-node-host'
@@ -42,8 +41,8 @@ map('i', '<c-y>', '<c-r>"')
 map('i', '<a-d>', '<right><c-c>ves')
 map('i', '<a-f>', '<c-right>')
 map('i', '<a-b>', '<c-left>')
-map('n', '<', '<c-w>w')
-map('n', '>', '<c-w>W')
+map('n', '>', '<c-w>w')
+map('n', '<', '<c-w>W')
 map('n', '<space>w', function()
    vim.cmd 'wa'
    vim.lsp.buf.format { async = true }

@@ -2,7 +2,9 @@ require 'packer'.startup(function(use)
    use 'wbthomason/packer.nvim'
    use 'cocopon/iceberg.vim'
    use 'kyazdani42/nvim-web-devicons'
-   use { 'windwp/nvim-autopairs', config = function() require 'nvim-autopairs'.setup { map_c_h = true } end }
+   use { 'windwp/nvim-autopairs', config = function()
+      require 'nvim-autopairs'.setup { map_c_h = true }
+   end }
    use 'nvim-lua/plenary.nvim'
    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', --XXX telescope
       config = function()
