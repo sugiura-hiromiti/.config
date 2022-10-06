@@ -1,5 +1,5 @@
 local luasnip = require 'luasnip'
-local cmp = require 'cmp' --XXX nvim-cmp
+local cmp = require 'cmp'
 cmp.setup {
    snippet = {
       expand = function(args)
@@ -36,21 +36,10 @@ cmp.setup {
       { name = 'nvim_lsp' },
       { name = 'nvim_lua' },
       { name = 'luasnip' },
-      { name = 'buffer' },
-      { name = 'nvim_lsp_signature_help' }
    },
 }
-
-cmp.setup.cmdline('/', {
-   sources = cmp.config.sources({
-      { name = 'nvim_lsp_document_symbol' },
-      { name = 'buffer' }
-   })
-})
-
 cmp.setup.cmdline(':', {
    sources = cmp.config.sources({
-      { name = 'path' },
       { name = 'cmdline' }
    })
 })
