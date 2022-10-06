@@ -28,10 +28,6 @@ g.ruby_host_prog = os.getenv 'RUBY_HOST'
 
 local map = vim.keymap.set --XXX                      mapping
 map('n', '<esc>', ':noh<cr>') --<esc> to noh
-map('n', '<up>', '"zdd<up>"zP') --move line
-map('n', '<down>', '"zdd"zp')
-map('v', '<up>', '"zx<up>"zP`[V`]')
-map('v', '<down>', '"zx"zp`[V`]')
 map({ 'n', 'v' }, ',', '@:') --repeat previous command
 map('i', '<c-n>', '<down>') --emacs keybind
 map('i', '<c-p>', '<up>')
