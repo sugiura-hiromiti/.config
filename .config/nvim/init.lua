@@ -47,8 +47,6 @@ map('n', '<down>', '"zdd"zp')
 map('v', '<up>', '"zx<up>"zP`[V`]')
 map('v', '<down>', '"zx"zp`[V`]')
 map(nv, ',', '@:') --repeat previous command
-map(nv, '<tab>', '^') --column move
-map(nv, '<bs>', '$')
 map('i', '<c-n>', '<down>') --emacs keybind
 map('i', '<c-p>', '<up>')
 map('i', '<c-b>', '<left>')
@@ -64,19 +62,14 @@ map('i', '<a-f>', '<c-right>')
 map('i', '<a-b>', '<c-left>')
 map(nv, '<', '<c-w>W') --split pane and change size
 map(nv, '>', '<c-w>w')
-map(nv, '+', ':<c-u>sp<cr>')
-map(nv, '-', ':<c-u>vs<cr>')
-map(nv, '<c-right>', '<c-w>>')
-map(nv, '<c-left>', '<c-w><')
-map(nv, '<c-up>', '<c-w>+')
-map(nv, '<c-down>', '<c-w>-')
 map('n', 't', require 'telescope.builtin'.builtin) --Telescope
-map('n', '<space>e', require 'telescope'.extensions.file_browser.file_browser)
-map('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
+map('n', '<space>m', require 'telescope.builtin'.marks)
 map('n', '<space>o', require 'telescope.builtin'.lsp_document_symbols)
 map('n', '<space>d', require 'telescope.builtin'.diagnostics)
 map('n', '<space>b', require 'telescope.builtin'.buffers)
 map(nv, '<space>r', require 'telescope.builtin'.registers)
+map('n', '<space>e', require 'telescope'.extensions.file_browser.file_browser)
+map('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
 map(nv, '<space>a', '<cmd>Lspsaga code_action<CR>') --lspsaga
 map('n', '<space>n', '<cmd>Lspsaga rename<cr>')
 map('n', '<space>j', '<cmd>Lspsaga lsp_finder<cr>')
