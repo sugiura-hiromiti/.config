@@ -26,6 +26,7 @@ ga(){
    git push
 }
 
+#remove z(), then redefine, reload .zshrc
 z(){
    cd $1
    s
