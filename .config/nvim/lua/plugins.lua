@@ -4,17 +4,14 @@ require 'packer'.startup(function(use)
    use 'MunifTanjim/nui.nvim'
    use 'rcarriga/nvim-notify'
    use 'kyazdani42/nvim-web-devicons'
-   use { 'windwp/nvim-autopairs', config = function()
-      require 'nvim-autopairs'.setup { map_c_h = true }
-   end }
+   use { 'windwp/nvim-autopairs', config = function() require 'nvim-autopairs'.setup { map_c_h = true } end }
    use 'nvim-lua/plenary.nvim'
-   use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', --XXX telescope
-      config = function()
-         require 'telescope'.setup { pickers = { findfiles = { hidden = true } },
-            extensions = { file_browser = { hidden = true, hide_parent_dir = true }, } }
-         require 'telescope'.load_extension 'frecency'
-         require 'telescope'.load_extension 'file_browser'
-      end }
+   use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', config = function() --XXX telescope
+      require 'telescope'.setup { pickers = { findfiles = { hidden = true } },
+         extensions = { file_browser = { hidden = true, hide_parent_dir = true }, } }
+      require 'telescope'.load_extension 'frecency'
+      require 'telescope'.load_extension 'file_browser'
+   end }
    use 'nvim-telescope/telescope-frecency.nvim'
    use 'nvim-telescope/telescope-file-browser.nvim'
    use 'kkharji/sqlite.lua'
