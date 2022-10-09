@@ -1,4 +1,4 @@
-vim.cmd 'colo iceberg'
+vim.cmd 'colo lunaperche'
 local filenam = vim.fn.expand('%:p') --XXX            default open
 if filenam == '' then
    vim.cmd [[e $MYVIMRC]]
@@ -43,16 +43,13 @@ map('i', '<a-f>', '<c-right>')
 map('i', '<a-b>', '<c-left>')
 map('n', '>', '<c-w>w')
 map('n', '<', '<c-w>W')
-map('n', '<space>w', function()
-   vim.cmd 'wa'
-   vim.lsp.buf.format { async = true }
-end)
+map('n', '<space>w', function() vim.cmd 'wa' vim.lsp.buf.format { async = true } end)
 map('n', 't', require 'telescope.builtin'.builtin) --Telescope
 map('n', '<space>m', require 'telescope.builtin'.marks)
 map('n', '<space>o', require 'telescope.builtin'.lsp_document_symbols)
 map('n', '<space>d', require 'telescope.builtin'.diagnostics)
 map('n', '<space>b', require 'telescope.builtin'.buffers)
-map({ 'n', 'v' }, '<space>r', require 'telescope.builtin'.registers)
+map({ 'n', 'v' }, '<space>p', require 'telescope.builtin'.registers)
 map('n', '<space>e', require 'telescope'.extensions.file_browser.file_browser)
 map('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
 map('n', '<space>n', '<cmd>Noice telescope<cr>')

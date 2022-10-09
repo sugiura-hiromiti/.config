@@ -19,12 +19,7 @@ alias wh='which -a'
 alias so='source'
 
 #functions
-gc(){
-  git clone https://github.com/sugiura-hiromichi/$1
-  cd $1
-  s
-}
-
+# To remove function in zsh, `unset -f [function name]`
 ga(){
    git add .
    git commit -m $1

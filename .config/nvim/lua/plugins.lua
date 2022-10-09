@@ -1,9 +1,6 @@
 require 'packer'.startup(function(use)
    use 'wbthomason/packer.nvim'
-   use 'cocopon/iceberg.vim'
-   use {'folke/noice.nvim',event='VimEnter',config=function ()
-      require'noice'.setup()
-   end}
+   use { 'folke/noice.nvim', event = 'VimEnter', config = function() require 'noice'.setup() end }
    use 'MunifTanjim/nui.nvim'
    use 'rcarriga/nvim-notify'
    use 'kyazdani42/nvim-web-devicons'
