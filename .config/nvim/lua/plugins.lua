@@ -1,8 +1,5 @@
 require 'packer'.startup(function(use)
    use 'wbthomason/packer.nvim'
-   use { 'folke/noice.nvim', event = 'VimEnter', config = function() require 'noice'.setup() end }
-   use 'MunifTanjim/nui.nvim'
-   use 'rcarriga/nvim-notify'
    use 'kyazdani42/nvim-web-devicons'
    use { 'windwp/nvim-autopairs', config = function() require 'nvim-autopairs'.setup { map_c_h = true } end }
    use 'nvim-lua/plenary.nvim'
