@@ -16,7 +16,54 @@ require 'packer'.startup(function(use)
    use 'williamboman/mason-lspconfig.nvim'
    use 'neovim/nvim-lspconfig'
    use { 'glepnir/lspsaga.nvim', branch = 'main' }
-   use 'hrsh7th/nvim-cmp' --XXX                                completion source
+   use { 'hrsh7th/nvim-cmp', config = function()
+      local luasnip = require 'luasnip'
+      local cmp = require 'cmp'
+      cmp.setup {
+         snippet = {
+            expand = function(args)
+               luasnip.lsp_expand(args.body)
+            end,
+         },
+         mapping = cmp.mapping.preset.insert({
+            ['<up>'] = cmp.mapping.scroll_docs(-10),
+            ['<down>'] = cmp.mapping.scroll_docs(10),
+            ['<tab>'] = cmp.mapping.confirm {
+               behavior = cmp.ConfirmBehavior.Insert,
+               select = true,
+            },
+            ['<c-n>'] = cmp.mapping(function(fallback)
+               if cmp.visible() then
+                  cmp.select_next_item()
+               elseif luasnip.expand_or_jumpable() then
+                  luasnip.expand_or_jump()
+               else
+                  fallback()
+               end
+            end, { 'i', 's', 'c' }),
+            ['<c-p>'] = cmp.mapping(function(fallback)
+               if cmp.visible() then
+                  cmp.select_prev_item()
+               elseif luasnip.jumpable(-1) then
+                  luasnip.jump(-1)
+               else
+                  fallback()
+               end
+            end, { 'i', 's', 'c' }),
+         }),
+         sources = {
+            { name = 'nvim_lsp' },
+            { name = 'nvim_lua' },
+            { name = 'luasnip' },
+         },
+      }
+      cmp.setup.cmdline(':', {
+         sources = cmp.config.sources({
+            { name = 'cmdline' }
+         })
+      })
+
+   end } --XXX                                completion source
    use 'hrsh7th/cmp-nvim-lsp'
    use 'hrsh7th/cmp-nvim-lua'
    use 'hrsh7th/cmp-cmdline'

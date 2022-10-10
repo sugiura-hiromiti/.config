@@ -38,7 +38,7 @@ map('i', '<c-k>', '<right><c-c>v$hs')
 map('i', '<c-t>', '<c-c><left>"zx"zpa')
 map('i', '<c-y>', '<c-r>"')
 map('n', '<space>w', function() vim.cmd 'write' vim.lsp.buf.format { async = true } end)
-map('n', 't', require 'telescope.builtin'.builtin) --XXX Telescope
+map('n', 't', require 'telescope.builtin'.builtin) -- Telescope
 map('n', '<space>m', require 'telescope.builtin'.marks)
 map('n', '<space>o', require 'telescope.builtin'.lsp_document_symbols)
 map('n', '<space>d', require 'telescope.builtin'.diagnostics)
@@ -46,8 +46,7 @@ map('n', '<space>b', require 'telescope.builtin'.buffers)
 map({ 'n', 'v' }, '<space>p', require 'telescope.builtin'.registers)
 map('n', '<space>e', require 'telescope'.extensions.file_browser.file_browser)
 map('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
-map('n', '<space>n', '<cmd>Noice telescope<cr>')
-map({ 'n', 'v' }, '<space>a', '<cmd>Lspsaga code_action<CR>') --XXX lspsaga
+map({ 'n', 'v' }, '<space>a', '<cmd>Lspsaga code_action<CR>') --lspsaga
 map('n', '<space>r', '<cmd>Lspsaga rename<cr>')
 map('n', '<space>j', '<cmd>Lspsaga lsp_finder<cr>')
 map('n', '<space>h', '<cmd>Lspsaga hover_doc<cr>')
