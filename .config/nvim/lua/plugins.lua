@@ -12,8 +12,21 @@ require 'packer'.startup(function(use)
    use 'nvim-telescope/telescope-frecency.nvim'
    use 'nvim-telescope/telescope-file-browser.nvim'
    use 'kkharji/sqlite.lua'
-   use 'williamboman/mason.nvim' --XXX                         lsp
-   use 'williamboman/mason-lspconfig.nvim'
+   use { 'williamboman/mason.nvim', config = function() require 'mason'.setup() end } --XXX lsp
+   use { 'williamboman/mason-lspconfig.nvim', config = function()
+      require 'mason-lspconfig'.setup {
+         ensure_installed = { 'sumneko_lua', 'rust_analyzer@nightly', 'html', 'taplo', 'json-lsp', 'marksman' }
+      }
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+      require 'mason-lspconfig'.setup_handlers {
+         function(server_name)
+            require 'lspconfig'[server_name].setup {
+               capabilities = capabilities
+            }
+         end
+      }
+   end }
    use 'neovim/nvim-lspconfig'
    use { 'glepnir/lspsaga.nvim', branch = 'main' }
    use { 'hrsh7th/nvim-cmp', config = function()
@@ -62,7 +75,6 @@ require 'packer'.startup(function(use)
             { name = 'cmdline' }
          })
       })
-
    end } --XXX                                completion source
    use 'hrsh7th/cmp-nvim-lsp'
    use 'hrsh7th/cmp-nvim-lua'

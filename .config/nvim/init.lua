@@ -6,6 +6,7 @@ end
 
 local opt = vim.opt --XXX variable
 opt.relativenumber = true
+opt.signcolumn = 'no'
 opt.softtabstop = 3
 opt.shiftwidth = 3
 opt.expandtab = true
@@ -56,4 +57,3 @@ map('n', '<A-t>', '<cmd>Lspsaga open_floaterm<CR>')
 map('t', '<A-t>', [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]])
 
 require 'plugins'
-require 'lsp'
