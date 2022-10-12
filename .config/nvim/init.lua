@@ -1,8 +1,9 @@
-vim.cmd 'colo lunaperche'
+--light:delek
+--dark:
+--both:
+vim.cmd 'colo slate' 
 local filenam = vim.fn.expand('%:p') --XXX default open
-if filenam == '' then
-   vim.cmd [[e $MYVIMRC]]
-end
+if filenam == '' then vim.cmd [[e $MYVIMRC]] end
 
 local opt = vim.opt --XXX variable
 opt.relativenumber = true
@@ -79,9 +80,7 @@ require 'packer'.startup(function(use) --XXX package
       capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
       require 'mason-lspconfig'.setup_handlers {
          function(server_name)
-            require 'lspconfig'[server_name].setup {
-               capabilities = capabilities
-            }
+            require 'lspconfig'[server_name].setup { capabilities = capabilities }
          end
       }
    end }
@@ -92,9 +91,7 @@ require 'packer'.startup(function(use) --XXX package
       local cmp = require 'cmp'
       cmp.setup {
          snippet = {
-            expand = function(args)
-               luasnip.lsp_expand(args.body)
-            end,
+            expand = function(args) luasnip.lsp_expand(args.body) end,
          },
          mapping = cmp.mapping.preset.insert({
             ['<up>'] = cmp.mapping.scroll_docs(-10),
