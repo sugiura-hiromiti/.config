@@ -1,7 +1,7 @@
---light:delek
---dark:
---both:
-vim.cmd 'colo slate' 
+--light: shine
+--dark:slate, habamax
+--both:lunaperche
+vim.cmd 'colo shine' 
 local filenam = vim.fn.expand('%:p') --XXX default open
 if filenam == '' then vim.cmd [[e $MYVIMRC]] end
 
