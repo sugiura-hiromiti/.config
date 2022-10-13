@@ -1,7 +1,4 @@
---light: shine
---dark:slate, habamax
---both:lunaperche
-vim.cmd 'colo shine' 
+vim.cmd 'colo slate' 
 local filenam = vim.fn.expand('%:p') --XXX default open
 if filenam == '' then vim.cmd [[e $MYVIMRC]] end
 
@@ -59,7 +56,6 @@ map('t', '<A-t>', [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]])
 
 require 'packer'.startup(function(use) --XXX package
    use 'wbthomason/packer.nvim'
-   use 'kyazdani42/nvim-web-devicons'
    use { 'windwp/nvim-autopairs', config = function() require 'nvim-autopairs'.setup { map_c_h = true } end }
    use 'nvim-lua/plenary.nvim'
    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', config = function() -- telescope
