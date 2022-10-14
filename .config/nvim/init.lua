@@ -7,7 +7,6 @@ vim.opt.signcolumn = 'no'
 vim.opt.softtabstop = 3
 vim.opt.shiftwidth = 3
 vim.opt.expandtab = true
---vim.opt.writebackup = false
 vim.opt.updatetime = 50
 vim.opt.mouse = 'a'
 vim.opt.autowriteall = true
@@ -63,26 +62,20 @@ require 'packer'.startup(function(use) --XXX package
    use 'kkharji/sqlite.lua'
    use { 'williamboman/mason.nvim', config = function() require 'mason'.setup() end } -- lsp
    use { 'williamboman/mason-lspconfig.nvim', config = function()
-      require 'mason-lspconfig'.setup {
-         ensure_installed = { 'sumneko_lua', 'rust_analyzer@nightly', 'html', 'taplo', 'json-lsp', 'marksman' }
-      }
+      require 'mason-lspconfig'.setup { ensure_installed = { 'sumneko_lua', 'rust_analyzer@nightly', 'html', 'taplo',
+         'json-lsp', 'marksman' } }
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
       require 'mason-lspconfig'.setup_handlers {
-         function(server_name)
-            require 'lspconfig'[server_name].setup { capabilities = capabilities }
-         end
+         function(server_name) require 'lspconfig'[server_name].setup { capabilities = capabilities } end
       }
    end }
    use 'neovim/nvim-lspconfig'
-   use { 'glepnir/lspsaga.nvim', branch = 'main' }
    use { 'hrsh7th/nvim-cmp', config = function()
       local luasnip = require 'luasnip'
       local cmp = require 'cmp'
       cmp.setup {
-         snippet = {
-            expand = function(args) luasnip.lsp_expand(args.body) end,
-         },
+         snippet = { expand = function(args) luasnip.lsp_expand(args.body) end, },
          mapping = cmp.mapping.preset.insert({
             ['<c-u>'] = cmp.mapping.scroll_docs(-10),
             ['<c-d>'] = cmp.mapping.scroll_docs(10),
@@ -115,12 +108,8 @@ require 'packer'.startup(function(use) --XXX package
             { name = 'luasnip' },
          },
       }
-      cmp.setup.cmdline(':', {
-         sources = cmp.config.sources({
-            { name = 'cmdline' }
-         })
-      })
-   end } -- completion source
+      cmp.setup.cmdline(':', { sources = cmp.config.sources({ { name = 'cmdline' } }) })
+   end }
    use 'hrsh7th/cmp-nvim-lsp'
    use 'hrsh7th/cmp-nvim-lua'
    use 'hrsh7th/cmp-cmdline'
