@@ -30,4 +30,4 @@ a(){
 eval $(brew shellenv)
 eval $(starship init zsh)
 
-export XDG_CONFIG_HOME=$HOME/dotfile
+export XDG_CONFIG_HOME=$HOME/dotfiles
