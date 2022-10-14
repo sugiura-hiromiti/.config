@@ -15,10 +15,6 @@ vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.autochdir = true
 vim.opt.laststatus = 0
 
-vim.g.python3_host_prog = os.getenv 'HOMEBREW_PREFIX' .. '/bin/python3'
-vim.g.node_host_prog = os.getenv 'HOMEBREW_PREFIX' .. '/bin/neovim-node-host'
-vim.g.ruby_host_prog = os.getenv 'RUBY_HOST'
-
 vim.keymap.set('n', '<esc>', ':noh<cr>') --<esc> to noh
 vim.keymap.set({ 'n', 'v' }, ',', '@:') --repeat previous command
 vim.keymap.set('i', '<c-n>', '<down>') --emacs keybind

@@ -1,10 +1,8 @@
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/core"
 brew "exa"
 brew "fd"
-brew "neovim", args: ["HEAD"]
+brew "neovim"
 brew "node"
 brew "ripgrep"
 brew "starship"
-cask "iterm2"
