@@ -5,9 +5,10 @@
 #aliases
 alias s='exa -lahF --group-directories-first --sort=extension --time-style=iso --git --no-permissions --no-user'
 alias n='nvim'
+alias u='brew upgrade ; rustup self update ; rustup update'
 alias gi='git init ; git add . ; git commit -m'
 alias gl='git pull'
-alias bu='brew upgrade'
+alias bu='brew uninstall'
 alias bi='brew install'
 alias bl='brew list'
 alias bs='brew search'
@@ -27,7 +28,7 @@ ga(){
 }
 
 #remove z(), then redefine, reload .zshrc
-z(){
+a(){
    cd $1
    s
 }

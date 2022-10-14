@@ -1,58 +1,53 @@
-vim.cmd 'colo slate' 
+vim.cmd 'colo slate'
 local filenam = vim.fn.expand('%:p') --XXX default open
 if filenam == '' then vim.cmd [[e $MYVIMRC]] end
 
-local opt = vim.opt --XXX variable
-opt.relativenumber = true
-opt.signcolumn = 'no'
-opt.softtabstop = 3
-opt.shiftwidth = 3
-opt.expandtab = true
-opt.swapfile = false
-opt.writebackup = false
-opt.updatetime = 50
-opt.mouse = 'a'
-opt.autowriteall = true
-opt.termguicolors = true
-opt.clipboard:append { 'unnamedplus' }
-opt.autochdir = true
-opt.laststatus = 0
+vim.opt.relativenumber = true
+vim.opt.signcolumn = 'no'
+vim.opt.softtabstop = 3
+vim.opt.shiftwidth = 3
+vim.opt.expandtab = true
+--vim.opt.writebackup = false
+vim.opt.updatetime = 50
+vim.opt.mouse = 'a'
+vim.opt.autowriteall = true
+vim.opt.termguicolors = true
+vim.opt.clipboard:append { 'unnamedplus' }
+vim.opt.autochdir = true
+vim.opt.laststatus = 0
 
-local g = vim.g
-g.python3_host_prog = os.getenv 'HOMEBREW_PREFIX' .. '/bin/python3'
-g.node_host_prog = os.getenv 'HOMEBREW_PREFIX' .. '/bin/neovim-node-host'
-g.ruby_host_prog = os.getenv 'RUBY_HOST'
+vim.g.python3_host_prog = os.getenv 'HOMEBREW_PREFIX' .. '/bin/python3'
+vim.g.node_host_prog = os.getenv 'HOMEBREW_PREFIX' .. '/bin/neovim-node-host'
+vim.g.ruby_host_prog = os.getenv 'RUBY_HOST'
 
-local map = vim.keymap.set --XXX mapping
-map('n', '<esc>', ':noh<cr>') --<esc> to noh
-map({ 'n', 'v' }, ',', '@:') --repeat previous command
-map('i', '<c-n>', '<down>') --emacs keybind
-map('i', '<c-p>', '<up>')
-map('i', '<c-b>', '<left>')
-map('i', '<c-f>', '<right>')
-map('i', '<c-a>', '<home>')
-map('i', '<c-e>', '<end>')
-map('i', '<c-d>', '<del>')
-map('i', '<c-k>', '<right><c-c>v$hs')
-map('i', '<c-t>', '<c-c><left>"zx"zpa')
-map('i', '<c-y>', '<c-r>"')
-map('n', '<space>w', function() vim.cmd 'write' vim.lsp.buf.format { async = true } end)
-map('n', 't', require 'telescope.builtin'.builtin) -- Telescope
-map('n', '<space>m', require 'telescope.builtin'.marks)
-map('n', '<space>o', require 'telescope.builtin'.lsp_document_symbols)
-map('n', '<space>d', require 'telescope.builtin'.diagnostics)
-map('n', '<space>b', require 'telescope.builtin'.buffers)
-map({ 'n', 'v' }, '<space>p', require 'telescope.builtin'.registers)
-map('n', '<space>e', require 'telescope'.extensions.file_browser.file_browser)
-map('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
-map({ 'n', 'v' }, '<space>a', '<cmd>Lspsaga code_action<CR>') --lspsaga
-map('n', '<space>r', '<cmd>Lspsaga rename<cr>')
-map('n', '<space>j', '<cmd>Lspsaga lsp_finder<cr>')
-map('n', '<space>h', '<cmd>Lspsaga hover_doc<cr>')
-map('n', '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
-map('n', '<c-k>', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
-map('n', '<A-t>', '<cmd>Lspsaga open_floaterm<CR>')
-map('t', '<A-t>', [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]])
+vim.keymap.set('n', '<esc>', ':noh<cr>') --<esc> to noh
+vim.keymap.set({ 'n', 'v' }, ',', '@:') --repeat previous command
+vim.keymap.set('i', '<c-n>', '<down>') --emacs keybind
+vim.keymap.set('i', '<c-p>', '<up>')
+vim.keymap.set('i', '<c-b>', '<left>')
+vim.keymap.set('i', '<c-f>', '<right>')
+vim.keymap.set('i', '<c-a>', '<home>')
+vim.keymap.set('i', '<c-e>', '<end>')
+vim.keymap.set('i', '<c-d>', '<del>')
+vim.keymap.set('i', '<c-k>', '<right><c-c>v$hs')
+vim.keymap.set('i', '<c-y>', '<c-r>"')--XXX Use cmd-v instead
+vim.keymap.set('n', '<space>w', function() vim.cmd 'write' vim.lsp.buf.format { async = true } end)
+vim.keymap.set('n', 't', require 'telescope.builtin'.builtin) -- Telescope
+vim.keymap.set('n', '<space>m', require 'telescope.builtin'.marks)
+vim.keymap.set('n', '<space>o', require 'telescope.builtin'.lsp_document_symbols)
+vim.keymap.set('n', '<space>d', require 'telescope.builtin'.diagnostics)
+vim.keymap.set('n', '<space>j', require 'telescope.builtin'.lsp_references) --`j` stands for jump
+vim.keymap.set('n', '<space>b', require 'telescope.builtin'.buffers)
+vim.keymap.set({ 'n', 'v' }, '<space>p', require 'telescope.builtin'.registers)
+vim.keymap.set('n', '<space>e', require 'telescope'.extensions.file_browser.file_browser)
+vim.keymap.set('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
+vim.keymap.set({ 'n', 'v' }, '<space>a', vim.lsp.buf.code_action) --lspsaga
+vim.keymap.set('n', '<space>r', vim.lsp.buf.rename)
+vim.keymap.set('n', '<space>h', vim.lsp.buf.hover)
+vim.keymap.set('n', '<c-j>', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<c-k>', vim.diagnostic.goto_prev)
+vim.keymap.set('n', '<A-t>', '<cmd>vs | term<cr>a<cr>')
+vim.keymap.set('t', '<A-t>', [[<C-\><C-n><cmd>q<cr>]])
 
 require 'packer'.startup(function(use) --XXX package
    use 'wbthomason/packer.nvim'
@@ -90,8 +85,8 @@ require 'packer'.startup(function(use) --XXX package
             expand = function(args) luasnip.lsp_expand(args.body) end,
          },
          mapping = cmp.mapping.preset.insert({
-            ['<up>'] = cmp.mapping.scroll_docs(-10),
-            ['<down>'] = cmp.mapping.scroll_docs(10),
+            ['<c-u>'] = cmp.mapping.scroll_docs(-10),
+            ['<c-d>'] = cmp.mapping.scroll_docs(10),
             ['<tab>'] = cmp.mapping.confirm {
                behavior = cmp.ConfirmBehavior.Insert,
                select = true,
