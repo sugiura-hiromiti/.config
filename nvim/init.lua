@@ -102,17 +102,11 @@ require 'packer'.startup(function(use) --XXX package
                end
             end, { 'i', 's', 'c' }),
          }),
-         sources = {
-            { name = 'nvim_lsp' },
-            { name = 'nvim_lua' },
-            { name = 'luasnip' },
-         },
+         sources = { { name = 'nvim_lsp' }, { name = 'nvim_lua' }, { name = 'luasnip' }, },
       }
-      cmp.setup.cmdline(':', { sources = cmp.config.sources({ { name = 'cmdline' } }) })
    end }
    use 'hrsh7th/cmp-nvim-lsp'
    use 'hrsh7th/cmp-nvim-lua'
-   use 'hrsh7th/cmp-cmdline'
    use 'saadparwaiz1/cmp_luasnip'
    use 'L3MON4D3/LuaSnip'
 end)

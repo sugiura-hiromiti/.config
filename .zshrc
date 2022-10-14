@@ -1,9 +1,5 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-#zshrc is mainly for personal customizations like options, aliases, functions, eval ..
-
 #aliases
-alias s='exa -lahF --group-directories-first --sort=extension --time-style=iso --git --no-permissions --no-user'
+alias s='exa -lahF --group-directories-first --sort=extension --time-style=iso --git --no-permissions --no-user --no-time --no-filesize'
 alias n='nvim'
 alias u='brew upgrade ; rustup self update ; rustup update'
 alias gi='git init ; git add . ; git commit -m'
@@ -15,7 +11,6 @@ alias bs='brew search'
 alias cr='cargo run'
 alias cb='cargo build'
 alias ct='cargo test'
-#alias cf='cargo fix'
 alias wh='which -a'
 alias so='source'
 
@@ -27,7 +22,6 @@ ga(){
    git push
 }
 
-#remove z(), then redefine, reload .zshrc
 a(){
    cd $1
    s
@@ -36,8 +30,4 @@ a(){
 eval $(brew shellenv)
 eval $(starship init zsh)
 
-#make sure that /opt/homebrew/opt/llvm/bin/ is head of path
-export PATH=$(brew --prefix llvm)/bin:$PATH
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+export XDG_CONFIG_HOME=$HOME/dotfile

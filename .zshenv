@@ -16,11 +16,6 @@ path=(
 	$path
 )
 
-#path to llvm
-export LDFLAGS="-L$(brew --prefix llvm)/lib"
-export CPPFLAGS="$(brew --prefix llvm)/include"
-export LDFLAGS="-L$(brew --prefix llvm)/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
-
 #environment variables
 export EDITOR=nvim
 export VISUAL=nvim
