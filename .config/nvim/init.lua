@@ -30,8 +30,6 @@ vim.keymap.set('i', '<c-a>', '<home>')
 vim.keymap.set('i', '<c-e>', '<end>')
 vim.keymap.set('i', '<c-d>', '<del>')
 vim.keymap.set('i', '<c-k>', '<right><c-c>v$hs')
-vim.keymap.set('i', '<c-y>', '<c-r>"')--XXX Use cmd-v instead
-vim.keymap.set('n', '<space>w', function() vim.cmd 'write' vim.lsp.buf.format { async = true } end)
 vim.keymap.set('n', 't', require 'telescope.builtin'.builtin) -- Telescope
 vim.keymap.set('n', '<space>m', require 'telescope.builtin'.marks)
 vim.keymap.set('n', '<space>o', require 'telescope.builtin'.lsp_document_symbols)
@@ -41,6 +39,7 @@ vim.keymap.set('n', '<space>b', require 'telescope.builtin'.buffers)
 vim.keymap.set({ 'n', 'v' }, '<space>p', require 'telescope.builtin'.registers)
 vim.keymap.set('n', '<space>e', require 'telescope'.extensions.file_browser.file_browser)
 vim.keymap.set('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
+vim.keymap.set('n', '<space>w', function() vim.cmd 'write' vim.lsp.buf.format { async = true } end)
 vim.keymap.set({ 'n', 'v' }, '<space>a', vim.lsp.buf.code_action) --lspsaga
 vim.keymap.set('n', '<space>r', vim.lsp.buf.rename)
 vim.keymap.set('n', '<space>h', vim.lsp.buf.hover)
