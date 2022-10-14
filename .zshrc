@@ -3,7 +3,7 @@
 #zshrc is mainly for personal customizations like options, aliases, functions, eval ..
 
 #aliases
-alias s='exa -lahF --icons --group-directories-first --sort=extension --time-style=iso --git --no-permissions --no-user'
+alias s='exa -lahF --group-directories-first --sort=extension --time-style=iso --git --no-permissions --no-user'
 alias n='nvim'
 alias gi='git init ; git add . ; git commit -m'
 alias gl='git pull'
