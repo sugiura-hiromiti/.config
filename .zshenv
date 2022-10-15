@@ -24,6 +24,7 @@ export VISUAL=nvim
 export MANPAGER=nvim
 export RUBY_HOST=$(which neovim-ruby-host)
 export XDG_CONFIG_HOME=$HOME/dotfiles
+export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship.toml
 
 #aliases
 alias s='exa -lahF --group-directories-first --sort=extension --time-style=iso --git --no-permissions --no-user --no-time --no-filesize'
