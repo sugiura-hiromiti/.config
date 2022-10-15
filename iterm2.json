@@ -1,5 +1,5 @@
 {
-  "Custom Directory" : "Recycle",
+  "Thin Strokes" : 4,
   "Working Directory" : "\/Users\/r",
   "Prompt Before Closing 2" : false,
   "Selected Text Color" : {
@@ -61,7 +61,7 @@
   "Scrollback Lines" : 1000,
   "Scrollback With Status Bar" : false,
   "HotKey Window Reopens On Activation" : false,
-  "Draw Powerline Glyphs" : false,
+  "Draw Powerline Glyphs" : true,
   "Status Bar Layout" : {
     "components" : [
       {
@@ -80,7 +80,15 @@
           },
           "layout advanced configuration dictionary value" : {
             "algorithm" : 1,
+            "separator color 2" : {
+              "Red Component" : 1,
+              "Color Space" : "sRGB",
+              "Blue Component" : 0.16107177734375,
+              "Alpha Component" : 0.4091796875,
+              "Green Component" : 0.95286661386489868
+            },
             "remove empty components" : false,
+            "auto-rainbow style" : 1,
             "background color" : {
               "Red Component" : 0.24534685909748077,
               "Color Space" : "sRGB",
@@ -88,15 +96,7 @@
               "Alpha Component" : 1,
               "Green Component" : 0
             },
-            "font" : ".AppleSystemUIFont 12",
-            "auto-rainbow style" : 1,
-            "separator color 2" : {
-              "Red Component" : 1,
-              "Color Space" : "sRGB",
-              "Blue Component" : 0.16107177734375,
-              "Alpha Component" : 0.4091796875,
-              "Green Component" : 0.95286661386489868
-            }
+            "font" : ".AppleSystemUIFont 12"
           }
         }
       },
@@ -116,7 +116,15 @@
           },
           "layout advanced configuration dictionary value" : {
             "algorithm" : 1,
+            "separator color 2" : {
+              "Red Component" : 1,
+              "Color Space" : "sRGB",
+              "Blue Component" : 0.16107177734375,
+              "Alpha Component" : 0.4091796875,
+              "Green Component" : 0.95286661386489868
+            },
             "remove empty components" : false,
+            "auto-rainbow style" : 1,
             "background color" : {
               "Red Component" : 0.24534685909748077,
               "Color Space" : "sRGB",
@@ -124,15 +132,7 @@
               "Alpha Component" : 1,
               "Green Component" : 0
             },
-            "font" : ".AppleSystemUIFont 12",
-            "auto-rainbow style" : 1,
-            "separator color 2" : {
-              "Red Component" : 1,
-              "Color Space" : "sRGB",
-              "Blue Component" : 0.16107177734375,
-              "Alpha Component" : 0.4091796875,
-              "Green Component" : 0.95286661386489868
-            }
+            "font" : ".AppleSystemUIFont 12"
           }
         }
       },
@@ -152,7 +152,15 @@
           },
           "layout advanced configuration dictionary value" : {
             "algorithm" : 1,
+            "separator color 2" : {
+              "Red Component" : 1,
+              "Color Space" : "sRGB",
+              "Blue Component" : 0.16107177734375,
+              "Alpha Component" : 0.4091796875,
+              "Green Component" : 0.95286661386489868
+            },
             "remove empty components" : false,
+            "auto-rainbow style" : 1,
             "background color" : {
               "Red Component" : 0.24534685909748077,
               "Color Space" : "sRGB",
@@ -160,15 +168,7 @@
               "Alpha Component" : 1,
               "Green Component" : 0
             },
-            "font" : ".AppleSystemUIFont 12",
-            "auto-rainbow style" : 1,
-            "separator color 2" : {
-              "Red Component" : 1,
-              "Color Space" : "sRGB",
-              "Blue Component" : 0.16107177734375,
-              "Alpha Component" : 0.4091796875,
-              "Green Component" : 0.95286661386489868
-            }
+            "font" : ".AppleSystemUIFont 12"
           }
         }
       },
@@ -190,7 +190,15 @@
           },
           "layout advanced configuration dictionary value" : {
             "algorithm" : 1,
+            "separator color 2" : {
+              "Red Component" : 1,
+              "Color Space" : "sRGB",
+              "Blue Component" : 0.16107177734375,
+              "Alpha Component" : 0.4091796875,
+              "Green Component" : 0.95286661386489868
+            },
             "remove empty components" : false,
+            "auto-rainbow style" : 1,
             "background color" : {
               "Red Component" : 0.24534685909748077,
               "Color Space" : "sRGB",
@@ -198,15 +206,7 @@
               "Alpha Component" : 1,
               "Green Component" : 0
             },
-            "font" : ".AppleSystemUIFont 12",
-            "auto-rainbow style" : 1,
-            "separator color 2" : {
-              "Red Component" : 1,
-              "Color Space" : "sRGB",
-              "Blue Component" : 0.16107177734375,
-              "Alpha Component" : 0.4091796875,
-              "Green Component" : 0.95286661386489868
-            }
+            "font" : ".AppleSystemUIFont 12"
           }
         }
       },
@@ -226,7 +226,15 @@
           },
           "layout advanced configuration dictionary value" : {
             "algorithm" : 1,
+            "separator color 2" : {
+              "Red Component" : 1,
+              "Color Space" : "sRGB",
+              "Blue Component" : 0.16107177734375,
+              "Alpha Component" : 0.4091796875,
+              "Green Component" : 0.95286661386489868
+            },
             "remove empty components" : false,
+            "auto-rainbow style" : 1,
             "background color" : {
               "Red Component" : 0.24534685909748077,
               "Color Space" : "sRGB",
@@ -234,22 +242,22 @@
               "Alpha Component" : 1,
               "Green Component" : 0
             },
-            "font" : ".AppleSystemUIFont 12",
-            "auto-rainbow style" : 1,
-            "separator color 2" : {
-              "Red Component" : 1,
-              "Color Space" : "sRGB",
-              "Blue Component" : 0.16107177734375,
-              "Alpha Component" : 0.4091796875,
-              "Green Component" : 0.95286661386489868
-            }
+            "font" : ".AppleSystemUIFont 12"
           }
         }
       }
     ],
     "advanced configuration" : {
       "algorithm" : 1,
+      "separator color 2" : {
+        "Red Component" : 1,
+        "Color Space" : "sRGB",
+        "Blue Component" : 0.16107177734375,
+        "Alpha Component" : 0.4091796875,
+        "Green Component" : 0.95286661386489868
+      },
       "remove empty components" : false,
+      "auto-rainbow style" : 1,
       "background color" : {
         "Red Component" : 0.24534685909748077,
         "Color Space" : "sRGB",
@@ -257,15 +265,7 @@
         "Alpha Component" : 1,
         "Green Component" : 0
       },
-      "font" : ".AppleSystemUIFont 12",
-      "auto-rainbow style" : 1,
-      "separator color 2" : {
-        "Red Component" : 1,
-        "Color Space" : "sRGB",
-        "Blue Component" : 0.16107177734375,
-        "Alpha Component" : 0.4091796875,
-        "Green Component" : 0.95286661386489868
-      }
+      "font" : ".AppleSystemUIFont 12"
     }
   },
   "Flashing Bell" : false,
@@ -577,7 +577,7 @@
   "AWDS Pane Directory" : "",
   "Left Option Key Changeable" : true,
   "Normal Font" : "Menlo-Regular 14",
-  "Vertical Spacing" : 0.82999999999999996,
+  "Vertical Spacing" : 0.83999999999999997,
   "Blur" : false,
   "Ansi 7 Color" : {
     "Red Component" : 0.78039216995239258,
@@ -643,6 +643,7 @@
   ],
   "Unicode Normalization" : 0,
   "Visual Bell" : true,
+  "Custom Directory" : "Recycle",
   "ASCII Ligatures" : true,
   "Ansi 5 Color" : {
     "Red Component" : 0.81176471710205078,
@@ -650,6 +651,5 @@
     "Blue Component" : 0.98039215803146362,
     "Alpha Component" : 1,
     "Green Component" : 0.729411780834198
-  },
-  "Thin Strokes" : 4
+  }
 }
