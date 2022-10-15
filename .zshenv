@@ -13,6 +13,8 @@ path=(
    /opt/homebrew/sbin(N)
    /usr/local/bin(N)
    /usr/local/sbin(N)
+   ~/.local/bin
+   ~/.local/sbin
 	$path
 )
 
