@@ -24,12 +24,10 @@ vim.keymap.set('i', '<c-f>', '<right>')
 vim.keymap.set('i', '<c-a>', '<home>')
 vim.keymap.set('i', '<c-e>', '<end>')
 vim.keymap.set('i', '<c-d>', '<del>')
-vim.keymap.set('i', '<c-k>', '<right><c-c>v$hs')
 vim.keymap.set('i', '<a-d>', '<right><c-c>ves')
 vim.keymap.set('i', '<a-f>', '<c-right>')
 vim.keymap.set('i', '<a-b>', '<c-left>')
 vim.keymap.set('n', 't', require 'telescope.builtin'.builtin) -- Telescope
-vim.keymap.set('n', '<space>m', require 'telescope.builtin'.marks)
 vim.keymap.set('n', '<space>o', require 'telescope.builtin'.lsp_document_symbols)
 vim.keymap.set('n', '<space>d', require 'telescope.builtin'.diagnostics)
 vim.keymap.set('n', '<space>j', require 'telescope.builtin'.lsp_references) --`j` stands for jump
