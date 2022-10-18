@@ -1,0 +1,5 @@
+{
+  "coc-rust-analyzer|global": {
+    "release": "nightly 2022-10-18"
+  }
+}
