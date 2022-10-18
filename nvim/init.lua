@@ -16,6 +16,7 @@ vim.opt.autochdir = true
 vim.opt.laststatus = 0
 
 vim.keymap.set('n', '<esc>', ':noh<cr>') --<esc> to noh
+vim.keymap.set('i', '<c-[>', function() vim.cmd 'w' vim.lsp.buf.format { async = true } end)
 vim.keymap.set({ 'n', 'v' }, ',', '@:') --repeat previous command
 vim.keymap.set('i', '<c-n>', '<down>') --emacs keybind
 vim.keymap.set('i', '<c-p>', '<up>')
