@@ -6,9 +6,6 @@ set shiftwidth=3
 set expandtab
 set awa
 
-g:lexima_ctrlh_as_backspace=true
-g:coc_global_extensions={'coc-json','coc-clangd','coc-rust-analyzer'}
-
 nnoremap <esc> <cmd>noh<cr>
 nnoremap , @:
 vnoremap , @:
