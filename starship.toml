@@ -1,3 +1,0 @@
-format="""$character"""
-right_format = """$all"""
-continuation_prompt = "∙"
