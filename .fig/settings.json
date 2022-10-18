@@ -3,11 +3,15 @@
   "app.hideMenubarIcon" : true,
   "app.preferredTerminal" : "iTerm2",
   "autocomplete.disable" : false,
+  "autocomplete.disableForCommands" : [
+    "a"
+  ],
   "autocomplete.firstTokenCompletion" : true,
   "autocomplete.fontSize" : null,
   "autocomplete.fuzzySearch" : true,
-  "autocomplete.height" : 200,
+  "autocomplete.height" : 400,
   "autocomplete.immediatelyExecuteAfterSpace" : false,
+  "autocomplete.immediatelyRunDangerousCommands" : true,
   "autocomplete.keybindings.control+c" : "hideAutocomplete",
   "autocomplete.keybindings.control+j" : "ignore",
   "autocomplete.keybindings.control+k" : "ignore",
@@ -16,7 +20,6 @@
   "autocomplete.keybindings.down" : "ignore",
   "autocomplete.keybindings.enter" : "insertSelectedAndExecute",
   "autocomplete.keybindings.esc" : "ignore",
-  "autocomplete.keybindings.escape" : "hideAutocomplete",
   "autocomplete.keybindings.insertCommonPrefixOrNavigateDown" : "tab",
   "autocomplete.keybindings.insertSelected" : "tab",
   "autocomplete.keybindings.shift+tab" : "ignore",
@@ -28,5 +31,8 @@
   "dotfiles.syncImmediately" : false,
   "dotfiles.verbosity" : "none",
   "integrations.experimental" : false,
+  "integrations.hyper.disabled" : true,
+  "integrations.terminal.disabled" : true,
+  "integrations.vscode.disabled" : true,
   "plugins.beta" : false
 }
