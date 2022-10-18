@@ -1,7 +1,7 @@
---light: shine
+--light: shine,delek
 --dark:slate, habamax
 --both:lunaperche
-vim.cmd 'colo shine' 
+vim.cmd 'colo shine'
 local filenam = vim.fn.expand('%:p') --XXX default open
 if filenam == '' then vim.cmd [[e $MYVIMRC]] end
 
@@ -74,7 +74,7 @@ require 'packer'.startup(function(use) --XXX package
    use { 'williamboman/mason.nvim', config = function() require 'mason'.setup() end } -- lsp
    use { 'williamboman/mason-lspconfig.nvim', config = function()
       require 'mason-lspconfig'.setup {
-         ensure_installed = { 'sumneko_lua', 'rust_analyzer@nightly', 'html', 'taplo', 'json-lsp', 'marksman' }
+         ensure_installed = { 'sumneko_lua', 'rust_analyzer@nightly', 'html', 'taplo', 'json-lsp', 'clangd' }
       }
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
