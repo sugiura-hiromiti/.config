@@ -15,8 +15,8 @@ vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.autochdir = true
 vim.opt.laststatus = 0
 
-vim.keymap.set('n', '<esc>', ':noh<cr>') --<esc> to noh
-vim.keymap.set('i', '<c-[>', function() vim.cmd 'w' vim.lsp.buf.format { async = true } end)
+vim.keymap.set('n', '<esc>', '<cmd>noh<cr>') --<esc> to noh
+vim.keymap.set('i', '<c-[>', '<cmd>update | lua vim.lsp.buf.format{async=true}<cr><esc>')
 vim.keymap.set({ 'n', 'v' }, ',', '@:') --repeat previous command
 vim.keymap.set('i', '<c-n>', '<down>') --emacs keybind
 vim.keymap.set('i', '<c-p>', '<up>')
@@ -25,6 +25,7 @@ vim.keymap.set('i', '<c-f>', '<right>')
 vim.keymap.set('i', '<c-a>', '<home>')
 vim.keymap.set('i', '<c-e>', '<end>')
 vim.keymap.set('i', '<c-d>', '<del>')
+vim.keymap.set('i', '<c-k>', '<right><c-c>v$hs')
 vim.keymap.set('i', '<a-d>', '<right><c-c>ves')
 vim.keymap.set('i', '<a-f>', '<c-right>')
 vim.keymap.set('i', '<a-b>', '<c-left>')
@@ -36,8 +37,6 @@ vim.keymap.set('n', '<space>b', require 'telescope.builtin'.buffers)
 vim.keymap.set({ 'n', 'v' }, '<space>p', require 'telescope.builtin'.registers)
 vim.keymap.set('n', '<space>e', require 'telescope'.extensions.file_browser.file_browser)
 vim.keymap.set('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
-vim.keymap.set('n', '<space>w', function() vim.cmd 'write' vim.lsp.buf.format { async = true } end)
---XXX the idea that <esc> as save & format worth trying
 vim.keymap.set({ 'n', 'v' }, '<space>a', vim.lsp.buf.code_action) --lspsaga
 vim.keymap.set('n', '<space>r', vim.lsp.buf.rename)
 vim.keymap.set('n', '<space>h', vim.lsp.buf.hover)
