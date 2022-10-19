@@ -34,9 +34,9 @@ alias bu='brew uninstall'
 alias bi='brew install'
 alias bl='brew list'
 alias bs='brew search'
-alias cr='cargo run'
-alias cb='cargo build'
-alias ct='cargo test'
+alias mr='make run'
+alias mb='make build'
+alias mt='make test'
 alias wh='which -a'
 alias so='source'
 
@@ -48,6 +48,7 @@ ga(){
    git push
 }
 
+# argument must be directories or files
 a(){
    cd $1
    s
