@@ -7,8 +7,6 @@ vim.opt.signcolumn = 'no'
 vim.opt.softtabstop = 3
 vim.opt.shiftwidth = 3
 vim.opt.expandtab = true
-vim.opt.updatetime = 50
-vim.opt.mouse = 'a'
 vim.opt.autowriteall = true
 vim.opt.termguicolors = true
 vim.opt.clipboard:append { 'unnamedplus' }
@@ -34,7 +32,6 @@ vim.keymap.set('n', '<space>o', require 'telescope.builtin'.lsp_document_symbols
 vim.keymap.set('n', '<space>d', require 'telescope.builtin'.diagnostics)
 vim.keymap.set('n', '<space>j', require 'telescope.builtin'.lsp_references) --`j` stands for jump
 vim.keymap.set('n', '<space>b', require 'telescope.builtin'.buffers)
-vim.keymap.set({ 'n', 'v' }, '<space>p', require 'telescope.builtin'.registers)
 vim.keymap.set('n', '<space>e', require 'telescope'.extensions.file_browser.file_browser)
 vim.keymap.set('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
 vim.keymap.set({ 'n', 'v' }, '<space>a', vim.lsp.buf.code_action) --lspsaga
