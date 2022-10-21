@@ -14,7 +14,7 @@ vim.opt.autochdir = true
 vim.opt.laststatus = 0
 
 vim.keymap.set('n', '<esc>', '<cmd>noh<cr>') --<esc> to noh
-vim.keymap.set('n', 'm', ':make')
+vim.keymap.set('n', 'm', ':make ')
 vim.keymap.set('i', '<c-[>', '<cmd>update | lua vim.lsp.buf.format{async=true}<cr><esc>')
 vim.keymap.set({ 'n', 'v' }, ',', '@:') --repeat previous command
 vim.keymap.set('i', '<c-n>', '<down>') --emacs keybind
@@ -35,7 +35,7 @@ vim.keymap.set('n', '<space>j', require 'telescope.builtin'.lsp_references) --`j
 vim.keymap.set('n', '<space>b', require 'telescope.builtin'.buffers)
 vim.keymap.set('n', '<space>e', require 'telescope'.extensions.file_browser.file_browser)
 vim.keymap.set('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
-vim.keymap.set({ 'n', 'v' }, '<space>a', vim.lsp.buf.code_action) --lspsaga
+vim.keymap.set({ 'n', 'v' }, '<space>a', vim.lsp.buf.code_action) 
 vim.keymap.set('n', '<space>r', vim.lsp.buf.rename)
 vim.keymap.set('n', '<space>h', vim.lsp.buf.hover)
 vim.keymap.set('n', '<c-j>', vim.diagnostic.goto_next)
