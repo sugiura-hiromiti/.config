@@ -35,7 +35,7 @@ vim.keymap.set('n', '<space>j', require 'telescope.builtin'.lsp_references) --`j
 vim.keymap.set('n', '<space>b', require 'telescope.builtin'.buffers)
 vim.keymap.set('n', '<space>e', require 'telescope'.extensions.file_browser.file_browser)
 vim.keymap.set('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
-vim.keymap.set({ 'n', 'v' }, '<space>a', vim.lsp.buf.code_action) 
+vim.keymap.set({ 'n', 'v' }, '<space>a', vim.lsp.buf.code_action)
 vim.keymap.set('n', '<space>r', vim.lsp.buf.rename)
 vim.keymap.set('n', '<space>h', vim.lsp.buf.hover)
 vim.keymap.set('n', '<c-j>', vim.diagnostic.goto_next)
@@ -45,7 +45,6 @@ vim.keymap.set('t', '<A-t>', [[<C-\><C-n><cmd>q<cr>]])
 
 require 'packer'.startup(function(use) --XXX package
    use 'wbthomason/packer.nvim'
-   use { 'windwp/nvim-autopairs', config = function() require 'nvim-autopairs'.setup { map_c_h = true } end }
    use 'nvim-lua/plenary.nvim'
    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', config = function() -- telescope
       require 'telescope'.setup { pickers = { findfiles = { hidden = true } },
