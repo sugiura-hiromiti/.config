@@ -74,6 +74,7 @@ require 'packer'.startup(function(use) --XXX package
          mapping = cmp.mapping.preset.insert({
             ['<c-u>'] = cmp.mapping.scroll_docs(-10),
             ['<c-d>'] = cmp.mapping.scroll_docs(10),
+            ['<c-c>'] = cmp.mapping.abort(),
             ['<tab>'] = cmp.mapping.confirm {
                behavior = cmp.ConfirmBehavior.Insert,
                select = true,
