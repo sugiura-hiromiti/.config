@@ -1,5 +1,3 @@
-#zshenv is mainly for exporting paths, environment variables
-
 set -o emacs
 
 export PATH=$PATH:$HOME/.cargo/env
