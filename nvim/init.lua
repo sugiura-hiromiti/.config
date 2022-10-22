@@ -12,6 +12,7 @@ vim.opt.termguicolors = true
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.autochdir = true
 vim.opt.laststatus = 0
+vim.opt.virtualedit = 'all'
 
 vim.keymap.set('n', '<esc>', '<cmd>noh<cr>') --<esc> to noh
 vim.keymap.set('i', '<c-[>', '<cmd>update | lua vim.lsp.buf.format{async=true}<cr><esc>')
@@ -46,6 +47,7 @@ vim.keymap.set('t', '<A-t>', [[<C-\><C-n><cmd>q<cr>]])
 require 'packer'.startup(function(use) --XXX package
    use 'wbthomason/packer.nvim'
    use 'nvim-lua/plenary.nvim'
+   use { 'windwp/nvim-autopairs', config = function() require 'nvim-autopairs'.setup { map_c_h = true } end }
    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', config = function() -- telescope
       require 'telescope'.setup { extensions = { file_browser = { hidden = true, hide_parent_dir = true }, } }
       require 'telescope'.load_extension 'frecency'
@@ -85,7 +87,7 @@ require 'packer'.startup(function(use) --XXX package
                else
                   fallback()
                end
-            end, { 'i', 's', 'c' }),
+            end, { 'i', 's' }),
             ['<c-p>'] = cmp.mapping(function(fallback)
                if cmp.visible() then
                   cmp.select_prev_item()
@@ -94,7 +96,7 @@ require 'packer'.startup(function(use) --XXX package
                else
                   fallback()
                end
-            end, { 'i', 's', 'c' }),
+            end, { 'i', 's' }),
          }),
          sources = { { name = 'nvim_lsp' }, { name = 'nvim_lua' }, { name = 'luasnip' }, },
       }

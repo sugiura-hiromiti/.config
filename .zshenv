@@ -40,9 +40,3 @@ ga(){
    git commit -am $1
    git push
 }
-
-# argument must be directories or files
-a(){
-   cd $1
-   s
-}
