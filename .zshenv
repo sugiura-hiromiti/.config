@@ -3,8 +3,6 @@
 export PATH=$PATH:$HOME/.cargo/env
 export PATH=$PATH:$HOME/.cargo/bin
 
-#typeset -gU cdpath fpath mailpath path
-
 path=(
    /opt/homebrew/bin(N)
    /opt/homebrew/sbin(N)
@@ -48,4 +46,4 @@ a(){
    s
 }
 
-eval $(brew shellenv)
+#eval $(brew shellenv)
