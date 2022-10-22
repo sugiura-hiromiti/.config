@@ -24,6 +24,7 @@ vim.keymap.set('i', '<c-a>', '<home>')
 vim.keymap.set('i', '<c-e>', '<end>')
 vim.keymap.set('i', '<c-d>', '<del>')
 vim.keymap.set('i', '<c-k>', '<right><c-c>v$hs')
+vim.keymap.set('i', '<c-u>', '<c-c>v^s')
 vim.keymap.set('i', '<a-d>', '<right><c-c>ves')
 vim.keymap.set('i', '<a-f>', '<c-right>')
 vim.keymap.set('i', '<a-b>', '<c-left>')
@@ -46,8 +47,7 @@ require 'packer'.startup(function(use) --XXX package
    use 'wbthomason/packer.nvim'
    use 'nvim-lua/plenary.nvim'
    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', config = function() -- telescope
-      require 'telescope'.setup { pickers = { findfiles = { hidden = true } },
-         extensions = { file_browser = { hidden = true, hide_parent_dir = true }, } }
+      require 'telescope'.setup { extensions = { file_browser = { hidden = true, hide_parent_dir = true }, } }
       require 'telescope'.load_extension 'frecency'
       require 'telescope'.load_extension 'file_browser'
    end }
@@ -56,7 +56,7 @@ require 'packer'.startup(function(use) --XXX package
    use 'kkharji/sqlite.lua'
    use { 'williamboman/mason.nvim', config = function() require 'mason'.setup() end } -- lsp
    use { 'williamboman/mason-lspconfig.nvim', config = function()
-      require 'mason-lspconfig'.setup { ensure_installed = { 'sumneko_lua', 'rust_analyzer@nightly', 'html', 'taplo' } }
+      require 'mason-lspconfig'.setup { ensure_installed = { 'sumneko_lua', 'rust_analyzer@nightly' } }
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
       require 'mason-lspconfig'.setup_handlers {
