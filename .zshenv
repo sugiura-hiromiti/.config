@@ -1,12 +1,9 @@
 #zshenv is mainly for exporting paths, environment variables
 
-autoload -U compinit ; compinit
-set -o emacs
-
 export PATH=$PATH:$HOME/.cargo/env
 export PATH=$PATH:$HOME/.cargo/bin
 
-typeset -gU cdpath fpath mailpath path
+#typeset -gU cdpath fpath mailpath path
 
 path=(
    /opt/homebrew/bin(N)
@@ -34,9 +31,6 @@ alias bu='brew uninstall'
 alias bi='brew install'
 alias bl='brew list'
 alias bs='brew search'
-alias mr='make run'
-alias mb='make build'
-alias mt='make test'
 alias wh='which -a'
 alias so='source'
 

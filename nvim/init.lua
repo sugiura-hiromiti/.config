@@ -14,7 +14,6 @@ vim.opt.autochdir = true
 vim.opt.laststatus = 0
 
 vim.keymap.set('n', '<esc>', '<cmd>noh<cr>') --<esc> to noh
-vim.keymap.set('n', 'm', ':make ')
 vim.keymap.set('i', '<c-[>', '<cmd>update | lua vim.lsp.buf.format{async=true}<cr><esc>')
 vim.keymap.set({ 'n', 'v' }, ',', '@:') --repeat previous command
 vim.keymap.set('i', '<c-n>', '<down>') --emacs keybind
