@@ -1,5 +1,7 @@
 #zshenv is mainly for exporting paths, environment variables
 
+set -o emacs
+
 export PATH=$PATH:$HOME/.cargo/env
 export PATH=$PATH:$HOME/.cargo/bin
 
@@ -35,8 +37,7 @@ alias so='source'
 #functions
 # To remove function in zsh, `unset -f [function name]`
 ga(){
-   git add .
-   git commit -m $1
+   git commit -am $1
    git push
 }
 
@@ -45,5 +46,3 @@ a(){
    cd $1
    s
 }
-
-#eval $(brew shellenv)
