@@ -6,7 +6,6 @@ vim.opt.softtabstop = 3
 vim.opt.shiftwidth = 3
 vim.opt.expandtab = true
 vim.opt.autowriteall = true
-vim.opt.termguicolors = true
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.laststatus = 0
 
@@ -69,10 +68,7 @@ require 'packer'.startup(function(use) --XXX package
             ['<c-u>'] = cmp.mapping.scroll_docs(-10),
             ['<c-d>'] = cmp.mapping.scroll_docs(10),
             ['<c-c>'] = cmp.mapping.abort(),
-            ['<tab>'] = cmp.mapping.confirm {
-               behavior = cmp.ConfirmBehavior.Insert,
-               select = true,
-            },
+            ['<tab>'] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Insert, select = true, },
             ['<c-n>'] = cmp.mapping(function(fallback)
                if cmp.visible() then
                   cmp.select_next_item()
