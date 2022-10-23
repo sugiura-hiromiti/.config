@@ -3,16 +3,18 @@ if vim.fn.expand('%:p') == '' then vim.cmd [[e $MYVIMRC]] end
 
 vim.opt.pumblend = 20
 vim.opt.relativenumber = true
-vim.opt.number=true
+vim.opt.number = true
 vim.opt.softtabstop = 3
 vim.opt.shiftwidth = 3
 vim.opt.expandtab = true
 vim.opt.autowriteall = true
 vim.opt.termguicolors = true
 vim.opt.clipboard:append { 'unnamedplus' }
+vim.opt.autochdir = true
 vim.opt.laststatus = 0
 
 vim.keymap.set('n', '<esc>', '<cmd>noh<cr>') --<esc> to noh
+-- NOTE: only save on format when proper filetype
 vim.keymap.set('i', '<c-[>', '<cmd>update | lua vim.lsp.buf.format{async=true}<cr><esc>')
 vim.keymap.set({ 'n', 'v' }, ',', '@:') --repeat previous command
 vim.keymap.set('i', '<c-n>', '<down>') --emacs keybind
@@ -27,6 +29,7 @@ vim.keymap.set('i', '<c-u>', '<c-c>v^s')
 vim.keymap.set('i', '<a-d>', '<right><c-c>ves')
 vim.keymap.set('i', '<a-f>', '<c-right>')
 vim.keymap.set('i', '<a-b>', '<c-left>')
+-- NOTE: map <tab> to next todo_comment, <S-tab> to prev todo_comment
 vim.keymap.set({ 'n', 'v' }, '<a-h>', '<c-w>h')
 vim.keymap.set({ 'n', 'v' }, '<a-j>', '<c-w>j')
 vim.keymap.set({ 'n', 'v' }, '<a-k>', '<c-w>k')
