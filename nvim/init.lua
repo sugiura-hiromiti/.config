@@ -1,13 +1,20 @@
-vim.cmd 'colo slate'
+vim.cmd 'colo kalisi'
 if vim.fn.expand('%:p') == '' then vim.cmd [[e $MYVIMRC]] end
 
+vim.opt.pumblend = 20
 vim.opt.relativenumber = true
+vim.opt.signcolumn = 'no'
 vim.opt.softtabstop = 3
 vim.opt.shiftwidth = 3
 vim.opt.expandtab = true
 vim.opt.autowriteall = true
+vim.opt.termguicolors = true
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.laststatus = 0
+vim.opt.list = true
+vim.opt.listchars = {
+   tab = '│ ',
+}
 
 vim.keymap.set('n', '<esc>', '<cmd>noh<cr>') --<esc> to noh
 vim.keymap.set('i', '<c-[>', '<cmd>update | lua vim.lsp.buf.format{async=true}<cr><esc>')
@@ -40,6 +47,13 @@ vim.keymap.set('n', '<c-k>', vim.diagnostic.goto_prev)
 require 'packer'.startup(function(use) --XXX package
    use 'wbthomason/packer.nvim'
    use 'nvim-lua/plenary.nvim'
+   use { 'amdt/sunset',
+      config = function()
+         vim.g.sunset_latitude = 35.03
+         vim.g.sunset_longitude = 135.79
+      end }
+   use 'freeo/vim-kalisi'
+   use 'nvim-tree/nvim-web-devicons'
    use { 'windwp/nvim-autopairs', config = function() require 'nvim-autopairs'.setup { map_c_h = true } end }
    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', config = function() -- telescope
       require 'telescope'.setup { extensions = { file_browser = { hidden = true, hide_parent_dir = true }, } }
