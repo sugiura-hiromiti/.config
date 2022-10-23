@@ -11,10 +11,6 @@ vim.opt.autowriteall = true
 vim.opt.termguicolors = true
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.laststatus = 0
-vim.opt.list = true
-vim.opt.listchars = {
-   tab = '│ ',
-}
 
 vim.keymap.set('n', '<esc>', '<cmd>noh<cr>') --<esc> to noh
 vim.keymap.set('i', '<c-[>', '<cmd>update | lua vim.lsp.buf.format{async=true}<cr><esc>')
