@@ -35,6 +35,7 @@ alias so='source'
 #functions
 # To remove function in zsh, `unset -f [function name]`
 ga(){
-   git commit -am $1
+   git add .
+   git commit -m $1
    git push
 }
