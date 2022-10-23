@@ -43,12 +43,7 @@ vim.keymap.set('n', '<c-k>', vim.diagnostic.goto_prev)
 require 'packer'.startup(function(use) --XXX package
    use 'wbthomason/packer.nvim'
    use 'nvim-lua/plenary.nvim'
-   use { 'amdt/sunset',
-      config = function()
-         vim.g.sunset_latitude = 35.03
-         vim.g.sunset_longitude = 135.79
-      end }
-   use 'freeo/vim-kalisi'
+   use 'sugiura-hiromichi/vim-kalisi'
    use 'nvim-tree/nvim-web-devicons'
    use { 'windwp/nvim-autopairs', config = function() require 'nvim-autopairs'.setup { map_c_h = true } end }
    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', config = function() -- telescope
