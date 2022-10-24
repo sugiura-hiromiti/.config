@@ -1,53 +1,66 @@
 vim.cmd 'colo tokyonight'
 if vim.fn.expand('%:p') == '' then vim.cmd [[e $MYVIMRC]] end
 
-vim.opt.pumblend = 20
-vim.opt.relativenumber = true
-vim.opt.number = true
-vim.opt.softtabstop = 3
-vim.opt.shiftwidth = 3
-vim.opt.expandtab = true
-vim.opt.autowriteall = true
-vim.opt.termguicolors = true
-vim.opt.clipboard:append { 'unnamedplus' }
-vim.opt.autochdir = true
-vim.opt.laststatus = 0
-
-vim.keymap.set('n', '<esc>', '<cmd>noh<cr>') --<esc> to noh
--- NOTE: only save on format when proper filetype
-vim.keymap.set('i', '<c-[>', '<cmd>update | lua vim.lsp.buf.format{async=true}<cr><esc>')
-vim.keymap.set({ 'n', 'v' }, ',', '@:') --repeat previous command
-vim.keymap.set('i', '<c-n>', '<down>') --emacs keybind
-vim.keymap.set('i', '<c-p>', '<up>')
-vim.keymap.set('i', '<c-b>', '<left>')
-vim.keymap.set('i', '<c-f>', '<right>')
-vim.keymap.set('i', '<c-a>', '<home>')
-vim.keymap.set('i', '<c-e>', '<end>')
-vim.keymap.set('i', '<c-d>', '<del>')
-vim.keymap.set('i', '<c-k>', '<right><c-c>v$hs')
-vim.keymap.set('i', '<c-u>', '<c-c>v^s')
-vim.keymap.set('i', '<a-d>', '<right><c-c>ves')
-vim.keymap.set('i', '<a-f>', '<c-right>')
-vim.keymap.set('i', '<a-b>', '<c-left>')
+local p = vim.opt
+p.pumblend = 20
+p.relativenumber = true
+p.number = true
+p.softtabstop = 3
+p.shiftwidth = 3
+p.expandtab = true
+p.autowriteall = true
+p.termguicolors = true
+p.clipboard:append { 'unnamedplus' }
+p.autochdir = true
+p.laststatus = 0
+function()
+   local blacklist = { 'TelescopePrompt', 'TelescopeResults', 'frecency' }
+   local is_black
+   for _, ft in ipairs(blacklist) do
+      if vim.bo.filetype == ft then
+         is_black = true
+         break
+      end
+   end
+   if is_black then
+      vim.cmd 'update'
+   else
+   end
+end
+local map = vim.keymap.set
+map('n', '<esc>', '<cmd>noh<cr>') --<esc> to noh
+map({ 'n', 'v' }, ',', '@:') --repeat previous command
+map('i', '<c-n>', '<down>') --emacs keybind
+map('i', '<c-p>', '<up>')
+map('i', '<c-b>', '<left>')
+map('i', '<c-f>', '<right>')
+map('i', '<c-a>', '<home>')
+map('i', '<c-e>', '<end>')
+map('i', '<c-d>', '<del>')
+map('i', '<c-k>', '<right><c-c>v$hs')
+map('i', '<c-u>', '<c-c>v^s')
+map('i', '<a-d>', '<right><c-c>ves')
+map('i', '<a-f>', '<c-right>')
+map('i', '<a-b>', '<c-left>')
 -- NOTE: map <tab> to next todo_comment, <S-tab> to prev todo_comment
-vim.keymap.set({ 'n', 'v' }, '<a-h>', '<c-w>h')
-vim.keymap.set({ 'n', 'v' }, '<a-j>', '<c-w>j')
-vim.keymap.set({ 'n', 'v' }, '<a-k>', '<c-w>k')
-vim.keymap.set({ 'n', 'v' }, '<a-l>', '<c-w>l')
-vim.keymap.set('n', 't', require 'telescope.builtin'.builtin) -- Telescope
-vim.keymap.set('n', '<space>o', require 'telescope.builtin'.lsp_document_symbols)
-vim.keymap.set('n', '<space>d', require 'telescope.builtin'.diagnostics)
-vim.keymap.set('n', '<space>j', require 'telescope.builtin'.lsp_references) --`j` stands for jump
-vim.keymap.set('n', '<space>b', require 'telescope.builtin'.buffers)
-vim.keymap.set('n', '<space>e', require 'telescope'.extensions.file_browser.file_browser)
-vim.keymap.set('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
-vim.keymap.set('n', '<space>c', '<cmd>TodoTelescope<cr>')
-vim.keymap.set('n', '<space>n', '<cmd>Telescope notify<cr>')
-vim.keymap.set({ 'n', 'v' }, '<space>a', vim.lsp.buf.code_action)
-vim.keymap.set('n', '<space>r', vim.lsp.buf.rename)
-vim.keymap.set('n', '<space>h', vim.lsp.buf.hover)
-vim.keymap.set('n', '<c-j>', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<c-k>', vim.diagnostic.goto_prev)
+map({ 'n', 'v' }, '<a-h>', '<c-w>h')
+map({ 'n', 'v' }, '<a-j>', '<c-w>j')
+map({ 'n', 'v' }, '<a-k>', '<c-w>k')
+map({ 'n', 'v' }, '<a-l>', '<c-w>l')
+map('n', 't', require 'telescope.builtin'.builtin) -- Telescope
+map('n', '<space>o', require 'telescope.builtin'.lsp_document_symbols)
+map('n', '<space>d', require 'telescope.builtin'.diagnostics)
+map('n', '<space>j', require 'telescope.builtin'.lsp_references) --`j` stands for jump
+map('n', '<space>b', require 'telescope.builtin'.buffers)
+map('n', '<space>e', require 'telescope'.extensions.file_browser.file_browser)
+map('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
+map('n', '<space>c', '<cmd>TodoTelescope<cr>')
+map('n', '<space>n', '<cmd>Telescope notify<cr>')
+map({ 'n', 'v' }, '<space>a', vim.lsp.buf.code_action)
+map('n', '<space>r', vim.lsp.buf.rename)
+map('n', '<space>h', vim.lsp.buf.hover)
+map('n', '<c-j>', vim.diagnostic.goto_next)
+map('n', '<c-k>', vim.diagnostic.goto_prev)
 
 require 'packer'.startup(function(use) --XXX package
    use 'wbthomason/packer.nvim'
@@ -57,10 +70,15 @@ require 'packer'.startup(function(use) --XXX package
    use { 'folke/noice.nvim', event = 'VimEnter', config = function() require 'noice'.setup() end }
    use 'MunifTanjim/nui.nvim'
    use 'rcarriga/nvim-notify'
-   use { 'nvim-treesitter/nvim-treesitter', config = function()
+   --[[ NOTE: treesitter
+   --]]
+   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function()
       require 'nvim-treesitter.configs'.setup {
          auto_install = true,
-         additional_vim_regex_highlighting = false
+         highlight = {
+            enable = true,
+            additional_vim_regex_highlighting = false
+         }
       }
    end }
    use 'nvim-tree/nvim-web-devicons'
@@ -76,7 +94,64 @@ require 'packer'.startup(function(use) --XXX package
    use 'williamboman/mason.nvim'
    use 'williamboman/mason-lspconfig.nvim'
    use 'neovim/nvim-lspconfig'
-   use 'hrsh7th/nvim-cmp'
+   use { 'hrsh7th/nvim-cmp', config = function()
+      local luasnip = require 'luasnip'
+      local cmp = require 'cmp'
+      cmp.setup {
+         snippet = {
+            expand = function(args)
+               luasnip.lsp_expand(args.body)
+            end,
+         },
+         mapping = cmp.mapping.preset.insert({
+            ['<c-u>'] = cmp.mapping.scroll_docs(-10),
+            ['<c-d>'] = cmp.mapping.scroll_docs(10),
+            ['<c-c>'] = cmp.mapping.abort(),
+            ['<tab>'] = cmp.mapping.confirm {
+               behavior = cmp.ConfirmBehavior.Insert,
+               select = true,
+            },
+            ['<c-n>'] = cmp.mapping(function(fallback)
+               if cmp.visible() then
+                  cmp.select_next_item()
+               elseif luasnip.expand_or_jumpable() then
+                  luasnip.expand_or_jump()
+               else
+                  fallback()
+               end
+            end, { 'i', 's', 'c' }),
+            ['<c-p>'] = cmp.mapping(function(fallback)
+               if cmp.visible() then
+                  cmp.select_prev_item()
+               elseif luasnip.jumpable(-1) then
+                  luasnip.jump(-1)
+               else
+                  fallback()
+               end
+            end, { 'i', 's', 'c' }),
+         }),
+         sources = {
+            { name = 'nvim_lsp' },
+            { name = 'nvim_lua' },
+            { name = 'luasnip' },
+            { name = 'nvim_lsp_signature_help' },
+            { name = 'path' },
+            { name = 'buffer' }
+         },
+      }
+      cmp.setup.cmdline('/', {
+         sources = {
+            { name = 'buffer' },
+            { name = 'nvim_lsp_document_symbol' }
+         }
+      })
+      cmp.setup.cmdline(':', {
+         sources = {
+            { name = 'cmdline' },
+            { name = 'path' }
+         }
+      })
+   end }
    use 'hrsh7th/cmp-nvim-lsp'
    use 'hrsh7th/cmp-nvim-lua'
    use 'hrsh7th/cmp-nvim-lsp-signature-help'
@@ -89,4 +164,4 @@ require 'packer'.startup(function(use) --XXX package
 end)
 
 require 'lsp'
-require 'cmp'
+--require 'cmp'
