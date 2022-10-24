@@ -6,11 +6,12 @@ require 'mason-lspconfig'.setup {
    }
 }
 
+local capabilities = require 'cmp_nvim_lsp'.default_capabilities()
 --[[ NOTE: cap
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 --]]
-local capabilities = require 'cmp_nvim_lsp'.default_capabilities()
+
 
 -- NOTE: rust_analyzer
 require('lspconfig').rust_analyzer.setup {
