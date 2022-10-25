@@ -54,7 +54,25 @@ map('n', '<c-k>', vim.diagnostic.goto_prev)
 require 'packer'.startup(function(use) -- INFO: package
    use 'wbthomason/packer.nvim'
    use 'nvim-lua/plenary.nvim'
-   use 'folke/tokyonight.nvim'
+   use 'kkharji/sqlite.lua'
+
+   use 'nvim-tree/nvim-web-devicons'
+   use { 'folke/tokyonight.nvim', config = function()
+      require 'tokyonight'.setup {
+         day_brightness = 0.36
+      }
+   end }
+   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function()
+      require 'nvim-treesitter.configs'.setup {
+         ensure_installed = { 'bash' },
+         auto_install = true,
+         highlight = {
+            enable = true,
+            additional_vim_regex_highlighting = false
+         }
+      }
+   end }
+
    use { 'folke/todo-comments.nvim', config = function()
       require 'todo-comments'.setup {
          keywords = {
@@ -63,28 +81,29 @@ require 'packer'.startup(function(use) -- INFO: package
          }
       }
    end }
-   use { 'folke/noice.nvim', event = 'VimEnter', config = function() require 'noice'.setup() end }
+   use { 'folke/noice.nvim', event = 'VimEnter', config = function()
+      require 'noice'.setup()
+   end }
    use 'MunifTanjim/nui.nvim'
    use 'rcarriga/nvim-notify'
-   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function()
-      require 'nvim-treesitter.configs'.setup {
-         auto_install = true,
-         highlight = {
-            enable = true,
-            additional_vim_regex_highlighting = false
-         }
+   use { 'windwp/nvim-autopairs', config = function()
+      require 'nvim-autopairs'.setup {
+         map_c_h = true
       }
    end }
-   use 'nvim-tree/nvim-web-devicons'
-   use { 'windwp/nvim-autopairs', config = function() require 'nvim-autopairs'.setup { map_c_h = true } end }
    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', config = function() -- telescope
-      require 'telescope'.setup { extensions = { file_browser = { hidden = true, hide_parent_dir = true }, } }
+      require 'telescope'.setup {
+         extensions = {
+            file_browser = {
+               hidden = true, hide_parent_dir = true
+            },
+         }
+      }
       require 'telescope'.load_extension 'frecency'
       require 'telescope'.load_extension 'file_browser'
    end }
    use 'nvim-telescope/telescope-frecency.nvim'
    use 'nvim-telescope/telescope-file-browser.nvim'
-   use 'kkharji/sqlite.lua'
    use { 'williamboman/mason.nvim', config = function()
       require 'mason'.setup()
    end }
