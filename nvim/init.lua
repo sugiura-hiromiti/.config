@@ -59,6 +59,7 @@ require 'packer'.startup(function(use) -- INFO: package
    use 'nvim-tree/nvim-web-devicons'
    use { 'folke/tokyonight.nvim', config = function()
       require 'tokyonight'.setup {
+         transparent = true,
          day_brightness = 0.36
       }
    end }
@@ -110,6 +111,7 @@ require 'packer'.startup(function(use) -- INFO: package
    use { 'williamboman/mason-lspconfig.nvim', config = function()
       require 'mason-lspconfig'.setup {
          ensure_installed = {
+            'bashls',
             'sumneko_lua',
             'rust_analyzer@nightly'
          }
