@@ -2,7 +2,7 @@ require 'packer'.startup(function(use) -- XXX: package
    use 'wbthomason/packer.nvim'
    use 'nvim-lua/plenary.nvim'
    use 'folke/tokyonight.nvim'
-   use { 'folke/todo-comments.nvim', config = function() require 'todo-comments'.setup {} end }
+   use  'folke/todo-comments.nvim', config = function() require 'todo-comments'.setup {} end }
    use { 'folke/noice.nvim', event = 'VimEnter', config = function() require 'noice'.setup() end }
    use 'MunifTanjim/nui.nvim'
    use 'rcarriga/nvim-notify'
@@ -25,10 +25,164 @@ require 'packer'.startup(function(use) -- XXX: package
    use 'nvim-telescope/telescope-frecency.nvim'
    use 'nvim-telescope/telescope-file-browser.nvim'
    use 'kkharji/sqlite.lua'
-   use 'williamboman/mason.nvim'
-   use 'williamboman/mason-lspconfig.nvim'
-   use 'neovim/nvim-lspconfig'
-   use  'hrsh7th/nvim-cmp'
+   use{ 'williamboman/mason.nvim',config=function()
+require'mason'.setup()
+   end}
+   use{ 'williamboman/mason-lspconfig.nvim',config=function()
+
+require 'mason-lspconfig'.setup {
+   ensure_installed = {
+      'sumneko_lua',
+      'rust_analyzer@nightly'
+   }
+}
+   end}
+   use{ 'neovim/nvim-lspconfig',config=function()
+local capabilities = require 'cmp_nvim_lsp'.default_capabilities()
+
+-- NOTE: rust_analyzer
+require('lspconfig').rust_analyzer.setup {
+   capabilities = capabilities,
+   settings = {
+      ["rust-analyzer"] = {
+         hover = {
+            actions = {
+               reference = {
+                  enable = true
+               }
+            }
+         },
+         inlayHints = {
+            closingBraceHints = {
+               minLines = 0
+            },
+            lifetimeElisionHints = {
+               enable = 'always',
+               useParameterNames = true
+            },
+            maxLength = 0,
+            typeHints = {
+               hideNamedConstructor = false
+            }
+         },
+         lens = {
+            implementations = {
+               enable = false
+            }
+         },
+         rustfmt = {
+            rangeFormatting = {
+               enable = true
+            }
+         },
+         semanticHighlighting = {
+            operator = {
+               specialization = {
+                  enable = true
+               }
+            }
+         },
+         typing = {
+            autoClosingAngleBrackets = {
+               enable = true
+            }
+         },
+         workspace = {
+            symbol = {
+               search = {
+                  kind = 'all_symbols'
+               }
+            }
+         }
+      }
+   }
+}
+
+-- NOTE: lua
+require 'lspconfig'.sumneko_lua.setup {
+   capabilities = capabilities,
+   settings = {
+      Lua = {
+         runtime = {
+            version = 'LuaJIT',
+         },
+         diagnostics = {
+            globals = { 'vim' },
+         },
+         workspace = {
+            library = vim.api.nvim_get_runtime_file("", true),
+         },
+         telemetry = {
+            enable = false,
+         },
+      },
+   },
+}
+   end}
+   use{ 'hrsh7th/nvim-cmp',config=function()
+
+local luasnip = require 'luasnip'
+local cmp = require 'cmp'
+cmp.setup {
+   snippet = {
+      expand = function(args)
+         luasnip.lsp_expand(args.body)
+      end,
+   },
+   window = {
+      completion = cmp.config.window.bordered()
+      --documentation = cmp.config.window.bordered()
+   },
+   mapping = cmp.mapping.preset.insert({
+      ['<c-u>'] = cmp.mapping.scroll_docs(-10),
+      ['<c-d>'] = cmp.mapping.scroll_docs(10),
+      ['<c-c>'] = cmp.mapping.abort(),
+      ['<tab>'] = cmp.mapping.confirm {
+         behavior = cmp.ConfirmBehavior.Insert,
+         select = true,
+      },
+      ['<c-n>'] = cmp.mapping(function(fallback)
+         if cmp.visible() then
+            cmp.select_next_item()
+         elseif luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+         else
+            fallback()
+         end
+      end, { 'i', 's', 'c' }),
+      ['<c-p>'] = cmp.mapping(function(fallback)
+         if cmp.visible() then
+            cmp.select_prev_item()
+         elseif luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+         else
+            fallback()
+         end
+      end, { 'i', 's', 'c' }),
+   }),
+   sources = {
+      { name = 'luasnip' },
+      { name = 'nvim_lsp' },
+      { name = 'nvim_lua' },
+      { name = 'nvim_lsp_signature_help' },
+      { name = 'buffer' }
+   }
+}
+
+cmp.setup.cmdline('/', {
+   sources = {
+      { name = 'buffer' },
+      { name = 'nvim_lsp_document_symbol' }
+   }
+})
+
+cmp.setup.cmdline(':', {
+   sources = {
+      { name = 'path' },
+      { name = 'cmdline' },
+   }
+})
+   end}
    use 'hrsh7th/cmp-nvim-lsp'
    use 'hrsh7th/cmp-nvim-lua'
    use 'hrsh7th/cmp-nvim-lsp-signature-help'
