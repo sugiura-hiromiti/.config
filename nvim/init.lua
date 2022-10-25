@@ -14,7 +14,7 @@ p.clipboard:append { 'unnamedplus' }
 p.autochdir = true
 p.laststatus = 0
 
-local map = vim.keymap.set
+local map = vim.keymap.set -- INFO: keymap
 map('n', '<esc>', '<cmd>noh<cr>') --<esc> to noh
 map('i', '<c-[>', '<c-[><cmd>update | lua vim.lsp.buf.format{async=true}<cr>')
 map({ 'n', 'v' }, ',', '@:') --repeat previous command
@@ -30,8 +30,8 @@ map('i', '<c-u>', '<c-c>v^s')
 map('i', '<a-d>', '<right><c-c>ves')
 map('i', '<a-f>', '<c-right>')
 map('i', '<a-b>', '<c-left>')
-map('n', '<tab>', function() require 'todo-comments'.jump_next() end)
-map('n', '<S-tab>', function() require 'todo-comments'.jump_prev() end)
+map('n', '<tab>', require 'todo-comments'.jump_next)
+map('n', '<S-tab>', require 'todo-comments'.jump_prev)
 map({ 'n', 'v' }, '<a-h>', '<c-w>h')
 map({ 'n', 'v' }, '<a-j>', '<c-w>j')
 map({ 'n', 'v' }, '<a-k>', '<c-w>k')
@@ -51,11 +51,18 @@ map('n', '<space>h', vim.lsp.buf.hover)
 map('n', '<c-j>', vim.diagnostic.goto_next)
 map('n', '<c-k>', vim.diagnostic.goto_prev)
 
-require 'packer'.startup(function(use) -- XXX: package
+require 'packer'.startup(function(use) -- INFO: package
    use 'wbthomason/packer.nvim'
    use 'nvim-lua/plenary.nvim'
    use 'folke/tokyonight.nvim'
-   use { 'folke/todo-comments.nvim', config = function() require 'todo-comments'.setup {} end }
+   use { 'folke/todo-comments.nvim', config = function()
+      require 'todo-comments'.setup {
+         keywords = {
+            TODO = { alt = { "IDEA" } },
+            PERF = { alt = { "OPT" } }
+         }
+      }
+   end }
    use { 'folke/noice.nvim', event = 'VimEnter', config = function() require 'noice'.setup() end }
    use 'MunifTanjim/nui.nvim'
    use 'rcarriga/nvim-notify'
@@ -92,7 +99,7 @@ require 'packer'.startup(function(use) -- XXX: package
    use { 'neovim/nvim-lspconfig', config = function()
       local capabilities = require 'cmp_nvim_lsp'.default_capabilities()
 
-      -- NOTE: rust_analyzer
+      -- INFO: rust_analyzer
       require('lspconfig').rust_analyzer.setup {
          capabilities = capabilities,
          settings = {
@@ -150,7 +157,7 @@ require 'packer'.startup(function(use) -- XXX: package
          }
       }
 
-      -- NOTE: lua
+      -- INFO: lua
       require 'lspconfig'.sumneko_lua.setup {
          capabilities = capabilities,
          settings = {
