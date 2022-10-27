@@ -77,6 +77,7 @@ require 'packer'.startup(function(use) -- INFO: package
       require 'todo-comments'.setup {
          keywords = {
             TODO = { alt = { "IDEA" } },
+            HACK = { alt = { "CASE" } },
             PERF = { alt = { "OPT" } }
          }
       }
