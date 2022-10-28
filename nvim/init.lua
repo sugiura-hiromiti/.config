@@ -59,7 +59,7 @@ require 'packer'.startup(function(use) -- INFO: package
    use 'nvim-tree/nvim-web-devicons'
    use { 'folke/tokyonight.nvim', config = function()
       require 'tokyonight'.setup {
-         day_brightness = 0.364
+         day_brightness = 0.372
       }
    end }
    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function()
