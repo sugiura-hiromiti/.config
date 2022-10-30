@@ -2,7 +2,6 @@ vim.cmd 'colo tokyonight'
 if vim.fn.expand('%:p') == '' then vim.cmd [[e $MYVIMRC]] end
 
 local p = vim.opt
-p.pumblend = 20
 p.relativenumber = true
 p.number = true
 p.softtabstop = 3
@@ -59,12 +58,13 @@ require 'packer'.startup(function(use) -- INFO: package
    use 'nvim-tree/nvim-web-devicons'
    use { 'folke/tokyonight.nvim', config = function()
       require 'tokyonight'.setup {
-         day_brightness = 0.372
+         transparent = true,
+         day_brightness = 0.4
       }
    end }
    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function()
       require 'nvim-treesitter.configs'.setup {
-         ensure_installed = { 'bash' },
+         ensure_installed = { 'bash', 'markdown_inline' },
          auto_install = true,
          highlight = {
             enable = true,
