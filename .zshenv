@@ -10,6 +10,7 @@ path=(
    /usr/local/sbin(N)
    ~/.local/bin
    ~/.local/sbin
+	~/.fig/bin
 	$path
 )
 

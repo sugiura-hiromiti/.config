@@ -2,16 +2,26 @@ vim.cmd 'colo tokyonight'
 if vim.fn.expand('%:p') == '' then vim.cmd [[e $MYVIMRC]] end
 
 local p = vim.opt
+p.list = true
+p.listchars = {
+	tab = '│ '
+}
 p.relativenumber = true
 p.number = true
-p.softtabstop = 3
-p.shiftwidth = 3
-p.expandtab = true
 p.autowriteall = true
 p.termguicolors = true
 p.clipboard:append { 'unnamedplus' }
 p.autochdir = true
 p.laststatus = 0
+
+local aucmd = vim.api.nvim_create_autocmd
+aucmd('vimenter', {
+	callback = function()
+		p.softtabstop = 3
+		p.tabstop = 3
+		p.shiftwidth = 3
+	end
+})
 
 local map = vim.keymap.set -- INFO: keymap
 map('n', '<esc>', '<cmd>noh<cr>') --<esc> to noh
@@ -51,224 +61,223 @@ map('n', '<c-j>', vim.diagnostic.goto_next)
 map('n', '<c-k>', vim.diagnostic.goto_prev)
 
 require 'packer'.startup(function(use) -- INFO: package
-   use 'wbthomason/packer.nvim'
-   use 'nvim-lua/plenary.nvim'
-   use 'kkharji/sqlite.lua'
+	use 'wbthomason/packer.nvim'
+	use 'nvim-lua/plenary.nvim'
+	use 'kkharji/sqlite.lua'
 
-   use 'nvim-tree/nvim-web-devicons'
-   use { 'folke/tokyonight.nvim', config = function()
-      require 'tokyonight'.setup {
-         transparent = true,
-         day_brightness = 0.4
-      }
-   end }
-   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function()
-      require 'nvim-treesitter.configs'.setup {
-         ensure_installed = { 'bash', 'markdown_inline' },
-         auto_install = true,
-         highlight = {
-            enable = true,
-            additional_vim_regex_highlighting = false
-         }
-      }
-   end }
+	use 'nvim-tree/nvim-web-devicons'
+	use { 'folke/tokyonight.nvim', config = function()
+		require 'tokyonight'.setup {
+			day_brightness = 0.361
+		}
+	end }
+	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function()
+		require 'nvim-treesitter.configs'.setup {
+			ensure_installed = { 'bash', 'markdown_inline' },
+			auto_install = true,
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = false
+			}
+		}
+	end }
 
-   use { 'folke/todo-comments.nvim', config = function()
-      require 'todo-comments'.setup {
-         keywords = {
-            TODO = { alt = { "IDEA" } },
-            HACK = { alt = { "CASE" } },
-            PERF = { alt = { "OPT" } }
-         }
-      }
-   end }
-   use { 'folke/noice.nvim', event = 'VimEnter', config = function()
-      require 'noice'.setup()
-   end }
-   use 'MunifTanjim/nui.nvim'
-   use 'rcarriga/nvim-notify'
-   use { 'windwp/nvim-autopairs', config = function()
-      require 'nvim-autopairs'.setup {
-         map_c_h = true
-      }
-   end }
-   use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', config = function() -- telescope
-      require 'telescope'.setup {
-         extensions = {
-            file_browser = {
-               hidden = true, hide_parent_dir = true
-            },
-         }
-      }
-      require 'telescope'.load_extension 'frecency'
-      require 'telescope'.load_extension 'file_browser'
-   end }
-   use 'nvim-telescope/telescope-frecency.nvim'
-   use 'nvim-telescope/telescope-file-browser.nvim'
-   use { 'williamboman/mason.nvim', config = function()
-      require 'mason'.setup()
-   end }
-   use { 'williamboman/mason-lspconfig.nvim', config = function()
-      require 'mason-lspconfig'.setup {
-         ensure_installed = {
-            'bashls',
-            'sumneko_lua',
-            'rust_analyzer@nightly'
-         }
-      }
-   end }
-   use { 'neovim/nvim-lspconfig', config = function()
-      local capabilities = require 'cmp_nvim_lsp'.default_capabilities()
+	use { 'folke/todo-comments.nvim', config = function()
+		require 'todo-comments'.setup {
+			keywords = {
+				TODO = { alt = { "IDEA" } },
+				HACK = { alt = { "CASE" } },
+				PERF = { alt = { "OPT" } }
+			}
+		}
+	end }
+	use { 'folke/noice.nvim', event = 'VimEnter', config = function()
+		require 'noice'.setup()
+	end }
+	use 'MunifTanjim/nui.nvim'
+	use 'rcarriga/nvim-notify'
+	use { 'windwp/nvim-autopairs', config = function()
+		require 'nvim-autopairs'.setup {
+			map_c_h = true
+		}
+	end }
+	use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', config = function() -- telescope
+		require 'telescope'.setup {
+			extensions = {
+				file_browser = {
+					hidden = true, hide_parent_dir = true
+				},
+			}
+		}
+		require 'telescope'.load_extension 'frecency'
+		require 'telescope'.load_extension 'file_browser'
+	end }
+	use 'nvim-telescope/telescope-frecency.nvim'
+	use 'nvim-telescope/telescope-file-browser.nvim'
+	use { 'williamboman/mason.nvim', config = function()
+		require 'mason'.setup()
+	end }
+	use { 'williamboman/mason-lspconfig.nvim', config = function()
+		require 'mason-lspconfig'.setup {
+			ensure_installed = {
+				'bashls',
+				'sumneko_lua',
+				'rust_analyzer@nightly'
+			}
+		}
+	end }
+	use { 'neovim/nvim-lspconfig', config = function()
+		local capabilities = require 'cmp_nvim_lsp'.default_capabilities()
 
-      -- INFO: rust_analyzer
-      require('lspconfig').rust_analyzer.setup {
-         capabilities = capabilities,
-         settings = {
-            ["rust-analyzer"] = {
-               hover = {
-                  actions = {
-                     reference = {
-                        enable = true
-                     }
-                  }
-               },
-               inlayHints = {
-                  closingBraceHints = {
-                     minLines = 0
-                  },
-                  lifetimeElisionHints = {
-                     enable = 'always',
-                     useParameterNames = true
-                  },
-                  maxLength = 0,
-                  typeHints = {
-                     hideNamedConstructor = false
-                  }
-               },
-               lens = {
-                  implementations = {
-                     enable = false
-                  }
-               },
-               rustfmt = {
-                  rangeFormatting = {
-                     enable = true
-                  }
-               },
-               semanticHighlighting = {
-                  operator = {
-                     specialization = {
-                        enable = true
-                     }
-                  }
-               },
-               typing = {
-                  autoClosingAngleBrackets = {
-                     enable = true
-                  }
-               },
-               workspace = {
-                  symbol = {
-                     search = {
-                        kind = 'all_symbols'
-                     }
-                  }
-               }
-            }
-         }
-      }
+		-- INFO: rust_analyzer
+		require('lspconfig').rust_analyzer.setup {
+			capabilities = capabilities,
+			settings = {
+				["rust-analyzer"] = {
+					hover = {
+						actions = {
+							reference = {
+								enable = true
+							}
+						}
+					},
+					inlayHints = {
+						closingBraceHints = {
+							minLines = 0
+						},
+						lifetimeElisionHints = {
+							enable = 'always',
+							useParameterNames = true
+						},
+						maxLength = 0,
+						typeHints = {
+							hideNamedConstructor = false
+						}
+					},
+					lens = {
+						implementations = {
+							enable = false
+						}
+					},
+					rustfmt = {
+						rangeFormatting = {
+							enable = true
+						}
+					},
+					semanticHighlighting = {
+						operator = {
+							specialization = {
+								enable = true
+							}
+						}
+					},
+					typing = {
+						autoClosingAngleBrackets = {
+							enable = true
+						}
+					},
+					workspace = {
+						symbol = {
+							search = {
+								kind = 'all_symbols'
+							}
+						}
+					}
+				}
+			}
+		}
 
-      -- INFO: lua
-      require 'lspconfig'.sumneko_lua.setup {
-         capabilities = capabilities,
-         settings = {
-            Lua = {
-               runtime = {
-                  version = 'LuaJIT',
-               },
-               diagnostics = {
-                  globals = { 'vim' },
-               },
-               workspace = {
-                  library = vim.api.nvim_get_runtime_file("", true),
-               },
-               telemetry = {
-                  enable = false,
-               },
-            },
-         },
-      }
-   end }
-   use { 'hrsh7th/nvim-cmp', config = function()
-      local luasnip = require 'luasnip'
-      local cmp = require 'cmp'
-      cmp.setup {
-         snippet = {
-            expand = function(args)
-               luasnip.lsp_expand(args.body)
-            end,
-         },
-         window = {
-            completion = cmp.config.window.bordered(),
-            documentation = cmp.config.window.bordered()
-         },
-         mapping = cmp.mapping.preset.insert({
-            ['<c-u>'] = cmp.mapping.scroll_docs(-10),
-            ['<c-d>'] = cmp.mapping.scroll_docs(10),
-            ['<c-c>'] = cmp.mapping.abort(),
-            ['<tab>'] = cmp.mapping.confirm {
-               behavior = cmp.ConfirmBehavior.Insert,
-               select = true,
-            },
-            ['<c-n>'] = cmp.mapping(function(fallback)
-               if cmp.visible() then
-                  cmp.select_next_item()
-               elseif luasnip.expand_or_jumpable() then
-                  luasnip.expand_or_jump()
-               else
-                  fallback()
-               end
-            end, { 'i', 's', 'c' }),
-            ['<c-p>'] = cmp.mapping(function(fallback)
-               if cmp.visible() then
-                  cmp.select_prev_item()
-               elseif luasnip.jumpable(-1) then
-                  luasnip.jump(-1)
-               else
-                  fallback()
-               end
-            end, { 'i', 's', 'c' }),
-         }),
-         sources = {
-            { name = 'luasnip' },
-            { name = 'nvim_lsp' },
-            { name = 'nvim_lua' },
-            { name = 'nvim_lsp_signature_help' },
-            { name = 'buffer' }
-         }
-      }
+		-- INFO: lua
+		require 'lspconfig'.sumneko_lua.setup {
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					runtime = {
+						version = 'LuaJIT',
+					},
+					diagnostics = {
+						globals = { 'vim' },
+					},
+					workspace = {
+						library = vim.api.nvim_get_runtime_file("", true),
+					},
+					telemetry = {
+						enable = false,
+					},
+				},
+			},
+		}
+	end }
+	use { 'hrsh7th/nvim-cmp', config = function()
+		local luasnip = require 'luasnip'
+		local cmp = require 'cmp'
+		cmp.setup {
+			snippet = {
+				expand = function(args)
+					luasnip.lsp_expand(args.body)
+				end,
+			},
+			window = {
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered()
+			},
+			mapping = cmp.mapping.preset.insert({
+				['<c-u>'] = cmp.mapping.scroll_docs(-10),
+				['<c-d>'] = cmp.mapping.scroll_docs(10),
+				['<c-c>'] = cmp.mapping.abort(),
+				['<tab>'] = cmp.mapping.confirm {
+					behavior = cmp.ConfirmBehavior.Insert,
+					select = true,
+				},
+				['<c-n>'] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_next_item()
+					elseif luasnip.expand_or_jumpable() then
+						luasnip.expand_or_jump()
+					else
+						fallback()
+					end
+				end, { 'i', 's', 'c' }),
+				['<c-p>'] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item()
+					elseif luasnip.jumpable(-1) then
+						luasnip.jump(-1)
+					else
+						fallback()
+					end
+				end, { 'i', 's', 'c' }),
+			}),
+			sources = {
+				{ name = 'luasnip' },
+				{ name = 'nvim_lsp' },
+				{ name = 'nvim_lua' },
+				{ name = 'nvim_lsp_signature_help' },
+				{ name = 'buffer' }
+			}
+		}
 
-      cmp.setup.cmdline('/', {
-         sources = {
-            { name = 'buffer' },
-            { name = 'nvim_lsp_document_symbol' }
-         }
-      })
+		cmp.setup.cmdline('/', {
+			sources = {
+				{ name = 'buffer' },
+				{ name = 'nvim_lsp_document_symbol' }
+			}
+		})
 
-      cmp.setup.cmdline(':', {
-         sources = {
-            { name = 'path' },
-            { name = 'cmdline' },
-         }
-      })
-   end }
-   use 'hrsh7th/cmp-nvim-lsp'
-   use 'hrsh7th/cmp-nvim-lua'
-   use 'hrsh7th/cmp-nvim-lsp-signature-help'
-   use 'hrsh7th/cmp-buffer'
-   use 'hrsh7th/cmp-path'
-   use 'hrsh7th/cmp-cmdline'
-   use 'hrsh7th/cmp-nvim-lsp-document-symbol'
-   use 'saadparwaiz1/cmp_luasnip'
-   use 'L3MON4D3/LuaSnip'
+		cmp.setup.cmdline(':', {
+			sources = {
+				{ name = 'path' },
+				{ name = 'cmdline' },
+			}
+		})
+	end }
+	use 'hrsh7th/cmp-nvim-lsp'
+	use 'hrsh7th/cmp-nvim-lua'
+	use 'hrsh7th/cmp-nvim-lsp-signature-help'
+	use 'hrsh7th/cmp-buffer'
+	use 'hrsh7th/cmp-path'
+	use 'hrsh7th/cmp-cmdline'
+	use 'hrsh7th/cmp-nvim-lsp-document-symbol'
+	use 'saadparwaiz1/cmp_luasnip'
+	use 'L3MON4D3/LuaSnip'
 end)
