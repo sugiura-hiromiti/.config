@@ -1,4 +1,4 @@
-vim.cmd 'colo tokyonight'
+vim.cmd 'colo catppuccin'
 if vim.fn.expand('%:p') == '' then vim.cmd [[e $MYVIMRC]] end
 
 local p = vim.opt
@@ -6,6 +6,7 @@ p.list = true
 p.listchars = {
 	tab = '│ '
 }
+p.pumblend = 20
 p.relativenumber = true
 p.number = true
 p.autowriteall = true
@@ -24,8 +25,8 @@ aucmd('vimenter', {
 })
 
 local map = vim.keymap.set -- INFO: keymap
-map('n', '<esc>', '<cmd>noh<cr>') --<esc> to noh
-map('i', '<c-[>', '<c-[><cmd>update | lua vim.lsp.buf.format{async=true}<cr>')
+map('n', '<esc>', '<cmd>noh<cr>') -- <esc> to noh
+map('i', '<c-[>', '<c-[><cmd>update | lua vim.lsp.buf.format{async=true}<cr>', { silent = true })
 map({ 'n', 'v' }, ',', '@:') --repeat previous command
 map('i', '<c-n>', '<down>') --emacs keybind
 map('i', '<c-p>', '<up>')
@@ -48,27 +49,36 @@ map({ 'n', 'v' }, '<a-l>', '<c-w>l')
 map('n', 't', require 'telescope.builtin'.builtin) -- Telescope
 map('n', '<space>o', require 'telescope.builtin'.lsp_document_symbols)
 map('n', '<space>d', require 'telescope.builtin'.diagnostics)
-map('n', '<space>j', require 'telescope.builtin'.lsp_references) --`j` stands for jump
 map('n', '<space>b', require 'telescope.builtin'.buffers)
 map('n', '<space>e', require 'telescope'.extensions.file_browser.file_browser)
 map('n', '<space>f', require 'telescope'.extensions.frecency.frecency)
 map('n', '<space>c', '<cmd>TodoTelescope<cr>')
 map('n', '<space>n', '<cmd>Telescope notify<cr>')
-map({ 'n', 'v' }, '<space>a', vim.lsp.buf.code_action)
-map('n', '<space>r', vim.lsp.buf.rename)
-map('n', '<space>h', vim.lsp.buf.hover)
-map('n', '<c-j>', vim.diagnostic.goto_next)
-map('n', '<c-k>', vim.diagnostic.goto_prev)
+map({ 'n', 'v' }, '<space>a', '<cmd>Lspsaga code_action<cr>')
+map('n', '<space>j', '<cmd>Lspsaga lsp_finder<cr>') --`j` stands for jump
+map('n', '<space>r', '<cmd>Lspsaga rename<cr>')
+map('n', '<space>h', '<cmd>Lspsaga hover_doc<cr>')
+map('n', '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
+map('n', '<c-k>', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
 
 require 'packer'.startup(function(use) -- INFO: package
 	use 'wbthomason/packer.nvim'
 	use 'nvim-lua/plenary.nvim'
 	use 'kkharji/sqlite.lua'
 
+	use { 'amdt/sunset', config = function()
+		vim.g.sunset_latitude = 35.02
+		vim.g.sunset_longitude = 135.78
+	end }
 	use 'nvim-tree/nvim-web-devicons'
-	use { 'folke/tokyonight.nvim', config = function()
-		require 'tokyonight'.setup {
-			day_brightness = 0.361
+	use { 'catppuccin/nvim', as = 'catppuccin', config = function()
+		require 'catppuccin'.setup {
+			background = {
+				dark = 'frappe'
+			},
+			dim_inactive = {
+				enabled = true,
+			},
 		}
 	end }
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function()
@@ -206,6 +216,26 @@ require 'packer'.startup(function(use) -- INFO: package
 					},
 				},
 			},
+		}
+	end }
+	use { 'glepnir/lspsaga.nvim', branch = 'main', config = function()
+		require 'lspsaga'.init_lsp_saga {
+			saga_winblend = 20,
+			max_preview_lines = 10,
+			code_action_lightbulb = {
+				enable = false
+			},
+			finder_action_keys = {
+				open = '<cr>',
+				vsplit = '<c-v>',
+				split = '<c-x>',
+			},
+			definition_action_keys = {
+				edit = '<cr>',
+				vsplit = '<c-v>',
+				split = '<c-x>',
+				tabe = 't',
+			}
 		}
 	end }
 	use { 'hrsh7th/nvim-cmp', config = function()
