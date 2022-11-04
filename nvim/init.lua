@@ -42,10 +42,11 @@ map('i', '<a-f>', '<c-right>')
 map('i', '<a-b>', '<c-left>')
 map('n', '<tab>', require 'todo-comments'.jump_next)
 map('n', '<S-tab>', require 'todo-comments'.jump_prev)
-map({ 'n', 'v' }, '<a-h>', '<c-w>h')
-map({ 'n', 'v' }, '<a-j>', '<c-w>j')
-map({ 'n', 'v' }, '<a-k>', '<c-w>k')
-map({ 'n', 'v' }, '<a-l>', '<c-w>l')
+-- NOTE: use <cr> in normal mode to run program
+map({ 'i', 'n', 'v' }, '<a-h>', '<c-w><')
+map({ 'i', 'n', 'v' }, '<a-j>', '<c-w>+')
+map({ 'i', 'n', 'v' }, '<a-k>', '<c-w>-')
+map({ 'i', 'n', 'v' }, '<a-l>', '<c-w>>')
 map('n', 't', require 'telescope.builtin'.builtin) -- Telescope
 map('n', '<space>o', require 'telescope.builtin'.lsp_document_symbols)
 map('n', '<space>d', require 'telescope.builtin'.diagnostics)
@@ -216,6 +217,11 @@ require 'packer'.startup(function(use) -- INFO: package
 					},
 				},
 			},
+		}
+
+		-- INFO: clangd
+		require 'lspconfig'.clangd.setup {
+			capabilities = capabilities
 		}
 	end }
 	use { 'glepnir/lspsaga.nvim', branch = 'main', config = function()
