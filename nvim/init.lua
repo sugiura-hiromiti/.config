@@ -14,7 +14,6 @@ p.termguicolors = true
 p.clipboard:append { 'unnamedplus' }
 p.autochdir = true
 p.laststatus = 0
-p.shellpipe = '| tee'
 
 local aucmd = vim.api.nvim_create_autocmd -- CASE: autocmd
 aucmd('vimenter', {
@@ -24,26 +23,16 @@ aucmd('vimenter', {
 		p.shiftwidth = 3
 	end
 })
-aucmd('filetype', {
-	pattern = 'rust',
-	callback = function()
-		vim.bo.makeprg = 'cargo'
-	end
-})
 
 local usrcmd = vim.api.nvim_create_user_command -- CASE: usercmd
 usrcmd('Make', function(opts)
-	vim.cmd('mak ' .. opts.args)
-end, {
-	nargs = 1,
-	complete = function(_, _, _)
-		if vim.bo.filetype == 'rust' then
-			return { 'r', 't', 'b' }
-		else
-			return { 'r', 't' }
-		end
+	if vim.bo.filetype == 'rust' then
+		vim.cmd('!cargo ' .. opts.args .. ' -q')
+	else
+		vim.cmd('!make ' .. opts.args)
 	end
-})
+end, { nargs = '*' })
+
 
 local map = vim.keymap.set -- CASE: keymap
 map('n', '<esc>', '<cmd>noh<cr>') -- <esc> to noh
@@ -63,7 +52,7 @@ map('i', '<a-f>', '<c-right>')
 map('i', '<a-b>', '<c-left>')
 map('n', '<tab>', require 'todo-comments'.jump_next)
 map('n', '<S-tab>', require 'todo-comments'.jump_prev)
-map('n', '<cr>', ':Make ', { silent = true })
+map('n', '<cr>', ':Make ') -- execute program
 map({ 'i', 'n', 'v' }, '<a-h>', '<c-w><')
 map({ 'i', 'n', 'v' }, '<a-j>', '<c-w>+')
 map({ 'i', 'n', 'v' }, '<a-k>', '<c-w>-')
