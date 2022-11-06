@@ -1,7 +1,7 @@
 vim.cmd 'colo catppuccin'
 if vim.fn.expand('%:p') == '' then vim.cmd [[e $MYVIMRC]] end
 
-local p = vim.opt
+local p = vim.opt -- CASE: variables
 p.list = true
 p.listchars = {
 	tab = '│ '
@@ -14,8 +14,9 @@ p.termguicolors = true
 p.clipboard:append { 'unnamedplus' }
 p.autochdir = true
 p.laststatus = 0
+p.shellpipe = '| tee'
 
-local aucmd = vim.api.nvim_create_autocmd
+local aucmd = vim.api.nvim_create_autocmd -- CASE: autocmd
 aucmd('vimenter', {
 	callback = function()
 		p.softtabstop = 3
@@ -23,10 +24,30 @@ aucmd('vimenter', {
 		p.shiftwidth = 3
 	end
 })
+aucmd('filetype', {
+	pattern = 'rust',
+	callback = function()
+		vim.bo.makeprg = 'cargo'
+	end
+})
 
-local map = vim.keymap.set -- INFO: keymap
+local usrcmd = vim.api.nvim_create_user_command -- CASE: usercmd
+usrcmd('Make', function(opts)
+	vim.cmd('mak ' .. opts.args)
+end, {
+	nargs = 1,
+	complete = function(_, _, _)
+		if vim.bo.filetype == 'rust' then
+			return { 'r', 't', 'b' }
+		else
+			return { 'r', 't' }
+		end
+	end
+})
+
+local map = vim.keymap.set -- CASE: keymap
 map('n', '<esc>', '<cmd>noh<cr>') -- <esc> to noh
-map('i', '<c-[>', '<c-[><cmd>update | lua vim.lsp.buf.format{async=true}<cr>', { silent = true })
+map('i', '<c-[>', '<c-[><cmd>update | lua vim.lsp.buf.format{async=true}<cr>')
 map({ 'n', 'v' }, ',', '@:') --repeat previous command
 map('i', '<c-n>', '<down>') --emacs keybind
 map('i', '<c-p>', '<up>')
@@ -42,7 +63,7 @@ map('i', '<a-f>', '<c-right>')
 map('i', '<a-b>', '<c-left>')
 map('n', '<tab>', require 'todo-comments'.jump_next)
 map('n', '<S-tab>', require 'todo-comments'.jump_prev)
--- NOTE: use <cr> in normal mode to run program
+map('n', '<cr>', ':Make ', { silent = true })
 map({ 'i', 'n', 'v' }, '<a-h>', '<c-w><')
 map({ 'i', 'n', 'v' }, '<a-j>', '<c-w>+')
 map({ 'i', 'n', 'v' }, '<a-k>', '<c-w>-')
@@ -62,16 +83,16 @@ map('n', '<space>h', '<cmd>Lspsaga hover_doc<cr>')
 map('n', '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
 map('n', '<c-k>', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
 
-require 'packer'.startup(function(use) -- INFO: package
-	use 'wbthomason/packer.nvim'
+require 'packer'.startup(function(use) -- CASE: package
+	use 'wbthomason/packer.nvim' -- NOTE: required
 	use 'nvim-lua/plenary.nvim'
 	use 'kkharji/sqlite.lua'
-
+	use 'MunifTanjim/nui.nvim'
+	use 'nvim-tree/nvim-web-devicons' -- NOTE: appearance
 	use { 'amdt/sunset', config = function()
 		vim.g.sunset_latitude = 35.02
 		vim.g.sunset_longitude = 135.78
 	end }
-	use 'nvim-tree/nvim-web-devicons'
 	use { 'catppuccin/nvim', as = 'catppuccin', config = function()
 		require 'catppuccin'.setup {
 			background = {
@@ -92,7 +113,7 @@ require 'packer'.startup(function(use) -- INFO: package
 			}
 		}
 	end }
-
+	use 'rcarriga/nvim-notify' -- NOTE: UI
 	use { 'folke/todo-comments.nvim', config = function()
 		require 'todo-comments'.setup {
 			keywords = {
@@ -105,9 +126,7 @@ require 'packer'.startup(function(use) -- INFO: package
 	use { 'folke/noice.nvim', event = 'VimEnter', config = function()
 		require 'noice'.setup()
 	end }
-	use 'MunifTanjim/nui.nvim'
-	use 'rcarriga/nvim-notify'
-	use { 'windwp/nvim-autopairs', config = function()
+	use { 'windwp/nvim-autopairs', config = function() -- NOTE: utils
 		require 'nvim-autopairs'.setup {
 			map_c_h = true
 		}
@@ -125,7 +144,7 @@ require 'packer'.startup(function(use) -- INFO: package
 	end }
 	use 'nvim-telescope/telescope-frecency.nvim'
 	use 'nvim-telescope/telescope-file-browser.nvim'
-	use { 'williamboman/mason.nvim', config = function()
+	use { 'williamboman/mason.nvim', config = function() -- NOTE: lsp
 		require 'mason'.setup()
 	end }
 	use { 'williamboman/mason-lspconfig.nvim', config = function()
@@ -244,7 +263,7 @@ require 'packer'.startup(function(use) -- INFO: package
 			}
 		}
 	end }
-	use { 'hrsh7th/nvim-cmp', config = function()
+	use { 'hrsh7th/nvim-cmp', config = function() -- NOTE: cmp
 		local luasnip = require 'luasnip'
 		local cmp = require 'cmp'
 		cmp.setup {
@@ -296,7 +315,6 @@ require 'packer'.startup(function(use) -- INFO: package
 		cmp.setup.cmdline('/', {
 			sources = {
 				{ name = 'buffer' },
-				{ name = 'nvim_lsp_document_symbol' }
 			}
 		})
 
@@ -313,7 +331,6 @@ require 'packer'.startup(function(use) -- INFO: package
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
 	use 'hrsh7th/cmp-cmdline'
-	use 'hrsh7th/cmp-nvim-lsp-document-symbol'
 	use 'saadparwaiz1/cmp_luasnip'
 	use 'L3MON4D3/LuaSnip'
 end)
