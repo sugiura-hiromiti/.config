@@ -217,6 +217,11 @@ require 'packer'.startup(function(use) -- INFO: package
 				},
 			},
 		}
+
+		-- INFO: clangd
+		require 'lspconfig'.clangd.setup {
+			capabilities = capabilities
+		}
 	end }
 	use { 'glepnir/lspsaga.nvim', branch = 'main', config = function()
 		require 'lspsaga'.init_lsp_saga {
