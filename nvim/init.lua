@@ -24,15 +24,27 @@ aucmd('vimenter', {
 	end
 })
 
-local usrcmd = vim.api.nvim_create_user_command -- CASE: usercmd
+local usrcmd = vim.api.nvim_create_user_command
 usrcmd('Make', function(opts)
-	if vim.bo.filetype == 'rust' then
-		vim.cmd('!cargo ' .. opts.args .. ' -q')
+	local cmd, extra
+	local ft = vim.bo.filetype
+	if ft == 'rust' then
+		cmd = 'cargo '
+		extra = ' -q'
+	elseif ft == 'lua' or ft == 'cpp' or ft == 'c' then
+		cmd = 'make '
+		extra = ''
 	else
-		vim.cmd('!make ' .. opts.args)
+		cmd = '<cr> '
+		extra = ''
 	end
-end, { nargs = '*' })
 
+	-- HACK: This will not work. opts is never `{}`
+	local arg = opts == {} and 'r' or opts.args
+	vim.cmd('!' .. cmd .. arg .. extra)
+end, {
+	nargs = '*',
+})
 
 local map = vim.keymap.set -- CASE: keymap
 map('n', '<esc>', '<cmd>noh<cr>') -- <esc> to noh
@@ -51,7 +63,7 @@ map('i', '<a-d>', '<right><c-c>ves')
 map('i', '<a-f>', '<c-right>')
 map('i', '<a-b>', '<c-left>')
 map('n', '<tab>', require 'todo-comments'.jump_next)
-map('n', '<S-tab>', require 'todo-comments'.jump_prev)
+map('n', '<s-tab>', require 'todo-comments'.jump_prev)
 map('n', '<cr>', ':Make ') -- execute program
 map({ 'i', 'n', 'v' }, '<a-h>', '<c-w><')
 map({ 'i', 'n', 'v' }, '<a-j>', '<c-w>+')
