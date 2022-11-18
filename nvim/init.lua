@@ -26,22 +26,16 @@ aucmd('vimenter', {
 
 local usrcmd = vim.api.nvim_create_user_command
 usrcmd('Make', function(opts)
-	local cmd, extra
+	local cmd, extra = '<cr> ', ''
 	local ft = vim.bo.filetype
 	if ft == 'rust' then
 		cmd = 'cargo '
 		extra = ' -q'
 	elseif ft == 'lua' or ft == 'cpp' or ft == 'c' then
 		cmd = 'make '
-		extra = ''
-	else
-		cmd = '<cr> '
-		extra = ''
 	end
 
-	-- HACK: This will not work. opts is never `{}`
-	local arg = opts == {} and 'r' or opts.args
-	vim.cmd('!' .. cmd .. arg .. extra)
+	vim.cmd('!' .. cmd .. opts.args .. extra)
 end, {
 	nargs = '*',
 })
@@ -49,6 +43,8 @@ end, {
 local map = vim.keymap.set -- CASE: keymap
 map('n', '<esc>', '<cmd>noh<cr>') -- <esc> to noh
 map('i', '<c-[>', '<c-[><cmd>update | lua vim.lsp.buf.format{async=true}<cr>')
+map({ 'n', 'v' }, '$', '^') -- swap $ & ^
+map({ 'n', 'v' }, '^', '$')
 map({ 'n', 'v' }, ',', '@:') --repeat previous command
 map('i', '<c-n>', '<down>') --emacs keybind
 map('i', '<c-p>', '<up>')
