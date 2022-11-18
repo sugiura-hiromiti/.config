@@ -20,3 +20,4 @@ fig.history
 Brewfile.lock.json
 .DS_Store
 packer_compiled.lua
+alacritty.yml
