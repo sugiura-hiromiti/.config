@@ -60,7 +60,8 @@ map('i', '<a-f>', '<c-right>')
 map('i', '<a-b>', '<c-left>')
 map('n', '<tab>', require 'todo-comments'.jump_next)
 map('n', '<s-tab>', require 'todo-comments'.jump_prev)
-map('n', '<cr>', ':Make ') -- execute program
+map('n', '<cr>', ':Make ') -- execute shell command
+map('n', '<s-cr>', ':!')
 map({ 'i', 'n', 'v' }, '<a-h>', '<c-w><')
 map({ 'i', 'n', 'v' }, '<a-j>', '<c-w>+')
 map({ 'i', 'n', 'v' }, '<a-k>', '<c-w>-')
