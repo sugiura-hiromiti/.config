@@ -29,13 +29,13 @@ usrcmd('Make', function(opts)
 	local cmd, extra = '<cr> ', ''
 	local ft = vim.bo.filetype
 	if ft == 'rust' then
-		cmd = 'cargo '
+		cmd = '!cargo '
 		extra = ' -q'
 	elseif ft == 'lua' or ft == 'cpp' or ft == 'c' then
-		cmd = 'make '
+		cmd = '!make '
 	end
 
-	vim.cmd('!' .. cmd .. opts.args .. extra)
+	vim.cmd(cmd .. opts.args .. extra)
 end, {
 	nargs = '*',
 })
@@ -123,12 +123,12 @@ require 'packer'.startup(function(use) -- CASE: package
 	use { 'folke/noice.nvim', event = 'VimEnter', config = function()
 		require 'noice'.setup()
 	end }
-	use { 'windwp/nvim-autopairs', config = function() -- NOTE: utils
+	use { 'windwp/nvim-autopairs', config = function() -- NOTE: Input Helper
 		require 'nvim-autopairs'.setup {
 			map_c_h = true
 		}
 	end }
-	use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', config = function() -- telescope
+	use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', config = function() -- NOTE: Fuzzy Search
 		require 'telescope'.setup {
 			extensions = {
 				file_browser = {
