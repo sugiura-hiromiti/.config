@@ -1,7 +1,7 @@
 vim.cmd 'colo catppuccin'
 if vim.fn.expand('%:p') == '' then vim.cmd [[e $MYVIMRC]] end
 
-local p = vim.opt -- CASE: variables
+local p = vim.opt -- d: variables
 p.list = true
 p.listchars = {
 	tab = '│ '
@@ -15,7 +15,7 @@ p.clipboard:append { 'unnamedplus' }
 p.autochdir = true
 p.laststatus = 0
 
-local aucmd = vim.api.nvim_create_autocmd -- CASE: autocmd
+local aucmd = vim.api.nvim_create_autocmd -- d: autocmd
 aucmd('vimenter', {
 	callback = function()
 		p.softtabstop = 3
@@ -40,7 +40,7 @@ end, {
 	nargs = '*',
 })
 
-local map = vim.keymap.set -- CASE: keymap
+local map = vim.keymap.set -- d: keymap
 map('n', '<esc>', '<cmd>noh<cr>') -- <esc> to noh
 map('i', '<c-[>', '<c-[><cmd>update | lua vim.lsp.buf.format{async=true}<cr>')
 map({ 'n', 'v' }, '$', '^') -- swap $ & ^
@@ -81,7 +81,7 @@ map('n', '<space>h', '<cmd>Lspsaga hover_doc<cr>')
 map('n', '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
 map('n', '<c-k>', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
 
-require 'packer'.startup(function(use) -- CASE: package
+require 'packer'.startup(function(use) -- d: package
 	use 'wbthomason/packer.nvim' -- NOTE: required
 	use 'nvim-lua/plenary.nvim'
 	use 'kkharji/sqlite.lua'
@@ -115,9 +115,29 @@ require 'packer'.startup(function(use) -- CASE: package
 	use { 'folke/todo-comments.nvim', config = function()
 		require 'todo-comments'.setup {
 			keywords = {
-				TODO = { alt = { "IDEA" } },
-				HACK = { alt = { "CASE" } },
-				PERF = { alt = { "OPT" } }
+				FIX = { alt = { 'e' } }, -- e: `e` stands for error
+				TODO = {
+					color = 'hint',
+					alt = { 'q' }, -- q: `q` stands for question
+				},
+				HACK = {
+					color = 'cmt',
+					alt = { 'a' }, -- a: `a` stands for attention
+				},
+				WARN = { alt = { 'x' } }, -- x: `x` is abbreviation of `XXX`
+				PERF = {
+					color = 'doc',
+					alt = { 'p' }, -- p: `p` stands for performance
+				},
+				NOTE = {
+					color = 'info',
+					alt = { 'd' }, -- d: `d` stands for description
+				},
+				TEST = { alt = { 't', 'PASS', 'FAIL' } }, -- t: `t` stands for test
+			},
+			colors = {
+				cmt = { "Comment" },
+				doc = { "SpecialComment" },
 			}
 		}
 	end }
@@ -157,7 +177,7 @@ require 'packer'.startup(function(use) -- CASE: package
 	use { 'neovim/nvim-lspconfig', config = function()
 		local capabilities = require 'cmp_nvim_lsp'.default_capabilities()
 
-		-- INFO: rust_analyzer
+		-- d: rust_analyzer
 		require('lspconfig').rust_analyzer.setup {
 			capabilities = capabilities,
 			settings = {
@@ -215,7 +235,7 @@ require 'packer'.startup(function(use) -- CASE: package
 			}
 		}
 
-		-- INFO: lua
+		-- d: lua
 		require 'lspconfig'.sumneko_lua.setup {
 			capabilities = capabilities,
 			settings = {
@@ -237,7 +257,7 @@ require 'packer'.startup(function(use) -- CASE: package
 			},
 		}
 
-		-- INFO: clangd
+		-- d: clangd
 		require 'lspconfig'.clangd.setup {
 			capabilities = capabilities
 		}
@@ -319,6 +339,7 @@ require 'packer'.startup(function(use) -- CASE: package
 
 		cmp.setup.cmdline(':', {
 			sources = {
+				{ name = 'buffer' },
 				{ name = 'path' },
 				{ name = 'cmdline' },
 			}
