@@ -6,7 +6,7 @@ p.list = true
 p.listchars = {
 	tab = '│ '
 }
-p.pumblend = 20
+p.pumblend = 22
 p.relativenumber = true
 p.number = true
 p.autowriteall = true
@@ -23,6 +23,12 @@ aucmd('vimenter', {
 		p.shiftwidth = 3
 	end
 })
+-- d: Just using `set fo-=cro` won't work since many filetypes set/expand `formatoption`
+aucmd('filetype', {
+	callback = function()
+		p.fo = {}
+	end
+})
 
 local usrcmd = vim.api.nvim_create_user_command
 usrcmd('Make', function(opts)
@@ -34,7 +40,6 @@ usrcmd('Make', function(opts)
 	elseif ft == 'lua' or ft == 'cpp' or ft == 'c' then
 		cmd = '!make '
 	end
-
 	vim.cmd(cmd .. opts.args .. extra)
 end, {
 	nargs = '*',
@@ -62,7 +67,7 @@ map('n', '<tab>', require 'todo-comments'.jump_next)
 map('n', '<s-tab>', require 'todo-comments'.jump_prev)
 map('n', '<cr>', ':Make ') -- execute shell command
 map('n', '<s-cr>', ':!')
-map({ 'i', 'n', 'v' }, '<a-h>', '<c-w><')
+map({ 'i', 'n', 'v' }, '<a-h>', '<c-w><') -- change window size
 map({ 'i', 'n', 'v' }, '<a-j>', '<c-w>+')
 map({ 'i', 'n', 'v' }, '<a-k>', '<c-w>-')
 map({ 'i', 'n', 'v' }, '<a-l>', '<c-w>>')
@@ -118,7 +123,7 @@ require 'packer'.startup(function(use) -- d: package
 				FIX = { alt = { 'e' } }, -- e: `e` stands for error
 				TODO = {
 					color = 'hint',
-					alt = { 'q' }, -- q: `q` stands for question
+					alt = { 'q', }, -- q: `q` stands for question
 				},
 				HACK = {
 					color = 'cmt',
@@ -299,15 +304,21 @@ require 'packer'.startup(function(use) -- d: package
 				['<c-u>'] = cmp.mapping.scroll_docs(-10),
 				['<c-d>'] = cmp.mapping.scroll_docs(10),
 				['<c-c>'] = cmp.mapping.abort(),
-				['<tab>'] = cmp.mapping.confirm {
-					behavior = cmp.ConfirmBehavior.Insert,
-					select = true,
-				},
+				['<tab>'] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.confirm {
+							behavior = cmp.ConfirmBehavior.Insert,
+							select = true,
+						}
+					elseif luasnip.expand_or_jumpable() then
+						luasnip.expand_or_jump()
+					else
+						fallback()
+					end
+				end, { 'i', 's', 'c' }),
 				['<c-n>'] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
-					elseif luasnip.expand_or_jumpable() then
-						luasnip.expand_or_jump()
 					else
 						fallback()
 					end
@@ -315,8 +326,6 @@ require 'packer'.startup(function(use) -- d: package
 				['<c-p>'] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_prev_item()
-					elseif luasnip.jumpable(-1) then
-						luasnip.jump(-1)
 					else
 						fallback()
 					end
@@ -339,9 +348,9 @@ require 'packer'.startup(function(use) -- d: package
 
 		cmp.setup.cmdline(':', {
 			sources = {
-				{ name = 'buffer' },
 				{ name = 'path' },
 				{ name = 'cmdline' },
+				{ name = 'buffer' },
 			}
 		})
 	end }
