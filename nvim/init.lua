@@ -61,8 +61,8 @@ map('i', '<c-u>', '<c-c>v^s')
 map('i', '<a-d>', '<right><c-c>ves')
 map('i', '<a-f>', '<c-right>')
 map('i', '<a-b>', '<c-left>')
-map('n', '<tab>', require('todo-comments').jump_next)
-map('n', '<s-tab>', require('todo-comments').jump_prev)
+map({ 'n', 'v' }, '<tab>', require('todo-comments').jump_next)
+map({ 'n', 'v' }, '<s-tab>', require('todo-comments').jump_prev)
 map('n', '<cr>', ':Make ') -- execute shell command
 map('n', '<s-cr>', ':!')
 map({ 'i', 'n', 'v' }, '<a-h>', '<c-w><') -- change window size
@@ -165,8 +165,8 @@ require('packer').startup(function(use) -- d: package
 			}
 		end,
 	}
-	--[[
-		use {
+	--[[	
+	use {
 		'folke/noice.nvim',
 		config = function()
 			require('noice').setup {
@@ -176,7 +176,7 @@ require('packer').startup(function(use) -- d: package
 			}
 		end,
 	}
-	]]
+]]
 	use {
 		'windwp/nvim-autopairs',
 		config = function() -- NOTE: Input Helper
@@ -377,7 +377,7 @@ require('packer').startup(function(use) -- d: package
 							fallback()
 						end
 					end, { 'i', 's', 'c' }),
-					['<cr>'] = cmp.mapping(function(fallback)
+					['<s-tab>'] = cmp.mapping(function(fallback)
 						if luasnip.expand_or_jumpable() then
 							luasnip.expand_or_jump()
 						else
