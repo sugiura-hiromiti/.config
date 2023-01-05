@@ -16,7 +16,7 @@ p.termguicolors = true
 p.clipboard:append { 'unnamedplus' }
 p.autochdir = true
 p.laststatus = 0
-p.cmdheight = 0
+p.cmdheight = 0 --until `folke/noice` recovered
 
 local aucmd = vim.api.nvim_create_autocmd -- d: autocmd
 -- d: Just using `set fo-=cro` won't work since many filetypes set/expand `formatoption`
