@@ -65,10 +65,10 @@ map({ 'n', 'v' }, '<tab>', require('todo-comments').jump_next)
 map({ 'n', 'v' }, '<s-tab>', require('todo-comments').jump_prev)
 map('n', '<cr>', ':Make ') -- execute shell command
 map('n', '<s-cr>', ':!')
-map({ 'i', 'n', 'v' }, '<a-h>', '<c-w><') -- change window size
-map({ 'i', 'n', 'v' }, '<a-j>', '<c-w>+')
-map({ 'i', 'n', 'v' }, '<a-k>', '<c-w>-')
-map({ 'i', 'n', 'v' }, '<a-l>', '<c-w>>')
+map({ 'i', 'n', 'v' }, '<a-left>', '<c-w><') -- change window size
+map({ 'i', 'n', 'v' }, '<a-down>', '<c-w>+')
+map({ 'i', 'n', 'v' }, '<a-up>', '<c-w>-')
+map({ 'i', 'n', 'v' }, '<a-right>', '<c-w>>')
 map('n', 't', require('telescope.builtin').builtin) -- Telescope
 map('n', '<space>o', require('telescope.builtin').lsp_document_symbols)
 map('n', '<space>d', require('telescope.builtin').diagnostics)
@@ -179,7 +179,7 @@ require('packer').startup(function(use) -- d: package
 ]]
 	use {
 		'windwp/nvim-autopairs',
-		config = function() -- NOTE: Input Helper
+		config = function() -- NOTE: Typing Support
 			require('nvim-autopairs').setup {
 				map_c_h = true,
 			}
