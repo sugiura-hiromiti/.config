@@ -91,24 +91,9 @@ require('packer').startup(function(use) -- d: package
 	use 'MunifTanjim/nui.nvim'
 	use 'nvim-tree/nvim-web-devicons' -- NOTE: appearance
 	use {
-		'amdt/sunset',
+		'sugiura-hiromichi/catppuccin',
 		config = function()
-			vim.g.sunset_latitude = 35.02
-			vim.g.sunset_longitude = 135.78
-		end,
-	}
-	use {
-		'catppuccin/nvim',
-		as = 'catppuccin',
-		config = function()
-			require('catppuccin').setup {
-				background = {
-					dark = 'frappe',
-				},
-				dim_inactive = {
-					enabled = true,
-				},
-			}
+			require('catppuccin').setup {}
 		end,
 	}
 	use {
@@ -293,7 +278,10 @@ require('packer').startup(function(use) -- d: package
 							version = 'LuaJIT',
 						},
 						diagnostics = {
-							globals = { 'vim' },
+							globals = {
+								'vim',
+								--'require'
+							},
 						},
 						workspace = {
 							library = vim.api.nvim_get_runtime_file('', true),
