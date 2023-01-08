@@ -90,12 +90,7 @@ require('packer').startup(function(use) -- d: package
 	use 'kkharji/sqlite.lua'
 	use 'MunifTanjim/nui.nvim'
 	use 'nvim-tree/nvim-web-devicons' -- NOTE: appearance
-	use {
-		'sugiura-hiromichi/catppuccin',
-		config = function()
-			require('catppuccin').setup {}
-		end,
-	}
+	use 'sugiura-hiromichi/catppuccin'
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate',
