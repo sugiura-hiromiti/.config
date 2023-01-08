@@ -196,7 +196,6 @@ require('packer').startup(function(use) -- d: package
 				ensure_installed = {
 					'rust_analyzer@nightly',
 					'sumneko_lua',
-					'bashls',
 					'html',
 					'cssls',
 					'yamlls',
@@ -289,13 +288,6 @@ require('packer').startup(function(use) -- d: package
 							enable = false,
 						},
 					},
-				},
-			}
-
-			require('lspconfig').bashls.setup {
-				capabilities = capabilities,
-				cmd_env = {
-					GLOB_PATTERN = '.zsh*',
 				},
 			}
 
