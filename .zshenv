@@ -22,7 +22,7 @@ export MANPAGER=nvim
 #aliases
 alias s='exa -lahF --group-directories-first --sort=extension --time-style=iso --git --no-permissions --no-user --no-time  --no-filesize'
 alias n='nvim'
-alias u='brew upgrade ; rustup self update ; rustup update ; cargo install --git https://github.com/sugiura-hiromichi/tp ;cargo install --git https://github.com/sugiura-hiromichi/cn ; cargo install --git https://github.com/sugiura-hiromichi/dot'
+alias u='brew upgrade ; rustup self update ; rustup update ; cargo install --git https://github.com/sugiura-hiromichi/tp ;cargo install --git https://github.com/sugiura-hiromichi/cn ; cargo install --git https://github.com/sugiura-hiromichi/dot ; cargo install --git https://github.com/sugiura-hiromichi/gc'
 alias gi='git init ; git add . ; git commit -m'
 alias gl='git pull'
 alias bu='brew uninstall'

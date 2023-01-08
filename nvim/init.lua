@@ -3,11 +3,9 @@ if vim.fn.expand '%:p' == '' then
 end
 vim.cmd 'colo catppuccin'
 
-local p = vim.opt -- d: variables
+local p = vim.opt
 p.list = true
-p.listchars = {
-	tab = '│ ',
-}
+p.listchars = { tab = '│ ' }
 p.pumblend = 22
 p.relativenumber = true
 p.number = true
@@ -18,7 +16,7 @@ p.autochdir = true
 p.laststatus = 0
 p.cmdheight = 0 --until `folke/noice` recovered
 
-local aucmd = vim.api.nvim_create_autocmd -- d: autocmd
+local aucmd = vim.api.nvim_create_autocmd
 -- Just using `set fo-=cro` won't work since many filetypes set/expand `formatoption`
 aucmd('filetype', {
 	callback = function()
@@ -39,11 +37,9 @@ usrcmd('Make', function(opts)
 		cmd = '!make '
 	end
 	vim.cmd(cmd .. opts.args)
-end, {
-	nargs = '*',
-})
+end, { nargs = '*' })
 
-local map = vim.keymap.set -- d: keymap
+local map = vim.keymap.set
 map('n', '<esc>', '<cmd>noh<cr>') -- <esc> to noh
 map('i', '<c-[>', '<c-[><cmd>update | lua vim.lsp.buf.format{async=true}<cr>')
 map({ 'n', 'v' }, '$', '^') -- swap $ & ^
@@ -84,7 +80,7 @@ map('n', '<space>h', '<cmd>Lspsaga hover_doc<cr>')
 map('n', '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
 map('n', '<c-k>', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
 
-require('packer').startup(function(use) -- d: package
+require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'nvim-lua/plenary.nvim'
 	use 'kkharji/sqlite.lua'
@@ -98,9 +94,43 @@ require('packer').startup(function(use) -- d: package
 			require('nvim-treesitter.configs').setup {
 				ensure_installed = { 'bash', 'markdown_inline' },
 				auto_install = true,
-				highlight = {
-					enable = true,
-					additional_vim_regex_highlighting = false,
+				highlight = { enable = true, additional_vim_regex_highlighting = false },
+			}
+		end,
+	}
+	use {
+		'nvim-treesitter/nvim-treesitter-textobjects',
+		config = function()
+			require('nvim-treesitter.configs').setup {
+				textobjects = {
+					select = {
+						enable = true,
+						lookahead = true,
+						keymaps = {
+							['af'] = '@function.outer',
+							['if'] = '@function.inner',
+							['ac'] = '@class.outer',
+							['ic'] = '@class.inner',
+						},
+						selection_modes = {
+							['@parameter.outer'] = 'v',
+							['@function.outer'] = 'v',
+							['@class.outer'] = '<c-v>',
+						},
+					},
+					swap = {
+						enable = true,
+						swap_next = { ['<space>s'] = '@parameter.innner' },
+						swap_previous = { ['<space>S'] = '@parameter.outer' },
+					},
+					move = {
+						enable = true,
+						set_jumps = true,
+						goto_next_start = { [']m'] = '@function.outer', [']]'] = '@class.outer' },
+						goto_next_end = { [']M'] = '@function.outer', [']['] = '@class.outer' },
+						goto_previous_start = { ['[m'] = '@function.outer', ['[]'] = '@class.outer' },
+						goto_previous_end = { ['[M'] = '@function.outer', ['[['] = '@class.outer' },
+					},
 				},
 			}
 		end,
@@ -117,31 +147,15 @@ require('packer').startup(function(use) -- d: package
 		config = function()
 			require('todo-comments').setup {
 				keywords = {
-					FIX = { alt = { 'e' } }, -- e: `e` stands for error
-					TODO = {
-						color = 'hint',
-						alt = { 'q' }, -- q: `q` stands for question
-					},
-					HACK = {
-						color = 'doc',
-						alt = { 'a' }, -- a: `a` stands for attention
-					},
-					WARN = { alt = { 'x' } }, -- x: `x` is abbreviation of `XXX`
-					PERF = {
-						color = 'cmt',
-						alt = { 'p' }, -- p: `p` stands for performance
-					},
-					NOTE = {
-						color = 'info',
-						alt = { 'd' }, -- d: `d` stands for description
-					},
-					TEST = { alt = { 't', 'PASS', 'FAIL' } }, -- t: `t` stands for test
+					FIX = { alt = { 'e' } },
+					TODO = { color = 'hint', alt = { 'q' } },
+					HACK = { color = 'doc', alt = { 'a' } },
+					WARN = { alt = { 'x' } },
+					PERF = { color = 'cmt', alt = { 'p' } },
+					NOTE = { color = 'info', alt = { 'd' } },
+					TEST = { alt = { 't', 'PASS', 'FAIL' } },
 				},
-				colors = {
-					cmt = { 'Comment' },
-					doc = { 'SpecialComment' },
-					todo = { 'Todo' },
-				},
+				colors = { cmt = { 'Comment' }, doc = { 'SpecialComment' } },
 			}
 		end,
 	}
@@ -160,23 +174,14 @@ require('packer').startup(function(use) -- d: package
 	use {
 		'windwp/nvim-autopairs',
 		config = function()
-			require('nvim-autopairs').setup {
-				map_c_h = true,
-			}
+			require('nvim-autopairs').setup { map_c_h = true }
 		end,
 	}
 	use {
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.0',
 		config = function()
-			require('telescope').setup {
-				extensions = {
-					file_browser = {
-						hidden = true,
-						hide_parent_dir = true,
-					},
-				},
-			}
+			require('telescope').setup { extensions = { file_browser = { hidden = true, hide_parent_dir = true } } }
 			require('telescope').load_extension 'frecency'
 			require('telescope').load_extension 'file_browser'
 		end,
@@ -210,115 +215,43 @@ require('packer').startup(function(use) -- d: package
 		'neovim/nvim-lspconfig',
 		config = function()
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
 			require('lspconfig').rust_analyzer.setup {
 				capabilities = capabilities,
 				settings = {
 					['rust-analyzer'] = {
-						hover = {
-							actions = {
-								reference = {
-									enable = true,
-								},
-							},
-						},
+						hover = { actions = { reference = { enable = true } } },
 						inlayHints = {
-							closingBraceHints = {
-								minLines = 0,
-							},
-							lifetimeElisionHints = {
-								enable = 'always',
-								useParameterNames = true,
-							},
+							closingBraceHints = { minLines = 0 },
+							lifetimeElisionHints = { enable = 'always', useParameterNames = true },
 							maxLength = 0,
-							typeHints = {
-								hideNamedConstructor = false,
-							},
+							typeHints = { hideNamedConstructor = false },
 						},
-						lens = {
-							implementations = {
-								enable = false,
-							},
-						},
-						rustfmt = {
-							rangeFormatting = {
-								enable = true,
-							},
-						},
-						semanticHighlighting = {
-							operator = {
-								specialization = {
-									enable = true,
-								},
-							},
-						},
-						typing = {
-							autoClosingAngleBrackets = {
-								enable = true,
-							},
-						},
-						workspace = {
-							symbol = {
-								search = {
-									kind = 'all_symbols',
-								},
-							},
-						},
+						lens = { implementations = { enable = false } },
+						rustfmt = { rangeFormatting = { enable = true } },
+						semanticHighlighting = { operator = { specialization = { enable = true } } },
+						typing = { autoClosingAngleBrackets = { enable = true } },
+						workspace = { symbol = { search = { kind = 'all_symbols' } } },
 					},
 				},
 			}
-
 			require('lspconfig').sumneko_lua.setup {
 				capabilities = capabilities,
 				settings = {
 					Lua = {
-						runtime = {
-							version = 'LuaJIT',
-						},
-						diagnostics = {
-							globals = {
-								'vim',
-							},
-						},
-						workspace = {
-							library = vim.api.nvim_get_runtime_file('', true),
-							checkThirdParty = false,
-						},
-						telemetry = {
-							enable = false,
-						},
+						runtime = { version = 'LuaJIT' },
+						diagnostics = { globals = { 'vim' } },
+						workspace = { library = vim.api.nvim_get_runtime_file('', true), checkThirdParty = false },
+						telemetry = { enable = false },
 					},
 				},
 			}
-
-			require('lspconfig').clangd.setup {
-				capabilities = capabilities,
-			}
-
-			require('lspconfig').html.setup {
-				capabilities = capabilities,
-			}
-
-			require('lspconfig').cssls.setup {
-				capabilities = capabilities,
-			}
-
-			require('lspconfig').yamlls.setup {
-				capabilities = capabilities,
-			}
-
-			require('lspconfig').jsonls.setup {
-				capabilities = capabilities,
-			}
-
-			-- toml
-			require('lspconfig').taplo.setup {
-				capabilities = capabilities,
-			}
-
-			require('lspconfig').marksman.setup {
-				capabilities = capabilities,
-			}
+			require('lspconfig').clangd.setup { capabilities = capabilities }
+			require('lspconfig').html.setup { capabilities = capabilities }
+			require('lspconfig').cssls.setup { capabilities = capabilities }
+			require('lspconfig').yamlls.setup { capabilities = capabilities }
+			require('lspconfig').jsonls.setup { capabilities = capabilities }
+			require('lspconfig').taplo.setup { capabilities = capabilities }
+			require('lspconfig').marksman.setup { capabilities = capabilities }
 		end,
 	}
 	use {
@@ -328,20 +261,9 @@ require('packer').startup(function(use) -- d: package
 			require('lspsaga').init_lsp_saga {
 				saga_winblend = 20,
 				max_preview_lines = 10,
-				code_action_lightbulb = {
-					enable = false,
-				},
-				finder_action_keys = {
-					open = '<cr>',
-					vsplit = '<c-v>',
-					split = '<c-x>',
-				},
-				definition_action_keys = {
-					edit = '<cr>',
-					vsplit = '<c-v>',
-					split = '<c-x>',
-					tabe = 't',
-				},
+				code_action_lightbulb = { enable = false },
+				finder_action_keys = { open = '<cr>', vsplit = '<c-v>', split = '<c-x>' },
+				definition_action_keys = { edit = '<cr>', vsplit = '<c-v>', split = '<c-x>', tabe = 't' },
 			}
 		end,
 	}
@@ -354,7 +276,7 @@ require('packer').startup(function(use) -- d: package
 					nls.builtins.formatting.dprint.with { filetypes = { 'markdown', 'json', 'toml' } },
 					nls.builtins.formatting.stylua,
 					nls.builtins.formatting.prettier.with { filetypes = { 'css', 'html', 'yaml' } },
-					nls.builtins.formatting.beautysh.with { extra_args = { '-t' } }, -- NOTE: Make sure installed
+					nls.builtins.formatting.beautysh.with { extra_args = { '-t' } },
 				},
 			}
 		end,
@@ -370,20 +292,14 @@ require('packer').startup(function(use) -- d: package
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
-				},
+				window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
 				mapping = cmp.mapping.preset.insert {
 					['<a-k>'] = cmp.mapping.scroll_docs(-10),
 					['<a-j>'] = cmp.mapping.scroll_docs(10),
 					['<c-c>'] = cmp.mapping.abort(),
 					['<tab>'] = cmp.mapping(function(fallback)
 						if cmp.visible() then
-							cmp.confirm {
-								behavior = cmp.ConfirmBehavior.Insert,
-								select = true,
-							}
+							cmp.confirm { behavior = cmp.ConfirmBehavior.Insert, select = true }
 						else
 							fallback()
 						end
@@ -418,20 +334,8 @@ require('packer').startup(function(use) -- d: package
 					{ name = 'buffer' },
 				},
 			}
-
-			cmp.setup.cmdline('/', {
-				sources = {
-					{ name = 'buffer' },
-				},
-			})
-
-			cmp.setup.cmdline(':', {
-				sources = {
-					{ name = 'path' },
-					{ name = 'cmdline' },
-					{ name = 'buffer' },
-				},
-			})
+			cmp.setup.cmdline('/', { sources = { { name = 'buffer' } } })
+			cmp.setup.cmdline(':', { sources = { { name = 'path' }, { name = 'cmdline' }, { name = 'buffer' } } })
 		end,
 	}
 	use 'hrsh7th/cmp-nvim-lsp'

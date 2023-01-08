@@ -1,1 +1,1 @@
-minimalizm is freak
+minimalizm is cult
