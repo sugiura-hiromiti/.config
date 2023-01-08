@@ -195,9 +195,10 @@ require('packer').startup(function(use) -- d: package
 			require('mason-lspconfig').setup {
 				ensure_installed = {
 					'bashls',
-					'sumneko_lua',
 					'rust_analyzer@nightly',
+					'sumneko_lua',
 				},
+				automatic_installation = true,
 			}
 		end,
 	}
@@ -293,6 +294,36 @@ require('packer').startup(function(use) -- d: package
 			require('lspconfig').clangd.setup {
 				capabilities = capabilities,
 			}
+
+			-- d: html
+			require('lspconfig').html.setup {
+				capabilities = capabilities,
+			}
+
+			-- d: css
+			require('lspconfig').cssls.setup {
+				capabilities = capabilities,
+			}
+
+			-- d: yml
+			require('lspconfig').yamlls.setup {
+				capabilities = capabilities,
+			}
+
+			-- d: json
+			require('lspconfig').jsonls.setup {
+				capabilities = capabilities,
+			}
+
+			-- d: toml
+			require('lspconfig').taplo.setup {
+				capabilities = capabilities,
+			}
+
+			-- d: markdown
+			require('lspconfig').marksman.setup {
+				capabilities = capabilities,
+			}
 		end,
 	}
 	use {
@@ -327,6 +358,7 @@ require('packer').startup(function(use) -- d: package
 				sources = {
 					nls.builtins.formatting.dprint.with { filetypes = { 'markdown', 'json', 'toml' } },
 					nls.builtins.formatting.stylua,
+					nls.builtins.formatting.prettierd.with { filetypes = { 'css', 'html', 'yaml' } },
 				},
 			}
 		end,
