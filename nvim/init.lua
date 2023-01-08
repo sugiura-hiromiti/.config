@@ -352,6 +352,7 @@ require('packer').startup(function(use) -- d: package
 	}
 	use {
 		'jose-elias-alvarez/null-ls.nvim',
+		run = 'MasonInstall prettierd',
 		config = function()
 			local nls = require 'null-ls'
 			nls.setup {
