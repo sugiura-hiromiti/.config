@@ -19,7 +19,7 @@ p.laststatus = 0
 p.cmdheight = 0 --until `folke/noice` recovered
 
 local aucmd = vim.api.nvim_create_autocmd -- d: autocmd
--- d: Just using `set fo-=cro` won't work since many filetypes set/expand `formatoption`
+-- Just using `set fo-=cro` won't work since many filetypes set/expand `formatoption`
 aucmd('filetype', {
 	callback = function()
 		p.fo = { j = true }
@@ -194,11 +194,16 @@ require('packer').startup(function(use) -- d: package
 		config = function()
 			require('mason-lspconfig').setup {
 				ensure_installed = {
-					'bashls',
 					'rust_analyzer@nightly',
-					'sumneko_lua',
 				},
 				automatic_installation = true,
+			}
+			require('mason-lspconfig').setup_handlers {
+				function(server_name)
+					require('lspconfig')[server_name].setup {
+						capabilities = require('cmp_nvim_lsp').default_capabilities(),
+					}
+				end,
 			}
 		end,
 	}
@@ -289,41 +294,6 @@ require('packer').startup(function(use) -- d: package
 					},
 				},
 			}
-
-			-- d: clangd
-			require('lspconfig').clangd.setup {
-				capabilities = capabilities,
-			}
-
-			-- d: html
-			require('lspconfig').html.setup {
-				capabilities = capabilities,
-			}
-
-			-- d: css
-			require('lspconfig').cssls.setup {
-				capabilities = capabilities,
-			}
-
-			-- d: yml
-			require('lspconfig').yamlls.setup {
-				capabilities = capabilities,
-			}
-
-			-- d: json
-			require('lspconfig').jsonls.setup {
-				capabilities = capabilities,
-			}
-
-			-- d: toml
-			require('lspconfig').taplo.setup {
-				capabilities = capabilities,
-			}
-
-			-- d: markdown
-			require('lspconfig').marksman.setup {
-				capabilities = capabilities,
-			}
 		end,
 	}
 	use {
@@ -352,14 +322,13 @@ require('packer').startup(function(use) -- d: package
 	}
 	use {
 		'jose-elias-alvarez/null-ls.nvim',
-		run = 'MasonInstall prettierd',
 		config = function()
 			local nls = require 'null-ls'
 			nls.setup {
 				sources = {
 					nls.builtins.formatting.dprint.with { filetypes = { 'markdown', 'json', 'toml' } },
 					nls.builtins.formatting.stylua,
-					nls.builtins.formatting.prettierd.with { filetypes = { 'css', 'html', 'yaml' } },
+					nls.builtins.formatting.prettier.with { filetypes = { 'css', 'html', 'yaml' } },
 				},
 			}
 		end,
