@@ -85,11 +85,11 @@ map('n', '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
 map('n', '<c-k>', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
 
 require('packer').startup(function(use) -- d: package
-	use 'wbthomason/packer.nvim' -- NOTE: required
+	use 'wbthomason/packer.nvim'
 	use 'nvim-lua/plenary.nvim'
 	use 'kkharji/sqlite.lua'
 	use 'MunifTanjim/nui.nvim'
-	use 'nvim-tree/nvim-web-devicons' -- NOTE: appearance
+	use 'nvim-tree/nvim-web-devicons'
 	use 'sugiura-hiromichi/catppuccin'
 	use {
 		'nvim-treesitter/nvim-treesitter',
@@ -111,7 +111,7 @@ require('packer').startup(function(use) -- d: package
 			vim.notify = require 'notify'
 			vim.notify_once = require 'notify'
 		end,
-	} -- NOTE: UI
+	}
 	use {
 		'folke/todo-comments.nvim',
 		config = function()
@@ -159,7 +159,7 @@ require('packer').startup(function(use) -- d: package
 ]]
 	use {
 		'windwp/nvim-autopairs',
-		config = function() -- NOTE: Typing Support
+		config = function()
 			require('nvim-autopairs').setup {
 				map_c_h = true,
 			}
@@ -168,7 +168,7 @@ require('packer').startup(function(use) -- d: package
 	use {
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.0',
-		config = function() -- NOTE: Fuzzy Search
+		config = function()
 			require('telescope').setup {
 				extensions = {
 					file_browser = {
@@ -185,7 +185,7 @@ require('packer').startup(function(use) -- d: package
 	use 'nvim-telescope/telescope-file-browser.nvim'
 	use {
 		'williamboman/mason.nvim',
-		config = function() -- NOTE: lsp
+		config = function()
 			require('mason').setup()
 		end,
 	}
@@ -195,15 +195,15 @@ require('packer').startup(function(use) -- d: package
 			require('mason-lspconfig').setup {
 				ensure_installed = {
 					'rust_analyzer@nightly',
+					'sumneko_lua',
+					'bashls',
+					'html',
+					'cssls',
+					'yamlls',
+					'jsonls',
+					'taplo',
+					'marksman',
 				},
-				automatic_installation = true,
-			}
-			require('mason-lspconfig').setup_handlers {
-				function(server_name)
-					require('lspconfig')[server_name].setup {
-						capabilities = require('cmp_nvim_lsp').default_capabilities(),
-					}
-				end,
 			}
 		end,
 	}
@@ -212,7 +212,6 @@ require('packer').startup(function(use) -- d: package
 		config = function()
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-			-- d: rust_analyzer
 			require('lspconfig').rust_analyzer.setup {
 				capabilities = capabilities,
 				settings = {
@@ -270,7 +269,6 @@ require('packer').startup(function(use) -- d: package
 				},
 			}
 
-			-- d: lua
 			require('lspconfig').sumneko_lua.setup {
 				capabilities = capabilities,
 				settings = {
@@ -281,7 +279,6 @@ require('packer').startup(function(use) -- d: package
 						diagnostics = {
 							globals = {
 								'vim',
-								--'require'
 							},
 						},
 						workspace = {
@@ -293,6 +290,42 @@ require('packer').startup(function(use) -- d: package
 						},
 					},
 				},
+			}
+
+			require('lspconfig').bashls.setup {
+				capabilities = capabilities,
+				cmd_env = {
+					GLOB_PATTERN = '.zsh*',
+				},
+			}
+
+			require('lspconfig').clangd.setup {
+				capabilities = capabilities,
+			}
+
+			require('lspconfig').html.setup {
+				capabilities = capabilities,
+			}
+
+			require('lspconfig').cssls.setup {
+				capabilities = capabilities,
+			}
+
+			require('lspconfig').yamlls.setup {
+				capabilities = capabilities,
+			}
+
+			require('lspconfig').jsonls.setup {
+				capabilities = capabilities,
+			}
+
+			-- toml
+			require('lspconfig').taplo.setup {
+				capabilities = capabilities,
+			}
+
+			require('lspconfig').marksman.setup {
+				capabilities = capabilities,
 			}
 		end,
 	}
@@ -329,13 +362,14 @@ require('packer').startup(function(use) -- d: package
 					nls.builtins.formatting.dprint.with { filetypes = { 'markdown', 'json', 'toml' } },
 					nls.builtins.formatting.stylua,
 					nls.builtins.formatting.prettier.with { filetypes = { 'css', 'html', 'yaml' } },
+					nls.builtins.formatting.beautysh.with { extra_args = { '-t' } }, -- NOTE: Make sure installed
 				},
 			}
 		end,
 	}
 	use {
 		'hrsh7th/nvim-cmp',
-		config = function() -- NOTE: cmp
+		config = function()
 			local luasnip = require 'luasnip'
 			local cmp = require 'cmp'
 			cmp.setup {

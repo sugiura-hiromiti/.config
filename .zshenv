@@ -4,12 +4,12 @@ export PATH=$PATH:$HOME/.cargo/env
 export PATH=$PATH:$HOME/.cargo/bin
 
 path=(
-   /opt/homebrew/bin(N)
-   /opt/homebrew/sbin(N)
-   /usr/local/bin(N)
-   /usr/local/sbin(N)
-   ~/.local/bin
-   ~/.local/sbin
+	/opt/homebrew/bin(N)
+	/opt/homebrew/sbin(N)
+	/usr/local/bin(N)
+	/usr/local/sbin(N)
+	~/.local/bin
+	~/.local/sbin
 	~/.fig/bin
 	$path
 )
@@ -35,7 +35,7 @@ alias so='source'
 #functions
 # To remove function in zsh, `unset -f [function name]`
 ga(){
-   git add .
-   git commit -m $1
-   git push
+	git add .
+	git commit -m $1
+	git push
 }
