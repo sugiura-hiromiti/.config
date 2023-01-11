@@ -14,16 +14,13 @@ p.termguicolors = true
 p.clipboard:append { 'unnamedplus' }
 p.autochdir = true
 p.laststatus = 0
-p.cmdheight = 0 --until `folke/noice` recovered
+vim.g.editorconfig = true
 
 local aucmd = vim.api.nvim_create_autocmd
 -- Just using `set fo-=cro` won't work since many filetypes set/expand `formatoption`
 aucmd('filetype', {
 	callback = function()
 		p.fo = { j = true }
-		p.softtabstop = 3
-		p.tabstop = 3
-		p.shiftwidth = 3
 	end,
 })
 
@@ -68,7 +65,9 @@ map({ 'i', 'n', 'v' }, '<a-right>', '<c-w>>')
 map('n', 't', require('telescope.builtin').builtin) -- Telescope
 map('n', '<space>o', require('telescope.builtin').lsp_document_symbols)
 map('n', '<space>d', require('telescope.builtin').diagnostics)
-map('n', '<space>b', require('telescope.builtin').buffers)
+map('n', '<space>b', function()
+	require('telescope.builtin').buffers { ignore_current_buffer = true }
+end)
 map('n', '<space>e', require('telescope').extensions.file_browser.file_browser)
 map('n', '<space>f', require('telescope').extensions.frecency.frecency)
 map('n', '<space>c', '<cmd>TodoTelescope<cr>')
@@ -111,17 +110,17 @@ require('packer').startup(function(use)
 							['if'] = '@function.inner',
 							['ac'] = '@class.outer',
 							['ic'] = '@class.inner',
+							['ab'] = '@block.outer',
+							['ib'] = '@block.inner',
 						},
 						selection_modes = {
-							['@parameter.outer'] = 'v',
-							['@function.outer'] = 'v',
-							['@class.outer'] = '<c-v>',
+							['@block.outer'] = 'V',
 						},
 					},
 					swap = {
 						enable = true,
-						swap_next = { ['<space>s'] = '@parameter.innner' },
-						swap_previous = { ['<space>S'] = '@parameter.outer' },
+						swap_next = { ['<space>s'] = '@parameter.inner' },
+						swap_previous = { ['<space>S'] = '@parameter.inner' },
 					},
 					move = {
 						enable = true,
@@ -159,7 +158,7 @@ require('packer').startup(function(use)
 			}
 		end,
 	}
-	--[[	
+	--[[
 	use {
 		'folke/noice.nvim',
 		config = function()
@@ -170,7 +169,7 @@ require('packer').startup(function(use)
 			}
 		end,
 	}
-]]
+	]]
 	use {
 		'windwp/nvim-autopairs',
 		config = function()
@@ -181,13 +180,46 @@ require('packer').startup(function(use)
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.0',
 		config = function()
-			require('telescope').setup { extensions = { file_browser = { hidden = true, hide_parent_dir = true } } }
+			require('telescope').setup {
+				defaults = {
+					sorting_strategy = 'ascending',
+					winblend = 20,
+					wrap_results = true,
+					dynamic_preview_title = true,
+					-- see this <https://github.com/nvim-telescope/telescope.nvim/blob/e8c01bab917537ba4f54193c29b77bf4a04584d3/doc/telescope.txt#L1859>
+					layout_config = { prompt_position = 'top' },
+				},
+				extensions = { file_browser = { hidden = true, hide_parent_dir = true } },
+			}
 			require('telescope').load_extension 'frecency'
 			require('telescope').load_extension 'file_browser'
 		end,
 	}
 	use 'nvim-telescope/telescope-frecency.nvim'
 	use 'nvim-telescope/telescope-file-browser.nvim'
+	use {
+		'prochri/telescope-all-recent.nvim',
+		config = function()
+			require('telescope-all-recent').setup {
+				default = {
+					disable = false,
+					use_cwd = true,
+					sorting = 'frecency',
+				},
+				pickers = {
+					git_commits = {
+						disable = true,
+					},
+					git_bcommits = {
+						disable = true,
+					},
+					['file_browser#file_browser'] = {
+						disable = true,
+					},
+				},
+			}
+		end,
+	}
 	use {
 		'williamboman/mason.nvim',
 		config = function()
@@ -271,14 +303,21 @@ require('packer').startup(function(use)
 		'jose-elias-alvarez/null-ls.nvim',
 		config = function()
 			local nls = require 'null-ls'
+			local fmt = nls.builtins.formatting
 			nls.setup {
 				sources = {
-					nls.builtins.formatting.dprint.with { filetypes = { 'markdown', 'json', 'toml' } },
-					nls.builtins.formatting.stylua,
-					nls.builtins.formatting.prettier.with { filetypes = { 'css', 'html', 'yaml' } },
-					nls.builtins.formatting.beautysh.with { extra_args = { '-t' } },
+					fmt.dprint.with { filetypes = { 'markdown', 'json', 'toml' } },
+					fmt.stylua,
+					fmt.prettier.with { filetypes = { 'css', 'html', 'yaml' } },
+					fmt.beautysh.with { extra_args = { '-t' } },
 				},
 			}
+		end,
+	}
+	use {
+		'jayp0521/mason-null-ls.nvim',
+		config = function()
+			require('mason-null-ls').setup { ensure_installed = { 'beautysh' } }
 		end,
 	}
 	use {
@@ -292,7 +331,8 @@ require('packer').startup(function(use)
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
+				window = { completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered() },
 				mapping = cmp.mapping.preset.insert {
 					['<a-k>'] = cmp.mapping.scroll_docs(-10),
 					['<a-j>'] = cmp.mapping.scroll_docs(10),
@@ -304,7 +344,7 @@ require('packer').startup(function(use)
 							fallback()
 						end
 					end, { 'i', 's', 'c' }),
-					['<s-tab>'] = cmp.mapping(function(fallback)
+					['<bs>'] = cmp.mapping(function(fallback)
 						if luasnip.expand_or_jumpable() then
 							luasnip.expand_or_jump()
 						else
@@ -330,12 +370,14 @@ require('packer').startup(function(use)
 					{ name = 'luasnip' },
 					{ name = 'nvim_lsp' },
 					{ name = 'nvim_lua' },
+					{ name = 'rg' },
 					{ name = 'nvim_lsp_signature_help' },
 					{ name = 'buffer' },
 				},
 			}
 			cmp.setup.cmdline('/', { sources = { { name = 'buffer' } } })
-			cmp.setup.cmdline(':', { sources = { { name = 'path' }, { name = 'cmdline' }, { name = 'buffer' } } })
+			cmp.setup.cmdline(':',
+				{ sources = { { name = 'path' }, { name = 'cmdline' }, { name = 'buffer' } } })
 		end,
 	}
 	use 'hrsh7th/cmp-nvim-lsp'
@@ -344,6 +386,7 @@ require('packer').startup(function(use)
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
 	use 'hrsh7th/cmp-cmdline'
+	use 'lukas-reineke/cmp-rg' -- TODO: add case_ignore search
 	use 'saadparwaiz1/cmp_luasnip'
 	use 'L3MON4D3/LuaSnip'
 end)
