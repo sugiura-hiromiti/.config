@@ -1,9 +1,13 @@
 # rules
---enable blankLineAferImports, blankLinesBetweenImports, docComments, markTypes, organizeDeclarations
---disable
+--enable blankLineAfterImports, blankLinesBetweenImports, docComments, markTypes, organizeDeclarations
+--disable leadingDelimiters
 
 # options
 --lineaftermarks false
 #--guardelse same-line
 --header ignore
 --indent tab
+--linebreaks cr
+--redundanttype inferred
+--maxwidth 100
+--swiftversion 5.7

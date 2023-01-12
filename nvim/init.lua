@@ -85,7 +85,19 @@ require('packer').startup(function(use)
 	use 'kkharji/sqlite.lua'
 	use 'MunifTanjim/nui.nvim'
 	use 'nvim-tree/nvim-web-devicons'
-	use 'sugiura-hiromichi/catppuccin'
+	use {
+		'sugiura-hiromichi/catppuccin',
+		config = function()
+			require('catppuccin').setup {
+				integrations = {
+					lsp_saga = true,
+					noice = true,
+					notify = true,
+					semantic_tokens = true,
+				},
+			}
+		end,
+	}
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate',
