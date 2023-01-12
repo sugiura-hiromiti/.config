@@ -1,0 +1,9 @@
+# rules
+--enable blankLineAferImports, blankLinesBetweenImports, docComments, markTypes, organizeDeclarations
+--disable
+
+# options
+--lineaftermarks false
+#--guardelse same-line
+--header ignore
+--indent tab

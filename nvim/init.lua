@@ -277,6 +277,10 @@ require('packer').startup(function(use)
 					},
 				},
 			}
+			require('lspconfig').sourcekit.setup {
+				filetypes = { 'swift', 'objective-c', 'objective-cpp' },
+				capabilities = capabilities,
+			}
 			require('lspconfig').clangd.setup { capabilities = capabilities }
 			require('lspconfig').html.setup { capabilities = capabilities }
 			require('lspconfig').cssls.setup { capabilities = capabilities }
@@ -310,6 +314,7 @@ require('packer').startup(function(use)
 					fmt.stylua,
 					fmt.prettier.with { filetypes = { 'css', 'html', 'yaml' } },
 					fmt.beautysh.with { extra_args = { '-t' } },
+					fmt.swiftformat,
 				},
 			}
 		end,
@@ -331,8 +336,7 @@ require('packer').startup(function(use)
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				window = { completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered() },
+				window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
 				mapping = cmp.mapping.preset.insert {
 					['<a-k>'] = cmp.mapping.scroll_docs(-10),
 					['<a-j>'] = cmp.mapping.scroll_docs(10),
@@ -376,8 +380,7 @@ require('packer').startup(function(use)
 				},
 			}
 			cmp.setup.cmdline('/', { sources = { { name = 'buffer' } } })
-			cmp.setup.cmdline(':',
-				{ sources = { { name = 'path' }, { name = 'cmdline' }, { name = 'buffer' } } })
+			cmp.setup.cmdline(':', { sources = { { name = 'path' }, { name = 'cmdline' }, { name = 'buffer' } } })
 		end,
 	}
 	use 'hrsh7th/cmp-nvim-lsp'

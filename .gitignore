@@ -12,6 +12,7 @@ shell/
 themes/
 tools/
 user/
+extensions/
 ssh
 tmux
 history

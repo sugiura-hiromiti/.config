@@ -26,7 +26,7 @@
   "autocomplete.keybindings.up": "ignore",
   "autocomplete.scrollWrapAround": true,
   "autocomplete.theme": "system",
-  "autocomplete.width": 300,
+  "autocomplete.width": 500,
   "dotfiles.syncImmediately": false,
   "dotfiles.verbosity": "none",
   "integrations.experimental": false,

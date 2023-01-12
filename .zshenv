@@ -18,6 +18,7 @@ path=(
 export EDITOR=nvim
 export VISUAL=nvim
 export MANPAGER=nvim
+export TOOLCHAINS=swift
 
 #aliases
 alias s='exa -lahF --group-directories-first --sort=extension --time-style=iso --git --no-permissions --no-user --no-time  --no-filesize'
