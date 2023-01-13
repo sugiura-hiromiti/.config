@@ -80,7 +80,6 @@ map('n', '<space>r', '<cmd>Lspsaga rename<cr>')
 map('n', '<space>h', '<cmd>Lspsaga hover_doc<cr>')
 map('n', '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
 map('n', '<c-k>', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
-
 require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'nvim-lua/plenary.nvim'
@@ -196,6 +195,12 @@ require('packer').startup(function(use)
 		config = function()
 			require('telescope').setup {
 				defaults = {
+					mappings = {
+						i = {
+							['<a-j>'] = require('telescope.actions').preview_scrolling_down,
+							['<a-k>'] = require('telescope.actions').preview_scrolling_up,
+						},
+					},
 					winblend = 20,
 					wrap_results = true,
 					dynamic_preview_title = true,
@@ -305,12 +310,12 @@ require('packer').startup(function(use)
 		'glepnir/lspsaga.nvim',
 		branch = 'main',
 		config = function()
-			require('lspsaga').init_lsp_saga {
+			require('lspsaga').setup {
+				scroll_preview = { scroll_down = '<a-j>', scroll_up = '<a-k>' },
 				saga_winblend = 20,
 				max_preview_lines = 10,
 				code_action_lightbulb = { enable = false },
-				finder_action_keys = { open = '<cr>', vsplit = '<c-v>', split = '<c-x>' },
-				definition_action_keys = { edit = '<cr>', vsplit = '<c-v>', split = '<c-x>', tabe = 't' },
+				finder = { vsplit = '<c-v>', split = '<c-x>' },
 			}
 		end,
 	}
@@ -347,7 +352,8 @@ require('packer').startup(function(use)
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
+				window = { completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered() },
 				mapping = cmp.mapping.preset.insert {
 					['<a-k>'] = cmp.mapping.scroll_docs(-10),
 					['<a-j>'] = cmp.mapping.scroll_docs(10),
@@ -391,7 +397,8 @@ require('packer').startup(function(use)
 				},
 			}
 			cmp.setup.cmdline('/', { sources = { { name = 'buffer' } } })
-			cmp.setup.cmdline(':', { sources = { { name = 'path' }, { name = 'cmdline' }, { name = 'buffer' } } })
+			cmp.setup.cmdline(':',
+				{ sources = { { name = 'path' }, { name = 'cmdline' }, { name = 'buffer' } } })
 		end,
 	}
 	use 'hrsh7th/cmp-nvim-lsp'
