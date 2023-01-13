@@ -90,14 +90,7 @@ require('packer').startup(function(use)
 	use {
 		'sugiura-hiromichi/catppuccin',
 		config = function()
-			require('catppuccin').setup {
-				integrations = {
-					lsp_saga = true,
-					noice = true,
-					notify = true,
-					semantic_tokens = true,
-				},
-			}
+			require('catppuccin').setup { integrations = { lsp_saga = true, noice = true, notify = true, semantic_tokens = true }, }
 		end,
 	}
 	use {
@@ -353,8 +346,7 @@ require('packer').startup(function(use)
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				window = { completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered() },
+				window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
 				mapping = cmp.mapping.preset.insert {
 					['<a-k>'] = cmp.mapping.scroll_docs(-10),
 					['<a-j>'] = cmp.mapping.scroll_docs(10),
@@ -398,8 +390,7 @@ require('packer').startup(function(use)
 				},
 			}
 			cmp.setup.cmdline('/', { sources = { { name = 'buffer' } } })
-			cmp.setup.cmdline(':',
-				{ sources = { { name = 'path' }, { name = 'cmdline' }, { name = 'buffer' } } })
+			cmp.setup.cmdline(':', { sources = { { name = 'path' }, { name = 'cmdline' }, { name = 'buffer' } } })
 		end,
 	}
 	use 'hrsh7th/cmp-nvim-lsp'
