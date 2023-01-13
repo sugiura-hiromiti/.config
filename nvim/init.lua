@@ -80,6 +80,7 @@ map('n', '<space>r', '<cmd>Lspsaga rename<cr>')
 map('n', '<space>h', '<cmd>Lspsaga hover_doc<cr>')
 map('n', '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
 map('n', '<c-k>', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
+
 require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	use 'nvim-lua/plenary.nvim'
@@ -312,10 +313,10 @@ require('packer').startup(function(use)
 		config = function()
 			require('lspsaga').setup {
 				scroll_preview = { scroll_down = '<a-j>', scroll_up = '<a-k>' },
-				saga_winblend = 20,
-				max_preview_lines = 10,
-				code_action_lightbulb = { enable = false },
+				lightbulb = { enable = false },
 				finder = { vsplit = '<c-v>', split = '<c-x>' },
+				rename = { in_select = false },
+				symbol_in_winbar = { enable = false },
 			}
 		end,
 	}
