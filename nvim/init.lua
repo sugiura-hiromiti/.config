@@ -90,7 +90,9 @@ require('packer').startup(function(use)
 	use {
 		'sugiura-hiromichi/catppuccin',
 		config = function()
-			require('catppuccin').setup { integrations = { lsp_saga = true, noice = true, notify = true, semantic_tokens = true }, }
+			require('catppuccin').setup {
+				integrations = { lsp_saga = true, noice = true, notify = true, semantic_tokens = true },
+			}
 		end,
 	}
 	use {
@@ -384,13 +386,34 @@ require('packer').startup(function(use)
 					{ name = 'luasnip' },
 					{ name = 'nvim_lsp' },
 					{ name = 'nvim_lua' },
-					{ name = 'rg' },
+					{
+						name = 'rg',
+						option = { additional_arguments = '--smart-case', context_after = 7 },
+						keyword_length = 2,
+					},
 					{ name = 'nvim_lsp_signature_help' },
-					{ name = 'buffer' },
 				},
 			}
-			cmp.setup.cmdline('/', { sources = { { name = 'buffer' } } })
-			cmp.setup.cmdline(':', { sources = { { name = 'path' }, { name = 'cmdline' }, { name = 'buffer' } } })
+			cmp.setup.cmdline('/', {
+				sources = {
+					{
+						name = 'rg',
+						option = { additional_arguments = '--smart-case', context_after = 7 },
+						keyword_length = 2,
+					},
+				},
+			})
+			cmp.setup.cmdline(':', {
+				sources = {
+					{ name = 'path' },
+					{ name = 'cmdline' },
+					{
+						name = 'rg',
+						option = { additional_arguments = '--smart-case', context_after = 7 },
+						keyword_length = 2,
+					},
+				},
+			})
 		end,
 	}
 	use 'hrsh7th/cmp-nvim-lsp'
@@ -399,7 +422,7 @@ require('packer').startup(function(use)
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
 	use 'hrsh7th/cmp-cmdline'
-	use 'lukas-reineke/cmp-rg' -- TODO: add case_ignore search
+	use 'lukas-reineke/cmp-rg'
 	use 'saadparwaiz1/cmp_luasnip'
 	use 'L3MON4D3/LuaSnip'
 end)
