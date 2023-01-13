@@ -30,6 +30,8 @@ usrcmd('Make', function(opts)
 	local ft = vim.bo.filetype
 	if ft == 'rust' then
 		cmd = '!cargo '
+	elseif ft == 'swift' then
+		cmd = '!swift ' .. vim.fn.expand '%:t'
 	elseif ft == 'lua' or ft == 'cpp' or ft == 'c' then
 		cmd = '!make '
 	end
@@ -194,12 +196,9 @@ require('packer').startup(function(use)
 		config = function()
 			require('telescope').setup {
 				defaults = {
-					sorting_strategy = 'ascending',
 					winblend = 20,
 					wrap_results = true,
 					dynamic_preview_title = true,
-					-- see this <https://github.com/nvim-telescope/telescope.nvim/blob/e8c01bab917537ba4f54193c29b77bf4a04584d3/doc/telescope.txt#L1859>
-					layout_config = { prompt_position = 'top' },
 				},
 				extensions = { file_browser = { hidden = true, hide_parent_dir = true } },
 			}
