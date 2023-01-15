@@ -1,7 +1,7 @@
+vim.cmd 'colo catppuccin'
 if vim.fn.expand '%:p' == '' then
 	vim.cmd [[e $MYVIMRC]]
 end
-vim.cmd 'colo catppuccin'
 
 local p = vim.opt
 p.list = true
@@ -30,9 +30,9 @@ usrcmd('Make', function(opts)
 	local ft = vim.bo.filetype
 	if ft == 'rust' then
 		cmd = '!cargo '
-	elseif ft == 'swift' then
-		cmd = '!swift ' .. vim.fn.expand '%:t'
-	elseif ft == 'lua' or ft == 'cpp' or ft == 'c' then
+	elseif ft == 'swift' or ft == 'lua' then -- langs which has interpreter
+		cmd = '!' .. ft .. ' ' .. vim.fn.expand '%:t'
+	elseif ft == 'cpp' or ft == 'c' then -- langs which have to compile
 		cmd = '!make '
 	end
 	vim.cmd(cmd .. opts.args)
@@ -167,18 +167,12 @@ require('packer').startup(function(use)
 			}
 		end,
 	}
-	--[[
 	use {
 		'folke/noice.nvim',
 		config = function()
-			require('noice').setup {
-				presets = {
-					bottom_search = true,
-				},
-			}
+			require('noice').setup {}
 		end,
 	}
-	]]
 	use {
 		'windwp/nvim-autopairs',
 		config = function()
@@ -198,7 +192,6 @@ require('packer').startup(function(use)
 						},
 					},
 					winblend = 20,
-					wrap_results = true,
 					dynamic_preview_title = true,
 				},
 				extensions = { file_browser = { hidden = true, hide_parent_dir = true } },
@@ -209,29 +202,6 @@ require('packer').startup(function(use)
 	}
 	use 'nvim-telescope/telescope-frecency.nvim'
 	use 'nvim-telescope/telescope-file-browser.nvim'
-	use {
-		'prochri/telescope-all-recent.nvim',
-		config = function()
-			require('telescope-all-recent').setup {
-				default = {
-					disable = false,
-					use_cwd = true,
-					sorting = 'frecency',
-				},
-				pickers = {
-					git_commits = {
-						disable = true,
-					},
-					git_bcommits = {
-						disable = true,
-					},
-					['file_browser#file_browser'] = {
-						disable = true,
-					},
-				},
-			}
-		end,
-	}
 	use {
 		'williamboman/mason.nvim',
 		config = function()
@@ -291,6 +261,7 @@ require('packer').startup(function(use)
 			}
 			require('lspconfig').sourcekit.setup {
 				filetypes = { 'swift', 'objective-c', 'objective-cpp' },
+				single_file_support = true,
 				capabilities = capabilities,
 			}
 			require('lspconfig').clangd.setup { capabilities = capabilities }
@@ -348,7 +319,8 @@ require('packer').startup(function(use)
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
+				window = { completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered() },
 				mapping = cmp.mapping.preset.insert {
 					['<a-k>'] = cmp.mapping.scroll_docs(-10),
 					['<a-j>'] = cmp.mapping.scroll_docs(10),
