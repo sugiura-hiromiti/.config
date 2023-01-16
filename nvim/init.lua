@@ -27,15 +27,26 @@ aucmd('filetype', {
 local usrcmd = vim.api.nvim_create_user_command
 usrcmd('Make', function(opts)
 	local cmd = '<cr> '
+	local args = opts.args
 	local ft = vim.bo.filetype
-	if ft == 'rust' then
+	if ft == 'rust' then -- langs which have to compile
 		cmd = '!cargo '
-	elseif ft == 'swift' or ft == 'lua' then -- langs which has interpreter
-		cmd = '!' .. ft .. ' ' .. vim.fn.expand '%:t'
-	elseif ft == 'cpp' or ft == 'c' then -- langs which have to compile
+		if args == '' then
+			args = 'r -q'
+		else
+			table.insert(opts.fargs, 2, '-q')
+			args = ''
+			for _, a in pairs(opts.fargs) do
+				args = args .. a .. ' '
+			end
+		end
+	elseif ft == 'cpp' or ft == 'c' then
 		cmd = '!make '
+	elseif ft == 'swift' or ft == 'lua' then -- langs which has interpreter
+		cmd = '!' .. ft .. ' ' .. vim.fn.expand '%:t' .. ' '
 	end
-	vim.cmd(cmd .. opts.args)
+
+	vim.cmd(cmd .. args)
 end, { nargs = '*' })
 
 local map = vim.keymap.set
@@ -319,8 +330,7 @@ require('packer').startup(function(use)
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				window = { completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered() },
+				window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
 				mapping = cmp.mapping.preset.insert {
 					['<a-k>'] = cmp.mapping.scroll_docs(-10),
 					['<a-j>'] = cmp.mapping.scroll_docs(10),
