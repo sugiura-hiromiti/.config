@@ -290,6 +290,7 @@ require('packer').startup(function(use)
 			require('lspconfig').jsonls.setup { capabilities = capabilities }
 			require('lspconfig').taplo.setup { capabilities = capabilities }
 			require('lspconfig').marksman.setup { capabilities = capabilities }
+			require('lspconfig').ltex.setup { capabilities = capabilities }
 		end,
 	}
 	use {
@@ -338,7 +339,8 @@ require('packer').startup(function(use)
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
+				window = { completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered() },
 				mapping = cmp.mapping.preset.insert {
 					['<a-k>'] = cmp.mapping.scroll_docs(-10),
 					['<a-j>'] = cmp.mapping.scroll_docs(10),
