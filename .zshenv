@@ -18,6 +18,7 @@ path=(
 export EDITOR=nvim
 export VISUAL=nvim
 export MANPAGER=nvim
+export OPENAI_API_KEY=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
 #export TOOLCHAINS=swift
 
 #aliases

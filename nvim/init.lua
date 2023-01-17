@@ -28,16 +28,17 @@ local usrcmd = vim.api.nvim_create_user_command
 usrcmd('Make', function(opts)
 	local cmd = '<cr> '
 	local args = opts.args
+	local extra = ''
 	local ft = vim.bo.filetype
 	if ft == 'rust' then -- langs which have to compile
 		cmd = '!cargo '
 		if args == '' then
 			args = 'r -q'
 		else
-			table.insert(opts.fargs, 2, '-q')
-			args = ''
-			for _, a in pairs(opts.fargs) do
-				args = args .. a .. ' '
+			args = table.remove(opts.fargs, 1)
+			table.insert(opts.fargs, 1, '-q')
+			for _, a in ipairs(opts.fargs) do
+				extra = ' ' .. extra .. ' ' .. a
 			end
 		end
 	elseif ft == 'cpp' or ft == 'c' then
@@ -46,7 +47,7 @@ usrcmd('Make', function(opts)
 		cmd = '!' .. ft .. ' ' .. vim.fn.expand '%:t' .. ' '
 	end
 
-	vim.cmd(cmd .. args)
+	vim.cmd(cmd .. args .. extra)
 end, { nargs = '*' })
 
 local map = vim.keymap.set
@@ -102,7 +103,7 @@ require('packer').startup(function(use)
 		'sugiura-hiromichi/catppuccin',
 		config = function()
 			require('catppuccin').setup {
-				integrations = { lsp_saga = true, noice = true, notify = true, semantic_tokens = true },
+				integrations = { lsp_saga = true, semantic_tokens = true },
 			}
 		end,
 	}
@@ -157,8 +158,9 @@ require('packer').startup(function(use)
 	use {
 		'rcarriga/nvim-notify',
 		config = function()
-			vim.notify = require 'notify'
-			vim.notify_once = require 'notify'
+			local notify = require 'notify'
+			vim.notify = notify
+			vim.notify_once = notify
 		end,
 	}
 	use {
@@ -188,6 +190,12 @@ require('packer').startup(function(use)
 		'windwp/nvim-autopairs',
 		config = function()
 			require('nvim-autopairs').setup { map_c_h = true }
+		end,
+	}
+	use {
+		'jackMort/ChatGPT.nvim',
+		config = function()
+			require('chatgpt').setup {}
 		end,
 	}
 	use {
@@ -407,4 +415,12 @@ require('packer').startup(function(use)
 	use 'lukas-reineke/cmp-rg'
 	use 'saadparwaiz1/cmp_luasnip'
 	use 'L3MON4D3/LuaSnip'
+	use {
+		'chrisgrieser/nvim-recorder',
+		config = function()
+			require('recorder').setup {
+				mapping = { startStopRecording = '<f9>' },
+			}
+		end,
+	}
 end)
