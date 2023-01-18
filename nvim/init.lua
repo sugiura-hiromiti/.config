@@ -103,7 +103,7 @@ require('packer').startup(function(use)
 		'sugiura-hiromichi/catppuccin',
 		config = function()
 			require('catppuccin').setup {
-				integrations = { lsp_saga = true, semantic_tokens = true },
+				integrations = { lsp_saga = true, notify = false, noice = false, semantic_tokens = true },
 			}
 		end,
 	}
@@ -233,13 +233,9 @@ require('packer').startup(function(use)
 			require('mason-lspconfig').setup {
 				ensure_installed = {
 					'rust_analyzer@nightly',
-					'sumneko_lua',
 					'html',
 					'cssls',
-					'yamlls',
 					'jsonls',
-					'taplo',
-					'marksman',
 				},
 			}
 		end,
@@ -286,11 +282,15 @@ require('packer').startup(function(use)
 			require('lspconfig').clangd.setup { capabilities = capabilities }
 			require('lspconfig').html.setup { capabilities = capabilities }
 			require('lspconfig').cssls.setup { capabilities = capabilities }
+			require('lspconfig').bashls.setup { capabilities = capabilities }
 			require('lspconfig').yamlls.setup { capabilities = capabilities }
 			require('lspconfig').jsonls.setup { capabilities = capabilities }
 			require('lspconfig').taplo.setup { capabilities = capabilities }
 			require('lspconfig').marksman.setup { capabilities = capabilities }
-			require('lspconfig').ltex.setup { capabilities = capabilities }
+			require('lspconfig').texlab.setup {
+				filetypes = { 'tex', 'plaintex', 'bib', 'markdown' },
+				capabilities = capabilities,
+			}
 		end,
 	}
 	use {
