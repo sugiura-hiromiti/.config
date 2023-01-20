@@ -56,12 +56,12 @@ map('i', '<c-[>', '<c-[><cmd>update | lua vim.lsp.buf.format{async=true}<cr>')
 map({ 'n', 'v' }, '$', '^') -- swap $ & ^
 map({ 'n', 'v' }, '^', '$')
 map({ 'n', 'v' }, ',', '@:') --repeat previous command
-map('i', '<c-n>', '<down>') --emacs keybind
-map('i', '<c-p>', '<up>')
-map('i', '<c-b>', '<left>')
-map('i', '<c-f>', '<right>')
-map('i', '<c-a>', '<home>')
-map('i', '<c-e>', '<end>')
+map({ 'i', 'v' }, '<c-n>', '<down>') --emacs keybind
+map({ 'i', 'v' }, '<c-p>', '<up>')
+map({ 'i', 'v' }, '<c-b>', '<left>')
+map({ 'i', 'v' }, '<c-f>', '<right>')
+map({ 'i', 'v' }, '<c-a>', '<home>')
+map({ 'i', 'v' }, '<c-e>', '<end>')
 map('i', '<c-d>', '<del>')
 map('i', '<c-k>', '<right><c-c>v$hs')
 map('i', '<c-u>', '<c-c>v^s')
@@ -144,7 +144,7 @@ require('packer').startup(function(use)
 						swap_previous = { ['<space>S'] = '@parameter.inner' },
 					},
 					move = {
-						enable = true,
+						--enable = true,
 						set_jumps = true,
 						goto_next_start = { [']m'] = '@function.outer', [']]'] = '@class.outer' },
 						goto_next_end = { [']M'] = '@function.outer', [']['] = '@class.outer' },
@@ -155,14 +155,7 @@ require('packer').startup(function(use)
 			}
 		end,
 	}
-	use {
-		'rcarriga/nvim-notify',
-		config = function()
-			local notify = require 'notify'
-			vim.notify = notify
-			vim.notify_once = notify
-		end,
-	}
+	use 'rcarriga/nvim-notify'
 	use {
 		'folke/todo-comments.nvim',
 		config = function()
@@ -196,6 +189,12 @@ require('packer').startup(function(use)
 		'jackMort/ChatGPT.nvim',
 		config = function()
 			require('chatgpt').setup {}
+		end,
+	}
+	use {
+		'AckslD/nvim-FeMaco.lua',
+		config = function()
+			require('femaco').setup {}
 		end,
 	}
 	use {
@@ -339,8 +338,7 @@ require('packer').startup(function(use)
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				window = { completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered() },
+				window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
 				mapping = cmp.mapping.preset.insert {
 					['<a-k>'] = cmp.mapping.scroll_docs(-10),
 					['<a-j>'] = cmp.mapping.scroll_docs(10),

@@ -1,7 +1,14 @@
 {
 	"lineWidth": 100,
-	"indentWidth": 3,
 	"useTabs": true,
+	"markdown": {
+		"textWrap": "always",
+		"emphasisKind": "asterisks",
+		"newLineKind": "system"
+	},
+	"toml": {
+		"newLineKind": "system"
+	},
 	"includes": [
 		"**/*.{md,json,toml}"
 	],
