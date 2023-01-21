@@ -4,8 +4,6 @@ end
 
 -- `vim.opt`
 local p = vim.opt
--- 'vim.keymap.set'
-MAP = vim.keymap.set
 
 p.list = true
 p.listchars = { tab = '│ ' }
