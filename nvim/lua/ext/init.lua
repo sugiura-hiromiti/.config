@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- listup plugins which is difficult to classify
+-- listup plugins here which is difficult to classify
 local plugins = {
 	{
 		'chrisgrieser/nvim-recorder',
@@ -40,4 +40,4 @@ for _, t in pairs(load_plugins) do
 	end
 end
 
-require('lazy').setup(plugins)
+require('lazy').setup(plugins, { checker = { enable = true, frequency = 1 } })

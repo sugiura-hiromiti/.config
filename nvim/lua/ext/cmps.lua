@@ -24,7 +24,8 @@ return {
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
+				window = { completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered() },
 				mapping = cmp.mapping.preset.insert {
 					['<a-k>'] = cmp.mapping.scroll_docs(-10),
 					['<a-j>'] = cmp.mapping.scroll_docs(10),
@@ -66,7 +67,7 @@ return {
 					rg,
 				},
 			}
-			cmp.setup.cmdline('/', {
+			cmp.setup.cmdline({ '/', '?' }, {
 				sources = rg,
 			})
 			cmp.setup.cmdline(':', {
