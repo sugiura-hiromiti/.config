@@ -1,3 +1,19 @@
+* {
+	/*th universal selector selects all html elements on the page*/
+	tab-size: 3;
+}
 body {
 	tab-size: 3;
+}
+pre {
+	tab-size: 3;
+}
+h1 {
+	background-color: rgba(200, 200, 200, 50);
+}
+html {
+	background-color: yellowgreen;
+}
+.BaseLayout {
+	background-color: darkolivegreen;
 }
