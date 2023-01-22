@@ -1,5 +1,6 @@
 local colo_name = function()
-	if os.getenv 'TERM_PROGRAM' == 'iTerm.app' then
+	local term = os.getenv 'TERM_PROGRAM'
+	if term == 'iTerm.app' or term == 'Warp.app' then
 		return {
 			'sugiura-hiromichi/catppuccin',
 			config = function()
