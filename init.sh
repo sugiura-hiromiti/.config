@@ -16,4 +16,7 @@ fi
 
 brew bundle
 
-echo "|> initalization finished"
+pip3 install neovim
+gem install neovim
+
+echo '|> initalization finished'
