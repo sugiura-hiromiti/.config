@@ -72,19 +72,6 @@ return {
 		end,
 	},
 	{
-		'glepnir/lspsaga.nvim',
-		branch = 'main',
-		config = function()
-			require('lspsaga').setup {
-				scroll_preview = { scroll_down = '<a-j>', scroll_up = '<a-k>' },
-				lightbulb = { enable = false },
-				finder = { vsplit = '<c-v>', split = '<c-x>' },
-				rename = { in_select = false },
-				symbol_in_winbar = { enable = false },
-			}
-		end,
-	},
-	{
 		'jose-elias-alvarez/null-ls.nvim',
 		config = function()
 			local nls = require 'null-ls'

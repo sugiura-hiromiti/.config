@@ -24,12 +24,14 @@ return {
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				window = { completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered() },
+				window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
 				mapping = cmp.mapping.preset.insert {
 					['<a-k>'] = cmp.mapping.scroll_docs(-10),
 					['<a-j>'] = cmp.mapping.scroll_docs(10),
 					['<c-c>'] = cmp.mapping.abort(),
+					['<c-e>'] = cmp.mapping(function(fallback)
+						fallback()
+					end, { 'i', 's', 'c' }),
 					['<tab>'] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.confirm { behavior = cmp.ConfirmBehavior.Insert, select = true }

@@ -1,1 +1,1 @@
-minimalizm is cult
+## minimalizm is cult
