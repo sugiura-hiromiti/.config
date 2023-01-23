@@ -12,19 +12,8 @@ local colo_name = function()
 		}
 	else
 		return {
-			'catppuccin/nvim',
-			name = 'catppuccin',
-			config = function()
-				require('catppuccin').setup {
-					flavour = 'latte',
-					background = {
-						light = 'latte',
-						dark = 'latte',
-					},
-					integrations = { lsp_saga = true, notify = false, noice = false, semantic_tokens = true },
-				}
-				vim.cmd 'Catppuccin latte'
-			end,
+			'AlexvZyl/nordic.nvim',
+			branch = 'main',
 		}
 	end
 end

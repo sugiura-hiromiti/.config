@@ -1,10 +1,13 @@
 local map = vim.keymap.set
 
-map('n', '<esc>', '<cmd>noh<cr>') -- <esc> to noh
 map('i', '<c-[>', '<c-[><cmd>update | lua vim.lsp.buf.format{async=true}<cr>')
 map({ 'n', 'v' }, '$', '^') -- swap $ & ^
 map({ 'n', 'v' }, '^', '$')
 map({ 'n', 'v' }, ',', '@:') --repeat previous command
+map('n', '<esc>', function()
+	require('notify').dismiss { pending = true, silent = true }
+	vim.cmd 'noh'
+end) --clear notification and highlight
 map({ 'i', 'v' }, '<c-n>', '<down>') --emacs keybind
 map({ 'i', 'v' }, '<c-p>', '<up>')
 map({ 'i', 'v' }, '<c-b>', '<left>')
@@ -32,12 +35,12 @@ map('n', '<space>b', function()
 	require('telescope.builtin').buffers { ignore_current_buffer = true }
 end)
 map('n', '<space>e', require('telescope').extensions.file_browser.file_browser)
-map('n', '<space>f', require('telescope').extensions.frecency.frecency)
+map('n', '<space>f', require('telescope').extensions.smart_open.smart_open)
 map('n', '<space>c', '<cmd>TodoTelescope<cr>')
 map('n', '<space>n', require('telescope').extensions.notify.notify)
-map({ 'n', 'v' }, '<space>a', '<cmd>Lspsaga code_action<cr>')
-map('n', '<space>j', '<cmd>Lspsaga lsp_finder<cr>') --`j` stands for jump
-map('n', '<space>r', '<cmd>Lspsaga rename<cr>')
-map('n', '<space>h', '<cmd>Lspsaga hover_doc<cr>')
-map({ 'n', 'v' }, '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
-map({ 'n', 'v' }, '<c-k>', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
+map({ 'n', 'v' }, '<space>a', vim.lsp.buf.code_action)
+map('n', '<space>j', require('telescope.builtin').lsp_references) --`j` stands for jump
+map('n', '<space>r', vim.lsp.buf.rename)
+map('n', '<space>h', vim.lsp.buf.hover)
+map({ 'n', 'v' }, '<c-j>', vim.diagnostic.goto_next)
+map({ 'n', 'v' }, '<c-k>', vim.diagnostic.goto_prev)
