@@ -1,5 +1,5 @@
 #!/bin/sh
-rm -rf ~/.config ~/.zshenv ~/.zshrc ~/.zprofile
+rm -f ~/.zshenv ~/.zshrc ~/.zprofile
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 echo 'adding cargo to $PATH'
 source "$HOME/.cargo/env"
