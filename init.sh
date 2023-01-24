@@ -2,7 +2,7 @@
 rm -f ~/.zshenv ~/.zshrc ~/.zprofile
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 echo 'adding cargo to $PATH'
-source "$HOME/.cargo/env"
+./../.cargo/env
 
 cargo install --git https://github.com/sugiura-hiromichi/tp
 cargo install --git https://github.com/sugiura-hiromichi/cn
