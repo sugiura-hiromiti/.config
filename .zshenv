@@ -19,6 +19,7 @@ path=(
 export EDITOR=nvim
 export VISUAL=nvim
 export MANPAGER=nvim
+export OS_NAME=$(uname)
 #export TOOLCHAINS=swift
 
 #aliases
