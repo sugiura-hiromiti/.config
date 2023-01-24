@@ -8,18 +8,18 @@ map('n', '<esc>', function()
 	require('notify').dismiss { pending = true, silent = true }
 	vim.cmd 'noh'
 end) --clear notification and highlight
-map({ 'i', 'v' }, '<c-n>', '<down>') --emacs keybind
-map({ 'i', 'v' }, '<c-p>', '<up>')
-map({ 'i', 'v' }, '<c-b>', '<left>')
-map({ 'i', 'v' }, '<c-f>', '<right>')
-map({ 'i', 'v' }, '<c-a>', '<home>')
-map({ 'i', 'v' }, '<c-e>', '<end>')
-map('i', '<c-d>', '<del>')
-map('i', '<c-k>', '<right><c-c>v$hs')
-map('i', '<c-u>', '<c-c>v^s')
-map('i', '<a-d>', '<right><c-c>ves')
-map('i', '<a-f>', '<c-right>')
-map('i', '<a-b>', '<c-left>')
+map({ 'i', 'c' }, '<c-n>', '<down>') --emacs keybind
+map({ 'i', 'c' }, '<c-p>', '<up>')
+map({ 'i', 'c' }, '<c-b>', '<left>')
+map({ 'i', 'c' }, '<c-f>', '<right>')
+map({ 'i', 'c' }, '<c-a>', '<home>')
+map({ 'i', 'c' }, '<c-e>', '<end>')
+map({ 'i', 'c' }, '<c-d>', '<del>')
+map({ 'i', 'c' }, '<c-k>', '<right><c-c>v$hs')
+map({ 'i', 'c' }, '<c-u>', '<c-c>v^s')
+map({ 'i', 'c' }, '<a-d>', '<right><c-c>ves')
+map({ 'i', 'c' }, '<a-f>', '<c-right>')
+map({ 'i', 'c' }, '<a-b>', '<c-left>')
 map({ 'n', 'v' }, '<tab>', require('todo-comments').jump_next)
 map({ 'n', 'v' }, '<s-tab>', require('todo-comments').jump_prev)
 map('n', '<cr>', ':Make ') -- execute shell command

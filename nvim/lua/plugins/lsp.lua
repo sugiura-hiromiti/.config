@@ -1,5 +1,9 @@
 return {
 	{
+		'AckslD/nvim-FeMaco.lua',
+		config = true,
+	},
+	{
 		'williamboman/mason.nvim',
 		config = function()
 			require('mason').setup()
