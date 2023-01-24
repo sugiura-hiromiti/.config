@@ -1,6 +1,6 @@
 local colo_name = function()
-	local term = os.getenv 'TERM_PROGRAM'
-	if term == 'iTerm.app' or term == 'Warp.app' then
+	local os_name = os.getenv 'OS_NAME'
+	if os_name == 'Darwin' then
 		return {
 			'sugiura-hiromichi/catppuccin',
 			config = function()
@@ -14,6 +14,9 @@ local colo_name = function()
 		return {
 			'AlexvZyl/nordic.nvim',
 			branch = 'main',
+			config = function()
+				vim.cmd 'colo nordic'
+			end,
 		}
 	end
 end
