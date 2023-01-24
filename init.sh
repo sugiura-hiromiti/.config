@@ -1,8 +1,15 @@
 #!/bin/sh
 rm -f ~/.zshenv ~/.zshrc ~/.zprofile
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-. "$HOME/.cargo/env"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+if [ $(uname) = "Linux" ]; then
+	echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.profile
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+. "$HOME/.cargo/env"
+. "$HOME/.profile"
 
 cargo install --git https://github.com/sugiura-hiromichi/tp
 cargo install --git https://github.com/sugiura-hiromichi/cn
