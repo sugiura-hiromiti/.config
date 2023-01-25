@@ -11,6 +11,21 @@ local function theme_selector()
 	end
 end
 
+local cp_mode
+if wz.gui then
+	cp_mode = wz.gui.default_key_tables().copy_mode
+	local arrow_list = {
+		{ key = 'LeftArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Left', 1 } },
+		{ key = 'RightArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Right', 1 } },
+		{ key = 'UpArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Up', 1 } },
+		{ key = 'DownArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Down', 1 } },
+	}
+
+	for i = 1, 4 do
+		table.insert(cp_mode, arrow_list[i])
+	end
+end
+
 return {
 	--  font
 	font_size = 13,
@@ -21,10 +36,6 @@ return {
 	disable_default_key_bindings = true,
 	keys = {
 		{ key = 'c', mods = 'SHIFT|CMD', action = act.ActivateCopyMode },
-		{ key = 'LeftArrow', mods = 'CTRL|CMD', action = act.AdjustPaneSize { 'Left', 1 } },
-		{ key = 'RightArrow', mods = 'CTRL|CMD', action = act.AdjustPaneSize { 'Right', 1 } },
-		{ key = 'UpArrow', mods = 'CTRL|CMD', action = act.AdjustPaneSize { 'Up', 1 } },
-		{ key = 'DownArrow', mods = 'CTRL|CMD', action = act.AdjustPaneSize { 'Down', 1 } },
 		{ key = 'c', mods = 'CMD', action = act.CopyTo 'Clipboard' },
 		{ key = 'w', mods = 'CMD', action = act.CloseCurrentPane { confirm = false } },
 		{ key = '[', mods = 'CMD', action = act.PaneSelect },
@@ -45,6 +56,7 @@ return {
 		},
 		{ key = 'f', mods = 'CTRL|CMD', action = act.ToggleFullScreen },
 	},
+	key_tables = { copy_mode = cp_mode },
 
 	--appearance
 	color_scheme = theme_selector(),
