@@ -2,9 +2,10 @@
 local wz = require 'wezterm'
 local act = wz.action
 
-local function theme_selector()
-	local time = tonumber(os.date '%H')
-	if time > 18 or time < 6 then
+local function theme_selector(app)
+	--local time = tonumber(os.date '%H')
+
+	if app:find 'Dark' then
 		return 'OneHalfDark'
 	else
 		return 'OneHalfLight'
@@ -26,11 +27,17 @@ if wz.gui then
 	end
 end
 
+wz.on('window-config-reloaded', function(window, pane)
+	window:toast_notification('wezterm', 'reloaded config', nil, 3000)
+end)
+
 return {
+	--meta
+	show_update_window = true,
 	--  font
 	font_size = 13,
-	line_height = 0.9,
 	freetype_load_target = 'HorizontalLcd',
+	line_height = 0.9,
 
 	-- key assignments
 	disable_default_key_bindings = true,
@@ -59,7 +66,7 @@ return {
 	key_tables = { copy_mode = cp_mode },
 
 	--appearance
-	color_scheme = theme_selector(),
+	color_scheme = theme_selector(wz.gui.get_appearance()),
 	hide_tab_bar_if_only_one_tab = true,
 	tab_bar_at_bottom = true,
 	window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
