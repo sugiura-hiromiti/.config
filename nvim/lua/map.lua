@@ -31,9 +31,6 @@ map({ 'i', 'n', 'v' }, '<a-right>', '<c-w>>')
 map('n', 't', require('telescope.builtin').builtin) -- Telescope
 map('n', '<space>o', require('telescope.builtin').lsp_document_symbols)
 map('n', '<space>d', require('telescope.builtin').diagnostics)
-map('n', '<space>b', function()
-	require('telescope.builtin').buffers { ignore_current_buffer = true }
-end)
 map('n', '<space>e', require('telescope').extensions.file_browser.file_browser)
 map('n', '<space>f', require('telescope').extensions.smart_open.smart_open)
 map('n', '<space>c', '<cmd>TodoTelescope<cr>')
