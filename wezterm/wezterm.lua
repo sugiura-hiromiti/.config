@@ -45,7 +45,7 @@ return {
 		{ key = 'c', mods = 'SHIFT|CMD', action = act.ActivateCopyMode },
 		{ key = 'c', mods = 'CMD', action = act.CopyTo 'Clipboard' },
 		{ key = 'w', mods = 'CMD', action = act.CloseCurrentPane { confirm = false } },
-		{ key = '[', mods = 'CMD', action = act.PaneSelect },
+		{ key = 'p', mods = 'CMD', action = act.PaneSelect },
 		{ key = 'v', mods = 'CMD', action = act.PasteFrom 'Clipboard' },
 		{ key = 'q', mods = 'CMD', action = act.QuitApplication },
 		{ key = 'r', mods = 'CMD', action = act.ReloadConfiguration },
