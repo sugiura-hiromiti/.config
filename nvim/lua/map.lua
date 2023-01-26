@@ -1,4 +1,25 @@
 local map = vim.keymap.set
+local ls = require 'luasnip'
+
+local function ctr_p()
+	if ls.choice_active() then
+		return function()
+			ls.change_choice(1)
+		end
+	else
+		return '<down>'
+	end
+end
+
+local function ctr_n()
+	if ls.choice_active then
+		return function()
+			ls.change_choice(-1)
+		end
+	else
+		return '<up>'
+	end
+end
 
 map('i', '<c-[>', '<c-[><cmd>update | lua vim.lsp.buf.format{async=true}<cr>')
 map({ 'n', 'v' }, '$', '^') -- swap $ & ^
@@ -8,8 +29,8 @@ map('n', '<esc>', function()
 	require('notify').dismiss { pending = true, silent = true }
 	vim.cmd 'noh'
 end) --clear notification and highlight
-map({ 'i', 'c' }, '<c-n>', '<down>') --emacs keybind
-map({ 'i', 'c' }, '<c-p>', '<up>')
+map({ 'i', 'c', 's' }, '<c-n>', ctr_p()) --emacs keybind
+map({ 'i', 'c', 's' }, '<c-p>', ctr_n())
 map({ 'i', 'c' }, '<c-b>', '<left>')
 map({ 'i', 'c' }, '<c-f>', '<right>')
 map({ 'i', 'c' }, '<c-a>', '<home>')

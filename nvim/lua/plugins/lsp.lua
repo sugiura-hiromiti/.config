@@ -50,7 +50,7 @@ return {
 				settings = {
 					Lua = {
 						runtime = { version = 'LuaJIT' },
-						diagnostics = { globals = { 'vim' } },
+						diagnostics = { globals = { 'vim', 'hs' } },
 						workspace = { library = vim.api.nvim_get_runtime_file('', true), checkThirdParty = false },
 						telemetry = { enable = false },
 					},
@@ -62,7 +62,8 @@ return {
 				capabilities = capabilities,
 			}
 			require('lspconfig').clangd.setup { capabilities = capabilities }
-			require('lspconfig').html.setup { capabilities = capabilities, init_options = { provideFormatter = false } }
+			require('lspconfig').html.setup { capabilities = capabilities,
+				init_options = { provideFormatter = false } }
 			require('lspconfig').cssls.setup { capabilities = capabilities }
 			require('lspconfig').bashls.setup { capabilities = capabilities }
 			require('lspconfig').yamlls.setup { capabilities = capabilities }
