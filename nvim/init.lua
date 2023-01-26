@@ -45,4 +45,3 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup('plugins', { checker = { enable = true, frequency = 1 } })
 require 'usrcmd'
 require 'map'
-require 'lua_snip'
