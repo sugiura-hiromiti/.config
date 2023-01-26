@@ -5,7 +5,7 @@ coc/
 karabiner/
 fish/
 logs/
-bin/
+.fig/bin/
 apps/
 animations/
 shell/
