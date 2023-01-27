@@ -25,7 +25,7 @@ export OS_NAME=$(uname)
 #aliases
 alias s='exa -ahlF --group-directories-first --sort=extension --time-style=iso --git --no-permissions --no-user --no-time  --no-filesize'
 alias n='nvim'
-alias u='brew upgrade ; rustup self update ; rustup update ; cargo install --git https://github.com/sugiura-hiromichi/tp ;cargo install --git https://github.com/sugiura-hiromichi/cn ; cargo install --git https://github.com/sugiura-hiromichi/dot ; cargo install --git https://github.com/sugiura-hiromichi/gc ; cargo install --git https://github.com/sugiura-hiromichi/osa'
+alias u='brew upgrade ; brew reinstall neovim wezterm ; rustup self update ; rustup update ; cargo install --git https://github.com/sugiura-hiromichi/tp ;cargo install --git https://github.com/sugiura-hiromichi/cn ; cargo install --git https://github.com/sugiura-hiromichi/dot ; cargo install --git https://github.com/sugiura-hiromichi/gc ; cargo install --git https://github.com/sugiura-hiromichi/osa'
 alias gi='git init ; git add . ; git commit -m'
 alias gl='git pull'
 alias bu='brew uninstall'
