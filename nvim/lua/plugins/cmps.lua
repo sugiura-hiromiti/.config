@@ -10,7 +10,7 @@ return {
 	{
 		'hrsh7th/nvim-cmp',
 		config = function()
-			local luasnip = require 'luasnip'
+			local ls = require 'luasnip'
 			local cmp = require 'cmp'
 			local rg = {
 				name = 'rg',
@@ -21,7 +21,7 @@ return {
 			cmp.setup {
 				snippet = {
 					expand = function(args)
-						luasnip.lsp_expand(args.body)
+						ls.lsp_expand(args.body)
 					end,
 				},
 				window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
@@ -32,6 +32,24 @@ return {
 					['<c-e>'] = cmp.mapping(function(fallback)
 						fallback()
 					end, { 'i', 's', 'c' }),
+					['<c-p>'] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						elseif ls.choice_active() then
+							ls.change_choice(-1)
+						else
+							fallback()
+						end
+					end, { 'i', 's', 'c' }),
+					['<c-n>'] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						elseif ls.choice_active() then
+							ls.change_choice(1)
+						else
+							fallback()
+						end
+					end, { 'i', 's', 'c' }),
 					['<tab>'] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.confirm { behavior = cmp.ConfirmBehavior.Insert, select = true }
@@ -40,26 +58,12 @@ return {
 						end
 					end, { 'i', 's', 'c' }),
 					['<bs>'] = cmp.mapping(function(fallback)
-						if luasnip.expand_or_jumpable() then
-							luasnip.expand_or_jump()
+						if ls.expand_or_jumpable() then
+							ls.expand_or_jump()
 						else
 							fallback()
 						end
-					end, { 'i', 's', 'c' }),
-					['<c-n>'] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_next_item()
-						else
-							fallback()
-						end
-					end, { 'i', 's', 'c' }),
-					['<c-p>'] = cmp.mapping(function(fallback)
-						if cmp.visible() then
-							cmp.select_prev_item()
-						else
-							fallback()
-						end
-					end, { 'i', 's', 'c' }),
+					end),
 				},
 				sources = {
 					{ name = 'luasnip' },
@@ -69,7 +73,7 @@ return {
 					rg,
 				},
 			}
-			cmp.setup.cmdline({ '/', '?' }, {
+			cmp.setup.cmdline({ '/' }, {
 				sources = rg,
 			})
 			cmp.setup.cmdline(':', {
