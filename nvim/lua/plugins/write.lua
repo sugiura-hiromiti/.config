@@ -14,13 +14,13 @@ return {
 			}
 
 			local ls = require 'luasnip'
-			local fmt, rep = require('luasnip.extras.fmt').fmt, require('luasnip.extras').rep
-			local s, i, c, t, f, d = ls.s, ls.insert_node, ls.choice_node, ls.text_node, ls.function_node, ls.dynamic_node
+			local fmt = require('luasnip.extras.fmt').fmt
+			local s, i, c, t, f = ls.s, ls.insert_node, ls.choice_node, ls.text_node, ls.function_node
 
 			ls.add_snippets('lua', {
 				-- snippets for lua ft
 				s(
-					'req',
+					'sreq',
 					fmt("local {}=require'{}'", {
 						f(function(import_name)
 							local parts = vim.split(import_name[1][1], '.', { plain = true, trimempty = true })
@@ -40,18 +40,20 @@ return {
 						{ i(1), i(2), i(0) }
 					)
 				),
+				s(
+					'hs_notify',
+					fmt(
+						[[
+				hs.notify.new({{title='{}', informativeText={}}}):send()
+				]],
+						{ i(1, 'HammerSpoon'), i(2) }
+					)
+				),
 			})
 
 			ls.add_snippets('all', {
 				-- snippets for all ft
-				ls.parser.parse_snippet('lf', '-- defined in $TM_FILENAME\nlocal $1=function($2)\n$0\nend'),
-				s('td', fmt([[{}: {}]], { c(1, { t ' d', t ' q', t ' t', t ' a', t ' x', t ' p', t ' e' }), i(0) })),
-				s(
-					'curtime',
-					f(function()
-						return os.date '%D - %H:%M'
-					end)
-				),
+				s('td', fmt(' {}: {}', { c(1, { t 'd', t 'q', t 't', t 'a', t 'x', t 'p', t 'e' }), i(0) })),
 			})
 		end,
 	},

@@ -6,6 +6,7 @@
  myWatcher=hs.pathwatcher.new(...):start()
 ]]
 -- d: see here for detalis|> http://www.hammerspoon.org/go/
+-- # awesome Spoons|> http://www.hammerspoon.org/Spoons/ReloadConfiguration.html
 
 -- # window manipulation
 SIZE = 35
@@ -88,8 +89,6 @@ end
 
 ConfigWatcher = hs.pathwatcher.new(os.getenv 'HOME' .. '/.hammerspoon/', Reload):start()
 
--- d: # awesome Spoons|> http://www.hammerspoon.org/Spoons/ReloadConfiguration.html
-
 -- # menubar item
 -- # reach to application events
 
@@ -112,5 +111,7 @@ WifiWatcher:start()
 -- # reach to USB events
 -- # run osascript
 
+hs.notify.new({ title = 'HammerSpoon', informativeText = 'ab' }):send()
+
 -- make sure that this line is bottom of file
-hs.notify.new({ title = 'Hammerspoon', informativeText = 'config loaded' }):send()
+hs.notify.new({ title = 'HammerSpoon', informativeText = 'config loaded' }):send()
