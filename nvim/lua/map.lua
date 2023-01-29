@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+local ts_builtin = require 'telescope.builtin'
 
 map('i', '<c-[>', '<c-[><cmd>update | lua vim.lsp.buf.format{async=true}<cr>')
 map({ 'n', 'v' }, '$', '^') -- swap $ & ^
@@ -28,14 +29,15 @@ map({ 'i', 'n', 'v' }, '<a-left>', '<c-w><') -- change window size
 map({ 'i', 'n', 'v' }, '<a-down>', '<c-w>+')
 map({ 'i', 'n', 'v' }, '<a-up>', '<c-w>-')
 map({ 'i', 'n', 'v' }, '<a-right>', '<c-w>>')
-map('n', 't', require('telescope.builtin').builtin) -- Telescope
-map('n', '<space>o', require('telescope.builtin').lsp_document_symbols)
-map('n', '<space>d', require('telescope.builtin').diagnostics)
+map('n', 't', ts_builtin.builtin) -- Telescope
+map('n', '<space>o', ts_builtin.lsp_document_symbols)
+map('n', '<space>d', ts_builtin.diagnostics)
+map('n', '<space>g', ts_builtin.live_grep)
 map('n', '<space>f', require('telescope').extensions.smart_open.smart_open)
 map('n', '<space>c', '<cmd>TodoTelescope<cr>')
 map('n', '<space>n', require('telescope').extensions.notify.notify)
 map({ 'n', 'v' }, '<space>a', vim.lsp.buf.code_action)
-map('n', '<space>j', require('telescope.builtin').lsp_references) --`j` stands for jump
+map('n', '<space>j', ts_builtin.lsp_references) --`j` stands for jump
 map('n', '<space>r', vim.lsp.buf.rename)
 map('n', '<space>h', vim.lsp.buf.hover)
 map({ 'n', 'v' }, '<c-j>', vim.diagnostic.goto_next)

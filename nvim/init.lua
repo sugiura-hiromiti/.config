@@ -4,6 +4,7 @@ end
 
 -- `vim.opt`
 local p = vim.opt
+local g = vim.g
 p.list = true
 p.listchars = { tab = '│ ' }
 p.pumblend = 22
@@ -14,8 +15,12 @@ p.termguicolors = true
 p.clipboard:append { 'unnamedplus' }
 p.autochdir = true
 p.laststatus = 0
-vim.g.editorconfig = true
-vim.o.cot = 'menu,menuone,noselect'
+g.editorconfig = true
+g.netrw_banner = 0
+g.netrw_liststyle = 3
+g.netrw_browse_split = 4
+g.netrw_preview = 1
+g.netrw_winsize = 85
 
 local aucmd = vim.api.nvim_create_autocmd
 -- Just using `set fo-=cro` won't work since many filetypes set/expand `formatoption`

@@ -49,11 +49,16 @@ return {
 						{ i(1, 'HammerSpoon'), i(2) }
 					)
 				),
+				s('bc', fmt('--[[{}]]', i(1))),
 			})
 
 			ls.add_snippets('all', {
 				-- snippets for all ft
 				s('td', fmt(' {}: {}', { c(1, { t 'd', t 'q', t 't', t 'a', t 'x', t 'p', t 'e' }), i(0) })),
+			})
+
+			ls.add_snippets({ 'rust', 'c', 'cpp', 'css', 'swift' }, {
+				s('bc', fmt('/*{}*/', i(1))),
 			})
 		end,
 	},
