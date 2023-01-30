@@ -18,8 +18,6 @@ p.laststatus = 0
 g.editorconfig = true
 g.netrw_banner = 0
 g.netrw_liststyle = 3
-g.netrw_browse_split = 4
-g.netrw_preview = 1
 g.netrw_winsize = 85
 
 local aucmd = vim.api.nvim_create_autocmd
@@ -46,7 +44,7 @@ if not vim.loop.fs_stat(lazypath) then
 	}
 end
 vim.opt.rtp:prepend(lazypath)
-
 require('lazy').setup('plugins', { checker = { enable = true, frequency = 1 } })
+
 require 'usrcmd'
 require 'map'

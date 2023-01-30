@@ -13,6 +13,7 @@ brew "marksman"
 brew "neovim", args: ["HEAD"]
 brew "prettier"
 brew "ripgrep"
+brew "rm-improved"
 brew "sqlite"
 brew "starship"
 brew "stylua"
