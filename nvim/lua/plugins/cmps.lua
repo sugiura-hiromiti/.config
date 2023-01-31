@@ -24,8 +24,7 @@ return {
 						ls.lsp_expand(args.body)
 					end,
 				},
-				window = { completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered() },
+				window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
 				mapping = cmp.mapping.preset.insert {
 					['<a-k>'] = cmp.mapping.scroll_docs(-10),
 					['<a-j>'] = cmp.mapping.scroll_docs(10),
@@ -75,7 +74,7 @@ return {
 				},
 			}
 			cmp.setup.cmdline({ '/', '?' }, {
-				sources = rg,
+				sources = { rg },
 			})
 			cmp.setup.cmdline(':', {
 				sources = {

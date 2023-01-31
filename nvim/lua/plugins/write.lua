@@ -7,6 +7,7 @@ return {
 	},
 	{
 		'L3MON4D3/LuaSnip',
+		version = '<CurrentMajor>.*',
 		config = function()
 			require('luasnip').setup {
 				history = false,
