@@ -75,7 +75,7 @@ return {
 				},
 			}
 			cmp.setup.cmdline({ '/', '?' }, {
-				sources = rg,
+				sources = { rg },
 			})
 			cmp.setup.cmdline(':', {
 				sources = {

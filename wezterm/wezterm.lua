@@ -15,7 +15,7 @@ end
 local cp_mode
 if wz.gui then
 	cp_mode = wz.gui.default_key_tables().copy_mode
-	local arrow_list = {
+	local meta_ops = {
 		{ key = 'LeftArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Left', 1 } },
 		{ key = 'RightArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Right', 1 } },
 		{ key = 'UpArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Up', 1 } },
@@ -23,7 +23,7 @@ if wz.gui then
 	}
 
 	for i = 1, 4 do
-		table.insert(cp_mode, arrow_list[i])
+		table.insert(cp_mode, meta_ops[i])
 	end
 end
 
@@ -43,14 +43,18 @@ return {
 	disable_default_key_bindings = true,
 	keys = {
 		{ key = 'c', mods = 'SHIFT|CMD', action = act.ActivateCopyMode },
+		{ key = '[', mods = 'CMD', action = act.ActivatePaneDirection 'Prev' },
+		{ key = ']', mods = 'CMD', action = act.ActivatePaneDirection 'Next' },
+		{ key = 'Tab', mods = 'CTRL', action = act.ActivateTabRelative(1) },
 		{ key = 'c', mods = 'CMD', action = act.CopyTo 'Clipboard' },
 		{ key = 'w', mods = 'CMD', action = act.CloseCurrentPane { confirm = false } },
-		{ key = 'p', mods = 'CMD', action = act.PaneSelect },
 		{ key = 'v', mods = 'CMD', action = act.PasteFrom 'Clipboard' },
 		{ key = 'q', mods = 'CMD', action = act.QuitApplication },
 		{ key = 'r', mods = 'CMD', action = act.ReloadConfiguration },
 		{ key = 'PageUp', mods = 'SHIFT', action = act.ScrollByPage(-1) },
 		{ key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1) },
+		{ key = 't', mods = 'CMD', action = act.SpawnTab 'DefaultDomain' },
+		{ key = 'n', mods = 'CMD', action = act.SpawnWindow },
 		{
 			key = 'd',
 			mods = 'CMD',

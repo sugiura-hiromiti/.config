@@ -111,7 +111,10 @@ WifiWatcher:start()
 -- # reach to USB events
 -- # run osascript
 
-hs.notify.new({ title = 'HammerSpoon', informativeText = 'ab' }):send()
+hs.hotkey.bind({ 'cmd', 'shift' }, 'p', function()
+	os.execute 'pip'
+	hs.notify.new({ title = 'HammerSpoon', informativeText = 'pipped!' }):send()
+end)
 
 -- make sure that this line is bottom of file
 hs.notify.new({ title = 'HammerSpoon', informativeText = 'config loaded' }):send()
