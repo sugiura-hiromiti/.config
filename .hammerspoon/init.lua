@@ -70,6 +70,23 @@ hs.hotkey.bind({ 'cmd', 'shift' }, '/', function()
 	w:setFrame(f)
 end)
 
+--[[
+hs.hotkey.bind({ 'shift' }, 'f1', function() hs.execute('wezterm cli spawn --new-window --domain-name "float"', true)
+end)
+]]
+
+DoubleSpace = hs.hotkey.modal.new('shift', 'q')
+--[[
+function DoubleSpace:entered()
+	hs.application.open 'wezterm'
+end
+
+DoubleSpace:bind('shift', 'q', 'enter hotkey', nil, nil, function()
+	--require('wezterm').mux.spawn_window { width = 80, height = 100 }
+	hs.execute('wezterm cli spawn --new-window', true)
+end)
+]]
+
 -- # multi window layout
 -- # window filter
 
@@ -110,11 +127,6 @@ WifiWatcher:start()
 
 -- # reach to USB events
 -- # run osascript
-
-hs.hotkey.bind({ 'cmd', 'shift' }, 'p', function()
-	os.execute 'pip'
-	hs.notify.new({ title = 'HammerSpoon', informativeText = 'pipped!' }):send()
-end)
 
 -- make sure that this line is bottom of file
 hs.notify.new({ title = 'HammerSpoon', informativeText = 'config loaded' }):send()

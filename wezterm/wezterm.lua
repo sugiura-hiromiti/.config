@@ -6,9 +6,9 @@ local function theme_selector(app)
 	--local time = tonumber(os.date '%H')
 
 	if app:find 'Dark' then
-		return 'OneHalfDark'
+		return 'Nova (base16)'
 	else
-		return 'OneHalfLight'
+		return 'Alabaster'
 	end
 end
 
@@ -55,6 +55,13 @@ return {
 		{ key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1) },
 		{ key = 't', mods = 'CMD', action = act.SpawnTab 'DefaultDomain' },
 		{ key = 'n', mods = 'CMD', action = act.SpawnWindow },
+		{
+			key = 'n',
+			mods = 'SHIFT|CMD',
+			action = act.SpawnCommandInNewWindow {
+				args = { 'wezterm', '--config', 'window_background_opacity=0.4' },
+			},
+		},
 		{
 			key = 'd',
 			mods = 'CMD',
