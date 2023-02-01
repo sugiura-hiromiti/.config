@@ -70,10 +70,7 @@ hs.hotkey.bind({ 'cmd', 'shift' }, '/', function()
 	w:setFrame(f)
 end)
 
---[[
-hs.hotkey.bind({ 'shift' }, 'f1', function() hs.execute('wezterm cli spawn --new-window --domain-name "float"', true)
-end)
-]]
+--hs.hotkey.bind({ 'shift' }, 'f1', function() hs.execute('wezterm --config window_background_opacity = 0.5', true) end)
 
 DoubleSpace = hs.hotkey.modal.new('shift', 'q')
 --[[

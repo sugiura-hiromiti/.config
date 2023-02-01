@@ -31,6 +31,18 @@ wz.on('window-config-reloaded', function(window, pane)
 	window:toast_notification('wezterm', 'reloaded config', nil, 3000)
 end)
 
+wz.on('opacity', function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	if not overrides.window_background_opacity then
+		overrides.window_background_opacity = 0.45
+		overrides.text_background_opacity = 0.3
+	else
+		overrides.window_background_opacity = nil
+		overrides.text_background_opacity = nil
+	end
+	window:set_config_overrides(overrides)
+end)
+
 return {
 	--meta
 	show_update_window = true,
@@ -48,6 +60,7 @@ return {
 		{ key = 'Tab', mods = 'CTRL', action = act.ActivateTabRelative(1) },
 		{ key = 'c', mods = 'CMD', action = act.CopyTo 'Clipboard' },
 		{ key = 'w', mods = 'CMD', action = act.CloseCurrentPane { confirm = false } },
+		{ key = 'o', mods = 'CMD', action = act.EmitEvent 'opacity' },
 		{ key = 'v', mods = 'CMD', action = act.PasteFrom 'Clipboard' },
 		{ key = 'q', mods = 'CMD', action = act.QuitApplication },
 		{ key = 'r', mods = 'CMD', action = act.ReloadConfiguration },
