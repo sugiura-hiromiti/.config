@@ -1,5 +1,6 @@
 # make sure that securityInfo is in .zprofile(which is in .gitignore)
 set -o emacs
+. $HOME/.profile
 
 export PATH=$PATH:$HOME/.cargo/env
 export PATH=$PATH:$HOME/.cargo/bin
