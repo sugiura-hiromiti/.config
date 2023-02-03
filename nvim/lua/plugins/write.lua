@@ -7,7 +7,6 @@ return {
 	},
 	{
 		'L3MON4D3/LuaSnip',
-		--		version = '<CurrentMajor>.*',
 		config = function()
 			require('luasnip').setup {
 				history = false,
@@ -16,7 +15,8 @@ return {
 
 			local ls = require 'luasnip'
 			local fmt = require('luasnip.extras.fmt').fmt
-			local s, i, c, t, f = ls.s, ls.insert_node, ls.choice_node, ls.text_node, ls.function_node
+			local s, i, c, t, f, d = ls.s, ls.insert_node, ls.choice_node, ls.text_node, ls.function_node,
+				 ls.dynamic_node
 
 			ls.add_snippets('lua', {
 				-- snippets for lua ft
@@ -50,16 +50,47 @@ return {
 						{ i(1, 'HammerSpoon'), i(2) }
 					)
 				),
-				s('bc', fmt('--[[{}]]', i(1))),
 			})
 
 			ls.add_snippets('all', {
 				-- snippets for all ft
-				s('td', fmt(' {}: {}', { c(1, { t 'd', t 'q', t 't', t 'a', t 'x', t 'p', t 'e' }), i(0) })),
-			})
-
-			ls.add_snippets({ 'rust', 'c', 'cpp', 'css', 'swift' }, {
-				s('bc', fmt('/*{}*/', i(1))),
+				s(
+					'td',
+					fmt('{} {}: {}', {
+						f(function(_)
+							local ft = vim.bo.filetype
+							local comment_pre = '//'
+							if ft == 'lua' then
+								comment_pre = '--'
+							end
+							return comment_pre
+						end),
+						c(1, { t 'd', t 'q', t 't', t 'a', t 'x', t 'p', t 'e' }),
+						i(0),
+					})
+				),
+				s(
+					'cb',
+					fmt('{}\n{}{}', {
+						f(function(_)
+							local ft = vim.bo.filetype
+							local cb_pre = '/*'
+							if ft == 'lua' then
+								cb_pre = '--[['
+							end
+							return cb_pre
+						end),
+						i(1),
+						f(function(_)
+							local ft = vim.bo.filetype
+							local cb_post = '*/'
+							if ft == 'lua' then
+								cb_post = ']]'
+							end
+							return cb_post
+						end),
+					})
+				),
 			})
 		end,
 	},

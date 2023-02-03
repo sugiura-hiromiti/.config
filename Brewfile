@@ -8,6 +8,7 @@ brew "bash-language-server"
 brew "dprint"
 brew "exa"
 brew "fd"
+brew "gh"
 brew "lua-language-server"
 brew "marksman"
 brew "neovim", args: ["HEAD"]
