@@ -5,9 +5,7 @@ return {
 	},
 	{
 		'williamboman/mason.nvim',
-		config = function()
-			require('mason').setup()
-		end,
+		config = true,
 	},
 	{
 		'williamboman/mason-lspconfig.nvim',
@@ -79,8 +77,12 @@ return {
 	{
 		'jose-elias-alvarez/null-ls.nvim',
 		config = function()
-			local nls = require 'null-ls'
-			local fmt = nls.builtins.formatting
+			local nls = require('null-ls')
+			local builtins = nls.builtins
+			local fmt = builtins.formatting
+			local hov = builtins.hover
+			local diag = builtins.diagnostics
+			local cmp = builtins.completion
 			nls.setup {
 				sources = {
 					fmt.dprint.with { filetypes = { 'markdown', 'json', 'toml' } },
@@ -88,6 +90,9 @@ return {
 					fmt.prettier.with { filetypes = { 'css', 'html', 'yaml' } },
 					fmt.beautysh.with { extra_args = { '-t' } },
 					fmt.swiftformat,
+					hov.printenv,
+					diag.zsh,
+					cmp.spell,
 				},
 			}
 		end,

@@ -1,3 +1,14 @@
+local aucmd = vim.api.nvim_create_autocmd
+-- Just using `set fo-=cro` won't work since many filetypes set/expand `formatoption`
+aucmd('filetype', {
+	callback = function()
+		vim.opt.fo = { j = true }
+		vim.opt.shiftwidth = 3
+		vim.opt.tabstop = 3
+		vim.opt.softtabstop = 3
+	end,
+})
+
 local usrcmd = vim.api.nvim_create_user_command
 usrcmd('Make', function(opts)
 	local cmd = '<cr> '

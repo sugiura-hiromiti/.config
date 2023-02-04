@@ -2,9 +2,7 @@ return {
 	'rcarriga/nvim-notify',
 	{
 		'folke/noice.nvim',
-		config = function()
-			require('noice').setup {}
-		end,
+		config = true,
 	},
 	{
 		'folke/todo-comments.nvim',

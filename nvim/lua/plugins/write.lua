@@ -2,7 +2,7 @@ return {
 	{
 		'windwp/nvim-autopairs',
 		config = function()
-			require('nvim-autopairs').setup { map_c_h = true }
+			require('nvim-autopairs').setup { check_ts = true, map_bs = false, map_c_h = true }
 		end,
 	},
 	{
@@ -15,8 +15,7 @@ return {
 
 			local ls = require 'luasnip'
 			local fmt = require('luasnip.extras.fmt').fmt
-			local s, i, c, t, f, d = ls.s, ls.insert_node, ls.choice_node, ls.text_node, ls.function_node,
-				 ls.dynamic_node
+			local s, i, c, t, f, d = ls.s, ls.insert_node, ls.choice_node, ls.text_node, ls.function_node, ls.dynamic_node
 
 			ls.add_snippets('lua', {
 				-- snippets for lua ft
