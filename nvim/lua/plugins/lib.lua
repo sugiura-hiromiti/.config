@@ -12,7 +12,7 @@ local colo_name = function()
 		}
 	else
 		return {
-			'zanglz/nova.nvim',
+			'zanglg/nova.nvim',
 			config = function()
 				require('nova').setup()
 				require('nova').load()

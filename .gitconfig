@@ -5,5 +5,5 @@
 	editor = nvim
 [init]
 	defaultBranch = main
-[url "git@github.com:"]
+[url "ssh://git@github.com/"]
 	InsteadOf=https://github.com/
