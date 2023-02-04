@@ -9,10 +9,10 @@ pre {
 	tab-size: 3;
 }
 h1 {
-	background-color: rgba(200, 200, 200, 50);
+	background-color: rgba(200, 200, 200, 80);
 }
 html {
-	background-color: yellowgreen;
+	background-color: rgba(154, 205, 32, 50);
 }
 .BaseLayout {
 	background-color: darkolivegreen;

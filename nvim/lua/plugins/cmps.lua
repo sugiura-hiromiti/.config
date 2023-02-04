@@ -15,7 +15,7 @@ return {
 			local rg = {
 				name = 'rg',
 				option = { additional_arguments = '--smart-case', context_after = 7 },
-				keyword_length = 2,
+				keyword_length = 0,
 			}
 
 			cmp.setup {
@@ -24,8 +24,7 @@ return {
 						ls.lsp_expand(args.body)
 					end,
 				},
-				window = { completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered() },
+				window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
 				mapping = cmp.mapping.preset.insert {
 					['<a-k>'] = cmp.mapping.scroll_docs(-10),
 					['<a-j>'] = cmp.mapping.scroll_docs(10),
