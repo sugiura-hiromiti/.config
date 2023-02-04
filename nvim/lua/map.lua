@@ -33,6 +33,7 @@ map('n', 't', ts_builtin.builtin) -- Telescope
 map('n', '<space>o', ts_builtin.lsp_document_symbols)
 map('n', '<space>d', ts_builtin.diagnostics)
 map('n', '<space>g', ts_builtin.live_grep)
+map('n', '<space>m', ts_builtin.marks)
 map('n', '<space>f', require('telescope').extensions.smart_open.smart_open)
 map('n', '<space>c', '<cmd>TodoTelescope<cr>')
 map('n', '<space>n', require('telescope').extensions.notify.notify)
