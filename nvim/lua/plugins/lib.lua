@@ -12,10 +12,10 @@ local colo_name = function()
 		}
 	else
 		return {
-			'AlexvZyl/nordic.nvim',
-			branch = 'main',
+			'zanglz/nova.nvim',
 			config = function()
-				vim.cmd 'colo nordic'
+				require('nova').setup()
+				require('nova').load()
 			end,
 		}
 	end
