@@ -70,20 +70,6 @@ hs.hotkey.bind({ 'cmd', 'shift' }, '/', function()
 	w:setFrame(f)
 end)
 
---hs.hotkey.bind({ 'shift' }, 'f1', function() hs.execute('wezterm --config window_background_opacity = 0.5', true) end)
-
-DoubleSpace = hs.hotkey.modal.new('shift', 'q')
---[[
-function DoubleSpace:entered()
-	hs.application.open 'wezterm'
-end
-
-DoubleSpace:bind('shift', 'q', 'enter hotkey', nil, nil, function()
-	--require('wezterm').mux.spawn_window { width = 80, height = 100 }
-	hs.execute('wezterm cli spawn --new-window', true)
-end)
-]]
-
 -- # multi window layout
 -- # window filter
 
