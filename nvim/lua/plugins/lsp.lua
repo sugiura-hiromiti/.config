@@ -77,12 +77,12 @@ return {
 	{
 		'jose-elias-alvarez/null-ls.nvim',
 		config = function()
-			local nls = require('null-ls')
+			local nls = require 'null-ls'
 			local builtins = nls.builtins
 			local fmt = builtins.formatting
 			local hov = builtins.hover
 			local diag = builtins.diagnostics
-			local cmp = builtins.completion
+			--local cmp = builtins.completion
 			nls.setup {
 				sources = {
 					fmt.dprint.with { filetypes = { 'markdown', 'json', 'toml' } },
@@ -92,7 +92,7 @@ return {
 					fmt.swiftformat,
 					hov.printenv,
 					diag.zsh,
-					cmp.spell,
+					--					cmp.spell.with { filetypes = { 'markdown', 'text' } },
 				},
 			}
 		end,
