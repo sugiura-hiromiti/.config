@@ -27,11 +27,11 @@ if wz.gui then
 	end
 end
 
-wz.on('window-config-reloaded', function(window, pane)
+wz.on('window-config-reloaded', function(window, _)
 	window:toast_notification('wezterm', 'reloaded config', nil, 3000)
 end)
 
-wz.on('opacity', function(window, pane)
+wz.on('opacity', function(window, _)
 	local overrides = window:get_config_overrides() or {}
 	if not overrides.window_background_opacity then
 		overrides.window_background_opacity = 0.45
