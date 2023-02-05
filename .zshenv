@@ -21,7 +21,6 @@ export EDITOR=nvim
 export VISUAL=nvim
 export MANPAGER=less
 export OS_NAME=$(uname)
-#export TOOLCHAINS=swift
 
 #aliases
 alias s='exa -ahlF --group-directories-first --sort=extension --time-style=iso --git --no-permissions --no-user --no-time  --no-filesize'
