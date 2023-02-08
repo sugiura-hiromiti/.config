@@ -34,8 +34,8 @@ end)
 wz.on('opacity', function(window, _)
 	local overrides = window:get_config_overrides() or {}
 	if not overrides.window_background_opacity then
-		overrides.window_background_opacity = 0.45
-		overrides.text_background_opacity = 0.3
+		overrides.window_background_opacity = 0.4
+		overrides.text_background_opacity = 0.2
 	else
 		overrides.window_background_opacity = nil
 		overrides.text_background_opacity = nil
@@ -68,13 +68,6 @@ return {
 		{ key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1) },
 		{ key = 't', mods = 'CMD', action = act.SpawnTab 'DefaultDomain' },
 		{ key = 'n', mods = 'CMD', action = act.SpawnWindow },
-		{
-			key = 'n',
-			mods = 'SHIFT|CMD',
-			action = act.SpawnCommandInNewWindow {
-				args = { 'wezterm', '--config', 'window_background_opacity=0.4' },
-			},
-		},
 		{
 			key = 'd',
 			mods = 'CMD',
