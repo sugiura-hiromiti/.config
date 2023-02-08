@@ -12,6 +12,7 @@
   "autocomplete.keybindings.enter": "insertSelectedAndExecute",
   "autocomplete.keybindings.esc": "ignore",
   "autocomplete.keybindings.escape": "hideAutocomplete",
+  "autocomplete.keybindings.shift+enter": "execute",
   "autocomplete.keybindings.shift+tab": "ignore",
   "autocomplete.keybindings.tab": "insertSelected",
   "autocomplete.keybindings.up": "ignore",
