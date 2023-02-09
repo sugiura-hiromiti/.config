@@ -1,6 +1,8 @@
 local colo_name = function()
-	local os_name = os.getenv 'OS_NAME'
-	if os_name == 'Darwin' then
+	local handle = io.popen 'uname'
+	local os_name = handle:read '*a'
+	handle:close()
+	if os_name == 'Darwin\n' then
 		return {
 			'sugiura-hiromichi/catppuccin',
 			config = function()
