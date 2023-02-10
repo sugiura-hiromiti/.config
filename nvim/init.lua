@@ -3,7 +3,7 @@ if vim.fn.expand '%:p' == '' then
 end
 
 vim.opt.list = true
-vim.opt.listchars = { tab = '│ ' }
+vim.opt.listchars = { tab = '│·' }
 vim.opt.pumblend = 22
 vim.opt.relativenumber = true
 vim.opt.number = true
