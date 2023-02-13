@@ -5,11 +5,14 @@ local colo_name = function()
 	if os_name == 'Darwin\n' then
 		return {
 			'sugiura-hiromichi/catppuccin',
+			name = 'catppuccin',
 			config = function()
-				vim.cmd 'colo catppuccin'
 				require('catppuccin').setup {
-					integrations = { lsp_saga = true, notify = false, noice = false, semantic_tokens = true },
+					--					flavour = 'latte', background = { light = 'latte', dark = 'frappe', },
+					--transparent_background = true,
+					integrations = { semantic_tokens = true },
 				}
+				vim.cmd 'colo catppuccin'
 			end,
 		}
 	else
