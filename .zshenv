@@ -24,7 +24,7 @@ export MANPAGER=less
 #aliases --no-permissions
 alias s='exa -ahlF --icons --group-directories-first --sort=extension --time-style=iso --git --no-user --no-time  --no-filesize'
 alias n='nvim'
-alias u='brew upgrade ; brew reinstall neovim wezterm ; rustup self update ; rustup update ; cargo install --git https://github.com/sugiura-hiromichi/tp ;cargo install --git https://github.com/sugiura-hiromichi/cn ; cargo install --git https://github.com/sugiura-hiromichi/dot ; cargo install --git https://github.com/sugiura-hiromichi/gc ; cargo install --git https://github.com/sugiura-hiromichi/osa'
+alias u='brew upgrade ; brew reinstall neovim wezterm ; rustup self update ; rustup update ; cargo install --git https://github.com/sugiura-hiromichi/tp ; cargo install --git https://github.com/sugiura-hiromichi/dot ; cargo install --git https://github.com/sugiura-hiromichi/gc ; cargo install --git https://github.com/sugiura-hiromichi/osa'
 alias zo='z $OLDPWD'
 alias gi='git init ; git add . ; git commit -m'
 alias gl='git pull'
