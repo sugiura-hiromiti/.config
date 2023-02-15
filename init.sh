@@ -12,7 +12,6 @@ fi
 . "$HOME/.profile"
 
 cargo install --git https://github.com/sugiura-hiromichi/tp
-cargo install --git https://github.com/sugiura-hiromichi/cn
 cargo install --git https://github.com/sugiura-hiromichi/gc
 cargo install --git https://github.com/sugiura-hiromichi/dot
 dot

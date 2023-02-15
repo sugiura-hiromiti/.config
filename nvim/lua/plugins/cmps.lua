@@ -26,7 +26,7 @@ return {
 				},
 				window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
 				mapping = cmp.mapping.preset.insert {
-					['<a-k>'] = cmp.mapping.scroll_docs(-10),
+					['<a-k>'] = cmp.mapping.scroll_docs( -10),
 					['<a-j>'] = cmp.mapping.scroll_docs(10),
 					['<c-c>'] = cmp.mapping.abort(),
 					['<c-e>'] = cmp.mapping(function(fallback)
@@ -36,7 +36,7 @@ return {
 						if cmp.visible() then
 							cmp.select_prev_item()
 						elseif ls.choice_active() then
-							ls.change_choice(-1)
+							ls.change_choice( -1)
 						else
 							fallback()
 						end
@@ -71,6 +71,7 @@ return {
 					{ name = 'nvim_lua' },
 					{ name = 'nvim_lsp_signature_help' },
 					rg,
+					{ name = 'path' },
 				},
 			}
 			cmp.setup.cmdline({ '/', '?' }, {
