@@ -17,6 +17,7 @@ vim.g.editorconfig = true
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
 vim.g.netrw_winsize = 85
+vim.g.mkdp_auto_start = 1
 
 -- lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
