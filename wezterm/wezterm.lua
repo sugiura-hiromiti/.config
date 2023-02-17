@@ -50,7 +50,6 @@ return {
 	font_size = 13,
 	freetype_load_target = 'HorizontalLcd',
 	line_height = 0.9,
-
 	-- key assignments
 	disable_default_key_bindings = true,
 	keys = {
@@ -66,6 +65,7 @@ return {
 		{ key = 'r', mods = 'CMD', action = act.ReloadConfiguration },
 		{ key = 'PageUp', mods = 'SHIFT', action = act.ScrollByPage(-1) },
 		{ key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1) },
+		{ key = 'f', mods = 'CMD', action = act.Search { CaseSensitiveString = '' } },
 		{ key = 't', mods = 'CMD', action = act.SpawnTab 'DefaultDomain' },
 		{ key = 'n', mods = 'CMD', action = act.SpawnWindow },
 		{
@@ -81,7 +81,6 @@ return {
 		{ key = 'f', mods = 'CTRL|CMD', action = act.ToggleFullScreen },
 	},
 	key_tables = { copy_mode = cp_mode },
-
 	--appearance
 	color_scheme = theme_selector(wz.gui.get_appearance()),
 	hide_tab_bar_if_only_one_tab = true,
