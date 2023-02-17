@@ -43,7 +43,7 @@ return {
 					},
 				},
 			}
-			require('lspconfig').sumneko_lua.setup {
+			require('lspconfig').lua_ls.setup {
 				capabilities = capabilities,
 				settings = {
 					Lua = {
@@ -60,8 +60,7 @@ return {
 				capabilities = capabilities,
 			}
 			require('lspconfig').clangd.setup { capabilities = capabilities }
-			require('lspconfig').html.setup { capabilities = capabilities,
-				init_options = { provideFormatter = false } }
+			require('lspconfig').html.setup { capabilities = capabilities, init_options = { provideFormatter = false } }
 			require('lspconfig').cssls.setup { capabilities = capabilities }
 			require('lspconfig').bashls.setup { capabilities = capabilities }
 			require('lspconfig').yamlls.setup { capabilities = capabilities }
