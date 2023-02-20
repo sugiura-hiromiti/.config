@@ -76,6 +76,8 @@ return {
 							local cb_pre = '/*'
 							if ft == 'lua' then
 								cb_pre = '--[['
+							elseif ft == 'markdown' then
+								cb_pre = '<!--'
 							end
 							return cb_pre
 						end),
@@ -85,6 +87,8 @@ return {
 							local cb_post = '*/'
 							if ft == 'lua' then
 								cb_post = ']]'
+							elseif ft == 'markdown' then
+								cb_post = '-->'
 							end
 							return cb_post
 						end),

@@ -15,10 +15,9 @@ local colo_name = function()
 		}
 	else
 		return {
-			'zanglg/nova.nvim',
+			'sugiura-hiromichi/vim-kalisi',
 			config = function()
-				require('nova').setup()
-				require('nova').load()
+				vim.cmd 'colo kalisi'
 			end,
 		}
 	end
@@ -30,5 +29,4 @@ return {
 	'MunifTanjim/nui.nvim',
 	'nvim-tree/nvim-web-devicons',
 	colo_name(),
-	--	'sugiura-hiromichi/vim-kalisi',
 }

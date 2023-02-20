@@ -21,7 +21,7 @@ export EDITOR=nvim
 export VISUAL=nvim
 export MANPAGER=less
 
-#aliases --no-permissions
+#aliases
 alias s='exa -ahlF --icons --group-directories-first --sort=extension --time-style=iso --git --no-user --no-time  --no-filesize'
 alias n='nvim'
 alias u='brew upgrade ; brew reinstall neovim wezterm ; rustup self update ; rustup update cargo install-update -a'

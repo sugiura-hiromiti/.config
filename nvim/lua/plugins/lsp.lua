@@ -1,7 +1,9 @@
 return {
 	{
 		'AckslD/nvim-FeMaco.lua',
-		config = true,
+		config = function()
+			require('femaco').setup()
+		end,
 	},
 	{
 		'williamboman/mason.nvim',
