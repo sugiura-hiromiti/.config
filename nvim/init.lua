@@ -16,7 +16,6 @@ vim.opt.laststatus = 0
 vim.g.editorconfig = true
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
-vim.g.netrw_winsize = 85
 
 -- lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -37,4 +36,3 @@ require 'usrcmd'
 require 'map'
 
 -- #fa0b1c #2048ab #48eb0c
-

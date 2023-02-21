@@ -32,7 +32,7 @@ map(nv, '<a-down>', '<c-w>+')
 map(nv, '<a-up>', '<c-w>-')
 map(nv, '<a-right>', '<c-w>>')
 map(nv, 't', ts_builtin.builtin) -- Telescope
-map('n', '<space>o', ts_builtin.lsp_dynamic_workspace_symbols)
+map('n', '<space>o', ts_builtin.lsp_workspace_symbols)
 map('n', '<space>d', ts_builtin.diagnostics)
 map(nv, '/', ts_builtin.live_grep)
 map('n', '<space>f', require('telescope').extensions.smart_open.smart_open)
@@ -45,3 +45,5 @@ map('n', '<space>r', vim.lsp.buf.rename)
 map('n', '<space>h', vim.lsp.buf.hover)
 map(nv, '<c-j>', vim.diagnostic.goto_next)
 map(nv, '<c-k>', vim.diagnostic.goto_prev)
+
+-- q: what function does assign to `<bs>`

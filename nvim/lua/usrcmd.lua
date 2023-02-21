@@ -8,6 +8,12 @@ aucmd('filetype', {
 		vim.opt.softtabstop = 3
 	end,
 })
+aucmd('filetype', {
+	pattern = { 'notify' },
+	callback = function()
+		vim.bo.modifiable = true
+	end,
+})
 
 local usrcmd = vim.api.nvim_create_user_command
 usrcmd('Make', function(opts)
