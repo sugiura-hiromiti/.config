@@ -6,6 +6,7 @@ return {
 			require('telescope').setup {
 				defaults = {
 					layout_strategy = 'vertical',
+					layout_config = { vertical = { preview_cutoff = 0 } },
 					mappings = {
 						i = {
 							['<a-j>'] = require('telescope.actions').preview_scrolling_down,
@@ -14,6 +15,16 @@ return {
 					},
 					winblend = 20,
 					dynamic_preview_title = true,
+					vimgrep_arguments = {
+						'rg',
+						'--color=never',
+						'--no-heading',
+						'--with-filename',
+						'--line-number',
+						'--column',
+						'--smart-case',
+						'--hidden',
+					},
 				},
 				extensions = {
 					smart_open = { show_scores = true },

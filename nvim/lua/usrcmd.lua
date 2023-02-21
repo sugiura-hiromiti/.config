@@ -41,3 +41,7 @@ usrcmd('Make', function(opts)
 
 	vim.cmd(cmd .. args .. extra)
 end, { nargs = '*' })
+
+usrcmd('RmSwap', function(_)
+	vim.cmd '!rip ~/.local/share/nvim/swap'
+end, {})
