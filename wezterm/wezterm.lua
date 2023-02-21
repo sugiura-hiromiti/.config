@@ -3,8 +3,6 @@ local wz = require 'wezterm'
 local act = wz.action
 
 local function theme_selector(app)
-	--local time = tonumber(os.date '%H')
-
 	if app:find 'Dark' then
 		return 'Nova (base16)'
 	else
@@ -86,6 +84,7 @@ return {
 	hide_tab_bar_if_only_one_tab = true,
 	tab_bar_at_bottom = true,
 	window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
+	window_decorations = 'RESIZE',
 	--window_background_opacity = 0.5,
 	--text_background_opacity = 0.5,
 	--window_background_image='/path/to/img.jpg' png, gif also vaild extensiton
