@@ -27,4 +27,5 @@ return {
 			require('colorizer').setup()
 		end,
 	},
+	--{ 'giusgad/pets.nvim', config = function() require('pets').setup() end, },
 }
