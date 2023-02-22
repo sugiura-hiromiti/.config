@@ -15,7 +15,6 @@ aucmd('filetype', {
 aucmd('modechanged', {
 	group = my_au,
 	callback = function()
-		--if true then vim.opt.background = 'dark' else vim.opt.background = 'light' end
 		local handle = assert(io.open('/tmp/wz_nvim.txt', 'r'), 'could not opened wz_nvim.txt')
 		local bg = handle:read '*a'
 		handle:close()
