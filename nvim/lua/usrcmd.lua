@@ -1,11 +1,28 @@
+local my_au = vim.api.nvim_create_augroup('my_au', {})
 local aucmd = vim.api.nvim_create_autocmd
+
 -- Just using `set fo-=cro` won't work since many filetypes set/expand `formatoption`
 aucmd('filetype', {
+	group = my_au,
 	callback = function()
 		vim.opt.fo = { j = true }
 		vim.opt.shiftwidth = 3
 		vim.opt.tabstop = 3
 		vim.opt.softtabstop = 3
+	end,
+})
+
+aucmd('modechanged', {
+	group = my_au,
+	callback = function()
+		if os.getenv 'TERM_PROGRAM' == 'WezTerm' then
+			local handle = assert(io.open('/tmp/wz_nvim.txt', 'r'), 'could not opened wz_nvim.txt')
+			local bg = handle:read '*a'
+			handle:close()
+			if bg ~= vim.o.background then
+				vim.o.background = bg
+			end
+		end
 	end,
 })
 
