@@ -26,3 +26,4 @@ packer_compiled.lua
 img/
 vscode-dev-containers/
 lazy-lock.json
+alacritty.yml
