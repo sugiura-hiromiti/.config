@@ -37,4 +37,3 @@ require 'usrcmd'
 require 'map'
 
 -- #fa0b1c #2048ab #48eb0c
-
