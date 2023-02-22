@@ -1,6 +1,9 @@
+local my_au = vim.api.nvim_create_augroup('my_au', {})
 local aucmd = vim.api.nvim_create_autocmd
+
 -- Just using `set fo-=cro` won't work since many filetypes set/expand `formatoption`
 aucmd('filetype', {
+	group = my_au,
 	callback = function()
 		vim.opt.fo = { j = true }
 		vim.opt.shiftwidth = 3
@@ -8,10 +11,17 @@ aucmd('filetype', {
 		vim.opt.softtabstop = 3
 	end,
 })
-aucmd('filetype', {
-	pattern = { 'notify' },
+
+aucmd('modechanged', {
+	group = my_au,
 	callback = function()
-		vim.bo.modifiable = true
+		--if true then vim.opt.background = 'dark' else vim.opt.background = 'light' end
+		local handle = assert(io.open('/tmp/wz_nvim.txt', 'r'), 'could not opened wz_nvim.txt')
+		local bg = handle:read '*a'
+		handle:close()
+		if bg ~= vim.o.background then
+			vim.o.background = bg
+		end
 	end,
 })
 

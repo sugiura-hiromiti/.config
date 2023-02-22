@@ -30,9 +30,10 @@ if not vim.loop.fs_stat(lazypath) then
 	}
 end
 vim.opt.rtp:prepend(lazypath)
-require('lazy').setup('plugins', { checker = { enable = true, frequency = 1 } })
+require('lazy').setup 'plugins'
 
 require 'usrcmd'
 require 'map'
 
--- #fa0b1c #2048ab #48eb0c
+-- #fa0b1c #2048ab #48eb0c #f7f7f7 #3c4c55
+-- #ab3

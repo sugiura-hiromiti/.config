@@ -1,13 +1,13 @@
 local colo_name = function()
-	local handle = io.popen 'uname'
+	local handle = assert(io.popen 'uname', 'executing `uname` failed')
 	local os_name = handle:read '*a'
 	handle:close()
 	if os_name == 'Darwin\n' then
 		return {
 			'sugiura-hiromichi/catppuccin',
-			name = 'catppuccin',
 			config = function()
 				require('catppuccin').setup {
+					background = { light = 'latte', dark = 'frappe' },
 					integrations = { semantic_tokens = true },
 				}
 				vim.cmd 'colo catppuccin'
