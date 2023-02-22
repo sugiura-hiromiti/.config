@@ -17,9 +17,10 @@
   "autocomplete.scrollWrapAround": true,
   "autocomplete.theme": "system",
   "autocomplete.width": 500,
-  "cli.tips.disabled": true,
+  "cli.tips.disabled": false,
   "dotfiles.syncImmediately": false,
   "figterm.csi-u.enabled": true,
   "integrations.hyper.disabled": true,
+  "integrations.terminal.disabled": true,
   "integrations.vscode.disabled": true
 }
