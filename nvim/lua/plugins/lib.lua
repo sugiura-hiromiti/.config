@@ -15,9 +15,12 @@ local colo_name = function()
 		}
 	else
 		return {
-			'sugiura-hiromichi/vim-kalisi',
+			'uloco/bluloco.nvim',
+			lazy = false,
+			priority = 1000,
+			dependencies = { 'rktjmp/lush.nvim' },
 			config = function()
-				vim.cmd 'colo kalisi'
+				vim.cmd 'colo bluloco'
 			end,
 		}
 	end
