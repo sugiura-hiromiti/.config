@@ -13,6 +13,7 @@ vim.opt.termguicolors = true
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.autochdir = true
 vim.opt.laststatus = 0
+vim.opt.scrolloff = 10
 vim.g.editorconfig = true
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
@@ -36,4 +37,3 @@ require 'usrcmd'
 require 'map'
 
 -- #fa0b1c #2048ab #48eb0c #f7f7f7 #3c4c55
--- #ab3

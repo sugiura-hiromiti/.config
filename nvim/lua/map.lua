@@ -13,6 +13,8 @@ map('n', '<esc>', function()
 end) --clear notification and highlight
 map({ 'i', 'c', 's' }, '<c-n>', '<down>') --emacs keybind
 map({ 'i', 'c', 's' }, '<c-p>', '<up>')
+map('n', '<c-d>', '<c-d>zz') -- keep cursor at middle
+map('n', '<c-u>', '<c-u>zz')
 map(ic, '<c-b>', '<left>')
 map(ic, '<c-f>', '<right>')
 map(ic, '<c-a>', '<home>')
@@ -23,6 +25,7 @@ map(ic, '<c-u>', '<c-c>v^s')
 map(ic, '<a-d>', '<right><c-c>ves')
 map(ic, '<a-f>', '<c-right>')
 map(ic, '<a-b>', '<c-left>')
+map({ 'i', 'c', 'n' }, '<c-g>', '<cmd>CreateCompletion<cr>')
 map(nv, '<tab>', require('todo-comments').jump_next)
 map(nv, '<s-tab>', require('todo-comments').jump_prev)
 map('n', '<cr>', ':Make ') -- execute shell command
@@ -32,18 +35,18 @@ map(nv, '<a-down>', '<c-w>+')
 map(nv, '<a-up>', '<c-w>-')
 map(nv, '<a-right>', '<c-w>>')
 map(nv, 't', ts_builtin.builtin) -- Telescope
-map('n', '<space>o', ts_builtin.lsp_workspace_symbols)
+map('n', '<space>o', ts_builtin.lsp_document_symbols)
 map('n', '<space>d', ts_builtin.diagnostics)
 map(nv, '/', ts_builtin.live_grep)
 map('n', '<space>f', require('telescope').extensions.smart_open.smart_open)
 map('n', '<space>c', '<cmd>TodoTelescope<cr>')
 map('n', '<space>n', require('telescope').extensions.notify.notify)
 map(nv, '<space>a', vim.lsp.buf.code_action)
-map('v', '<space>g', '<cmd>ChatGPTRunCustomCodeAction<cr>')
 map('n', '<space>j', ts_builtin.lsp_references) --`j` stands for jump
 map('n', '<space>r', vim.lsp.buf.rename)
 map('n', '<space>h', vim.lsp.buf.hover)
+map('n', '<space>g', '<cmd>CreateCompletionLine<cr>')
 map(nv, '<c-j>', vim.diagnostic.goto_next)
 map(nv, '<c-k>', vim.diagnostic.goto_prev)
 
--- q: what function does assign to `<bs>`
+-- q: what function does assign to `<bs>`?
