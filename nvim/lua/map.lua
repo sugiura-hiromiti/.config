@@ -22,10 +22,11 @@ map(ic, '<c-e>', '<end>')
 map(ic, '<c-d>', '<del>')
 map(ic, '<c-k>', '<right><c-c>v$hs')
 map(ic, '<c-u>', '<c-c>v^s')
+map('i', '<c-t>', '<c-c>hxpa') -- `<c-t>` for insert & normal & cmdline mode
+map('n', '<c-t>', 'hxp')
 map(ic, '<a-d>', '<right><c-c>ves')
 map(ic, '<a-f>', '<c-right>')
 map(ic, '<a-b>', '<c-left>')
-map({ 'i', 'c', 'n' }, '<c-g>', '<cmd>CreateCompletion<cr>')
 map(nv, '<tab>', require('todo-comments').jump_next)
 map(nv, '<s-tab>', require('todo-comments').jump_prev)
 map('n', '<cr>', ':Make ') -- execute shell command
@@ -45,7 +46,6 @@ map(nv, '<space>a', vim.lsp.buf.code_action)
 map('n', '<space>j', ts_builtin.lsp_references) --`j` stands for jump
 map('n', '<space>r', vim.lsp.buf.rename)
 map('n', '<space>h', vim.lsp.buf.hover)
-map('n', '<space>g', '<cmd>CreateCompletionLine<cr>')
 map(nv, '<c-j>', vim.diagnostic.goto_next)
 map(nv, '<c-k>', vim.diagnostic.goto_prev)
 
