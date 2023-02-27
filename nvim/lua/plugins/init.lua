@@ -14,4 +14,11 @@ return {
 			vim.fn['mkdp#util#install']()
 		end,
 	},
+	{
+		'zbirenbaum/copilot.lua',
+		event = 'insertenter',
+		config = function()
+			require('copilot').setup {}
+		end,
+	},
 }

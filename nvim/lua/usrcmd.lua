@@ -33,30 +33,34 @@ usrcmd('Make', function(opts)
 	local extra = ''
 	local ft = vim.bo.filetype
 	if ft == 'rust' then -- langs which have to be compiled
-		cmd = '!cargo '
-		if args == '' then
-			args = 'r -q'
+		cmd = 'cargo '
+		if args == '' or opts.fargs[1] == '--bin' then
+			args = 'r '
 		else
-			args = table.remove(opts.fargs, 1)
-			table.insert(opts.fargs, 1, '-q')
-			for _, a in ipairs(opts.fargs) do
-				extra = ' ' .. extra .. ' ' .. a
-			end
+			args = table.remove(opts.fargs, 1) -- insert 1st argument to `args`
+		end
+		table.insert(opts.fargs, 1, '-q')
+		for _, a in ipairs(opts.fargs) do
+			extra = ' ' .. extra .. ' ' .. a
 		end
 	elseif ft == 'cpp' or ft == 'c' then
-		cmd = '!make '
-	elseif ft == 'swift' or ft == 'lua' then -- langs which has interpreter
+		cmd = 'make '
+	elseif ft == 'swift' or ft == 'lua' or ft == 'python' then -- langs which has interpreter
 		local file = vim.fn.expand '%:t'
+		local interpreter = ft
+		if interpreter == 'python' then
+			interpreter = interpreter .. '3'
+		end
 		if args == 't' then
 			file = 'test.' .. ft
 			args = ''
 		end
-		cmd = '!' .. ft .. ' ' .. file .. ' '
+		cmd = interpreter .. ' ' .. file .. ' '
 	elseif ft == 'html' then -- markup language
-		cmd = '!open ' .. vim.fn.expand '%:t' .. ' '
+		cmd = 'open ' .. vim.fn.expand '%:t' .. ' '
 	end
 
-	vim.cmd(cmd .. args .. extra)
+	vim.cmd('!' .. cmd .. args .. extra)
 end, { nargs = '*' })
 
 usrcmd('RmSwap', function(_)

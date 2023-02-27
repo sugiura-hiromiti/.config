@@ -13,8 +13,6 @@ map('n', '<esc>', function()
 end) --clear notification and highlight
 map({ 'i', 'c', 's' }, '<c-n>', '<down>') --emacs keybind
 map({ 'i', 'c', 's' }, '<c-p>', '<up>')
-map('n', '<c-d>', '<c-d>zz') -- keep cursor at middle
-map('n', '<c-u>', '<c-u>zz')
 map(ic, '<c-b>', '<left>')
 map(ic, '<c-f>', '<right>')
 map(ic, '<c-a>', '<home>')
@@ -42,6 +40,7 @@ map(nv, '/', ts_builtin.live_grep)
 map('n', '<space>f', require('telescope').extensions.smart_open.smart_open)
 map('n', '<space>c', '<cmd>TodoTelescope<cr>')
 map('n', '<space>n', require('telescope').extensions.notify.notify)
+map('n', '<space>z', require('telescope').extensions.zoxide.list)
 map(nv, '<space>a', vim.lsp.buf.code_action)
 map('n', '<space>j', ts_builtin.lsp_references) --`j` stands for jump
 map('n', '<space>r', vim.lsp.buf.rename)

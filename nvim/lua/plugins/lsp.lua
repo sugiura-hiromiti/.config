@@ -64,6 +64,7 @@ return {
 				capabilities = capabilities,
 			}
 			require('lspconfig').clangd.setup { capabilities = capabilities }
+			require('lspconfig').pyright.setup { capabilities = capabilities }
 			require('lspconfig').html.setup { capabilities = capabilities, init_options = { provideFormatter = false } }
 			require('lspconfig').cssls.setup { capabilities = capabilities }
 			require('lspconfig').bashls.setup { capabilities = capabilities }
@@ -93,6 +94,7 @@ return {
 					fmt.prettier.with { filetypes = { 'css', 'html', 'yaml' } },
 					fmt.beautysh.with { extra_args = { '-t' } },
 					fmt.swiftformat,
+					fmt.yapf,
 					hov.printenv,
 					diag.zsh,
 					--					cmp.spell.with { filetypes = { 'markdown', 'text' } },
