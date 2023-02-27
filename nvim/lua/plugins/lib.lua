@@ -7,7 +7,6 @@ local colo_name = function()
 			'sugiura-hiromichi/catppuccin',
 			config = function()
 				require('catppuccin').setup {
-					background = { light = 'latte', dark = 'frappe' },
 					integrations = { semantic_tokens = true },
 				}
 				vim.cmd 'colo catppuccin'

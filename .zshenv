@@ -22,9 +22,9 @@ export VISUAL=nvim
 export MANPAGER=less
 
 #aliases
-alias s='exa -ahlF --icons --group-directories-first --sort=extension --time-style=iso --git --no-user --no-time  --no-filesize'
+alias s='exa -ahlF --icons --group-directories-first --sort=extension --time-style=iso --git --no-user --no-time'
 alias n='nvim'
-alias u='brew upgrade ; brew reinstall neovim wezterm ; rustup self update ; rustup update cargo install-update -a'
+alias u='brew upgrade ; brew reinstall neovim ; rustup self update ; rustup update cargo ; install-update -a'
 alias zo='z $OLDPWD'
 alias gi='git init ; git add . ; git commit -m'
 alias gl='git pull'
@@ -33,6 +33,7 @@ alias bu='brew uninstall'
 alias bi='brew install'
 alias bl='brew list'
 alias bs='brew search'
+alias ba='brew abv'
 alias rebrew='rm Brewfile ; brew bundle dump'
 alias wh='which -a'
 alias so='source'

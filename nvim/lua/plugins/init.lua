@@ -9,13 +9,16 @@ return {
 		end,
 	},
 	{
-		'jackMort/ChatGPT.nvim',
-		config = true,
-	},
-	{
 		'iamcco/markdown-preview.nvim',
 		build = function()
 			vim.fn['mkdp#util#install']()
+		end,
+	},
+	{
+		'zbirenbaum/copilot.lua',
+		event = 'insertenter',
+		config = function()
+			require('copilot').setup {}
 		end,
 	},
 }
