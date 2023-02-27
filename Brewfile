@@ -14,7 +14,7 @@ brew "marksman"
 brew "neovim", args: ["HEAD"]
 brew "opencv"
 brew "prettier"
-brew "pyright"
+brew "python-lsp-server"
 brew "ripgrep"
 brew "rm-improved"
 brew "starship"

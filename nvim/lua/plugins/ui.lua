@@ -24,6 +24,8 @@ return {
 					mini 'more lines',
 					mini 'fewer lines',
 					mini 'yanked',
+					mini 'chang; before',
+					mini 'chang; after',
 				},
 			}
 		end,
