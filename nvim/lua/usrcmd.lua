@@ -34,14 +34,21 @@ usrcmd('Make', function(opts)
 	local ft = vim.bo.filetype
 	if ft == 'rust' then -- langs which have to be compiled
 		cmd = '!cargo '
-		if args == '' or string.sub(opts.fargs[1], 1, 2) == '--' then
+		if args == '' then
 			args = 'r '
+			local path = vim.fn.expand '%:p'
+			if string.find(path, '/src/bin') ~= nil then
+				local _, l = string.find(path, '/src/bin/')
+				local r = string.find(string.sub(path, l + 1), '/') or
+					 string.find(string.sub(path, l + 1), '%.')
+				args = args .. '--bin ' .. string.sub(path, l + 1, l + r - 1)
+			end
 		else
 			args = table.remove(opts.fargs, 1) -- insert 1st argument to `args`
 		end
 		table.insert(opts.fargs, 1, '-q')
 		for _, a in ipairs(opts.fargs) do
-			extra = ' ' .. extra .. ' ' .. a
+			extra = extra .. ' ' .. a
 		end
 	elseif ft == 'cpp' or ft == 'c' then
 		cmd = '!make '

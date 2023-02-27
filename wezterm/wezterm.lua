@@ -1,7 +1,6 @@
 --🫠
 local wz = require 'wezterm'
 local act = wz.action
-local theme = { dark = 'Nova (base16)', light = 'Alabaster' }
 
 local function theme_selector(app)
 	local handle = assert(io.open('/tmp/wz_nvim.txt', 'w+'), 'could not opened wz_nvim.txt')
@@ -9,10 +8,10 @@ local function theme_selector(app)
 	local rslt
 	if app:find 'Dark' then
 		handle:write 'dark'
-		rslt = theme.dark
+		rslt = 'Nova (base16)'
 	else
 		handle:write 'light'
-		rslt = theme.light
+		rslt = 'Alabaster'
 	end
 	handle:close()
 	return rslt
@@ -22,10 +21,10 @@ local cp_mode
 if wz.gui then
 	cp_mode = wz.gui.default_key_tables().copy_mode
 	local meta_ops = {
-		{ key = 'LeftArrow',  mods = 'NONE', action = act.AdjustPaneSize { 'Left', 1 } },
+		{ key = 'LeftArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Left', 1 } },
 		{ key = 'RightArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Right', 1 } },
-		{ key = 'UpArrow',    mods = 'NONE', action = act.AdjustPaneSize { 'Up', 1 } },
-		{ key = 'DownArrow',  mods = 'NONE', action = act.AdjustPaneSize { 'Down', 1 } },
+		{ key = 'UpArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Up', 1 } },
+		{ key = 'DownArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Down', 1 } },
 	}
 
 	for i = 1, 4 do
@@ -33,31 +32,19 @@ if wz.gui then
 	end
 end
 
-wz.on('window-config-reloaded', function(window, _)
-	window:toast_notification('wezterm', 'reloaded config', nil, 3000)
-end)
-
 wz.on('opacity', function(window, _)
 	local overrides = window:get_config_overrides() or {}
 	if not overrides.window_background_opacity then
 		overrides.window_background_opacity = 0.45
 		overrides.text_background_opacity = 0.4
 		if wz.gui.get_appearance():find 'Light' then
-			local handle = assert(io.open('/tmp/wz_nvim.txt', 'w+'), 'could not opened wz_nvim.txt')
-			handle:write 'dark'
-			handle:close()
-
-			overrides.color_scheme = theme.dark
+			overrides.color_scheme = 'Nova (base16)'
 		end
 	else
 		overrides.window_background_opacity = nil
 		overrides.text_background_opacity = nil
 		if wz.gui.get_appearance():find 'Light' then
-			local handle = assert(io.open('/tmp/wz_nvim.txt', 'w+'), 'could not opened wz_nvim.txt')
-			handle:write 'light'
-			handle:close()
-
-			overrides.color_scheme = theme.light
+			overrides.color_scheme = 'Alabaster'
 		end
 	end
 	window:set_config_overrides(overrides)
@@ -70,22 +57,22 @@ return {
 	line_height = 0.9,
 	disable_default_key_bindings = true,
 	keys = {
-		{ key = 'c',        mods = 'SHIFT|CMD', action = act.ActivateCopyMode },
-		{ key = 'F1',       mods = 'NONE',      action = act.ActivatePaneDirection 'Prev' },
-		{ key = 'F2',       mods = 'NONE',      action = act.ActivatePaneDirection 'Next' },
-		{ key = 'Tab',      mods = 'CTRL',      action = act.ActivateTabRelative(1) },
-		{ key = 'c',        mods = 'CMD',       action = act.CopyTo 'Clipboard' },
-		{ key = 'w',        mods = 'CMD',       action = act.CloseCurrentPane { confirm = false } },
-		{ key = 'b',        mods = 'CMD',       action = act.EmitEvent 'bg' },
-		{ key = 'o',        mods = 'CMD',       action = act.EmitEvent 'opacity' },
-		{ key = 'v',        mods = 'CMD',       action = act.PasteFrom 'Clipboard' },
-		{ key = 'q',        mods = 'CMD',       action = act.QuitApplication },
-		{ key = 'r',        mods = 'CMD',       action = act.ReloadConfiguration },
-		{ key = 'PageUp',   mods = 'SHIFT',     action = act.ScrollByPage( -1) },
-		{ key = 'PageDown', mods = 'SHIFT',     action = act.ScrollByPage(1) },
-		{ key = 'f',        mods = 'CMD',       action = act.Search { CaseSensitiveString = '' } },
-		{ key = 't',        mods = 'CMD',       action = act.SpawnTab 'DefaultDomain' },
-		{ key = 'n',        mods = 'CMD',       action = act.SpawnWindow },
+		{ key = 'c', mods = 'SHIFT|CMD', action = act.ActivateCopyMode },
+		{ key = 'F1', mods = 'NONE', action = act.ActivatePaneDirection 'Prev' },
+		{ key = 'F2', mods = 'NONE', action = act.ActivatePaneDirection 'Next' },
+		{ key = 'Tab', mods = 'CTRL', action = act.ActivateTabRelative(1) },
+		{ key = 'c', mods = 'CMD', action = act.CopyTo 'Clipboard' },
+		{ key = 'w', mods = 'CMD', action = act.CloseCurrentPane { confirm = false } },
+		{ key = 'b', mods = 'CMD', action = act.EmitEvent 'bg' },
+		{ key = 'o', mods = 'CMD', action = act.EmitEvent 'opacity' },
+		{ key = 'v', mods = 'CMD', action = act.PasteFrom 'Clipboard' },
+		{ key = 'q', mods = 'CMD', action = act.QuitApplication },
+		{ key = 'r', mods = 'CMD', action = act.ReloadConfiguration },
+		{ key = 'PageUp', mods = 'SHIFT', action = act.ScrollByPage(-1) },
+		{ key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1) },
+		{ key = 'f', mods = 'CMD', action = act.Search { CaseSensitiveString = '' } },
+		{ key = 't', mods = 'CMD', action = act.SpawnTab 'DefaultDomain' },
+		{ key = 'n', mods = 'CMD', action = act.SpawnWindow },
 		{
 			key = 'd',
 			mods = 'CMD',
