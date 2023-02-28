@@ -15,10 +15,11 @@ fi
 cargo install sugiura-hiromichi_tp
 cargo install sugiura-hiromichi_gc
 cargo install sugiura-hiromichi_dot
+
+rm -rf .config
 sugiura-hiromichi_dot
 
 cd ~/.config
-
 brew bundle
 
 pip3 install neovim
