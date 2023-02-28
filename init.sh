@@ -15,7 +15,7 @@ fi
 cargo install sugiura-hiromichi_tp
 cargo install sugiura-hiromichi_gc
 cargo install sugiura-hiromichi_dot
-dot
+sugiura-hiromichi_dot
 
 cd ~/.config
 
