@@ -9,6 +9,7 @@ if [ $(uname) = "Linux" ]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+touch $HOME/.profile
 . "$HOME/.cargo/env"
 . "$HOME/.profile"
 
