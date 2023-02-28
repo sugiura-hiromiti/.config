@@ -1,4 +1,5 @@
 #!/bin/sh
+cd ~
 rm -f ~/.zshenv ~/.zshrc ~/.zprofile
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -11,9 +12,9 @@ fi
 . "$HOME/.cargo/env"
 . "$HOME/.profile"
 
-cargo install --git https://github.com/sugiura-hiromichi/tp
-cargo install --git https://github.com/sugiura-hiromichi/gc
-cargo install --git https://github.com/sugiura-hiromichi/dot
+cargo install sugiura-hiromichi_tp
+cargo install sugiura-hiromichi_gc
+cargo install sugiura-hiromichi_dot
 dot
 
 cd ~/.config
