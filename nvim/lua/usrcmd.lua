@@ -40,7 +40,7 @@ usrcmd('Make', function(opts)
 			if string.find(path, '/src/bin') ~= nil then
 				local _, l = string.find(path, '/src/bin/')
 				local r = string.find(string.sub(path, l + 1), '/') or
-					 string.find(string.sub(path, l + 1), '%.')
+				string.find(string.sub(path, l + 1), '%.')
 				args = args .. '--bin ' .. string.sub(path, l + 1, l + r - 1)
 			end
 		else
@@ -52,7 +52,7 @@ usrcmd('Make', function(opts)
 		end
 	elseif ft == 'cpp' or ft == 'c' then
 		cmd = '!make '
-	elseif ft == 'swift' or ft == 'lua' or ft == 'python' then -- langs which has interpreter
+	elseif ft == 'ruby' or ft == 'swift' or ft == 'lua' or ft == 'python' then -- langs which has interpreter
 		local file = vim.fn.expand '%:t'
 		local interpreter = ft
 		if interpreter == 'python' then
