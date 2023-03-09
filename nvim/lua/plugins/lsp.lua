@@ -31,7 +31,7 @@ return {
 			require('lspconfig').rust_analyzer.setup {
 				capabilities = capabilities,
 				settings = {
-					['rust-analyzer'] = {
+						 ['rust-analyzer'] = {
 						hover = { actions = { reference = { enable = true } } },
 						inlayHints = {
 							closingBraceHints = { minLines = 0 },
@@ -53,7 +53,10 @@ return {
 					Lua = {
 						runtime = { version = 'LuaJIT' },
 						diagnostics = { globals = { 'vim', 'hs' } },
-						workspace = { library = vim.api.nvim_get_runtime_file('', true), checkThirdParty = false },
+						workspace = {
+							library = vim.api.nvim_get_runtime_file('', true),
+							checkThirdParty = false,
+						},
 						telemetry = { enable = false },
 					},
 				},
@@ -65,7 +68,8 @@ return {
 			}
 			require('lspconfig').clangd.setup { capabilities = capabilities }
 			require('lspconfig').pylsp.setup { capabilities = capabilities }
-			require('lspconfig').html.setup { capabilities = capabilities, init_options = { provideFormatter = false } }
+			require('lspconfig').solargraph.setup { capabilities = capabilities, provideFormatter = false }
+			require('lspconfig').html.setup { capabilities = capabilities, provideFormatter = false }
 			require('lspconfig').cssls.setup { capabilities = capabilities }
 			require('lspconfig').bashls.setup { capabilities = capabilities }
 			require('lspconfig').yamlls.setup { capabilities = capabilities }
@@ -91,10 +95,11 @@ return {
 				sources = {
 					fmt.dprint.with { filetypes = { 'markdown', 'json', 'toml' } },
 					fmt.stylua,
-					fmt.prettier.with { filetypes = { 'css', 'html', 'yaml' } },
+					fmt.prettier.with { filetypes = { 'css', 'yaml' } },
 					fmt.beautysh.with { extra_args = { '-t' } },
 					fmt.swiftformat,
 					fmt.yapf,
+					fmt.rubocop,
 					hov.printenv,
 					diag.zsh,
 					--					cmp.spell.with { filetypes = { 'markdown', 'text' } },

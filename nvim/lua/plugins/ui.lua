@@ -21,11 +21,8 @@ return {
 				presets = { bottom_search = true },
 				routes = {
 					mini 'written',
-					mini 'more lines',
-					mini 'fewer lines',
-					mini 'yanked',
-					mini 'chang; before',
-					mini 'chang; after',
+					mini '>ed',
+					mini '<ed',
 				},
 			}
 		end,
@@ -51,6 +48,12 @@ return {
 		'norcalli/nvim-colorizer.lua',
 		config = function()
 			require('colorizer').setup()
+		end,
+	},
+	{
+		'edluffy/hologram.nvim',
+		config = function()
+			require('hologram').setup {}
 		end,
 	},
 	--{ 'giusgad/pets.nvim', config = function() require('pets').setup() end, },
