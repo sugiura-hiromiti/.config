@@ -23,6 +23,9 @@ return {
 					mini 'written',
 					mini '>ed',
 					mini '<ed',
+					mini 'fewer lines',
+					mini 'more lines',
+					mini 'change; before',
 				},
 			}
 		end,
@@ -47,7 +50,7 @@ return {
 	{
 		'norcalli/nvim-colorizer.lua',
 		config = function()
-			require('colorizer').setup()
+			require('colorizer').setup {}
 		end,
 	},
 	{

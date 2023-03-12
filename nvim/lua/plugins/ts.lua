@@ -3,12 +3,10 @@ return {
 		'nvim-treesitter/nvim-treesitter',
 		build = ':TSUpdate',
 		config = function()
-			-- TODO: implement function which automatically switch ts-highlight
-			-- based on client.server_capabilities.semanticTokensProvider
 			require('nvim-treesitter.configs').setup {
 				ensure_installed = { 'vim', 'bash', 'markdown_inline', 'regex' },
 				auto_install = true,
-				highlight = { enable = true, additional_vim_regex_highlighting = false },
+				highlight = { enable = false, additional_vim_regex_highlighting = false },
 			}
 		end,
 	},
@@ -21,15 +19,15 @@ return {
 						enable = true,
 						lookahead = true,
 						keymaps = {
-								 ['af'] = '@function.outer',
-								 ['if'] = '@function.inner',
-								 ['ac'] = '@class.outer',
-								 ['ic'] = '@class.inner',
-								 ['ab'] = '@block.outer',
-								 ['ib'] = '@block.inner',
+							['af'] = '@function.outer',
+							['if'] = '@function.inner',
+							['ac'] = '@class.outer',
+							['ic'] = '@class.inner',
+							['ab'] = '@block.outer',
+							['ib'] = '@block.inner',
 						},
 						selection_modes = {
-								 ['@block.outer'] = 'V',
+							['@block.outer'] = 'V',
 						},
 					},
 					swap = {
