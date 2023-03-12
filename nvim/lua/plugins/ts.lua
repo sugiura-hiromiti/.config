@@ -6,7 +6,11 @@ return {
 			require('nvim-treesitter.configs').setup {
 				ensure_installed = { 'vim', 'bash', 'markdown_inline', 'regex' },
 				auto_install = true,
-				highlight = { enable = false, additional_vim_regex_highlighting = false },
+				highlight = {
+					enable = true,
+					disable = { 'rust', 'lua' },
+					additional_vim_regex_highlighting = false,
+				},
 			}
 		end,
 	},
@@ -36,7 +40,7 @@ return {
 						swap_previous = { ['<space>S'] = '@parameter.inner' },
 					},
 					move = {
-						--enable = true,
+						enable = true,
 						set_jumps = true,
 						goto_next_start = { [']m'] = '@function.outer',[']]'] = '@class.outer' },
 						goto_next_end = { [']M'] = '@function.outer',[']['] = '@class.outer' },
