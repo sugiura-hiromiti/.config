@@ -39,8 +39,7 @@ usrcmd('Make', function(opts)
 			local path = vim.fn.expand '%:p'
 			if string.find(path, '/src/bin') ~= nil then
 				local _, l = string.find(path, '/src/bin/')
-				local r = string.find(string.sub(path, l + 1), '/') or
-				string.find(string.sub(path, l + 1), '%.')
+				local r = string.find(string.sub(path, l + 1), '/') or string.find(string.sub(path, l + 1), '%.')
 				args = args .. '--bin ' .. string.sub(path, l + 1, l + r - 1)
 			end
 		else
