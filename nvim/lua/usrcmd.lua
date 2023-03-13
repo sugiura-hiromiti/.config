@@ -55,7 +55,7 @@ usrcmd('Make', function(opts)
 		local file = vim.fn.expand '%:t'
 		local interpreter = ft
 		if interpreter == 'python' then
-			interpreter = interpreter .. '3'
+			interpreter = interpreter .. '3.11'
 		end
 		if args == 't' then
 			file = 'test.' .. ft
