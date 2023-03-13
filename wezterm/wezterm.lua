@@ -34,25 +34,29 @@ end
 
 wz.on('opacity', function(window, _)
 	local overrides = window:get_config_overrides() or {}
+	local hndl = assert(io.open('/tmp/wz_nvim.txt', 'r'), 'could not opened wz_nvim.txt')
 	if not overrides.window_background_opacity then
 		overrides.window_background_opacity = 0.45
 		overrides.text_background_opacity = 0.4
 		if wz.gui.get_appearance():find 'Light' then
 			overrides.color_scheme = 'Nova (base16)'
+			hndl:write 'dark'
 		end
 	else
 		overrides.window_background_opacity = nil
 		overrides.text_background_opacity = nil
 		if wz.gui.get_appearance():find 'Light' then
 			overrides.color_scheme = 'Alabaster'
+			hndl:write 'light'
 		end
 	end
+	hndl:close()
 	window:set_config_overrides(overrides)
 end)
 
 return {
 	show_update_window = true,
-	font_size = 13,
+	font_size = 12.5,
 	freetype_load_target = 'HorizontalLcd',
 	line_height = 0.9,
 	disable_default_key_bindings = true,
@@ -91,7 +95,5 @@ return {
 	tab_bar_at_bottom = true,
 	window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
 	window_decorations = 'RESIZE',
-	--window_background_opacity = 0.5,
-	--text_background_opacity = 0.5,
 	--window_background_image='/path/to/img.jpg' png, gif also vaild extensiton
 }
