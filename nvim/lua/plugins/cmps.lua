@@ -8,16 +8,11 @@ return {
 	'lukas-reineke/cmp-rg',
 	'saadparwaiz1/cmp_luasnip',
 	{
-		'zbirenbaum/copilot-cmp',
-		config = function()
-			require('copilot_cmp').setup {}
-		end,
-	},
-	{
 		'hrsh7th/nvim-cmp',
 		config = function()
 			local ls = require 'luasnip'
 			local cmp = require 'cmp'
+			local copilot = require 'copilot.suggestion'
 			local rg = {
 				name = 'rg',
 				option = { additional_arguments = '--smart-case', context_after = 7 },
@@ -30,9 +25,12 @@ return {
 						ls.lsp_expand(args.body)
 					end,
 				},
-				window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
+				window = {
+					completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered(),
+				},
 				mapping = cmp.mapping.preset.insert {
-					['<a-k>'] = cmp.mapping.scroll_docs( -10),
+					['<a-k>'] = cmp.mapping.scroll_docs(-10),
 					['<a-j>'] = cmp.mapping.scroll_docs(10),
 					['<c-c>'] = cmp.mapping.abort(),
 					['<c-e>'] = cmp.mapping(function(fallback)
@@ -42,7 +40,7 @@ return {
 						if cmp.visible() then
 							cmp.select_prev_item()
 						elseif ls.choice_active() then
-							ls.change_choice( -1)
+							ls.change_choice(-1)
 						else
 							fallback()
 						end
@@ -57,17 +55,37 @@ return {
 						end
 					end, { 'i', 's', 'c' }),
 					['<tab>'] = cmp.mapping(function(fallback)
-						if cmp.visible() then
+						if copilot.is_visible() then
+							copilot.accept()
+						elseif cmp.visible() then
 							cmp.confirm { behavior = cmp.ConfirmBehavior.Insert, select = true }
-						elseif ls.expand_or_locally_jumpable() then
-							ls.jump(1)
 						else
 							fallback()
 						end
 					end, { 'i', 's', 'c' }),
 					['<s-tab>'] = cmp.mapping(function(fallback)
+						if copilot.is_visible() then
+							copilot.accept_line()
+						end
 						if ls.expand_or_locally_jumpable() then
-							ls.jump( -1)
+							ls.jump(-1)
+						else
+							fallback()
+						end
+					end),
+					['<bs>'] = cmp.mapping(function(fallback)
+						if ls.expand_or_locally_jumpable() then
+							ls.jump(1)
+						else
+							fallback()
+						end
+					end),
+					['<s-bs>'] = cmp.mapping(function(fallback)
+						if copilot.is_visible() then
+							copilot.accept_word()
+						end
+						if ls.expand_or_locally_jumpable() then
+							ls.jump(-1)
 						else
 							fallback()
 						end
