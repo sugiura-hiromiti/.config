@@ -21,7 +21,7 @@ return {
 				panel = { enable = false },
 				suggestion = {
 					auto_trigger = true,
-					keymap = { accept = '<tab>', next = '<down>', prev = '<up>', dismiss = '<c-c>' },
+					keymap = { next = '<down>', prev = '<up>', dismiss = '<c-c>' },
 				},
 				filetypes = { ['*'] = true },
 			}
