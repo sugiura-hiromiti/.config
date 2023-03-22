@@ -4,7 +4,7 @@ return {
 		build = ':TSUpdate',
 		config = function()
 			require('nvim-treesitter.configs').setup {
-				ensure_installed = { 'vim', 'bash', 'markdown_inline', 'regex' },
+				ensure_installed = { 'vim', 'markdown_inline', 'bash', 'regex' },
 				auto_install = true,
 				highlight = {
 					enable = true,
