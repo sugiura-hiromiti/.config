@@ -13,9 +13,13 @@ touch $HOME/.profile
 . "$HOME/.cargo/env"
 . "$HOME/.profile"
 
+echo 'install my cargos'
+
 cargo install sugiura-hiromichi_tp
 cargo install sugiura-hiromichi_gc
 cargo install sugiura-hiromichi_dot
+
+echo 'install dotfiles'
 
 rm -rf .config
 sugiura-hiromichi_dot
@@ -27,3 +31,10 @@ pip3 install neovim
 gem install neovim
 
 echo '|> initalization finished'
+
+echo '|> customize macOS'
+
+defaults write com.apple.finder AppleShowAllFiles TRUE
+
+defaults write -g InitialKeyRepeat -int 10
+defaults write -g KeyRepeat -int 1
