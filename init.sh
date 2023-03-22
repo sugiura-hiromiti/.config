@@ -34,7 +34,9 @@ echo '|> initalization finished'
 
 echo '|> customize macOS'
 
-defaults write com.apple.finder AppleShowAllFiles TRUE
+if [ $(uname) = "Darwin" ]; then
+	defaults write com.apple.finder AppleShowAllFiles TRUE
+	defaults write -g InitialKeyRepeat -int 10
+	defaults write -g KeyRepeat -int 1
+fi
 
-defaults write -g InitialKeyRepeat -int 10
-defaults write -g KeyRepeat -int 1
