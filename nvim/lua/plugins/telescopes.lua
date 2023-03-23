@@ -37,12 +37,6 @@ return {
 								end,
 							},
 							['<c-x>'] = { action = z_utl.create_basic_command 'sp' },
-							['<s-cr>'] = {
-								keepinsert = true,
-								action = function(selec)
-									require('telescope.builtin').fd { cwd = selec.path }
-								end,
-							},
 						},
 					},
 				},
