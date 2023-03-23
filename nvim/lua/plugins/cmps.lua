@@ -55,10 +55,10 @@ return {
 						end
 					end, { 'i', 's', 'c' }),
 					['<tab>'] = cmp.mapping(function(fallback)
-						if copilot.is_visible() then
-							copilot.accept()
-						elseif cmp.visible() then
+						if cmp.visible() then
 							cmp.confirm { behavior = cmp.ConfirmBehavior.Insert, select = true }
+						elseif copilot.is_visible() then
+							copilot.accept()
 						else
 							fallback()
 						end
@@ -66,9 +66,6 @@ return {
 					['<s-tab>'] = cmp.mapping(function(fallback)
 						if copilot.is_visible() then
 							copilot.accept_line()
-						end
-						if ls.expand_or_locally_jumpable() then
-							ls.jump(-1)
 						else
 							fallback()
 						end
