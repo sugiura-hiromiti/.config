@@ -15,17 +15,17 @@ touch $HOME/.profile
 
 echo 'install my cargos'
 
-cargo install sugiura-hiromichi_tp
-cargo install sugiura-hiromichi_gc
-cargo install sugiura-hiromichi_dot
+cargo install tp_
+cargo install gc_
+cargo install dot_
 
 echo 'install dotfiles'
 
 rm -rf .config
-sugiura-hiromichi_dot
+dot_
 
-cd ~/.config
-brew bundle
+brew install rcmdnk/file/brew-file
+brew file install
 
 pip3 install neovim
 gem install neovim
@@ -39,4 +39,3 @@ if [ $(uname) = "Darwin" ]; then
 	defaults write -g InitialKeyRepeat -int 10
 	defaults write -g KeyRepeat -int 1
 fi
-
