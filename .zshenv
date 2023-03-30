@@ -24,7 +24,7 @@ export MANPAGER=less
 #aliases
 alias s='exa -ahlF --icons --group-directories-first --sort=extension --time-style=iso --git --no-user --no-time'
 alias n='nvim'
-alias u='brew upgrade ; brew reinstall neovim ; rustup self update ; rustup update ; cargo install-update -a'
+alias u='brew upgrade ; brew reinstall neovim ; rustup self update ; rustup update ; cargo install-update -a ; npm install -g @githubnext/github-copilot-cli'
 alias zo='z $OLDPWD'
 alias gi='git init ; git add . ; git commit -m'
 alias gl='git pull'
@@ -46,3 +46,5 @@ ga(){
 	git commit -m $1
 	git push
 }
+
+eval "$(github-copilot-cli alias -- '$0')"

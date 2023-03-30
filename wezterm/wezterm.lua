@@ -21,10 +21,10 @@ local cp_mode
 if wz.gui then
 	cp_mode = wz.gui.default_key_tables().copy_mode
 	local meta_ops = {
-		{ key = 'LeftArrow',  mods = 'NONE', action = act.AdjustPaneSize { 'Left', 1 } },
+		{ key = 'LeftArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Left', 1 } },
 		{ key = 'RightArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Right', 1 } },
-		{ key = 'UpArrow',    mods = 'NONE', action = act.AdjustPaneSize { 'Up', 1 } },
-		{ key = 'DownArrow',  mods = 'NONE', action = act.AdjustPaneSize { 'Down', 1 } },
+		{ key = 'UpArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Up', 1 } },
+		{ key = 'DownArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Down', 1 } },
 	}
 
 	for i = 1, 4 do
@@ -61,22 +61,22 @@ return {
 	line_height = 0.9,
 	disable_default_key_bindings = true,
 	keys = {
-		{ key = 'c',        mods = 'SHIFT|CMD', action = act.ActivateCopyMode },
-		{ key = 'F1',       mods = 'NONE',      action = act.ActivatePaneDirection 'Prev' },
-		{ key = 'F2',       mods = 'NONE',      action = act.ActivatePaneDirection 'Next' },
-		{ key = 'Tab',      mods = 'CTRL',      action = act.ActivateTabRelative(1) },
-		{ key = 'c',        mods = 'CMD',       action = act.CopyTo 'Clipboard' },
-		{ key = 'w',        mods = 'CMD',       action = act.CloseCurrentPane { confirm = false } },
-		{ key = 'b',        mods = 'CMD',       action = act.EmitEvent 'bg' },
-		{ key = 'o',        mods = 'CMD',       action = act.EmitEvent 'opacity' },
-		{ key = 'v',        mods = 'CMD',       action = act.PasteFrom 'Clipboard' },
-		{ key = 'q',        mods = 'CMD',       action = act.QuitApplication },
-		{ key = 'r',        mods = 'CMD',       action = act.ReloadConfiguration },
-		{ key = 'PageUp',   mods = 'SHIFT',     action = act.ScrollByPage(-1) },
-		{ key = 'PageDown', mods = 'SHIFT',     action = act.ScrollByPage(1) },
-		{ key = 'f',        mods = 'CMD',       action = act.Search { CaseSensitiveString = '' } },
-		{ key = 't',        mods = 'CMD',       action = act.SpawnTab 'DefaultDomain' },
-		{ key = 'n',        mods = 'CMD',       action = act.SpawnWindow },
+		{ key = 'c', mods = 'SHIFT|CMD', action = act.ActivateCopyMode },
+		{ key = 'F4', mods = 'NONE', action = act.ActivatePaneDirection 'Prev' },
+		{ key = 'F5', mods = 'NONE', action = act.ActivatePaneDirection 'Next' },
+		{ key = 'Tab', mods = 'CTRL', action = act.ActivateTabRelative(1) },
+		{ key = 'c', mods = 'CMD', action = act.CopyTo 'Clipboard' },
+		{ key = 'w', mods = 'CMD', action = act.CloseCurrentPane { confirm = false } },
+		{ key = 'b', mods = 'CMD', action = act.EmitEvent 'bg' },
+		{ key = 'o', mods = 'CMD', action = act.EmitEvent 'opacity' },
+		{ key = 'v', mods = 'CMD', action = act.PasteFrom 'Clipboard' },
+		{ key = 'q', mods = 'CMD', action = act.QuitApplication },
+		{ key = 'r', mods = 'CMD', action = act.ReloadConfiguration },
+		{ key = 'PageUp', mods = 'SHIFT', action = act.ScrollByPage(-1) },
+		{ key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1) },
+		{ key = 'f', mods = 'CMD', action = act.Search { CaseSensitiveString = '' } },
+		{ key = 't', mods = 'CMD', action = act.SpawnTab 'DefaultDomain' },
+		{ key = 'n', mods = 'CMD', action = act.SpawnWindow },
 		{
 			key = 'd',
 			mods = 'CMD|SHIFT',
@@ -92,9 +92,11 @@ return {
 	key_tables = { copy_mode = cp_mode },
 	color_scheme = theme_selector(wz.gui.get_appearance()),
 	hide_tab_bar_if_only_one_tab = true,
+	native_macos_fullscreen_mode = false,
 	tab_bar_at_bottom = true,
 	window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
 	window_decorations = 'RESIZE',
 	window_close_confirmation = 'NeverPrompt',
+	--mocos_window_background_blur=5,
 	--window_background_image='/path/to/img.jpg' png, gif also vaild extensiton
 }

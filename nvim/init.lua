@@ -36,5 +36,4 @@ require('lazy').setup 'plugins'
 require 'usrcmd'
 require 'map'
 
-
 -- #fa0b1c #2048ab #48eb0c #f7f7f7 #3c4c55

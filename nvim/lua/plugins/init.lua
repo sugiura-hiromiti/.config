@@ -14,6 +14,7 @@ return {
 			vim.fn['mkdp#util#install']()
 		end,
 	},
+	'chrisgrieser/nvim-spider',
 	{
 		'zbirenbaum/copilot.lua',
 		config = function()
