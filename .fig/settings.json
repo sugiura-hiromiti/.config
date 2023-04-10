@@ -2,6 +2,7 @@
   "app.beta": true,
   "app.hideMenubarIcon": true,
   "app.preferredTerminal": "iTerm2",
+  "autocomplete.disableForCommands": [],
   "autocomplete.firstTokenCompletion": true,
   "autocomplete.fuzzySearch": true,
   "autocomplete.height": 400,
