@@ -1,10 +1,11 @@
 
-# Other Homebrew packages
+# tap repositories and their packages
+
+tap homebrew/core
 brew aom
 brew aribb24
 brew bash-language-server
 brew boost
-brew brew-file
 brew brotli
 brew c-ares
 brew ca-certificates
@@ -160,7 +161,7 @@ brew zimg
 brew zoxide
 brew zstd
 
-# Other Cask applications
+tap homebrew/cask
 cask fig
 cask hammerspoon
 cask karabiner-elements
@@ -168,8 +169,12 @@ cask raycast
 cask stats
 cask wezterm
 
+tap rcmdnk/file
+brew brew-file
+
 # App Store applications
 appstore 1018301773 AdBlock Pro (10.3.0)
 appstore 634148309 Logic Pro X (10.7.7)
 appstore 1611949612 Niconico PiP (1.1.0)
+appstore 409201541 Pages (12.0)
 appstore 1584519802 Vimlike (1.4.0)
