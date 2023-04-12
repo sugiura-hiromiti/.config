@@ -2,6 +2,7 @@ if vim.fn.expand '%:p' == '' then
 	vim.cmd [[e $MYVIMRC]]
 end
 
+vim.opt.encoding = 'utf-8'
 vim.opt.list = true
 vim.opt.listchars = { tab = '│ ' }
 --vim.opt.listchars = { tab = ' ·' }
