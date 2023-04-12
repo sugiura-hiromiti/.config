@@ -2,19 +2,8 @@
 set -o emacs
 . $HOME/.profile
 
-export PATH=$PATH:$HOME/.cargo/env
+#export PATH=$PATH:$HOME/.cargo/env
 export PATH=$PATH:$HOME/.cargo/bin
-
-path=(
-	/opt/homebrew/bin(N)
-	/opt/homebrew/sbin(N)
-	/usr/local/bin(N)
-	/usr/local/sbin(N)
-	~/.local/bin
-	~/.local/sbin
-	~/.fig/bin
-	$path
-)
 
 #environment variables
 export EDITOR=nvim
@@ -35,7 +24,6 @@ alias bi='brew install'
 alias bl='brew list'
 alias bs='brew search'
 alias ba='brew abv'
-#alias rebrew='rm Brewfile ; brew bundle dump'
 alias wh='which -a'
 alias so='source'
 alias ccc='cargo clean; cargo update'

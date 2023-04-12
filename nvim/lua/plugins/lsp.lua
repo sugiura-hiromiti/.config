@@ -95,12 +95,10 @@ return {
 					fmt.dprint.with { filetypes = { 'markdown', 'json', 'toml' } },
 					fmt.stylua,
 					fmt.prettier.with { filetypes = { 'css', 'yaml' } },
-					fmt.beautysh.with { extra_args = { '-t' } },
 					fmt.swiftformat,
 					fmt.yapf,
 					hov.printenv,
 					diag.zsh,
-					--					cmp.spell.with { filetypes = { 'markdown', 'text' } },
 				},
 			}
 		end,

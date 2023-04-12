@@ -26,6 +26,7 @@ brew freetype
 brew frei0r
 brew fribidi
 brew gcc
+brew gd
 brew gettext
 brew gflags
 brew gh
@@ -35,6 +36,7 @@ brew glew
 brew glib
 brew glog
 brew gmp
+brew gnuplot
 brew gnutls
 brew graphite2
 brew harfbuzz
@@ -51,8 +53,10 @@ brew leptonica
 brew libaec
 brew libarchive
 brew libass
+brew libavif
 brew libb2
 brew libbluray
+brew libcerf
 brew libevent
 brew libgit2
 brew libidn2
@@ -176,5 +180,4 @@ brew brew-file
 appstore 1018301773 AdBlock Pro (10.3.0)
 appstore 634148309 Logic Pro X (10.7.7)
 appstore 1611949612 Niconico PiP (1.1.0)
-appstore 409201541 Pages (12.0)
 appstore 1584519802 Vimlike (1.4.0)
