@@ -1,10 +1,5 @@
 return {
-	{
-		'AckslD/nvim-FeMaco.lua',
-		config = function()
-			require('femaco').setup()
-		end,
-	},
+	'jmbuhr/otter.nvim',
 	{
 		'williamboman/mason.nvim',
 		config = function()

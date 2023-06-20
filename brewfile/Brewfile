@@ -2,6 +2,7 @@
 # tap repositories and their packages
 
 tap homebrew/core
+brew abseil
 brew aom
 brew aribb24
 brew bash-language-server
@@ -88,6 +89,7 @@ brew libxdmcp
 brew libxext
 brew libxrender
 brew little-cms2
+brew lpeg
 brew lua
 brew lua-language-server
 brew luajit
@@ -122,6 +124,7 @@ brew pixman
 brew pkg-config
 brew prettier
 brew protobuf
+brew protobuf@21
 brew pugixml
 brew pyqt@5
 brew python-lsp-server
@@ -169,15 +172,15 @@ tap homebrew/cask
 cask fig
 cask hammerspoon
 cask karabiner-elements
+cask obs
 cask raycast
-cask stats
 cask wezterm
 
 tap rcmdnk/file
 brew brew-file
 
 # App Store applications
-appstore 1018301773 AdBlock Pro (10.3.0)
-appstore 634148309 Logic Pro X (10.7.7)
+appstore 1018301773 AdBlock Pro (10.3.1)
+appstore 634148309 Logic Pro X (10.7.8)
 appstore 1611949612 Niconico PiP (1.1.0)
-appstore 1584519802 Vimlike (1.4.0)
+appstore 1584519802 Vimlike (1.4.1)
