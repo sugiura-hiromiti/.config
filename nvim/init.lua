@@ -2,7 +2,7 @@ if vim.fn.expand '%:p' == '' then
 	vim.cmd [[e $MYVIMRC]]
 end
 
-vim.opt.encoding = 'utf-8'
+vim.opt.fileencoding = 'utf-8'
 vim.opt.list = true
 vim.opt.listchars = { tab = '│ ' }
 --vim.opt.listchars = { tab = ' ·' }
@@ -21,7 +21,7 @@ vim.g.netrw_liststyle = 3
 
 -- lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
 	vim.fn.system {
 		'git',
 		'clone',
