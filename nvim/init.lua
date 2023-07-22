@@ -15,6 +15,7 @@ vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.autochdir = true
 vim.opt.laststatus = 0
 vim.opt.scrolloff = 10
+vim.g.updatetime = 10
 vim.g.editorconfig = true
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3

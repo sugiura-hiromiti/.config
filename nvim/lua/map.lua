@@ -28,12 +28,12 @@ map(ic, '<a-f>', '<c-right>')
 map(ic, '<a-b>', '<c-left>')
 map(nv, '<tab>', require('todo-comments').jump_next)
 map(nv, '<s-tab>', require('todo-comments').jump_prev)
-map('n', '<cr>', ':Make ')    -- execute shell command
+map('n', '<cr>', ':Make ')-- execute shell command
 map('n', '<s-cr>', ':!')
-map(nv, '<a-left>', '<c-w><') -- change window size
-map(nv, '<a-down>', '<c-w>+')
-map(nv, '<a-up>', '<c-w>-')
-map(nv, '<a-right>', '<c-w>>')
+map(nv, '<left>', '<c-w><') -- change window size
+map(nv, '<down>', '<c-w>+')
+map(nv, '<up>', '<c-w>-')
+map(nv, '<right>', '<c-w>>')
 map(nox, 'w', function() -- spider
 	require('spider').motion 'w'
 end)

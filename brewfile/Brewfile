@@ -112,10 +112,10 @@ brew node
 brew numpy
 brew openblas
 brew opencore-amr
-brew opencv
 brew openexr
 brew openjpeg
 brew openssl@1.1
+brew openssl@3
 brew opus
 brew p11-kit
 brew pango
@@ -124,7 +124,6 @@ brew pixman
 brew pkg-config
 brew prettier
 brew protobuf
-brew protobuf@21
 brew pugixml
 brew pyqt@5
 brew python-lsp-server
@@ -174,13 +173,18 @@ cask hammerspoon
 cask karabiner-elements
 cask obs
 cask raycast
-cask wezterm
+cask the-unarchiver
+
+tap homebrew/cask-fonts
+cask font-monoid-nerd-font
+
+tap homebrew/services
 
 tap rcmdnk/file
 brew brew-file
 
 # App Store applications
 appstore 1018301773 AdBlock Pro (10.3.1)
-appstore 634148309 Logic Pro X (10.7.8)
+appstore 634148309 Logic Pro X (10.7.9)
 appstore 1611949612 Niconico PiP (1.1.0)
-appstore 1584519802 Vimlike (1.4.1)
+appstore 1584519802 Vimlike (1.4.2)
