@@ -12,11 +12,20 @@ aucmd('filetype', {
 	end,
 })
 
-aucmd('modechanged', {
+aucmd('cursorhold', {
 	group = my_au,
 	callback = function()
 		if os.getenv 'TERM_PROGRAM' == 'WezTerm' then
 			local handle = assert(io.open('/tmp/wz_nvim.txt', 'r'), 'could not opened wz_nvim.txt')
+			local bg = handle:read '*a'
+			handle:close()
+			if bg ~= vim.o.background then
+				vim.o.background = bg
+			end
+		elseif os.getenv 'TERM_PROGRAM' == 'iTerm.app' then
+			os.execute 'swift ~/.config/nvim/appearance.swift'
+			local handle =
+				 assert(io.open('/tmp/sys_appear.txt', 'r'), 'could not opened sys_appear.txt')
 			local bg = handle:read '*a'
 			handle:close()
 			if bg ~= vim.o.background then
@@ -40,7 +49,7 @@ usrcmd('Make', function(opts)
 			if string.find(path, '/src/bin') ~= nil then
 				local _, l = string.find(path, '/src/bin/')
 				local r = string.find(string.sub(path, l + 1), '/')
-					or string.find(string.sub(path, l + 1), '%.')
+					 or string.find(string.sub(path, l + 1), '%.')
 
 				args = args .. '--bin ' .. string.sub(path, l + 1, l + r - 1)
 			elseif vim.fn.expand '%' ~= 'main.rs' then

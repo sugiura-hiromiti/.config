@@ -29,9 +29,9 @@ return {
 					['rust-analyzer'] = {
 						hover = { actions = { reference = { enable = true } } },
 						inlayHints = {
-							closingBraceHints = { minLines = 0 },
+							closingBraceHints = { minLines = 20 },
 							lifetimeElisionHints = { enable = 'always', ParameterNames = true },
-							maxLength = 0,
+							maxLength = 20,
 							typeHints = { hideNamedConstructor = false },
 						},
 						lens = { implementations = { enable = false } },

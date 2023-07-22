@@ -17,14 +17,15 @@ local function theme_selector(app)
 	return rslt
 end
 
+-- copy mode setting
 local cp_mode
 if wz.gui then
 	cp_mode = wz.gui.default_key_tables().copy_mode
 	local meta_ops = {
-		{ key = 'LeftArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Left', 1 } },
+		{ key = 'LeftArrow',  mods = 'NONE', action = act.AdjustPaneSize { 'Left', 1 } },
 		{ key = 'RightArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Right', 1 } },
-		{ key = 'UpArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Up', 1 } },
-		{ key = 'DownArrow', mods = 'NONE', action = act.AdjustPaneSize { 'Down', 1 } },
+		{ key = 'UpArrow',    mods = 'NONE', action = act.AdjustPaneSize { 'Up', 1 } },
+		{ key = 'DownArrow',  mods = 'NONE', action = act.AdjustPaneSize { 'Down', 1 } },
 	}
 
 	for i = 1, 4 do
@@ -32,22 +33,24 @@ if wz.gui then
 	end
 end
 
+-- when cmd+o is pressed, set window transparent
 wz.on('opacity', function(window, _)
 	local overrides = window:get_config_overrides() or {}
-	local hndl = assert(io.open('/tmp/wz_nvim.txt', 'r'), 'could not opened wz_nvim.txt')
+	local hndl = assert(io.open('/tmp/wz_nvim.txt', 'w+'), 'could not opened wz_nvim.txt')
+
 	if not overrides.window_background_opacity then
 		overrides.window_background_opacity = 0.45
 		overrides.text_background_opacity = 0.4
 		if wz.gui.get_appearance():find 'Light' then
+			assert(hndl:write 'dark', 'failed to write to wz_nvim.txt "dark"')
 			overrides.color_scheme = 'Nova (base16)'
-			hndl:write 'dark'
 		end
 	else
 		overrides.window_background_opacity = nil
 		overrides.text_background_opacity = nil
 		if wz.gui.get_appearance():find 'Light' then
-			overrides.color_scheme = 'Alabaster'
 			hndl:write 'light'
+			overrides.color_scheme = 'Alabaster'
 		end
 	end
 	hndl:close()
@@ -61,22 +64,22 @@ return {
 	line_height = 0.9,
 	disable_default_key_bindings = true,
 	keys = {
-		{ key = 'c', mods = 'SHIFT|CMD', action = act.ActivateCopyMode },
-		{ key = 'F4', mods = 'NONE', action = act.ActivatePaneDirection 'Prev' },
-		{ key = 'F5', mods = 'NONE', action = act.ActivatePaneDirection 'Next' },
-		{ key = 'Tab', mods = 'CTRL', action = act.ActivateTabRelative(1) },
-		{ key = 'c', mods = 'CMD', action = act.CopyTo 'Clipboard' },
-		{ key = 'w', mods = 'CMD', action = act.CloseCurrentPane { confirm = false } },
-		{ key = 'b', mods = 'CMD', action = act.EmitEvent 'bg' },
-		{ key = 'o', mods = 'CMD', action = act.EmitEvent 'opacity' },
-		{ key = 'v', mods = 'CMD', action = act.PasteFrom 'Clipboard' },
-		{ key = 'q', mods = 'CMD', action = act.QuitApplication },
-		{ key = 'r', mods = 'CMD', action = act.ReloadConfiguration },
-		{ key = 'PageUp', mods = 'SHIFT', action = act.ScrollByPage(-1) },
-		{ key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1) },
-		{ key = 'f', mods = 'CMD', action = act.Search { CaseSensitiveString = '' } },
-		{ key = 't', mods = 'CMD', action = act.SpawnTab 'DefaultDomain' },
-		{ key = 'n', mods = 'CMD', action = act.SpawnWindow },
+		{ key = 'c',        mods = 'SHIFT|CMD', action = act.ActivateCopyMode },
+		{ key = 'F4',       mods = 'NONE',      action = act.ActivatePaneDirection 'Prev' },
+		{ key = 'F5',       mods = 'NONE',      action = act.ActivatePaneDirection 'Next' },
+		{ key = 'Tab',      mods = 'CTRL',      action = act.ActivateTabRelative(1) },
+		{ key = 'c',        mods = 'CMD',       action = act.CopyTo 'Clipboard' },
+		{ key = 'w',        mods = 'CMD',       action = act.CloseCurrentPane { confirm = false } },
+		{ key = 'b',        mods = 'CMD',       action = act.EmitEvent 'bg' },
+		{ key = 'o',        mods = 'CMD',       action = act.EmitEvent 'opacity' },
+		{ key = 'v',        mods = 'CMD',       action = act.PasteFrom 'Clipboard' },
+		{ key = 'q',        mods = 'CMD',       action = act.QuitApplication },
+		{ key = 'r',        mods = 'CMD',       action = act.ReloadConfiguration },
+		{ key = 'PageUp',   mods = 'SHIFT',     action = act.ScrollByPage(-1) },
+		{ key = 'PageDown', mods = 'SHIFT',     action = act.ScrollByPage(1) },
+		{ key = 'f',        mods = 'CMD',       action = act.Search { CaseSensitiveString = '' } },
+		{ key = 't',        mods = 'CMD',       action = act.SpawnTab 'DefaultDomain' },
+		{ key = 'n',        mods = 'CMD',       action = act.SpawnWindow },
 		{
 			key = 'd',
 			mods = 'CMD|SHIFT',
