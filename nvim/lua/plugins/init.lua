@@ -30,4 +30,6 @@ return {
 			}
 		end,
 	},
+	'yuki-yano/fuzzy-motion.vim',
+	'lambdalisue/kensaku.vim',
 }

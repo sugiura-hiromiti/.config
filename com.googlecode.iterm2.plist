@@ -6,6 +6,8 @@
 	<true/>
 	<key>AlwaysOpenWindowAtStartup</key>
 	<true/>
+	<key>CloseBookmarksWindowAfterOpening</key>
+	<true/>
 	<key>Custom Color Presets</key>
 	<dict/>
 	<key>Default Bookmark Guid</key>
