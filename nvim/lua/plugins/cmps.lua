@@ -80,8 +80,7 @@ return {
 					['<s-bs>'] = cmp.mapping(function(fallback)
 						if copilot.is_visible() then
 							copilot.accept_word()
-						end
-						if ls.expand_or_locally_jumpable() then
+						elseif ls.expand_or_locally_jumpable() then
 							ls.jump(-1)
 						else
 							fallback()

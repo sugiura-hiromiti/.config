@@ -49,7 +49,7 @@ wz.on('opacity', function(window, _)
 		overrides.window_background_opacity = nil
 		overrides.text_background_opacity = nil
 		if wz.gui.get_appearance():find 'Light' then
-			hndl:write 'light'
+			assert(hndl:write 'light', 'failed to write to wz_nvim.txt "light"')
 			overrides.color_scheme = 'Alabaster'
 		end
 	end
@@ -59,9 +59,10 @@ end)
 
 return {
 	show_update_window = true,
-	font_size = 12.5,
+	font = wz.font 'Monoid Nerd Font',
+	font_size = 11,
 	freetype_load_target = 'HorizontalLcd',
-	line_height = 0.9,
+	line_height = 0.85,
 	disable_default_key_bindings = true,
 	keys = {
 		{ key = 'c',        mods = 'SHIFT|CMD', action = act.ActivateCopyMode },
@@ -70,7 +71,7 @@ return {
 		{ key = 'Tab',      mods = 'CTRL',      action = act.ActivateTabRelative(1) },
 		{ key = 'c',        mods = 'CMD',       action = act.CopyTo 'Clipboard' },
 		{ key = 'w',        mods = 'CMD',       action = act.CloseCurrentPane { confirm = false } },
-		{ key = 'b',        mods = 'CMD',       action = act.EmitEvent 'bg' },
+		--{ key = 'b', mods = 'CMD', action = act.EmitEvent 'bg' },
 		{ key = 'o',        mods = 'CMD',       action = act.EmitEvent 'opacity' },
 		{ key = 'v',        mods = 'CMD',       action = act.PasteFrom 'Clipboard' },
 		{ key = 'q',        mods = 'CMD',       action = act.QuitApplication },

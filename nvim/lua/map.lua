@@ -5,13 +5,13 @@ local nv = { 'n', 'v' }
 local ic = { 'i', 'c' }
 local nox = { 'n', 'o', 'x' }
 map('i', '<c-[>', '<c-[><cmd>update | lua vim.lsp.buf.format{async=true}<cr>')
-map(nv, '$', '^')  -- swap $ & ^
+map(nv, '$', '^') -- swap $ & ^
 map(nv, '^', '$')
 map(nv, ',', '@:') --repeat previous command
 map('n', '<esc>', function()
 	require('notify').dismiss { pending = true, silent = true }
 	vim.cmd 'noh'
-end)                                      --clear notification and highlight
+end) --clear notification and highlight
 map({ 'i', 'c', 's' }, '<c-n>', '<down>') --emacs keybind
 map({ 'i', 'c', 's' }, '<c-p>', '<up>')
 map(ic, '<c-b>', '<left>')
@@ -28,7 +28,7 @@ map(ic, '<a-f>', '<c-right>')
 map(ic, '<a-b>', '<c-left>')
 map(nv, '<tab>', require('todo-comments').jump_next)
 map(nv, '<s-tab>', require('todo-comments').jump_prev)
-map('n', '<cr>', ':Make ')-- execute shell command
+map('n', '<cr>', ':Make ') -- execute shell command
 map('n', '<s-cr>', ':!')
 map(nv, '<left>', '<c-w><') -- change window size
 map(nv, '<down>', '<c-w>+')
@@ -43,6 +43,7 @@ end)
 map(nox, 'b', function()
 	require('spider').motion 'b'
 end)
+map({ 'n', 'v', 'i' }, '<bs>', '<cmd>FuzzyMotion<cr>') -- fuzzy motion
 map(nv, 't', ts_builtin.builtin) -- Telescope
 map('n', '<space>o', ts_builtin.lsp_document_symbols)
 map('n', '<space>d', ts_builtin.diagnostics)
