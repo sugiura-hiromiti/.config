@@ -1,5 +1,4 @@
 return {
-	'jmbuhr/otter.nvim',
 	{
 		'williamboman/mason.nvim',
 		config = function()

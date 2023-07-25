@@ -7,6 +7,7 @@ return {
 	'hrsh7th/cmp-cmdline',
 	'lukas-reineke/cmp-rg',
 	'saadparwaiz1/cmp_luasnip',
+	'jmbuhr/otter.nvim',
 	{
 		'hrsh7th/nvim-cmp',
 		config = function()
@@ -88,6 +89,7 @@ return {
 					end),
 				},
 				sources = {
+					{ name = 'otter' },
 					{ name = 'copilot' },
 					{ name = 'nvim_lsp_signature_help' },
 					{ name = 'luasnip' },
