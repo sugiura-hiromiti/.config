@@ -35,14 +35,6 @@ aucmd('cursorhold', {
 	end,
 })
 
-aucmd('filetype', {
-	pattern = { '*.md', '*.rs', '*.swift', '*.lua' },
-	group = my_au,
-	callback = function()
-		require('otter').activate { 'rust', 'lua', 'swift', 'markdown', 'python', 'ruby' }
-	end,
-})
-
 local usrcmd = vim.api.nvim_create_user_command
 usrcmd('Make', function(opts)
 	local cmd = '<cr> '
