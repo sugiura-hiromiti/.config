@@ -1,20 +1,11 @@
 -- listup plugins here which is difficult to classify
 return {
-	{
-		'chrisgrieser/nvim-recorder',
-		config = function()
-			require('recorder').setup {
-				mapping = { startStopRecording = '<f9>' },
-			}
-		end,
-	},
-	--{ 'iamcco/markdown-preview.nvim', build = function() vim.fn['mkdp#util#install']() end, },
+	'ecthelionvi/neoComposer.nvim',
+	-- e: bug https://github.com/toppair/peek.nvim/issues/47
+	--{ 'toppair/peek.nvim', build = 'deno task --quiet build:fast', config = function() require('peek').setup { theme = vim.o.background, app = 'browser' } end, },
 	{
 		'iamcco/markdown-preview.nvim',
 		build = 'cd app && npm install',
-		init = function()
-			vim.g.mkdp_filetypes = { 'markdown' }
-		end,
 	},
 	'chrisgrieser/nvim-spider',
 	{
@@ -30,6 +21,4 @@ return {
 			}
 		end,
 	},
-	'yuki-yano/fuzzy-motion.vim',
-	'lambdalisue/kensaku.vim',
 }

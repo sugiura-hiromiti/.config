@@ -16,35 +16,22 @@ vim.opt.autochdir = true
 vim.opt.laststatus = 0
 vim.opt.scrolloff = 10
 vim.opt.updatetime = 10
+vim.opt.smoothscroll = true
 vim.g.editorconfig = true
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
 
 -- lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-local ver_check=vim.fn.has'nvim-0.10'==1
-if vim.fn.has'nvim-0.10'==1 then
-	if not vim.uv.fs_stat(lazypath) then
-		vim.fn.system {
-			'git',
-			'clone',
-			'--filter=blob:none',
-			'https://github.com/folke/lazy.nvim.git',
-			'--branch=stable', -- latest stable release
-			lazypath,
-		}
-	end
-else
-	if not vim.loop.fs_stat(lazypath) then
-		vim.fn.system {
-			'git',
-			'clone',
-			'--filter=blob:none',
-			'https://github.com/folke/lazy.nvim.git',
-			'--branch=stable', -- latest stable release
-			lazypath,
-		}
-	end
+if not vim.uv.fs_stat(lazypath) then
+	vim.fn.system {
+		'git',
+		'clone',
+		'--filter=blob:none',
+		'https://github.com/folke/lazy.nvim.git',
+		'--branch=stable', -- latest stable release
+		lazypath,
+	}
 end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup 'plugins'

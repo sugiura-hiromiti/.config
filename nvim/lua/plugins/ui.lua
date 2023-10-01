@@ -59,5 +59,11 @@ return {
 			require('hologram').setup {}
 		end,
 	},
-	--{ 'giusgad/pets.nvim', config = function() require('pets').setup() end, },
+	{ 'nvim-zh/colorful-winsep.nvim', config = true, event = { 'winnew' } },
+	{
+		'giusgad/pets.nvim',
+		config = function()
+			require('pets').setup()
+		end,
+	},
 }
