@@ -1,5 +1,9 @@
 return {
 	{
+		'AckslD/nvim-FeMaco.lua',
+		config = true,
+	},
+	{
 		'williamboman/mason.nvim',
 		config = function()
 			require('mason').setup()
@@ -22,8 +26,14 @@ return {
 		'neovim/nvim-lspconfig',
 		config = function()
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
+			local on_attach = function(client, bufnr)
+				if client.server_capabilities.inlayHintProvider then
+					vim.lsp.inlay_hint(bufnr)
+				end
+			end
 			require('lspconfig').rust_analyzer.setup {
 				capabilities = capabilities,
+				on_attach = on_attach,
 				settings = {
 					['rust-analyzer'] = {
 						hover = { actions = { reference = { enable = true } } },
@@ -33,7 +43,7 @@ return {
 							maxLength = 20,
 							typeHints = { hideNamedConstructor = false },
 						},
-						lens = { implementations = { enable = false } },
+						lens = { implementations = { enable = true } },
 						rustfmt = { rangeFormatting = { enable = true } },
 						semanticHighlighting = { operator = { specialization = { enable = true } } },
 						typing = { autoClosingAngleBrackets = { enable = true } },
@@ -43,6 +53,7 @@ return {
 			}
 			require('lspconfig').lua_ls.setup {
 				capabilities = capabilities,
+				on_attach = on_attach,
 				settings = {
 					Lua = {
 						runtime = { version = 'LuaJIT' },
@@ -59,23 +70,26 @@ return {
 				filetypes = { 'swift', 'objective-c', 'objective-cpp' },
 				single_file_support = true,
 				capabilities = capabilities,
+				on_attach = on_attach,
 			}
-			require('lspconfig').clangd.setup { capabilities = capabilities }
-			require('lspconfig').pylsp.setup { capabilities = capabilities }
-			require('lspconfig').html.setup { capabilities = capabilities }
-			require('lspconfig').cssls.setup { capabilities = capabilities }
-			require('lspconfig').bashls.setup { capabilities = capabilities }
-			require('lspconfig').yamlls.setup { capabilities = capabilities }
-			require('lspconfig').jsonls.setup { capabilities = capabilities }
-			require('lspconfig').taplo.setup { capabilities = capabilities }
-			require('lspconfig').marksman.setup { capabilities = capabilities }
+			require('lspconfig').clangd.setup { capabilities = capabilities, on_attach = on_attach }
+			require('lspconfig').pylsp.setup { capabilities = capabilities, on_attach = on_attach }
+			require('lspconfig').html.setup { capabilities = capabilities, on_attach = on_attach }
+			require('lspconfig').cssls.setup { capabilities = capabilities, on_attach = on_attach }
+			require('lspconfig').bashls.setup { capabilities = capabilities, on_attach = on_attach }
+			require('lspconfig').yamlls.setup { capabilities = capabilities, on_attach = on_attach }
+			require('lspconfig').jsonls.setup { capabilities = capabilities, on_attach = on_attach }
+			require('lspconfig').taplo.setup { capabilities = capabilities, on_attach = on_attach }
+			require('lspconfig').marksman.setup { capabilities = capabilities, on_attach = on_attach }
 			require('lspconfig').texlab.setup {
 				filetypes = { 'tex', 'plaintex', 'bib', 'markdown' },
 				capabilities = capabilities,
+				on_attach = on_attach,
 			}
 		end,
 	},
 	{
+		-- a: null-ls.nvim will be archived from August 2023
 		'jose-elias-alvarez/null-ls.nvim',
 		config = function()
 			local nls = require 'null-ls'

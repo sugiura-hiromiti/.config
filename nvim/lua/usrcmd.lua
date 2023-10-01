@@ -20,16 +20,24 @@ aucmd('cursorhold', {
 			local bg = handle:read '*a'
 			handle:close()
 			if bg ~= vim.o.background then
-				vim.o.background = bg
+				if vim.g.colors_name == 'material' then
+					require('material.functions').change_style(bg == 'dark' and 'palenight' or 'lighter')
+				else
+					vim.o.background = bg
+				end
 			end
 		elseif os.getenv 'TERM_PROGRAM' == 'iTerm.app' then
 			os.execute 'swift ~/.config/nvim/appearance.swift'
 			local handle =
-				 assert(io.open('/tmp/sys_appear.txt', 'r'), 'could not opened sys_appear.txt')
+				assert(io.open('/tmp/sys_appear.txt', 'r'), 'could not opened sys_appear.txt')
 			local bg = handle:read '*a'
 			handle:close()
 			if bg ~= vim.o.background then
-				vim.o.background = bg
+				if vim.g.colors_name == 'material' then
+					require('material.functions').change_style(bg == 'dark' and 'palenight' or 'lighter')
+				else
+					vim.o.background = bg
+				end
 			end
 		end
 	end,
@@ -49,7 +57,7 @@ usrcmd('Make', function(opts)
 			if string.find(path, '/src/bin') ~= nil then
 				local _, l = string.find(path, '/src/bin/')
 				local r = string.find(string.sub(path, l + 1), '/')
-					 or string.find(string.sub(path, l + 1), '%.')
+					or string.find(string.sub(path, l + 1), '%.')
 
 				args = args .. '--bin ' .. string.sub(path, l + 1, l + r - 1)
 			elseif vim.fn.expand '%' ~= 'main.rs' then
@@ -78,7 +86,9 @@ usrcmd('Make', function(opts)
 	elseif ft == 'html' then -- markup language
 		cmd = '!open ' .. vim.fn.expand '%:t' .. ' '
 	elseif ft == 'markdown' then
-		cmd = 'MarkdownPreviewToggle '
+		cmd =
+			--		[[lua if require('peek').is_open() then require('peek').close() else require('peek').open() end]]
+			'MarkdownPreviewToggle'
 	end
 
 	vim.cmd(cmd .. args .. extra)
