@@ -114,6 +114,7 @@ brew mpfr
 brew mpg123
 brew msgpack
 brew mypy
+brew ncurses
 brew neovim --HEAD
 brew netcdf
 brew nettle
@@ -208,4 +209,4 @@ brew brew-file
 appstore 1018301773 AdBlock Pro (10.3.2)
 appstore 634148309 Logic Pro X (10.7.9)
 appstore 1611949612 Niconico PiP (1.1.0)
-appstore 1584519802 Vimlike (1.4.3)
+appstore 1584519802 Vimlike (1.4.4)
