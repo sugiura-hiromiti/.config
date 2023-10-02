@@ -59,15 +59,14 @@ end)
 
 return {
 	show_update_window = true,
-	font = wz.font 'Monoid Nerd Font',
+	font = wz.font 'FiraCode Nerd Font Mono',
 	font_size = 11,
 	freetype_load_target = 'HorizontalLcd',
 	line_height = 0.85,
 	disable_default_key_bindings = true,
 	keys = {
 		{ key = 'c',        mods = 'SHIFT|CMD', action = act.ActivateCopyMode },
-		{ key = 'F4',       mods = 'NONE',      action = act.ActivatePaneDirection 'Prev' },
-		{ key = 'F5',       mods = 'NONE',      action = act.ActivatePaneDirection 'Next' },
+		{ key = 'F6',       mods = 'NONE',      action = act.ActivatePaneDirection 'Prev' },
 		{ key = 'Tab',      mods = 'CTRL',      action = act.ActivateTabRelative(1) },
 		{ key = 'c',        mods = 'CMD',       action = act.CopyTo 'Clipboard' },
 		{ key = 'w',        mods = 'CMD',       action = act.CloseCurrentPane { confirm = false } },

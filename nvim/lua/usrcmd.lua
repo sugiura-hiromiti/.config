@@ -12,34 +12,18 @@ aucmd('filetype', {
 	end,
 })
 
-aucmd('cursorhold', {
+aucmd('modechanged', {
 	group = my_au,
 	callback = function()
-		if os.getenv 'TERM_PROGRAM' == 'WezTerm' then
-			local handle = assert(io.open('/tmp/wz_nvim.txt', 'r'), 'could not opened wz_nvim.txt')
-			local bg = handle:read '*a'
-			handle:close()
-			if bg ~= vim.o.background then
-				if vim.g.colors_name == 'material' then
-					require('material.functions').change_style(bg == 'dark' and 'palenight' or 'lighter')
-				else
-					vim.o.background = bg
-				end
-			end
-		elseif os.getenv 'TERM_PROGRAM' == 'iTerm.app' then
-			os.execute 'swift ~/.config/nvim/appearance.swift'
-			local handle =
-				assert(io.open('/tmp/sys_appear.txt', 'r'), 'could not opened sys_appear.txt')
-			local bg = handle:read '*a'
-			handle:close()
-			if bg ~= vim.o.background then
-				if vim.g.colors_name == 'material' then
-					require('material.functions').change_style(bg == 'dark' and 'palenight' or 'lighter')
-				else
-					vim.o.background = bg
-				end
-			end
+		--		io.execute '.theme.swift'
+		local home = os.getenv 'HOME'
+		local f = assert(io.open(home .. '/.local/share/usr/theme', 'r'), '🫠Could not open file')
+		if f:read '*a' == 'dark' then
+			vim.o.background = 'dark'
+		else
+			vim.o.background = 'light'
 		end
+		f:close()
 	end,
 })
 
@@ -76,7 +60,7 @@ usrcmd('Make', function(opts)
 		local file = vim.fn.expand '%:t'
 		local interpreter = ft
 		if interpreter == 'python' then
-			interpreter = interpreter .. '3.11'
+			interpreter = interpreter .. '3'
 		end
 		if args == 't' then
 			file = 'test.' .. ft
