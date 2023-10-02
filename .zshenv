@@ -9,6 +9,7 @@ export PATH=$PATH:$HOME/.cargo/bin
 export EDITOR=nvim
 export VISUAL=nvim
 export MANPAGER=less
+export RIPGREP_CONFIG_PATH=$HOME/.config/rg/config
 
 #aliases
 # to remove alias in zsh, simply just remove it
