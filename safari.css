@@ -8,9 +8,3 @@ body {
 pre {
 	tab-size: 3;
 }
-h1 {
-	background-color: rgba(200, 200, 200, 0.2);
-}
-.BaseLayout {
-	background-color: darkolivegreen;
-}
