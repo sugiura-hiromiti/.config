@@ -1,71 +1,63 @@
 #!/usr/bin/swift
 let dark = ("dark", """
-# Colors (PaperColor - Dark)
+# Colors (Ayu Dark)
 colors:
-    # Default colors
-    primary:
-        background: '0x1c1c1c'
-        foreground: '0x808080'
+  # Default colors
+  primary:
+    background: '0x0A0E14'
+    foreground: '0xB3B1AD'
 
-    cursor:
-        text: '0x1c1c1c'
-        cursor: '0x808080'
+  # Normal colors
+  normal:
+    black:   '0x01060E'
+    red:     '0xEA6C73'
+    green:   '0x91B362'
+    yellow:  '0xF9AF4F'
+    blue:    '0x53BDFA'
+    magenta: '0xFAE994'
+    cyan:    '0x90E1C6'
+    white:   '0xC7C7C7'
 
-    # Normal colors
-    normal:
-        black: '0x1c1c1c'
-        red: '0xaf005f'
-        green: '0x5faf00'
-        yellow: '0xd7af5f'
-        blue: '0x5fafd7'
-        magenta: '0x808080'
-        cyan: '0xd7875f'
-        white: '0xd0d0d0'
-
-    # Bright colors
-    bright:
-        black: '0x585858'
-        red: '0x5faf5f'
-        green: '0xafd700'
-        yellow: '0xaf87d7'
-        blue: '0xffaf00'
-        magenta: '0xffaf00'
-        cyan: '0x00afaf'
-        white: '0x5f8787'
+  # Bright colors
+  bright:
+    black:   '0x686868'
+    red:     '0xF07178'
+    green:   '0xC2D94C'
+    yellow:  '0xFFB454'
+    blue:    '0x59C2FF'
+    magenta: '0xFFEE99'
+    cyan:    '0x95E6CB'
+    white:   '0xFFFFFF'
 """)
 let light = ("light", """
-# Colors (PaperColor - Light)
+# Colors (Ayu Light)
 colors:
-    # Default colors
-    primary:
-        background: '0xeeeeee'
-        foreground: '0x444444'
+  # Default colors - taken from ayu-colors
+  primary:
+    background: '0xFCFCFC'
+    foreground: '0x5C6166'
 
-    cursor:
-        text: '0xeeeeee'
-        cursor: '0x444444'
+  # Normal colors - taken from ayu-iTerm
+  normal:
+    black:   '0x010101'
+    red:     '0xe7666a'
+    green:   '0x80ab24'
+    yellow:  '0xeba54d'
+    blue:    '0x4196df'
+    magenta: '0x9870c3'
+    cyan:    '0x51b891'
+    white:   '0xc1c1c1'
 
-    # Normal colors
-    normal:
-        black: '0xeeeeee'
-        red: '0xaf0000'
-        green: '0x008700'
-        yellow: '0x5f8700'
-        blue: '0x0087af'
-        magenta: '0x878787'
-        cyan: '0x005f87'
-        white: '0x444444'
-
-    # Bright colors
-    bright:
-        black: '0xbcbcbc'
-        red: '0xd70000'
-        green: '0xd70087'
-        yellow: '0x8700af'
-        blue: '0xd75f00'
-        magenta: '0xd75f00'
-        cyan: '0x005faf'
-        white: '0x005f87'
+  # Bright colors - pastel lighten 0.1 <normal> except black lighten with 0.2
+  bright:
+    black:   '0x343434'
+    red:     '0xee9295'
+    green:   '0x9fd32f'
+    yellow:  '0xf0bc7b'
+    blue:    '0x6daee6'
+    magenta: '0xb294d2'
+    cyan:    '0x75c7a8'
+    white:   '0xdbdbdb'
 """)
 
 import AppKit

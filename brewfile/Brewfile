@@ -194,7 +194,6 @@ cask karabiner-elements
 cask obs
 cask raycast
 cask the-unarchiver
-cask wezterm
 cask zoom
 
 tap homebrew/cask-fonts

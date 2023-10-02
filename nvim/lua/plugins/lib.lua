@@ -35,11 +35,6 @@ return {
 	'MunifTanjim/nui.nvim',
 	'nvim-tree/nvim-web-devicons',
 	'vim-denops/denops.vim',
-	--	colo_name(),
-	{
-		'pappasam/papercolor-theme-slim',
-		config = function()
-			vim.cmd 'colo PaperColorSlim'
-		end,
-	},
+	colo_name(),
+	--{ 'pappasam/papercolor-theme-slim', config = function() vim.cmd 'colo PaperColorSlim' end, },
 }
