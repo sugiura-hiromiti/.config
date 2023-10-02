@@ -41,7 +41,7 @@ usrcmd('Make', function(opts)
 			if string.find(path, '/src/bin') ~= nil then
 				local _, l = string.find(path, '/src/bin/')
 				local r = string.find(string.sub(path, l + 1), '/')
-					or string.find(string.sub(path, l + 1), '%.')
+					 or string.find(string.sub(path, l + 1), '%.')
 
 				args = args .. '--bin ' .. string.sub(path, l + 1, l + r - 1)
 			elseif vim.fn.expand '%' ~= 'main.rs' then
@@ -71,8 +71,8 @@ usrcmd('Make', function(opts)
 		cmd = '!open ' .. vim.fn.expand '%:t' .. ' '
 	elseif ft == 'markdown' then
 		cmd =
-			--		[[lua if require('peek').is_open() then require('peek').close() else require('peek').open() end]]
-			'MarkdownPreviewToggle'
+		--		[[lua if require('peek').is_open() then require('peek').close() else require('peek').open() end]]
+		'MarkdownPreviewToggle'
 	end
 
 	vim.cmd(cmd .. args .. extra)
