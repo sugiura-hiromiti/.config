@@ -41,7 +41,6 @@ map(nv, '<left>', '<c-w><', { desc = 'decrease window width' })
 map(nv, '<down>', '<c-w>+', { desc = 'increase window height' })
 map(nv, '<up>', '<c-w>-', { desc = 'decrease window height' })
 map(nv, '<right>', '<c-w>>', { desc = 'increase window width' })
-map('n', 't', '<cmd>tabnext<cr>', { desc = 'go to next tab' })
 map(nox, 'w', function()
 	require('spider').motion 'w'
 end, { desc = 'move cursor to the start of next word' })
@@ -51,7 +50,7 @@ end, { desc = 'move cursor to the end of next word' })
 map(nox, 'b', function()
 	require('spider').motion 'b'
 end, { desc = 'move cursor to the start of previous word' })
-map(nv, '<space>t', ts_builtin.builtin, { desc = 'open Telescope prompt' }) -- Telescope
+map(nv, 't', ts_builtin.builtin, { desc = 'open Telescope prompt' }) -- Telescope
 map(
 	'n',
 	'<space>o',
@@ -61,12 +60,7 @@ map(
 map('n', '<space>d', ts_builtin.diagnostics, { desc = 'search diagnostics' })
 map(nv, '/', ts_builtin.live_grep, { desc = 'grep texts in current directory' })
 map('n', '<space>b', ts_builtin.buffers, { desc = 'search buffers' })
-map(
-	'n',
-	'<space>f',
-	require('telescope').extensions.smart_open.smart_open,
-	{ desc = 'fuzzy search files smartly' }
-)
+map('n', '<space>f', '<cmd>Telescope frecency<cr>', { desc = 'fuzzy search files smartly' })
 map('n', '<space>c', '<cmd>TodoTelescope<cr>', { desc = 'search todo comments' })
 map(
 	'n',
@@ -87,6 +81,7 @@ map(
 	ts_builtin.lsp_references,
 	{ desc = 'open jump list of outline under the cursor' }
 )
+map('n', '<space>m', ts_builtin.keymaps, { desc = 'search keymaps' })
 map('n', '<space>r', vim.lsp.buf.rename, { desc = 'rename symbol' })
 map('n', '<space>h', vim.lsp.buf.hover, { desc = 'show hover information' })
 map(nv, '<c-j>', vim.diagnostic.goto_next, { desc = 'go to next diagnostic' })

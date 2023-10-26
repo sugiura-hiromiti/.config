@@ -6,6 +6,7 @@ return {
 		end,
 	},
 	{
+		-- d: add snippets for todo-comments
 		'L3MON4D3/LuaSnip',
 		config = function()
 			require('luasnip').setup {
@@ -16,7 +17,7 @@ return {
 			local ls = require 'luasnip'
 			local fmt = require('luasnip.extras.fmt').fmt
 			local s, i, c, t, f, d =
-				ls.s, ls.insert_node, ls.choice_node, ls.text_node, ls.function_node, ls.dynamic_node
+				 ls.s, ls.insert_node, ls.choice_node, ls.text_node, ls.function_node, ls.dynamic_node
 
 			ls.add_snippets('lua', {
 				-- snippets for lua ft
@@ -25,7 +26,7 @@ return {
 					fmt("local {}=require'{}'", {
 						f(function(import_name)
 							local parts =
-								vim.split(import_name[1][1], '.', { plain = true, trimempty = true })
+								 vim.split(import_name[1][1], '.', { plain = true, trimempty = true })
 							return parts[#parts] or ''
 						end, { 1 }),
 						i(1),
@@ -66,7 +67,7 @@ return {
 							end
 							return comment_pre
 						end),
-						c(1, { t 'd', t 'q', t 't', t 'a', t 'x', t 'p', t 'e' }),
+						c(1, { t 'TODO', t 'NOTE', t 'FIX', t 'WARN', t 'TEST', t 'HACK', t 'PERF' }),
 						i(0),
 					})
 				),
@@ -99,7 +100,7 @@ return {
 			})
 		end,
 	},
-	-- d: config later raw_word
+	-- NOTE: config later raw_word
 	{
 		'kylechui/nvim-surround',
 		version = '*',
@@ -110,12 +111,3 @@ return {
 	},
 	{ 'XxiaoA/ns-textobject.nvim', config = true },
 }
-
---[[
-<head>
-{
-{ this text will be surrounded }
-
-}
-</head>
-]]

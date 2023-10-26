@@ -8,11 +8,18 @@ return {
 	'lukas-reineke/cmp-rg',
 	'saadparwaiz1/cmp_luasnip',
 	{
+		'zbirenbaum/copilot-cmp',
+		config = function()
+			require('copilot_cmp').setup {}
+		end,
+	},
+	{
 		'hrsh7th/nvim-cmp',
 		config = function()
 			local ls = require 'luasnip'
 			local cmp = require 'cmp'
 			local copilot = require 'copilot.suggestion'
+			local lspkind = require 'lspkind'
 			local rg = {
 				name = 'rg',
 				option = { additional_arguments = '--smart-case', context_after = 7 },
@@ -20,6 +27,11 @@ return {
 			}
 
 			cmp.setup {
+				formatting = {
+					format = lspkind.cmp_format {
+						mode = 'symbol',
+					},
+				},
 				snippet = {
 					expand = function(args)
 						ls.lsp_expand(args.body)
@@ -88,21 +100,22 @@ return {
 					end),
 				},
 				sources = {
-					{ name = 'copilot' },
 					{ name = 'nvim_lsp_signature_help' },
 					{ name = 'luasnip' },
 					{ name = 'nvim_lsp' },
+					{ name = 'copilot' },
 					{ name = 'nvim_lua' },
 					rg,
 					{ name = 'path' },
 				},
 			}
-			cmp.setup.cmdline({ '/', '?' }, {
+			cmp.setup.cmdline({ '?' }, {
 				sources = { rg },
 			})
 			cmp.setup.cmdline(':', {
 				sources = {
 					{ name = 'path' },
+
 					{ name = 'cmdline' },
 					rg,
 				},
