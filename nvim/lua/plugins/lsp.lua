@@ -1,13 +1,60 @@
 return {
 	{
+		'onsails/lspkind.nvim',
+		config = function()
+			require('lspkind').init {
+				symbol_map = {
+					Text = '󰉿',
+					Method = '󰆧',
+					Function = '󰊕',
+					Constructor = '',
+					Field = '󰜢',
+					Variable = '󰀫',
+					Class = '󰠱',
+					Interface = '',
+					Module = '',
+					Property = '󰜢',
+					Unit = '󰑭',
+					Value = '󰎠',
+					Enum = '',
+					Keyword = '󰌋',
+					Snippet = '',
+					Color = '󰏘',
+					File = '󰈙',
+					Reference = '󰈇',
+					Folder = '󰉋',
+					EnumMember = '',
+					Constant = '󰏿',
+					Struct = '󰙅',
+					Event = '',
+					Operator = '󰆕',
+					TypeParameter = '',
+					Copilot = '',
+				},
+			}
+		end,
+	},
+	{
+		'nvimdev/lspsaga.nvim',
+		dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+		config = function()
+			require('lspsaga').setup {
+				symbol_in_winbar = { show_file = false },
+				code_action = { show_server_name = true },
+				finder = { default = 'ref+imp+def' },
+				hover = { open_link = '<cr>' },
+				lightbulb = { enabl = false },
+			}
+		end,
+	},
+	{
 		'AckslD/nvim-FeMaco.lua',
+		dependencies = { 'nvim-treesitter/nvim-treesitter' },
 		config = true,
 	},
 	{
 		'williamboman/mason.nvim',
-		config = function()
-			require('mason').setup()
-		end,
+		config = true,
 	},
 	{
 		'williamboman/mason-lspconfig.nvim',
@@ -89,8 +136,7 @@ return {
 		end,
 	},
 	{
-		-- a: null-ls.nvim will be archived from August 2023
-		'jose-elias-alvarez/null-ls.nvim',
+		'nvimtools/none-ls.nvim',
 		config = function()
 			local nls = require 'null-ls'
 			local builtins = nls.builtins

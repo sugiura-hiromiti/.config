@@ -9,12 +9,9 @@ local function colo_name()
 		name = 'catppuccin',
 		config = function()
 			require('catppuccin').setup {
-				background = {
-					light = 'latte',
-					dark = 'frappe',
-				},
+				--background = { light = 'latte', dark = 'frappe', },
 				--transparent_background = os.getenv 'TERM' == 'alacritty',
-				integrations = { semantic_tokens = true },
+				--integrations = { semantic_tokens = true },
 			}
 			vim.cmd 'colo catppuccin'
 		end,

@@ -1,7 +1,7 @@
 return {
 	{
 		'nvim-telescope/telescope.nvim',
-		tag = '0.1.0',
+		tag = '0.1.4',
 		config = function()
 			local z_utl = require 'telescope._extensions.zoxide.utils'
 			require('telescope').setup {
@@ -28,7 +28,7 @@ return {
 					},
 				},
 				extensions = {
-					smart_open = { show_scores = true },
+					--smart_open = { show_scores = true },
 					zoxide = {
 						mappings = {
 							default = {
@@ -39,14 +39,25 @@ return {
 							['<c-x>'] = { action = z_utl.create_basic_command 'sp' },
 						},
 					},
+					frecency = {
+						show_scores = true,
+					},
 				},
 			}
-			require('telescope').load_extension 'smart_open'
+			require('telescope').load_extension 'frecency'
+			require('telescope').load_extension 'macros'
 		end,
 	},
 	{
-		'danielfalk/smart-open.nvim',
-		branch = '0.1.x',
+		'nvim-telescope/telescope-frecency.nvim',
+		dependencies = { 'kkharji/sqlite.lua' },
 	},
-	'jvgrootveld/telescope-zoxide',
+	{
+		'jvgrootveld/telescope-zoxide',
+		dependencies = {
+			'nvim-lua/popup.nvim',
+			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope.nvim',
+		},
+	},
 }

@@ -12,20 +12,22 @@ aucmd('filetype', {
 	end,
 })
 
-aucmd('modechanged', {
-	group = my_au,
-	callback = function()
-		--		io.execute '.theme.swift'
-		local home = os.getenv 'HOME'
-		local f = assert(io.open(home .. '/.local/share/usr/theme', 'r'), '🫠Could not open file')
-		if f:read '*a' == 'dark' then
-			vim.o.background = 'dark'
-		else
-			vim.o.background = 'light'
-		end
-		f:close()
-	end,
-})
+--aucmd('modechanged', {
+--	group = my_au,
+--	callback = function()
+--		io.execute '.theme.swift'
+--		local home = os.getenv 'HOME'
+--		local f = assert(io.open(home .. '/.local/share/usr/theme', 'r'), '🫠Could not open file')
+--		if f:read '*a' == 'dark' then
+--if  then
+--
+--			vim.o.background = 'dark'
+--		else
+--			vim.o.background = 'light'
+--		end
+--		f:close()
+--	end,
+--})
 
 local usrcmd = vim.api.nvim_create_user_command
 usrcmd('Make', function(opts)
@@ -41,7 +43,7 @@ usrcmd('Make', function(opts)
 			if string.find(path, '/src/bin') ~= nil then
 				local _, l = string.find(path, '/src/bin/')
 				local r = string.find(string.sub(path, l + 1), '/')
-					 or string.find(string.sub(path, l + 1), '%.')
+					or string.find(string.sub(path, l + 1), '%.')
 
 				args = args .. '--bin ' .. string.sub(path, l + 1, l + r - 1)
 			elseif vim.fn.expand '%' ~= 'main.rs' then
@@ -71,8 +73,8 @@ usrcmd('Make', function(opts)
 		cmd = '!open ' .. vim.fn.expand '%:t' .. ' '
 	elseif ft == 'markdown' then
 		cmd =
-		--		[[lua if require('peek').is_open() then require('peek').close() else require('peek').open() end]]
-		'MarkdownPreviewToggle'
+			[[lua if require('peek').is_open() then require('peek').close() else require('peek').open() end]]
+		--'MarkdownPreviewToggle'
 	end
 
 	vim.cmd(cmd .. args .. extra)

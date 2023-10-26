@@ -186,12 +186,11 @@ brew zsh-syntax-highlighting
 brew zstd
 
 tap homebrew/cask
-cask alacritty
+cask brave-browser
 cask discord
 cask fig
 cask hammerspoon
 cask karabiner-elements
-cask obs
 cask raycast
 cask the-unarchiver
 cask zoom
@@ -205,7 +204,7 @@ tap rcmdnk/file
 brew brew-file
 
 # App Store applications
-appstore 1018301773 AdBlock Pro (10.3.2)
+appstore 1018301773 AdBlock Pro (10.4.0)
 appstore 634148309 Logic Pro X (10.7.9)
 appstore 1611949612 Niconico PiP (1.1.0)
 appstore 1584519802 Vimlike (1.4.4)
