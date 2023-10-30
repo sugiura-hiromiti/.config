@@ -5,7 +5,6 @@ end
 vim.opt.fileencoding = 'utf-8'
 vim.opt.list = true
 vim.opt.listchars = { tab = '│ ' }
---vim.opt.listchars = { tab = ' ·' }
 vim.opt.pumblend = 22
 vim.opt.relativenumber = true
 vim.opt.number = true
@@ -14,12 +13,14 @@ vim.opt.termguicolors = true
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.autochdir = true
 vim.opt.laststatus = 0
-vim.opt.scrolloff = 10
+--vim.opt.scrolloff = 10
 vim.opt.updatetime = 10
 vim.opt.smoothscroll = true
 vim.g.editorconfig = true
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
+vim.g.netrw_browser_split = 4
+vim.g.netrw_winsize = 25
 
 -- lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -38,5 +39,7 @@ require('lazy').setup 'plugins'
 
 require 'usrcmd'
 require 'map'
+
+vim.cmd 'colo catppuccin'
 
 -- #fa0b1c #2048ab #48eb0c #f7f7f7 #3c4c55

@@ -4,6 +4,8 @@ local ts_builtin = require 'telescope.builtin'
 local nv = { 'n', 'v' }
 local ic = { 'i', 'c' }
 local nox = { 'n', 'o', 'x' }
+
+-- Cursor Manipulation
 map(
 	'i',
 	'<c-[>',
@@ -33,14 +35,8 @@ map('n', '<c-t>', 'hxp', { desc = 'exchange two characters right of the cursor' 
 map(ic, '<a-d>', '<right><c-c>ves', { desc = 'delete to the end of word' })
 map(ic, '<a-f>', '<c-right>', { desc = 'move cursor to the end of word' })
 map(ic, '<a-b>', '<c-left>', { desc = 'move cursor to the start of word' })
-map(nv, '<tab>', require('todo-comments').jump_next, { desc = 'jump to next todo comment' })
+map(nv, '<tab>', require('todo-comments').jump_next, { desc = 'jump to nextd todo comment' })
 map(nv, '<s-tab>', require('todo-comments').jump_prev, { desc = 'jump to previous todo comment' })
-map('n', '<cr>', ':Make ', { desc = 'execute `Make` command' })
-map('n', '<s-cr>', ':!', { desc = 'execute shell command' })
-map(nv, '<left>', '<c-w><', { desc = 'decrease window width' })
-map(nv, '<down>', '<c-w>+', { desc = 'increase window height' })
-map(nv, '<up>', '<c-w>-', { desc = 'decrease window height' })
-map(nv, '<right>', '<c-w>>', { desc = 'increase window width' })
 map(nox, 'w', function()
 	require('spider').motion 'w'
 end, { desc = 'move cursor to the start of next word' })
@@ -50,17 +46,42 @@ end, { desc = 'move cursor to the end of next word' })
 map(nox, 'b', function()
 	require('spider').motion 'b'
 end, { desc = 'move cursor to the start of previous word' })
+
+-- Command Triggering
+map('n', '<cr>', ':Make ', { desc = 'execute `Make` command' })
+map('n', '<s-cr>', ':!', { desc = 'execute shell command' })
+
+-- Window Manipulation
+map(nv, '<left>', '<c-w><', { desc = 'decrease window width' })
+map(nv, '<down>', '<c-w>+', { desc = 'increase window height' })
+map(nv, '<up>', '<c-w>-', { desc = 'decrease window height' })
+map(nv, '<right>', '<c-w>>', { desc = 'increase window width' })
+
+-- Telescope, LSP
 map(nv, 't', ts_builtin.builtin, { desc = 'open Telescope prompt' }) -- Telescope
-map(
-	'n',
-	'<space>o',
-	ts_builtin.lsp_dynamic_workspace_symbols,
-	{ desc = 'search workspace symbols' }
-)
+map('n', '<space>o', function()
+	if vim.bo.ft == 'lua' then
+		ts_builtin.lsp_document_symbols()
+	else
+		ts_builtin.lsp_dynamic_workspace_symbols()
+	end
+end, { desc = 'search workspace symbols' })
 map('n', '<space>d', ts_builtin.diagnostics, { desc = 'search diagnostics' })
 map(nv, '/', ts_builtin.live_grep, { desc = 'grep texts in current directory' })
 map('n', '<space>b', ts_builtin.buffers, { desc = 'search buffers' })
-map('n', '<space>f', '<cmd>Telescope frecency<cr>', { desc = 'fuzzy search files smartly' })
+map('n', '<space>m', ts_builtin.keymaps, { desc = 'search keymaps' })
+map(
+	'n',
+	'<space>j',
+	ts_builtin.lsp_references,
+	{ desc = 'open jump list of outline under the cursor' }
+)
+map(
+	'n',
+	'<space>f',
+	require('telescope').extensions.smart_open.smart_open,
+	{ desc = 'fuzzy search files smartly' }
+)
 map('n', '<space>c', '<cmd>TodoTelescope<cr>', { desc = 'search todo comments' })
 map(
 	'n',
@@ -70,21 +91,14 @@ map(
 )
 map(
 	'n',
-	'<space>z',
-	require('telescope').extensions.zoxide.list,
-	{ desc = 'search zoxided directory' }
+	'<space>e',
+	require('telescope').extensions.file_browser.file_browser,
+	{ desc = 'open telescope-file-browser' }
 )
 map(nv, '<space>a', vim.lsp.buf.code_action, { desc = 'code action' })
-map(
-	'n',
-	'<space>j',
-	ts_builtin.lsp_references,
-	{ desc = 'open jump list of outline under the cursor' }
-)
-map('n', '<space>m', ts_builtin.keymaps, { desc = 'search keymaps' })
 map('n', '<space>r', vim.lsp.buf.rename, { desc = 'rename symbol' })
 map('n', '<space>h', vim.lsp.buf.hover, { desc = 'show hover information' })
 map(nv, '<c-j>', vim.diagnostic.goto_next, { desc = 'go to next diagnostic' })
 map(nv, '<c-k>', vim.diagnostic.goto_prev, { desc = 'go to previous diagnostic' })
 
--- q: what function does assign to `<bs>`?
+-- NOTE: what function does assign to `<bs>`?

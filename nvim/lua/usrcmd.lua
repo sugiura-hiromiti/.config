@@ -12,22 +12,7 @@ aucmd('filetype', {
 	end,
 })
 
---aucmd('modechanged', {
---	group = my_au,
---	callback = function()
---		io.execute '.theme.swift'
---		local home = os.getenv 'HOME'
---		local f = assert(io.open(home .. '/.local/share/usr/theme', 'r'), '🫠Could not open file')
---		if f:read '*a' == 'dark' then
---if  then
---
---			vim.o.background = 'dark'
---		else
---			vim.o.background = 'light'
---		end
---		f:close()
---	end,
---})
+--aucmd({ 'vimenter', 'tabnew' }, { group = my_au, command = 'Vexplore', })
 
 local usrcmd = vim.api.nvim_create_user_command
 usrcmd('Make', function(opts)
