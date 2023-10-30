@@ -3,15 +3,15 @@ return {
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.4',
 		config = function()
-			local z_utl = require 'telescope._extensions.zoxide.utils'
+			local acts = require 'telescope.actions'
 			require('telescope').setup {
 				defaults = {
-					layout_strategy = 'vertical',
-					layout_config = { vertical = { preview_cutoff = 0 } },
 					mappings = {
 						i = {
-							['<a-j>'] = require('telescope.actions').preview_scrolling_down,
-							['<a-k>'] = require('telescope.actions').preview_scrolling_up,
+							['<a-j>'] = acts.preview_scrolling_down,
+							['<a-k>'] = acts.preview_scrolling_up,
+							['<c-d>'] = acts.nop,
+							['<c-u>'] = acts.nop,
 						},
 					},
 					winblend = 20,
@@ -28,36 +28,27 @@ return {
 					},
 				},
 				extensions = {
-					--smart_open = { show_scores = true },
-					zoxide = {
-						mappings = {
-							default = {
-								after_action = function(selection)
-									print(selection.path .. ': ' .. selection.z_score)
-								end,
-							},
-							['<c-x>'] = { action = z_utl.create_basic_command 'sp' },
-						},
-					},
-					frecency = {
-						show_scores = true,
+					smart_open = { show_scores = true },
+					file_browser = {
+						hidden = true,
+						hijack_netrw = true,
+						collapse_dirs = true,
+						respect_gitignore = false,
 					},
 				},
 			}
-			require('telescope').load_extension 'frecency'
+			require('telescope').load_extension 'smart_open'
 			require('telescope').load_extension 'macros'
+			require('telescope').load_extension 'file_browser'
 		end,
 	},
 	{
-		'nvim-telescope/telescope-frecency.nvim',
+		'danielfalk/smart-open.nvim',
+		branch = '0.1.x',
 		dependencies = { 'kkharji/sqlite.lua' },
 	},
 	{
-		'jvgrootveld/telescope-zoxide',
-		dependencies = {
-			'nvim-lua/popup.nvim',
-			'nvim-lua/plenary.nvim',
-			'nvim-telescope/telescope.nvim',
-		},
+		'nvim-telescope/telescope-file-browser.nvim',
+		dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
 	},
 }

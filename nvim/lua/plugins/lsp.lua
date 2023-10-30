@@ -35,19 +35,6 @@ return {
 		end,
 	},
 	{
-		'nvimdev/lspsaga.nvim',
-		dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-		config = function()
-			require('lspsaga').setup {
-				symbol_in_winbar = { show_file = false },
-				code_action = { show_server_name = true },
-				finder = { default = 'ref+imp+def' },
-				hover = { open_link = '<cr>' },
-				lightbulb = { enabl = false },
-			}
-		end,
-	},
-	{
 		'AckslD/nvim-FeMaco.lua',
 		dependencies = { 'nvim-treesitter/nvim-treesitter' },
 		config = true,
@@ -58,16 +45,15 @@ return {
 	},
 	{
 		'williamboman/mason-lspconfig.nvim',
-		config = function()
-			require('mason-lspconfig').setup {
-				ensure_installed = {
-					'rust_analyzer@nightly',
-					'html',
-					'cssls',
-					'jsonls',
-				},
-			}
-		end,
+		opts = {
+			ensure_installed = {
+				'rust_analyzer@nightly',
+				'html',
+				'cssls',
+				'jsonls',
+			},
+		},
+		--config = function() require('mason-lspconfig').setup end,
 	},
 	{
 		'neovim/nvim-lspconfig',
@@ -137,24 +123,18 @@ return {
 	},
 	{
 		'nvimtools/none-ls.nvim',
-		config = function()
-			local nls = require 'null-ls'
-			local builtins = nls.builtins
-			local fmt = builtins.formatting
-			local hov = builtins.hover
-			local diag = builtins.diagnostics
-			--local cmp = builtins.completion
-			nls.setup {
-				sources = {
-					fmt.dprint.with { filetypes = { 'markdown', 'json', 'toml' } },
-					fmt.stylua,
-					fmt.prettier.with { filetypes = { 'css', 'yaml' } },
-					fmt.swiftformat,
-					fmt.yapf,
-					hov.printenv,
-					diag.zsh,
+config = function() require('null-ls').setup{
+			sources = {
+				require('null-ls').builtins.formatting.dprint.with {
+					filetypes = { 'markdown', 'json', 'toml' },
 				},
-			}
-		end,
+				require('null-ls').builtins.formatting.stylua,
+				require('null-ls').builtins.formatting.prettier.with { filetypes = { 'css', 'yaml' } },
+				require('null-ls').builtins.formatting.swiftformat,
+				require('null-ls').builtins.formatting.yapf,
+				require('null-ls').builtins.hover.printenv,
+				require('null-ls').builtins.diagnostics.zsh,
+			},
+		} end,
 	},
 }
