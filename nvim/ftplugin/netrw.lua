@@ -1,3 +1,8 @@
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3
+vim.g.netrw_browser_split = 4
+vim.g.netrw_winsize = 25
+
 local function map(mode, l, r)
 	vim.keymap.set(mode, l, r, { buffer = true, remap = true })
 end

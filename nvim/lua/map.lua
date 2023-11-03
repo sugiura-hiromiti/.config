@@ -9,7 +9,13 @@ local nox = { 'n', 'o', 'x' }
 map(
 	'i',
 	'<c-[>',
-	'<c-[><cmd>update | lua vim.lsp.buf.format{async=true}<cr>',
+	function()
+		if not (string.match(vim.bo.bt, 'no') or vim.bo.modifiable == false) then
+			vim.cmd 'update'
+		end
+		vim.cmd 'stopinsert'
+		vim.lsp.buf.format { async = true }
+	end,
 	{ desc = 'autosave & autoformat when entering normal mode' }
 )
 map(nv, '$', '^', { desc = 'move cursor to the end of line' })
