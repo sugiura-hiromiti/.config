@@ -18,7 +18,6 @@ brew cjson
 brew cmake
 brew dav1d
 brew dbus
-brew deno
 brew double-conversion
 brew dprint
 brew eigen
@@ -186,14 +185,12 @@ brew zsh-syntax-highlighting
 brew zstd
 
 tap homebrew/cask
-cask brave-browser
 cask discord
 cask fig
 cask hammerspoon
 cask karabiner-elements
 cask raycast
 cask the-unarchiver
-cask zoom
 
 tap homebrew/cask-fonts
 cask font-fira-code-nerd-font

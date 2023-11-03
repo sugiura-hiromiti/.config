@@ -1,36 +1,11 @@
+local symbols = require 'symbols'
+
 return {
 	{
 		'onsails/lspkind.nvim',
 		config = function()
 			require('lspkind').init {
-				symbol_map = {
-					Text = '󰉿',
-					Method = '󰆧',
-					Function = '󰊕',
-					Constructor = '',
-					Field = '󰜢',
-					Variable = '󰀫',
-					Class = '󰠱',
-					Interface = '',
-					Module = '',
-					Property = '󰜢',
-					Unit = '󰑭',
-					Value = '󰎠',
-					Enum = '',
-					Keyword = '󰌋',
-					Snippet = '',
-					Color = '󰏘',
-					File = '󰈙',
-					Reference = '󰈇',
-					Folder = '󰉋',
-					EnumMember = '',
-					Constant = '󰏿',
-					Struct = '󰙅',
-					Event = '',
-					Operator = '󰆕',
-					TypeParameter = '',
-					Copilot = '',
-				},
+				symbol_map = symbols,
 			}
 		end,
 	},
@@ -54,6 +29,16 @@ return {
 			},
 		},
 		--config = function() require('mason-lspconfig').setup end,
+	},
+	{
+		'SmiteshP/nvim-navic',
+		dependencies = 'neovim/nvim-lspconfig',
+		opts = {
+			icons = symbols,
+			lsp = { auto_attach = true, preference = { 'marksman', 'texlab' } },
+			highlight = true,
+			click = true,
+		},
 	},
 	{
 		'neovim/nvim-lspconfig',
@@ -123,18 +108,20 @@ return {
 	},
 	{
 		'nvimtools/none-ls.nvim',
-config = function() require('null-ls').setup{
-			sources = {
-				require('null-ls').builtins.formatting.dprint.with {
-					filetypes = { 'markdown', 'json', 'toml' },
+		config = function()
+			require('null-ls').setup {
+				sources = {
+					require('null-ls').builtins.formatting.dprint.with {
+						filetypes = { 'markdown', 'json', 'toml' },
+					},
+					require('null-ls').builtins.formatting.stylua,
+					require('null-ls').builtins.formatting.prettier.with { filetypes = { 'css', 'yaml' } },
+					require('null-ls').builtins.formatting.swiftformat,
+					require('null-ls').builtins.formatting.yapf,
+					require('null-ls').builtins.hover.printenv,
+					require('null-ls').builtins.diagnostics.zsh,
 				},
-				require('null-ls').builtins.formatting.stylua,
-				require('null-ls').builtins.formatting.prettier.with { filetypes = { 'css', 'yaml' } },
-				require('null-ls').builtins.formatting.swiftformat,
-				require('null-ls').builtins.formatting.yapf,
-				require('null-ls').builtins.hover.printenv,
-				require('null-ls').builtins.diagnostics.zsh,
-			},
-		} end,
+			}
+		end,
 	},
 }
