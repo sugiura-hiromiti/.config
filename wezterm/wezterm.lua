@@ -5,13 +5,13 @@ local act = wz.action
 local function theme_selector(app)
 	local handle = assert(io.open('/tmp/wz_nvim.txt', 'w+'), 'could not opened wz_nvim.txt')
 
-	local rslt
+	local rslt = 'Catppuccin '
 	if app:find 'Dark' then
 		handle:write 'dark'
-		rslt = 'Nova (base16)'
+		rslt = rslt .. 'Frappe'
 	else
 		handle:write 'light'
-		rslt = 'Alabaster'
+		rslt = rslt .. 'Latte'
 	end
 	handle:close()
 	return rslt
@@ -60,7 +60,7 @@ end)
 return {
 	show_update_window = true,
 	font = wz.font 'FiraCode Nerd Font Mono',
-	font_size = 11,
+	font_size = 11.5,
 	freetype_load_target = 'HorizontalLcd',
 	line_height = 0.85,
 	disable_default_key_bindings = true,

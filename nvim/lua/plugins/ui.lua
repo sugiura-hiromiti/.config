@@ -313,60 +313,28 @@ return {
 				update = { 'DiagnosticChanged', 'BufEnter' },
 
 				{
-					condition = function(self)
-						return self.errors > 0
+					provider = function(self)
+						return self.errors == 0 or symbols.DiagnosticError .. ' ' .. self.errors .. ' '
 					end,
-					{
-						provider = symbols.DiagnosticError,
-						hl = { fg = color_code_of('DiagnosticError').fg },
-					},
-					{
-						provider = function(self)
-							return ' ' .. self.errors .. ' '
-						end,
-					},
+					hl = { fg = color_code_of('DiagnosticError').fg },
 				},
 				{
-					condition = function(self)
-						return self.warns > 0
+					provider = function(self)
+						return self.warns == 0 or symbols.DiagnosticWarn .. ' ' .. self.warns .. ' '
 					end,
-					{
-						provider = symbols.DiagnosticWarn,
-						hl = { fg = color_code_of('DiagnosticWarn').fg },
-					},
-					{
-						provider = function(self)
-							return ' ' .. self.warns .. ' '
-						end,
-					},
+					hl = { fg = color_code_of('DiagnosticWarn').fg },
 				},
 				{
-					condition = function(self)
-						return self.infos > 0
+					provider = function(self)
+						return self.infos == 0 or symbols.DiagnosticInfo .. ' ' .. self.infos .. ' '
 					end,
-					{
-						provider = symbols.DiagnosticInfo,
-						hl = { fg = color_code_of('DiagnosticInfo').fg },
-					},
-					{
-						provider = function(self)
-							return ' ' .. self.infos .. ' '
-						end,
-					},
+					hl = { fg = color_code_of('DiagnosticInfo').fg },
 				},
 				{
-					condition = function(self)
-						return self.hints > 0
+					provider = function(self)
+						return self.hints == 0 or symbols.DiagnosticHint .. ' ' .. self.hints .. ' '
 					end,
-					{
-						provider = symbols.DiagnosticHint,
-						hl = { fg = color_code_of('DiagnosticHint').fg },
-					},
-					{
-						provider = function(self)
-							return ' ' .. self.hints
-						end,
-					},
+					hl = { fg = color_code_of('DiagnosticHint').fg },
 				},
 			}
 
@@ -381,7 +349,7 @@ return {
 				hl = { bg = hl().mantle },
 				{
 					provider = function(self)
-						local count = self.status_dict.added
+						local count = self.status_dict.added or 0
 						return count > 0 and '+' .. count
 					end,
 					--hl = { fg = color_code_of('GitSignsAdd').fg },
@@ -389,7 +357,7 @@ return {
 				},
 				{
 					provider = function(self)
-						local count = self.status_dict.changed
+						local count = self.status_dict.changed or 0
 						return count > 0 and ' ~' .. count
 					end,
 					--hl = { fg = color_code_of('GitSignsChange').fg },
@@ -397,7 +365,7 @@ return {
 				},
 				{
 					provider = function(self)
-						local count = self.status_dict.removed
+						local count = self.status_dict.removed or 0
 						return count > 0 and ' -' .. count
 					end,
 					--hl = { fg = color_code_of('GitSignsDelete').fg },

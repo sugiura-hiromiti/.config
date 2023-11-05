@@ -191,6 +191,7 @@ cask hammerspoon
 cask karabiner-elements
 cask raycast
 cask the-unarchiver
+cask wezterm
 
 tap homebrew/cask-fonts
 cask font-fira-code-nerd-font
