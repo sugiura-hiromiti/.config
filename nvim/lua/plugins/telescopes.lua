@@ -6,6 +6,13 @@ return {
 			local acts = require 'telescope.actions'
 			require('telescope').setup {
 				defaults = {
+					layout_strategy = 'flex',
+					layout_config = {
+						flex = {
+							flip_columns = 160,
+							--flip_lines = 40,
+						},
+					},
 					mappings = {
 						i = {
 							['<a-j>'] = acts.preview_scrolling_down,

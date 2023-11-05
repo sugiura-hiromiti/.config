@@ -12,7 +12,18 @@ aucmd('filetype', {
 	end,
 })
 
---aucmd({ 'vimenter', 'tabnew' }, { group = my_au, command = 'Vexplore', })
+aucmd('CursorHold', {
+	group = my_au,
+	callback = function()
+		local f = assert(
+			io.open('/tmp/wz_nvim.txt', 'r'),
+			'🫠 nvim usr autocmd|\n\tfailed to open wz_nvim.txt'
+		)
+		local theme = f:read '*l'
+		f:close()
+		vim.opt.background = theme
+	end,
+})
 
 local usrcmd = vim.api.nvim_create_user_command
 usrcmd('Make', function(opts)
