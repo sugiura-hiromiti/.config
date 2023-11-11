@@ -28,7 +28,6 @@ return {
 				'jsonls',
 			},
 		},
-		--config = function() require('mason-lspconfig').setup end,
 	},
 	{
 		'SmiteshP/nvim-navic',
@@ -78,9 +77,11 @@ return {
 						diagnostics = { globals = { 'vim', 'hs' } },
 						workspace = {
 							library = vim.api.nvim_get_runtime_file('', true),
-							checkThirdParty = false,
+							checkThirdParty = 'Disable',
 						},
-						telemetry = { enable = false },
+						format = {
+							enable = false,
+						},
 					},
 				},
 			}
