@@ -16,7 +16,8 @@ vim.opt.laststatus = 3
 --vim.opt.scrolloff = 10
 vim.opt.updatetime = 10
 vim.opt.smoothscroll = true
-vim.g.editorconfig = true
+vim.opt.cursorline = true
+vim.opt.cursorcolumn = true
 
 -- lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -36,5 +37,4 @@ require('lazy').setup 'plugins'
 require 'usrcmd'
 require 'map'
 
-vim.cmd 'colo catppuccin'
 -- #fa0b1c #2048ab #48eb0c #f7f7f7 #3c4c55
