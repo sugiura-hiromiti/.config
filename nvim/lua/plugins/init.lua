@@ -28,20 +28,6 @@ return {
 			},
 		},
 	},
-	--	{
-	--		'catppuccin/nvim',
-	--		name = 'catppuccin',
-	--		opts = {
-	--			--	flavour = 'latte',
-	--			--			background = { light = 'latte', dark = 'frappe' },
-	--			transparent_background = true,
-	--			styles = {
-	--				comments = { 'italic' },
-	--				conditionals = { 'italic', 'bold' },
-	--				variables = { 'italic' },
-	--			},
-	--		},
-	--	},
 	{
 		'rmehri01/onenord.nvim',
 		opts = {

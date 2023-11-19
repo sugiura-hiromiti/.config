@@ -12,16 +12,11 @@ aucmd('filetype', {
 	end,
 })
 
-aucmd('CursorHold', {
+-- avoid to not highlighted buffer which has no `ft`, use bufreadpost instead
+aucmd('bufreadpost', {
 	group = my_au,
 	callback = function()
-		local f = assert(
-			io.open('/tmp/wz_nvim.txt', 'r'),
-			'🫠 nvim usr autocmd|\n\tfailed to open wz_nvim.txt'
-		)
-		local theme = f:read '*l'
-		f:close()
-		vim.opt.background = theme
+		require('colorizer').attach_to_buffer(0)
 	end,
 })
 
@@ -34,7 +29,9 @@ usrcmd('Make', function(opts)
 	if ft == 'rust' then -- langs which have to be compiled
 		cmd = '!cargo '
 		if args == '' then
-			local path = vim.fn.expand '%:p'
+			local paths = vim.fn.expand '%:p'
+			local path = type(paths) == 'string' and paths or paths[1]
+
 			args = 'r '
 			if string.find(path, '/src/bin') ~= nil then
 				local _, l = string.find(path, '/src/bin/')

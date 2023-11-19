@@ -6,18 +6,13 @@ local ic = { 'i', 'c' }
 local nox = { 'n', 'o', 'x' }
 
 -- Cursor Manipulation
-map(
-	'i',
-	'<c-[>',
-	function()
-		if not (string.match(vim.bo.bt, 'no') or vim.bo.modifiable == false) then
-			vim.cmd 'update'
-		end
-		vim.cmd 'stopinsert'
-		vim.lsp.buf.format { async = true }
-	end,
-	{ desc = 'autosave & autoformat when entering normal mode' }
-)
+map('i', '<c-[>', function()
+	if not (string.match(vim.bo.bt, 'no') or vim.bo.modifiable == false) then
+		vim.cmd 'update'
+	end
+	vim.cmd 'stopinsert'
+	vim.lsp.buf.format { async = true }
+end, { desc = 'autosave & autoformat when entering normal mode' })
 map(nv, '$', '^', { desc = 'move cursor to the end of line' })
 map(nv, '^', '$', { desc = 'move cursor to the start of line' })
 map(nv, ',', '@:', { desc = 'repeat last ex command' })
@@ -73,7 +68,7 @@ map('n', '<space>o', function()
 	end
 end, { desc = 'search workspace symbols' })
 map('n', '<space>d', ts_builtin.diagnostics, { desc = 'search diagnostics' })
-map(nv, '/', ts_builtin.live_grep, { desc = 'grep texts in current directory' })
+map(nv, '/', ts_builtin.live_grep, { desc = 'grep texts in current workspace' })
 map('n', '<space>b', ts_builtin.buffers, { desc = 'search buffers' })
 map('n', '<space>m', ts_builtin.keymaps, { desc = 'search keymaps' })
 map(

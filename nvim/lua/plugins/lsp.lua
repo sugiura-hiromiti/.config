@@ -37,7 +37,7 @@ return {
 			lsp = { auto_attach = true, preference = { 'marksman', 'texlab' } },
 			highlight = true,
 			click = true,
-		},
+		}
 	},
 	{
 		'neovim/nvim-lspconfig',
