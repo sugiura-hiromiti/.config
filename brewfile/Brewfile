@@ -185,13 +185,12 @@ brew zsh-syntax-highlighting
 brew zstd
 
 tap homebrew/cask
-cask discord
 cask fig
 cask hammerspoon
 cask karabiner-elements
 cask raycast
 cask the-unarchiver
-cask wezterm
+cask alacritty
 
 tap homebrew/cask-fonts
 cask font-fira-code-nerd-font
