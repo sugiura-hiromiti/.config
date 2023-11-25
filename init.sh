@@ -24,8 +24,8 @@ echo 'install dotfiles'
 rm -rf .config
 dot_
 
-brew install rcmdnk/file/brew-file
-brew file install
+brew tap Homebrew/bundle
+brew bundle
 
 pip3 install neovim
 gem install neovim
@@ -37,4 +37,5 @@ if [ $(uname) = "Darwin" ]; then
 	defaults write com.apple.finder AppleShowAllFiles TRUE
 	defaults write -g InitialKeyRepeat -int 10
 	defaults write -g KeyRepeat -int 1
+	defaults write -g com.apple.trackpadscaling 3
 fi
