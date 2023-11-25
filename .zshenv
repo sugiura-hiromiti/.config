@@ -38,11 +38,3 @@ ga(){
 }
 
 eval "$(github-copilot-cli alias -- '$0')"
-
-if [ -f $(brew --prefix)/etc/brew-wrap ]; then
-	source $(brew --prefix)/etc/brew-wrap
-
-	_post_brewfile_update(){
-		echo 'Brewfile updated!'
-	}
-fi
