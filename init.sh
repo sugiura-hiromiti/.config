@@ -27,9 +27,6 @@ dot_
 brew tap Homebrew/bundle
 brew bundle
 
-pip3 install neovim
-gem install neovim
-
 echo '|> initalization finished'
 
 if [ $(uname) = "Darwin" ]; then
