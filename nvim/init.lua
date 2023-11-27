@@ -16,8 +16,6 @@ vim.opt.laststatus = 3
 --vim.opt.scrolloff = 10
 vim.opt.updatetime = 10
 vim.opt.smoothscroll = true
-vim.opt.cursorline = true
-vim.opt.cursorcolumn = true
 
 -- lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'

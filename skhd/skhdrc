@@ -1,0 +1,114 @@
+#fn
+#
+#cmd
+#lcmd
+#rcmd
+#
+#shift
+#lshift
+#rshift
+#
+#alt
+#lalt
+#ralt
+#
+#ctrl
+#lctrl
+#rctrl
+#
+#hyper (cmd + shift + alt + ctrl)
+#
+#meh (shift + alt + ctrl)
+
+#"return"     (kVK_Return)
+#"tab"        (kVK_Tab)
+#"space"      (kVK_Space)
+#"backspace"  (kVK_Delete)
+#"escape"     (kVK_Escape)
+#
+#The following keys can not be used with the fn-modifier:
+#
+#"delete"     (kVK_ForwardDelete)
+#"home"       (kVK_Home)
+#"end"        (kVK_End)
+#"pageup"     (kVK_PageUp)
+#"pagedown"   (kVK_PageDown)
+#"insert"     (kVK_Help)
+#"left"       (kVK_LeftArrow)
+#"right"      (kVK_RightArrow)
+#"up"         (kVK_UpArrow)
+#"down"       (kVK_DownArrow)
+#"f1"         (kVK_F1)
+#"f2"         (kVK_F2)
+#"f3"         (kVK_F3)
+#"f4"         (kVK_F4)
+#"f5"         (kVK_F5)
+#"f6"         (kVK_F6)
+#"f7"         (kVK_F7)
+#"f8"         (kVK_F8)
+#"f9"         (kVK_F9)
+#"f10"        (kVK_F10)
+#"f11"        (kVK_F11)
+#"f12"        (kVK_F12)
+#"f13"        (kVK_F13)
+#"f14"        (kVK_F14)
+#"f15"        (kVK_F15)
+#"f16"        (kVK_F16)
+#"f17"        (kVK_F17)
+#"f18"        (kVK_F18)
+#"f19"        (kVK_F19)
+#"f20"        (kVK_F20)
+#
+#"sound_up"          (NX_KEYTYPE_SOUND_UP)
+#"sound_down"        (NX_KEYTYPE_SOUND_DOWN)
+#"mute"              (NX_KEYTYPE_MUTE)
+#"play"              (NX_KEYTYPE_PLAY)
+#"previous"          (NX_KEYTYPE_PREVIOUS)
+#"next"              (NX_KEYTYPE_NEXT)
+#"rewind"            (NX_KEYTYPE_REWIND)
+#"fast"              (NX_KEYTYPE_FAST)
+#"brightness_up"     (NX_KEYTYPE_BRIGHTNESS_UP)
+#"brightness_down"   (NX_KEYTYPE_BRIGHTNESS_DOWN)
+#"illumination_up"   (NX_KEYTYPE_ILLUMINATION_UP)
+#"illumination_down" (NX_KEYTYPE_ILLUMINATION_DOWN)
+
+#---------------------------------------------------------------------------------------------------
+
+# display | Is it possible to focus different display by switching focus of space?
+# ctrl - 0x1E: yabai -m display --focus next || yabai -m display --focus first
+
+# space
+ctrl - 0x29: yabai -m space --focus prev || yabai -m space --focus last
+ctrl - 0x27: yabai -m space --focus next || yabai -m space --focus first
+
+ctrl + shift - 0x29: yabai -m space --move prev || yabai -m space --move last
+ctrl + shift - 0x27: yabai -m space --move next || yabai -m space --move first
+
+ctrl - 0x2C: yabai -m space --destroy
+
+# window
+fn - h: yabai -m window --focus west || yabai -m space --create && yabai -m window --space next
+fn - j: yabai -m window --focus south || yabai -m window --focus next
+fn - k: yabai -m window --focus north || yabai -m window --focus prev
+fn - l: yabai -m window --focus east || yabai -m space --create && yabai -m window --space next
+
+fn - 0x29: yabai -m window --move rel:-10:0 || yabai -m window --warp west
+fn - 0x2C: yabai -m window --move rel:0:10 || yabai -m window --warp south
+fn - 0x21: yabai -m window --move rel:0:-10 || yabai -m window --warp north
+fn - 0x27: yabai -m window --move rel:10:0 || yabai -m window --warp east
+
+fn + shift - 0x29: yabai -m window --resize left:10:0 || yabai -m window --resize right:-10:0
+fn + shift - 0x2C: yabai -m window --resize bottom:0:10 || yabai -m window  --resize top:0:-10
+fn + shift - 0x21: yabai -m window --resize top:0:10 || yabai -m window --resize bottom:0:-10
+fn + shift - 0x27: yabai -m window --resize right:10:0 || yabai -m window --resize left:-10:0
+
+fn - f: yabai -m window --toggle float
+
+# utility
+#ctrl - return:
+
+# mode
+:: dflt :
+:: hotkey @: alacritty -T float_alacritty
+#shift ; hotkey
+#hotkey < shift ; alacritty -T float_alacritty
