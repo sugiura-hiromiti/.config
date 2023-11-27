@@ -23,9 +23,7 @@ return {
 		opts = {
 			ensure_installed = {
 				'rust_analyzer@nightly',
-				'html',
-				'cssls',
-				'jsonls',
+				'lua_ls'
 			},
 		},
 	},
@@ -92,19 +90,10 @@ return {
 				on_attach = on_attach,
 			}
 			require('lspconfig').clangd.setup { capabilities = capabilities, on_attach = on_attach }
-			require('lspconfig').pylsp.setup { capabilities = capabilities, on_attach = on_attach }
+			--require('lspconfig').pylsp.setup { capabilities = capabilities, on_attach = on_attach }
 			require('lspconfig').html.setup { capabilities = capabilities, on_attach = on_attach }
 			require('lspconfig').cssls.setup { capabilities = capabilities, on_attach = on_attach }
-			require('lspconfig').bashls.setup { capabilities = capabilities, on_attach = on_attach }
-			require('lspconfig').yamlls.setup { capabilities = capabilities, on_attach = on_attach }
-			require('lspconfig').jsonls.setup { capabilities = capabilities, on_attach = on_attach }
-			require('lspconfig').taplo.setup { capabilities = capabilities, on_attach = on_attach }
 			require('lspconfig').marksman.setup { capabilities = capabilities, on_attach = on_attach }
-			require('lspconfig').texlab.setup {
-				filetypes = { 'tex', 'plaintex', 'bib', 'markdown' },
-				capabilities = capabilities,
-				on_attach = on_attach,
-			}
 		end,
 	},
 	{
@@ -112,13 +101,6 @@ return {
 		config = function()
 			require('null-ls').setup {
 				sources = {
-					require('null-ls').builtins.formatting.dprint.with {
-						filetypes = { 'markdown', 'json', 'toml' },
-					},
-					require('null-ls').builtins.formatting.stylua,
-					require('null-ls').builtins.formatting.prettier.with { filetypes = { 'css', 'yaml' } },
-					require('null-ls').builtins.formatting.swiftformat,
-					require('null-ls').builtins.formatting.yapf,
 					require('null-ls').builtins.hover.printenv,
 					require('null-ls').builtins.diagnostics.zsh,
 				},

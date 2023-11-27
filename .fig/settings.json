@@ -1,7 +1,7 @@
 {
   "app.beta": true,
   "app.hideMenubarIcon": true,
-  "app.preferredTerminal": "iTerm2",
+  "app.preferredTerminal": "Alacritty",
   "autocomplete.disableForCommands": [],
   "autocomplete.firstTokenCompletion": true,
   "autocomplete.fuzzySearch": true,
@@ -18,10 +18,12 @@
   "autocomplete.scrollWrapAround": true,
   "autocomplete.theme": "system",
   "autocomplete.width": 500,
-  "cli.tips.disabled": true,
+  "cli.tips.disabled": false,
   "dotfiles.syncImmediately": false,
   "figterm.csi-u.enabled": true,
   "integrations.hyper.disabled": true,
+  "integrations.iterm.disabled": true,
   "integrations.terminal.disabled": true,
-  "integrations.vscode.disabled": true
+  "integrations.vscode.disabled": true,
+  "telemetry.disabled": true
 }

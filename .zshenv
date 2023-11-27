@@ -10,6 +10,7 @@ export EDITOR=nvim
 export VISUAL=nvim
 export MANPAGER=less
 export RIPGREP_CONFIG_PATH=$HOME/.config/rg/config
+export YABAI_CERT=yabai-cert
 
 #aliases
 # to remove alias in zsh, simply just remove it
@@ -36,5 +37,3 @@ ga(){
 	git commit -m $1
 	git push
 }
-
-eval "$(github-copilot-cli alias -- '$0')"
