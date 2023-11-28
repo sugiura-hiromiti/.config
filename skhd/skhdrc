@@ -105,10 +105,10 @@ fn + shift - 0x27: yabai -m window --resize right:10:0 || yabai -m window --resi
 fn - f: yabai -m window --toggle float
 
 # utility
-#ctrl - return:
+#ctrl - return: alacritty -t sticky_alacritty &
 
 # mode
-:: dflt :
-:: hotkey @: alacritty -T float_alacritty
-#shift ; hotkey
+#:: dflt :
+#:: hotkey @: alacritty -T float_alacritty
+#dflt < shift ; hotkey
 #hotkey < shift ; alacritty -T float_alacritty
