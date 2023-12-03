@@ -10,7 +10,7 @@ normal_window_opacity 0.92 \
 layout bsp \
 
 # rules
-yabai -m rule --add app="^(System Settings|Notes|Activity Monitor|Finder|Fig)$" manage=off \
+yabai -m rule --add app="^(System Settings|Notes|Activity Monitor|Finder|Fig|Karabiner-Elements)$" manage=off \
 
 # signals
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
