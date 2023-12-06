@@ -9,9 +9,13 @@ if [ $(uname) = "Linux" ]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 touch $HOME/.profile
 . "$HOME/.cargo/env"
 . "$HOME/.profile"
+. "$HOME/.zprofile"
 
 echo 'install my cargos'
 
