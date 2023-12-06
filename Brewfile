@@ -18,7 +18,6 @@ brew "koekeishiya/formulae/yabai", args: ["HEAD"]
 cask "fig"
 cask "brave-browser"
 cask "font-fira-code-nerd-font"
-cask "hammerspoon"
 cask "karabiner-elements"
 cask "raycast"
 cask "reaper"
