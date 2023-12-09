@@ -8,10 +8,7 @@ return {
 	'nvim-tree/nvim-web-devicons',
 
 	-- TODO: cofig later
-	{
-		'lewis6991/gitsigns.nvim',
-		config = true,
-	},
+	--{ 'lewis6991/gitsigns.nvim', config = true, },
 	-- NOTE: need more understanding
 	'ecthelionvi/neoComposer.nvim',
 	'chrisgrieser/nvim-spider',
