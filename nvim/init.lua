@@ -1,7 +1,3 @@
-if vim.fn.expand '%:p' == '' then
-	vim.cmd [[e $MYVIMRC]]
-end
-
 vim.opt.fileencoding = 'utf-8'
 vim.opt.list = true
 vim.opt.listchars = { tab = '│ ' }
@@ -13,8 +9,6 @@ vim.opt.termguicolors = true
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.autochdir = true
 vim.opt.laststatus = 3
---vim.opt.scrolloff = 10
-vim.opt.updatetime = 10
 vim.opt.smoothscroll = true
 
 -- lazy
@@ -34,5 +28,9 @@ require('lazy').setup 'plugins'
 
 require 'usrcmd'
 require 'map'
+
+if vim.fn.expand '%:p' == '' then
+	vim.cmd [[e $MYVIMRC]]
+end
 
 -- #fa0b1c #2048ab #48eb0c #f7f7f7 #3c4c55

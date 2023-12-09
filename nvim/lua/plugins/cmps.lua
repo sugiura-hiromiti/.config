@@ -9,7 +9,7 @@ return {
 	'saadparwaiz1/cmp_luasnip',
 	{
 		'zbirenbaum/copilot-cmp',
-		config = true, -- function() require('copilot_cmp').setup {} end,
+		config = true,
 	},
 	{
 		'hrsh7th/nvim-cmp',

@@ -73,8 +73,3 @@ FileManager.default.createFile(
 	atPath: home + "/.local/share/usr/theme",
 	contents: cur.0.data(using: .utf8)
 )
-
-FileManager.default.createFile(
-	atPath: home + "/.config/alacritty/theme.yml",
-	contents: cur.1.data(using: .utf8)
-)

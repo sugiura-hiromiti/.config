@@ -1,16 +1,18 @@
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
 yabai -m config \
 focus_follows_mouse autofocus \
 window_placement first_child \
-window_shadow on \
-window_opacity off \
-active_window_opacity 0.92 \
-normal_window_opacity 0.92 \
+window_shadow off \
+window_opacity on \
+active_window_opacity 0.9 \
+normal_window_opacity 0.9 \
 layout bsp \
 
 # rules
-yabai -m rule --add app="^(System Settings|Notes|Activity Monitor|Finder|Fig|Karabiner-Elements)$" manage=off \
+yabai -m rule --add app="^(Fig|System Settings|Notes|Activity
+Monitor|Finder|Karabiner-Elements|REAPER)$" manage=off
+yabai -m rule --add app="^(Fig)$" layer=above
 
 # signals
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
