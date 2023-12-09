@@ -1,7 +1,7 @@
 return {
 	{
 		'nvim-telescope/telescope.nvim',
-		tag = '0.1.4',
+		branc = '0.1.x',
 		config = function()
 			local acts = require 'telescope.actions'
 			require('telescope').setup {
@@ -44,18 +44,11 @@ return {
 					},
 				},
 			}
-			require('telescope').load_extension 'smart_open'
+			require('telescope').load_extension 'frecency'
 			require('telescope').load_extension 'macros'
 			require('telescope').load_extension 'file_browser'
 		end,
 	},
-	{
-		'danielfalk/smart-open.nvim',
-		branch = '0.1.x',
-		dependencies = { 'kkharji/sqlite.lua' },
-	},
-	{
-		'nvim-telescope/telescope-file-browser.nvim',
-		dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
-	},
+	'nvim-telescope/telescope-frecency.nvim',
+	'nvim-telescope/telescope-file-browser.nvim',
 }

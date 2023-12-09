@@ -1,7 +1,7 @@
 {
   "app.beta": true,
   "app.hideMenubarIcon": true,
-  "app.preferredTerminal": "Alacritty",
+  "app.preferredTerminal": "iTerm2",
   "autocomplete.disableForCommands": [],
   "autocomplete.firstTokenCompletion": true,
   "autocomplete.fuzzySearch": true,
@@ -22,7 +22,7 @@
   "dotfiles.syncImmediately": false,
   "figterm.csi-u.enabled": true,
   "integrations.hyper.disabled": true,
-  "integrations.iterm.disabled": true,
+  "integrations.iterm.disabled": false,
   "integrations.terminal.disabled": true,
   "integrations.vscode.disabled": true,
   "telemetry.disabled": true

@@ -6,7 +6,7 @@ local ic = { 'i', 'c' }
 local nox = { 'n', 'o', 'x' }
 
 -- Cursor Manipulation
-map('i', '<c-[>', function()
+map('i', '<esc>', function()
 	if not (string.match(vim.bo.bt, 'no') or vim.bo.modifiable == false) then
 		vim.cmd 'update'
 	end
@@ -80,7 +80,7 @@ map(
 map(
 	'n',
 	'<space>f',
-	require('telescope').extensions.smart_open.smart_open,
+	'<cmd>Telescope frecency<cr>',
 	{ desc = 'fuzzy search files smartly' }
 )
 map('n', '<space>c', '<cmd>TodoTelescope<cr>', { desc = 'search todo comments' })

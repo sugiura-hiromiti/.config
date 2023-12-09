@@ -10,11 +10,6 @@ return {
 		end,
 	},
 	{
-		'AckslD/nvim-FeMaco.lua',
-		dependencies = { 'nvim-treesitter/nvim-treesitter' },
-		config = true,
-	},
-	{
 		'williamboman/mason.nvim',
 		config = true,
 	},
@@ -29,7 +24,6 @@ return {
 	},
 	{
 		'SmiteshP/nvim-navic',
-		dependencies = 'neovim/nvim-lspconfig',
 		opts = {
 			icons = symbols,
 			lsp = { auto_attach = true, preference = { 'marksman', 'texlab' } },
@@ -78,7 +72,7 @@ return {
 							checkThirdParty = 'Disable',
 						},
 						format = {
-							enable = false,
+							enable = true,
 						},
 					},
 				},

@@ -1,21 +1,19 @@
 -- listup plugins here which is difficult to classify
 return {
+	-- Library
+	'kkharji/sqlite.lua',
+	'nvim-treesitter/nvim-treesitter',
+	'nvim-lua/plenary.nvim',
+	'MunifTanjim/nui.nvim',
+	'nvim-tree/nvim-web-devicons',
+
 	-- TODO: cofig later
 	{
 		'lewis6991/gitsigns.nvim',
 		config = true,
 	},
 	-- NOTE: need more understanding
-	{
-		'ecthelionvi/neoComposer.nvim',
-		dependencies = { 'kkharji/sqlite.lua' },
-	},
-	-- TODO: https://github.com/toppair/peek.nvim/issues/47
-	{
-		'saimo/peek.nvim',
-		build = 'deno task --quiet build:fast',
-		opts = { theme = vim.o.background, app = 'browser' },
-	},
+	'ecthelionvi/neoComposer.nvim',
 	'chrisgrieser/nvim-spider',
 	{
 		'zbirenbaum/copilot.lua',
@@ -38,8 +36,6 @@ return {
 				diagnostics = 'underline',
 			},
 			disable = {
-				background = true, -- Disable setting the background color
-				float_background = true, -- Disable setting the background color for floating windows
 				cursorline = false, -- Disable the cursorline
 				eob_lines = true, -- Hide the end-of-buffer lines
 			},
