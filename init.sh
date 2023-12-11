@@ -105,7 +105,7 @@ if [ $(uname) = "Darwin" ]; then
 
 	#defaults write com.apple.Music userWantsPlaybackNotifications -bool true
 
-	defaults write com.apple.universalaccess showWindowTitlebarIcons -bool true
+	# FIX: defaults write com.apple.universalaccess showWindowTitlebarIcons -bool true
 
 
 	defaults write com.apple.spaces spans-displays -bool false
@@ -115,5 +115,15 @@ if [ $(uname) = "Darwin" ]; then
 	defaults write com.apple.WindowManager EnableStandarClickToShowDesktop -int 0
 	defaults write com.apple.WindowManager StageManagerHideWidgets -bool false
 	defaults write com.apple.WindowManager StandardHideWidgets -bool false
-
 fi
+
+sudo echo 'auth sufficient pam_tid.so' >> /etc/pam.d/sudo_local
+
+export MY_INIT_DOTFILES_HASH_OF_SHASUM=
+sudo echo $USER ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai)) --load-sa >> /private/etc/sudoers.d/yabai
+yabai --start-service
+read -p 'hit enter:'
+skhd --start-service
+read -p 'hit enter:'
+
+sudo reboot
