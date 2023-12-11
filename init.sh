@@ -1,4 +1,12 @@
 #!/bin/sh
+
+ssh-keygen -t ed25519 -C "sugiura130418@icloud.com"
+eval "$(ssh-agent -s)"
+echo "Host github.com\n\tAddKeysToAgent yes\n\tIdentityFile ~/.ssh/id_ed25519" >> ~/.ssh/config
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+pbcopy < ~/.ssh/id_ed25519.pub
+read -p "upload pub key to github then hit enter"
+
 cd ~
 rm -f ~/.zshenv ~/.zshrc ~/.zprofile
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
