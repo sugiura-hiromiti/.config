@@ -28,7 +28,8 @@ alias bs='brew search'
 alias ba='brew abv'
 alias wh='which -a'
 alias so='source'
-alias ccc='cargo clean; cargo update'
+alias dflt_a='defaults read > /tmp/dotfiles_init/a.log'
+alias dflt_b='defaults read > /tmp/dotfiles_init/b.log ; diff /tmp/dotfiles_init/a.log /tmp/dotfiles_init/b.log'
 
 #functions
 # To remove function in zsh, `unset -f [function name]`

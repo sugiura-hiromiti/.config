@@ -35,8 +35,76 @@ echo '|> initalization finished'
 
 if [ $(uname) = "Darwin" ]; then
 	echo '|> customize macOS'
-	defaults write com.apple.finder AppleShowAllFiles TRUE
+
+	sudo nvram SystemAudioVolume=" "
+	sudo pmset -b powermode 1
+	sudo pmset -b displaysleep 2
+	defaults write -g AppleShowAllExtensions -bool true
 	defaults write -g InitialKeyRepeat -int 10
 	defaults write -g KeyRepeat -int 1
-	defaults write -g com.apple.trackpadscaling 4
+	defaults write -g com.apple.trackpad.scaling 5
+	defaults write -g com.apple.mouse.tapBehavior -int 1
+	defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+	defaults write -g NSWindowResizeTime 0.1
+	defaults write -g AppleSpacesSwitchOnActivate -bool false
+	defaults write -g NSWindowResizeTime -float 0.001
+	defaults write -g nSTableViewDefaultSizeMode -int 1
+	#defaults write -g ApplePressAndHoldEnabled -bool true
+	defaults write -g _HIHideMenuBar -bool true
+	defaults write -g AppleShowScrollBars -string "WhenScrolling"
+	defaults write -g AppleScrollerPagingBehavior -int 1
+
+	defaults write com.apple.AppleMultitouchTrackpad FirstClickThreshold -int 0
+	#defaults write com.apple.AppleMultitouchTrackpad DragLock -bool true
+	#defaults write com.apple.AppleMultitouchTrackpad Dragging -bool true
+	defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+
+	# force bluetooth bitrate upgrade
+	defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+
+	# does not create .DS_Store on network
+	defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+	defaults write com.apple.desktopservices DSDontWriteUSBStores -bool TRUE
+
+	defaults write com.apple.dock autohide -bool true
+	defaults write com.apple.dock autohide-delay -float 0
+	defaults write com.apple.dock autohide-time-modifier -float 0
+	defaults write com.apple.dock show-recents -bool false
+	defaults write com.apple.dock static-only -bool true
+	defaults write com.apple.dock scroll-to-open -bool true
+	# NOTE: disable mission control
+	#defaults write com.apple.dock mcx-expose-disabled -bool true
+	defaults write com.apple.dock launchanim -bool false
+	defaults write com.apple.dock mineffect scale
+	defaults write com.apple.dock mru-spaces -bool false
+	defaults write com.apple.dock orientation right
+	defaults write com.apple.dock expose-group-apps -bool true
+	defaults write com.apple.dock tilesize -int 16
+	defaults write com.apple.dock wvous-bl-corner -int 4
+	defaults write com.apple.dock wvous-bl-modifier -int 0
+	defaults write com.apple.dock wvous-br-corner  -int 14
+
+	defaults write com.apple.finder AppleShowAllFiles TRUE
+	defaults write com.apple.finder WarnOnEmptyTrash -bool false
+	defaults write com.apple.finder ShowPathbar -bool true
+	defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+	defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+	defautls write com.apple.finder WarnOnEmptyTrash -bool false
+	defaults write com.apple.finder QLEnableTextSelection -bool true
+
+	defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+	#defaults write com.apple.Music userWantsPlaybackNotifications -bool true
+
+	defaults write com.apple.universalaccess showWindowTitlebarIcons -bool true
+
+
+	defaults write com.apple.spaces spans-displays -bool false
+
+	defaults write com.apple.widgets widgetAppearance -int 2
+	defaults write com.apple.WindowManager StandardhideDesktopIcons -int 0
+	defaults write com.apple.WindowManager EnableStandarClickToShowDesktop -int 0
+	defaults write com.apple.WindowManager StageManagerHideWidgets -bool false
+	defaults write com.apple.WindowManager StandardHideWidgets -bool false
+
 fi
