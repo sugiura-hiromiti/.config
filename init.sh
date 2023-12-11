@@ -30,6 +30,7 @@ echo 'install my cargos'
 cargo install tp_
 cargo install gc_
 cargo install dot_
+cargo install cargo-update
 
 echo 'install dotfiles'
 
