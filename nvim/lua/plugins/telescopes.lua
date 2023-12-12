@@ -45,7 +45,6 @@ return {
 				},
 			}
 			require('telescope').load_extension 'frecency'
-			require('telescope').load_extension 'macros'
 			require('telescope').load_extension 'file_browser'
 		end,
 	},

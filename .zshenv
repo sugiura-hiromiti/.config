@@ -14,7 +14,7 @@ export YABAI_CERT=yabai-cert
 
 #aliases
 # to remove alias in zsh, simply just remove it
-alias s='exa -ahlF --icons --group-directories-first --sort=extension --time-style=iso --git --no-user --no-time'
+alias s='eza -ahlF --icons --group-directories-first --sort=extension --time-style=iso --git --no-user --no-time'
 alias n='nvim'
 alias u='brew upgrade ; brew upgrade neovim --fetch-HEAD ; yabai --stop-service ; brew upgrade yabai --fetch-HEAD ; codesign -fs "$YABAI_CERT:-yabai-cert}"  "$(brew --prefix yabai)"/bin/yabai ; yabai --start-service ; rustup self update ; rustup update ; cargo install-update -a'
 alias zo='z $OLDPWD'
