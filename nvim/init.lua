@@ -5,7 +5,6 @@ vim.opt.pumblend = 22
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.autowriteall = true
-vim.opt.termguicolors = true
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.autochdir = true
 vim.opt.laststatus = 3

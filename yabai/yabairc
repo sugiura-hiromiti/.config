@@ -12,7 +12,7 @@ layout bsp \
 
 # rules
 yabai -m rule --add app="^(Fig|System Settings|Notes|Activity
-Monitor|Finder|Karabiner-Elements|REAPER)$" manage=off
+Monitor|Finder|Karabiner-Elements)$" manage=off
 yabai -m rule --add app="^(Fig)$" layer=above
 
 # signals

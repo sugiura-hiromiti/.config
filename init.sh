@@ -119,6 +119,9 @@ fi
 
 sudo echo 'auth sufficient pam_tid.so' >> /etc/pam.d/sudo_local
 
+read -p 'create certification for yabai, then hit enter:'
+codesign -fs 'yabai-cert' $(brew --prefix yabai)/bin/yabai
+
 export MY_INIT_DOTFILES_HASH_OF_SHASUM=
 sudo echo $USER ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai)) --load-sa >> /private/etc/sudoers.d/yabai
 yabai --start-service

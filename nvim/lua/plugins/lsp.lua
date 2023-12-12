@@ -71,9 +71,6 @@ return {
 							library = vim.api.nvim_get_runtime_file('', true),
 							checkThirdParty = 'Disable',
 						},
-						format = {
-							enable = true,
-						},
 					},
 				},
 			}
@@ -95,7 +92,8 @@ return {
 		config = function()
 			require('null-ls').setup {
 				sources = {
-					require('null-ls').builtins.hover.printenv,
+					require 'null-ls'.builtins.formatting.stylua,
+					require 'null-ls'.builtins.hover.printenv,
 					require('null-ls').builtins.diagnostics.zsh,
 				},
 			}

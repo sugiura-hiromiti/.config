@@ -9,8 +9,18 @@ return {
 
 	-- TODO: cofig later
 	--{ 'lewis6991/gitsigns.nvim', config = true, },
-	-- NOTE: need more understanding
-	'ecthelionvi/neoComposer.nvim',
+	--'ecthelionvi/neoComposer.nvim',
+	{
+		'm4xshen/hardtime.nvim',
+		config = true
+	},
+	{
+		'TobinPalmer/Tip.nvim',
+		event = 'VimEnter',
+		init = function()
+			require 'tip'.setup { title = 'Tip!', url = 'https://vtip.43z.one' }
+		end
+	},
 	'chrisgrieser/nvim-spider',
 	{
 		'zbirenbaum/copilot.lua',
@@ -23,19 +33,19 @@ return {
 			},
 		},
 	},
+	{ 'f-person/auto-dark-mode.nvim', config = true },
 	{
-		'rmehri01/onenord.nvim',
-		opts = {
-			styles = {
-				comments = 'italic',
-				strings = 'bold',
-				keywords = 'NONE',
-				diagnostics = 'underline',
-			},
-			disable = {
-				cursorline = false, -- Disable the cursorline
-				eob_lines = true, -- Hide the end-of-buffer lines
-			},
-		},
+		'catppuccin/nvim',
+		name = 'catppuccin',
+		config = function()
+			require 'catppuccin'.setup {
+				background = { dark = 'frappe' },
+				term_colors = true,
+				dim_inactive = { enabled = true },
+				styles = { keywords = { 'bold' },
+					properties = { 'italic', 'bold' } }
+			}
+			vim.cmd 'colo catppuccin'
+		end,
 	},
 }
