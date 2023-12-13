@@ -9,6 +9,9 @@ aucmd('filetype', {
 		vim.opt.shiftwidth = 3
 		vim.opt.tabstop = 3
 		vim.opt.softtabstop = 3
+		if vim.opt.ft:get()=='notify' then
+			vim.opt.ft='markdown'
+		end
 	end,
 })
 

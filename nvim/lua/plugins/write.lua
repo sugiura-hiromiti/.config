@@ -17,8 +17,7 @@ return {
 
 			local ls = require 'luasnip'
 			local fmt = require('luasnip.extras.fmt').fmt
-			local s, i, c, t, f, d =
-				 ls.s, ls.insert_node, ls.choice_node, ls.text_node, ls.function_node, ls.dynamic_node
+			local s, i, c, t, f, d = ls.s, ls.insert_node, ls.choice_node, ls.text_node, ls.function_node, ls.dynamic_node
 
 			ls.add_snippets('lua', {
 				-- snippets for lua ft
@@ -26,8 +25,7 @@ return {
 					'sreq',
 					fmt("local {}=require'{}'", {
 						f(function(import_name)
-							local parts =
-								 vim.split(import_name[1][1], '.', { plain = true, trimempty = true })
+							local parts = vim.split(import_name[1][1], '.', { plain = true, trimempty = true })
 							return parts[#parts] or ''
 						end, { 1 }),
 						i(1),
@@ -101,14 +99,11 @@ return {
 			})
 		end,
 	},
-	-- NOTE: config later raw_word
 	{
 		'kylechui/nvim-surround',
 		version = '*',
 		event = 'VeryLazy',
-		config = function()
-			require('nvim-surround').setup {}
-		end,
+		config = true,
 	},
 	{ 'XxiaoA/ns-textobject.nvim', config = true },
 }

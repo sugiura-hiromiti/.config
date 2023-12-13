@@ -21,10 +21,39 @@
             "devices": [
                 {
                     "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "game_pad_swap_sticks": false,
+                    "fn_function_keys": [
+                        {
+                            "from": {
+                                "key_code": "f10"
+                            },
+                            "to": [
+                                {
+                                    "consumer_key_code": "mute"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "f11"
+                            },
+                            "to": [
+                                {
+                                    "consumer_key_code": "volume_decrement"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "f12"
+                            },
+                            "to": [
+                                {
+                                    "consumer_key_code": "volume_increment"
+                                }
+                            ]
+                        }
+                    ],
                     "identifiers": {
-                        "is_game_pad": false,
                         "is_keyboard": true,
                         "is_pointing_device": false,
                         "product_id": 641,
@@ -32,12 +61,6 @@
                     },
                     "ignore": false,
                     "manipulate_caps_lock_led": true,
-                    "mouse_flip_horizontal_wheel": false,
-                    "mouse_flip_vertical_wheel": false,
-                    "mouse_flip_x": false,
-                    "mouse_flip_y": false,
-                    "mouse_swap_wheels": false,
-                    "mouse_swap_xy": false,
                     "simple_modifications": [
                         {
                             "from": {
@@ -65,9 +88,7 @@
                 {
                     "disable_built_in_keyboard_if_exists": false,
                     "fn_function_keys": [],
-                    "game_pad_swap_sticks": false,
                     "identifiers": {
-                        "is_game_pad": false,
                         "is_keyboard": false,
                         "is_pointing_device": true,
                         "product_id": 641,
@@ -75,12 +96,6 @@
                     },
                     "ignore": true,
                     "manipulate_caps_lock_led": false,
-                    "mouse_flip_horizontal_wheel": false,
-                    "mouse_flip_vertical_wheel": false,
-                    "mouse_flip_x": false,
-                    "mouse_flip_y": false,
-                    "mouse_swap_wheels": false,
-                    "mouse_swap_xy": false,
                     "simple_modifications": [],
                     "treat_as_built_in_keyboard": false
                 },
@@ -118,9 +133,7 @@
                             ]
                         }
                     ],
-                    "game_pad_swap_sticks": false,
                     "identifiers": {
-                        "is_game_pad": false,
                         "is_keyboard": true,
                         "is_pointing_device": false,
                         "product_id": 33,
@@ -128,12 +141,6 @@
                     },
                     "ignore": false,
                     "manipulate_caps_lock_led": true,
-                    "mouse_flip_horizontal_wheel": false,
-                    "mouse_flip_vertical_wheel": false,
-                    "mouse_flip_x": false,
-                    "mouse_flip_y": false,
-                    "mouse_swap_wheels": false,
-                    "mouse_swap_xy": false,
                     "simple_modifications": [
                         {
                             "from": {
@@ -246,7 +253,7 @@
                     },
                     "to": [
                         {
-                            "consumer_key_code": "mute"
+                            "key_code": "f10"
                         }
                     ]
                 },
@@ -256,7 +263,7 @@
                     },
                     "to": [
                         {
-                            "consumer_key_code": "volume_decrement"
+                            "key_code": "f11"
                         }
                     ]
                 },
@@ -266,7 +273,7 @@
                     },
                     "to": [
                         {
-                            "consumer_key_code": "volume_increment"
+                            "key_code": "f12"
                         }
                     ]
                 }
