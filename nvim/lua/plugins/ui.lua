@@ -14,22 +14,22 @@ return {
 	'norcalli/nvim-colorizer.lua',
 
 	-- TODO: config for this
-	{
-		'nvim-lualine/lualine.nvim',
-		opts = {
-			sections = {
-				lualine_b = {
-					'navic',
-				},
-				lualine_c = {},
-				lualine_x = {
-					'filetype',
-					'branch',
-					'diff',
-				},
-				lualine_y = { 'diagnostics' },
-				-- NOTE: add todo-comments component
-			},
-		},
-	},
+	--	{
+	--		'nvim-lualine/lualine.nvim',
+	--		opts = {
+	--			sections = {
+	--				lualine_b = {
+	--					'navic',
+	--				},
+	--				lualine_c = {},
+	--				lualine_x = {
+	--					'filetype',
+	--					'branch',
+	--					'diff',
+	--				},
+	--				lualine_y = { 'diagnostics' },
+	--				-- NOTE: add todo-comments component
+	--			},
+	--		},
+	--	},
 }

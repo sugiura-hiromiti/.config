@@ -1,4 +1,4 @@
-return {
+local symbols = {
 	Text = '󰉿',
 	Method = '󰆧',
 	Function = '󰊕',
@@ -39,3 +39,15 @@ return {
 	DiagnosticInfo = '󰋽',
 	DiagnosticHint = '',
 }
+
+vim.fn.sign_define {
+	{
+		name = 'DiagnosticSignError',
+		text = symbols.DiagnosticError,
+		texthl = 'DiagnosticSignError',
+	},
+	{ name = 'DiagnosticSignWarn', text = symbols.DiagnosticWarn, texthl = 'DiagnosticSignWarn' },
+	{ name = 'DiagnosticSignInfo', text = symbols.DiagnosticInfo, texthl = 'DiagnosticSignInfo' },
+	{ name = 'DiagnosticSignHint', text = symbols.DiagnosticHint, texthl = 'DiagnosticSignHint' },
+}
+return symbols
