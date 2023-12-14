@@ -11,7 +11,7 @@ return {
 						if not (string.match(vim.bo.bt, 'no') or vim.bo.modifiable == false) then
 							vim.cmd 'update'
 						end
-						vim.cmd 'stopintsert'
+						vim.cmd 'stopinsert'
 						vim.lsp.buf.format { async = true }
 					end,
 					n = function()
@@ -31,7 +31,7 @@ return {
 			{
 				itemgroup = 'emacs keybind',
 				description = 'emulating emacs keybind',
-				icon = '',
+				icon = '',
 				keymaps = {
 					{ '<c-n>', '<down>', description = 'move down cursor', mode = { 'i', 'c', 's' } },
 					{ '<c-p>', '<up>', description = 'move up cursor', mode = { 'i', 'c', 's' } },
@@ -56,21 +56,9 @@ return {
 				},
 			},
 			{
-				'<tab>',
-				require('todo-comments').jump_next,
-				description = 'jump to next todo comment',
-				mode = { 'n', 'v' },
-			},
-			{
-				'<s-tab>',
-				require('todo-comments').jump_prev,
-				description = 'jump to previous todo comment',
-				mode = { 'n', 'v' },
-			},
-			{
 				itemgroup = 'window manipulation',
 				description = 'manipulate window (currently only size)',
-				icon = '',
+				icon = ' ',
 				keymaps = {
 					{ '<left>', '<c-w><', description = 'decrease window width', mode = { 'n', 'v' } },
 					{ '<down>', '<c-w>+', description = 'increase window height', mode = { 'n', 'v' } },
@@ -81,13 +69,103 @@ return {
 			{
 				itemgroup = 'lsp related',
 				description = 'execute builtin lsp feature',
-				icon = '',
+				icon = '',
 				keymaps = {
 					{ '<space>a', vim.lsp.buf.code_action, description = 'code action', mode = { 'n', 'v' } },
 					{ '<space>r', vim.lsp.buf.rename, description = 'rename symbol' },
 					{ '<space>h', vim.lsp.buf.hover, description = 'show hover information' },
 					{ '<c-j>', vim.diagnostic.goto_next, description = 'go to next diagnostic', mode = { 'n', 'v' } },
 					{ '<c-k>', vim.diagnostic.goto_prev, description = 'go to previous diagnostic', mode = { 'n', 'v' } },
+				},
+			},
+		},
+		commands = {
+			{
+				'Make',
+				function(opts)
+					local cmd = '<cr> '
+					local args = opts.args
+					local extra = ''
+					local ft = vim.bo.filetype
+					if ft == 'rust' then -- langs which have to be compiled
+						cmd = '!cargo '
+						if args == '' then
+							local paths = vim.fn.expand '%:p'
+							local path = type(paths) == 'string' and paths or paths[1]
+
+							args = 'r '
+							if string.find(path, '/src/bin') ~= nil then
+								local _, l = string.find(path, '/src/bin/')
+								local r = string.find(string.sub(path, l + 1), '/')
+									or string.find(string.sub(path, l + 1), '%.')
+
+								args = args .. '--bin ' .. string.sub(path, l + 1, l + r - 1)
+							elseif vim.fn.expand '%' ~= 'main.rs' then
+								args = 't '
+							end
+						else
+							args = table.remove(opts.fargs, 1) -- insert 1st argument to `args`
+						end
+						table.insert(opts.fargs, 1, '-q')
+						for _, a in ipairs(opts.fargs) do
+							extra = extra .. ' ' .. a
+						end
+					elseif ft == 'cpp' or ft == 'c' then
+						cmd = '!make '
+					elseif ft == 'ruby' or ft == 'swift' or ft == 'lua' or ft == 'python' then -- langs which has interpreter
+						local file = vim.fn.expand '%:t'
+						local interpreter = ft
+						if interpreter == 'python' then
+							interpreter = interpreter .. '3'
+						end
+						if args == 't' then
+							file = 'test.' .. ft
+							args = ''
+						end
+						cmd = '!' .. interpreter .. ' ' .. file .. ' '
+					elseif ft == 'html' then -- markup language
+						cmd = '!open ' .. vim.fn.expand '%:t' .. ' '
+					elseif ft == 'markdown' then
+						cmd =
+							[[lua if require('peek').is_open() then require('peek').close() else require('peek').open() end]]
+						--'MarkdownPreviewToggle'
+					end
+
+					vim.cmd(cmd .. args .. extra)
+				end,
+				description = 'executer',
+				--{ nargs = '*' },
+				unfinished = true,
+			},
+			{
+				'RmSwap',
+				function()
+					vim.cmd '!rip ~/.local/state/nvim/swap'
+				end,
+				description = 'remove swap file of current buffer',
+			},
+		},
+		autocmds = {
+			{
+				name = 'my_au',
+				clear = true,
+				{
+					'filetype',
+					function()
+						vim.opt.fo = { j = true }
+						vim.opt.shiftwidth = 3
+						vim.opt.tabstop = 3
+						vim.opt.softtabstop = 3
+						if vim.opt.ft:get() == 'notify' then
+							vim.opt.ft = 'markdown'
+						end
+					end,
+				},
+				{
+					'bufreadpost',
+					function()
+						require('colorizer').attach_to_buffer(0)
+					end,
 				},
 			},
 		},

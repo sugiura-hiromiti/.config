@@ -9,27 +9,24 @@ return {
 	},
 	{
 		'folke/todo-comments.nvim',
+		keys={			{
+				'<tab>',
+				function ()
+									require('todo-comments').jump_next()
+				end,
+				desc = 'jump to next todo comment',
+				mode = { 'n', 'v' },
+			},
+			{
+				'<s-tab>',
+				function ()
+									require('todo-comments').jump_prev()
+				end,
+				desc = 'jump to previous todo comment',
+				mode = { 'n', 'v' },
+			},
+},
 		config = true,
 	},
 	'norcalli/nvim-colorizer.lua',
-
-	-- TODO: config for this
-	--	{
-	--		'nvim-lualine/lualine.nvim',
-	--		opts = {
-	--			sections = {
-	--				lualine_b = {
-	--					'navic',
-	--				},
-	--				lualine_c = {},
-	--				lualine_x = {
-	--					'filetype',
-	--					'branch',
-	--					'diff',
-	--				},
-	--				lualine_y = { 'diagnostics' },
-	--				-- NOTE: add todo-comments component
-	--			},
-	--		},
-	--	},
 }
