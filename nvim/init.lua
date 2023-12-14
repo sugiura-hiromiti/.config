@@ -26,7 +26,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup 'plugins'
 
 require 'usrcmd'
-require 'map'
 
 if vim.fn.expand '%:p' == '' then
 	vim.cmd [[e $MYVIMRC]]

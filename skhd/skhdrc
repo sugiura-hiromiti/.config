@@ -103,7 +103,7 @@ fn + shift - k: yabai -m window --resize top:0:10 || yabai -m window --resize bo
 fn + shift - l: yabai -m window --resize right:10:0 || yabai -m window --resize left:-10:0
 
 fn - f: yabai -m window --toggle float
-#fn - p: yabai -m window --toggle pip
+fn - p: yabai -m window --toggle pip
 fn - 0x1E: yabai -m space --rotate 90
 
 # utility
