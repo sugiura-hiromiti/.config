@@ -1,6 +1,6 @@
 return {
 	'mrjones2014/legendary.nvim',
-	priority = 10000,
+	priority = 1000,
 	lazy = false,
 	opts = {
 		keymaps = {
@@ -21,13 +21,21 @@ return {
 				},
 				description = 'customized <esc> key',
 			},
-			{ 'k', 'gk', description = 'move cursor to the visually previous line', mode = { 'n', 'v' } },
-			{ 'j', 'gj', description = 'move cursor to the visually next line', mode = { 'n', 'v' } },
-			{ '$', '^', description = 'move cursor to the end of line', mode = { 'v', 'n' } },
-			{ '^', '$', description = 'move cursor to the start of line', mode = { 'v', 'n' } },
-			{ ',', '@:', description = 'repeat last ex command', mode = { 'v', 'n' } },
-			{ '<cr>', ':Make ', description = 'execute `Make` command' },
-			{ '<s-cr>', ':!', description = 'execute shell command' },
+			{ 't', '<cmd>Legendary<cr>', description = 'open legendary window', mode = { 'v', 'n' } },
+			{
+				itemgroup = 'smart replacement',
+				description = "adjust vim's weired keybinds",
+				icon = ' ',
+				keymaps = {
+					{ 'k', 'gk', description = 'move cursor to the visually previous line', mode = { 'n', 'v' } },
+					{ 'j', 'gj', description = 'move cursor to the visually next line', mode = { 'n', 'v' } },
+					{ '$', '^', description = 'move cursor to the end of line', mode = { 'v', 'n' } },
+					{ '^', '$', description = 'move cursor to the start of line', mode = { 'v', 'n' } },
+					{ ',', '@:', description = 'repeat last ex command', mode = { 'v', 'n' } },
+					{ '<cr>', ':Make ', description = 'execute `Make` command' },
+					{ '<s-cr>', ':!', description = 'execute shell command' },
+				},
+			},
 			{
 				itemgroup = 'emacs keybind',
 				description = 'emulating emacs keybind',
@@ -76,6 +84,138 @@ return {
 					{ '<space>h', vim.lsp.buf.hover, description = 'show hover information' },
 					{ '<c-j>', vim.diagnostic.goto_next, description = 'go to next diagnostic', mode = { 'n', 'v' } },
 					{ '<c-k>', vim.diagnostic.goto_prev, description = 'go to previous diagnostic', mode = { 'n', 'v' } },
+				},
+			},
+			{
+				itemgroup = 'telescope',
+				description = 'telescope manipulation',
+				icon = ' ',
+				keymaps = {
+					{
+						'T',
+						function()
+							require('telescope.builtin').builtin()
+						end,
+						description = 'open telescope prompt',
+						mode = { 'n', 'v' },
+					},
+					{
+						'<space>o',
+						function()
+							if vim.bo.ft == 'lua' then
+								require('telescope.builtin').lsp_document_symbols()
+							else
+								require('telescope.builtin').lsp_dynamic_workspace_symbols()
+							end
+						end,
+						description = 'search symbols',
+					},
+					{
+						'<space>d',
+						function()
+							require('telescope.builtin').diagnostics()
+						end,
+						description = 'search diagnostics',
+					},
+					{
+						'/',
+						function()
+							require('telescope.builtin').live_grep()
+						end,
+						description = 'grep texts in current workspace',
+						mode = { 'n', 'v' },
+					},
+					{
+						'<space>b',
+						function()
+							require('telescope.builtin').buffers()
+						end,
+						description = 'search buffers',
+					},
+					{
+						'<space>m',
+						function()
+							require('telescope.builtin').keymaps()
+						end,
+						description = 'search keymaps',
+					},
+					{
+						'<space>j',
+						function()
+							require('telescope.builtin').lsp_references()
+						end,
+						description = 'open jump list of outline under the cursor',
+					},
+					{ '<space>f', '<cmd>Telescope frecency<cr>', description = 'fuzzy search files smartly' },
+					{ '<space>c', '<cmd>TodoTelescope<cr>', description = 'search todo comments' },
+					{
+						'<space>n',
+						function()
+							require('telescope').extensions.notify.notify()
+						end,
+						description = 'search notifications',
+					},
+					{
+						'<space>e',
+						function()
+							require('telescope').extensions.file_browser.file_browser()
+						end,
+						description = 'open telescope-file-bowser',
+					},
+				},
+			},
+			{
+				itemgroup = 'todo-comments',
+				description = 'move between todo-comments',
+				icon = ' ',
+				keymaps = {
+					{
+						'<tab>',
+						function()
+							require('todo-comments').jump_next()
+						end,
+						description = 'jump to next todo comment',
+						mode = { 'n', 'v' },
+					},
+					{
+						'<s-tab>',
+						function()
+							require('todo-comments').jump_prev()
+						end,
+						description = 'jump to previous todo comment',
+						mode = { 'n', 'v' },
+					},
+				},
+			},
+			{
+				itemgroup = 'spider',
+				description = 'improved word move',
+				icon = '󱇪 ',
+				keymaps = {
+					{
+						'w',
+						function()
+							require('spider').motion 'w'
+						end,
+						description = 'move cursor to the start of next word',
+						mode = { 'n', 'o', 'x' },
+					},
+					{
+						'e',
+						function()
+							require('spider').motion 'e'
+						end,
+						description = 'move cursor to the end of next word',
+						mode = { 'n', 'o', 'x' },
+					},
+					{
+						'b',
+						function()
+							require('spider').motion 'b'
+						end,
+						description = 'move cursor to the start of previous word',
+						mode = { 'n', 'o', 'x' },
+					},
 				},
 			},
 		},
