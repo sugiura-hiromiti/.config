@@ -108,6 +108,8 @@ fn - 0x1E: yabai -m space --rotate 90
 
 # utility
 #ctrl - return: alacritty -t sticky_alacritty &
+# hide current window
+# launch application
 
 # mode
 #:: dflt :

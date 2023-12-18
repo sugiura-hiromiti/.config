@@ -18,32 +18,6 @@ return {
 	},
 	{
 		'chrisgrieser/nvim-spider',
-		keys = {
-			{
-				'w',
-				function()
-					require('spider').motion 'w'
-				end,
-				desc = 'move cursor to the start of next word',
-				mode = { 'n', 'o', 'x' },
-			},
-			{
-				'e',
-				function()
-					require('spider').motion 'e'
-				end,
-				desc = 'move cursor to the end of next word',
-				mode = { 'n', 'o', 'x' },
-			},
-			{
-				'b',
-				function()
-					require('spider').motion 'b'
-				end,
-				desc = 'move cursor to the start of previous word',
-				mode = { 'n', 'o', 'x' },
-			},
-		},
 	},
 	{
 		'zbirenbaum/copilot.lua',
