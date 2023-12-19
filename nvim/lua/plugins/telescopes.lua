@@ -10,7 +10,6 @@ return {
 					layout_config = {
 						flex = {
 							flip_columns = 160,
-							--flip_lines = 40,
 						},
 					},
 					mappings = {
@@ -35,20 +34,60 @@ return {
 					},
 				},
 				extensions = {
-					frecency = { show_scores = true },
-					file_browser = {
-						hidden = true,
-						hijack_netrw = true,
-						collapse_dirs = true,
-						respect_gitignore = false,
+					frecency = {
+						show_scores = true,
+						workspaces = {
+							['conf'] = '/Users/f/.config/',
+							['nvim'] = '/Users/f/.config/nvim/',
+							['prj'] = '/Users/f/Downloads/',
+							['rust'] = '/Users/f/Downloads/rust/',
+							['QwQ'] = '/Users/f/Downloads/QwQ/',
+						},
 					},
 				},
 			}
 			require('telescope').load_extension 'frecency'
-			require('telescope').load_extension 'file_browser'
 		end,
 	},
 	'nvim-telescope/telescope-frecency.nvim',
-	-- FIX: replace file-browser to find_files
-	'nvim-telescope/telescope-file-browser.nvim',
+	{
+		'FabianWirth/search.nvim',
+		opts = {
+			mappings = { next = '<bs>', prev = '<s-bs>' },
+			tabs = {
+				{
+					'Frecency',
+					function(_)
+						require('telescope').extensions.frecency.frecency()
+					end,
+				},
+				{
+					'Buffer',
+					function(opts)
+						opts = opts or {}
+						require('telescope.builtin').buffers(opts)
+					end,
+				},
+				{
+					'TODO',
+					function(_)
+						vim.cmd 'TodoTelescope'
+					end,
+				},
+				{
+					'Diagnostics',
+					function(opts)
+						opts = opts or {}
+						require('telescope.builtin').diagnostics()
+					end,
+				},
+				{
+					'Notify',
+					function(_)
+						require('telescope').extensions.notify.notify()
+					end,
+				},
+			},
+		},
+	},
 }

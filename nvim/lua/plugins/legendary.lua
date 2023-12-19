@@ -146,7 +146,13 @@ return {
 						end,
 						description = 'open jump list of outline under the cursor',
 					},
-					{ '<space>f', '<cmd>Telescope frecency<cr>', description = 'fuzzy search files smartly' },
+					{
+						'<space>f',
+						function()
+							require('search').open()
+						end,
+						description = 'fuzzy search files smartly',
+					},
 					{ '<space>c', '<cmd>TodoTelescope<cr>', description = 'search todo comments' },
 					{
 						'<space>n',

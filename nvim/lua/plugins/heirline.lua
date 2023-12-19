@@ -122,7 +122,7 @@ return {
 				end
 				return ' [' .. table.concat(names, ' ') .. ']'
 			end,
-			hl = { fg = hl().text, bg = hl().green, bold = true },
+			hl = { fg = hl().base, bg = hl().green, bold = true },
 		}
 
 		local navic = {
