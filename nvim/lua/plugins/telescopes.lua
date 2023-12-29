@@ -75,10 +75,17 @@ return {
 					end,
 				},
 				{
+					'Keymaps',
+					function(opts)
+						opts = opts or {}
+						require('telescope.builtin').keymaps(opts)
+					end,
+				},
+				{
 					'Diagnostics',
 					function(opts)
 						opts = opts or {}
-						require('telescope.builtin').diagnostics()
+						require('telescope.builtin').diagnostics(opts)
 					end,
 				},
 				{

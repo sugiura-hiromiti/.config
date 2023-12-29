@@ -86,6 +86,7 @@ if [ $(uname) = "Darwin" ]; then
 	defaults write com.apple.dock launchanim -bool false
 	defaults write com.apple.dock mineffect scale
 	defaults write com.apple.dock mru-spaces -bool false
+	defaults write com.apple.MoblieSMS MMSShowSubject 1
 	defaults write com.apple.dock orientation right
 	defaults write com.apple.dock expose-group-apps -bool true
 	defaults write com.apple.dock tilesize -int 16
@@ -107,7 +108,6 @@ if [ $(uname) = "Darwin" ]; then
 
 	# FIX: defaults write com.apple.universalaccess showWindowTitlebarIcons -bool true
 
-
 	defaults write com.apple.spaces spans-displays -bool false
 
 	defaults write com.apple.widgets widgetAppearance -int 2
@@ -122,8 +122,10 @@ sudo echo 'auth sufficient pam_tid.so' >> /etc/pam.d/sudo_local
 read -p 'create certification for yabai, then hit enter:'
 codesign -fs 'yabai-cert' $(brew --prefix yabai)/bin/yabai
 
-export MY_INIT_DOTFILES_HASH_OF_SHASUM=
-sudo echo $USER ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai)) --load-sa >> /private/etc/sudoers.d/yabai
+export YABAI_PATH=$(which yabai)
+export YABAI_SHA_HASH=$(shasum -a 256 $YABAI_PATH)
+export MY_INIT_DOTFILES_HASH_OF_SHASUM="$USER ALL=(root) NOPASSWD: sha256:$YABAI_SHA_HASH --load-sa"
+sudo echo $MY_INIT_DOTFILES_HASH_OF_SHASUM >> /private/etc/sudoers.d/yabai
 yabai --start-service
 read -p 'hit enter:'
 skhd --start-service

@@ -25,5 +25,6 @@
   "integrations.iterm.disabled": false,
   "integrations.terminal.disabled": true,
   "integrations.vscode.disabled": true,
+  "ssh.remote-prompt": "always",
   "telemetry.disabled": true
 }
