@@ -111,33 +111,12 @@ return {
 						description = 'search symbols',
 					},
 					{
-						'<space>d',
-						function()
-							require('telescope.builtin').diagnostics()
-						end,
-						description = 'search diagnostics',
-					},
-					{
 						'/',
 						function()
 							require('telescope.builtin').live_grep()
 						end,
 						description = 'grep texts in current workspace',
 						mode = { 'n', 'v' },
-					},
-					{
-						'<space>b',
-						function()
-							require('telescope.builtin').buffers()
-						end,
-						description = 'search buffers',
-					},
-					{
-						'<space>m',
-						function()
-							require('telescope.builtin').keymaps()
-						end,
-						description = 'search keymaps',
 					},
 					{
 						'<space>j',
@@ -152,21 +131,6 @@ return {
 							require('search').open()
 						end,
 						description = 'fuzzy search files smartly',
-					},
-					{ '<space>c', '<cmd>TodoTelescope<cr>', description = 'search todo comments' },
-					{
-						'<space>n',
-						function()
-							require('telescope').extensions.notify.notify()
-						end,
-						description = 'search notifications',
-					},
-					{
-						'<space>e',
-						function()
-							require('telescope').extensions.file_browser.file_browser()
-						end,
-						description = 'open telescope-file-bowser',
 					},
 				},
 			},
