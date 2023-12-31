@@ -30,5 +30,4 @@ cask "raycast"
 cask "rekordbox"
 cask "the-unarchiver"
 mas "Amphetamine", id: 937984704
-mas "Logic Pro", id: 634148309
 mas "Spark", id: 1176895641

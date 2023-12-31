@@ -125,12 +125,12 @@ ralt - b: osascript -e 'tell application "Brave Browser" to run' \
   -e 'end if' \
   -e 'end tell'
 
-ralt - l: osascript -e 'tell application "Logic Pro" to run' \
-  -e 'tell application "System Events"' \
-  -e 'if visible of application process "Logic Pro" is true then' \
-  -e 'set visible of application process "Logic Pro" to false' \
+ralt - l: osascript -e 'tell application "REAPER" to run' \
+  -e 'tell application "REAPER"' \
+  -e 'if visible of application process "REAPER" is true then' \
+  -e 'set visible of application process "REAPER" to false' \
   -e 'else' \
-  -e 'set visible of application process "Logic Pro" to true' \
+  -e 'set visible of application process "REAPER" to true' \
   -e 'end if' \
   -e 'end tell'
 
