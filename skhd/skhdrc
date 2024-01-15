@@ -95,7 +95,7 @@ fn - k: yabai -m window --focus north || yabai -m window --focus prev || yabai -
 fn - l: yabai -m window --focus east || yabai -m window --focus next || yabai -m window --focus first
 
 ## Window Move
-fn - 0x29: yabai -m window --move rel:-10:0 || yabai -m window --warp west || yabai -m space --create && yabai -m window --space prev
+fn - 0x29: yabai -m window --move rel:-10:0 || yabai -m window --warp west || yabai -m space --create && yabai -m window --space next
 fn - 0x2C: yabai -m window --move rel:0:10 || yabai -m window --warp south
 fn - 0x21: yabai -m window --move rel:0:-10 || yabai -m window --warp north
 fn - 0x27: yabai -m window --move rel:10:0 || yabai -m window --warp east || yabai -m space --create && yabai -m window --space next
@@ -106,72 +106,9 @@ fn + shift - j: yabai -m window --resize bottom:0:10 || yabai -m window  --resiz
 fn + shift - k: yabai -m window --resize top:0:10 || yabai -m window --resize bottom:0:-10
 fn + shift - l: yabai -m window --resize right:10:0 || yabai -m window --resize left:-10:0
 
-# Application Launch
-ralt - a: osascript -e 'tell application "Activity Monitor" to run' \
-  -e 'tell application "System Events"' \
-  -e 'if visible of application process "Activity Monitor" is true then' \
-  -e 'set visible of application process "Activity Monitor" to false' \
-  -e 'else' \
-  -e 'set visible of application process "Activity Monitor" to true' \
-  -e 'end if' \
-  -e 'end tell'
-
-ralt - b: osascript -e 'tell application "Brave Browser" to run' \
-  -e 'tell application "System Events"' \
-  -e 'if visible of application process "Brave Browser" is true then' \
-  -e 'set visible of application process "Brave Browser" to false' \
-  -e 'else' \
-  -e 'set visible of application process "Brave Browser" to true' \
-  -e 'end if' \
-  -e 'end tell'
-
-ralt - l: osascript -e 'tell application "REAPER" to run' \
-  -e 'tell application "REAPER"' \
-  -e 'if visible of application process "REAPER" is true then' \
-  -e 'set visible of application process "REAPER" to false' \
-  -e 'else' \
-  -e 'set visible of application process "REAPER" to true' \
-  -e 'end if' \
-  -e 'end tell'
-
-ralt - n: osascript -e 'tell application "Notes" to run' \
-  -e 'tell application "System Events"' \
-  -e 'if visible of application process "Notes" is true then' \
-  -e 'set visible of application process "Notes" to false' \
-  -e 'else' \
-  -e 'set visible of application process "Notes" to true' \
-  -e 'end if' \
-  -e 'end tell'
-
-ralt - m: osascript -e 'tell application "Spark" to run' \
-  -e 'tell application "System Events"' \
-  -e 'if visible of application process "Spark" is true then' \
-  -e 'set visible of application process "Spark" to false' \
-  -e 'else' \
-  -e 'set visible of application process "Spark" to true' \
-  -e 'end if' \
-  -e 'end tell'
-
-ralt - z: osascript -e 'tell application "System Settings" to run' \
-  -e 'tell application "System Events"' \
-  -e 'if visible of application process "System Settings" is true then' \
-  -e 'set visible of application process "System Settings" to false' \
-  -e 'else' \
-  -e 'set visible of application process "System Settings" to true' \
-  -e 'end if' \
-  -e 'end tell'
-
-ralt - t: osascript -e 'tell application "iTerm" to run' \
-  -e 'tell application "System Events"' \
-  -e 'if visible of application process "iTerm" is true then' \
-  -e 'set visible of application process "iTerm" to false' \
-  -e 'else' \
-  -e 'set visible of application process "iTerm" to true' \
-  -e 'end if' \
-  -e 'end tell'
-
 # utility
 fn - f: yabai -m window --toggle float
+fn - s: yabai -m window --toggle sticky
 fn - p: yabai -m window --toggle pip
 fn - 0x1E: yabai -m space --rotate 90
 cmd - h: yabai -m window --minimize

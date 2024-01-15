@@ -11,7 +11,7 @@ normal_window_opacity 0.9 \
 layout bsp \
 
 # rules
-yabai -m rule --add app="^(Fig|System Settings|Notes|Activity Monitor|Finder|Karabiner-Elements)$" manage=off
+yabai -m rule --add app="^(Fig|System Settings|Notes|Activity Monitor|Finder|Karabiner-Elements|REAPER)$" manage=off
 yabai -m rule --add app="^(Fig)$" sticky=on layer=above
 
 # signals

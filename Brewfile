@@ -23,11 +23,18 @@ brew "koekeishiya/formulae/skhd"
 brew "koekeishiya/formulae/yabai", args: ["HEAD"]
 cask "background-music"
 cask "brave-browser"
+cask "discord"
 cask "fig"
 cask "font-fira-code-nerd-font"
+cask "izotope-product-portal"
 cask "karabiner-elements"
+cask "native-access"
 cask "raycast"
 cask "rekordbox"
+cask "spitfire-audio"
+cask "surge-xt"
 cask "the-unarchiver"
 mas "Amphetamine", id: 937984704
+mas "LINE", id: 539883307
+mas "Logic Pro", id: 634148309
 mas "Spark", id: 1176895641
