@@ -102,6 +102,8 @@ if [ $(uname) = "Darwin" ]; then
 	defautls write com.apple.finder WarnOnEmptyTrash -bool false
 	defaults write com.apple.finder QLEnableTextSelection -bool true
 
+	defaults write com.apple.HIToolbox AppleFnUsageType -int 1
+
 	defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 	#defaults write com.apple.Music userWantsPlaybackNotifications -bool true
