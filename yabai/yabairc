@@ -11,7 +11,11 @@ normal_window_opacity 0.9 \
 layout bsp \
 
 # rules
-yabai -m rule --add app="^(Fig|System Settings|Notes|Activity Monitor|Finder|Karabiner-Elements|REAPER)$" manage=off
-yabai -m rule --add app="^(Fig)$" sticky=on layer=above
+yabai -m rule --add app="^(Scoot|Fig|System Settings|Notes|Activity Monitor|Finder|Karabiner-Elements|REAPER)$" manage=off layer=below
+yabai -m rule --add app="^(Fig|Scoot)$" sticky=on layer=above
+
+# NOTE: https://github.com/koekeishiya/yabai/issues/1669
+#yabai -m rule --add subrole="^AXSystemDialog$" manage=off mouse_follows_focus=off
+yabai -m rule --add title="^Picture in Picture$" manage=off sticky=on layer=above mouse_follows_focus=off
 
 # signals

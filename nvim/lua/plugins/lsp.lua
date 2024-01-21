@@ -18,7 +18,7 @@ return {
 		opts = {
 			ensure_installed = {
 				'rust_analyzer@nightly',
-				'lua_ls'
+				'lua_ls',
 			},
 		},
 	},
@@ -29,7 +29,7 @@ return {
 			lsp = { auto_attach = true, preference = { 'marksman', 'texlab' } },
 			highlight = true,
 			click = true,
-		}
+		},
 	},
 	{
 		'neovim/nvim-lspconfig',
@@ -86,6 +86,7 @@ return {
 			require('lspconfig').html.setup { capabilities = capabilities, on_attach = on_attach }
 			require('lspconfig').cssls.setup { capabilities = capabilities, on_attach = on_attach }
 			require('lspconfig').marksman.setup { capabilities = capabilities, on_attach = on_attach }
+			require('lspconfig').jsonls.setup { capabilities = capabilities, on_attach = on_attach }
 		end,
 	},
 	{
@@ -93,8 +94,8 @@ return {
 		config = function()
 			require('null-ls').setup {
 				sources = {
-					require 'null-ls'.builtins.formatting.stylua,
-					require 'null-ls'.builtins.hover.printenv,
+					require('null-ls').builtins.formatting.stylua,
+					require('null-ls').builtins.hover.printenv,
 					require('null-ls').builtins.diagnostics.zsh,
 				},
 			}
