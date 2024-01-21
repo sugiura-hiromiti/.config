@@ -46,7 +46,7 @@ return {
 					['<c-e>'] = cmp.mapping(function(fallback)
 						fallback()
 					end, { 'i', 's', 'c' }),
-					['<c-p>'] = cmp.mapping(function(fallback)
+					['<up>'] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
 						elseif ls.choice_active() then
@@ -55,7 +55,7 @@ return {
 							fallback()
 						end
 					end, { 'i', 's', 'c' }),
-					['<c-n>'] = cmp.mapping(function(fallback)
+					['<down>'] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
 						elseif ls.choice_active() then
