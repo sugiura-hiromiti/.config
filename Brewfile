@@ -1,5 +1,7 @@
+tap "gcenx/wine"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
 tap "homebrew/services"
 tap "jakehilborn/jakehilborn"
 tap "koekeishiya/formulae"
@@ -11,10 +13,9 @@ brew "lua-language-server"
 brew "mas"
 brew "neovim", args: ["HEAD"]
 brew "node"
-brew "sqlite"
-brew "opencv"
 brew "ripgrep"
 brew "rm-improved"
+brew "sqlite"
 brew "starship"
 brew "stylua"
 brew "zoxide"
@@ -23,7 +24,6 @@ brew "koekeishiya/formulae/skhd"
 brew "koekeishiya/formulae/yabai", args: ["HEAD"]
 cask "background-music"
 cask "brave-browser"
-cask "discord"
 cask "fig"
 cask "font-fira-code-nerd-font"
 cask "izotope-product-portal"
@@ -34,7 +34,3 @@ cask "rekordbox"
 cask "spitfire-audio"
 cask "surge-xt"
 cask "the-unarchiver"
-mas "Amphetamine", id: 937984704
-mas "LINE", id: 539883307
-mas "Logic Pro", id: 634148309
-mas "Spark", id: 1176895641
