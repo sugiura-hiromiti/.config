@@ -18,22 +18,11 @@
                 },
                 "rules": [
                     {
-                        "description": "scroll left by right_control - a",
+                        "description": "move mouse cursor up by right_control - ↑",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 641,
-                                                "vendor_id": 1452
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
                                 "from": {
-                                    "key_code": "a",
+                                    "key_code": "up_arrow",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_control"
@@ -43,26 +32,39 @@
                                 "to": [
                                     {
                                         "mouse_key": {
-                                            "horizontal_wheel": 80
+                                            "y": -1000
                                         }
                                     }
                                 ],
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
+                                "from": {
+                                    "key_code": "up_arrow",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_control",
+                                            "shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
                                     {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 33,
-                                                "vendor_id": 1278
-                                            }
-                                        ],
-                                        "type": "device_if"
+                                        "mouse_key": {
+                                            "y": -100
+                                        }
                                     }
                                 ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "scroll left by right_control - a",
+                        "manipulators": [
+                            {
                                 "from": {
-                                    "key_code": "rewind",
+                                    "key_code": "a",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_control"
@@ -84,48 +86,8 @@
                         "description": "scroll down by right_control - s",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 641,
-                                                "vendor_id": 1452
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "s",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "mouse_key": {
-                                            "vertical_wheel": 80
-                                        }
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 33,
-                                                "vendor_id": 1278
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "play_or_pause",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_control"
@@ -147,48 +109,8 @@
                         "description": "scroll right by right_control - d",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 641,
-                                                "vendor_id": 1452
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
                                 "from": {
                                     "key_code": "d",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "mouse_key": {
-                                            "horizontal_wheel": -80
-                                        }
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 33,
-                                                "vendor_id": 1278
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "fastforward",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_control"
@@ -211,7 +133,7 @@
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "w",
+                                    "key_code": "up_arrow",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_control"
@@ -244,7 +166,7 @@
                                 "to": [
                                     {
                                         "mouse_key": {
-                                            "x": -4096
+                                            "x": -1000
                                         }
                                     }
                                 ],
@@ -263,7 +185,7 @@
                                 "to": [
                                     {
                                         "mouse_key": {
-                                            "x": -1024
+                                            "x": -100
                                         }
                                     }
                                 ],
@@ -286,7 +208,7 @@
                                 "to": [
                                     {
                                         "mouse_key": {
-                                            "y": 4096
+                                            "y": 1000
                                         }
                                     }
                                 ],
@@ -305,7 +227,7 @@
                                 "to": [
                                     {
                                         "mouse_key": {
-                                            "y": 1024
+                                            "y": 100
                                         }
                                     }
                                 ],
@@ -328,7 +250,7 @@
                                 "to": [
                                     {
                                         "mouse_key": {
-                                            "x": 4096
+                                            "x": 1000
                                         }
                                     }
                                 ],
@@ -347,49 +269,7 @@
                                 "to": [
                                     {
                                         "mouse_key": {
-                                            "x": 1024
-                                        }
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "move mouse cursor up by right_control - ↑",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "up_arrow",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "mouse_key": {
-                                            "y": -4096
-                                        }
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "up_arrow",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "right_control",
-                                            "shift"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "mouse_key": {
-                                            "y": -1024
+                                            "x": 100
                                         }
                                     }
                                 ],
@@ -619,7 +499,38 @@
             "devices": [
                 {
                     "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
+                    "fn_function_keys": [
+                        {
+                            "from": {
+                                "key_code": "f3"
+                            },
+                            "to": [
+                                {
+                                    "pointing_button": "button1"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "f4"
+                            },
+                            "to": [
+                                {
+                                    "pointing_button": "button3"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "f5"
+                            },
+                            "to": [
+                                {
+                                    "pointing_button": "button2"
+                                }
+                            ]
+                        }
+                    ],
                     "game_pad_swap_sticks": false,
                     "identifiers": {
                         "is_game_pad": false,
@@ -684,38 +595,7 @@
                 },
                 {
                     "disable_built_in_keyboard_if_exists": true,
-                    "fn_function_keys": [
-                        {
-                            "from": {
-                                "key_code": "f7"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "f7"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "f8"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "f8"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
-                                "key_code": "f9"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "f9"
-                                }
-                            ]
-                        }
-                    ],
+                    "fn_function_keys": [],
                     "game_pad_swap_sticks": false,
                     "identifiers": {
                         "is_game_pad": false,
@@ -739,7 +619,7 @@
                             },
                             "to": [
                                 {
-                                    "consumer_key_code": "fast_forward"
+                                    "pointing_button": "button2"
                                 }
                             ]
                         },
@@ -749,7 +629,7 @@
                             },
                             "to": [
                                 {
-                                    "consumer_key_code": "rewind"
+                                    "pointing_button": "button1"
                                 }
                             ]
                         },
@@ -759,7 +639,7 @@
                             },
                             "to": [
                                 {
-                                    "consumer_key_code": "play_or_pause"
+                                    "pointing_button": "button3"
                                 }
                             ]
                         },
@@ -814,7 +694,7 @@
                     },
                     "to": [
                         {
-                            "pointing_button": "button1"
+                            "key_code": "f3"
                         }
                     ]
                 },
@@ -824,7 +704,7 @@
                     },
                     "to": [
                         {
-                            "pointing_button": "button3"
+                            "key_code": "f4"
                         }
                     ]
                 },
@@ -834,7 +714,7 @@
                     },
                     "to": [
                         {
-                            "pointing_button": "button2"
+                            "key_code": "f5"
                         }
                     ]
                 },
