@@ -1,23 +1,20 @@
 #!/bin/sh
 
-ssh-keygen -t ed25519 -C "sugiura130418@icloud.com"
-eval "$(ssh-agent -s)"
-echo "Host github.com\n\tAddKeysToAgent yes\n\tIdentityFile ~/.ssh/id_ed25519" >> ~/.ssh/config
-ssh-add --apple-use-keychain ~/.ssh/id_ed25519
-pbcopy < ~/.ssh/id_ed25519.pub
-read -p "upload pub key to github then hit enter"
-
-cd ~
-rm -f ~/.zshenv ~/.zshrc ~/.zprofile
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-if [ $(uname) = "Linux" ]; then
-	echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.profile
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-elif [ $(uname) = "Darwin" ]; then
+if [ $(uname) = "Darwin" ]; then
+	ssh-keygen -t ed25519 -C "sugiura130418@icloud.com"
+	eval "$(ssh-agent -s)"
+	echo "Host github.com\n\tAddKeysToAgent yes\n\tIdentityFile ~/.ssh/id_ed25519" >> ~/.ssh/config
+	ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+	pbcopy < ~/.ssh/id_ed25519.pub
+	read -p "upload pub key to github then hit enter"
+	cd ~
+	rm -f ~/.zshenv ~/.zshrc ~/.zprofile
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
 	eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ $(uname) ="Linux" ]; then
+ 	sudo dnf install git zsh
 fi
 
 touch $HOME/.profile
