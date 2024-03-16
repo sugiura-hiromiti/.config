@@ -8,11 +8,10 @@ vim.opt.autowriteall = true
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.autochdir = true
 vim.opt.laststatus = 3
-vim.opt.smoothscroll = true
 
 -- lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.uv.fs_stat(lazypath) then
+if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system {
 		'git',
 		'clone',
