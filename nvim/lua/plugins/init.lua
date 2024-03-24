@@ -2,7 +2,8 @@
 return {
 	-- Library
 	'kkharji/sqlite.lua',
-	'nvim-treesitter/nvim-treesitter',
+	{	'nvim-treesitter/nvim-treesitter',build=":TSUpdate"
+},
 	'nvim-lua/plenary.nvim',
 	'MunifTanjim/nui.nvim',
 	'nvim-tree/nvim-web-devicons',
