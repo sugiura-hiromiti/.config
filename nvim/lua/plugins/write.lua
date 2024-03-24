@@ -1,5 +1,4 @@
 return {
-	'subnut/nvim-ghost.nvim',
 	{
 		'windwp/nvim-autopairs',
 		config = function()

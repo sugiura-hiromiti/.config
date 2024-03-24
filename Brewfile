@@ -22,15 +22,18 @@ brew "zoxide"
 brew "jakehilborn/jakehilborn/displayplacer"
 brew "koekeishiya/formulae/skhd"
 brew "koekeishiya/formulae/yabai", args: ["HEAD"]
-cask "background-music"
-cask "brave-browser"
-cask "fig"
 cask "font-fira-code-nerd-font"
-cask "izotope-product-portal"
 cask "karabiner-elements"
 cask "native-access"
 cask "raycast"
+cask "readdle-spark"
 cask "rekordbox"
-cask "spitfire-audio"
 cask "surge-xt"
 cask "the-unarchiver"
+mas "AdBlock Pro", id: 1018301773
+mas "Amphetamine", id: 937984704
+mas "Dark Reader for Safari", id: 1438243180
+mas "LINE", id: 539883307
+mas "Logic Pro", id: 634148309
+mas "Niconico PiP", id: 1611949612
+mas "Vimlike", id: 1584519802
