@@ -8,15 +8,10 @@ return {
 	'lukas-reineke/cmp-rg',
 	'saadparwaiz1/cmp_luasnip',
 	{
-		'zbirenbaum/copilot-cmp',
-		config = true,
-	},
-	{
 		'hrsh7th/nvim-cmp',
 		config = function()
 			local ls = require 'luasnip'
 			local cmp = require 'cmp'
-			local copilot = require 'copilot.suggestion'
 			local lspkind = require 'lspkind'
 			local rg = {
 				name = 'rg',
@@ -67,30 +62,19 @@ return {
 					['<tab>'] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.confirm { behavior = cmp.ConfirmBehavior.Insert, select = true }
-						elseif copilot.is_visible() then
-							copilot.accept()
 						else
 							fallback()
 						end
 					end, { 'i', 's', 'c' }),
-					['<s-tab>'] = cmp.mapping(function(fallback)
-						if copilot.is_visible() then
-							copilot.accept_line()
-						else
-							fallback()
-						end
-					end),
-					['<bs>'] = cmp.mapping(function(fallback)
+					['<c-h>'] = cmp.mapping(function(fallback)
 						if ls.expand_or_locally_jumpable() then
 							ls.jump(1)
 						else
 							fallback()
 						end
 					end),
-					['<s-bs>'] = cmp.mapping(function(fallback)
-						if copilot.is_visible() then
-							copilot.accept_word()
-						elseif ls.expand_or_locally_jumpable() then
+					['<s-c-h>'] = cmp.mapping(function(fallback)
+						if ls.expand_or_locally_jumpable() then
 							ls.jump(-1)
 						else
 							fallback()
@@ -101,7 +85,6 @@ return {
 					{ name = 'nvim_lsp_signature_help' },
 					{ name = 'luasnip' },
 					{ name = 'nvim_lsp' },
-					{ name = 'copilot' },
 					{ name = 'nvim_lua' },
 					rg,
 					{ name = 'path' },

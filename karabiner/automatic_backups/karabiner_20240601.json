@@ -62,7 +62,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "volume_decrement",
+                                    "key_code": "rewind",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_control"
@@ -125,7 +125,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "volume_increment",
+                                    "key_code": "play_or_pause",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_control"
@@ -188,7 +188,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "mute",
+                                    "key_code": "fastforward",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_control"
@@ -687,21 +687,31 @@
                     "fn_function_keys": [
                         {
                             "from": {
-                                "key_code": "f11"
+                                "key_code": "f7"
                             },
                             "to": [
                                 {
-                                    "key_code": "f11"
+                                    "key_code": "f7"
                                 }
                             ]
                         },
                         {
                             "from": {
-                                "key_code": "f12"
+                                "key_code": "f8"
                             },
                             "to": [
                                 {
-                                    "key_code": "f12"
+                                    "key_code": "f8"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "f9"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "f9"
                                 }
                             ]
                         }
@@ -723,6 +733,36 @@
                     "mouse_swap_wheels": false,
                     "mouse_swap_xy": false,
                     "simple_modifications": [
+                        {
+                            "from": {
+                                "consumer_key_code": "mute"
+                            },
+                            "to": [
+                                {
+                                    "consumer_key_code": "fast_forward"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "consumer_key_code": "volume_decrement"
+                            },
+                            "to": [
+                                {
+                                    "consumer_key_code": "rewind"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "consumer_key_code": "volume_increment"
+                            },
+                            "to": [
+                                {
+                                    "consumer_key_code": "play_or_pause"
+                                }
+                            ]
+                        },
                         {
                             "from": {
                                 "key_code": "caps_lock"

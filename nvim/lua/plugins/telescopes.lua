@@ -33,32 +33,21 @@ return {
 						'--hidden',
 					},
 				},
-				extensions = {
-					frecency = {
-						show_scores = true,
-						workspaces = {
-							['conf'] = '/Users/f/.config/',
-							['nvim'] = '/Users/f/.config/nvim/',
-							['prj'] = '/Users/f/Downloads/',
-							['rust'] = '/Users/f/Downloads/rust/',
-							['QwQ'] = '/Users/f/Downloads/QwQ/',
-						},
-					},
-				},
+				extensions = {},
 			}
-			require('telescope').load_extension 'frecency'
+			require('telescope').load_extension 'smart_open'
 		end,
 	},
-	'nvim-telescope/telescope-frecency.nvim',
+	{ 'danielfalk/smart-open.nvim', branch = '0.2.x' },
 	{
 		'FabianWirth/search.nvim',
 		opts = {
 			mappings = { next = '<bs>', prev = '<s-bs>' },
 			tabs = {
 				{
-					'Frecency',
+					'smart_open',
 					function(_)
-						require('telescope').extensions.frecency.frecency()
+						require('telescope').extensions.smart_open.smart_open()
 					end,
 				},
 				{
