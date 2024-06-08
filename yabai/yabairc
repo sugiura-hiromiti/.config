@@ -11,7 +11,8 @@ normal_window_opacity 0.9 \
 layout bsp \
 
 # rules
-yabai -m rule --add app="^(Fig|System Settings|Notes|Activity Monitor|Finder|Karabiner-Elements|REAPER)$" manage=off sub-layer=below
+yabai -m rule --add app="^(Fig|System Settings|Notes|Activity
+Monitor|Finder|Karabiner-Elements|Spark)$" manage=off sub-layer=below
 yabai -m rule --add app="^Fig$" sticky=on sub-layer=above
 
 # NOTE: https://github.com/koekeishiya/yabai/issues/1669

@@ -2,32 +2,23 @@
 return {
 	-- Library
 	'kkharji/sqlite.lua',
-	{	'nvim-treesitter/nvim-treesitter',build=":TSUpdate"
-},
+	{
+		'nvim-treesitter/nvim-treesitter',
+		build = ':TSUpdate',
+		config = function()
+			require('nvim-treesitter.configs').setup {
+				auto_install = true,
+				ignore_install = { 'markdown' },
+				highlight = { enable = true, additional_vim_regex_highlighting = false },
+			}
+		end,
+	},
 	'nvim-lua/plenary.nvim',
 	'MunifTanjim/nui.nvim',
 	'nvim-tree/nvim-web-devicons',
 
-	-- TODO: cofig later
-	{ 'lewis6991/gitsigns.nvim', config = true },
-	{
-		'TobinPalmer/Tip.nvim',
-		event = 'VimEnter',
-		init = function()
-			require('tip').setup { seconds = 10, title = 'Tip!', url = 'https://vtip.43z.one' }
-		end,
-	},
 	{
 		'chrisgrieser/nvim-spider',
-	},
-	{
-		'zbirenbaum/copilot.lua',
-		cmd = 'Copilot',
-		event = 'InsertEnter',
-		opts = {
-			panel = { enable = false },
-			suggestion = { enable = false },
-		},
 	},
 	{ 'f-person/auto-dark-mode.nvim', config = true },
 	{

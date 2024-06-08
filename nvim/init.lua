@@ -7,7 +7,7 @@ vim.opt.number = true
 vim.opt.autowriteall = true
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.autochdir = true
-vim.opt.laststatus = 3
+vim.opt.laststatus = 0
 
 -- lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'

@@ -1,0 +1,9 @@
+[window]
+decorations="Buttonless"
+
+[scrolling]
+history=400
+
+[font]
+normal={family="FiraCode Nerd Font"}
+builtin_box_drawing=false

@@ -37,7 +37,7 @@ return {
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			local on_attach = function(client, bufnr)
 				if client.server_capabilities.inlayHintProvider then
-					vim.lsp.inlay_hint.enable(bufnr)
+					vim.lsp.inlay_hint.enable(true, { bufnr })
 				end
 			end
 			require('lspconfig').rust_analyzer.setup {
