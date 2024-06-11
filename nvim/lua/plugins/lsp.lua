@@ -57,6 +57,7 @@ return {
 						semanticHighlighting = { operator = { specialization = { enable = true } } },
 						typing = { autoClosingAngleBrackets = { enable = true } },
 						workspace = { symbol = { search = { kind = 'all_symbols' } } },
+						experimental = { procAttrMacros = true },
 					},
 				},
 			}
@@ -87,6 +88,9 @@ return {
 			require('lspconfig').cssls.setup { capabilities = capabilities, on_attach = on_attach }
 			require('lspconfig').marksman.setup { capabilities = capabilities, on_attach = on_attach }
 			require('lspconfig').jsonls.setup { capabilities = capabilities, on_attach = on_attach }
+			require('lspconfig').docker_compose_language_service.setup { capabilities = capabilities, on_attach = on_attach }
+			require('lspconfig').dockerls.setup { capabilities = capabilities, on_attach = on_attach }
+			require('lspconfig').tsserver.setup { capabilities = capabilities, on_attach = on_attach }
 		end,
 	},
 	{
