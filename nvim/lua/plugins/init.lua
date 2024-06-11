@@ -22,19 +22,10 @@ return {
 	},
 	{ 'f-person/auto-dark-mode.nvim', config = true },
 	{
-		'catppuccin/nvim',
-		name = 'catppuccin',
+		'polirritmico/monokai-nightasty.nvim',
 		config = function()
-			require('catppuccin').setup {
-				background = { dark = 'frappe' },
-				term_colors = true,
-				dim_inactive = { enabled = true },
-				styles = {
-					keywords = { 'bold' },
-					properties = { 'italic', 'bold' },
-				},
-			}
-			vim.cmd 'colo catppuccin'
+			vim.opt.background = 'light'
+			vim.cmd 'colo monokai-nightasty'
 		end,
 	},
 }

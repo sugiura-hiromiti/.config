@@ -221,7 +221,7 @@ return {
 							extra = extra .. ' ' .. a
 						end
 					elseif ft == 'cpp' or ft == 'c' then
-						cmd = '!make '
+						cmd = '!make NEOVIM_CXX_AUTO_RUNNED_FILE=' .. vim.fn.expand '%:t'
 					elseif ft == 'ruby' or ft == 'swift' or ft == 'lua' or ft == 'python' then -- langs which has interpreter
 						local file = vim.fn.expand '%:t'
 						local interpreter = ft
