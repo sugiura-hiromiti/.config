@@ -40,14 +40,25 @@ local symbols = {
 	DiagnosticHint = '',
 }
 
-vim.fn.sign_define {
-	{
-		name = 'DiagnosticSignError',
-		text = symbols.DiagnosticError,
-		texthl = 'DiagnosticSignError',
+vim.diagnostic.config {
+	jump = { float = true },
+	signs = {
+		{
+			text = {
+				[vim.diagnostic.severity.ERROR] = symbols.DiagnosticError,
+				[vim.diagnostic.severity.WARN] = symbols.DiagnosticWarn,
+				[vim.diagnostic.severity.INFO] = symbols.DiagnosticInfo,
+				[vim.diagnostic.severity.HINT] = symbols.DiagnosticHint,
+			},
+		},
+		--		{
+		--			name = 'DiagnosticSignError',
+		--			text = symbols.DiagnosticError,
+		--			texthl = 'DiagnosticSignError',
+		--		},
+		--		{ name = 'DiagnosticSignWarn', text = symbols.DiagnosticWarn, texthl = 'DiagnosticSignWarn' },
+		--		{ name = 'DiagnosticSignInfo', text = symbols.DiagnosticInfo, texthl = 'DiagnosticSignInfo' },
+		--		{ name = 'DiagnosticSignHint', text = symbols.DiagnosticHint, texthl = 'DiagnosticSignHint' },
 	},
-	{ name = 'DiagnosticSignWarn', text = symbols.DiagnosticWarn, texthl = 'DiagnosticSignWarn' },
-	{ name = 'DiagnosticSignInfo', text = symbols.DiagnosticInfo, texthl = 'DiagnosticSignInfo' },
-	{ name = 'DiagnosticSignHint', text = symbols.DiagnosticHint, texthl = 'DiagnosticSignHint' },
 }
 return symbols

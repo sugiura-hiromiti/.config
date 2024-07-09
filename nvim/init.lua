@@ -1,6 +1,10 @@
+vim.opt.fo = { j = true }
+vim.opt.shiftwidth = 3
+vim.opt.tabstop = 3
+vim.opt.softtabstop = 3
 vim.opt.fileencoding = 'utf-8'
 vim.opt.list = true
-vim.opt.listchars = { tab = '│ ' }
+vim.opt.listchars = { tab = '| ' }
 vim.opt.pumblend = 22
 vim.opt.relativenumber = true
 vim.opt.number = true
@@ -8,6 +12,7 @@ vim.opt.autowriteall = true
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.autochdir = true
 vim.opt.laststatus = 0
+vim.opt.cursorline = true
 
 -- lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
