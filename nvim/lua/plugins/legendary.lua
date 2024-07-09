@@ -21,7 +21,6 @@ return {
 				},
 				description = 'customized <esc> key',
 			},
-			{ 't', '<cmd>Legendary<cr>', description = 'open legendary window', mode = { 'v', 'n' } },
 			{
 				itemgroup = 'smart replacement',
 				description = "adjust vim's weired keybinds",
@@ -82,8 +81,22 @@ return {
 					{ '<space>a', vim.lsp.buf.code_action, description = 'code action', mode = { 'n', 'v' } },
 					{ '<space>r', vim.lsp.buf.rename, description = 'rename symbol' },
 					{ '<space>h', vim.lsp.buf.hover, description = 'show hover information' },
-					{ '<c-j>', vim.diagnostic.goto_next, description = 'go to next diagnostic', mode = { 'n', 'v' } },
-					{ '<c-k>', vim.diagnostic.goto_prev, description = 'go to previous diagnostic', mode = { 'n', 'v' } },
+					{
+						'<c-j>',
+						function()
+							vim.diagnostic.jump { count = 1 }
+						end,
+						description = 'go to next diagnostic',
+						mode = { 'n', 'v' },
+					},
+					{
+						'<c-k>',
+						function()
+							vim.diagnostic.jump { count = -1 }
+						end,
+						description = 'go to previous diagnostic',
+						mode = { 'n', 'v' },
+					},
 				},
 			},
 			{
@@ -221,7 +234,7 @@ return {
 							extra = extra .. ' ' .. a
 						end
 					elseif ft == 'cpp' or ft == 'c' then
-						cmd = '!make NEOVIM_CXX_AUTO_RUNNED_FILE=' .. vim.fn.expand '%:t'
+						cmd = '!NEOVIM_CXX_AUTO_RUNNED_FILE=' .. vim.fn.expand '%:t' .. ' make'
 					elseif ft == 'ruby' or ft == 'swift' or ft == 'lua' or ft == 'python' then -- langs which has interpreter
 						local file = vim.fn.expand '%:t'
 						local interpreter = ft
@@ -244,7 +257,7 @@ return {
 					vim.cmd(cmd .. args .. extra)
 				end,
 				description = 'executer',
-				--{ nargs = '*' },
+				opts = { nargs = '*' },
 				unfinished = true,
 			},
 			{
@@ -262,12 +275,14 @@ return {
 				{
 					'filetype',
 					function()
-						vim.opt.fo = { j = true }
-						vim.opt.shiftwidth = 3
-						vim.opt.tabstop = 3
-						vim.opt.softtabstop = 3
-						if vim.opt.ft:get() == 'notify' then
-							vim.opt.ft = 'markdown'
+						local ft = vim.bo.ft
+						if ft == 'notify' then
+							vim.bo.ft = 'markdown'
+						elseif ft == 'rust' then
+							vim.opt.fo = { j = true }
+							vim.opt.shiftwidth = 3
+							vim.opt.tabstop = 3
+							vim.opt.softtabstop = 3
 						end
 					end,
 				},

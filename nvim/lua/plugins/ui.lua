@@ -13,4 +13,6 @@ return {
 	},
 	'norcalli/nvim-colorizer.lua',
 	'stevearc/dressing.nvim',
+	{ 'lewis6991/gitsigns.nvim', opts = {}, config = true },
+	{ 'NeogitOrg/neogit', config = true },
 }

@@ -20,12 +20,24 @@ return {
 	{
 		'chrisgrieser/nvim-spider',
 	},
-	{ 'f-person/auto-dark-mode.nvim', config = true },
 	{
-		'polirritmico/monokai-nightasty.nvim',
+		'f-person/auto-dark-mode.nvim',
+		config = true,
+	},
+	{
+		'catppuccin/nvim',
+		name = 'catppuccin',
 		config = function()
-			vim.opt.background = 'light'
-			vim.cmd 'colo monokai-nightasty'
+			require('catppuccin').setup {
+				background = { dark = 'frappe' },
+				term_colors = true,
+				dim_inactive = { enabled = true },
+				styles = {
+					keywords = { 'bold' },
+					properties = { 'italic', 'bold' },
+				},
+			}
+			vim.cmd 'colo catppuccin'
 		end,
 	},
 }

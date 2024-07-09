@@ -73,7 +73,7 @@ return {
 							fallback()
 						end
 					end),
-					['<s-c-h>'] = cmp.mapping(function(fallback)
+					['<s-bs>'] = cmp.mapping(function(fallback)
 						if ls.expand_or_locally_jumpable() then
 							ls.jump(-1)
 						else

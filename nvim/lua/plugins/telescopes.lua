@@ -36,18 +36,32 @@ return {
 				extensions = {},
 			}
 			require('telescope').load_extension 'smart_open'
+			require('telescope').load_extension 'ui-select'
 		end,
 	},
 	{ 'danielfalk/smart-open.nvim', branch = '0.2.x' },
 	{
 		'FabianWirth/search.nvim',
 		opts = {
-			mappings = { next = '<bs>', prev = '<s-bs>' },
+			mappings = { next = '<c-h>', prev = '<s-bs>' },
 			tabs = {
 				{
 					'smart_open',
 					function(_)
 						require('telescope').extensions.smart_open.smart_open()
+					end,
+				},
+				{
+					'Notify',
+					function(_)
+						require('telescope').extensions.notify.notify()
+					end,
+				},
+				{
+					'Diagnostics',
+					function(opts)
+						opts = opts or {}
+						require('telescope.builtin').diagnostics(opts)
 					end,
 				},
 				{
@@ -63,27 +77,8 @@ return {
 						vim.cmd 'TodoTelescope'
 					end,
 				},
-				{
-					'Keymaps',
-					function(opts)
-						opts = opts or {}
-						require('telescope.builtin').keymaps(opts)
-					end,
-				},
-				{
-					'Diagnostics',
-					function(opts)
-						opts = opts or {}
-						require('telescope.builtin').diagnostics(opts)
-					end,
-				},
-				{
-					'Notify',
-					function(_)
-						require('telescope').extensions.notify.notify()
-					end,
-				},
 			},
 		},
 	},
+	'nvim-telescope/telescope-ui-select.nvim',
 }

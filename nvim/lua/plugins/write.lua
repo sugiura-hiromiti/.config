@@ -105,4 +105,5 @@ return {
 		config = true,
 	},
 	{ 'XxiaoA/ns-textobject.nvim', config = true },
+	'subnut/nvim-ghost.nvim',
 }
