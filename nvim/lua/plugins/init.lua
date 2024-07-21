@@ -22,7 +22,12 @@ return {
 	},
 	{
 		'f-person/auto-dark-mode.nvim',
-		config = true,
+		config = function()
+			local req = require 'auto-dark-mode'
+			if os.getenv 'ITERM_PROFILE' ~= 'Hotkey Window' then
+				req.setup {}
+			end
+		end,
 	},
 	{
 		'catppuccin/nvim',
