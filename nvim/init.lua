@@ -13,6 +13,7 @@ vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.autochdir = true
 vim.opt.laststatus = 0
 vim.opt.cursorline = true
+vim.opt.cursorcolumn = true
 
 -- lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'

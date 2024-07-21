@@ -13,6 +13,11 @@ return {
 	},
 	'norcalli/nvim-colorizer.lua',
 	'stevearc/dressing.nvim',
-	{ 'lewis6991/gitsigns.nvim', opts = {}, config = true },
+	{
+		'lewis6991/gitsigns.nvim',
+		config = function()
+			require('gitsigns').setup()
+		end,
+	},
 	{ 'NeogitOrg/neogit', config = true },
 }
