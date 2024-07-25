@@ -65,16 +65,15 @@ return {
 					end,
 				},
 				{
-					'Buffer',
-					function(opts)
-						opts = opts or {}
-						require('telescope.builtin').buffers(opts)
-					end,
-				},
-				{
 					'TODO',
 					function(_)
 						vim.cmd 'TodoTelescope'
+					end,
+				},
+				{
+					'builtin',
+					function(_)
+						require('telescope.builtin').builtin()
 					end,
 				},
 			},

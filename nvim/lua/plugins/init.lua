@@ -1,4 +1,6 @@
 -- listup plugins here which is difficult to classify
+
+local iterm_profile_is_hotkey = os.getenv 'ITERM_PROFILE' == 'Hotkey Window'
 return {
 	-- Library
 	'kkharji/sqlite.lua',
@@ -24,7 +26,7 @@ return {
 		'f-person/auto-dark-mode.nvim',
 		config = function()
 			local req = require 'auto-dark-mode'
-			if os.getenv 'ITERM_PROFILE' ~= 'Hotkey Window' then
+			if not iterm_profile_is_hotkey then
 				req.setup {}
 			end
 		end,
@@ -35,6 +37,7 @@ return {
 		config = function()
 			require('catppuccin').setup {
 				background = { dark = 'frappe' },
+				transparent_background = true,
 				term_colors = true,
 				dim_inactive = { enabled = true },
 				styles = {
