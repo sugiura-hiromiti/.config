@@ -1,36 +1,4 @@
-local symbols = require 'symbols'
-
 return {
-	{
-		'onsails/lspkind.nvim',
-		config = function()
-			require('lspkind').init {
-				symbol_map = symbols,
-			}
-		end,
-	},
-	{
-		'williamboman/mason.nvim',
-		config = true,
-	},
-	{
-		'williamboman/mason-lspconfig.nvim',
-		opts = {
-			ensure_installed = {
-				'rust_analyzer@nightly',
-				'lua_ls',
-			},
-		},
-	},
-	{
-		'SmiteshP/nvim-navic',
-		opts = {
-			icons = symbols,
-			lsp = { auto_attach = true, preference = { 'marksman', 'texlab' } },
-			highlight = true,
-			click = true,
-		},
-	},
 	{
 		'neovim/nvim-lspconfig',
 		config = function()
@@ -91,18 +59,6 @@ return {
 			require('lspconfig').docker_compose_language_service.setup { capabilities = capabilities, on_attach = on_attach }
 			require('lspconfig').dockerls.setup { capabilities = capabilities, on_attach = on_attach }
 			require('lspconfig').tsserver.setup { capabilities = capabilities, on_attach = on_attach }
-		end,
-	},
-	{
-		'nvimtools/none-ls.nvim',
-		config = function()
-			require('null-ls').setup {
-				sources = {
-					require('null-ls').builtins.formatting.stylua,
-					require('null-ls').builtins.hover.printenv,
-					require('null-ls').builtins.diagnostics.zsh,
-				},
-			}
 		end,
 	},
 }
