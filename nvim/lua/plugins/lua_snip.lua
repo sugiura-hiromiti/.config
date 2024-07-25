@@ -1,11 +1,5 @@
 return {
 	{
-		'windwp/nvim-autopairs',
-		config = function()
-			require('nvim-autopairs').setup { check_ts = true, map_bs = false, map_c_h = true }
-		end,
-	},
-	{
 		-- d: add snippets for todo-comments
 		'L3MON4D3/LuaSnip',
 		config = function()
@@ -98,12 +92,4 @@ return {
 			})
 		end,
 	},
-	{
-		'kylechui/nvim-surround',
-		version = '*',
-		event = 'VeryLazy',
-		config = true,
-	},
-	{ 'XxiaoA/ns-textobject.nvim', config = true },
-	'subnut/nvim-ghost.nvim',
 }

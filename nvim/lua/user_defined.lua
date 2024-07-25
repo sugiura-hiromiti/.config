@@ -43,6 +43,10 @@ m({ 'n', 'x' }, '<c-b>', '<c-w>H')
 m({ 'n', 'x' }, '<c-f>', '<c-w>L')
 m({ 'n', 'x' }, '<c-n>', '<c-w>J')
 m({ 'n', 'x' }, '<c-p>', '<c-w>K')
+m({ 'n', 'x' }, '<s-left>', '<c-w>h')
+m({ 'n', 'x' }, '<s-right>', '<c-w>l')
+m({ 'n', 'x' }, '<s-down>', '<c-w>j')
+m({ 'n', 'x' }, '<s-up>', '<c-w>k')
 
 -- NOTE: lsp
 m({ 'n', 'x' }, '<space>a', vim.lsp.buf.code_action)
@@ -59,13 +63,14 @@ m({ 'n', 'x' }, '<c-k>', function()
 end)
 
 -- NOTE: telescope
-m({ 'n', 'x' }, 'T', tsb.builtin)
-m('n', '<space>o', tsb.lsp_document_symbols)
 m({ 'n', 'x' }, '/', tsb.live_grep)
 m('n', '<space>j', tsb.lsp_references)
+m({ 'n', 'x' }, '<space>d', tsb.diagnostics)
 m('n', '<space>f', require('search').open)
 m({ 'n', 'x' }, '<tab>', require('todo-comments').jump_next)
 m({ 'n', 'x' }, '<s-tab>', require('todo-comments').jump_prev)
+
+-- NOTE: spider
 m({ 'n', 'o', 'x' }, 'w', function()
 	require('spider').motion 'w'
 end)

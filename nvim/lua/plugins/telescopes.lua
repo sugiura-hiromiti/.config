@@ -1,10 +1,11 @@
+local t = require 'telescope'
 return {
 	{
 		'nvim-telescope/telescope.nvim',
 		branch = '0.1.x',
 		config = function()
 			local acts = require 'telescope.actions'
-			require('telescope').setup {
+			t.setup {
 				defaults = {
 					layout_strategy = 'flex',
 					layout_config = {
@@ -35,11 +36,10 @@ return {
 				},
 				extensions = {},
 			}
-			require('telescope').load_extension 'smart_open'
-			require('telescope').load_extension 'ui-select'
+			t.load_extension 'smart_open'
+			t.load_extension 'ui-select'
 		end,
 	},
-	{ 'danielfalk/smart-open.nvim', branch = '0.2.x' },
 	{
 		'FabianWirth/search.nvim',
 		opts = {
@@ -48,26 +48,13 @@ return {
 				{
 					'smart_open',
 					function(_)
-						require('telescope').extensions.smart_open.smart_open()
+						t.extensions.smart_open.smart_open()
 					end,
 				},
 				{
 					'Notify',
 					function(_)
-						require('telescope').extensions.notify.notify()
-					end,
-				},
-				{
-					'Diagnostics',
-					function(opts)
-						opts = opts or {}
-						require('telescope.builtin').diagnostics(opts)
-					end,
-				},
-				{
-					'TODO',
-					function(_)
-						vim.cmd 'TodoTelescope'
+						t.extensions.notify.notify()
 					end,
 				},
 				{
@@ -76,8 +63,19 @@ return {
 						require('telescope.builtin').builtin()
 					end,
 				},
+				{
+					'doc_symbol',
+					function(_)
+						require('telescope.builtin').lsp_document_symbols { show_line = true }
+					end,
+				},
+				{
+					'TODO',
+					function(_)
+						vim.cmd 'TodoTelescope'
+					end,
+				},
 			},
 		},
 	},
-	'nvim-telescope/telescope-ui-select.nvim',
 }
