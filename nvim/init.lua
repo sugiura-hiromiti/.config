@@ -30,6 +30,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup 'plugins'
 
+require 'user_defined'
+
 if vim.fn.expand '%:p' == '' then
 	vim.cmd [[e $MYVIMRC]]
 end

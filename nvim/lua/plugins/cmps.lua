@@ -38,9 +38,9 @@ return {
 					['<a-k>'] = cmp.mapping.scroll_docs(-10),
 					['<a-j>'] = cmp.mapping.scroll_docs(10),
 					['<c-c>'] = cmp.mapping.abort(),
-					['<c-e>'] = cmp.mapping(function(fallback)
-						fallback()
-					end, { 'i', 's', 'c' }),
+					--					['<c-e>'] = cmp.mapping(function(fallback)
+					--						fallback()
+					--					end, { 'i', 's', 'c' }),
 					['<up>'] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
