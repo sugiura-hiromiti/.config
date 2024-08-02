@@ -1,3 +1,26 @@
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system {
+		'git',
+		'clone',
+		'--filter=blob:none',
+		'https://github.com/folke/lazy.nvim.git',
+		'--branch=stable', -- latest stable release
+		lazypath,
+	}
+end
+vim.opt.rtp:prepend(lazypath)
+require('lazy').setup 'plugins'
+require 'user_defined'
+
+function MyStl()
+	return (require('hydra.statusline').get_name() or vim.api.nvim_get_mode()['mode'])
+		.. ' %f'
+		.. require('nvim-navic').get_location()
+		.. '%=%Y %l:%c'
+end
+
+vim.o.statusline = '%{%v:lua.MyStl()%}'
 vim.opt.fo = { j = true }
 vim.opt.shiftwidth = 3
 vim.opt.tabstop = 3
@@ -14,23 +37,6 @@ vim.opt.autochdir = true
 vim.opt.laststatus = 3
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
-
--- lazy
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system {
-		'git',
-		'clone',
-		'--filter=blob:none',
-		'https://github.com/folke/lazy.nvim.git',
-		'--branch=stable', -- latest stable release
-		lazypath,
-	}
-end
-vim.opt.rtp:prepend(lazypath)
-require('lazy').setup 'plugins'
-
-require 'user_defined'
 
 if vim.fn.expand '%:p' == '' then
 	vim.cmd [[e $MYVIMRC]]
