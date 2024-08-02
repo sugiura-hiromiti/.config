@@ -14,10 +14,6 @@ m('n', '<esc>', function()
 	vim.cmd 'noh'
 end)
 
--- NOTE: scroll
-m({ 'n', 'x', 'i' }, '<c-p>', '<c-y>')
-m({ 'n', 'x', 'i' }, '<c-n>', '<c-e>')
-
 -- NOTE: utility
 m({ 'n', 'x' }, 'k', 'gk')
 m({ 'n', 'x' }, 'j', 'gj')
@@ -28,33 +24,15 @@ m({ 'n', 'x' }, '<cr>', ':Make ')
 m({ 'n', 'x' }, '<s-cr>', ':!')
 
 -- NOTE: emacs keybind
+m('!', '<c-a>', '<home>')
+m('!', '<c-e>', '<end>')
 m('!', '<c-k>', '<right><c-c>v$hs')
 m('!', '<c-u>', '<c-c>v^s')
-m('!', '<a-d>', '<right><c-c>ve')
+m('!', '<a-d>', '<right><c-c>ves')
 m('!', '<a-f>', '<c-right>')
 m('!', '<a-b>', '<c-left>')
 
--- NOTE: window manipulation
-m({ 'n', 'x' }, '<left>', '<c-w><')
-m({ 'n', 'x' }, '<right>', '<c-w>>')
-m({ 'n', 'x' }, '<down>', '<c-w>+')
-m({ 'n', 'x' }, '<up>', '<c-w>-')
-m({ 'n', 'x' }, '<c-b>', '<c-w>H')
-m({ 'n', 'x' }, '<c-f>', '<c-w>L')
-m({ 'n', 'x' }, '<c-n>', '<c-w>J')
-m({ 'n', 'x' }, '<c-p>', '<c-w>K')
-m({ 'n', 'x' }, '<s-left>', '<c-w>h')
-m({ 'n', 'x' }, '<s-right>', '<c-w>l')
-m({ 'n', 'x' }, '<s-down>', '<c-w>j')
-m({ 'n', 'x' }, '<s-up>', '<c-w>k')
-
 -- NOTE: lsp
-m({ 'n', 'x' }, '<space>a', vim.lsp.buf.code_action)
-m('n', '<space>r', vim.lsp.buf.rename)
-m('n', '<space>h', function()
-	vim.lsp.buf.hover()
-	vim.lsp.buf.hover()
-end)
 m({ 'n', 'x' }, '<c-j>', function()
 	vim.diagnostic.jump { count = 1 }
 end)
@@ -64,11 +42,6 @@ end)
 
 -- NOTE: telescope
 m({ 'n', 'x' }, '/', tsb.live_grep)
-m('n', '<space>j', tsb.lsp_references)
-m({ 'n', 'x' }, '<space>d', tsb.diagnostics)
-m('n', '<space>f', require('search').open)
-m({ 'n', 'x' }, '<tab>', require('todo-comments').jump_next)
-m({ 'n', 'x' }, '<s-tab>', require('todo-comments').jump_prev)
 
 -- NOTE: spider
 m({ 'n', 'o', 'x' }, 'w', function()

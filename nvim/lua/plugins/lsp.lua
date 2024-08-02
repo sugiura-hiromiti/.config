@@ -7,6 +7,9 @@ return {
 				if client.server_capabilities.inlayHintProvider then
 					vim.lsp.inlay_hint.enable(true, { bufnr })
 				end
+				if client.server_capabilities.documentSymbolProvider then
+					require('nvim-navic').attach(client, bufnr)
+				end
 			end
 			require('lspconfig').rust_analyzer.setup {
 				capabilities = capabilities,

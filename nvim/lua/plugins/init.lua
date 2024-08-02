@@ -67,10 +67,11 @@ return {
 		},
 	},
 	{
+		-- A simple statusline/winbar component that uses LSP to show your current code context
 		'SmiteshP/nvim-navic',
 		opts = {
 			icons = symbols,
-			lsp = { auto_attach = true, preference = { 'marksman', 'texlab' } },
+			lsp = { preference = { 'marksman', 'texlab' } },
 			highlight = true,
 			click = true,
 		},
@@ -107,7 +108,6 @@ return {
 			require('gitsigns').setup()
 		end,
 	},
-	{ 'NeogitOrg/neogit', config = true },
 	'hrsh7th/cmp-nvim-lsp',
 	'hrsh7th/cmp-nvim-lua',
 	'hrsh7th/cmp-nvim-lsp-signature-help',
@@ -130,6 +130,13 @@ return {
 			require('nvim-autopairs').setup { check_ts = true, map_bs = false, map_c_h = true }
 		end,
 	},
-	{ 'danielfalk/smart-open.nvim', branch = '0.2.x' },
+	{
+		'danielfalk/smart-open.nvim',
+		branch = '0.2.x',
+		--		config = function()
+		--			require('telescope').load_extension 'smart_open'
+		--		end,
+	},
 	'nvim-telescope/telescope-ui-select.nvim',
+	'aspeddro/gitui.nvim',
 }
