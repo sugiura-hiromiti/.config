@@ -36,7 +36,7 @@ _g_ gitui <esc> exit
 						if vim.bo.ft == 'lua' then
 							tb.lsp_document_symbols { show_line = true }
 						else
-							tb.lsp_dynamic_workspace_symbols { show_line = true }
+							tb.lsp_workspace_symbols { show_line = true }
 						end
 					end,
 				},
