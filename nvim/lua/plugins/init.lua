@@ -117,6 +117,12 @@ return {
 	'lukas-reineke/cmp-rg',
 	'saadparwaiz1/cmp_luasnip',
 	{
+		'zbirenbaum/copilot-cmp',
+		config = function()
+			require('copilot_cmp').setup()
+		end,
+	},
+	{
 		'kylechui/nvim-surround',
 		version = '*',
 		event = 'VeryLazy',
@@ -139,4 +145,14 @@ return {
 	},
 	'nvim-telescope/telescope-ui-select.nvim',
 	'aspeddro/gitui.nvim',
+	{
+		'zbirenbaum/copilot.lua',
+		cmd = 'Copilot',
+		event = 'InsertEnter',
+		opts = {
+			panel = { enabled = false },
+			suggestion = { enabled = false },
+			filetypes = { ['*'] = true },
+		},
+	},
 }
