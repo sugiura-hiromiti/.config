@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup 'plugins'
 require 'user_defined'
 
+--[[
 function MyStl()
 	return (require('hydra.statusline').get_name() or vim.api.nvim_get_mode()['mode'])
 		.. ' %f'
@@ -21,6 +22,8 @@ function MyStl()
 end
 
 vim.o.statusline = '%{%v:lua.MyStl()%}'
+]]
+
 vim.opt.fo = { j = true }
 vim.opt.shiftwidth = 3
 vim.opt.tabstop = 3
@@ -34,9 +37,9 @@ vim.opt.number = true
 vim.opt.autowriteall = true
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.autochdir = true
-vim.opt.laststatus = 3
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
+vim.opt.laststatus = 3
 
 if vim.fn.expand '%:p' == '' then
 	vim.cmd [[e $MYVIMRC]]
