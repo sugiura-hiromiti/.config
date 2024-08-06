@@ -94,6 +94,15 @@ return {
 		event = 'VeryLazy',
 		opts = {
 			presets = { bottom_search = true, long_message_to_split = true },
+			routes = {
+				{
+					filter = {
+						event = 'msg_show',
+						find = 'Unable to find native fzy native lua dep file. Probably need to update submodules!',
+					},
+					opts = { skip = ture },
+				},
+			},
 		},
 	},
 	{
@@ -105,7 +114,7 @@ return {
 	{
 		'lewis6991/gitsigns.nvim',
 		config = function()
-			require('gitsigns').setup()
+			require('gitsigns').setup {}
 		end,
 	},
 	'hrsh7th/cmp-nvim-lsp',
