@@ -57,8 +57,13 @@ _g_ gitui <esc> exit
 			name = 'window',
 			mode = { 'n', 'x' },
 			body = 't',
-			config = { hint = { type = 'statuslinemanual' } },
-			hint = '_q_ _w_ cycle / _h_ _j_ _k_ _l_ focus / _H_ _J_ _K_ _L_ window / _<c-[>_ _1_ _2_ _3_ resize / _t_ tab',
+			config = { hint = { type = 'window', position = 'middle' } },
+			hint = [[_q_ _w_ cycle
+_h_ _j_ _k_ _l_ focus
+_H_ _J_ _K_ _L_ window
+_<c-[>_ _1_ _2_ _3_ resize
+_t_ tab
+]],
 			heads = {
 				{ 'q', '<c-w>W' },
 				{ 'w', '<c-w>w' },

@@ -19,9 +19,11 @@ m({ 'n', 'x' }, 'k', 'gk')
 m({ 'n', 'x' }, 'j', 'gj')
 m({ 'n', 'x' }, '$', '^')
 m({ 'n', 'x' }, '^', '$')
-m({ 'n', 'x' }, ',', '@')
+m({ 'n', 'x' }, '>', '@:')
+-- keep in mind of usage of `,` & `<`
 m({ 'n', 'x' }, '<cr>', ':Make ')
 m({ 'n', 'x' }, '<s-cr>', ':!')
+m({ 'n', 'x' }, '<del>', '<c-d>')
 
 -- NOTE: emacs keybind
 m('!', '<c-a>', '<home>')
