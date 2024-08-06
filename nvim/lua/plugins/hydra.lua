@@ -56,7 +56,7 @@ _g_ gitui <esc> exit
 		h {
 			name = 'window',
 			mode = { 'n', 'x' },
-			body = 't',
+			body = '<tab>',
 			config = { hint = { type = 'window', position = 'middle' } },
 			hint = [[_q_ _w_ cycle
 _h_ _j_ _k_ _l_ focus
