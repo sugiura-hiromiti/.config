@@ -13,17 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup 'plugins'
 require 'user_defined'
 
---[[
-function MyStl()
-	return (require('hydra.statusline').get_name() or vim.api.nvim_get_mode()['mode'])
-		.. ' %f'
-		.. require('nvim-navic').get_location()
-		.. '%=%Y %l:%c'
-end
-
-vim.o.statusline = '%{%v:lua.MyStl()%}'
-]]
-
 vim.opt.fo = { j = true }
 vim.opt.shiftwidth = 3
 vim.opt.tabstop = 3

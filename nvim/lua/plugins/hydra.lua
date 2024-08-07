@@ -60,9 +60,10 @@ _g_ gitui <esc> exit
 			config = { hint = { type = 'window', position = 'middle' } },
 			hint = [[_q_ _w_ cycle
 _h_ _j_ _k_ _l_ focus
-_H_ _J_ _K_ _L_ window
-_<c-[>_ _1_ _2_ _3_ resize
+_H_ _J_ _K_ _L_ move
+_a_ _s_ _d_ _f_ resize
 _t_ tab
+_x_ close
 ]],
 			heads = {
 				{ 'q', '<c-w>W' },
@@ -75,11 +76,12 @@ _t_ tab
 				{ 'J', '<c-w>J' },
 				{ 'K', '<c-w>K' },
 				{ 'L', '<c-w>L' },
-				{ '<c-[>', '<c-w><' },
-				{ '1', '<c-w>+' },
-				{ '2', '<c-w>-' },
-				{ '3', '<c-w>>' },
+				{ 'a', '<c-w><' },
+				{ 's', '<c-w>+' },
+				{ 'd', '<c-w>-' },
+				{ 'f', '<c-w>>' },
 				{ 't', '<cmd>tabnext<cr>' },
+				{ 'x', 'ZZ' },
 			},
 		}
 		--h : jump
