@@ -58,6 +58,7 @@ return {
 				self.info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
 			end,
 			update = { 'DiagnosticChanged', 'BufEnter' },
+			hl = { bg = '#000000' },
 			{
 				provider = '![',
 			},
@@ -99,7 +100,8 @@ return {
 					or self.status_dict.removed ~= 0
 					or self.status_dict.changed ~= 0
 			end,
-			{ -- git branch name
+			hl = { bg = '#000000' },
+			{
 				provider = function(self)
 					return ' ' .. self.status_dict.head
 				end,
