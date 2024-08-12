@@ -108,7 +108,7 @@ fn + shift - l: yabai -m window --resize right:10:0 || yabai -m window --resize 
 
 # utility
 fn - f: yabai -m window --toggle float
-fn - s: yabai -m window --toggle sticky
+fn - p: yabai -m window --toggle sticky
 fn - 0x1E: yabai -m space --rotate 90
 cmd - h: yabai -m window --minimize
 
