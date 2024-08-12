@@ -113,20 +113,21 @@ c('RmSwap', function()
 end, {})
 
 -- NOTE: autocmd
+local au_id = vim.api.nvim_create_augroup('my_au', { clear = true })
 local a = vim.api.nvim_create_autocmd
 a('filetype', {
+	group = au_id,
 	callback = function()
 		local ft = vim.bo.ft
 		if ft == 'notify' then
-			vim.bo.ft = 'markdown'
-		elseif ft == 'rust' then
-			vim.opt.shiftwidth = 3
-			vim.opt.tabstop = 3
-			vim.opt.softtabstop = 3
+			vim.bo.modifiable = true
+		elseif ft == 'yaml' then
+			vim.bo.expandtab = true
 		end
 	end,
 })
 a('bufreadpost', {
+	group = 'my_au',
 	callback = function()
 		require('colorizer').attach_to_buffer(0)
 	end,
