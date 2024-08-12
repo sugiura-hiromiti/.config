@@ -79,11 +79,14 @@ return {
 	{
 		'nvimtools/none-ls.nvim',
 		config = function()
+			local b = require('null-ls').builtins
 			require('null-ls').setup {
 				sources = {
-					require('null-ls').builtins.formatting.stylua,
-					require('null-ls').builtins.hover.printenv,
-					require('null-ls').builtins.diagnostics.zsh,
+					b.formatting.stylua,
+					b.hover.printenv,
+					b.diagnostics.zsh,
+					b.code_actions.gitrebase,
+					b.code_actions.gitsigns,
 				},
 			}
 		end,
@@ -93,7 +96,7 @@ return {
 		'folke/noice.nvim',
 		event = 'VeryLazy',
 		opts = {
-			presets = { bottom_search = true, long_message_to_split = true },
+			presets = { bottom_search = true },
 			routes = {
 				{
 					filter = {
