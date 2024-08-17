@@ -77,10 +77,10 @@ return {
 					{ name = 'nvim_lsp_signature_help' },
 					{ name = 'luasnip' },
 					{ name = 'nvim_lsp' },
-					{ name = 'copilot' },
 					{ name = 'nvim_lua' },
 					rg,
 					{ name = 'path' },
+					{ name = 'copilot' },
 				},
 			}
 			cmp.setup.cmdline({ '?' }, {

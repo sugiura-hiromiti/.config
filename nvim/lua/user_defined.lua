@@ -3,7 +3,8 @@ local m = vim.keymap.set
 local tsb = require 'telescope.builtin'
 
 m('i', '<esc>', function()
-	if not string.match(vim.bo.bt, 'no') or vim.bo.modifiable then
+	local ft_no_update = vim.bo.ft:find 'Telescope'
+	if (not string.match(vim.bo.bt, 'no') or vim.bo.modifiable) and not ft_no_update then
 		vim.cmd 'update'
 	end
 	vim.cmd 'stopinsert'

@@ -34,7 +34,7 @@ return {
 		config = function()
 			require('catppuccin').setup {
 				background = { dark = 'frappe' },
-				transparent_background = true,
+				--		transparent_background = true,
 				term_colors = true,
 				dim_inactive = { enabled = true },
 				styles = {
@@ -151,9 +151,6 @@ return {
 	{
 		'danielfalk/smart-open.nvim',
 		branch = '0.2.x',
-		--		config = function()
-		--			require('telescope').load_extension 'smart_open'
-		--		end,
 	},
 	'nvim-telescope/telescope-ui-select.nvim',
 	'aspeddro/gitui.nvim',
