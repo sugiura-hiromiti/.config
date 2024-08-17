@@ -47,7 +47,6 @@ _g_ gitui <esc> exit
 				{ 'f', te.smart_open.smart_open },
 				{ 'n', te.notify.notify },
 				{ 't', '<cmd>TodoTelescope<cr>' },
-
 				{ 'g', require('gitui').open },
 				{ '<esc>', nil, { exit = true } },
 			},
