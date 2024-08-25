@@ -1,6 +1,7 @@
 vim.cmd 'smapclear'
 local m = vim.keymap.set
 local tsb = require 'telescope.builtin'
+local td = require 'todo-comments'
 
 m('i', '<esc>', function()
 	local ft_no_update = vim.bo.ft:find 'Telescope'
@@ -45,6 +46,8 @@ end)
 
 -- NOTE: telescope
 m({ 'n', 'x' }, '/', tsb.live_grep)
+m({ 'n', 'x' }, '<up>', td.jump_prev)
+m({ 'n', 'x' }, '<down>', td.jump_next)
 
 -- NOTE: spider
 m({ 'n', 'o', 'x' }, 'w', function()
