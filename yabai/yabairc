@@ -1,3 +1,5 @@
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
 
 # custom config
 
@@ -5,20 +7,18 @@
 yabai -m config \
 focus_follows_mouse autofocus \
 window_placement first_child \
-window_shadow off \
+window_shadow float \
 window_opacity on \
 active_window_opacity 0.9 \
 normal_window_opacity 0.9 \
 layout bsp \
 
 ## rules
-yabai -m rule --add app="^(System Settings|Notes|Activity Monitor|Finder|Karabiner-Elements)$" manage=off sub-layer=below
+yabai -m rule --add app="^(System Settings|Notes|Activity Monitor|Finder|Karabiner-Elements)$" manage=off sub-layer=normal
 yabai -m rule --add app="^(iPhone Mirroring|Amazon Q)$" sticky=on sub-layer=above
 
 # NOTE: https://github.com/koekeishiya/yabai/issues/1669
-#yabai -m rule --add subrole="^AXSystemDialog$" manage=off mouse_follows_focus=off
-yabai -m rule --add title="^Picture in Picture$" manage=off sticky=on sub-layer=above mouse_follows_focus=off
+# yabai -m rule --add subrole="^AXSystemDialog$" manage=off mouse_follows_focus=off
+# yabai -m rule --add title="^Picture in Picture$" manage=off sticky=on sub-layer=above mouse_follows_focus=off
 
 ## signals
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-sudo yabai --load-sa
