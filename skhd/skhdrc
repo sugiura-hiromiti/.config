@@ -1,3 +1,5 @@
+# https://github.com/koekeishiya/skhd/issues/1
+#
 #fn
 #
 #cmd
@@ -83,16 +85,19 @@ ctrl - 0x27: yabai -m space --focus next || yabai -m space --focus first
 ctrl + shift - 0x29: yabai -m space --move prev || yabai -m space --move last
 ctrl + shift - 0x27: yabai -m space --move next || yabai -m space --move first
 
-ctrl - 0x21: yabai -m space --create || yabai -m space --focus last
+ctrl - 0x21: yabai -m space --create && yabai -m space --focus last
 ctrl - 0x2C: yabai -m space --destroy
+
+#ctrl + shift - 0x21:
+ctrl + shift - 0x2C: yabai -m window --space next || yabai -m window --space first
 
 # Window
 
 ## Window Focus
-# fn - h: yabai -m window --focus west || yabai -m window --focus prev || yabai -m window --focus last
-# fn - j: yabai -m window --focus south || yabai -m window --focus next || yabai -m window --focus first
-# fn - k: yabai -m window --focus north || yabai -m window --focus prev || yabai -m window --focus last
-# fn - l: yabai -m window --focus east || yabai -m window --focus next || yabai -m window --focus first
+fn - h: yabai -m window --focus west || yabai -m window --focus prev || yabai -m window --focus last
+fn - j: yabai -m window --focus south || yabai -m window --focus next || yabai -m window --focus first
+fn - k: yabai -m window --focus north || yabai -m window --focus prev || yabai -m window --focus last
+fn - l: yabai -m window --focus east || yabai -m window --focus next || yabai -m window --focus first
 
 ## Window Move
 fn - 0x29: yabai -m window --move rel:-10:0 || yabai -m window --warp west || yabai -m space --create && yabai -m window --space next
