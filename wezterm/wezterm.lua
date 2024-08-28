@@ -8,10 +8,10 @@ local function theme_selector(app)
 	local rslt
 	if app:find 'Dark' then
 		handle:write 'dark'
-		rslt = 'Nova (base16)'
+		rslt = 'Catppuccin Mocha'
 	else
 		handle:write 'light'
-		rslt = 'Alabaster'
+		rslt = 'Catppuccin Latte'
 	end
 	handle:close()
 	return rslt
