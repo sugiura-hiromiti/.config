@@ -100,10 +100,10 @@ fn - k: yabai -m window --focus north || yabai -m window --focus prev || yabai -
 fn - l: yabai -m window --focus east || yabai -m window --focus next || yabai -m window --focus first
 
 ## Window Move
-fn - 0x29: yabai -m window --move rel:-10:0 || yabai -m window --warp west || yabai -m space --create && yabai -m window --space next
+fn - 0x29: yabai -m window --move rel:-10:0 || yabai -m window --warp west
 fn - 0x2C: yabai -m window --move rel:0:10 || yabai -m window --warp south
 fn - 0x21: yabai -m window --move rel:0:-10 || yabai -m window --warp north
-fn - 0x27: yabai -m window --move rel:10:0 || yabai -m window --warp east || yabai -m space --create && yabai -m window --space next
+fn - 0x27: yabai -m window --move rel:10:0 || yabai -m window --warp east
 
 ## Window Resize
 fn + shift - 0x27: yabai -m window --resize left:10:0 || yabai -m window --resize right:-10:0
