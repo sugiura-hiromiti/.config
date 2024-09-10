@@ -23,12 +23,9 @@ brew "jakehilborn/jakehilborn/displayplacer"
 brew "koekeishiya/formulae/skhd"
 brew "koekeishiya/formulae/yabai", args: ["HEAD"]
 cask "alacritty"
-cask "docker"
 cask "font-fira-code-nerd-font"
 cask "karabiner-elements"
-cask "native-access"
 cask "raycast"
-cask "rekordbox"
 cask "the-unarchiver"
 mas "AdBlock Pro", id: 1018301773
 mas "Dark Reader for Safari", id: 1438243180
