@@ -37,13 +37,8 @@ m('!', '<a-f>', '<c-right>')
 m('!', '<a-b>', '<c-left>')
 
 -- NOTE: lsp
-m({ 'n', 'x' }, '<c-j>', function()
-	vim.diagnostic.jump { count = 1 }
-end)
-m({ 'n', 'x' }, '<c-k>', function()
-	vim.diagnostic.jump { count = -1 }
-end)
-
+m({ 'n', 'x' }, '<c-j>', vim.diagnostic.goto_next)
+m({ 'n', 'x' }, '<c-k>', vim.diagnostic.goto_prev)
 -- NOTE: telescope
 m({ 'n', 'x' }, '/', tsb.live_grep)
 m({ 'n', 'x' }, '<up>', td.jump_prev)

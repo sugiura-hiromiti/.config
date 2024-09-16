@@ -16,6 +16,8 @@ layout bsp \
 ## rules
 yabai -m rule --add app="^(iPhone Mirroring|Microsoft Teams|System Settings|Notes|Activity Monitor|Finder|Karabiner-Elements)$" manage=off sub-layer=below
 yabai -m rule --add app="^Amazon Q$" sticky=on sub-layer=above
+yabai -m rule --add subrole="AXDialog" opacity=1.0
+#yabai -m rule --add app=".*" subrole="AXSystemDialog" sticky=on scratchpad="hotkey"
 
 # NOTE: https://github.com/koekeishiya/yabai/issues/1669
 # yabai -m rule --add subrole="^AXSystemDialog$" manage=off mouse_follows_focus=off
