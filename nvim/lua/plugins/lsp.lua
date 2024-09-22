@@ -56,7 +56,14 @@ return {
 				on_attach = on_attach,
 			}
 			lsp_conf.dprint.setup {
-				filetypes = { 'javascript', 'typescript', 'json', 'jsonc', 'markdown', 'toml', 'yaml' },
+				filetypes = { --[[
+				'javascript', 'typescript',]]
+					'json',
+					'jsonc',
+					'markdown',
+					'toml',
+					'yaml',
+				},
 				capabilities = capabilities,
 				on_attach = on_attach,
 			}
@@ -65,7 +72,6 @@ return {
 			lsp_conf.html.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.cssls.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.marksman.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.jsonls.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.docker_compose_language_service.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.dockerls.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.ts_ls.setup { capabilities = capabilities, on_attach = on_attach }

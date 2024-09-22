@@ -98,11 +98,15 @@ c('Make', function(opts)
 			args = ''
 		end
 		cmd = '!' .. interpreter .. ' ' .. file .. ' '
+	elseif ft == 'typescript' then
+		local file = vim.fn.expand '%:t'
+		cmd = '!npx tsx' .. ' '
+		args = file
 	elseif ft == 'html' then -- markup language
 		cmd = '!open ' .. vim.fn.expand '%:t' .. ' '
 	elseif ft == 'markdown' then
-		cmd = [[lua if require('peek').is_open() then require('peek').close() else require('peek').open() end]]
-		--'MarkdownPreviewToggle'
+		--cmd = [[lua if require('peek').is_open() then require('peek').close() else require('peek').open() end]]
+		cmd = 'MarkdownPreviewToggle'
 	end
 
 	vim.cmd(cmd .. args .. extra)

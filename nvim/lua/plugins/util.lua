@@ -164,4 +164,19 @@ return {
 			filetypes = { ['*'] = true },
 		},
 	},
+	{
+		'windwp/nvim-ts-autotag',
+		config = function()
+			require('nvim-ts-autotag').setup {}
+		end,
+	},
+	{
+		'iamcco/markdown-preview.nvim',
+		cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+		ft = { 'markdown' },
+		build = 'cd app && yarn install',
+		init = function()
+			vim.g.mkdp_filetypes = { 'markdown' }
+		end,
+	},
 }
