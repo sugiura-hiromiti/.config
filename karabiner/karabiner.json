@@ -6,6 +6,7 @@
                 "rules": [
                     {
                         "description": "move mouse cursor left by fn - h",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -27,6 +28,7 @@
                     },
                     {
                         "description": "move mouse cursor down by fn - j",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -48,6 +50,7 @@
                     },
                     {
                         "description": "move mouse cursor up by fn - k",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -69,6 +72,7 @@
                     },
                     {
                         "description": "move mouse cursor right by fn - l",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -304,19 +308,19 @@
             "fn_function_keys": [
                 {
                     "from": { "key_code": "f1" },
-                    "to": [{ "mouse_key": { "horizontal_wheel": 64 } }]
+                    "to": [{ "mouse_key": { "x": -3072 } }]
                 },
                 {
                     "from": { "key_code": "f2" },
-                    "to": [{ "mouse_key": { "vertical_wheel": 64 } }]
+                    "to": [{ "mouse_key": { "y": 3072 } }]
                 },
                 {
                     "from": { "key_code": "f3" },
-                    "to": [{ "mouse_key": { "vertical_wheel": -64 } }]
+                    "to": [{ "mouse_key": { "y": -3072 } }]
                 },
                 {
                     "from": { "key_code": "f4" },
-                    "to": [{ "mouse_key": { "horizontal_wheel": -64 } }]
+                    "to": [{ "mouse_key": { "x": 3072 } }]
                 },
                 {
                     "from": { "key_code": "f5" },
@@ -328,23 +332,29 @@
                 },
                 {
                     "from": { "key_code": "f7" },
-                    "to": [{ "pointing_button": "button3" }]
+                    "to": [{ "mouse_key": { "horizontal_wheel": 64 } }]
                 },
                 {
                     "from": { "key_code": "f8" },
-                    "to": [{ "consumer_key_code": "rewind" }]
+                    "to": [{ "mouse_key": { "vertical_wheel": 64 } }]
                 },
                 {
                     "from": { "key_code": "f9" },
-                    "to": [{ "consumer_key_code": "play_or_pause" }]
+                    "to": [{ "mouse_key": { "vertical_wheel": -64 } }]
                 },
                 {
                     "from": { "key_code": "f10" },
-                    "to": [{ "consumer_key_code": "fast_forward" }]
+                    "to": [{ "mouse_key": { "horizontal_wheel": -64 } }]
                 }
             ],
             "name": "Default profile",
-            "selected": true
+            "selected": true,
+            "simple_modifications": [
+                {
+                    "from": { "key_code": "right_option" },
+                    "to": [{ "mouse_key": { "speed_multiplier": 0.125 } }]
+                }
+            ]
         },
         { "name": "tmp" }
     ]
