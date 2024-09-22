@@ -24,6 +24,7 @@ brew "koekeishiya/formulae/skhd"
 brew "koekeishiya/formulae/yabai", args: ["HEAD"]
 cask "alacritty"
 cask "amazon-q"
+cask "background-music"
 cask "font-fira-code-nerd-font"
 cask "karabiner-elements"
 cask "microsoft-auto-update"
