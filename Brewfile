@@ -21,7 +21,7 @@ brew "stylua"
 brew "zoxide"
 brew "jakehilborn/jakehilborn/displayplacer"
 brew "koekeishiya/formulae/skhd"
-brew "koekeishiya/formulae/yabai", args: ["HEAD"]
+brew "koekeishiya/formulae/yabai"
 cask "alacritty"
 cask "amazon-q"
 cask "background-music"
@@ -31,3 +31,7 @@ cask "microsoft-auto-update"
 cask "microsoft-teams"
 cask "raycast"
 cask "the-unarchiver"
+mas "Dark Reader for Safari", id: 1438243180
+mas "Logic Pro", id: 634148309
+mas "Vimlike", id: 1584519802
+mas "Wallpaper Play", id: 1638457121
