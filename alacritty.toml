@@ -1,18 +1,18 @@
 [window]
-decorations="None"
-option_as_alt="OnlyLeft"
+decorations = "None"
+option_as_alt = "OnlyLeft"
 
 [scrolling]
-history=400
+history = 400
 
 [font]
-normal={family="FiraCode Nerd Font"}
-size=11.0
-offset={x=-1,y=-1}
-builtin_box_drawing=false
+normal = { family = "FiraCode Nerd Font" }
+size = 11.0
+offset = { x = -1, y = -2 }
+builtin_box_drawing = false
 
 [keyboard]
-bindings=[
-# applenotes://showNote?identifier=19C0DA4D-7B19-4179-A189-3724532D0CC4
-{key="Enter",mods="Shift",chars="\u001b[13;2u"}
+bindings = [
+	# applenotes://showNote?identifier=19C0DA4D-7B19-4179-A189-3724532D0CC4
+	{ key = "Enter", mods = "Shift", chars = "\u001b[13;2u" },
 ]
