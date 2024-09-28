@@ -56,8 +56,9 @@ return {
 				on_attach = on_attach,
 			}
 			lsp_conf.dprint.setup {
-				filetypes = { --[[
-				'javascript', 'typescript',]]
+				filetypes = {
+					'javascript',
+					'typescript',
 					'json',
 					'jsonc',
 					'markdown',

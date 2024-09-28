@@ -33,7 +33,6 @@ return {
 		name = 'catppuccin',
 		config = function()
 			require('catppuccin').setup {
-				background = { dark = 'frappe' },
 				--		transparent_background = true,
 				term_colors = true,
 				dim_inactive = { enabled = true },
@@ -171,12 +170,11 @@ return {
 		end,
 	},
 	{
-		'iamcco/markdown-preview.nvim',
-		cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
-		ft = { 'markdown' },
-		build = 'cd app && yarn install',
-		init = function()
-			vim.g.mkdp_filetypes = { 'markdown' }
-		end,
+		'toppair/peek.nvim',
+		event = { 'VeryLazy' },
+		build = 'deno task --quiet build:fast',
+		opts = {
+			app = 'browser',
+		},
 	},
 }

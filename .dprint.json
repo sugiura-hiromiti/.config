@@ -14,11 +14,6 @@
 		"memberExpression.linePerExpression": true,
 		"enumDeclaration.memberSpacing": "newLine"
 	},
-	"toml": {
-		"associations": [
-			"**/.cargo/config"
-		]
-	},
 	"markdown": {
 		"textWrap": "always",
 		"emphasisKind": "asterisks"

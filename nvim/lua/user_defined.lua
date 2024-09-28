@@ -63,18 +63,18 @@ c('Make', function(opts)
 	local args = opts.args
 	local extra = ''
 	local ft = vim.bo.filetype
+	local path = vim.fn.expand '%:p'
 	if ft == 'rust' then -- langs which have to be compiled
 		cmd = '!cargo '
 		if args == '' then
-			local paths = vim.fn.expand '%:p'
-			local path = type(paths) == 'string' and paths or paths[1]
+			local file_name = type(path) == 'string' and path or path[1]
 
 			args = 'r '
-			if string.find(path, '/src/bin') ~= nil then
-				local _, l = string.find(path, '/src/bin/')
-				local r = string.find(string.sub(path, l + 1), '/') or string.find(string.sub(path, l + 1), '%.')
+			if string.find(file_name, '/src/bin') ~= nil then
+				local _, l = string.find(file_name, '/src/bin/')
+				local r = string.find(string.sub(file_name, l + 1), '/') or string.find(string.sub(file_name, l + 1), '%.')
 
-				args = args .. '--bin ' .. string.sub(path, l + 1, l + r - 1)
+				args = args .. '--bin ' .. string.sub(file_name, l + 1, l + r - 1)
 			elseif vim.fn.expand '%' ~= 'main.rs' then
 				args = 't '
 			end
@@ -86,27 +86,24 @@ c('Make', function(opts)
 			extra = extra .. ' ' .. a
 		end
 	elseif ft == 'cpp' or ft == 'c' then
-		cmd = '!NEOVIM_CXX_AUTO_RUNNED_FILE=' .. vim.fn.expand '%:t' .. ' make'
-	elseif ft == 'ruby' or ft == 'swift' or ft == 'lua' or ft == 'python' then -- langs which has interpreter
-		local file = vim.fn.expand '%:t'
+		cmd = '!NEOVIM_CXX_AUTO_RUNNED_FILE=' .. path .. ' make'
+	elseif ft == 'ruby' or ft == 'swift' or ft == 'lua' or ft == 'python' or ft == 'typescript' then -- langs which has interpreter
 		local interpreter = ft
 		if interpreter == 'python' then
 			interpreter = interpreter .. '3'
+		elseif interpreter == 'typescript' then
+			interpreter = 'npx tsx'
 		end
 		if args == 't' then
-			file = 'test.' .. ft
+			path = 'test.' .. ft
 			args = ''
 		end
-		cmd = '!' .. interpreter .. ' ' .. file .. ' '
-	elseif ft == 'typescript' then
-		local file = vim.fn.expand '%:t'
-		cmd = '!npx tsx' .. ' '
-		args = file
+		cmd = '!' .. interpreter .. ' ' .. path .. ' '
 	elseif ft == 'html' then -- markup language
-		cmd = '!open ' .. vim.fn.expand '%:t' .. ' '
+		cmd = '!open ' .. path .. ' '
 	elseif ft == 'markdown' then
-		--cmd = [[lua if require('peek').is_open() then require('peek').close() else require('peek').open() end]]
-		cmd = 'MarkdownPreviewToggle'
+		cmd = [[lua if require('peek').is_open() then require('peek').close() else require('peek').open() end]]
+		args = ''
 	end
 
 	vim.cmd(cmd .. args .. extra)

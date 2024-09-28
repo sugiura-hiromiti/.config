@@ -15,6 +15,7 @@ layout bsp \
 
 ## rules
 yabai -m rule --add app="^(iPhone Mirroring|Microsoft Teams|System Settings|Notes|Activity Monitor|Finder|Karabiner-Elements)$" manage=off sub-layer=below
+yabai -m rule --add title=".*Setting.*" manage=off
 yabai -m rule --add app="^Amazon Q$" sticky=on sub-layer=above
 yabai -m rule --add subrole="AXDialog" opacity=1.0
 #yabai -m rule --add app=".*" subrole="AXSystemDialog" sticky=on scratchpad="hotkey"
