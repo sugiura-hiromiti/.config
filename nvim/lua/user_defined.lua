@@ -92,7 +92,12 @@ c('Make', function(opts)
 		if interpreter == 'python' then
 			interpreter = interpreter .. '3'
 		elseif interpreter == 'typescript' then
-			interpreter = 'npx tsx'
+			if args == 'html' then
+				interpreter = 'tsc'
+				args = '&& open ' .. vim.fn.expand '%:p:h' .. '/index.html'
+			else
+				interpreter = 'tsx'
+			end
 		end
 		if args == 't' then
 			path = 'test.' .. ft
