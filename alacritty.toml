@@ -3,7 +3,7 @@ decorations = "None"
 option_as_alt = "OnlyLeft"
 
 [scrolling]
-history = 400
+history = 300
 
 [font]
 normal = { family = "FiraCode Nerd Font" }

@@ -8,4 +8,4 @@ crate-type = ["cdylib"]
 
 [dependencies]
 anyhow = "*"
-nvim-oxi = { version = "*", features = ["neovim-nightly", "test"] }
+nvim-oxi = { version = "*", features = ["neovim-nightly", "test", "mlua"] }
