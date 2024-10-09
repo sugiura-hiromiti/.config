@@ -198,7 +198,7 @@ return {
 	{
 		-- TODO: render on documentation comment like rust filetype
 		'MeanderingProgrammer/render-markdown.nvim',
-		opts = { file_types = { 'markdown', 'noice' } },
+		opts = { file_types = { 'markdown', 'noice', 'cmp_docs' } },
 	},
 	'Hiphish/rainbow-delimiters.nvim',
 }

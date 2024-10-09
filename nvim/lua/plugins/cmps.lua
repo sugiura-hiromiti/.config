@@ -27,8 +27,8 @@ return {
 					documentation = cmp.config.window.bordered(),
 				},
 				mapping = cmp.mapping.preset.insert {
-					['<a-k>'] = cmp.mapping.scroll_docs(-10),
-					['<a-j>'] = cmp.mapping.scroll_docs(10),
+					['<a-k>'] = cmp.mapping.scroll_docs(-7),
+					['<a-j>'] = cmp.mapping.scroll_docs(7),
 					['<c-c>'] = cmp.mapping.abort(),
 					['<c-e>'] = cmp.mapping(function(fallback)
 						fallback()
@@ -91,6 +91,13 @@ return {
 					{ name = 'path' },
 
 					{ name = 'cmdline' },
+					rg,
+				},
+			})
+			cmp.setup.filetype({ 'lisp' }, {
+				sources = {
+					{ name = 'luasnip' },
+					{ name = 'treesitter' },
 					rg,
 				},
 			})
