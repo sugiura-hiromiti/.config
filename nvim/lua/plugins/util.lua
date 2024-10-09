@@ -4,6 +4,7 @@ local iterm_profile_is_hotkey = os.getenv 'ITERM_PROFILE' == 'Hotkey Window'
 return {
 	-- Library
 	'kkharji/sqlite.lua',
+	{ 'echasnovski/mini.nvim', version = false },
 	{
 		'nvim-treesitter/nvim-treesitter',
 		build = ':TSUpdate',
@@ -44,6 +45,13 @@ return {
 			vim.cmd 'colo catppuccin'
 		end,
 	},
+	--	{
+	--		'yorik1984/newpaper.nvim',
+	--		config = function()
+	--			require('newpaper').setup {}
+	--			vim.cmd 'colo newpaper'
+	--		end,
+	--	},
 	{
 		'onsails/lspkind.nvim',
 		config = function()
@@ -102,12 +110,13 @@ return {
 						event = 'msg_show',
 						find = 'Unable to find native fzy native lua dep file. Probably need to update submodules!',
 					},
-					opts = { skip = ture },
+					opts = { skip = true },
 				},
 			},
 		},
 	},
 	{
+		-- TODO: consider using tree-sitter todo comment
 		'folke/todo-comments.nvim',
 		config = true,
 	},
@@ -127,6 +136,7 @@ return {
 	'hrsh7th/cmp-cmdline',
 	'lukas-reineke/cmp-rg',
 	'saadparwaiz1/cmp_luasnip',
+	'ray-x/cmp-treesitter',
 	{
 		'zbirenbaum/copilot-cmp',
 		config = function()
@@ -177,4 +187,18 @@ return {
 			app = 'browser',
 		},
 	},
+	'nvim-telescope/telescope-file-browser.nvim',
+	{
+		'vyfor/cord.nvim',
+		build = './build || .\\build',
+		event = 'VeryLazy',
+		opts = {},
+	},
+	{ 'OXY2DEV/helpview.nvim', lazy = false },
+	{
+		-- TODO: render on documentation comment like rust filetype
+		'MeanderingProgrammer/render-markdown.nvim',
+		opts = { file_types = { 'markdown', 'noice' } },
+	},
+	'Hiphish/rainbow-delimiters.nvim',
 }

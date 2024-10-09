@@ -59,6 +59,8 @@ return {
 				filetypes = {
 					'javascript',
 					'typescript',
+					'javascriptreact',
+					'typescriptreact',
 					'json',
 					'jsonc',
 					'markdown',

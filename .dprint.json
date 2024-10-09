@@ -12,7 +12,9 @@
 		"arrowFunctionParentheses": "preferNone",
 		"binaryExpression.linePerExpression": true,
 		"memberExpression.linePerExpression": true,
-		"enumDeclaration.memberSpacing": "newLine"
+		"enumDeclaration.memberSpacing": "newLine",
+		"semiColons": "always",
+		"PreferHanging": true
 	},
 	"markdown": {
 		"textWrap": "always",

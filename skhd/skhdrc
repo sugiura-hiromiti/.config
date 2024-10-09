@@ -76,7 +76,7 @@
 
 #---------------------------------------------------------------------------------------------------
 
-#ctrl - 0x1E: yabai -m display --focus next || yabai -m display --focus first
+ctrl - 0x1E: yabai -m display --focus next || yabai -m display --focus first
 
 # Space
 ctrl - 0x29: yabai -m space --focus prev || yabai -m space --focus last
@@ -87,6 +87,7 @@ ctrl + shift - 0x27: yabai -m space --move next || yabai -m space --move first
 
 ctrl - 0x21: yabai -m space --create && yabai -m space --focus last
 ctrl - 0x2C: yabai -m space --destroy
+ctrl + shift - 0x2C: yabai -m display
 
 #ctrl + shift - 0x21:
 #ctrl + shift - 0x2C: yabai -m window --space next || yabai -m window --space first
@@ -118,7 +119,8 @@ fn + shift - 0x29: yabai -m window --resize right:10:0 || yabai -m window --resi
 # utility
 fn - f: yabai -m window --toggle float
 fn - p: yabai -m window --toggle sticky
-fn - 0x1E: yabai -m space --rotate 90
+# fn - 0x1E: yabai -m space --rotate 90
+fn - 0x1E: yabai -m window --toggle split
 cmd - h: yabai -m window --minimize
 
 #ctrl - return: alacritty -t sticky_alacritty &
