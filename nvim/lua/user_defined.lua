@@ -85,6 +85,9 @@ c('Make', function(opts)
 		for _, a in ipairs(opts.fargs) do
 			extra = extra .. ' ' .. a
 		end
+	elseif ft == 'lisp' then
+		cmd = '!sbcl --script '
+		args = path
 	elseif ft == 'cpp' or ft == 'c' then
 		cmd = '!NEOVIM_CXX_AUTO_RUNNED_FILE=' .. path .. ' make'
 	elseif ft == 'ruby' or ft == 'swift' or ft == 'lua' or ft == 'python' or ft == 'typescript' then -- langs which has interpreter

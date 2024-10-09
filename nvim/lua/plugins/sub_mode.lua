@@ -13,13 +13,13 @@ return {
 			config = { color = 'teal', hint = { type = 'window', position = 'middle-right' } },
 			hint = [[lsp
 _a_ code action  _j_ jump
-_i_ incoming _r_ rename
-_o_ outgoing _s_ symbol
-_d_ diagnostic _h_ hover
+_r_ rename _d_ diagnostic
+_o_ symbol _h_ hover
 
 telescope
 _b_ builtin _n_ notify
 _f_ smart open _t_ todo
+_e_ file_browser
 
 else
 _g_ gitui <esc> exit
@@ -31,7 +31,7 @@ _g_ gitui <esc> exit
 				{ 'j', tb.lsp_references },
 				{ 'd', tb.diagnostics },
 				{
-					's',
+					'o',
 					function()
 						if vim.bo.ft == 'lua' then
 							tb.lsp_document_symbols { show_line = true }
@@ -40,12 +40,10 @@ _g_ gitui <esc> exit
 						end
 					end,
 				},
-				{ 'i', tb.lsp_incoming_calls },
-				{ 'o', tb.lsp_outgoing_calls },
-
 				{ 'b', tb.builtin },
 				{ 'f', te.smart_open.smart_open },
 				{ 'n', te.notify.notify },
+				{ 'e', te.file_browser.file_browser },
 				{ 't', '<cmd>TodoTelescope<cr>' },
 				{ 'g', require('gitui').open },
 				{ '<esc>', nil, { exit = true } },

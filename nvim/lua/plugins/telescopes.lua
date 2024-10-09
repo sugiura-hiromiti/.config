@@ -34,10 +34,20 @@ return {
 						'--hidden',
 					},
 				},
-				extensions = {},
+				extensions = {
+					file_browser = {
+						grouped = true,
+						select_buffer = true,
+						hidden = true,
+						respect_gitignore = false,
+						follow_symlinks = true,
+						collapse_dirs = true,
+					},
+				},
 			}
 			t.load_extension 'smart_open'
 			t.load_extension 'ui-select'
+			t.load_extension 'file_browser'
 		end,
 	},
 	--	{
