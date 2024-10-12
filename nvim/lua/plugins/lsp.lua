@@ -9,7 +9,8 @@ return {
 					vim.lsp.inlay_hint.enable(true, { bufnr })
 				end
 				if client.server_capabilities.documentSymbolProvider then
-					require('nvim-navic').attach(client, bufnr)
+					print 'attaching'
+					--require('nvim-navic').attach(client, bufnr)
 				end
 			end
 			lsp_conf.rust_analyzer.setup {
@@ -72,12 +73,63 @@ return {
 			}
 			lsp_conf.clangd.setup { capabilities = capabilities, on_attach = on_attach }
 			--lsp_conf.pylsp.setup { capabilities = capabilities, on_attach = on_attach }
+			lsp_conf.marksman.setup { capabilities = capabilities, on_attach = on_attach }
+			lsp_conf.taplo.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.html.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.cssls.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.marksman.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.docker_compose_language_service.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.dockerls.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.ts_ls.setup { capabilities = capabilities, on_attach = on_attach }
+		end,
+	},
+	{
+		'nvimdev/lspsaga.nvim',
+		event = 'LspAttach',
+		config = function()
+			require('lspsaga').setup {
+				symbol_in_winbar = {
+					enable = false,
+				},
+				scroll_preview = {
+					scroll_down = '<a-j>',
+					scroll_up = '<a-k>',
+				},
+				callhierarchy = {
+					keys = {
+						edit = '<cr>',
+						vsplit = 'v',
+						split = 'x',
+						shuttle = 'e',
+					},
+				},
+				code_action = {
+					show_server_name = true,
+					extend_gitsigns = true,
+				},
+				diagnostic = {
+					max_height = 0.8,
+					extend_relatedInformation = true,
+					keys = {
+						exec_action = '<cr>',
+						toggle_or_jump = 'o',
+					},
+				},
+				finder = {
+					max_height = 0.8,
+					right_width = 0.6,
+					default = 'def+ref+imp',
+					keys = {
+						shuttle = 'e',
+						toggle_or_open = '<cr>',
+						vsplit = 'v',
+						split = 'x',
+					},
+				},
+				hover = {
+					open_link = '<cr>',
+				},
+				lightbulb = { enable = false },
+			}
 		end,
 	},
 }

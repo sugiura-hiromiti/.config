@@ -9,7 +9,18 @@ m('i', '<esc>', function()
 		vim.cmd 'update'
 	end
 	vim.cmd 'stopinsert'
-	vim.lsp.buf.format { async = true }
+
+	local has_format_ability = false
+	local lsp_clients = vim.lsp.get_clients()
+	for _, client in pairs(lsp_clients) do
+		if client.server_capabilities.documentFormattingProvider then
+			has_format_ability = true
+			break
+		end
+	end
+	if has_format_ability then
+		vim.lsp.buf.format { async = true }
+	end
 end)
 m('n', '<esc>', function()
 	require('notify').dismiss { pending = true, silent = true }
@@ -23,8 +34,20 @@ m({ 'n', 'x' }, '$', '^')
 m({ 'n', 'x' }, '^', '$')
 m({ 'n', 'x' }, '>', '@:')
 -- keep in mind of usage of `,` & `<`
-m({ 'n', 'x' }, '<cr>', ':Make ')
-m({ 'n', 'x' }, '<s-cr>', ':!')
+m({ 'n', 'x' }, '<cr>', function()
+	if vim.bo.ft == 'ssr' then
+		return '<cr>'
+	else
+		return ':Make '
+	end
+end, { expr = true })
+m({ 'n', 'x' }, '<s-cr>', function()
+	if vim.bo.ft == 'ssr' then
+		return '<s-cr>'
+	else
+		return ':!'
+	end
+end, { expr = true })
 m({ 'n', 'x' }, '<del>', '<c-d>')
 
 -- NOTE: emacs keybind
@@ -87,6 +110,9 @@ c('Make', function(opts)
 		end
 	elseif ft == 'lisp' then
 		cmd = '!sbcl --script '
+		args = path
+	elseif ft == 'scheme' then
+		cmd = '!chibi-scheme '
 		args = path
 	elseif ft == 'cpp' or ft == 'c' then
 		cmd = '!NEOVIM_CXX_AUTO_RUNNED_FILE=' .. path .. ' make'
