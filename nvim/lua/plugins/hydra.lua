@@ -22,7 +22,7 @@ _f_ smart open _t_ todo
 _e_ file_browser
 
 else
-_g_ gitui <esc> exit
+_g_ neogit _s_ ssr <esc> exit
 ]],
 			heads = {
 				{ 'a', l.code_action },
@@ -45,7 +45,8 @@ _g_ gitui <esc> exit
 				{ 'n', te.notify.notify },
 				{ 'e', te.file_browser.file_browser },
 				{ 't', '<cmd>TodoTelescope<cr>' },
-				{ 'g', require('gitui').open },
+				{ 'g', require('neogit').open },
+				{ 's', require('ssr').open },
 				{ '<esc>', nil, { exit = true } },
 			},
 		}

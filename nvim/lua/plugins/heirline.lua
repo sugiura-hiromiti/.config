@@ -4,8 +4,11 @@ return {
 		local symbols = require 'symbols'
 		local hl = require('heirline.utils').get_highlight
 		local cond = require 'heirline.conditions'
+		local lsp_symbol = require('lspsaga.symbol.winbar').get_bar
+		local gps = require 'nvim-gps'
 
 		local align = { provider = '%=' }
+
 		local mode = {
 			{ provider = vim.fn.mode() .. ' ', update = 'ModeChanged' },
 			{
@@ -17,7 +20,33 @@ return {
 				end,
 			},
 		}
-		local path = {
+
+		local symbol_bar_or_ft = {
+			{
+				provider = function()
+					if lsp_symbol() then
+					--						gps.get_location()
+					else
+						lsp_symbol()
+					end
+				end,
+			},
+			{
+				condition = function()
+					if lsp_symbol() or not gps.is_available() then
+						return false
+					else
+						return true
+					end
+				end,
+				provider = function()
+					return vim.bo.ft
+				end,
+			},
+		}
+
+		--[[
+				local path = {
 			provider = function()
 				local path = vim.api.nvim_buf_get_name(0)
 				if path == '' then
@@ -128,6 +157,8 @@ return {
 				return require('nvim-navic').is_available()
 			end,
 		}
+		]]
+
 		local diag = {
 			condition = cond.has_diagnostics,
 			static = {
@@ -175,6 +206,7 @@ return {
 				provider = ']',
 			},
 		}
+
 		local git = {
 			condition = cond.is_git_repo,
 
@@ -224,10 +256,11 @@ return {
 				provider = ')',
 			},
 		}
+
 		local location = {
 			provider = ' %l:%c',
 		}
 
-		require('heirline').setup { statusline = { mode, path, navic, align, diag, git, location } }
+		require('heirline').setup { statusline = { mode, symbol_bar_or_ft, align, diag, git, location } }
 	end,
 }

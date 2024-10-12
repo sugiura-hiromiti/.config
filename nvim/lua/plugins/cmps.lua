@@ -79,26 +79,34 @@ return {
 					{ name = 'nvim_lsp' },
 					{ name = 'nvim_lua' },
 					rg,
-					{ name = 'path' },
-					{ name = 'copilot' },
+					{ name = 'async_path' },
+					{ name = 'diag-codes' },
+					{ name = 'crates' },
 				},
 			}
 			cmp.setup.cmdline({ '?' }, {
-				sources = { rg },
+				sources = { rg, { name = 'nvim_lsp_document_symbol' } },
 			})
 			cmp.setup.cmdline(':', {
 				sources = {
-					{ name = 'path' },
+					{ name = 'async_path' },
 
 					{ name = 'cmdline' },
 					rg,
 				},
 			})
-			cmp.setup.filetype({ 'lisp' }, {
+			cmp.setup.filetype({ 'lisp', 'scheme' }, {
 				sources = {
 					{ name = 'luasnip' },
 					{ name = 'treesitter' },
 					rg,
+				},
+			})
+			cmp.setup.filetype({ 'TelescopePrompt' }, {
+				sources = {
+					{ name = 'nvim_lsp_document_symbol' },
+					rg,
+					{ name = 'async_path' },
 				},
 			})
 		end,

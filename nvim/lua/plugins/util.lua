@@ -2,23 +2,36 @@ local symbols = require 'symbols'
 local iterm_profile_is_hotkey = os.getenv 'ITERM_PROFILE' == 'Hotkey Window'
 
 return {
-	-- Library
+
+	-- NOTE: Library
 	'kkharji/sqlite.lua',
 	{ 'echasnovski/mini.nvim', version = false },
-	{
-		'nvim-treesitter/nvim-treesitter',
-		build = ':TSUpdate',
-		config = function()
-			require('nvim-treesitter.configs').setup {
-				auto_install = true,
-				ignore_install = { 'markdown' },
-				highlight = { enable = true, additional_vim_regex_highlighting = false },
-			}
-		end,
-	},
 	'nvim-lua/plenary.nvim',
 	'MunifTanjim/nui.nvim',
 	'nvim-tree/nvim-web-devicons',
+
+	-- NOTE: appearance
+	{
+		'vyfor/cord.nvim',
+		build = './build || .\\build',
+		event = 'VeryLazy',
+		opts = {},
+	},
+	--	{
+	--		'toppair/peek.nvim',
+	--		event = { 'VeryLazy' },
+	--		build = 'deno task --quiet build:fast',
+	--		opts = {
+	--			app = 'browser',
+	--		},
+	--	},
+	{ 'OXY2DEV/helpview.nvim', lazy = false },
+	{
+		-- TODO: render on documentation comment like rust filetype
+		'MeanderingProgrammer/render-markdown.nvim',
+		opts = { file_types = { 'markdown', 'noice', 'cmp_docs', 'notify' } },
+	},
+	'Hiphish/rainbow-delimiters.nvim',
 	'chrisgrieser/nvim-spider',
 	{
 		'f-person/auto-dark-mode.nvim',
@@ -52,6 +65,8 @@ return {
 	--			vim.cmd 'colo newpaper'
 	--		end,
 	--	},
+
+	-- NOTE: LSP
 	{
 		'onsails/lspkind.nvim',
 		config = function()
@@ -73,16 +88,16 @@ return {
 			},
 		},
 	},
-	{
-		-- A simple statusline/winbar component that uses LSP to show your current code context
-		'SmiteshP/nvim-navic',
-		opts = {
-			icons = symbols,
-			lsp = { preference = { 'marksman', 'texlab' } },
-			highlight = true,
-			click = true,
-		},
-	},
+	--	{
+	--		-- A simple statusline/winbar component that uses LSP to show your current code context
+	--		'SmiteshP/nvim-navic',
+	--		opts = {
+	--			icons = symbols,
+	--			lsp = { preference = { 'marksman', 'texlab' } },
+	--			highlight = true,
+	--			click = true,
+	--		},
+	--	},
 	{
 		'nvimtools/none-ls.nvim',
 		config = function()
@@ -98,6 +113,8 @@ return {
 			}
 		end,
 	},
+
+	-- NOTE: utility
 	{ 'rcarriga/nvim-notify', opts = { background_colour = '#000000' } },
 	{
 		'folke/noice.nvim',
@@ -122,28 +139,70 @@ return {
 	},
 	'norcalli/nvim-colorizer.lua',
 	'stevearc/dressing.nvim',
+
+	-- NOTE: git
 	{
 		'lewis6991/gitsigns.nvim',
 		config = function()
 			require('gitsigns').setup {}
 		end,
 	},
+	'sindrets/diffview.nvim',
+	{ 'NeogitOrg/neogit', config = true },
+
+	-- NOTE: completion
+	'https://codeberg.org/FelipeLema/cmp-async-path',
 	'hrsh7th/cmp-nvim-lsp',
 	'hrsh7th/cmp-nvim-lua',
 	'hrsh7th/cmp-nvim-lsp-signature-help',
 	'hrsh7th/cmp-buffer',
-	'hrsh7th/cmp-path',
+	--'hrsh7th/cmp-path',
 	'hrsh7th/cmp-cmdline',
 	'lukas-reineke/cmp-rg',
 	'saadparwaiz1/cmp_luasnip',
 	'ray-x/cmp-treesitter',
 	{
-		'zbirenbaum/copilot-cmp',
+		'petertriho/cmp-git',
+		init = function()
+			table.insert(require('cmp').get_config().sources, { name = 'git' })
+		end,
+	},
+	'hrsh7th/cmp-nvim-lsp-document-symbol',
+	{
+		-- TODO: config later
+		'saecki/crates.nvim',
+		event = { 'BufRead Cargo.toml' },
 		config = function()
-			require('copilot_cmp').setup()
+			require('crates').setup {
+				lsp = {
+					enabled = true,
+					actions = true,
+					completion = true,
+					hover = true,
+				},
+				completion = {
+					cmp = {
+						enabled = true,
+					},
+					crates = {
+						enabled = true,
+						min_chars = 1,
+					},
+				},
+			}
+		end,
+	},
+	'JMarkin/cmp-diag-codes',
+
+	-- NOTE: edit
+	{
+		'windwp/nvim-ts-autotag',
+		config = function()
+			require('nvim-ts-autotag').setup {}
 		end,
 	},
 	{
+		-- TODO: configure to manipulate surround comment block
 		'kylechui/nvim-surround',
 		version = '*',
 		event = 'VeryLazy',
@@ -157,48 +216,12 @@ return {
 			require('nvim-autopairs').setup { check_ts = true, map_bs = false, map_c_h = true }
 		end,
 	},
+
+	-- NOTE: telescope
 	{
 		'danielfalk/smart-open.nvim',
 		branch = '0.2.x',
 	},
 	'nvim-telescope/telescope-ui-select.nvim',
-	'aspeddro/gitui.nvim',
-	{
-		'zbirenbaum/copilot.lua',
-		cmd = 'Copilot',
-		event = 'InsertEnter',
-		opts = {
-			panel = { enabled = false },
-			suggestion = { enabled = false },
-			filetypes = { ['*'] = true },
-		},
-	},
-	{
-		'windwp/nvim-ts-autotag',
-		config = function()
-			require('nvim-ts-autotag').setup {}
-		end,
-	},
-	{
-		'toppair/peek.nvim',
-		event = { 'VeryLazy' },
-		build = 'deno task --quiet build:fast',
-		opts = {
-			app = 'browser',
-		},
-	},
 	'nvim-telescope/telescope-file-browser.nvim',
-	{
-		'vyfor/cord.nvim',
-		build = './build || .\\build',
-		event = 'VeryLazy',
-		opts = {},
-	},
-	{ 'OXY2DEV/helpview.nvim', lazy = false },
-	{
-		-- TODO: render on documentation comment like rust filetype
-		'MeanderingProgrammer/render-markdown.nvim',
-		opts = { file_types = { 'markdown', 'noice', 'cmp_docs' } },
-	},
-	'Hiphish/rainbow-delimiters.nvim',
 }
