@@ -146,8 +146,6 @@ return {
 			require('gitsigns').setup {}
 		end,
 	},
-	'sindrets/diffview.nvim',
-	{ 'NeogitOrg/neogit', config = true },
 
 	-- NOTE: completion
 	'https://codeberg.org/FelipeLema/cmp-async-path',

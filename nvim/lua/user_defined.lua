@@ -49,7 +49,6 @@ m({ 'n', 'x' }, '<s-cr>', function()
 	end
 end, { expr = true })
 m({ 'n', 'x' }, '<del>', '<c-d>')
-m('n', ':h ', tsb.help_tags)
 
 -- NOTE: emacs keybind
 m('!', '<c-a>', '<home>')
@@ -61,7 +60,7 @@ m('!', '<a-f>', '<c-right>')
 m('!', '<a-b>', '<c-left>')
 
 -- NOTE: lsp
-m({ 'n', 'x' }, '<c-j>', vim.diagnostic.goto_next)
+m({ 'n', 'x' }, '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
 m({ 'n', 'x' }, '<c-k>', vim.diagnostic.goto_prev)
 -- NOTE: telescope
 m({ 'n', 'x' }, '/', tsb.live_grep)
