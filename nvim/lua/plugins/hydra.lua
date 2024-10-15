@@ -19,7 +19,7 @@ _o_ symbol _h_ hover
 telescope
 _b_ builtin _n_ notify
 _f_ smart open _t_ todo
-_e_ file_browser
+_e_ file browser _H_ help
 
 else
 _g_ neogit _s_ ssr <esc> exit
@@ -47,6 +47,7 @@ _g_ neogit _s_ ssr <esc> exit
 				{ 't', '<cmd>TodoTelescope<cr>' },
 				{ 'g', require('neogit').open },
 				{ 's', require('ssr').open },
+				{ 'H', tb.help_tags },
 				{ '<esc>', nil, { exit = true } },
 			},
 		}

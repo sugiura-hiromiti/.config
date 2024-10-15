@@ -5,7 +5,7 @@ return {
 		local hl = require('heirline.utils').get_highlight
 		local cond = require 'heirline.conditions'
 		local lsp_symbol = require('lspsaga.symbol.winbar').get_bar
-		local gps = require 'nvim-gps'
+		--		local gps = require 'nvim-gps'
 
 		local align = { provider = '%=' }
 
@@ -23,17 +23,11 @@ return {
 
 		local symbol_bar_or_ft = {
 			{
-				provider = function()
-					if lsp_symbol() then
-					--						gps.get_location()
-					else
-						lsp_symbol()
-					end
-				end,
+				provider = lsp_symbol,
 			},
 			{
 				condition = function()
-					if lsp_symbol() or not gps.is_available() then
+					if lsp_symbol() ~= nil then
 						return false
 					else
 						return true
@@ -43,6 +37,14 @@ return {
 					return vim.bo.ft
 				end,
 			},
+			--[[
+						{
+				condition = function()
+					return vim.bo.ft == 'lisp' or vim.bo.ft == 'scheme'
+				end,
+				provider = gps.get_location,
+			},
+]]
 		}
 
 		--[[

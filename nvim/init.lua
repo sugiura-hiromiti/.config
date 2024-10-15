@@ -31,7 +31,7 @@ vim.opt.cursorcolumn = true
 vim.opt.laststatus = 3
 
 if vim.fn.expand '%:p' == '' then
-	vim.cmd [[e $MYVIMRC]]
+	vim.cmd 'e $MYVIMRC'
 end
 
 -- #fa0b1c #2048ab #48eb0c #f7f7f7 #3c4c55

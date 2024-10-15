@@ -49,6 +49,7 @@ m({ 'n', 'x' }, '<s-cr>', function()
 	end
 end, { expr = true })
 m({ 'n', 'x' }, '<del>', '<c-d>')
+m('n', ':h ', tsb.help_tags)
 
 -- NOTE: emacs keybind
 m('!', '<c-a>', '<home>')
@@ -149,17 +150,18 @@ end, {})
 -- NOTE: autocmd
 local au_id = vim.api.nvim_create_augroup('my_au', { clear = true })
 local a = vim.api.nvim_create_autocmd
-a('filetype', {
-	group = au_id,
-	callback = function()
-		local ft = vim.bo.ft
-		if ft == 'notify' then
-			vim.bo.modifiable = true
-		elseif ft == 'yaml' then
-			vim.bo.expandtab = true
-		end
-	end,
-})
+-- a('filetype', {
+-- 	group = au_id,
+-- 	callback = function()
+-- 		local ft = vim.bo.ft
+-- 		if ft == 'notify' then
+-- 			vim.bo.modifiable = true
+-- 		elseif ft == 'yaml' then
+-- 			vim.bo.expandtab = true
+-- 		end
+-- 	end,
+-- })
+
 a('bufreadpost', {
 	group = 'my_au',
 	callback = function()
