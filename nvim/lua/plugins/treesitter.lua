@@ -7,6 +7,15 @@ return {
 				auto_install = true,
 				ignore_install = { 'markdown' },
 				highlight = { enable = true, additional_vim_regex_highlighting = false },
+				textsubjects = {
+					enable = true,
+					prev_selection = '/',
+					keymaps = {
+						['.'] = 'textsubjects-smart',
+						[','] = 'textsubjects-container-outer',
+						['i,'] = 'textsubjects-container-inner',
+					},
+				},
 			}
 		end,
 	},
@@ -21,8 +30,11 @@ return {
 			}
 		end,
 	},
-	{
+	--[[
+		{
 		'sugiura-hiromichi/nvim-gps',
 		opts = {},
 	},
+]]
+	'RRethy/nvim-treesitter-textsubjects',
 }

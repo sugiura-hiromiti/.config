@@ -27,7 +27,6 @@ return {
 	--	},
 	{ 'OXY2DEV/helpview.nvim', lazy = false },
 	{
-		-- TODO: render on documentation comment like rust filetype
 		'MeanderingProgrammer/render-markdown.nvim',
 		opts = { file_types = { 'markdown', 'noice', 'cmp_docs', 'notify' } },
 	},
@@ -169,7 +168,6 @@ return {
 	},
 	'hrsh7th/cmp-nvim-lsp-document-symbol',
 	{
-		-- TODO: config later
 		'saecki/crates.nvim',
 		event = { 'BufRead Cargo.toml' },
 		config = function()
@@ -201,14 +199,6 @@ return {
 			require('nvim-ts-autotag').setup {}
 		end,
 	},
-	{
-		-- TODO: configure to manipulate surround comment block
-		'kylechui/nvim-surround',
-		version = '*',
-		event = 'VeryLazy',
-		config = true,
-	},
-	{ 'XxiaoA/ns-textobject.nvim', config = true },
 	'subnut/nvim-ghost.nvim',
 	{
 		'windwp/nvim-autopairs',
