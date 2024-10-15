@@ -53,14 +53,14 @@ fn auto_cmd() -> Result<(),> { todo!() }
 fn utils() -> Result<(),> { todo!() }
 
 fn get_opt<T: nvim_oxi::conversion::FromObject,>(name: &str,) -> T {
-	api::get_option_value::<T,>(name, &opts::OptionOpts::default(),)
-		.expect("failed to get {name}",)
+	api::get_option_value::<T,>(name, &opts::OptionOpts::default(),).expect("failed to get {name}",)
 }
 
 fn global<'lua, LuaType: mlua::FromLua<'lua,>,>(key: &str,) -> LuaType {
-	mlua::lua().globals().get::<&str, LuaType>(key,).expect(&format!(
-		"{ERR_PRE}\n\tFrom `crate::lua_globals`\n\tFailed to get `{key}`"
-	),)
+	mlua::lua()
+		.globals()
+		.get::<&str, LuaType>(key,)
+		.expect(&format!("{ERR_PRE}\n\tFrom `crate::lua_globals`\n\tFailed to get `{key}`"),)
 }
 
 mod oxi_test {
@@ -76,8 +76,7 @@ mod oxi_test {
 	fn global_test() {
 		// get global variable `vim`
 		let vim = global::<mlua::prelude::LuaTable,>("vim",);
-		let _lua_fn =
-			vim.get::<_, mlua::prelude::LuaTable>("fn",).expect("fn",);
+		let _lua_fn = vim.get::<_, mlua::prelude::LuaTable>("fn",).expect("fn",);
 
 		// this code fails. we can't get nested element at once
 		//		let expand =
