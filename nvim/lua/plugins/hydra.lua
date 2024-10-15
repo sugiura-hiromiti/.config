@@ -12,7 +12,7 @@ return {
 			body = '<space>',
 			config = { color = 'teal', hint = { type = 'window', position = 'middle-right' } },
 			hint = [[lsp
-_a_ code action  _j_ jump
+_a_ code action  _l_ finder
 _r_ rename _d_ diagnostic
 _o_ symbol _h_ hover
 
@@ -22,13 +22,13 @@ _f_ smart open _t_ todo
 _e_ file browser _H_ help
 
 else
-_g_ neogit _s_ ssr <esc> exit
+_s_ ssr <esc> exit
 ]],
 			heads = {
-				{ 'a', l.code_action },
+				{ 'a', '<cmd>Lspsaga code_action<cr>' },
 				{ 'r', l.rename },
-				{ 'h', l.hover },
-				{ 'j', tb.lsp_references },
+				{ 'h', '<cmd>Lspsaga hover_doc<cr>' },
+				{ 'l', '<cmd>Lspsaga finder<cr>' },
 				{ 'd', tb.diagnostics },
 				{
 					'o',
@@ -45,7 +45,6 @@ _g_ neogit _s_ ssr <esc> exit
 				{ 'n', te.notify.notify },
 				{ 'e', te.file_browser.file_browser },
 				{ 't', '<cmd>TodoTelescope<cr>' },
-				{ 'g', require('neogit').open },
 				{ 's', require('ssr').open },
 				{ 'H', tb.help_tags },
 				{ '<esc>', nil, { exit = true } },
