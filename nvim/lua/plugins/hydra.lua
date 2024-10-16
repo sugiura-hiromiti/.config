@@ -27,7 +27,7 @@ _s_ ssr <esc> exit
 			heads = {
 				{ 'a', '<cmd>Lspsaga code_action<cr>' },
 				{ 'r', l.rename },
-				{ 'h', '<cmd>Lspsaga hover_doc<cr>' },
+				{ 'h', l.hover },
 				{ 'l', '<cmd>Lspsaga finder<cr>' },
 				{ 'd', tb.diagnostics },
 				{
