@@ -85,8 +85,10 @@ return {
 			yanked_list[3] = t ''
 			local yanked_code = c(1, yanked_list)
 
-			local cb_pre = c(2, choice_arg)
+			local pre_idx = 2
+			local cb_pre = c(pre_idx, choice_arg)
 			local cb_post = f(function(pre)
+				vim.notify(vim.inspect(pre))
 				local post = ''
 				for _, p in pairs(all) do
 					if pre[1][1] == p.pre then
@@ -95,7 +97,7 @@ return {
 					end
 				end
 				return post
-			end, { 1 })
+			end, { pre_idx })
 
 			local jump_marker = i(0)
 

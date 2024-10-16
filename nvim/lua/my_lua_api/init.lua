@@ -77,6 +77,18 @@ mod.comment_indicators = function(comments)
 		rslt.doc.line.inner = rslt.doc.line.outer
 	end
 
+	-- format
+	rslt.doc.block.inner.pre = rslt.doc.block.inner.pre .. ' '
+	rslt.doc.block.outer.pre = rslt.doc.block.outer.pre .. ' '
+	rslt.doc.line.inner = rslt.doc.line.inner .. ' '
+	rslt.doc.line.outer = rslt.doc.line.outer .. ' '
+	rslt.normal.block.pre = rslt.normal.block.pre .. ' '
+	rslt.normal.line = rslt.normal.line .. ' '
+
+	rslt.doc.block.inner.post = ' ' .. rslt.doc.block.inner.post
+	rslt.doc.block.outer.post = ' ' .. rslt.doc.block.outer.post
+	rslt.normal.block.post = ' ' .. rslt.normal.block.post
+
 	return rslt
 end
 
