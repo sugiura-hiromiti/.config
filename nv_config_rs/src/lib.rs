@@ -17,7 +17,26 @@ fn nv_config_rs() -> Result<(),> {
 	utils()
 }
 
+/**
+# md
+
+**a** ~strike~
+
+
+
+|1|2|3|4|
+|---:|:---:|:---|---|
+|~aaa~|*b*|**c**|dish|
+
+```rust
+let a = 3;
+```
+ */
 fn plugins() -> Result<(),> { todo!() }
+
+/**
+# md
+*/
 fn keymap() -> Result<(),> {
 	api::cmd(
 		&api::types::CmdInfos::builder().cmd("smapclear",).build(),
@@ -64,7 +83,6 @@ fn global<'lua, LuaType: mlua::FromLua<'lua,>,>(key: &str,) -> LuaType {
 }
 
 mod oxi_test {
-
 	use super::*;
 	#[nvim_oxi::test]
 	fn get_opt_test() {
