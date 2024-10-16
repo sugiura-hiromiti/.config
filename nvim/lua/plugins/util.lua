@@ -17,18 +17,12 @@ return {
 		event = 'VeryLazy',
 		opts = {},
 	},
-	--	{
-	--		'toppair/peek.nvim',
-	--		event = { 'VeryLazy' },
-	--		build = 'deno task --quiet build:fast',
-	--		opts = {
-	--			app = 'browser',
-	--		},
-	--	},
 	{ 'OXY2DEV/helpview.nvim', lazy = false },
 	{
 		'MeanderingProgrammer/render-markdown.nvim',
-		opts = { file_types = { 'markdown', 'noice', 'cmp_docs', 'notify' } },
+		opts = {
+			file_types = { 'markdown', 'rust', 'noice' },
+		},
 	},
 	'Hiphish/rainbow-delimiters.nvim',
 	'chrisgrieser/nvim-spider',
@@ -57,14 +51,6 @@ return {
 			vim.cmd 'colo catppuccin'
 		end,
 	},
-	--	{
-	--		'yorik1984/newpaper.nvim',
-	--		config = function()
-	--			require('newpaper').setup {}
-	--			vim.cmd 'colo newpaper'
-	--		end,
-	--	},
-
 	-- NOTE: LSP
 	{
 		'onsails/lspkind.nvim',
