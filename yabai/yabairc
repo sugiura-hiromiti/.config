@@ -8,13 +8,13 @@ yabai -m config \
 focus_follows_mouse autofocus \
 window_placement first_child \
 window_shadow float \
-window_opacity on \
+window_opacity off \
 active_window_opacity 0.9 \
 normal_window_opacity 0.9 \
 layout bsp \
 
 ## rules
-yabai -m rule --add app="^(iPhone Mirroring|Microsoft Teams|System Settings|Notes|Activity Monitor|Finder|Karabiner-Elements)$" manage=off sub-layer=below
+yabai -m rule --add app="^(iPhone Mirroring|Microsoft Teams|System Settings|Notes|Activity Monitor|Finder)$" manage=off sub-layer=below
 yabai -m rule --add title=".*Setting.*" manage=off
 yabai -m rule --add app="^Amazon Q$" sticky=on sub-layer=above
 yabai -m rule --add subrole="AXDialog" opacity=1.0

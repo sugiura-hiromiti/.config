@@ -56,6 +56,7 @@ end)
 
 return {
 	show_update_window = true,
+	font = wz.font { family = 'FiraCode Nerd Font', weight = 'Light' },
 	font_size = 12,
 	freetype_load_target = 'HorizontalLcd',
 	line_height = 0.86,

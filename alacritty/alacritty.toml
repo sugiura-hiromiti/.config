@@ -1,3 +1,9 @@
+[general]
+import = [
+	# "~/.config/alacritty/catppuccin-latte.toml",
+	"~/.config/alacritty/catppuccin-mocha.toml",
+]
+
 [window]
 decorations = "None"
 option_as_alt = "OnlyLeft"
@@ -6,8 +12,17 @@ option_as_alt = "OnlyLeft"
 history = 300
 
 [font]
-normal = { family = "FiraCode Nerd Font" }
-size = 12.0
+normal = { style = "ExtraLight", family = "IosevkaTerm Nerd Font" }
+italic = { style = "ExtraLight Italic", family = "IosevkaTerm Nerd Font" }
+bold = { style = "Regular", family = "IosevkaTerm Nerd Font" }
+bold_italic = { style = "Italic", family = "IosevkaTerm Nerd Font" }
+
+size = 13
+offset = { y = -2 }
+
+# size = 16
+# offset = { x = 1, y = -1 }
+
 builtin_box_drawing = false
 
 [keyboard]

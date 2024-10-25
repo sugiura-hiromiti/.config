@@ -17,7 +17,7 @@
 		"PreferHanging": true
 	},
 	"markdown": {
-		"textWrap": "always",
+		"textWrap": "maintain",
 		"emphasisKind": "asterisks"
 	},
 	"yaml": {

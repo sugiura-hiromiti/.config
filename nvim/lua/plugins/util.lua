@@ -1,4 +1,4 @@
-local symbols = require 'symbols'
+local symbols = require 'my_lua_api.symbols'
 local iterm_profile_is_hotkey = os.getenv 'ITERM_PROFILE' == 'Hotkey Window'
 
 return {
@@ -18,12 +18,6 @@ return {
 		opts = {},
 	},
 	{ 'OXY2DEV/helpview.nvim', lazy = false },
-	{
-		'MeanderingProgrammer/render-markdown.nvim',
-		opts = {
-			file_types = { 'markdown', 'rust', 'noice' },
-		},
-	},
 	'Hiphish/rainbow-delimiters.nvim',
 	'chrisgrieser/nvim-spider',
 	{
@@ -73,16 +67,6 @@ return {
 			},
 		},
 	},
-	--	{
-	--		-- A simple statusline/winbar component that uses LSP to show your current code context
-	--		'SmiteshP/nvim-navic',
-	--		opts = {
-	--			icons = symbols,
-	--			lsp = { preference = { 'marksman', 'texlab' } },
-	--			highlight = true,
-	--			click = true,
-	--		},
-	--	},
 	{
 		'nvimtools/none-ls.nvim',
 		config = function()
@@ -90,8 +74,6 @@ return {
 			require('null-ls').setup {
 				sources = {
 					b.formatting.stylua,
-					b.hover.printenv,
-					b.diagnostics.zsh,
 					b.code_actions.gitrebase,
 					b.code_actions.gitsigns,
 				},
@@ -138,8 +120,6 @@ return {
 	'hrsh7th/cmp-nvim-lsp',
 	'hrsh7th/cmp-nvim-lua',
 	'hrsh7th/cmp-nvim-lsp-signature-help',
-	'hrsh7th/cmp-buffer',
-	--'hrsh7th/cmp-path',
 	'hrsh7th/cmp-cmdline',
 	'lukas-reineke/cmp-rg',
 	'saadparwaiz1/cmp_luasnip',
@@ -174,7 +154,6 @@ return {
 			}
 		end,
 	},
-	'JMarkin/cmp-diag-codes',
 
 	-- NOTE: edit
 	{
@@ -183,18 +162,23 @@ return {
 			require('nvim-ts-autotag').setup {}
 		end,
 	},
-	'subnut/nvim-ghost.nvim',
+	--'subnut/nvim-ghost.nvim',
 	{
 		'windwp/nvim-autopairs',
 		config = function()
-			require('nvim-autopairs').setup { check_ts = true, map_bs = false, map_c_h = true }
+			require('nvim-autopairs').setup {
+				check_ts = true,
+				map_bs = false,
+				map_c_h = true,
+				enable_check_bracket_line = false,
+			}
 		end,
 	},
 
 	-- NOTE: telescope
 	{
 		'danielfalk/smart-open.nvim',
-		branch = '0.2.x',
+		branch = '0.3.x',
 	},
 	'nvim-telescope/telescope-ui-select.nvim',
 	'nvim-telescope/telescope-file-browser.nvim',

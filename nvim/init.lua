@@ -30,7 +30,7 @@ vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
 vim.opt.laststatus = 3
 
-if vim.fn.expand '%:p' == '' then
+if vim.fn.expand '%:p' == '' and vim.bo.ft ~= 'lazy' then
 	vim.cmd 'e $MYVIMRC'
 end
 

@@ -1,4 +1,4 @@
-local my_lua_api = require 'my_lua_api'
+local my_lua_api = require 'my_lua_api.util'
 
 return {
 	-- TODO: configure to manipulate surround comment block

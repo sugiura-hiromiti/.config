@@ -22,14 +22,14 @@ _f_ smart open _t_ todo
 _e_ file browser _H_ help
 
 else
-_s_ ssr <esc> exit
+_s_ ssr _c_ commandline <esc> exit
 ]],
 			heads = {
 				{ 'a', '<cmd>Lspsaga code_action<cr>' },
 				{ 'r', l.rename },
 				{ 'h', l.hover },
 				{ 'l', '<cmd>Lspsaga finder<cr>' },
-				{ 'd', tb.diagnostics },
+				{ 'd', '<cmd>Lspsaga show_workspace_diagnostics<cr>' },
 				{
 					'o',
 					function()
@@ -45,8 +45,9 @@ _s_ ssr <esc> exit
 				{ 'n', te.notify.notify },
 				{ 'e', te.file_browser.file_browser },
 				{ 't', '<cmd>TodoTelescope<cr>' },
-				{ 's', require('ssr').open },
 				{ 'H', tb.help_tags },
+				{ 's', require('ssr').open },
+				{ 'c', '<cmd>Lspsaga term_toggle<cr>' },
 				{ '<esc>', nil, { exit = true } },
 			},
 		}
