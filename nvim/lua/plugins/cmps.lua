@@ -5,20 +5,23 @@ return {
 			local ls = require 'luasnip'
 			local cmp = require 'cmp'
 			local lspkind = require 'lspkind'
+			local autopairs = require 'nvim-autopairs.completion.cmp'
 			local rg = {
 				name = 'rg',
-				option = { additional_arguments = '--smart-case', context_after = 7 },
-				keyword_length = 0,
+				option = { additional_arguments = '--smart-case', context_after = 5 },
+				keyword_length = 8,
 			}
+
+			cmp.event:on('confirm_done', autopairs.on_confirm_done { filetypes = { rust = false } })
 
 			cmp.setup {
 				formatting = {
-					format = lspkind.cmp_format {
-						mode = 'symbol',
-					},
+					expandable = { indicator = true },
+					format = lspkind.cmp_format { mode = 'symbol' },
 				},
 				snippet = {
 					expand = function(args)
+						vim.notify(vim.inspect(args), vim.log.levels.INFO, { title = '🫠 cmp snippet -> luasnip' })
 						ls.lsp_expand(args.body)
 					end,
 				},
@@ -26,9 +29,10 @@ return {
 					completion = cmp.config.window.bordered(),
 					documentation = cmp.config.window.bordered(),
 				},
-				mapping = cmp.mapping.preset.insert {
-					['<a-k>'] = cmp.mapping.scroll_docs(-7),
-					['<a-j>'] = cmp.mapping.scroll_docs(7),
+				view = { docs = { auto_open = true } },
+				mapping = {
+					['<c-k>'] = cmp.mapping.scroll_docs(-4),
+					['<c-j>'] = cmp.mapping.scroll_docs(4),
 					['<c-c>'] = cmp.mapping.abort(),
 					['<c-e>'] = cmp.mapping(function(fallback)
 						fallback()
@@ -36,6 +40,7 @@ return {
 					['<up>'] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
+							--cmp.open_docs()
 						elseif ls.choice_active() then
 							ls.change_choice(-1)
 						else
@@ -45,6 +50,7 @@ return {
 					['<down>'] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
+							--cmp.open_docs()
 						elseif ls.choice_active() then
 							ls.change_choice(1)
 						else
@@ -78,23 +84,15 @@ return {
 					{ name = 'luasnip' },
 					{ name = 'nvim_lsp' },
 					{ name = 'nvim_lua' },
-					rg,
 					{ name = 'async_path' },
-					{ name = 'diag-codes' },
 					{ name = 'crates' },
-				},
-			}
-			cmp.setup.cmdline({ '?' }, {
-				sources = { rg, { name = 'nvim_lsp_document_symbol' } },
-			})
-			cmp.setup.cmdline(':', {
-				sources = {
-					{ name = 'async_path' },
-
-					{ name = 'cmdline' },
 					rg,
 				},
-			})
+				experimental = { ghost_text = true },
+			}
+			cmp.setup.cmdline({ '?' }, { sources = { rg, { name = 'nvim_lsp_document_symbol' } } })
+			cmp.setup.cmdline(':', { sources = { { name = 'async_path' }, { name = 'cmdline' }, rg } })
+			cmp.setup.cmdline(':=', { sources = { { name = 'cmdline' }, { name = 'nvim_lua' }, rg } })
 			cmp.setup.filetype({ 'lisp', 'scheme' }, {
 				sources = {
 					{ name = 'luasnip' },

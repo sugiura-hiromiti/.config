@@ -1,1 +1,1 @@
-vim.bo.comments = vim.bo.comments .. ',s:/**'
+vim.bo.comments = 's0:/*!,s1:/*,s2:/**,e:*/,:///,://!,://'

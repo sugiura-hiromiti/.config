@@ -15,8 +15,8 @@ return {
 					},
 					mappings = {
 						i = {
-							['<a-j>'] = a.preview_scrolling_down,
-							['<a-k>'] = a.preview_scrolling_up,
+							['<c-j>'] = a.preview_scrolling_down,
+							['<c-k>'] = a.preview_scrolling_up,
 							['<c-d>'] = a.nop,
 							['<c-u>'] = a.nop,
 						},
@@ -43,6 +43,7 @@ return {
 						follow_symlinks = true,
 						collapse_dirs = true,
 					},
+					smart_open = { show_score = true },
 				},
 			}
 			t.load_extension 'smart_open'
@@ -50,42 +51,4 @@ return {
 			t.load_extension 'file_browser'
 		end,
 	},
-	--	{
-	--		'FabianWirth/search.nvim',
-	--		opts = {
-	--			mappings = { next = '<c-h>', prev = '<s-bs>' },
-	--			tabs = {
-	--				{
-	--					'smart_open',
-	--					function(_)
-	--						t.extensions.smart_open.smart_open()
-	--					end,
-	--				},
-	--				{
-	--					'Notify',
-	--					function(_)
-	--						t.extensions.notify.notify()
-	--					end,
-	--				},
-	--				{
-	--					'builtin',
-	--					function(_)
-	--						require('telescope.builtin').builtin()
-	--					end,
-	--				},
-	--				{
-	--					'doc_symbol',
-	--					function(_)
-	--						require('telescope.builtin').lsp_document_symbols { show_line = true }
-	--					end,
-	--				},
-	--				{
-	--					'TODO',
-	--					function(_)
-	--						vim.cmd 'TodoTelescope'
-	--					end,
-	--				},
-	--			},
-	--		},
-	--	},
 }

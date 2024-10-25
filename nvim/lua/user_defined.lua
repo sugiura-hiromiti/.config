@@ -61,7 +61,7 @@ m('!', '<a-b>', '<c-left>')
 
 -- NOTE: lsp
 m({ 'n', 'x' }, '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
-m({ 'n', 'x' }, '<c-k>', vim.diagnostic.goto_prev)
+m({ 'n', 'x' }, '<c-k>', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
 -- NOTE: telescope
 m({ 'n', 'x' }, '/', tsb.live_grep)
 m({ 'n', 'x' }, '<up>', td.jump_prev)
@@ -110,10 +110,12 @@ c('Make', function(opts)
 		end
 	elseif ft == 'lisp' then
 		cmd = '!sbcl --script '
-		args = path
+		args = path .. ' '
+		extra = opts.args
 	elseif ft == 'scheme' then
 		cmd = '!chibi-scheme '
-		args = path
+		args = path .. ' '
+		extra = opts.args
 	elseif ft == 'cpp' or ft == 'c' then
 		cmd = '!NEOVIM_CXX_AUTO_RUNNED_FILE=' .. path .. ' make'
 	elseif ft == 'ruby' or ft == 'swift' or ft == 'lua' or ft == 'python' or ft == 'typescript' then -- langs which has interpreter
@@ -149,17 +151,18 @@ end, {})
 -- NOTE: autocmd
 local au_id = vim.api.nvim_create_augroup('my_au', { clear = true })
 local a = vim.api.nvim_create_autocmd
--- a('filetype', {
--- 	group = au_id,
--- 	callback = function()
--- 		local ft = vim.bo.ft
--- 		if ft == 'notify' then
--- 			vim.bo.modifiable = true
--- 		elseif ft == 'yaml' then
--- 			vim.bo.expandtab = true
--- 		end
--- 	end,
--- })
+
+a('filetype', {
+	group = au_id,
+	callback = function()
+		local ft = vim.bo.ft
+		if ft == 'notify' then
+			vim.bo.modifiable = true
+		elseif ft == 'noice' then
+			vim.bo.ft = 'markdown'
+		end
+	end,
+})
 
 a('bufreadpost', {
 	group = 'my_au',

@@ -44,7 +44,7 @@ return {
 						diagnostics = { globals = { 'vim', 'hs' } },
 						workspace = {
 							library = vim.api.nvim_get_runtime_file('', true),
-							checkThirdParty = 'Disable',
+							checkThirdParty = 'Apply',
 						},
 						format = { enable = false },
 					},
@@ -75,7 +75,11 @@ return {
 			--lsp_conf.pylsp.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.marksman.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.taplo.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.html.setup { capabilities = capabilities, on_attach = on_attach }
+			lsp_conf.html.setup {
+				capabilities = capabilities,
+				on_attach = on_attach,
+				init_options = { embeddedLanguages = { markdown = true } },
+			}
 			lsp_conf.cssls.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.docker_compose_language_service.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.dockerls.setup { capabilities = capabilities, on_attach = on_attach }
@@ -129,6 +133,7 @@ return {
 					open_link = '<cr>',
 				},
 				lightbulb = { enable = false },
+				beacon = { enable = true },
 			}
 		end,
 	},

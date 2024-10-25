@@ -1,7 +1,7 @@
 return {
 	'rebelot/heirline.nvim',
 	config = function()
-		local symbols = require 'symbols'
+		local symbols = require 'my_lua_api.symbols'
 		local hl = require('heirline.utils').get_highlight
 		local cond = require 'heirline.conditions'
 		local lsp_symbol = require('lspsaga.symbol.winbar').get_bar

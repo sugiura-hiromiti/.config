@@ -17,26 +17,22 @@ fn nv_config_rs() -> Result<(),> {
 	utils()
 }
 
-/**
-# md
-
-**a** ~strike~
-
-
-
-|1|2|3|4|
-|---:|:---:|:---|---|
-|~aaa~|*b*|**c**|dish|
-
-```rust
-let a = 3;
-```
- */
+/// # md
+///
+/// **a** ~strike~
+///
+///
+///
+/// |1|2|3|4|
+/// |---:|:---:|:---|---|
+/// |~aaa~|*b*|**c**|dish|
+///
+/// ```rust
+/// let a = 3;
+/// ```
 fn plugins() -> Result<(),> { todo!() }
 
-/**
-# md
-*/
+/// # md
 fn keymap() -> Result<(),> {
 	api::cmd(
 		&api::types::CmdInfos::builder().cmd("smapclear",).build(),
@@ -55,6 +51,8 @@ fn keymap() -> Result<(),> {
 	Ok((),)
 }
 
+/// # doc
+/// hey hoo
 fn usr_cmd() -> Result<(),> {
 	api::create_user_command(
 		"RmSwap",
