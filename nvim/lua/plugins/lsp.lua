@@ -6,7 +6,7 @@ return {
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			local on_attach = function(client, bufnr)
 				if client.server_capabilities.inlayHintProvider then
-					vim.lsp.inlay_hint.enable(true, { bufnr })
+					vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 				end
 				if client.server_capabilities.documentSymbolProvider then
 					print 'attaching'
@@ -19,19 +19,26 @@ return {
 				settings = {
 					['rust-analyzer'] = {
 						diagnostics = { styleLints = { enable = true } },
-						hover = { actions = { reference = { enable = true } } },
+						hover = { actions = { reference = { enable = true } }, show = { traitAssocItems = 5 } },
 						inlayHints = {
 							closingBraceHints = { minLines = 20 },
 							lifetimeElisionHints = { enable = 'always', ParameterNames = true },
 							maxLength = 20,
 							typeHints = { hideNamedConstructor = false },
+							implicitDrops = { enable = true },
 						},
+						interpret = { tests = true },
 						lens = { implementations = { enable = true } },
 						rustfmt = { rangeFormatting = { enable = true } },
 						semanticHighlighting = { operator = { specialization = { enable = true } } },
 						typing = { autoClosingAngleBrackets = { enable = true } },
 						workspace = { symbol = { search = { kind = 'all_symbols' } } },
 						experimental = { procAttrMacros = true },
+						completion = {
+							fullFunctionSignatures = { enable = true },
+							privateEditable = { enable = true },
+							termSearch = { enable = true },
+						},
 					},
 				},
 			}
