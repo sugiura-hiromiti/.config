@@ -263,6 +263,6 @@ return {
 			provider = ' %l:%c',
 		}
 
-		require('heirline').setup { statusline = { mode, symbol_bar_or_ft, align, diag, git, location } }
+		require('heirline').setup { statusline = { mode, diag, align, symbol_bar_or_ft, align, git, location } }
 	end,
 }

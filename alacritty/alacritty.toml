@@ -9,19 +9,19 @@ decorations = "None"
 option_as_alt = "OnlyLeft"
 
 [scrolling]
-history = 300
+history = 0
 
 [font]
-normal = { style = "ExtraLight", family = "IosevkaTerm Nerd Font" }
-italic = { style = "ExtraLight Italic", family = "IosevkaTerm Nerd Font" }
-bold = { style = "Regular", family = "IosevkaTerm Nerd Font" }
-bold_italic = { style = "Italic", family = "IosevkaTerm Nerd Font" }
+normal = { style = "Regular", family = "MesloLGL Nerd Font" }
+italic = { style = "Italic", family = "MesloLGL Nerd Font" }
+bold = { style = "Bold", family = "MesloLGL Nerd Font" }
+bold_italic = { style = "Bold Italic", family = "MesloLGL Nerd Font" }
 
-size = 13
-offset = { y = -2 }
+size = 12
+offset = { y = -3 }
 
-# size = 16
-# offset = { x = 1, y = -1 }
+# size = 14
+# offset = { y = -4 }
 
 builtin_box_drawing = false
 

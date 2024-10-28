@@ -1,2 +1,2 @@
 vim.bo.modifiable = true
-vim.bo.ft = 'markdown'
+-- vim.bo.ft = 'markdown'
