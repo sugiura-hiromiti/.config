@@ -19,7 +19,7 @@ fn nv_config_rs() -> Result<(),> {
 
 /// # md
 ///
-/// **a** ~strike~
+/// *a* **a** ***a*** ~strike~
 ///
 ///
 ///
