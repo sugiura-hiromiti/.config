@@ -14,11 +14,11 @@
 				system = "aarch64-linux";
 				specialArgs = {inherit inputs; };
 				modules = [
-					./hosts/utm_nix_a/configuration.nix
+					./hosts/utm_nix_a
 					home-manager.nixosModules.home-manager{
 						home-manager.useGlobalPkgs = true;
 						home-manager.useUserPackages = true;
-						home-manager.users.utm_nix_a = import ./home.nix;
+						home-manager.users.utm_nix_a = import ./home-manager/linux;
 					}
 				];
 			};
