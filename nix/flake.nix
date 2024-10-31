@@ -10,11 +10,11 @@
 	};
 	outputs = { self, nixpkgs, home-manager, neovim-nightly-overlay, ... }@inputs: {
 		nixosConfigurations = {
-			nixos = nixpkgs.lib.nixosSystem {
+			utm_nix_a = nixpkgs.lib.nixosSystem {
 				system = "aarch64-linux";
 				specialArgs = {inherit inputs; };
 				modules = [
-					./configuration.nix
+					./hosts/utm_nix_a/configuration.nix
 					home-manager.nixosModules.home-manager{
 						home-manager.useGlobalPkgs = true;
 						home-manager.useUserPackages = true;
