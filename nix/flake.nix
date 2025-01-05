@@ -32,7 +32,7 @@
 	let
 		# make sure hostname is equal to username
 		mkPlatform = { cpu, os, name, hmModule, setter }: setter {
-			system = cpu + os;
+			system = cpu + "-" + os;
 			modules = [
 				(./hosts + "/${name}")
 				hmModule.home-manager {
@@ -63,7 +63,7 @@
 			# 		}
 			# 	];
 			# };
-			utm_nix_a = mkPlatform "aarch" "linux" "utm_nix_a" home-manager.nixosModules nixpkgs.lib.nixosSystem;
+			utm_nix_a = mkPlatform "aarch64" "linux" "utm_nix_a" home-manager.nixosModules nixpkgs.lib.nixosSystem;
 		};
 		darwinConfigurations = {
 			# a = nix-darwin.lib.darwinSystem {
@@ -78,7 +78,7 @@
 			# 		}
 			# 	];
 			# };
-			a = mkPlatform "aarch" "darwin" "a" home-manager.darwinModules nix-darwin.lib.darwinSystem;
+			a = mkPlatform "aarch64" "darwin" "a" home-manager.darwinModules nix-darwin.lib.darwinSystem;
 		};
 	};
 }
