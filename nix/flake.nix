@@ -32,7 +32,7 @@
 	let
 		# make sure hostname is equal to username
 		mkPlatform = { cpu, os, name, hmModule, setter }: setter {
-			system = cpu + "-" + os;
+			system = (cpu + "-" + os);
 			modules = [
 				(./hosts + "/${name}")
 				hmModule.home-manager {
