@@ -37,6 +37,7 @@
 			system = cpu + "-" + os;
 			modules = [
 				(./hosts + "/${name}")
+				(./os + "/${os}")
 				hmModule.home-manager {
 					home-manager = {
 						extraSpecialArgs = {
