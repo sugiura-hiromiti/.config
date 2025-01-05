@@ -21,15 +21,6 @@ return {
 	'Hiphish/rainbow-delimiters.nvim',
 	'chrisgrieser/nvim-spider',
 	{
-		'f-person/auto-dark-mode.nvim',
-		config = function()
-			local req = require 'auto-dark-mode'
-			if not iterm_profile_is_hotkey then
-				req.setup {}
-			end
-		end,
-	},
-	{
 		'catppuccin/nvim',
 		name = 'catppuccin',
 		config = function()
@@ -74,8 +65,9 @@ return {
 			require('null-ls').setup {
 				sources = {
 					b.formatting.stylua,
-					b.code_actions.gitrebase,
-					b.code_actions.gitsigns,
+					-- b.code_actions.gitrebase,
+					-- b.code_actions.gitsigns,
+					b.formatting.google_java_format,
 				},
 			}
 		end,
@@ -113,6 +105,12 @@ return {
 	},
 	'norcalli/nvim-colorizer.lua',
 	'stevearc/dressing.nvim',
+	{
+		'RaafatTurki/hex.nvim',
+		config = function()
+			require('hex').setup()
+		end,
+	},
 
 	-- NOTE: git
 	{
@@ -121,6 +119,7 @@ return {
 			require('gitsigns').setup {}
 		end,
 	},
+	{ 'aspeddro/gitui.nvim', opts = {} },
 
 	-- NOTE: completion
 	'https://codeberg.org/FelipeLema/cmp-async-path',
@@ -138,6 +137,7 @@ return {
 		end,
 	},
 	'hrsh7th/cmp-nvim-lsp-document-symbol',
+	{ 'zbirenbaum/copilot-cmp', opts = {} },
 	{
 		'saecki/crates.nvim',
 		event = { 'BufRead Cargo.toml' },
@@ -189,4 +189,15 @@ return {
 	},
 	'nvim-telescope/telescope-ui-select.nvim',
 	'nvim-telescope/telescope-file-browser.nvim',
+
+	--  NOTE: ai
+	{
+		'zbirenbaum/copilot.lua',
+		cmd = 'Copilot',
+		event = 'InsertEnter',
+		opts = {
+			panel = { enabled = false },
+			suggestion = { enabled = false },
+		},
+	},
 }

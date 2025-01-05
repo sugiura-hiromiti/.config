@@ -30,7 +30,9 @@ fn nv_config_rs() -> Result<(),> {
 /// ```rust
 /// let a = 3;
 /// ```
-fn plugins() -> Result<(),> { todo!() }
+fn plugins() -> Result<(),> {
+	todo!()
+}
 
 /// # md
 fn keymap() -> Result<(),> {
@@ -66,8 +68,12 @@ fn usr_cmd() -> Result<(),> {
 	Ok((),)
 }
 
-fn auto_cmd() -> Result<(),> { todo!() }
-fn utils() -> Result<(),> { todo!() }
+fn auto_cmd() -> Result<(),> {
+	todo!()
+}
+fn utils() -> Result<(),> {
+	todo!()
+}
 
 fn get_opt<T: nvim_oxi::conversion::FromObject,>(name: &str,) -> T {
 	api::get_option_value::<T,>(name, &opts::OptionOpts::default(),).expect("failed to get {name}",)
@@ -110,5 +116,7 @@ mod oxi_test {
 	}
 
 	#[nvim_oxi::test]
-	fn keymap_test() { let _ = keymap(); }
+	fn keymap_test() {
+		let _ = keymap();
+	}
 }

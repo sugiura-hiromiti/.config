@@ -9,7 +9,7 @@ return {
 			local rg = {
 				name = 'rg',
 				option = { additional_arguments = '--smart-case', context_after = 5 },
-				keyword_length = 8,
+				keyword_length = 6,
 			}
 
 			cmp.event:on('confirm_done', autopairs.on_confirm_done { filetypes = { rust = false } })
@@ -17,17 +17,22 @@ return {
 			cmp.setup {
 				formatting = {
 					expandable = { indicator = true },
-					format = lspkind.cmp_format { mode = 'symbol' },
+					format = lspkind.cmp_format { mode = 'symbol', before = require('tailwind-tools.cmp').lspkind_format },
 				},
 				snippet = {
 					expand = function(args)
-						vim.notify(vim.inspect(args), vim.log.levels.INFO, { title = '🫠 cmp snippet -> luasnip' })
 						ls.lsp_expand(args.body)
 					end,
 				},
 				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
+					completion = {
+						winblend = 25,
+					},
+					documentation = {
+						winblend = 30,
+						max_width = 0,
+						max_height = 0,
+					},
 				},
 				view = { docs = { auto_open = true } },
 				mapping = {
@@ -86,9 +91,10 @@ return {
 					{ name = 'nvim_lua' },
 					{ name = 'async_path' },
 					{ name = 'crates' },
+					{ name = 'copilot' },
 					rg,
 				},
-				experimental = { ghost_text = true },
+				--				experimental = { ghost_text = true },
 			}
 			cmp.setup.cmdline({ '?' }, { sources = { rg, { name = 'nvim_lsp_document_symbol' } } })
 			cmp.setup.cmdline(':', { sources = { { name = 'async_path' }, { name = 'cmdline' }, rg } })

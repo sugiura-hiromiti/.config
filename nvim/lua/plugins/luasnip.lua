@@ -49,7 +49,6 @@ return {
 					if pbpaste_hndlr ~= nil then
 						pbpaste = pbpaste_hndlr:read '*a'
 					else
-						vim.notify('pbpaste_hndlr is nil', vim.log.levels.INFO, { title = '🫠 lua_snip_def' })
 					end
 
 					if pbpaste:find '\n' then
@@ -74,9 +73,6 @@ return {
 					end
 					lines_with_nl[#lines_with_nl + 1] = ''
 
-					vim.notify('lines is:\n' .. vim.inspect(lines), vim.log.levels.DEBUG)
-					vim.notify('lines_with_nl is:\n' .. vim.inspect(lines_with_nl), vim.log.levels.DEBUG)
-
 					local yanked_list = {}
 					if expand_at_new_line then
 						yanked_list[1] = t(lines_with_nl)
@@ -91,7 +87,6 @@ return {
 					local pre_idx = 2
 					local cb_pre = c(pre_idx, choice_arg)
 					local cb_post = f(function(pre)
-						vim.notify(vim.inspect(pre))
 						local post = ''
 						for _, p in pairs(all) do
 							if pre[1][1] == p.pre then

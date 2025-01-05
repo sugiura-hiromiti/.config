@@ -5,7 +5,6 @@ return {
 		config = function()
 			require('nvim-treesitter.configs').setup {
 				auto_install = true,
-				ignore_install = { 'markdown' },
 				highlight = { enable = true, additional_vim_regex_highlighting = false },
 				textsubjects = {
 					enable = true,
@@ -30,11 +29,5 @@ return {
 			}
 		end,
 	},
-	--[[
-		{
-		'sugiura-hiromichi/nvim-gps',
-		opts = {},
-	},
-]]
 	'RRethy/nvim-treesitter-textsubjects',
 }
