@@ -52,17 +52,18 @@
 	in
 	{
 		nixosConfigurations={
-			utm_nix_a=nixpkgs.lib.nixosSystem{
-				system="aarch64-linux";
-				modules=[
-					./hosts/utm_nix_a
-					home-manager.nixosModules.home-manager{
-						home-manager.extraSpecialArgs = {
-							inherit inputs;
-						};
-					}
-				];
-			};
+			# utm_nix_a=nixpkgs.lib.nixosSystem{
+			# 	system="aarch64-linux";
+			# 	modules=[
+			# 		./hosts/utm_nix_a
+			# 		home-manager.nixosModules.home-manager{
+			# 			home-manager.extraSpecialArgs = {
+			# 				inherit inputs;
+			# 			};
+			# 		}
+			# 	];
+			# };
+			utm_nix_a = mkPlatform "aarch" "linux" "utm_nix_a" home-manager.nixosModules nixpkgs.lib.nixosSystem;
 		};
 		darwinConfigurations = {
 			# a = nix-darwin.lib.darwinSystem {
@@ -77,7 +78,7 @@
 			# 		}
 			# 	];
 			# };
-			a = mkPlatform "aarch" "darwin" "a" home-manager.nixosModules nix-darwin.lib.darwinSystem;
+			a = mkPlatform "aarch" "darwin" "a" home-manager.darwinModules nix-darwin.lib.darwinSystem;
 		};
 	};
 }
