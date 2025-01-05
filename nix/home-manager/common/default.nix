@@ -7,9 +7,6 @@
 			inputs.inputs.rust-overlay.overlays.default
 		];
 	};
-	home = {
-		stateVersion = "24.05";
-	};
 	wayland = {
 		windowManager = {
 			hyprland = {
@@ -18,6 +15,7 @@
 		};
 	};
 	home = {
+		stateVersion = "24.11";
 		packages = with pkgs; [
 			ripgrep
 			eza

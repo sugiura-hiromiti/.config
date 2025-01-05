@@ -8,10 +8,5 @@
 		packages = with pkgs; [
 			spice-vdagent
 		];
-		programs = {
-			niri = {
-				enable = true;
-			};
-		};
 	};
 }
