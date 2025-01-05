@@ -69,8 +69,6 @@ end, { expr = true })
 m({ 'n', 'x' }, '<del>', '<c-d>')
 m({ 'n', 'i', 'c', 'x' }, '<c-tab>', '<cmd>tabnext<cr>')
 m({ 'n', 'i', 'c', 'x' }, '<c-s-tab>', '<cmd>tabprevious<cr>')
--- m('n', 'gf', function()
--- end)
 m('t', '<esc>', '<c-\\><c-n>')
 
 -- NOTE: emacs keybind
