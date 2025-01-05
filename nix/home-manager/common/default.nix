@@ -90,7 +90,7 @@
 			enable =true;
 			defaultCommand = "fd";
 			changeDirWidgetCommand = "fd --type d";
-			fileWidgtCommand = "fd --type f";
+			fileWidgetCommand = "fd --type f";
 		};
 		fd = {
 			enable = true;
