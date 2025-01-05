@@ -3,6 +3,19 @@ local m = vim.keymap.set
 local tsb = require 'telescope.builtin'
 local td = require 'todo-comments'
 
+local function table_contains(table, elem)
+	for _, v in pairs(table) do
+		if v == elem then
+			return true
+		end
+	end
+	return false
+end
+
+local function is_url(path)
+	return path:match '^https?://' or path:match '^http?://'
+end
+
 m('i', '<esc>', function()
 	local ft_no_update = vim.bo.ft:find 'Telescope'
 	if (not string.match(vim.bo.bt, 'no') or vim.bo.modifiable) and not ft_no_update then
@@ -16,6 +29,7 @@ m('i', '<esc>', function()
 		if client.server_capabilities.documentFormattingProvider then
 			has_format_ability = true
 			break
+		else
 		end
 	end
 	if has_format_ability then
@@ -35,7 +49,11 @@ m({ 'n', 'x' }, '^', '$')
 m({ 'n', 'x' }, '>', '@:')
 -- keep in mind of usage of `,` & `<`
 m({ 'n', 'x' }, '<cr>', function()
-	if vim.bo.ft == 'ssr' then
+	local special_ft = { 'ssr' }
+	local cfile = vim.fn.expand '<cfile>'
+	if is_url(cfile) then
+		vim.ui.open(cfile)
+	elseif table_contains(special_ft, vim.bo.ft) then
 		return '<cr>'
 	else
 		return ':Make '
@@ -49,6 +67,11 @@ m({ 'n', 'x' }, '<s-cr>', function()
 	end
 end, { expr = true })
 m({ 'n', 'x' }, '<del>', '<c-d>')
+m({ 'n', 'i', 'c', 'x' }, '<c-tab>', '<cmd>tabnext<cr>')
+m({ 'n', 'i', 'c', 'x' }, '<c-s-tab>', '<cmd>tabprevious<cr>')
+-- m('n', 'gf', function()
+-- end)
+m('t', '<esc>', '<c-\\><c-n>')
 
 -- NOTE: emacs keybind
 m('!', '<c-a>', '<home>')
@@ -93,7 +116,7 @@ c('Make', function(opts)
 			local file_name = type(path) == 'string' and path or path[1]
 
 			args = 'r '
-			if string.find(file_name, '/src/bin') ~= nil then
+			if string.find(file_name, '/src/bin/') ~= nil then
 				local _, l = string.find(file_name, '/src/bin/')
 				local r = string.find(string.sub(file_name, l + 1), '/') or string.find(string.sub(file_name, l + 1), '%.')
 
@@ -118,6 +141,16 @@ c('Make', function(opts)
 		extra = opts.args
 	elseif ft == 'cpp' or ft == 'c' then
 		cmd = '!NEOVIM_CXX_AUTO_RUNNED_FILE=' .. path .. ' make'
+	elseif ft == 'java' then
+		if path:find 'test' ~= nil then
+			cmd = 'JavaTestRunnerCurrentClass'
+		else
+			if args == 's' then
+				cmd = 'JavaRunnerStopMain'
+			else
+				cmd = 'JavaRunnerRunMain'
+			end
+		end
 	elseif ft == 'ruby' or ft == 'swift' or ft == 'lua' or ft == 'python' or ft == 'typescript' then -- langs which has interpreter
 		local interpreter = ft
 		if interpreter == 'python' then

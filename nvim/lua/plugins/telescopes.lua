@@ -42,6 +42,12 @@ return {
 						respect_gitignore = false,
 						follow_symlinks = true,
 						collapse_dirs = true,
+						mappings = {
+							['i'] = {
+								-- C have to be upper case to work
+								['<C-t>'] = a.select_tab,
+							},
+						},
 					},
 					smart_open = { show_score = true },
 				},

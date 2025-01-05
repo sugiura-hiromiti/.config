@@ -22,7 +22,7 @@ _f_ smart open _t_ todo
 _e_ file browser _H_ help
 
 else
-_s_ ssr _c_ commandline <esc> exit
+_g_ gitui _s_ ssr _c_ commandline <esc> exit
 ]],
 			heads = {
 				{ 'a', '<cmd>Lspsaga code_action<cr>' },
@@ -46,6 +46,7 @@ _s_ ssr _c_ commandline <esc> exit
 				{ 'e', te.file_browser.file_browser },
 				{ 't', '<cmd>TodoTelescope<cr>' },
 				{ 'H', tb.help_tags },
+				{ 'g', '<cmd>Gitui<cr>' },
 				{ 's', require('ssr').open },
 				{ 'c', '<cmd>Lspsaga term_toggle<cr>' },
 				{ '<esc>', nil, { exit = true } },
@@ -60,9 +61,8 @@ _s_ ssr _c_ commandline <esc> exit
 			hint = [[_q_ _w_ cycle
 _h_ _j_ _k_ _l_ focus
 _H_ _J_ _K_ _L_ move
-_a_ _s_ _d_ _f_ resize
-_t_ tab
-_x_ close
+_<c-b>_ _<c-n>_ _<c-p>_ _<c-f>_ resize
+_t_ split new tab _c_ close _x_ exit
 ]],
 			heads = {
 				{ 'q', '<c-w>W' },
@@ -75,12 +75,35 @@ _x_ close
 				{ 'J', '<c-w>J' },
 				{ 'K', '<c-w>K' },
 				{ 'L', '<c-w>L' },
-				{ 'a', '<c-w><' },
-				{ 's', '<c-w>+' },
-				{ 'd', '<c-w>-' },
-				{ 'f', '<c-w>>' },
-				{ 't', '<cmd>tabnext<cr>' },
-				{ 'x', 'ZZ' },
+				{ '<c-b>', '<c-w><' },
+				{ '<c-n>', '<c-w>+' },
+				{ '<c-p>', '<c-w>-' },
+				{ '<c-f>', '<c-w>>' },
+				--{ 't', '<cmd>tab split<cr>' },
+				{
+					't',
+					function()
+						local win = vim.api.nvim_get_current_win()
+						local buf = vim.api.nvim_get_current_buf()
+
+						-- saves the buffer
+						vim.api.nvim_buf_call(buf, function()
+							vim.cmd 'update'
+						end)
+
+						-- split window
+						vim.api.nvim_win_close(win, true)
+						vim.cmd 'tabnew'
+						vim.api.nvim_set_current_buf(buf)
+					end,
+				},
+				{ 'c', 'ZZ' },
+				{
+					'x',
+					function()
+						vim.cmd 'wqa'
+					end,
+				},
 			},
 		}
 		--h : jump

@@ -1,4 +1,4 @@
-local fts = { 'markdown', 'noice', 'rust', 'typescript', 'javascript', 'scheme', 'Avante' }
+local fts = { 'markdown', 'noice', 'rust', 'typescript', 'javascript', 'scheme', 'Avante', 'cmp_docs' }
 
 return {
 	'MeanderingProgrammer/render-markdown.nvim',

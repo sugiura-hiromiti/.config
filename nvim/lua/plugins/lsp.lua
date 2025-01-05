@@ -1,18 +1,19 @@
+local on_attach = function(client, bufnr)
+	if client.server_capabilities.inlayHintProvider then
+		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+	end
+	if client.server_capabilities.documentSymbolProvider then
+		print 'attaching'
+	end
+end
+
 return {
 	{
 		'neovim/nvim-lspconfig',
 		config = function()
-			local lsp_conf = require 'lspconfig'
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
-			local on_attach = function(client, bufnr)
-				if client.server_capabilities.inlayHintProvider then
-					vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-				end
-				if client.server_capabilities.documentSymbolProvider then
-					print 'attaching'
-					--require('nvim-navic').attach(client, bufnr)
-				end
-			end
+			local lsp_conf = require 'lspconfig'
+			--			vim.no
 			lsp_conf.rust_analyzer.setup {
 				capabilities = capabilities,
 				on_attach = on_attach,
@@ -25,7 +26,7 @@ return {
 							lifetimeElisionHints = { enable = 'always', ParameterNames = true },
 							maxLength = 20,
 							typeHints = { hideNamedConstructor = false },
-							implicitDrops = { enable = true },
+							--						implicitDrops = { enable = true },
 						},
 						interpret = { tests = true },
 						lens = { implementations = { enable = true } },
@@ -35,6 +36,8 @@ return {
 						workspace = { symbol = { search = { kind = 'all_symbols' } } },
 						experimental = { procAttrMacros = true },
 						completion = {
+							--  NOTE: currently, resolving function signature on completion is broken,
+							--  [this is bug of cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp/issues/72)
 							fullFunctionSignatures = { enable = true },
 							privateEditable = { enable = true },
 							termSearch = { enable = true },
@@ -79,8 +82,12 @@ return {
 				on_attach = on_attach,
 			}
 			lsp_conf.clangd.setup { capabilities = capabilities, on_attach = on_attach }
-			--lsp_conf.pylsp.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.marksman.setup { capabilities = capabilities, on_attach = on_attach }
+			lsp_conf.sqlls.setup {
+				capabilities = capabilities,
+				on_attach = on_attach,
+				root_dir = '~/.config/sql-language-server/',
+			}
 			lsp_conf.taplo.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.html.setup {
 				capabilities = capabilities,
@@ -91,6 +98,7 @@ return {
 			lsp_conf.docker_compose_language_service.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.dockerls.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.ts_ls.setup { capabilities = capabilities, on_attach = on_attach }
+			lsp_conf.nil_ls.setup { capabilities = capabilities, on_attach = on_attach }
 		end,
 	},
 	{
@@ -107,7 +115,7 @@ return {
 				},
 				callhierarchy = {
 					keys = {
-						edit = '<cr>',
+						edit = 'e',
 						vsplit = 'v',
 						split = 'x',
 						shuttle = 'e',
@@ -121,7 +129,7 @@ return {
 					max_height = 0.8,
 					extend_relatedInformation = true,
 					keys = {
-						exec_action = '<cr>',
+						exec_action = 'e',
 						toggle_or_jump = 'o',
 					},
 				},
@@ -131,17 +139,59 @@ return {
 					default = 'def+ref+imp',
 					keys = {
 						shuttle = 'e',
-						toggle_or_open = '<cr>',
+						toggle_or_open = 'o',
 						vsplit = 'v',
 						split = 'x',
 					},
 				},
 				hover = {
-					open_link = '<cr>',
+					--					open_link = 'o',
 				},
 				lightbulb = { enable = false },
 				beacon = { enable = true },
 			}
 		end,
+	},
+	{
+		'nvim-java/nvim-java',
+		config = function()
+			require('java').setup {
+				jdk = {
+					auto_install = false,
+				},
+			}
+
+			local capabilities = require('cmp_nvim_lsp').default_capabilities()
+			require('lspconfig').jdtls.setup {
+				capabilityes = capabilities,
+				on_attach = on_attach,
+				settings = {
+					java = {
+						configuration = {
+							runtimes = {
+								{
+									name = '23',
+									path = '/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home/',
+									default = true,
+								},
+							},
+						},
+					},
+				},
+			}
+		end,
+	},
+	{
+		'luckasRanarison/tailwind-tools.nvim',
+		name = 'tailwind-tools',
+		build = ':UpdateRemetePlugins',
+		opts = {
+			server = { settings = { includeLanguages = { rust = 'html' } }, on_attach = on_attach },
+			extension = {
+				patterns = {
+					rust = { 'class:%s*["\']([^"\']+)["\']' },
+				},
+			},
+		},
 	},
 }
