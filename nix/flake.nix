@@ -21,9 +21,7 @@
 		neovim-nightly-overlay={
 			url="github:nix-community/neovim-nightly-overlay";
 		};
-		rust-overlay={
-			url="github:oxalica/rust-overlay";
-			inputs = {
+		rust-overlay={ url="github:oxalica/rust-overlay"; inputs = {
 				nixpkgs = {
 					follows = "nixpkgs";
 				};
@@ -62,7 +60,6 @@
 						home-manager.extraSpecialArgs = {
 							inherit inputs;
 						};
-						home-manager.users.utm_nix_a = import ./home-manager/linux;
 					}
 				];
 			};
