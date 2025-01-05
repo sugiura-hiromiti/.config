@@ -1,11 +1,7 @@
 {pkgs, ...}:{
-	environment={
-		systemPackages = with pkgs; [
-			curl
-			wget
-			git
-		];
-	};
+	imports = [
+		../common
+	];
 	system = {
 		defaults = {
 			NSGlobalDomain = {

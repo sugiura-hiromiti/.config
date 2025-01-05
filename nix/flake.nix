@@ -91,7 +91,7 @@
 				cpu="aarch64";
 				os= "darwin";
 				name="a";
-				hmModule	= home-manager.darwinModules;
+				hmModule = home-manager.darwinModules;
 				setter=nix-darwin.lib.darwinSystem;
 			};
 		};

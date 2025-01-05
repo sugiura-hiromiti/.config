@@ -5,7 +5,7 @@
 		};
 		overlays = [
 			inputs.inputs.rust-overlay.overlays.default
-			inputs.inputs.neovim-nightly-overlays.default
+			inputs.inputs.neovim-nightly-overlay.overlays.default
 		];
 	};
 	nix = {
@@ -21,6 +21,7 @@
 	# 	};
 	# };
 	home = {
+		stateVersion = "24.11";
 		packages = with pkgs; [
 			ripgrep
 			eza
