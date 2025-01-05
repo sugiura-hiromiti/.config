@@ -17,9 +17,9 @@
 			enable = true;
 		};
 		hostName = "utm_nix_a";
-		wireless = {
-			enable =true;
-		};
+		#wireless = {
+		#	enable =true;
+		#};
 	};
 	boot = {
 		loader = {
@@ -46,8 +46,9 @@
 		};
 	};
 	system = {
-		copySystemConfiguration = true;
-		stateVersion = "24.05";
+		# this will not work with flake
+		#copySystemConfiguration = true;
+		stateVersion = "24.11";
 	};
 	programs = {
 		zsh = {
