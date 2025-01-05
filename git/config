@@ -1,9 +1,1 @@
-[user]
-	email = sugiura130418@icloud.com
-	name = sugiura-hiromichi
-[core]
-	editor = nvim
-[init]
-	defaultBranch = main
-[url "ssh://git@github.com/"]
-	InsteadOf=https://github.com/
+/nix/store/zcrdppmkivl8hmc7m9k1xijaq978sx10-home-manager-files/.config/git/config
