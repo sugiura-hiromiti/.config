@@ -5,18 +5,21 @@
 		};
 		overlays = [
 			inputs.inputs.rust-overlay.overlays.default
+			inputs.inputs.neovim-nightly-overlays.default
 		];
 	};
-	home = {
-		stateVersion = "24.05";
-	};
-	wayland = {
-		windowManager = {
-			hyprland = {
-				enable =true;
-			};
+	nix = {
+		settings = {
+			experimental-features = ["nix-command" "flakes"];
 		};
 	};
+	# wayland = {
+	# 	windowManager = {
+	# 		hyprland = {
+	# 			enable =true;
+	# 		};
+	# 	};
+	# };
 	home = {
 		packages = with pkgs; [
 			ripgrep

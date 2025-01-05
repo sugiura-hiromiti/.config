@@ -17,9 +17,9 @@
 			enable = true;
 		};
 		hostName = "utm_nix_a";
-		wireless = {
-			enable =true;
-		};
+		# wireless = {
+		# 	enable =true;
+		# };
 	};
 	boot = {
 		loader = {
@@ -46,17 +46,17 @@
 		};
 	};
 	system = {
-		copySystemConfiguration = true;
-		stateVersion = "24.05";
+		#copySystemConfiguration = true;
+		stateVersion = "24.11";
 	};
-	programs = {
-		zsh = {
-			enable = true;
-		};
-	};
-	nix = {
-		settings = {
-			experimental-features = ["nix-command" "flakes"];
-		};
-	};
+	# programs = {
+	# 	zsh = {
+	# 		enable = true;
+	# 	};
+	# };
+	# nix = {
+	# 	settings = {
+	# 		experimental-features = ["nix-command" "flakes"];
+	# 	};
+	# };
 }
