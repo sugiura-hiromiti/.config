@@ -8,6 +8,5 @@
 		# packages = with pkgs; [
 		# 	spice-vdagent
 		# ];
-		stateVersion = "24.05";
 	};
 }
