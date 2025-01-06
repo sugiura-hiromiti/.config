@@ -54,6 +54,11 @@
 		};
 	in
 	{
+		nixpkgs = {
+			config = {
+				allowUnfree = true;
+			};
+		};
 		nixosConfigurations={
 			# utm_nix_a=nixpkgs.lib.nixosSystem{
 			# 	system="aarch64-linux";

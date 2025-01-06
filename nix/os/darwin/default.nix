@@ -52,4 +52,34 @@
 			};
 		};
 	};
+	services = {
+		karabiner-elements ={
+			enable = true;
+		};
+		yabai = {
+			enable = true;
+			enableScriptingAddition=true;
+		};
+		skhd = {
+			enable = true;
+		};
+	};
+	homebrew = {
+		enable = true;
+		#brews =[];
+		casks =[
+			"amazon-q"
+			"crystalfetch"
+			"font-meslo-lg-nerd-font"
+			"raycast"
+			"the-unarchiver"
+			"utm"
+			"minecraft"
+		];
+		masApps = {
+			"AdBlock Pro" = 1018301773;
+			"Dark Reader for Safari" = 1438243180;
+			"Wallpaper Play" = 1638457121;
+		};
+	};
 }
