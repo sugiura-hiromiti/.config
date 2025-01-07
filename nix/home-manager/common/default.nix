@@ -27,7 +27,6 @@
 			eza
 			clang
 			starship
-			lua-language-server
 			marksman
 			deno
 			nodejs
@@ -41,6 +40,18 @@
 			gh
 			rust-bin.nightly.latest.complete
 			neovim
+			curl
+			wget
+			git
+			discord-ptb
+			docker
+			slack
+			dprint
+			lua
+			lua-language-server
+			taplo
+			google-java-format
+			zellij
 		];
 	};
 	programs = {

@@ -75,6 +75,7 @@
 			"the-unarchiver"
 			"utm"
 			"minecraft"
+			"kindle"
 		];
 		masApps = {
 			"AdBlock Pro" = 1018301773;
