@@ -47,7 +47,7 @@
 	};
 	system = {
 		#copySystemConfiguration = true;
-		stateVersion = "24.11";
+		stateVersion = "25.05";
 	};
 	# programs = {
 	# 	zsh = {

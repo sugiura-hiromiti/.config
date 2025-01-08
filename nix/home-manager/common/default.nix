@@ -52,6 +52,7 @@
 			taplo
 			google-java-format
 			zellij
+			sqlite
 		];
 	};
 	programs = {
