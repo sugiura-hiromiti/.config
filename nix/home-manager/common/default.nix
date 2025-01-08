@@ -21,7 +21,7 @@
 	# 	};
 	# };
 	home = {
-		stateVersion = "25.05";
+		stateVersion = "24.11";
 		packages = with pkgs; [
 			ripgrep
 			eza
