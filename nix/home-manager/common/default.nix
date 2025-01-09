@@ -53,6 +53,14 @@
 			google-java-format
 			zellij
 			sqlite
+			jdtls
+			tailwindcss-language-server
+			docker-compose-language-service
+			dockerfile-language-server-nodejs
+			vscode-langservers-extracted
+			nil
+			typescript
+			typescript-language-server
 		];
 	};
 	programs = {

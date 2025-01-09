@@ -11,4 +11,8 @@
 			};
 		};
 	};
+	home = {
+		username = "a";
+		homeDirectory = "/Users/a";
+	};
 }
