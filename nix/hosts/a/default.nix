@@ -1,5 +1,6 @@
 {config, lib, pkgs, inputs, ...}:{
 	imports=[
+		../../home-manager/darwin
 	];
 	users = {
 		users = {

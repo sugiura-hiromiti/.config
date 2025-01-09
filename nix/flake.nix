@@ -36,7 +36,6 @@
 		mkPlatform = { cpu, os, name, hmModule, setter }: setter {
 			system = cpu + "-" + os;
 			modules = [
-				(./hosts + "/${name}")
 				(./os + "/${os}")
 				hmModule.home-manager {
 					home-manager = {
@@ -46,7 +45,7 @@
 					};
 					home-manager = {
 						users = {
-							${name} = import (./home-manager + "/${os}");
+							${name} = import (./hosts + "/${name}");
 						};
 					};
 				}
