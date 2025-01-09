@@ -3,7 +3,7 @@
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 		home-manager={
-			url="github:nix-community/home-manager/release-24.11";
+			url="github:nix-community/home-manager";
 			inputs = {
 				nixpkgs = {
 					follows = "nixpkgs";
@@ -30,11 +30,21 @@
 			};
 		};
 	};
-	outputs={nixpkgs,home-manager, nix-darwin, ...} @inputs :
+	outputs={nixpkgs,home-manager, nix-darwin, pkgs, ...} @inputs :
 	let
 		# make sure hostname is equal to username
 		mkPlatform = { cpu, os, name, hmModule, setter }: setter {
 			system = cpu + "-" + os;
+			users = {
+				users = {
+					${name} = {
+						#isNormalUser = true;
+						description = "default user";
+						#extraGroups = ["wheel" "networkmanager"];
+						shell = pkgs.zsh;
+					};
+				};
+			};
 			modules = [
 				(./os + "/${os}")
 				hmModule.home-manager {
