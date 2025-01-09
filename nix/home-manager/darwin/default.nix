@@ -2,7 +2,7 @@
 	imports = [
 		../common
 	];
-	home={
-		homeDirectory = lib.mkForce "/Users/a";
-	};
+	# home={
+	# 	homeDirectory = lib.mkForce "/Users/a";
+	# };
 }

@@ -53,7 +53,7 @@
 			google-java-format
 			zellij
 			sqlite
-			jdtls
+			jdt-language-server
 			tailwindcss-language-server
 			docker-compose-language-service
 			dockerfile-language-server-nodejs
