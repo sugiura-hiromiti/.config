@@ -25,7 +25,7 @@
 				autohide = true;
 				# magnification = true;
 				# magnificationSize = 64;
-				orientation = "right";
+				orientation = "left";
 				mineffect = "scale";
 				mru-spaces = false;
 				show-recents=false;

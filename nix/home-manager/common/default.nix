@@ -61,6 +61,7 @@
 			nil
 			typescript
 			typescript-language-server
+			nixfmt-rfc-style
 		];
 	};
 	programs = {
