@@ -74,6 +74,7 @@
 			utm_nix_a=nixpkgs.lib.nixosSystem{
 				system="aarch64-linux";
 				modules=[
+					./os/linux
 					home-manager.nixosModules.home-manager{
 						home-manager.extraSpecialArgs = {
 							inherit inputs;
@@ -95,6 +96,7 @@
 			a = nix-darwin.lib.darwinSystem {
 				system = "aarch64-darwin";
 				modules = [
+					./os/darwin
 					home-manager.darwinModules.home-manager{
 						home-manager.extraSpecialArgs = {
 							inherit inputs;

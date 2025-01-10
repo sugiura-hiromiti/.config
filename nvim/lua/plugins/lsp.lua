@@ -20,7 +20,10 @@ return {
 				settings = {
 					['rust-analyzer'] = {
 						diagnostics = { styleLints = { enable = true } },
-						hover = { actions = { reference = { enable = true } }, show = { traitAssocItems = 5 } },
+						hover = {
+							actions = { reference = { enable = true } },
+							show = { traitAssocItems = 5 },
+						},
 						inlayHints = {
 							closingBraceHints = { minLines = 20 },
 							lifetimeElisionHints = { enable = 'always', ParameterNames = true },
@@ -95,10 +98,23 @@ return {
 				init_options = { embeddedLanguages = { markdown = true } },
 			}
 			lsp_conf.cssls.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.docker_compose_language_service.setup { capabilities = capabilities, on_attach = on_attach }
+			lsp_conf.docker_compose_language_service.setup {
+				capabilities = capabilities,
+				on_attach = on_attach,
+			}
 			lsp_conf.dockerls.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.ts_ls.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.nil_ls.setup { capabilities = capabilities, on_attach = on_attach }
+			lsp_conf.nil_ls.setup {
+				capabilities = capabilities,
+				on_attach = on_attach,
+				settings = {
+					['nil'] = {
+						formatting = {
+							command = { 'nixfmt' },
+						},
+					},
+				},
+			}
 		end,
 	},
 	{
