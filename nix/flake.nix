@@ -74,12 +74,12 @@
 			utm_nix_a=nixpkgs.lib.nixosSystem{
 				system="aarch64-linux";
 				modules=[
-					./hosts/utm_nix_a
 					home-manager.nixosModules.home-manager{
 						home-manager.extraSpecialArgs = {
 							inherit inputs;
 						};
-						home-manager.users.utm_nix_a = import ./home-manager/linux;
+						home-manager.users.utm_nix_a = import ./hosts/utm_nix_a;
+						# home-manager.useGlobalPkgs = true;
 					}
 				];
 			};
@@ -95,12 +95,13 @@
 			a = nix-darwin.lib.darwinSystem {
 				system = "aarch64-darwin";
 				modules = [
-					./hosts/a
 					home-manager.darwinModules.home-manager{
 						home-manager.extraSpecialArgs = {
 							inherit inputs;
 						};
-						home-manager.users.a = import ./home-manager/darwin;
+						home-manager.users.a = import ./hosts/a;
+						# home-manager.useGlobalPkgs = true;
+						# home-manager.useUserPackages = true;
 					}
 				];
 				specialArgs={inherit	inputs;};
@@ -113,5 +114,6 @@
 			# 	setter=nix-darwin.lib.darwinSystem;
 			# };
 		};
+		#formatter=nixpkgs.legacyPackages.aarch64-darwin.nixfmt-rfc-style;
 	};
 }
