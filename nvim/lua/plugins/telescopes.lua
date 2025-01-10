@@ -1,13 +1,13 @@
 return {
 	{
-		'nvim-telescope/telescope.nvim',
-		branch = '0.1.x',
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
 		config = function()
-			local t = require 'telescope'
-			local a = require 'telescope.actions'
-			t.setup {
+			local t = require("telescope")
+			local a = require("telescope.actions")
+			t.setup({
 				defaults = {
-					layout_strategy = 'flex',
+					layout_strategy = "flex",
 					layout_config = {
 						flex = {
 							flip_columns = 160,
@@ -15,23 +15,32 @@ return {
 					},
 					mappings = {
 						i = {
-							['<c-j>'] = a.preview_scrolling_down,
-							['<c-k>'] = a.preview_scrolling_up,
-							['<c-d>'] = a.nop,
-							['<c-u>'] = a.nop,
+							["<c-j>"] = a.preview_scrolling_down,
+							["<c-k>"] = a.preview_scrolling_up,
+							["<c-d>"] = a.nop,
+							["<c-u>"] = a.nop,
 						},
 					},
 					winblend = 20,
 					dynamic_preview_title = true,
 					vimgrep_arguments = {
-						'rg',
-						'--color=never',
-						'--no-heading',
-						'--with-filename',
-						'--line-number',
-						'--column',
-						'--smart-case',
-						'--hidden',
+						"rg",
+						"--color=never",
+						"--no-heading",
+						"--with-filename",
+						"--line-number",
+						"--column",
+						"--smart-case",
+						"--hidden",
+					},
+				},
+				pickers = {
+					buffers = {
+						mappings = {
+							i = {
+								["<c-d>"] = a.delete_buffer,
+							},
+						},
 					},
 				},
 				extensions = {
@@ -43,18 +52,18 @@ return {
 						follow_symlinks = true,
 						collapse_dirs = true,
 						mappings = {
-							['i'] = {
+							["i"] = {
 								-- C have to be upper case to work
-								['<C-t>'] = a.select_tab,
+								["<C-t>"] = a.select_tab,
 							},
 						},
 					},
 					smart_open = { show_score = true },
 				},
-			}
-			t.load_extension 'smart_open'
-			t.load_extension 'ui-select'
-			t.load_extension 'file_browser'
+			})
+			t.load_extension("smart_open")
+			t.load_extension("ui-select")
+			t.load_extension("file_browser")
 		end,
 	},
 }

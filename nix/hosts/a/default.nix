@@ -4,6 +4,7 @@
 	];
 	home = {
 		username = "a";
-		homeDirectory = lib.mkForce "/Users/a";
+		#homeDirectory = lib.mkForce "/Users/a";
+		homeDirectory = "/Users/a";
 	};
 }
