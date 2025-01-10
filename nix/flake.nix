@@ -97,11 +97,12 @@
 				system = "aarch64-darwin";
 				modules = [
 					./os/darwin
+					./hosts/a
 					home-manager.darwinModules.home-manager{
 						home-manager.extraSpecialArgs = {
 							inherit inputs;
 						};
-						home-manager.users.a = import ./hosts/a;
+						home-manager.users.a = import ./home-manager/darwin;
 						# home-manager.useGlobalPkgs = true;
 						# home-manager.useUserPackages = true;
 					}
