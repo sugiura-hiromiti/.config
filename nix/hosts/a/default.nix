@@ -1,10 +1,10 @@
 {config, lib, pkgs, inputs, ...}:{
 	imports=[
-		../../home-manager/darwin
+		#../../home-manager/darwin
 	];
 	home = {
 		username = "a";
-		#homeDirectory = lib.mkForce "/Users/a";
-		homeDirectory = "/Users/a";
+		homeDirectory = lib.mkForce "/Users/a";
+		#homeDirectory = "/Users/a";
 	};
 }
