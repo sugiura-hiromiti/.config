@@ -2,9 +2,9 @@ local on_attach = function(client, bufnr)
 	if client.server_capabilities.inlayHintProvider then
 		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 	end
-	if client.server_capabilities.documentSymbolProvider then
-		print 'attaching'
-	end
+	-- if client.server_capabilities.documentSymbolProvider then
+	-- 	print 'attaching'
+	-- end
 end
 
 return {
@@ -39,8 +39,6 @@ return {
 						workspace = { symbol = { search = { kind = 'all_symbols' } } },
 						experimental = { procAttrMacros = true },
 						completion = {
-							--  NOTE: currently, resolving function signature on completion is broken,
-							--  [this is bug of cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp/issues/72)
 							fullFunctionSignatures = { enable = true },
 							privateEditable = { enable = true },
 							termSearch = { enable = true },
@@ -86,11 +84,12 @@ return {
 			}
 			lsp_conf.clangd.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.marksman.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.sqlls.setup {
-				capabilities = capabilities,
-				on_attach = on_attach,
-				root_dir = '~/.config/sql-language-server/',
-			}
+			-- lsp_conf.sqlls.setup {
+			-- 	capabilities = capabilities,
+			-- 	on_attach = on_attach,
+			-- 	root_dir = '~/.config/sql-language-server/',
+			-- }
+			-- lsp_conf.sqls.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.taplo.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.html.setup {
 				capabilities = capabilities,
@@ -115,6 +114,8 @@ return {
 					},
 				},
 			}
+			lsp_conf.asm_lsp.setup { capabilities = capabilities, on_attach = on_attach }
+			lsp_conf.phpactor.setup { capabilities = capabilities, on_attach = on_attach }
 		end,
 	},
 	{

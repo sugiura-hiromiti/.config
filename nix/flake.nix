@@ -102,6 +102,7 @@
 						home-manager.extraSpecialArgs = {
 							inherit inputs;
 						};
+						users.users.a.home="/Users/a";
 						home-manager.users.a = import ./home-manager/darwin;
 						# home-manager.useGlobalPkgs = true;
 						# home-manager.useUserPackages = true;
