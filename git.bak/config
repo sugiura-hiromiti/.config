@@ -1,9 +1,0 @@
-[user]
-	email = sugiura130418@icloud.com
-	name = sugiura-hiromichi
-[core]
-	editor = nvim
-[init]
-	defaultBranch = main
-[url "ssh://git@github.com/"]
-	InsteadOf=https://github.com/

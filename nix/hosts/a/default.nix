@@ -2,9 +2,13 @@
 	imports=[
 		#../../home-manager/darwin
 	];
-	home = {
-		username = "a";
-		homeDirectory = lib.mkForce "/Users/a";
-		#homeDirectory = "/Users/a";
-	};
+	# users = {
+	# 	users={
+	# 		home = {
+	# 		username = "a";
+	# 		homeDirectory = lib.mkForce "/Users/a";
+	# 		#homeDirectory = "/Users/a";
+	# 		};
+	# 	};
+	# };
 }
