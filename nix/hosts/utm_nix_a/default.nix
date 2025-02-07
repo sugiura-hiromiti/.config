@@ -2,6 +2,13 @@
 	imports =[
 		./hardware-configuration.nix
 	];
+	nixpkgs = {
+		config = {
+			allowUnfree = true;
+			allowBroken = true;
+			allowUnsupportedSystem=true;
+		};
+	};
 	users = {
 		users = {
 			utm_nix_a = {
