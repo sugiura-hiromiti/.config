@@ -65,11 +65,12 @@
 	# in
 	{
 		#inherit pkgs;
-		# nixpkgs = {
-		# 	config = {
-		# 		allowUnfree = true;
-		# 	};
-		# };
+		nixpkgs = {
+			config = {
+				allowUnfree = true;
+				allowUnsupportedSystem = true;
+			};
+		};
 		nixosConfigurations={
 			utm_nix_a=nixpkgs.lib.nixosSystem{
 				system="aarch64-linux";
