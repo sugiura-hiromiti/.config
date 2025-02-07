@@ -49,11 +49,11 @@
 		#copySystemConfiguration = true;
 		stateVersion = "25.05";
 	};
-	# programs = {
-	# 	zsh = {
-	# 		enable = true;
-	# 	};
-	# };
+	programs = {
+		zsh = {
+			enable = true;
+		};
+	};
 	# nix = {
 	# 	settings = {
 	# 		experimental-features = ["nix-command" "flakes"];
