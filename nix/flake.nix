@@ -109,7 +109,7 @@
 						# home-manager.useUserPackages = true;
 					}
 				];
-				specialArgs={inherit	inputs;};
+				# specialArgs={inherit	inputs;};
 			};
 			# a = mkPlatform {
 			# 	cpu="aarch64";
