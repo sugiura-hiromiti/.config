@@ -42,7 +42,7 @@
 			neovim
 			curl
 			wget
-			git
+			# git
 			discord-ptb
 			docker
 			slack
