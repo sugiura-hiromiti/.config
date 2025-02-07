@@ -38,12 +38,12 @@
 		systemPackages = with pkgs; [
 			wget
 			curl
-			zsh
+			# zsh
 			git
 		];
-		variables={
-			EDITOR="nvim";
-		};
+		# variables={
+		# 	EDITOR="nvim";
+		# };
 	};
 	system = {
 		#copySystemConfiguration = true;
