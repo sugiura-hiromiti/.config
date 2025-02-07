@@ -1,1 +1,1 @@
-{...}:{}
+{lib,pkgs,config}:{}

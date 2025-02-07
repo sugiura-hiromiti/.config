@@ -31,7 +31,7 @@
 		};
 	};
 	outputs={nixpkgs,home-manager, nix-darwin, ...} @inputs :
-	 let
+	# let
 	# 	# make sure hostname is equal to username
 	# 	mkPlatform = { cpu, os, name, hmModule, setter }: setter {
 	# 		system = cpu + "-" + os;
@@ -61,10 +61,10 @@
 	# 			}
 	# 		];
 	# 	};
-		pkgs = import nixpkgs { system = "aarch64-darwin";};
-	 in
+	#	pkgs = import nixpkgs { system = "aarch64-darwin";};
+	# in
 	{
-		inherit pkgs;
+		#inherit pkgs;
 		# nixpkgs = {
 		# 	config = {
 		# 		allowUnfree = true;
@@ -75,11 +75,12 @@
 				system="aarch64-linux";
 				modules=[
 					./os/linux
+					./hosts/utm_nix_a
 					home-manager.nixosModules.home-manager{
 						home-manager.extraSpecialArgs = {
 							inherit inputs;
 						};
-						home-manager.users.utm_nix_a = import ./hosts/utm_nix_a;
+						home-manager.users.utm_nix_a = import ./home-manager/linux;
 						# home-manager.useGlobalPkgs = true;
 					}
 				];
