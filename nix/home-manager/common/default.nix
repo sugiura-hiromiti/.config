@@ -62,6 +62,7 @@
 			typescript
 			typescript-language-server
 			nixfmt-rfc-style
+			firefox
 		];
 	};
 	programs = {
@@ -75,42 +76,6 @@
 		};
 		zsh = {
 			enable = true;
-			autocd = true;
-			syntaxHighlighting = {
-				enable = true;
-			};
-			history = {
-				save = 1000;
-			};
-			shellAliases = {
-				n = "nvim";
-				s = "eza";
-				zo = "z $OLDPWD";
-				wh = "which -a";
-			};
-			envExtra = ''
-				function chpwd_print_dir() {
-					if [[ $(pwd) != $HOME ]]; then;
-						# alias `s` will be expanded
-						s
-					fi
-				}
-
-				# register hook function
-				autoload -Uz add-zsh-hook
-				add-zsh-hook chpwd chpwd_print_dir
-			'';
-			initExtraFirst = ''
-				[[ -f "''${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "''${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
-			'';
-			initExtra = ''
-				[[ -f "''${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "''${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
-			'';
-			profileExtra = ''
-				[[ -f "''${HOME}/Library/Application Support/amazon-q/shell/zprofile.pre.zsh" ]] && builtin source "''${HOME}/Library/Application Support/amazon-q/shell/zprofile.pre.zsh"
-
-[[ -f "''${HOME}/Library/Application Support/amazon-q/shell/zprofile.post.zsh" ]] && builtin source "''${HOME}/Library/Application Support/amazon-q/shell/zprofile.post.zsh"
-			'';
 		};
 		ripgrep = {
 			enable = true;
@@ -149,5 +114,6 @@
 		zoxide = {
 			enable = true;
 		};
+		firefox={enable =true;};
 	};
 }
