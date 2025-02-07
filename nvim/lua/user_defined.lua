@@ -117,8 +117,8 @@ m({ 'n', 'x' }, '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
 m({ 'n', 'x' }, '<c-k>', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
 -- NOTE: telescope
 m({ 'n', 'x' }, '/', tsb.live_grep)
-m({ 'n', 'x' }, '<up>', td.jump_prev)
-m({ 'n', 'x' }, '<down>', td.jump_next)
+-- m({ 'n', 'x' }, '<up>', td.jump_prev)
+-- m({ 'n', 'x' }, '<down>', td.jump_next)
 
 -- NOTE: spider
 m({ 'n', 'o', 'x' }, 'w', function()
@@ -161,6 +161,17 @@ c('Make', function(opts)
 		for _, a in ipairs(opts.fargs) do
 			extra = extra .. ' ' .. a
 		end
+	elseif ft == 'haskell' then
+		cmd = '!runghc '
+		args = args .. ' ' .. path .. ' '
+	elseif ft == 'zig' then
+		cmd = '!zig '
+		if args == '' then
+			args = 'run '
+		else
+			args = args .. ' '
+		end
+		args = args .. path .. ' '
 	elseif ft == 'lisp' then
 		cmd = '!sbcl --script '
 		args = path .. ' '

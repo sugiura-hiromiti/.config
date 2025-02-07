@@ -46,6 +46,10 @@ return {
 					},
 				},
 			}
+			lsp_conf.hls.setup {
+				capabilities = capabilities,
+				on_attach = on_attach,
+			}
 			lsp_conf.lua_ls.setup {
 				capabilities = capabilities,
 				on_attach = on_attach,
@@ -61,6 +65,7 @@ return {
 					},
 				},
 			}
+			lsp_conf.zls.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.sourcekit.setup {
 				filetypes = { 'swift', 'objective-c', 'objective-cpp' },
 				single_file_support = true,

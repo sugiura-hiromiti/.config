@@ -15,7 +15,7 @@ return {
 
 			cmp.event:on('confirm_done', autopairs.on_confirm_done { filetypes = { rust = false } })
 
-			local ellipsis = '…'
+			-- local ellipsis = '…'
 			local abbr_width = 25
 			local menu_width = 35
 			cmp.setup {
@@ -109,6 +109,7 @@ return {
 					{ name = 'nvim_lua' },
 					{ name = 'async_path' },
 					{ name = 'crates' },
+					{ name = 'render-markdown' },
 					--				{ name = 'copilot' },
 					rg,
 				},
