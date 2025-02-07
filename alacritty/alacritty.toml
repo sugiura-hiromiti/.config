@@ -17,12 +17,9 @@ italic = { style = "Italic", family = "MesloLGL Nerd Font" }
 bold = { style = "Bold", family = "MesloLGL Nerd Font" }
 bold_italic = { style = "Bold Italic", family = "MesloLGL Nerd Font" }
 
-size = 12
-offset = { y = -5 }
+size = 14
+offset = { y = -4 }
 glyph_offset = { y = -1 }
-
-# size = 14
-# offset = { y = -4 }
 
 builtin_box_drawing = false
 
