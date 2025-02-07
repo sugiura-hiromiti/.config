@@ -43,7 +43,6 @@
 			curl
 			wget
 			# git
-			discord-ptb
 			docker
 			slack
 			dprint
