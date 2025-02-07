@@ -2,6 +2,9 @@
 	imports = [
 		../common
 	];
+	home={
+		packages =with pkgs; [slack];
+	};
 	# system = {
 	# 	stateVersion = 5;
 	# 	defaults = {

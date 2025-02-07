@@ -44,7 +44,6 @@
 			wget
 			# git
 			docker
-			slack
 			dprint
 			lua
 			lua-language-server
