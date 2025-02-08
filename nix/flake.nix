@@ -18,9 +18,10 @@
 				};
 			};
 		};
-		neovim-nightly-overlay={
-			url="github:nix-community/neovim-nightly-overlay";
-		};
+		# NOTE: avoid using neovim-nightly-overlay until error is fixed
+		# neovim-nightly-overlay={
+		# 	url="github:nix-community/neovim-nightly-overlay";
+		# };
 		rust-overlay={
 			url="github:oxalica/rust-overlay";
 			inputs = {

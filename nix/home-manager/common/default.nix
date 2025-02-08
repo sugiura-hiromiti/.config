@@ -5,7 +5,8 @@
 		};
 		overlays = [
 			inputs.inputs.rust-overlay.overlays.default
-			inputs.inputs.neovim-nightly-overlay.overlays.default
+			# NOTE: avoid using
+			# inputs.inputs.neovim-nightly-overlay.overlays.default
 		];
 	};
 	nix = {
