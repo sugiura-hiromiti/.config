@@ -119,6 +119,7 @@ return {
 		opts = {},
 	},
 	'danilamihailov/beacon.nvim',
+	{ 'https://codeberg.org/esensar/nvim-dev-container', opts = {} },
 
 	-- NOTE: git
 	{

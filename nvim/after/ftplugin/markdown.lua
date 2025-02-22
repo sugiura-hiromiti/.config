@@ -1,1 +1,1 @@
-vim.bo.comments = vim.bo.comments .. ",s:<!--,e:-->"
+vim.bo.comments = vim.bo.comments .. ',s:<!--,e:-->,b:-,b:> ,b:1. '
