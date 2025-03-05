@@ -89,19 +89,28 @@ m({ 'n', 'i', 'c', 'x' }, '<c-s-tab>', '<cmd>tabprevious<cr>')
 m('t', '<esc>', '<c-\\><c-n>')
 
 -- movement
-m({ 'n', 'v' }, '<up>', '<cmd>Treewalker Up<cr>')
-m({ 'n', 'v' }, '<down>', '<cmd>Treewalker Down<cr>')
-m({ 'n', 'v' }, '<right>', '<cmd>Treewalker Right<cr>')
-m({ 'n', 'v' }, '<left>', '<cmd>Treewalker Left<cr>')
+m({ 'n', 'v' }, '<c-p>', '<cmd>Treewalker Up<cr>')
+m({ 'n', 'v' }, '<c-n>', '<cmd>Treewalker Down<cr>')
+m({ 'n', 'v' }, '<c-f>', '<cmd>Treewalker Right<cr>')
+m({ 'n', 'v' }, '<c-b>', '<cmd>Treewalker Left<cr>')
 
 -- swapping
-m('n', '<s-c-p>', '<cmd>Treewalker SwapUp<cr>')
-m('n', '<s-c-n>', '<cmd>Treewalker SwapDown<cr>')
-m('n', '<s-c-f>', '<cmd>Treewalker SwapRight<CR>')
-m('n', '<s-c-b>', '<cmd>Treewalker SwapLeft<CR>')
+m('n', '<s-up>', '<cmd>Treewalker SwapUp<cr>')
+m('n', '<s-down>', '<cmd>Treewalker SwapDown<cr>')
+m('n', '<s-right>', '<cmd>Treewalker SwapRight<CR>')
+m('n', '<s-left>', '<cmd>Treewalker SwapLeft<CR>')
 
 m({ 'n', 'v' }, '{', '<c-b>')
 m({ 'n', 'v' }, '}', '<c-f>')
+
+m('n', 'gf', function()
+	local cfile = vim.fn.expand '<cfile>'
+	if cfile:match 'https?://' then
+		vim.ui.open(cfile)
+	else
+		vim.cmd 'normal! gF'
+	end
+end)
 
 -- NOTE: emacs keybind
 m('!', '<c-a>', '<home>')

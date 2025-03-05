@@ -29,7 +29,8 @@ _g_ gitui _s_ ssr _c_ commandline <esc> exit
 				{ 'r', l.rename },
 				{ 'h', l.hover },
 				{ 'l', '<cmd>Lspsaga finder<cr>' },
-				{ 'd', '<cmd>Lspsaga show_workspace_diagnostics<cr>' },
+				--{ 'd', '<cmd>Lspsaga show_workspace_diagnostics<cr>' },
+				{ 'd', tb.diagnostics },
 				{
 					'o',
 					function()
