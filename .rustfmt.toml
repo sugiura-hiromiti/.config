@@ -21,3 +21,4 @@ use_try_shorthand = true
 where_single_line = true
 wrap_comments = true
 force_explicit_abi = true
+style_edition = "2024"
