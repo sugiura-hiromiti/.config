@@ -11,9 +11,17 @@ return {
 	'nvim-tree/nvim-web-devicons',
 
 	-- NOTE: appearance
+	-- {
+	-- 	'stevearc/oil.nvim',
+	-- 	opts = {
+	-- 		view_options = {
+	-- 			show_hidden = true,
+	-- 		},
+	-- 	},
+	-- },
 	{
 		'vyfor/cord.nvim',
-		build = './build || .\\build',
+		build = ':Cord update',
 		event = 'VeryLazy',
 		opts = {},
 	},
