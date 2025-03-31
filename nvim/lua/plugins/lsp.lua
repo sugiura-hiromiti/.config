@@ -107,7 +107,24 @@ return {
 				on_attach = on_attach,
 			}
 			lsp_conf.dockerls.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.ts_ls.setup { capabilities = capabilities, on_attach = on_attach }
+			lsp_conf.ts_ls.setup {
+				capabilities = capabilities,
+				on_attach = on_attach,
+				-- init_options = {
+				-- 	plugins = {
+				-- 		{
+				-- 			name = '`vue/typescript-plugin',
+				-- 			location = '/home/xsugiurah/.nvm/versions/node/v20.10.0/lib/node_modules/@vue/typescript-plugin',
+				-- 			languages = { 'javascript', 'typescript', 'vue' },
+				-- 		},
+				-- 	},
+				-- },
+				-- filetypes = {
+				-- 	'javascript',
+				-- 	'typescript',
+				-- 	'vue',
+				-- },
+			}
 			lsp_conf.nil_ls.setup {
 				capabilities = capabilities,
 				on_attach = on_attach,
@@ -121,6 +138,8 @@ return {
 			}
 			lsp_conf.asm_lsp.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.phpactor.setup { capabilities = capabilities, on_attach = on_attach }
+			lsp_conf.vuels.setup { filetypes = { 'vue' }, capabilities = capabilities, on_attach = on_attach }
+			-- lsp_conf.volar.setup { capabilities = capabilities, on_attach = on_attach }
 		end,
 	},
 	{
