@@ -14,7 +14,6 @@ require('lazy').setup 'plugins'
 require 'user_defined'
 
 vim.opt.fo = { j = true }
-
 vim.bo.shiftwidth = 3
 vim.bo.tabstop = 3
 vim.bo.softtabstop = 3

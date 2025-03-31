@@ -9,7 +9,7 @@ return {
 			local rg = {
 				name = 'rg',
 				option = { additional_arguments = '--smart-case', context_after = 5 },
-				keyword_length = 6,
+				keyword_length = 5,
 			}
 			local my_str = require 'my_lua_api.string'
 
@@ -22,7 +22,6 @@ return {
 				formatting = {
 					expandable_indicator = true,
 					format = function(entry, vim_item)
-						--					vim.notify(vim.inspect(vim_item))
 						vim_item.abbr = my_str.truncate_end(vim_item.abbr, abbr_width)
 						vim_item.menu = my_str.truncate_end(vim_item.menu, menu_width)
 

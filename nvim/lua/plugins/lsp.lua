@@ -19,9 +19,12 @@ return {
 				on_attach = on_attach,
 				settings = {
 					['rust-analyzer'] = {
-						checkOnSave = {
-							allTargets = false,
-						},
+						-- cargo = {
+						-- 	allTargets = false,
+						-- },
+						-- checkOnSave = {
+						-- 	allTargets = false,
+						-- },
 						diagnostics = { styleLints = { enable = true } },
 						hover = {
 							actions = { reference = { enable = true } },

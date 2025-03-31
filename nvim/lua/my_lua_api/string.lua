@@ -12,9 +12,10 @@ end
 mod.truncate_end = function(text, width)
 	local truncated = ''
 	if text ~= nil then
-		truncated = vim.fn.strcharpart(text, 0, width)
+		-- truncated = vim.fn.strcharpart(text, 0, width)
+		truncated = string.sub(text, 0, width)
 		if truncated ~= text then
-			truncated = truncated .. '…'
+			truncated = string.sub(truncated, 0, width - 1) .. '…'
 		end
 	end
 	return truncated
