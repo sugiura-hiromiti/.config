@@ -9,11 +9,11 @@ local dial_pair = {
 	direction = { ['a'] = 'increment', ['x'] = 'decrement' },
 }
 
-for _, mod in pairs(dial_pair.mode) do
+for _, mode in pairs(dial_pair.mode) do
 	for _, g in pairs(dial_pair.g) do
 		for key, value in pairs(dial_pair.direction) do
-			m(mod:sub(1, 1), g .. '<c-' .. key .. '>', function()
-				require('dial.map').manipulate(value, g .. mod)
+			m(string.sub(mode, 1, 1), g .. '<c-' .. key .. '>', function()
+				require('dial.map').manipulate(value, g .. mode)
 			end)
 		end
 	end
@@ -29,19 +29,24 @@ local function table_contains(table, elem)
 end
 
 local function is_url(path)
-	return path:match '^https?://' or path:match '^http?://'
+	return path:match '^https?://'
 end
 
 m('i', '<esc>', function()
-	local ft = vim.bo.ft
-	local ft_no_update = ft:find 'Telescope' --or ft:find 'sql'
-	if (not string.match(vim.bo.bt, 'no') or vim.bo.modifiable) and not ft_no_update then
-		vim.cmd 'update'
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		local ft = vim.api.nvim_get_option_value('filetype', { buf = buf })
+		local ft_no_update = ft:find 'Telescope' --or ft:find 'sql'
+		local modified = vim.api.nvim_get_option_value('modified', { buf = buf })
+		local modifiable = vim.api.nvim_get_option_value('modifiable', { buf = buf })
+		if modifiable and modified and not ft_no_update then
+			vim.cmd 'update'
+		end
 	end
 	vim.cmd 'stopinsert'
 
+	local cur_buf = vim.api.nvim_get_current_buf()
 	local has_format_ability = false
-	local lsp_clients = vim.lsp.get_clients()
+	local lsp_clients = vim.lsp.get_clients { bufnr = cur_buf }
 	for _, client in pairs(lsp_clients) do
 		if client.server_capabilities.documentFormattingProvider then
 			has_format_ability = true
@@ -103,14 +108,14 @@ m('n', '<s-left>', '<cmd>Treewalker SwapLeft<CR>')
 m({ 'n', 'v' }, '{', '<c-b>')
 m({ 'n', 'v' }, '}', '<c-f>')
 
-m('n', 'gf', function()
-	local cfile = vim.fn.expand '<cfile>'
-	if cfile:match 'https?://' then
-		vim.ui.open(cfile)
-	else
-		vim.cmd 'normal! gF'
-	end
-end)
+-- m('n', 'gf', function()
+-- 	local cfile = vim.fn.expand '<cfile>'
+-- 	if cfile:match 'https?://' then
+-- 		vim.ui.open(cfile)
+-- 	else
+-- 		vim.cmd 'normal! gF'
+-- 	end
+-- end)
 
 -- NOTE: emacs keybind
 m('!', '<c-a>', '<home>')
@@ -226,6 +231,7 @@ c('Make', function(opts)
 	end
 
 	vim.cmd(cmd .. args .. extra)
+	--vim.uv.spawn(cmd .. args .. extra)
 end, { nargs = '*' })
 c('RmSwap', function()
 	vim.cmd '!rip ~/.local/state/nvim/swap/'
