@@ -1,0 +1,25 @@
+{
+    "workspace.library": [
+        "/Users/a/.config/nvim",
+        "/Users/a/.local/share/nvim/lazy/lazy.nvim",
+        "/Users/a/.local/share/nvim/lazy/cmp-nvim-lsp",
+        "/Users/a/.local/share/nvim/lazy/nvim-lspconfig",
+        "/Users/a/.local/share/nvim/lazy/nui.nvim",
+        "/Users/a/.local/share/nvim/lazy/nvim-java-dap",
+        "/Users/a/.local/share/nvim/lazy/nvim-java-test",
+        "/Users/a/.local/share/nvim/lazy/nvim-java-core",
+        "/Users/a/.local/share/nvim/lazy/nvim-java-refactor",
+        "/Users/a/.local/share/nvim/lazy/lua-async-await",
+        "/Users/a/.local/share/nvim/lazy/nvim-java",
+        "/Users/a/.local/share/nvim/lazy/nvim-autopairs",
+        "/Users/a/.local/share/nvim/lazy/lspkind.nvim",
+        "/Users/a/.local/share/nvim/lazy/LuaSnip",
+        "/Users/a/.local/share/nvim/lazy/nvim-cmp",
+        "/opt/homebrew/Cellar/neovim/HEAD-db2c3d1/share/nvim/runtime",
+        "/opt/homebrew/Cellar/neovim/HEAD-db2c3d1/lib/nvim",
+        "/Users/a/.local/share/nvim/lazy/cmp-nvim-lsp/after",
+        "/Users/a/.config/nvim/after",
+        "/Users/a/.local/state/nvim/lazy/readme",
+        "${3rd}/luassert/library"
+    ]
+}
