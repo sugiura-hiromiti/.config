@@ -19,6 +19,12 @@ return {
 				on_attach = on_attach,
 				settings = {
 					['rust-analyzer'] = {
+						-- cargo = {
+						-- 	allTargets = false,
+						-- },
+						-- checkOnSave = {
+						-- 	allTargets = false,
+						-- },
 						diagnostics = { styleLints = { enable = true } },
 						hover = {
 							actions = { reference = { enable = true } },
@@ -33,7 +39,7 @@ return {
 						},
 						interpret = { tests = true },
 						lens = { implementations = { enable = true } },
-						rustfmt = { rangeFormatting = { enable = true } },
+						rustfmt = { overrideCommand = 'cargo +nightly fmt', rangeFormatting = { enable = true } },
 						semanticHighlighting = { operator = { specialization = { enable = true } } },
 						typing = { autoClosingAngleBrackets = { enable = true } },
 						workspace = { symbol = { search = { kind = 'all_symbols' } } },
