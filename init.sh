@@ -96,7 +96,7 @@ if [ $(uname) = "Darwin" ]; then
 	defaults write com.apple.finder ShowPathbar -bool true
 	defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 	defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
-	defautls write com.apple.finder WarnOnEmptyTrash -bool false
+	defaults write com.apple.finder WarnOnEmptyTrash -bool false
 	defaults write com.apple.finder QLEnableTextSelection -bool true
 
 	defaults write com.apple.HIToolbox AppleFnUsageType -int 1
