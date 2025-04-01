@@ -8,7 +8,6 @@ yabai -m config \
 focus_follows_mouse autofocus \
 mouse_follows_focus on \
 window_placement second_child \
-window_shadow float \
 window_opacity on \
 active_window_opacity 0.9 \
 normal_window_opacity 0.9 \
