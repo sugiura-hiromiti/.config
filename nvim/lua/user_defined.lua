@@ -37,8 +37,10 @@ m('i', '<esc>', function()
 		local ft = vim.api.nvim_get_option_value('filetype', { buf = buf })
 		local ft_no_update = ft:find 'Telescope' --or ft:find 'sql'
 		local modified = vim.api.nvim_get_option_value('modified', { buf = buf })
+		local buftype = vim.api.nvim_get_option_value('buftype', { buf = buf })
+		local buf_not_no = string.find(buftype, 'no')
 		local modifiable = vim.api.nvim_get_option_value('modifiable', { buf = buf })
-		if modifiable and modified and not ft_no_update then
+		if modifiable and buf_not_no ~= nil and modified and ft_no_update ~= nil then
 			vim.cmd 'update'
 		end
 	end
