@@ -41,6 +41,7 @@ m('i', '<esc>', function()
 		local buf_not_no = string.find(buftype, 'no')
 		local modifiable = vim.api.nvim_get_option_value('modifiable', { buf = buf })
 		if modifiable and buf_not_no ~= nil and modified and ft_no_update ~= nil then
+			vim.notify('update', nil, nil)
 			vim.cmd 'update'
 		end
 	end
