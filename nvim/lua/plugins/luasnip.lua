@@ -59,7 +59,6 @@ return {
 					local pbpaste = ""
 					if pbpaste_hndlr ~= nil then
 						pbpaste = pbpaste_hndlr:read("*a")
-					else
 					end
 
 					if pbpaste:find("\n") then
