@@ -62,8 +62,8 @@ return {
 		'williamboman/mason-lspconfig.nvim',
 		opts = {
 			ensure_installed = {
-				'rust_analyzer@nightly',
-				'lua_ls',
+				-- 'rust_analyzer@nightly',
+				-- 'lua_ls',
 			},
 		},
 	},
