@@ -34,3 +34,4 @@ karabiner/automatic_backups/
 nv_config_rs/target
 configstore/zenn-cli.json
 flake.lock
+git/
