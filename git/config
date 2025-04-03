@@ -1,9 +1,0 @@
-[user]
-	email = hiromichi.sugiura@f.flect.co.jp
-	name = SugiuraHiromiti
-[core]
-	editor = nvim
-[init]
-	defaultBranch = main
-[url "ssh://git@github.com/"]
-	InsteadOf=https://github.com/
