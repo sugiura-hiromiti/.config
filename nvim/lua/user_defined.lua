@@ -1,4 +1,5 @@
 vim.cmd 'smapclear'
+
 local m = vim.keymap.set
 local tsb = require 'telescope.builtin'
 local td = require 'todo-comments'
@@ -33,18 +34,24 @@ local function is_url(path)
 end
 
 m('i', '<esc>', function()
-	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-		local ft = vim.api.nvim_get_option_value('filetype', { buf = buf })
-		local ft_no_update = ft:find 'Telescope' --or ft:find 'sql'
-		local modified = vim.api.nvim_get_option_value('modified', { buf = buf })
-		local buftype = vim.api.nvim_get_option_value('buftype', { buf = buf })
-		local buf_not_no = string.find(buftype, 'no')
-		local modifiable = vim.api.nvim_get_option_value('modifiable', { buf = buf })
-		if modifiable and buf_not_no ~= nil and modified and ft_no_update ~= nil then
-			vim.notify('update', nil, nil)
-			vim.cmd 'w'
-		end
-	end
+	-- for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+	-- 	local ft = vim.api.nvim_get_option_value('filetype', { buf = buf })
+	-- 	local buftype = vim.api.nvim_get_option_value('buftype', { buf = buf })
+	--
+	-- 	local ft_no_update = ft:find 'Telescope' --or ft:find 'sql'
+	-- 	local buf_not_no = string.find(buftype, 'no')
+	--
+	-- 	local modifiable = vim.api.nvim_get_option_value('modifiable', { buf = buf })
+	-- 	if modifiable and buf_not_no == nil and ft_no_update == nil then
+	-- 		vim.notify('update', nil, nil)
+	-- 		vim.api.nvim_buf_call(buf, function()
+	-- 			vim.cmd 'w'
+	-- 		end)
+	-- 	else
+	-- 		vim.notify('not updated' .. '\nbuf: ' .. buf, nil, nil)
+	-- 	end
+	-- end
+	vim.cmd 'wa'
 	vim.cmd 'stopinsert'
 
 	local cur_buf = vim.api.nvim_get_current_buf()
