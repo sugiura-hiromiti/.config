@@ -1,0 +1,13 @@
+[user]
+	name = SugiuraHiromichi
+	email = hiromichi.sugiura@f.flect.co.jp
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
+[url "ssh://git@github.com/"]
+	InsteadOf=https://github.com/
+[includeIf "gitdir:~/Downloads/ws/oso/"]
+	path = ~/.gitconfig_p
+[includeIf "gitdir:~/.config/"]
+	path = ~/.gitconfig_p
