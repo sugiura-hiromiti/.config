@@ -5,7 +5,5 @@
 	editor = nvim
 [init]
 	defaultBranch = main
-; [url "ssh://git@github.com/"]
-; 	InsteadOf=https://github.com/
 [includeIf "gitdir:~/Downloads/job"]
 	path = ~/.gitconfig_p
