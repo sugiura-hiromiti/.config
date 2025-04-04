@@ -1,0 +1,11 @@
+[user]
+	name = sugiura-hiromiti
+	email = sugiura130418@icloud.com
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
+; [url "ssh://git@github.com/"]
+; 	InsteadOf=https://github.com/
+[includeIf "gitdir:~/Downloads/job"]
+	path = ~/.gitconfig_p
