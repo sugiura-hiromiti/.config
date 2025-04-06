@@ -51,7 +51,6 @@ m('i', '<esc>', function()
 	-- 		vim.notify('not updated' .. '\nbuf: ' .. buf, nil, nil)
 	-- 	end
 	-- end
-	vim.cmd 'wa'
 	vim.cmd 'stopinsert'
 
 	local cur_buf = vim.api.nvim_get_current_buf()
@@ -67,6 +66,8 @@ m('i', '<esc>', function()
 	if has_format_ability then
 		vim.lsp.buf.format { async = true }
 	end
+
+	vim.cmd 'wa'
 end)
 m('n', '<esc>', function()
 	require('notify').dismiss { pending = true, silent = true }
