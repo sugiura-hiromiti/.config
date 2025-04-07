@@ -38,3 +38,4 @@ git/
 .ssh/id_ed*
 .ssh/flk*
 .ssh/known_host*
+jgit/
