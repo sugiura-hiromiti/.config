@@ -39,3 +39,4 @@ git/
 .ssh/flk*
 .ssh/known_host*
 jgit/
+.ssh/flect*
