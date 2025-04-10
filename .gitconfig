@@ -5,5 +5,5 @@
 	editor = nvim
 [init]
 	defaultBranch = main
-[includeIf "gitdir:~/Downloads/job"]
+[includeIf "gitdir:~/Downloads/job/"]
 	path = ~/.gitconfig_p
