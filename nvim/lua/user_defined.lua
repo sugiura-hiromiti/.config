@@ -196,6 +196,14 @@ c('Make', function(opts)
 			args = args .. ' '
 		end
 		args = args .. path .. ' '
+	elseif ft == 'go' then
+		cmd = '!go '
+		if args == '' then
+			args = 'run'
+		elseif args == 't' then
+			args = 'test'
+		end
+		args = args .. ' ' .. path .. ' '
 	elseif ft == 'lisp' then
 		cmd = '!sbcl --script '
 		args = path .. ' '

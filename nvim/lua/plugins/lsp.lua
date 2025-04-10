@@ -78,6 +78,7 @@ return {
 				capabilities = capabilities,
 				on_attach = on_attach,
 			}
+			lsp_conf.gopls.setup {}
 			lsp_conf.dprint.setup {
 				filetypes = {
 					'javascript',
