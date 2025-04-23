@@ -121,7 +121,6 @@ return {
 			require('hex').setup()
 		end,
 	},
-	'monaqa/dial.nvim',
 	{
 		'aaronik/treewalker.nvim',
 		opts = {},
