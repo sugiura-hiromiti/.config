@@ -10,27 +10,37 @@
  * #content is not necessary to hide scroll bars
  */
 
+/*
 #navigator-toolbox {
 	visibility: collapse;
 }
 
-/*
-browser {
-	margin-right: -14px;
-	margin-bottom: -14px;
-}
-#TabsToolbar {
-	visibility: collapse;
-}
+
 #titlebar {
 	visibility: collapse;
 }
 #personalToolbar {
 	visibility: collapse;
 }
-
 #nav-bar {
 	visibility: collapse;
 }
 
 */
+#TabsToolbar {
+	visibility: collapse;
+}
+browser {
+	margin-right: -14px;
+	margin-bottom: -14px;
+}
+
+:root {
+	--urlbar-container-padding: 0px;
+	--urlbar-margin-inline: 0px;
+	--urlbar-padding-block: 0px;
+}
+
+#urlbar{
+		height: 10px;
+}
