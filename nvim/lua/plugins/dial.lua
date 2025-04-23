@@ -3,6 +3,7 @@ return {
 		'monaqa/dial.nvim',
 		config = function()
 			local augend = require 'dial.augend'
+			local my_dial_api = require 'my_lua_api.dial'
 			--  TODO: add ft support
 			require('dial.config').augends:register_group {
 				default = {
@@ -16,6 +17,10 @@ return {
 					augend.constant.new { elements = { 'and', 'or' }, word = true, cyclic = true },
 					augend.constant.new { elements = { '&&', '||' }, word = true, cyclic = true },
 					augend.hexcolor.new { case = 'lower' },
+					augend.user.new {
+						find = my_dial_api.inline_constant_find,
+						add = my_dial_api.inline_constant_add,
+					},
 				},
 			}
 		end,
