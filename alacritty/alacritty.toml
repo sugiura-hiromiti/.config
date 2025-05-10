@@ -17,10 +17,7 @@ italic = { style = "Italic", family = "MesloLGL Nerd Font" }
 bold = { style = "Bold", family = "MesloLGL Nerd Font" }
 bold_italic = { style = "Bold Italic", family = "MesloLGL Nerd Font" }
 
-size = 14
-offset = { y = -4 }
-glyph_offset = { y = -1 }
-
+size = 19.9
 builtin_box_drawing = false
 
 [keyboard]
