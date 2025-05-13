@@ -19,10 +19,11 @@ _o_ symbol _h_ hover
 telescope
 _b_ builtin _n_ notify
 _f_ smart open _t_ todo
-_e_ file browser _H_ help
+_e_ file browser _c_ help
+_x_ float term
 
 else
-_g_ gitui _s_ ssr _c_ commandline <esc> exit
+_g_ gitui _s_ ssr <esc> exit
 ]],
 			heads = {
 				{ 'a', '<cmd>Lspsaga code_action<cr>' },
@@ -55,10 +56,10 @@ _g_ gitui _s_ ssr _c_ commandline <esc> exit
 				-- },
 				{ 'e', te.file_browser.file_browser },
 				{ 't', '<cmd>TodoTelescope<cr>' },
-				{ 'H', tb.help_tags },
 				{ 'g', '<cmd>Gitui<cr>' },
 				{ 's', require('ssr').open },
-				{ 'c', '<cmd>Lspsaga term_toggle<cr>' },
+				{ 'c', tb.help_tags },
+				{ 'x', '<cmd>Lspsaga term_toggle<cr>' },
 				{ '<esc>', nil, { exit = true } },
 			},
 		}

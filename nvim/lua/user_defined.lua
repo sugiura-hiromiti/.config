@@ -299,3 +299,12 @@ a({ 'insertenter' }, {
 	group = au_id,
 	callback = diag_mark,
 })
+
+-- a({ 'vimenter' }, {
+-- 	group = au_id,
+-- 	callback = function()
+-- 		vim.cmd 'topleft vsplit'
+-- 		vim.cmd 'terminal'
+-- 		vim.cmd 'wincmd l'
+-- 	end,
+-- })
