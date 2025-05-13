@@ -71,6 +71,16 @@ return {
 					},
 				},
 			}
+			lsp_conf.markdown_oxide.setup {
+				capabilities = vim.tbl_deep_extend('force', capabilities, {
+					workspace = {
+						didChangeWatchedFiles = {
+							dynamicRegistration = true,
+						},
+					},
+				}),
+				on_attach = on_attach,
+			}
 			lsp_conf.zls.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.sourcekit.setup {
 				filetypes = { 'swift', 'objective-c', 'objective-cpp' },
@@ -95,7 +105,7 @@ return {
 				on_attach = on_attach,
 			}
 			lsp_conf.clangd.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.marksman.setup { capabilities = capabilities, on_attach = on_attach }
+			-- lsp_conf.marksman.setup { capabilities = capabilities, on_attach = on_attach }
 			-- lsp_conf.sqlls.setup {
 			-- 	capabilities = capabilities,
 			-- 	on_attach = on_attach,
@@ -200,35 +210,35 @@ return {
 			}
 		end,
 	},
-	{
-		'nvim-java/nvim-java',
-		config = function()
-			require('java').setup {
-				jdk = {
-					auto_install = false,
-				},
-			}
-
-			local capabilities = require('cmp_nvim_lsp').default_capabilities()
-			require('lspconfig').jdtls.setup {
-				capabilityes = capabilities,
-				on_attach = on_attach,
-				settings = {
-					java = {
-						configuration = {
-							runtimes = {
-								{
-									name = '23',
-									path = '/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home/',
-									default = true,
-								},
-							},
-						},
-					},
-				},
-			}
-		end,
-	},
+	-- {
+	-- 	'nvim-java/nvim-java',
+	-- 	config = function()
+	-- 		require('java').setup {
+	-- 			jdk = {
+	-- 				auto_install = false,
+	-- 			},
+	-- 		}
+	--
+	-- 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
+	-- 		require('lspconfig').jdtls.setup {
+	-- 			capabilityes = capabilities,
+	-- 			on_attach = on_attach,
+	-- 			settings = {
+	-- 				java = {
+	-- 					configuration = {
+	-- 						runtimes = {
+	-- 							{
+	-- 								name = '23',
+	-- 								path = '/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home/',
+	-- 								default = true,
+	-- 							},
+	-- 						},
+	-- 					},
+	-- 				},
+	-- 			},
+	-- 		}
+	-- 	end,
+	-- },
 	{
 		'luckasRanarison/tailwind-tools.nvim',
 		name = 'tailwind-tools',
