@@ -28,6 +28,32 @@ return {
 	{ 'OXY2DEV/helpview.nvim', lazy = false },
 	'Hiphish/rainbow-delimiters.nvim',
 	'chrisgrieser/nvim-spider',
+	-- {
+	-- 	'Shatur/neovim-ayu',
+	-- 	config = function()
+	-- 		require('ayu').colorscheme()
+	-- 	end,
+	-- },
+	-- 'cocopon/iceberg.vim',
+	-- {
+	-- 	'rebelot/kanagawa.nvim',
+	-- 	config = function()
+	-- 		require('kanagawa').setup {
+	-- 			-- theme = 'dragon'
+	-- 		}
+	-- 		vim.cmd 'colo kanagawa'
+	-- 	end,
+	-- },
+	-- {
+	-- 	'neanias/everforest-nvim',
+	-- 	config = function()
+	-- 		require('everforest').setup {
+	-- 			italics = true,
+	-- 		}
+	--
+	-- 		vim.cmd 'colo everforest'
+	-- 	end,
+	-- },
 	{
 		'catppuccin/nvim',
 		name = 'catppuccin',
@@ -44,7 +70,7 @@ return {
 			vim.cmd 'colo catppuccin'
 		end,
 	},
-	{ 'f-person/auto-dark-mode.nvim', opts = {} },
+	-- { 'f-person/auto-dark-mode.nvim', opts = {} },
 	-- NOTE: LSP
 	{
 		'onsails/lspkind.nvim',
