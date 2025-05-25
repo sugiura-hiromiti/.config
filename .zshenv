@@ -6,7 +6,7 @@ setopt AUTO_CD
 # cdpath=(.. ~ ~/Downloads)
 
 . $HOME/.profile
-source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+# source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 [ -f "/Users/a/.ghcup/env" ] && . "/Users/a/.ghcup/env" # ghcup-env
 
 # export PATH=$PATH:$HOME/.cargo/env
@@ -63,15 +63,14 @@ autoload -Uz add-zsh-hook
 add-zsh-hook chpwd chpwd_print_dir
 
 export PATH=$HOME/.cargo/bin:$PATH
-export PATH=/opt/homebrew/opt/llvm@17/bin:$PATH
-export PATH=/opt/homebrew/sbin:$PATH
-export PATH=/opt/homebrew/bin:$PATH
+# export PATH=/opt/homebrew/opt/llvm@17/bin:$PATH
+# export PATH=/opt/homebrew/sbin:$PATH
+# export PATH=/opt/homebrew/bin:$PATH
 export PATH=$PATH:/Users/a/Library/Python/3.9/bin
-eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
+# eval "$(zoxide init zsh)"
+# eval "$(starship init zsh)"
 # export ZELLIJ_AUTO_ATTACH=true
 # eval "$(zellij setup --generate-auto-start zsh)"
-
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
