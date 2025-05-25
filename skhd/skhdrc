@@ -87,7 +87,7 @@ ctrl + shift - 0x27: yabai -m space --move next || yabai -m space --move first
 
 ctrl - 0x21: yabai -m space --create && yabai -m space --focus last
 ctrl - 0x2C: yabai -m space --destroy
-ctrl + shift - 0x2C: yabai -m display
+# ctrl + shift - 0x2C: yabai -m display
 
 #ctrl + shift - 0x21:
 #ctrl + shift - 0x2C: yabai -m window --space next || yabai -m window --space first
