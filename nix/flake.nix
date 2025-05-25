@@ -72,10 +72,10 @@
           config.allowUnfree = true;
         };
         extraSpecialArgs = {inherit inputs;};
+        modules = [
+          ./plugin/home-manager.nix
+        ];
       };
-      modules = [
-        ./plugin/home-manager.nix
-      ];
     };
     darwinConfigurations = {
       a = nix-darwin.lib.darwinSystem {
