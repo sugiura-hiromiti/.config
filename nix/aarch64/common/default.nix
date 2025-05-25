@@ -1,5 +1,5 @@
 # aarch64/common/default.nix
-{pkgs, neovim-nightly-overlay, home-manager, ...}:{
+{pkgs, neovim-nightly-overlay,  ...}:{
 	imports=[
 		../../common/common
 	];
