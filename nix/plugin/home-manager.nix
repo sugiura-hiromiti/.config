@@ -21,5 +21,13 @@ in {
     home-manager = {
       enable = true;
     };
+    neovim = {
+      plugins = [
+        {
+          plugin = pkgs.vimPlugins.sqlite-lua;
+          config = "vim.g.sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3${builtins.stdenv.hostPlatform.extensions.sharedLibrary}'";
+        }
+      ];
+    };
   };
 }
