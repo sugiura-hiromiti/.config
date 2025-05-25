@@ -45,7 +45,6 @@
 					};
 				}
 			];
-			specialArgs={inherit inputs;};
 		};
 
 		# packages.aarch64-darwin.default=nixpkgs.legacyPackages.aarch64-darwin.buildEnv{
