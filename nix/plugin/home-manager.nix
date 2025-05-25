@@ -15,7 +15,7 @@ in {
   home = {
     username = username;
     homeDirectory = "/Users/${username}";
-    stateVersion = "unstable";
+    stateVersion = "25.11";
   };
   programs = {
     home-manager = {
