@@ -36,7 +36,7 @@
 		darwinConfigurations.a=nix-darwin.lib.darwinSystem{
 			system="aarch64-darwin";
 			modules=[
-				./aarch64/darwin/default.nix
+				./aarch64/darwin
 				{
 					nixpkgs={
 						config={
