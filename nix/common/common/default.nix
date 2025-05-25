@@ -45,5 +45,5 @@
 	legacy.zsh-fast-syntax-highlighting
 	legacy.docker
 	legacy.meslo-lgs-nf
-	legacy.nixfmt-rfc-style
+	legacy.alejandra
 ]
