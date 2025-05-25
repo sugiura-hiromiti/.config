@@ -14,7 +14,7 @@ SBAR.default {
 	blur_radius = 20,
 	background = {
 		drawing = true,
-		color = 0x55000000,
+		color = 0xffffffff,
 		corner_radius = 10,
 		-- NOTE: background properties
 	},

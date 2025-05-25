@@ -31,5 +31,32 @@
 			};
 		};
 	};
-	outputs = {nixpkgs, home-manager, nix-darwin, ...} @inputs :{};
+	outputs = {nixpkgs, home-manager, nix-darwin, neovim-nightly-overlay, rust-overlay, ...}@inputs:
+	{
+		darwinConfigurations.a=nix-darwin.lib.darwinSystem{
+			system="aarch64-darwin";
+			modules=[
+				./aarch64/darwin/default.nix
+				{
+					nixpkgs={
+						config={
+							allowUnfree=true;
+						};
+					};
+				}
+			];
+			inputs=inputs;
+		};
+
+		# packages.aarch64-darwin.default=nixpkgs.legacyPackages.aarch64-darwin.buildEnv{
+		# 	name="mypkgs";
+		# 	paths = import ./aarch64/darwin;
+		# };
+		# package.aarch64-linux.default=nixpkgs.legacyPackages.aarch64-linux.buildEnv{
+		# 	name="mypkg";
+		# 	paths = [
+		# 		import ./aarch64/linux
+		# 	];
+		# };
+	};
 }

@@ -7,7 +7,7 @@ SBAR = require 'sketchybar'
 SBAR.begin_config()
 require 'bar'
 require 'default'
--- require 'items'
+require 'item'
 SBAR.end_config()
 
 SBAR.event_loop()
