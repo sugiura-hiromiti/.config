@@ -1,0 +1,5 @@
+#!/usr/bin/env lua
+
+-- load the sketchybar-package and prepare the helper binaries
+require 'helper'
+require 'init'
