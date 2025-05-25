@@ -1,5 +1,5 @@
 # aarch64/common/default.nix
-{pkgs, neovim-nightly-overlay, inputs, ...}:{
+{pkgs, neovim-nightly-overlay, ...}:{
 	imports=[
 		../../common/common
 		inputs.home-manager.darwinModules.home-manager
