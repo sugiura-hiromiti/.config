@@ -3,7 +3,7 @@
   legacy.git
   legacy.curl
   legacy.chibi
-  # legacy.sqlite
+  legacy.sqlite
   legacy.deno
   legacy.dosfstools
   legacy.dprint
@@ -46,4 +46,5 @@
   legacy.docker
   legacy.meslo-lgs-nf
   legacy.alejandra
+  legacy.alacritty
 ]
