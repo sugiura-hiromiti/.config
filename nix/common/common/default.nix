@@ -3,7 +3,6 @@
   legacy.git
   legacy.curl
   legacy.chibi
-  legacy.sqlite
   legacy.deno
   legacy.dosfstools
   legacy.dprint
