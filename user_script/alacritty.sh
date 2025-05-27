@@ -14,5 +14,4 @@
 # @raycast.author sugiura-hiromichi
 # @raycast.authorURL https://raycast.com/sugiura-hiromichi
 
-echo "Hello World!"
-
+/Users/a/.nix-profile/bin/alacritty

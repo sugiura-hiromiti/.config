@@ -4,7 +4,7 @@ local iterm_profile_is_hotkey = os.getenv 'ITERM_PROFILE' == 'Hotkey Window'
 return {
 
 	-- NOTE: Library
-	-- 'kkharji/sqlite.lua',
+	'kkharji/sqlite.lua',
 	{ 'echasnovski/mini.nvim', version = false },
 	'nvim-lua/plenary.nvim',
 	'MunifTanjim/nui.nvim',
