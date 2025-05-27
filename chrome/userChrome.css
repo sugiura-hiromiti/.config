@@ -11,10 +11,6 @@
  */
 
 /*
-#navigator-toolbox {
-	visibility: collapse;
-}
-
 
 #titlebar {
 	visibility: collapse;
@@ -22,9 +18,7 @@
 #personalToolbar {
 	visibility: collapse;
 }
-#nav-bar {
-	visibility: collapse;
-}
+
 browser {
 	margin-right: -14px;
 	margin-bottom: -14px;
@@ -33,6 +27,27 @@ browser {
 only shows urlbar
 */
 
+#navigator-toolbox {
+	/* visibility: collapse; */
+	display: inline;
+}
+
+#nav-bar {
+	display: block;
+	width: 30%;
+	height: 40px;
+	position: fixed;
+	top: 0px;
+	left: 70%;
+	/* visibility: collapse; */
+}
+
 #TabsToolbar {
-	visibility: collapse;
+	display: block;
+	width: 70%;
+	height: 40px;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	/* visibility: collapse; */
 }
