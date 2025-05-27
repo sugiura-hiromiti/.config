@@ -5,22 +5,22 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs?ref=nixos-unstable";
     };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-      };
-    };
-    nix-darwin = {
-      url = "github:LnL7/nix-darwin";
-      inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-      };
-    };
+    # home-manager = {
+    #   url = "github:nix-community/home-manager";
+    #   inputs = {
+    #     nixpkgs = {
+    #       follows = "nixpkgs";
+    #     };
+    #   };
+    # };
+    # nix-darwin = {
+    #   url = "github:nix-darwin/nix-darwin/master";
+    #   inputs = {
+    #     nixpkgs = {
+    #       follows = "nixpkgs";
+    #     };
+    #   };
+    # };
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
     };
@@ -28,9 +28,9 @@
   outputs = {
     self,
     nixpkgs,
-    home-manager,
     neovim-nightly-overlay,
-    nix-darwin,
+    # home-manager,
+    # nix-darwin,
   } @ inputs: let
     pkgsFor = system:
       import nixpkgs {
@@ -65,26 +65,27 @@
       paths = import ./linux/x86_64 {legacy = pkgsFor "x86_64-linux";};
     };
 
-    homeConfigurations = {
-      a = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "aarch64-darwin";
-          config.allowUnfree = true;
-        };
-        extraSpecialArgs = {inherit inputs;};
-        modules = [
-          ./plugin/home-manager.nix
-        ];
-      };
-    };
-    darwinConfigurations = {
-      a = nix-darwin.lib.darwinSystem {
-        pkgs = import nixpkgs {
-          system = "aarch64-darwin";
-          config.allowUnfree = true;
-        };
-        modules = [./plugin/nix-darwin.nix];
-      };
-    };
+    #   homeConfigurations = {
+    #     a = home-manager.lib.homeManagerConfiguration {
+    #       pkgs = import nixpkgs {
+    #         system = "aarch64-darwin";
+    #         config.allowUnfree = true;
+    #       };
+    #       extraSpecialArgs = {inherit inputs;};
+    #       modules = [
+    #         ./plugin/home-manager.nix
+    #       ];
+    #     };
+    #   };
+    #   darwinConfigurations = {
+    #     a = nix-darwin.lib.darwinSystem {
+    #       pkgs = import nixpkgs {
+    #         system = "aarch64-darwin";
+    #         hostPlatform = "aarch64-darwin";
+    #         config.allowUnfree = true;
+    #       };
+    #       modules = [./plugin/nix-darwin.nix];
+    #     };
+    #   };
   };
 }

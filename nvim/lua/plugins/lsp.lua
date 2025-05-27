@@ -145,13 +145,13 @@ return {
 			lsp_conf.nil_ls.setup {
 				capabilities = capabilities,
 				on_attach = on_attach,
-				settings = {
-					['nil'] = {
-						formatting = {
-							command = { 'nixfmt' },
-						},
-					},
-				},
+				-- settings = {
+				-- 	['nil'] = {
+				-- 		formatting = {
+				-- 			command = { 'alejandra' },
+				-- 		},
+				-- 	},
+				-- },
 			}
 			lsp_conf.asm_lsp.setup { capabilities = capabilities, on_attach = on_attach }
 			lsp_conf.phpactor.setup { capabilities = capabilities, on_attach = on_attach }

@@ -1,4 +1,5 @@
 # linux/common
-{legacy}:[
-	legacy.obsidian
+{legacy}: [
+  legacy.obsidian
+  legacy.alacritty
 ]
