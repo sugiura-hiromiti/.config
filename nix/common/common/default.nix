@@ -16,7 +16,7 @@
   legacy.gopls
   legacy.graphviz
   legacy.jdt-language-server
-  legacy.lua
+  # legacy.lua
   legacy.lua-language-server
   legacy.luajitPackages.luarocks
   legacy.marksman
