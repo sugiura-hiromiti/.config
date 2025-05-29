@@ -1,0 +1,6 @@
+#!lua
+
+package.cpath = package.cpath .. ';/Users/' .. os.getenv 'USER' .. '/.local/share/sketchybar_lua/?.so'
+
+-- load the sketchybar-package and prepare the helper binaries
+require 'init'

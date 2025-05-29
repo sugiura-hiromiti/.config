@@ -5,12 +5,18 @@ sudo yabai --load-sa
 
 ## setting
 yabai -m config \
+window_gap 8 \
+top_padding 9 \
+bottom_padding 9 \
+left_padding 8 \
+right_padding 8 \
 focus_follows_mouse autofocus \
 mouse_follows_focus on \
 window_placement second_child \
-window_opacity off \
-active_window_opacity 0.85 \
-normal_window_opacity 0.85 \
+window_shadow off \
+window_opacity on \
+active_window_opacity 0.9 \
+normal_window_opacity 0.9 \
 layout bsp \
 
 ## rules
@@ -20,3 +26,7 @@ yabai -m rule --add app="^Amazon Q$" manage=off sub-layer=above
 yabai -m rule --add subrole="AXDialog" opacity=1.0
 
 ## signals
+
+## other
+borders active_color=0xffffff00 inactive_color=0x88e1e3e4 width=3.0 &
+sketchybar
