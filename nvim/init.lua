@@ -30,8 +30,6 @@ vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
 vim.opt.laststatus = 3
 
--- vim.g.sqlite_clib_path=
-
 if vim.fn.expand '%:p' == '' and vim.bo.ft ~= 'lazy' then
 	vim.cmd 'e $MYVIMRC'
 end
