@@ -54,7 +54,17 @@ _g_ gitui _s_ ssr <esc> exit
 				-- 		end)
 				-- 	end,
 				-- },
-				{ 'e', te.file_browser.file_browser },
+				{
+					'e',
+					function()
+						require('oil').open(nil, {
+							preview = {
+								vertical = true,
+								split = 'aboveleft',
+							},
+						})
+					end,
+				},
 				{ 't', '<cmd>TodoTelescope<cr>' },
 				{ 'g', '<cmd>Gitui<cr>' },
 				{ 's', require('ssr').open },

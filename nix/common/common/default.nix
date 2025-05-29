@@ -16,7 +16,6 @@
   legacy.gopls
   legacy.graphviz
   legacy.jdt-language-server
-  # legacy.lua
   legacy.lua-language-server
   legacy.luajitPackages.luarocks
   legacy.marksman
@@ -45,5 +44,14 @@
   legacy.docker
   legacy.meslo-lgs-nf
   legacy.alejandra
-  legacy.alacritty
+  legacy.asm-lsp
+  legacy.docker-language-server
+  legacy.docker-compose-language-service
+  legacy.haskell-language-server
+  legacy.vscode-langservers-extracted
+  legacy.nil
+  legacy.typescript-language-server
+  legacy.zls
+  legacy.tailwindcss-language-server
+  legacy.phpactor
 ]
