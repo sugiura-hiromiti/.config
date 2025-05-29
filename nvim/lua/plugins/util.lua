@@ -2,7 +2,6 @@ local symbols = require 'my_lua_api.symbols'
 local iterm_profile_is_hotkey = os.getenv 'ITERM_PROFILE' == 'Hotkey Window'
 
 return {
-
 	-- NOTE: Library
 	'kkharji/sqlite.lua',
 	{ 'echasnovski/mini.nvim', version = false },
@@ -11,14 +10,19 @@ return {
 	'nvim-tree/nvim-web-devicons',
 
 	-- NOTE: appearance
-	-- {
-	-- 	'stevearc/oil.nvim',
-	-- 	opts = {
-	-- 		view_options = {
-	-- 			show_hidden = true,
-	-- 		},
-	-- 	},
-	-- },
+	{
+		'stevearc/oil.nvim',
+		opts = {
+			view_options = {
+				show_hidden = true,
+			},
+			columns = {
+				'icon',
+				'permissions',
+				'size',
+			},
+		},
+	},
 	{
 		'vyfor/cord.nvim',
 		build = ':Cord update',
@@ -28,32 +32,6 @@ return {
 	{ 'OXY2DEV/helpview.nvim', lazy = false },
 	'Hiphish/rainbow-delimiters.nvim',
 	'chrisgrieser/nvim-spider',
-	-- {
-	-- 	'Shatur/neovim-ayu',
-	-- 	config = function()
-	-- 		require('ayu').colorscheme()
-	-- 	end,
-	-- },
-	-- 'cocopon/iceberg.vim',
-	-- {
-	-- 	'rebelot/kanagawa.nvim',
-	-- 	config = function()
-	-- 		require('kanagawa').setup {
-	-- 			-- theme = 'dragon'
-	-- 		}
-	-- 		vim.cmd 'colo kanagawa'
-	-- 	end,
-	-- },
-	-- {
-	-- 	'neanias/everforest-nvim',
-	-- 	config = function()
-	-- 		require('everforest').setup {
-	-- 			italics = true,
-	-- 		}
-	--
-	-- 		vim.cmd 'colo everforest'
-	-- 	end,
-	-- },
 	{
 		'catppuccin/nvim',
 		name = 'catppuccin',
@@ -81,19 +59,6 @@ return {
 		end,
 	},
 	{
-		'williamboman/mason.nvim',
-		config = true,
-	},
-	{
-		'williamboman/mason-lspconfig.nvim',
-		opts = {
-			ensure_installed = {
-				-- 'rust_analyzer@nightly',
-				-- 'lua_ls',
-			},
-		},
-	},
-	{
 		'nvimtools/none-ls.nvim',
 		config = function()
 			local b = require('null-ls').builtins
@@ -101,10 +66,7 @@ return {
 				sources = {
 					b.formatting.stylua, --.with { args = { '--config-path ~/.stylua.toml' } },
 					b.formatting.google_java_format,
-					b.formatting.pretty_php,
-					b.formatting.sqruff,
 					b.formatting.alejandra,
-					b.diagnostics.sqruff,
 				},
 			}
 		end,
@@ -241,7 +203,7 @@ return {
 		branch = '0.3.x',
 	},
 	'nvim-telescope/telescope-ui-select.nvim',
-	'nvim-telescope/telescope-file-browser.nvim',
+	-- 'nvim-telescope/telescope-file-browser.nvim',
 
 	--  NOTE: ai
 	-- {

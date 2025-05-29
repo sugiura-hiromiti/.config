@@ -4,13 +4,8 @@ SBAR = require 'sketchybar'
 -- SBAR.set_bar_name 'first_bar_as_global_info'
 -- SBAR.set_bar_name 'second_bar_as_local_info'
 
-print 'abc'
 SBAR.begin_config()
-print 'def'
-require 'bar'
-print 'ghi'
-require 'default'
-print 'jkl'
+require 'base'
 require 'item'
 SBAR.end_config()
 
