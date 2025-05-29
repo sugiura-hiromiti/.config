@@ -1,0 +1,37 @@
+#  NOTE: font
+font-family = MesloLGL Nerd Font Mono Regular
+#  TODO:
+# font-feature =
+font-size = 15
+adjust-cell-width = -1
+adjust-cell-height = -2
+
+theme = dark:catppuccin-frappe,light:catppuccin-latte
+
+# https://ghostty.org/docs/config/keybind/sequence sequence on global keybind is not allowed currently
+# keybind = global:shift>space=toggle_quick_terminal
+#  NOTE: keybind
+keybind = global:alt+l=toggle_quick_terminal
+# https://www.leonerd.org.uk/hacks/fixterms/
+keybind = ctrl+tab=csi:9;5u
+keybind = ctrl+shift+tab=csi:1;5z
+
+#  NOTE: window
+window-padding-x = 0
+window-padding-y = 0
+
+#  NOTE: quick-terminal (equivalent to iterm's hotkey window)
+quick-terminal-position = center
+quick-terminal-screen = mouse
+quick-terminal-animation-duration = 0
+quick-terminal-autohide = false
+
+#  NOTE: shell integration
+shell-integration = zsh
+
+#  NOTE: macos
+macos-titlebar-style = hidden
+macos-option-as-alt = left
+macos-icon = xray
+
+auto-update = check
