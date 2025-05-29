@@ -64,7 +64,7 @@ m({ 'n', 'x' }, '^', '$')
 m({ 'n', 'x' }, '>', '@:')
 -- keep in mind of usage of `,` & `<`
 m({ 'n', 'x' }, '<cr>', function()
-	local special_ft = { 'ssr' }
+	local special_ft = { 'ssr', 'qf' }
 	local cfile = vim.fn.expand '<cfile>'
 	if is_url(cfile) then
 		vim.ui.open(cfile)
