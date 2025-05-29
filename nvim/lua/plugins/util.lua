@@ -103,6 +103,7 @@ return {
 					b.formatting.google_java_format,
 					b.formatting.pretty_php,
 					b.formatting.sqruff,
+					b.formatting.alejandra,
 					b.diagnostics.sqruff,
 				},
 			}
