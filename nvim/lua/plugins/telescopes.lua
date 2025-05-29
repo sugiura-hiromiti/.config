@@ -63,7 +63,7 @@ return {
 			}
 			t.load_extension 'smart_open'
 			t.load_extension 'ui-select'
-			t.load_extension 'file_browser'
+			-- t.load_extension 'file_browser'
 		end,
 	},
 }
