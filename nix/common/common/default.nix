@@ -54,4 +54,7 @@
   legacy.zls
   legacy.tailwindcss-language-server
   legacy.phpactor
+  legacy.obsidian
+  legacy.firefox
+  # legacy.ghostty
 ]
