@@ -2,7 +2,7 @@
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 
 set -o emacs
-setopt AUTO_CD
+# setopt AUTO_CD
 # cdpath=(.. ~ ~/Downloads)
 
 . $HOME/.profile
