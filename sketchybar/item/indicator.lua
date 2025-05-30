@@ -1,1 +1,1 @@
-SBAR.add('item', 'indicator', { label = '|' })
+SBAR.add('item', 'indicator', { label = '', drawing = false })
