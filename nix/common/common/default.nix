@@ -56,5 +56,6 @@
   legacy.phpactor
   legacy.obsidian
   legacy.firefox
+  legacy.neovide
   # legacy.ghostty
 ]
