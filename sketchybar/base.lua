@@ -1,22 +1,25 @@
 SBAR.default {
-	-- NOTE: Geometry
 	update_freq = 1,
 	position = 'left',
 	ignore_association = false,
 	y_offset = 0,
-	padding_left = 30,
-	padding_right = 30,
+	padding_left = 10,
+	padding_right = 10,
 	width = 'dynamic',
 	scroll_texts = true,
 	blur_radius = 25,
 	background = {
 		drawing = true,
-		color = 0x77000000,
+		color = 0x22000000,
+		border_color = 0xffffffff,
+		border_width = 1,
+		height = 40,
+		corner_radius = 10,
 	},
 }
 
 SBAR.bar {
-	color = 0xffaaaaaa,
+	color = 0x00000000,
 	border_color = 0xffffffff,
 	height = 56,
 	margin = 8,
