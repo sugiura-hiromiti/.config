@@ -22,5 +22,4 @@
   # legacy.sketchybar
   # legacy.sketchybar-app-font
   # legacy.sbarlua
-
 ]
