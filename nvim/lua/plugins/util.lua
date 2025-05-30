@@ -2,6 +2,21 @@ local symbols = require 'my_lua_api.symbols'
 local iterm_profile_is_hotkey = os.getenv 'ITERM_PROFILE' == 'Hotkey Window'
 
 return {
+	--  TODO: later
+	{ 'stevearc/overseer.nvim', opts = {} },
+	{ '3rd/image.nvim' },
+	{ 'nvim-zh/colorful-winsep.nvim', config = true, event = { 'WinLeave' } },
+	{ 'pwntester/octo.nvim' },
+	{
+		'xemptuous/sqlua.nvim',
+		lazy = true,
+		cmd = 'SQLua',
+		config = function()
+			require('sqlua').setup()
+		end,
+	},
+	{ 'folke/flash.nvim', event = 'VeryLazy' },
+
 	-- NOTE: Library
 	'kkharji/sqlite.lua',
 	{ 'echasnovski/mini.nvim', version = false },
@@ -98,7 +113,6 @@ return {
 		},
 	},
 	{
-		-- TODO: consider using tree-sitter todo comment
 		'folke/todo-comments.nvim',
 		config = true,
 	},
