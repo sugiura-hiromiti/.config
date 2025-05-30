@@ -242,7 +242,7 @@ return {
 	{
 		'luckasRanarison/tailwind-tools.nvim',
 		name = 'tailwind-tools',
-		build = 'UpdateRemetePlugins',
+		build = 'UpdateRemotePlugins',
 		opts = {
 			server = { settings = { includeLanguages = { rust = 'html' } }, on_attach = on_attach },
 			extension = {
