@@ -19,4 +19,7 @@
   legacy.slack
   legacy.the-unarchiver
   legacy.utm
+  legacy.sketchybar
+  legacy.sketchybar-app-font
+  legacy.sbarlua
 ]
