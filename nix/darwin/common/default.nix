@@ -22,4 +22,5 @@
   # legacy.sketchybar
   # legacy.sketchybar-app-font
   # legacy.sbarlua
+  # legacy.wallpaper-play
 ]

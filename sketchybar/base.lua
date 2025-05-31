@@ -14,7 +14,7 @@ SBAR.default {
 		border_color = 0xffffffff,
 		border_width = 1,
 		height = 40,
-		corner_radius = 10,
+		corner_radius = 20,
 	},
 }
 

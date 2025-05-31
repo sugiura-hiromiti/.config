@@ -57,5 +57,8 @@
   legacy.obsidian
   legacy.firefox
   legacy.neovide
+  legacy.reaper
+  legacy.docker
+  legacy.zsh
   # legacy.ghostty
 ]
