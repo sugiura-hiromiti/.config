@@ -24,30 +24,43 @@ browser {
 	margin-bottom: -14px;
 }
 
+#navigator-toolbox {
+	visibility: collapse;
+}
+
 only shows urlbar
 */
 
-#navigator-toolbox {
-	/* visibility: collapse; */
-	display: inline;
-}
+/*
+*/
 
 #nav-bar {
 	display: block;
 	width: 30%;
-	height: 40px;
+	height: 24px;
 	position: fixed;
 	top: 0px;
 	left: 70%;
-	/* visibility: collapse; */
 }
 
 #TabsToolbar {
 	display: block;
 	width: 70%;
-	height: 40px;
+	height: 24px;
 	position: fixed;
 	top: 0px;
 	left: 0px;
-	/* visibility: collapse; */
+}
+
+*|*:root {
+	--tab-min-height: 20px !important;
+	--tab-min-width: 40px !important;
+}
+
+#urlbar-input {
+	height: 20px !important;
+}
+
+#TabsToolbar>.titlebar-buttonbox-container {
+	visibility: collapse !important;
 }

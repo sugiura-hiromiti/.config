@@ -60,5 +60,6 @@
   legacy.reaper
   legacy.docker
   legacy.zsh
+  legacy.binutils
   # legacy.ghostty
 ]
