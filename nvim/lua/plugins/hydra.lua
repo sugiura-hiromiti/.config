@@ -45,26 +45,21 @@ _g_ gitui _s_ ssr <esc> exit
 				{ 'b', tb.builtin },
 				{ 'f', te.smart_open.smart_open },
 				{ 'n', te.notify.notify },
-				-- {
-				-- 	'e',
-				-- 	function()
-				-- 		oil.open(nil, { preview = { vertical = true, split = 'topleft' } }, function()
-				-- 			local filer_win = vim.api.nvim_get_current_win()
-				-- 			vim.api.nvim_win_set_width(filer_win, 40)
-				-- 		end)
-				-- 	end,
-				-- },
 				{
 					'e',
 					function()
-						require('oil').open(nil, {
-							preview = {
-								vertical = true,
-								split = 'aboveleft',
-							},
-						})
+						require('oil').open_float(
+							nil,
+							{ preview = { vertical = true, split = 'topleft' } },
+							nil
+							-- function()
+							-- 	local filer_win = vim.api.nvim_get_current_win()
+							-- 	vim.api.nvim_win_set_width(filer_win, 40)
+							-- end
+						)
 					end,
 				},
+				-- { 'e', te.file_browser.file_browser },
 				{ 't', '<cmd>TodoTelescope<cr>' },
 				{ 'g', '<cmd>Gitui<cr>' },
 				{ 's', require('ssr').open },

@@ -105,7 +105,7 @@ return {
 				on_attach = on_attach,
 			}
 			lsp_conf.clangd.setup { capabilities = capabilities, on_attach = on_attach }
-			-- lsp_conf.marksman.setup { capabilities = capabilities, on_attach = on_attach }
+			lsp_conf.marksman.setup { capabilities = capabilities, on_attach = on_attach }
 			-- lsp_conf.sqlls.setup {
 			-- 	capabilities = capabilities,
 			-- 	on_attach = on_attach,
