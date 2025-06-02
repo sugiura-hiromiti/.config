@@ -1,3 +1,5 @@
+local parette = require 'color'
+
 SBAR.default {
 	update_freq = 1,
 	position = 'left',

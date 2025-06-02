@@ -1,3 +1,5 @@
+local palette = require 'color'
+
 -- local text_input_menu =
 SBAR.add('alias', 'TextInputMenuAgent,Item-0', { position = 'left', width = 'dynamic' })
 local raycast_calendar_event =
@@ -15,6 +17,7 @@ local clock = SBAR.add('item', {
 	label = {
 		padding_left = 10,
 		padding_right = 10,
+		color = palette.green,
 	},
 })
 

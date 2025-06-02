@@ -295,7 +295,7 @@ local function diag_mark()
 	end
 end
 
-a({ 'insertenter' }, {
+a({ 'insertLeave' }, {
 	group = au_id,
 	callback = diag_mark,
 })

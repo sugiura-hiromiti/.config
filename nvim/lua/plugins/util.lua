@@ -140,7 +140,12 @@ return {
 		'folke/todo-comments.nvim',
 		config = true,
 	},
-	'norcalli/nvim-colorizer.lua',
+	{
+		'norcalli/nvim-colorizer.lua',
+		config = function()
+			require('colorizer').setup()
+		end,
+	},
 	'stevearc/dressing.nvim',
 	{
 		'RaafatTurki/hex.nvim',
