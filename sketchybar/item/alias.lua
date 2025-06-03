@@ -6,10 +6,10 @@ local raycast_calendar_event =
 	SBAR.add('alias', 'Raycast,raycastCalendarStatusItem', { y_offset = 0, width = 'dynamic' })
 
 --  TODO: switch to subscribe event
-local raycast_calendar_width = raycast_calendar_event:query().geometry.width
-if raycast_calendar_width < 50 then
-	SBAR.remove 'Raycast,raycastCalendarStatusItem'
-end
+-- local raycast_calendar_width = raycast_calendar_event:query().geometry.width
+-- if raycast_calendar_width < 50 then
+-- 	SBAR.remove 'Raycast,raycastCalendarStatusItem'
+-- end
 
 local clock = SBAR.add('item', {
 	position = 'left',
