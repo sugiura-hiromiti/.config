@@ -15,7 +15,7 @@ mouse_follows_focus on \
 window_placement second_child \
 window_shadow off \
 window_opacity on \
-active_window_opacity 0.9 \
+active_window_opacity 1.0 \
 normal_window_opacity 0.9 \
 layout bsp \
 
