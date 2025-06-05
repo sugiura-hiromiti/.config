@@ -26,4 +26,26 @@ methods.print_keys = function(tbl)
 	end
 end
 
+---comment
+---@param tbl table
+---@return string
+methods.stringify_table = function(tbl)
+	local rslt = ''
+	for key, value in pairs(tbl) do
+		if key == nil then
+			key = 'nil'
+		end
+		if value == nil then
+			value = 'nil'
+		end
+		if type(value) == 'table' then
+			rslt = rslt .. ' ' .. methods.stringify_table(value)
+		else
+			rslt = rslt .. ' ' .. key .. ':' .. value
+		end
+	end
+
+	return rslt
+end
+
 return methods

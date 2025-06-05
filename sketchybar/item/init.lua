@@ -1,2 +1,5 @@
-require 'item.alias'
+require 'item.keyboard'
+require 'item.clock'
+require 'item.raycast'
+require 'item.space'
 require 'item.indicator'

@@ -1,4 +1,4 @@
-local parette = require 'color'
+local palette = require 'color'
 
 SBAR.default {
 	update_freq = 1,
@@ -10,13 +10,30 @@ SBAR.default {
 	width = 'dynamic',
 	scroll_texts = true,
 	blur_radius = 25,
+	align = 'center',
 	background = {
 		drawing = true,
-		color = 0x22000000,
+		color = palette.get_color 'surface0',
 		border_color = 0xffffffff,
 		border_width = 1,
 		height = 40,
-		corner_radius = 20,
+		corner_radius = 10,
+	},
+	icon = {
+		font = {
+			family = 'MesloLGL Nerd Font',
+			style = 'Regular',
+			size = 16,
+		},
+	},
+	label = {
+		font = {
+			family = 'MesloLGL Nerd Font',
+			style = 'Regular',
+			size = 16,
+		},
+		padding_left = 10,
+		padding_right = 10,
 	},
 }
 
