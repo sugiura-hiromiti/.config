@@ -1,8 +1,12 @@
 local palette = require 'helper.color'
+local icons = require 'helper.icon'
 
-local battery = SBAR.add('item', 'battery', { background = {
-	border_color = palette.get_color 'yellow',
-} })
+local battery = SBAR.add('item', 'battery', {
+	width = 'dynamic',
+	background = {
+		-- border_color = palette.get_color 'yellow',
+	},
+})
 
 battery:subscribe({ 'routine', 'power_source_change', 'system_woke' }, function()
 	SBAR.exec('pmset -g batt', function(batt_info)
@@ -12,26 +16,56 @@ battery:subscribe({ 'routine', 'power_source_change', 'system_woke' }, function(
 		local found, _, charge = batt_info:find '(%d+)%%'
 		if found then
 			label = charge
+			charge = tonumber(charge)
 		end
 
 		local color = palette.get_color 'yellow'
+		if charge >= 80 then
+			color = palette.get_color 'green'
+		elseif charge <= 20 then
+			color = palette.get_color 'red'
+		end
+
 		local charging, _, _ = batt_info:find 'AC Power'
 
 		if charging then
 			icon = icons.battery.charging
 		else
-			if found and charge > 80 then
-				icon = icons.battery._100
-			elseif found and charge > 60 then
-				icon = icons.battery._75
-			elseif found and charge > 40 then
-				icon = icons.battery._50
-			elseif found and charge > 20 then
-				icon = icons.battery._25
-				color = colors.orange
-			else
-				icon = icons.battery._0
-				color = colors.red
+			if found then
+				if charge >= 95 then
+					icon = icons.battery._100
+					color = palette.get_color 'blue'
+				elseif charge >= 85 then
+					icon = icons.battery._90
+					color = palette.get_color 'sapphire'
+				elseif charge >= 75 then
+					icon = icons.battery._80
+					color = palette.get_color 'sky'
+				elseif charge >= 65 then
+					icon = icons.battery._70
+					color = palette.get_color 'teal'
+				elseif charge >= 55 then
+					icon = icons.battery._60
+					color = palette.get_color 'green'
+				elseif charge >= 45 then
+					icon = icons.battery._50
+					color = palette.get_color 'yellow'
+				elseif charge >= 35 then
+					icon = icons.battery._40
+					color = palette.get_color 'peach'
+				elseif charge >= 25 then
+					icon = icons.battery._30
+					color = palette.get_color 'maroon'
+				elseif charge >= 15 then
+					icon = icons.battery._20
+					color = palette.get_color 'red'
+				elseif charge >= 5 then
+					icon = icons.battery._10
+					color = palette.get_color 'red'
+				else
+					icon = icons.error
+					color = palette.get_color 'red'
+				end
 			end
 		end
 
@@ -45,7 +79,8 @@ battery:subscribe({ 'routine', 'power_source_change', 'system_woke' }, function(
 				string = icon,
 				color = color,
 			},
-			label = { string = lead .. label },
+			label = { string = lead .. label, color = color },
+			-- label = { string = batt_info },
 		}
 	end)
 end)

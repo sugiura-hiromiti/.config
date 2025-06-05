@@ -1,5 +1,5 @@
 require 'item.keyboard'
 require 'item.clock'
 require 'item.raycast'
-require 'item.space'
+-- require 'item.space'
 require 'item.battery'
