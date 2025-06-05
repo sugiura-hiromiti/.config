@@ -1,4 +1,4 @@
-local palette = require 'color'
+local palette = require 'helper.color'
 
 local keyboard_input_change = SBAR.add('event', 'keyboard_input_change', 'AppleSelectedInputSourcesChangedNotification')
 
