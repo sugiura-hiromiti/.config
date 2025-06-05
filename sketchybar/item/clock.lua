@@ -1,4 +1,4 @@
-local palette = require 'color'
+local palette = require 'helper.color'
 
 -- local text_input_menu = SBAR.add('alias', 'TextInputMenuAgent,Item-0', { position = 'right', width = 'dynamic' })
 

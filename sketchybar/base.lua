@@ -1,4 +1,4 @@
-local palette = require 'color'
+local palette = require 'helper.color'
 
 SBAR.default {
 	update_freq = 1,
