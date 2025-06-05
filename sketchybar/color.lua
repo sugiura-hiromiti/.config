@@ -63,10 +63,17 @@ local original_palette = require 'frappe'
 local m = {}
 
 ---@param name color_name name of the color in the palette
----@param alpha string "0xXX" representation of alpha color code
+---@param alpha integer|nil "0xXX" representation of alpha color code
 ---@return integer
 m.get_color = function(name, alpha)
-	local color_code = assert(tonumber(alpha .. original_palette[name]))
+	if alpha == nil then
+		alpha = 0xff000000
+	end
+
+	local rgb = original_palette[name]:sub(2, 7)
+	local rgb_code = tonumber(rgb, 16)
+	local color_code = alpha + rgb_code
+
 	return color_code
 end
 
