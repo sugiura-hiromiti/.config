@@ -16,7 +16,7 @@
   # legacy.iterm2
   # legacy.karabiner-elements
   legacy.raycast
-  legacy.slack
+  # legacy.slack
   legacy.the-unarchiver
   legacy.utm
   legacy.betterdisplay
