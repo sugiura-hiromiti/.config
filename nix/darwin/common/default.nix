@@ -13,12 +13,13 @@
   # twilight
   legacy.cyberduck
   legacy.discord
-  legacy.iterm2
-  legacy.karabiner-elements
+  # legacy.iterm2
+  # legacy.karabiner-elements
   legacy.raycast
   legacy.slack
   legacy.the-unarchiver
   legacy.utm
+  legacy.betterdisplay
   # legacy.sketchybar
   # legacy.sketchybar-app-font
   # legacy.sbarlua
