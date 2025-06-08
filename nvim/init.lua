@@ -35,7 +35,7 @@ vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
 vim.opt.laststatus = 3
 vim.diagnostic.config { virtual_text = true }
-vim.g.termguicolors = true
+-- vim.g.termguicolors = true
 
 -- -> != =>
 
