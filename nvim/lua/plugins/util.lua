@@ -3,7 +3,7 @@ local iterm_profile_is_hotkey = os.getenv 'ITERM_PROFILE' == 'Hotkey Window'
 
 return {
 	--  TODO: later
-	{ 'stevearc/overseer.nvim', opts = {} },
+	-- { 'stevearc/overseer.nvim', opts = {} },
 	{ '3rd/image.nvim' },
 	{ 'pwntester/octo.nvim' },
 	{
