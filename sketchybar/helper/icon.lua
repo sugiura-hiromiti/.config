@@ -16,6 +16,4 @@ local icons = {
 	check = '\u{eab2}',
 }
 
-require('helper.debug_util').print_table(icons)
-
 return icons

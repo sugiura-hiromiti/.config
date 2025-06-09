@@ -1,6 +1,6 @@
 local palette = require 'helper.color'
 
-local keyboard_input_change = SBAR.add('event', 'keyboard_input_change', 'AppleSelectedInputSourcesChangedNotification')
+SBAR.add('event', 'keyboard_input_change', 'AppleSelectedInputSourcesChangedNotification')
 
 local keyboard_input = SBAR.add('item', 'keyboard', {
 	width = 40,
@@ -10,6 +10,7 @@ local keyboard_input = SBAR.add('item', 'keyboard', {
 	},
 	background = { border_color = palette.get_color 'blue', padding_right = 10 },
 })
+
 keyboard_input:subscribe({ 'keyboard_input_change', 'system_woke', 'forced' }, function(env)
 	local en_input = SBAR.exec(
 		'defaults read com.apple.HIToolbox.plist AppleSelectedInputSources | rg ABC',
