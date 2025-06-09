@@ -61,5 +61,6 @@
   legacy.docker
   legacy.zsh
   legacy.binutils
+  legacy.libclang
   # legacy.ghostty
 ]
