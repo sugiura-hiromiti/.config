@@ -11,7 +11,8 @@
   legacy.gh
   legacy.gitui
   legacy.go
-  legacy.jdk
+  # legacy.jdk
+  legacy.jdk11
   legacy.google-java-format
   legacy.gopls
   legacy.graphviz
