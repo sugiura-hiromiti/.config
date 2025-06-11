@@ -42,7 +42,7 @@
   legacy.zoxide
   legacy.zsh-fast-syntax-highlighting
   legacy.docker
-  legacy.meslo-lgs-nf
+  legacy.nerd-fonts.meslo-lg
   legacy.alejandra
   legacy.asm-lsp
   legacy.docker-language-server
