@@ -42,7 +42,8 @@
   legacy.zoxide
   legacy.zsh-fast-syntax-highlighting
   legacy.docker
-  legacy.nerd-fonts.meslo-lg
+  # need to use nix-darwin
+  # legacy.nerd-fonts.meslo-lg
   legacy.alejandra
   legacy.asm-lsp
   legacy.docker-language-server
