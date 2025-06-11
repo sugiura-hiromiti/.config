@@ -37,7 +37,7 @@ vim.opt.laststatus = 3
 vim.diagnostic.config { virtual_text = true }
 -- vim.g.termguicolors = true
 
--- -> != =>
+-- -> != => <=> //
 
 if vim.fn.expand '%:p' == '' and vim.bo.ft ~= 'lazy' then
 	vim.cmd 'e $MYVIMRC'
