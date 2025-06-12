@@ -13,10 +13,10 @@ local clock = SBAR.add('item', {
 	width = 'dynamic',
 	padding_left = 20,
 	label = {
-		color = palette.get_color 'green',
+		color = palette.get_color 'teal',
 	},
 	background = {
-		border_color = palette.get_color 'green',
+		border_color = palette.get_color 'teal',
 	},
 })
 

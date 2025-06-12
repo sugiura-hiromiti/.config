@@ -3,7 +3,7 @@ local iterm_profile_is_hotkey = os.getenv 'ITERM_PROFILE' == 'Hotkey Window'
 
 return {
 	--  TODO: later
-	{ 'stevearc/overseer.nvim', opts = {} },
+	-- { 'stevearc/overseer.nvim', opts = {} },
 	{ '3rd/image.nvim' },
 	{ 'pwntester/octo.nvim' },
 	{
@@ -25,43 +25,43 @@ return {
 
 	-- NOTE: appearance
 	{ 'nvim-zh/colorful-winsep.nvim', config = true, event = { 'WinLeave' } },
-	{
-		'stevearc/oil.nvim',
-		opts = {
-			view_options = {
-				show_hidden = true,
-			},
-			columns = {
-				'icon',
-				'permissions',
-				'size',
-			},
-			win_options = {
-				signcolumn = 'yes:2',
-			},
-			float = {
-				win_options = {
-					winblend = 30,
-				},
-			},
-		},
-	},
-	{
-		'tronikelis/xylene.nvim',
-		opts = {
-			on_attach = function(renderer)
-				vim.keymap.set('n', '<cr>', function()
-					renderer:toggle(vim.api.nvim_win_get_cursor(0)[1])
-				end, { buffer = renderer.buf })
-
-				vim.keymap.set('n', '!', function()
-					renderer:toggle_all(vim.api.nvim_win_get_cursor(0)[1])
-				end, { buffer = renderer.buf })
-			end,
-		},
-	},
-	{ 'refractalize/oil-git-status.nvim', config = true },
-	{ 'JezerM/oil-lsp-diagnostics.nvim', opts = {} },
+	-- {
+	-- 	'stevearc/oil.nvim',
+	-- 	opts = {
+	-- 		view_options = {
+	-- 			show_hidden = true,
+	-- 		},
+	-- 		columns = {
+	-- 			'icon',
+	-- 			'permissions',
+	-- 			'size',
+	-- 		},
+	-- 		win_options = {
+	-- 			signcolumn = 'yes:2',
+	-- 		},
+	-- 		float = {
+	-- 			win_options = {
+	-- 				winblend = 30,
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
+	-- {
+	-- 	'tronikelis/xylene.nvim',
+	-- 	opts = {
+	-- 		on_attach = function(renderer)
+	-- 			vim.keymap.set('n', '<cr>', function()
+	-- 				renderer:toggle(vim.api.nvim_win_get_cursor(0)[1])
+	-- 			end, { buffer = renderer.buf })
+	--
+	-- 			vim.keymap.set('n', '!', function()
+	-- 				renderer:toggle_all(vim.api.nvim_win_get_cursor(0)[1])
+	-- 			end, { buffer = renderer.buf })
+	-- 		end,
+	-- 	},
+	-- },
+	-- { 'refractalize/oil-git-status.nvim', config = true },
+	-- { 'JezerM/oil-lsp-diagnostics.nvim', opts = {} },
 	{
 		'vyfor/cord.nvim',
 		build = ':Cord update',
@@ -112,6 +112,7 @@ return {
 	},
 
 	-- NOTE: utility
+	{ 'willothy/flatten.nvim', config = true },
 	{ 'rcarriga/nvim-notify', opts = { background_colour = '#000000' } },
 	{
 		'folke/noice.nvim',
@@ -246,5 +247,5 @@ return {
 		branch = '0.3.x',
 	},
 	'nvim-telescope/telescope-ui-select.nvim',
-	-- 'nvim-telescope/telescope-file-browser.nvim',
+	'nvim-telescope/telescope-file-browser.nvim',
 }
