@@ -35,7 +35,6 @@ vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
 vim.opt.laststatus = 3
 vim.diagnostic.config { virtual_text = true }
-
 -- -> != =>
 
 if vim.fn.expand '%:p' == '' and vim.bo.ft ~= 'lazy' then
