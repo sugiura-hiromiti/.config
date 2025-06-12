@@ -112,6 +112,7 @@ return {
 	},
 
 	-- NOTE: utility
+	{ 'willothy/flatten.nvim', config = true },
 	{ 'rcarriga/nvim-notify', opts = { background_colour = '#000000' } },
 	{
 		'folke/noice.nvim',
