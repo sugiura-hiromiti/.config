@@ -52,7 +52,7 @@ function ga() {
 }
 
 function chpwd_print_dir() {
-	if [[ $(pwd) != $HOME ]]; then;
+	if [[ $(pwd) != $HOME ]]; then
 		# alias `s` will be expanded
 		s
 	fi

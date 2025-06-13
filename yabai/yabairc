@@ -26,6 +26,7 @@ yabai -m rule --add app="^Amazon Q$" manage=off sub-layer=above
 yabai -m rule --add subrole="AXDialog" opacity=1.0
 
 ## signals
+yabai -m signal --add event=space_changed action="nohup open -g raycast://extensions/krzysztoff1/yabai/screens-menu-bar?launchType=background > /dev/null 2>&1 &"
 
 ## other
 borders active_color=0xffffff00 inactive_color=0x88e1e3e4 width=3.0 &
