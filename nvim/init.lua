@@ -38,8 +38,8 @@ vim.diagnostic.config { virtual_text = true }
 
 -- -> != =>
 
-if vim.fn.expand '%:p' == '' and vim.bo.ft ~= 'lazy' then
-	--  TODO: add startup plugin
-	-- vim.cmd 'e $MYVIMRC'
-	-- vim.cmd 'terminal'
-end
+-- if vim.fn.expand '%:p' == '' and vim.bo.ft ~= 'lazy' then
+-- 	--  TODO: add startup plugin
+-- 	-- vim.cmd 'e $MYVIMRC'
+-- 	-- vim.cmd 'terminal'
+-- end
