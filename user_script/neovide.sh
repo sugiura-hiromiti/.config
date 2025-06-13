@@ -1,18 +1,26 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Required parameters:
 # @raycast.schemaVersion 1
 # @raycast.title neovide
-# @raycast.mode silent
+# @raycast.mode fullOutput
 
 # Optional parameters:
 # @raycast.icon 🤖
 # @raycast.packageName open_neovide
 
 # Documentation:
-# @raycast.description open neovide
+# @raycast.description 0w0
 # @raycast.author sugiura-hiromichi
 # @raycast.authorURL https://raycast.com/sugiura-hiromichi
 
-export PATH=$HOME/.nix-profile/bin/:$PATH
+echo "Hello World!"
+
+. /etc/zshenv
+. ~/.zshenv
+. /etc/zprofile
+. ~/.zprofile
+. /etc/zshrc
+. ~/.zshrc
+
 neovide
