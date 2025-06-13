@@ -25,7 +25,7 @@ vim.bo.softtabstop = 3
 vim.opt.fileencoding = 'utf-8'
 vim.opt.list = true
 vim.opt.listchars = { tab = '│ ' }
-vim.opt.pumblend = 22
+vim.opt.pumblend = 40
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.autowriteall = true

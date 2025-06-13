@@ -21,7 +21,7 @@ return {
 							['<c-u>'] = a.nop,
 						},
 					},
-					winblend = 20,
+					winblend = 40,
 					dynamic_preview_title = true,
 					vimgrep_arguments = {
 						'rg',
