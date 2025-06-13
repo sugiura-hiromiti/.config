@@ -300,11 +300,11 @@ a({ 'insertLeave' }, {
 	callback = diag_mark,
 })
 
-a({ 'vimenter' }, {
-	group = au_id,
-	callback = function()
-		if vim.fn.expand '%:p' == '' and vim.bo.ft ~= 'lazy' then
-			vim.cmd 'terminal'
-		end
-	end,
-})
+-- a({ 'vimenter' }, {
+-- 	group = au_id,
+-- 	callback = function()
+-- 		if vim.fn.expand '%:p' == '' and vim.bo.ft ~= 'lazy' then
+-- 			vim.cmd 'terminal'
+-- 		end
+-- 	end,
+-- })

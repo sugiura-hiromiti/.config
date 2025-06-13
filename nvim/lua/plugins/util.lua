@@ -4,7 +4,7 @@ local iterm_profile_is_hotkey = os.getenv 'ITERM_PROFILE' == 'Hotkey Window'
 return {
 	--  TODO: later
 	-- { 'stevearc/overseer.nvim', opts = {} },
-	{ '3rd/image.nvim' },
+	-- { '3rd/image.nvim' },
 	{ 'pwntester/octo.nvim' },
 	{
 		'xemptuous/sqlua.nvim',
@@ -112,7 +112,7 @@ return {
 	},
 
 	-- NOTE: utility
-	{ 'willothy/flatten.nvim', config = true, lazy = false, priority = 1001 },
+	{ 'willothy/flatten.nvim', opt = { window = { open = 'alternate' } }, lazy = false, priority = 1001 },
 	{ 'rcarriga/nvim-notify', opts = { background_colour = '#000000' } },
 	{
 		'folke/noice.nvim',
