@@ -1,6 +1,6 @@
 # darwin/common
 {legacy}: [
-  legacy.mas
+  # legacy.mas
   legacy.pngpaste
   legacy.jankyborders
   legacy.skhd
