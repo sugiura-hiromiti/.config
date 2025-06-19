@@ -1,13 +1,13 @@
 # linux/x86
-{legacy}: let
-  common = import ../common {inherit legacy;};
-  x86 = import ../../common/x86 {inherit legacy;};
+{pkgs}: let
+  common = import ../common {inherit pkgs;};
+  x86 = import ../../common/x86 {inherit pkgs;};
 in
   common
   ++ x86
   ++ [
-    legacy.discord
-    legacy.minecraft
-    legacy.slack
-    legacy.vital
+    pkgs.discord
+    pkgs.minecraft
+    pkgs.slack
+    pkgs.vital
   ]

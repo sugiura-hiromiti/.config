@@ -1,9 +1,9 @@
 # darwin/x86
-{legacy}:
-let
-	common = (import ../common {inherit legacy;});
-	x86 = (	 import ../../common/x86 {inherit legacy;});
+{pkgs}: let
+  common = import ../common {inherit pkgs;};
+  x86 = import ../../common/x86 {inherit pkgs;};
 in
-	 common ++ x86 ++
-	[
-]
+  common
+  ++ x86
+  ++ [
+  ]

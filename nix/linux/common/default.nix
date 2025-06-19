@@ -1,4 +1,4 @@
 # linux/common
-{legacy}: [
-  legacy.alacritty
+{pkgs}: [
+  pkgs.alacritty
 ]
