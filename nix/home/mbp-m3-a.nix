@@ -3,12 +3,11 @@
   lib,
   config,
   pkgs,
-}:
-let
+  ...
+}: let
   username = "a";
-  mypkgs = import ../darwin/common { inherit pkgs; };
-in
-{
+  mypkgs = import ../darwin/common {inherit pkgs;};
+in {
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -19,7 +18,7 @@ in
     username = username;
     homeDirectory = "/Users/${username}";
     stateVersion = "unstable";
-    packages = mypkgs ++ [ ];
+    packages = mypkgs ++ [];
   };
   programs = {
     home-manager = {
