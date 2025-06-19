@@ -6,7 +6,7 @@
   ...
 }: let
   username = "a";
-  mypkgs = import ../darwin/common {inherit pkgs;};
+  mypkgs = import ../darwin/aarch64 {inherit pkgs;};
 in {
   nixpkgs = {
     config = {
