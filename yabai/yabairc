@@ -5,11 +5,11 @@ sudo yabai --load-sa
 
 ## setting
 yabai -m config \
-window_gap 8 \
-top_padding 9 \
-bottom_padding 9 \
-left_padding 8 \
-right_padding 8 \
+window_gap 5 \
+top_padding 0 \
+bottom_padding 5 \
+left_padding 5 \
+right_padding 5 \
 focus_follows_mouse autofocus \
 mouse_follows_focus on \
 window_placement second_child \
@@ -29,4 +29,4 @@ yabai -m rule --add subrole="AXDialog" opacity=1.0
 yabai -m signal --add event=space_changed action="nohup open -g raycast://extensions/krzysztoff1/yabai/screens-menu-bar?launchType=background > /dev/null 2>&1 &"
 
 ## other
-borders active_color=0xffffff00 inactive_color=0x88e1e3e4 width=3.0 &
+borders active_color=0xffffff00 inactive_color=0x88e1e3e4 width=2.0 &
