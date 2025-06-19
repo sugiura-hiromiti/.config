@@ -1,7 +1,7 @@
 # darwin/aarch64
-{legacy, ...} @ inputs: let
-  common = import ../common {inherit legacy;};
-  arch = import ../../common/aarch64 {inherit legacy;};
+{pkgs, ...} @ inputs: let
+  common = import ../common {legacy = pkgs;};
+  arch = import ../../common/aarch64 {legacy = pkgs;};
 in
   common
   ++ arch
