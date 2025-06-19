@@ -4,10 +4,12 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   username = "a";
-  mypkgs = import ../darwin/aarch64 {inherit pkgs;};
-in {
+  mypkgs = import ../darwin/aarch64 { inherit pkgs; };
+in
+{
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -18,11 +20,6 @@ in {
     username = username;
     homeDirectory = "/Users/${username}";
     stateVersion = "25.11";
-    packages = mypkgs ++ [];
-  };
-  programs = {
-    home-manager = {
-      enable = true;
-    };
+    packages = mypkgs ++ [ ];
   };
 }
