@@ -58,25 +58,39 @@
         };
       };
 
-      packages.aarch64-darwin.default = (pkgsFor "aarch64-darwin").buildEnv {
-        name = "mypkg";
-        paths = import ./darwin/aarch64 { legacy = pkgsFor "aarch64-darwin"; };
-      };
+      # apps.aarch64-darwin.update = {
+      #   type = "app";
+      #   program = toString (
+      #     pkgs.writeShellScript "update-script" ''
+      #       set -e
+      #       echo "updating flake..."
+      #       nix flake update
+      #       echo "updating home-manager..."
+      #       nix run nixpkgs#home-manager -- switch --flake .#mbp-m3-a-aarch64-darwin
+      #       echo "update complete!"
+      #     ''
+      #   );
+      # };
 
-      packages.aarch64-linux.default = (pkgsFor "aarch64-linux").buildEnv {
-        name = "mypkg";
-        paths = import ./linux/aarch64 { legacy = pkgsFor "aarch64-linux"; };
-      };
-
-      packages.x86_64-darwin.default = (pkgsFor "x86_64-darwin").buildEnv {
-        name = "mypkg";
-        paths = import ./darwin/x86_64 { legacy = pkgsFor "x86_64-darwin"; };
-      };
-
-      packages.x86_64-linux.default = (pkgsFor "x86_64-linux").buildEnv {
-        name = "mypkg";
-        paths = import ./linux/x86_64 { legacy = pkgsFor "x86_64-linux"; };
-      };
+      # packages.aarch64-darwin.default = (pkgsFor "aarch64-darwin").buildEnv {
+      #   name = "mypkg";
+      #   paths = import ./darwin/aarch64 { legacy = pkgsFor "aarch64-darwin"; };
+      # };
+      #
+      # packages.aarch64-linux.default = (pkgsFor "aarch64-linux").buildEnv {
+      #   name = "mypkg";
+      #   paths = import ./linux/aarch64 { legacy = pkgsFor "aarch64-linux"; };
+      # };
+      #
+      # packages.x86_64-darwin.default = (pkgsFor "x86_64-darwin").buildEnv {
+      #   name = "mypkg";
+      #   paths = import ./darwin/x86_64 { legacy = pkgsFor "x86_64-darwin"; };
+      # };
+      #
+      # packages.x86_64-linux.default = (pkgsFor "x86_64-linux").buildEnv {
+      #   name = "mypkg";
+      #   paths = import ./linux/x86_64 { legacy = pkgsFor "x86_64-linux"; };
+      # };
 
       #   homeConfigurations = {
       #     a = home-manager.lib.homeManagerConfiguration {
