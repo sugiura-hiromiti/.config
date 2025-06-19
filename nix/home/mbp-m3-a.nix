@@ -17,7 +17,7 @@ in {
   home = {
     username = username;
     homeDirectory = "/Users/${username}";
-    stateVersion = "unstable";
+    stateVersion = "25.11";
     packages = mypkgs ++ [];
   };
   programs = {
