@@ -73,6 +73,10 @@
           ./nix-darwin/mbp-m3-a.nix
         ];
       };
+      mbp-m2-hiromichi-sugiura-aarch64 = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [./nix-darwin/mbp-m2-hiromichi-sugiura.nix];
+      };
     };
 
     # apps.aarch64-darwin.update = {
