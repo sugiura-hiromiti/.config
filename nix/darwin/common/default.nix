@@ -1,5 +1,6 @@
 # darwin/common
-{pkgs}: [
+{ pkgs }:
+[
   # legacy.mas
   pkgs.pngpaste
   pkgs.jankyborders
@@ -20,6 +21,7 @@
   pkgs.the-unarchiver
   pkgs.utm
   pkgs.betterdisplay
+  pkgs.chatgpt
   # legacy.sketchybar
   # legacy.sketchybar-app-font
   # legacy.sbarlua
