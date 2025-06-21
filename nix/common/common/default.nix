@@ -44,7 +44,7 @@
   pkgs.zsh-fast-syntax-highlighting
   pkgs.docker
   # need to use nix-darwin
-  # legacy.nerd-fonts.meslo-lg
+  pkgs.nerd-fonts.meslo-lg
   pkgs.alejandra
   pkgs.asm-lsp
   pkgs.docker-language-server

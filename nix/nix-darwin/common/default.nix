@@ -1,5 +1,7 @@
-{}: {
+{ }:
+{
   system = {
+    stateVersion = 6;
     defaults = {
       NSGlobalDomain = {
         AppleICUForce24HourTime = true;
@@ -16,7 +18,7 @@
         NSTableViewDefaultSizeMode = 1;
         _HIHideMenuBar = false;
         "com.apple.mouse.tapBehavior" = 1;
-        "com.apple.trackpad.scaling" = 5;
+        # "com.apple.trackpad.scaling" = 5;
       };
       SoftwareUpdate = {
         AutomaticallyInstallMacOSUpdates = true;
