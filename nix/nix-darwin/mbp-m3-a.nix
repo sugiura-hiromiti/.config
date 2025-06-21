@@ -1,5 +1,7 @@
 {pkgs, ...}: let
-  common = import ./common {};
-in {
-  system = common.system;
-}
+  common = import ./common {
+    username = "a";
+    inherit pkgs;
+  };
+in
+  common
