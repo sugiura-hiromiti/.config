@@ -11,6 +11,18 @@
   nix = {
     enable = false;
   };
+  services = {
+    yabai = {
+      enable = true;
+      enableScriptingAddition = true;
+    };
+	 skhd={
+	 enable=true;
+	 };
+	 sketchybar={
+	 enable=true;
+	 };
+  };
   system = {
     primaryUser = username;
     stateVersion = 6;
@@ -28,7 +40,7 @@
         NSAutomaticWindowAnimationsEnabled = false;
         NSDocumentSaveNewDocumentsToCloud = false;
         NSTableViewDefaultSizeMode = 1;
-        _HIHideMenuBar = false;
+        _HIHideMenuBar = true;
         "com.apple.mouse.tapBehavior" = 1;
         # "com.apple.trackpad.scaling" = 5;
       };
