@@ -1,5 +1,6 @@
 # common/common
-{pkgs}: [
+{ pkgs }:
+[
   pkgs.git
   pkgs.curl
   pkgs.chibi
@@ -62,6 +63,7 @@
   pkgs.reaper
   pkgs.docker
   pkgs.zsh
-  pkgs.binutils
+  pkgs.clang
+  pkgs.libllvm
   # legacy.ghostty
 ]
