@@ -1,6 +1,10 @@
-vim.o.guifont = 'MesloLGL Nerd Font:h15'
-vim.opt.linespace = -3
+---@diagnostic disable: inject-field
+
+vim.o.guifont = 'MesloLGL Nerd Font:h15:w-1:#e-subpixelantialias'
+vim.opt.linespace = -6
 vim.g.neovide_floating_corner_radius = 1.0
+vim.g.neovide_floating_blur_amount_x = 1.0
+vim.g.neovide_floating_blur_amount_y = 1.0
 vim.g.neovide_position_animation_length = 0.1
 vim.g.neovide_scroll_animation_length = 0.2
 
