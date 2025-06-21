@@ -16,12 +16,12 @@
       enable = true;
       enableScriptingAddition = true;
     };
-	 skhd={
-	 enable=true;
-	 };
-	 sketchybar={
-	 enable=true;
-	 };
+    skhd = {
+      enable = true;
+    };
+    sketchybar = {
+      enable = true;
+    };
   };
   system = {
     primaryUser = username;
