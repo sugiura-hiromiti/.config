@@ -79,19 +79,21 @@
       };
     };
 
-    # apps.aarch64-darwin.update = {
-    #   type = "app";
-    #   program = toString (
-    #     pkgs.writeShellScript "update-script" ''
-    #       set -e
-    #       echo "updating flake..."
-    #       nix flake update
-    #       echo "updating home-manager..."
-    #       nix run nixpkgs#home-manager -- switch --flake .#mbp-m3-a-aarch64-darwin
-    #       echo "update complete!"
-    #     ''
-    #   );
-    # };
+    apps.aarch64-darwin.update = {
+      type = "app";
+      program = toString (
+        (import nixpkgs {system = "aarch64-darwin";}).writeShellScript "update-script" ''
+          set -e
+          echo "updating flake..."
+          nix flake update
+          echo "updating home-manager..."
+          nix run nixpkgs#home-manager -- switch --flake .#mbp-m3-a-aarch64-darwin
+          echo "updating nix-darwin..."
+          sudo nix run nix-darwin -- switch --flake .#mbp-m3-a-aarch64
+          echo "update complete!"
+        ''
+      );
+    };
 
     # packages.aarch64-darwin.default = (pkgsFor "aarch64-darwin").buildEnv {
     #   name = "mypkg";

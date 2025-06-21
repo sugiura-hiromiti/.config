@@ -4,16 +4,14 @@
   config,
   pkgs,
   ...
-}:
-let
+}: let
   username = "a";
-  mypkgs = import ../darwin/aarch64 { inherit pkgs; } ++ [ ];
+  mypkgs = import ../darwin/aarch64 {inherit pkgs;} ++ [];
   common = import ./common {
-    inherit pkgs;
+    inherit username;
     inherit mypkgs;
   };
-in
-{
+in {
   nixpkgs = common.nixpkgs;
   home = common.home;
 }
