@@ -1,0 +1,31 @@
+#!/usr/bin/env lua
+
+package.cpath = package.cpath
+	.. ';'
+	.. '/nix/store/wnkylkmvz8gcsgzj0xf71vmjhl9g7chr-lua5.4-sbarLua-0-unstable-2024-08-12/lib/lua/5.4/sketchybar.so'
+print(package.cpath)
+package.path = package.path
+	.. ';'
+	.. os.getenv 'HOME'
+	.. '/.config/sketchybar/?/init.lua'
+	.. ';'
+	.. os.getenv 'HOME'
+	.. '/.config/sketchybar/?.lua'
+print(package.path)
+
+-- load the sketchybar-package and prepare the helper binaries
+require 'init'
+
+-- package.cpath = package.cpath .. ';' .. os.getenv 'HOME' .. '/.local/share/sketchybar_lua/?.so'
+-- print(package.cpath)
+-- package.path = package.path
+-- 	.. ';'
+-- 	.. os.getenv 'HOME'
+-- 	.. '/.config/sketchybar/?/init.lua'
+-- 	.. ';'
+-- 	.. os.getenv 'HOME'
+-- 	.. '/.config/sketchybar/?.lua'
+-- print(package.path)
+--
+-- -- load the sketchybar-package and prepare the helper binaries
+-- require 'init'

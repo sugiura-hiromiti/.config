@@ -5,11 +5,11 @@ sudo yabai --load-sa
 
 ## setting
 yabai -m config \
-window_gap 5 \
-top_padding 0 \
-bottom_padding 5 \
-left_padding 5 \
-right_padding 5 \
+window_gap 8 \
+top_padding 7 \
+bottom_padding 8 \
+left_padding 8 \
+right_padding 8 \
 focus_follows_mouse autofocus \
 mouse_follows_focus on \
 window_placement second_child \

@@ -1,6 +1,5 @@
 # common/common
-{ pkgs }:
-[
+{pkgs}: [
   pkgs.git
   pkgs.curl
   pkgs.chibi
@@ -13,7 +12,6 @@
   pkgs.gitui
   pkgs.go
   pkgs.jdk
-  # legacy.jdk11
   pkgs.google-java-format
   pkgs.gopls
   pkgs.graphviz
@@ -44,7 +42,6 @@
   pkgs.zoxide
   pkgs.zsh-fast-syntax-highlighting
   pkgs.docker
-  # need to use nix-darwin
   pkgs.nerd-fonts.meslo-lg
   pkgs.alejandra
   pkgs.asm-lsp
@@ -63,7 +60,7 @@
   pkgs.reaper
   pkgs.docker
   pkgs.zsh
-  pkgs.clang
-  pkgs.libllvm
+  # pkgs.clang
+  # pkgs.libllvm
   # legacy.ghostty
 ]
