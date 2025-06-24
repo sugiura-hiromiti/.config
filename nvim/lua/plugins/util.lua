@@ -87,6 +87,16 @@ return {
 			vim.cmd 'colo catppuccin'
 		end,
 	},
+	{
+		'akinsho/toggleterm.nvim',
+		version = '*',
+		opts = {
+			hide_numbers = false,
+			autochdir = true,
+			insert_mappings = false,
+			direction = 'tab',
+		},
+	},
 	-- { 'f-person/auto-dark-mode.nvim', opts = {} },
 	-- NOTE: LSP
 	{
