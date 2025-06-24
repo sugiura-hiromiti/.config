@@ -7,6 +7,24 @@
       pkgs.nerd-fonts.meslo-lg
     ];
   };
+  homebrew = {
+    enable = true;
+    brews = [
+      "felixkratz/formulae/sketchybar"
+    ];
+    casks = [
+      "karabiner-elements"
+      "amazon-q"
+      "crystalfetch"
+      "firefox"
+      "ghostty"
+      "slack"
+    ];
+    taps = ["felixkratz/formulae"];
+    mas = {
+      "Wallpaper Play" = 1638457121;
+    };
+  };
   nix = {
     enable = false;
   };
