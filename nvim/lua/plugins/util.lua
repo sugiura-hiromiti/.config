@@ -122,7 +122,7 @@ return {
 	},
 
 	-- NOTE: utility
-	{ 'willothy/flatten.nvim', opt = { window = { open = 'alternate' } }, lazy = false, priority = 1001 },
+	{ 'willothy/flatten.nvim', opt = { window = { open = 'alternate' } }, lazy = false },
 	{ 'rcarriga/nvim-notify', opts = { background_colour = '#000000' } },
 	{
 		'folke/noice.nvim',
