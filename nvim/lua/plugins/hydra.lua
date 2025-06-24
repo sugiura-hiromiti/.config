@@ -45,26 +45,12 @@ _g_ gitui _s_ ssr <esc> exit
 				{ 'b', tb.builtin },
 				{ 'f', te.smart_open.smart_open },
 				{ 'n', te.notify.notify },
-				-- {
-				-- 	'e',
-				-- 	function()
-				-- 		require('oil').open_float(
-				-- 			nil,
-				-- 			{ preview = { vertical = true, split = 'topleft' } },
-				-- 			nil
-				-- 			-- function()
-				-- 			-- 	local filer_win = vim.api.nvim_get_current_win()
-				-- 			-- 	vim.api.nvim_win_set_width(filer_win, 40)
-				-- 			-- end
-				-- 		)
-				-- 	end,
-				-- },
 				{ 'e', te.file_browser.file_browser },
 				{ 't', '<cmd>TodoTelescope<cr>' },
 				{ 'g', '<cmd>Gitui<cr>' },
 				{ 's', require('ssr').open },
 				{ 'c', tb.help_tags },
-				{ 'x', '<cmd>Lspsaga term_toggle<cr>' },
+				{ 'x', '<cmd>ToggleTerm<cr>' },
 				{ '<esc>', nil, { exit = true } },
 			},
 		}

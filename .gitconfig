@@ -7,3 +7,6 @@
 	defaultBranch = main
 [includeIf "gitdir:~/Downloads/job/"]
 	path = ~/.gitconfig_p
+[pull]
+	rebase = false
+	ff = only

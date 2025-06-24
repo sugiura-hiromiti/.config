@@ -20,36 +20,36 @@
       enable = true;
       package = pkgs.skhd;
     };
-    sketchybar = {
-      enable = true;
-      config = ''
-        #!/usr/bin/env lua
-
-        HOME_DIR = '/Users/' .. '${username}'
-        local log_file = io.open(HOME_DIR .. '/.config/sketchybar_config/logloglog', 'w')
-        log_file:write 'loading config\n'
-
-        package.cpath = package.cpath .. ';' .. '${pkgs.sbarlua}/lib/lua/5.4/sketchybar.so'
-        package.path = package.path
-        	.. ';'
-        	.. HOME_DIR
-        	.. '/.config/sketchybar_config/?/init.lua'
-        	.. ';'
-        	.. HOME_DIR
-        	.. '/.config/sketchybar_config/?.lua'
-        print 'path:'
-        print(package.path .. '\n')
-        print 'cpath:'
-        print(package.cpath)
-
-        log_file:write('cpath: ' .. package.cpath .. '\n' .. 'path: ' .. package.path .. '\n')
-        log_file:close()
-
-        -- load the sketchybar-package and prepare the helper binaries
-        require 'sbar_conf'
-      '';
-      package = pkgs.sketchybar;
-    };
+    # sketchybar = {
+    #   enable = true;
+    #   config = ''
+    #     #!/usr/bin/env lua
+    #
+    #     HOME_DIR = '/Users/' .. '${username}'
+    #     local log_file = io.open(HOME_DIR .. '/.config/sketchybar_config/logloglog', 'w')
+    #     log_file:write 'loading config\n'
+    #
+    #     package.cpath = package.cpath .. ';' .. '${pkgs.sbarlua}/lib/lua/5.4/sketchybar.so'
+    #     package.path = package.path
+    #     	.. ';'
+    #     	.. HOME_DIR
+    #     	.. '/.config/sketchybar_config/?/init.lua'
+    #     	.. ';'
+    #     	.. HOME_DIR
+    #     	.. '/.config/sketchybar_config/?.lua'
+    #     print 'path:'
+    #     print(package.path .. '\n')
+    #     print 'cpath:'
+    #     print(package.cpath)
+    #
+    #     log_file:write('cpath: ' .. package.cpath .. '\n' .. 'path: ' .. package.path .. '\n')
+    #     log_file:close()
+    #
+    #     -- load the sketchybar-package and prepare the helper binaries
+    #     require 'sbar_conf'
+    #   '';
+    #   package = pkgs.sketchybar;
+    # };
   };
   system = {
     primaryUser = username;
