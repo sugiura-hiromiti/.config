@@ -55,7 +55,7 @@
   pkgs.tailwindcss-language-server
   pkgs.phpactor
   pkgs.obsidian
-  pkgs.firefox
+  # pkgs.firefox
   pkgs.neovide
   pkgs.reaper
   pkgs.docker
