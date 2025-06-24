@@ -60,6 +60,7 @@
   pkgs.reaper
   pkgs.docker
   pkgs.zsh
+  pkgs.binutils
   # pkgs.clang
   # pkgs.libllvm
   # legacy.ghostty

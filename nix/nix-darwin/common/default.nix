@@ -21,7 +21,7 @@
       "slack"
     ];
     taps = ["felixkratz/formulae"];
-    mas = {
+    masApps = {
       "Wallpaper Play" = 1638457121;
     };
   };
