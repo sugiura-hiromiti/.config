@@ -40,3 +40,4 @@ git/
 .ssh/known_host*
 jgit/
 .ssh/flect*
+environment.d/
