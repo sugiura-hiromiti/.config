@@ -1,4 +1,4 @@
 {}: {
-  username = "xsugiurah";
-  system = "x86_64-linux";
+  username = "hiromichi.sugiura";
+  system = "aarch64-darwin";
 }
