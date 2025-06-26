@@ -50,10 +50,10 @@
         target = ".zshrc";
         source = ../../../.zshrc;
       };
-      "sshconfig" = {
-        target = ".ssh/config";
-        source = ../../../.ssh/config;
-      };
+      # "sshconfig" = {
+      #   target = ".ssh/config";
+      #   source = ../../../.ssh/config;
+      # };
     };
     packages = mypkgs;
   };
