@@ -6,10 +6,12 @@
   ...
 }: let
   username = "xsugiurah";
+  homeDir = "/home/xsugiurah";
   mypkgs = import ../linux/x86 {inherit pkgs;} ++ [];
   common = import ./common {
     inherit username;
     inherit mypkgs;
+	 inherit homeDir;
   };
 in {
   nixpkgs = common.nixpkgs;
