@@ -4,7 +4,7 @@
   pkgs.pngpaste
   pkgs.jankyborders
   pkgs.skhd
-  pkgs.yabai
+  # pkgs.yabai
   # need brew
   # amazon-q
   # crystalfetch
