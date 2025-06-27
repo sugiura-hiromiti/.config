@@ -2,6 +2,15 @@
   username,
   pkgs,
 }: {
+  security = {
+    pam = {
+      services = {
+        sudo_local = {
+          enable = false;
+        };
+      };
+    };
+  };
   fonts = {
     packages = [
       pkgs.nerd-fonts.meslo-lg
