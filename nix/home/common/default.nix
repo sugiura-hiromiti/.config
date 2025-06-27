@@ -50,6 +50,10 @@
         target = ".zshrc";
         source = ../../../.zshrc;
       };
+      ".npmrc" = {
+        target = ".npmrc";
+        source = ../../../.npmrc;
+      };
       # "sshconfig" = {
       #   target = ".ssh/config";
       #   source = ../../../.ssh/config;
