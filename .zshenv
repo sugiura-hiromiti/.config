@@ -41,7 +41,8 @@ alias wh='which -a'
 alias so='source'
 alias dflt_a='defaults read > /tmp/dotfiles_init/a.log'
 alias dflt_b='defaults read > /tmp/dotfiles_init/b.log ; diff /tmp/dotfiles_init/a.log /tmp/dotfiles_init/b.log'
-alias zenn='cd ~/Downloads/zenn/articles/ ; my_target_file=$(sk -ic '"'rg "'"{}"'"'"'| sed s"/:published: false//") ; n $my_target_file'
+# alias zenn='cd ~/Downloads/zenn/articles/ ; my_target_file=$(sk -ic '"'rg "'"{}"'"'"'| sed s"/:published: false//") ; n $my_target_file'
+alias gac='~/.config/user_script/auto_commit.sh'
 
 #functions
 # To remove function in zsh, `unset -f [function name]`
