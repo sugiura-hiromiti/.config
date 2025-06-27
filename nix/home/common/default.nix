@@ -1,6 +1,7 @@
 {
   username,
   mypkgs,
+  homeDir,
   ...
 }: {
   nixpkgs = {
@@ -10,7 +11,7 @@
   };
   home = {
     username = username;
-    homeDirectory = "/Users/${username}";
+    homeDirectory = homeDir;
     stateVersion = "25.11";
     file = {
       ".clang-format" = {
@@ -49,10 +50,14 @@
         target = ".zshrc";
         source = ../../../.zshrc;
       };
-      "sshconfig" = {
-        target = ".ssh/config";
-        source = ../../../.ssh/config;
+      ".npmrc" = {
+        target = ".npmrc";
+        source = ../../../.npmrc;
       };
+      # "sshconfig" = {
+      #   target = ".ssh/config";
+      #   source = ../../../.ssh/config;
+      # };
     };
     packages = mypkgs;
   };

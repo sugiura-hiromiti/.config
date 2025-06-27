@@ -5,9 +5,9 @@
   pkgs,
   ...
 }: let
-  username = "hiromichi.sugiura";
-  homeDir = "/Users/${username}";
-  mypkgs = import ../darwin/aarch64 {inherit pkgs;} ++ [];
+  username = "xsugiurah";
+  homeDir = "/home/xsugiurah";
+  mypkgs = import ../linux/x86 {inherit pkgs;} ++ [];
   common = import ./common {
     inherit username;
     inherit mypkgs;
