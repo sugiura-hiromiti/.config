@@ -7,7 +7,7 @@ in
   ++ x86
   ++ [
     pkgs.discord
-    pkgs.minecraft
+    # pkgs.minecraft
     pkgs.slack
     pkgs.vital
   ]
