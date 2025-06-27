@@ -1,1 +1,1 @@
-~/.npm-packages/bin/gemini -y true -p "generage proper git history and reflect local changes to remote. each commit has isolated semantics and volume of each commits should be minimal. after git push, print each commits chronologically with several git information"
+~/.npm-packages/bin/gemini -y true -p "reflect local changes to remote. each commit has isolated semantics and has minimal volume. after execution, print generated commits by you chronologically"
