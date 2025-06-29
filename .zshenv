@@ -9,8 +9,6 @@ set -o emacs
 # source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 [ -f "/Users/a/.ghcup/env" ] && . "/Users/a/.ghcup/env" # ghcup-env
 
-# export PATH=$PATH:$HOME/.cargo/env
-
 #environment variables
 export EDITOR=nvim
 export VISUAL=nvim
@@ -75,4 +73,3 @@ export PATH=$PATH:/Users/a/Library/Python/3.9/bin
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
-
