@@ -42,10 +42,10 @@
         target = ".stylua.toml";
         source = ../../../.stylua.toml;
       };
-      ".zshenv" = {
-        target = ".zshenv";
-        source = ../../../.zshenv;
-      };
+      # ".zshenv" = {
+      #   target = ".zshenv";
+      #   source = ../../../.zshenv;
+      # };
       ".zshrc" = {
         target = ".zshrc";
         source = ../../../.zshrc;
