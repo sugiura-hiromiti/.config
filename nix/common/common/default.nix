@@ -16,6 +16,7 @@
   pkgs.gopls
   pkgs.graphviz
   pkgs.jdt-language-server
+  pkgs.lua5_4_compat
   pkgs.lua-language-server
   pkgs.luajitPackages.luarocks
   pkgs.marksman
