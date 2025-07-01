@@ -1,7 +1,7 @@
 {pkgs, ...}: let
   common = import ./common {
     username = "hiromichi.sugiura";
-    inherit pkgs;
+    pkgs = pkgs;
   };
 in
   common

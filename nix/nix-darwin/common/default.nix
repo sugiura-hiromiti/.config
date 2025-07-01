@@ -18,6 +18,10 @@
   };
   homebrew = {
     enable = true;
+    onActivation = {
+      autoUpdate = true;
+      # cleanup = "uninstall";
+    };
     brews = [
       "felixkratz/formulae/sketchybar"
       "koekeishiya/formulae/yabai"
