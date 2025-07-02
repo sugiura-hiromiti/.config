@@ -12,7 +12,7 @@
   pkgs.gitui
   pkgs.go
   # pkgs.jdk
-  pkgs.jdk8
+  pkgs.jdk11
   pkgs.google-java-format
   pkgs.gopls
   pkgs.graphviz
