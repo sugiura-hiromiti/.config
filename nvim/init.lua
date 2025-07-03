@@ -37,8 +37,3 @@ if vim.g.neovide then
 	require 'gui'
 end
 
--- if vim.fn.expand '%:p' == '' and vim.bo.ft ~= 'lazy' then
--- 	--  TODO: add startup plugin
--- 	-- vim.cmd 'e $MYVIMRC'
--- 	-- vim.cmd 'terminal'
--- end
