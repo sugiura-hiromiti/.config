@@ -250,6 +250,11 @@ return {
 			}
 		end,
 	},
+	{
+		'folke/flash.nvim',
+		event = 'VeryLazy',
+		opts = {},
+	},
 
 	-- NOTE: telescope
 	{
