@@ -76,58 +76,42 @@
 
 #---------------------------------------------------------------------------------------------------
 
-fn - d: yabai -m display --focus next || yabai -m display --focus first
-
-# Space
-
-ctrl - left: yabai -m space --focus prev || yabai -m space --focus last
-ctrl - right: yabai -m space --focus next || yabai -m space --focus first
-
-# ctrl + shift - left: yabai -m space --move prev || yabai -m space --move last
-# ctrl + shift - right: yabai -m space --move next || yabai -m space --move first
-
-ctrl - up: yabai -m space --create && yabai -m window --space last #&& yabai -m space --focus last
-ctrl - down: yabai -m space --destroy
-
-ctrl - 0x29: yabai -m space --focus main
-ctrl - 0x27: yabai -m space --focus ex_main
-ctrl - 0x21: yabai -m space --focus sub
-ctrl - 0x2C: yabai -m space --focus ex_sub
-
-# Window
-
-## Window Focus
-fn - h: yabai -m window --space main # || yabai -m window --space last
-fn - l: yabai -m window --space ex_main # || yabai -m window --space first
-fn - j: yabai -m window --focus next || yabai -m window --focus first
-fn - k: yabai -m window --focus prev || yabai -m window --focus last
-
-fn + shift - h: yabai -m window --space prev || yabai -m window --space last
-fn + shift - l: yabai -m window --space next || yabai -m window --space first
-fn + shift - j: yabai -m window --space sub
-fn + shift - k: yabai -m window --space ex_sub
-
-## Window Move
-fn - 0x29: yabai -m window --move rel:-20:0 || yabai -m window --warp west
-fn - 0x2C: yabai -m window --move rel:0:20 || yabai -m window --warp south
-fn - 0x21: yabai -m window --move rel:0:-20 || yabai -m window --warp north
-fn - 0x27: yabai -m window --move rel:20:0 || yabai -m window --warp east
-
-## Window Resize
-fn + shift - 0x27: yabai -m window --resize left:20:0 || yabai -m window --resize right:-20:0
-fn + shift - 0x21: yabai -m window --resize bottom:0:20 || yabai -m window  --resize top:0:-20
-fn + shift - 0x2C: yabai -m window --resize top:0:20 || yabai -m window --resize bottom:0:-20
-fn + shift - 0x29: yabai -m window --resize right:20:0 || yabai -m window --resize left:-20:0
-
 # utility
 fn - f: yabai -m window --toggle float
 fn - p: yabai -m window --toggle sticky
-# fn - 0x1E: yabai -m space --rotate 90
-fn - 0x1E: yabai -m window --toggle split
 cmd - h: yabai -m window --minimize
+fn - d: yabai -m display --focus next || yabai -m display --focus first
 
-#ctrl - return: alacritty -t sticky_alacritty &
+# Window Focus: 2
+fn - 0x2C: yabai -m window --focus next || yabai -m window --focus first
+fn - 0x21: yabai -m window --focus prev || yabai -m window --focus last
 
-#:: hotkey @: alacritty -T float_alacritty
-#dflt < shift ; hotkey
-#hotkey < shift ; alacritty -T float_alacritty
+# Space Focus (Semantically):  4
+fn - j: yabai -m space --focus main
+fn - k: yabai -m space --focus ex_main
+fn - h: yabai -m space --focus sub
+fn - l: yabai -m space --focus ex_sub
+
+# Window Send (Semantically): 4
+fn + shift - j: yabai -m window --space main
+fn + shift - k: yabai -m window --space ex_main
+fn + shift - h: yabai -m window --space sub
+fn + shift - l: yabai -m window --space ex_sub
+
+# Window Move: 4
+alt - left:  yabai -m window --move rel:-20:0 || yabai -m window --warp west
+alt - down:  yabai -m window --move rel:0:20 || yabai -m window --warp south
+alt - up:    yabai -m window --move rel:0:-20 || yabai -m window --warp north
+alt - right: yabai -m window --move rel:20:0 || yabai -m window --warp east
+
+# Space Focus (Logically): 1
+fn - 0x29: yabai -m space --focus next || yabai -m space --focus first
+
+# Window Send (Logically): 1
+fn - 0x27: yabai -m window --space next || yabai -m window --space first
+
+# Window Resize: 4
+alt + shift - left: yabai -m window --resize left:20:0 || yabai -m window --resize right:-20:0
+alt + shift - down: yabai -m window --resize bottom:0:20 || yabai -m window  --resize top:0:-20
+alt + shift - up: yabai -m window --resize top:0:20 || yabai -m window --resize bottom:0:-20
+alt + shift - right: yabai -m window --resize right:20:0 || yabai -m window --resize left:-20:0
