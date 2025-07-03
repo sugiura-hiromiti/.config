@@ -29,6 +29,13 @@ yabai -m rule --add subrole="AXDialog" opacity=1.0
 # yabai -m signal --add event=space_changed action="nohup open -g raycast://extensions/krzysztoff1/yabai/screens-menu-bar?launchType=background > /dev/null 2>&1 &"
 
 ## other
+
+### label spaces
+yabai -m space 1 --label main
+yabai -m space 2 --label sub
+yabai -m space 3 --label ex_main
+yabai -m space 4 --label ex_sub
+
 borders active_color=0xff00d4ff inactive_color=0x88e1e3e4 width=2.0 &
 
 #77dbef

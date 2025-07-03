@@ -76,33 +76,36 @@
 
 #---------------------------------------------------------------------------------------------------
 
-ctrl - 0x1E: yabai -m display --focus next || yabai -m display --focus first
+fn - d: yabai -m display --focus next || yabai -m display --focus first
 
 # Space
-ctrl - 0x29: yabai -m space --focus prev || yabai -m space --focus last
-ctrl - 0x27: yabai -m space --focus next || yabai -m space --focus first
 
-ctrl + shift - 0x29: yabai -m space --move prev || yabai -m space --move last
-ctrl + shift - 0x27: yabai -m space --move next || yabai -m space --move first
+ctrl - left: yabai -m space --focus prev || yabai -m space --focus last
+ctrl - right: yabai -m space --focus next || yabai -m space --focus first
 
-ctrl - 0x21: yabai -m space --create && yabai -m window --space last #&& yabai -m space --focus last
-ctrl - 0x2C: yabai -m space --destroy
-# ctrl + shift - 0x2C: yabai -m display
+# ctrl + shift - left: yabai -m space --move prev || yabai -m space --move last
+# ctrl + shift - right: yabai -m space --move next || yabai -m space --move first
 
-#ctrl + shift - 0x21:
-#ctrl + shift - 0x2C: yabai -m window --space next || yabai -m window --space first
+ctrl - up: yabai -m space --create && yabai -m window --space last #&& yabai -m space --focus last
+ctrl - down: yabai -m space --destroy
+
+ctrl - 0x29: yabai -m space --focus main
+ctrl - 0x27: yabai -m space --focus ex_main
+ctrl - 0x21: yabai -m space --focus sub
+ctrl - 0x2C: yabai -m space --focus ex_sub
 
 # Window
 
 ## Window Focus
-#fn - h: yabai -m window --focus west || yabai -m window --focus prev || yabai -m window --focus last
-#fn - j: yabai -m window --focus south || yabai -m window --focus next || yabai -m window --focus first
-#fn - k: yabai -m window --focus north || yabai -m window --focus prev || yabai -m window --focus last
-#fn - l: yabai -m window --focus east || yabai -m window --focus next || yabai -m window --focus first
-fn - h: yabai -m window --space prev || yabai -m window --space last
-fn - l: yabai -m window --space next || yabai -m window --space first
+fn - h: yabai -m window --space main # || yabai -m window --space last
+fn - l: yabai -m window --space ex_main # || yabai -m window --space first
 fn - j: yabai -m window --focus next || yabai -m window --focus first
 fn - k: yabai -m window --focus prev || yabai -m window --focus last
+
+fn + shift - h: yabai -m window --space prev || yabai -m window --space last
+fn + shift - l: yabai -m window --space next || yabai -m window --space first
+fn + shift - j: yabai -m window --space sub
+fn + shift - k: yabai -m window --space ex_sub
 
 ## Window Move
 fn - 0x29: yabai -m window --move rel:-20:0 || yabai -m window --warp west
