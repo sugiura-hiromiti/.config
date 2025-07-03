@@ -36,6 +36,7 @@
       "ghostty"
       "slack"
       "homerow"
+      "iterm2"
     ];
     taps = [
       "felixkratz/formulae"
