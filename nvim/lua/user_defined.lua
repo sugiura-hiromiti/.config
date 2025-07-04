@@ -138,6 +138,20 @@ m({ 'n', 'o', 'x' }, 'b', function()
 	require('spider').motion 'b'
 end)
 
+-- NOTE: flash
+m({ 'n', 'o', 'x' }, 's', function()
+	require('flash').jump()
+end)
+m({ 'n', 'o', 'x' }, 'S', function()
+	require('flash').treesitter()
+end)
+m({ 'n', 'o', 'x' }, 'r', function()
+	require('flash').treesitter_search()
+end)
+-- m({ 'n', 'o', 'x' }, 's', function()
+-- 	require('flash').jump()
+-- end)
+
 -- NOTE: user command
 local c = vim.api.nvim_create_user_command
 
