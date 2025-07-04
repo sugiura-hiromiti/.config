@@ -57,6 +57,7 @@ return {
 		'akinsho/toggleterm.nvim',
 		version = '*',
 		opts = {
+			size = 50,
 			hide_numbers = false,
 			autochdir = true,
 			insert_mappings = false,
