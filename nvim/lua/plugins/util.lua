@@ -14,8 +14,6 @@ return {
 			require('sqlua').setup()
 		end,
 	},
-	{ 'folke/flash.nvim', event = 'VeryLazy' },
-
 	-- NOTE: Library
 	'kkharji/sqlite.lua',
 	{ 'echasnovski/mini.nvim', version = false },
@@ -25,43 +23,6 @@ return {
 
 	-- NOTE: appearance
 	{ 'nvim-zh/colorful-winsep.nvim', config = true, event = { 'WinLeave' } },
-	-- {
-	-- 	'stevearc/oil.nvim',
-	-- 	opts = {
-	-- 		view_options = {
-	-- 			show_hidden = true,
-	-- 		},
-	-- 		columns = {
-	-- 			'icon',
-	-- 			'permissions',
-	-- 			'size',
-	-- 		},
-	-- 		win_options = {
-	-- 			signcolumn = 'yes:2',
-	-- 		},
-	-- 		float = {
-	-- 			win_options = {
-	-- 				winblend = 30,
-	-- 			},
-	-- 		},
-	-- 	},
-	-- },
-	-- {
-	-- 	'tronikelis/xylene.nvim',
-	-- 	opts = {
-	-- 		on_attach = function(renderer)
-	-- 			vim.keymap.set('n', '<cr>', function()
-	-- 				renderer:toggle(vim.api.nvim_win_get_cursor(0)[1])
-	-- 			end, { buffer = renderer.buf })
-	--
-	-- 			vim.keymap.set('n', '!', function()
-	-- 				renderer:toggle_all(vim.api.nvim_win_get_cursor(0)[1])
-	-- 			end, { buffer = renderer.buf })
-	-- 		end,
-	-- 	},
-	-- },
-	-- { 'refractalize/oil-git-status.nvim', config = true },
-	-- { 'JezerM/oil-lsp-diagnostics.nvim', opts = {} },
 	{
 		'vyfor/cord.nvim',
 		build = ':Cord update',
@@ -76,7 +37,7 @@ return {
 		name = 'catppuccin',
 		config = function()
 			require('catppuccin').setup {
-				--		transparent_background = true,
+				transparent_background = iterm_profile_is_hotkey,
 				term_colors = true,
 				dim_inactive = { enabled = true },
 				styles = {
@@ -94,7 +55,7 @@ return {
 			hide_numbers = false,
 			autochdir = true,
 			insert_mappings = false,
-			direction = 'tab',
+			direction = 'vertical',
 		},
 	},
 	-- { 'f-person/auto-dark-mode.nvim', opts = {} },
@@ -122,7 +83,7 @@ return {
 	},
 
 	-- NOTE: utility
-	{ 'willothy/flatten.nvim', opt = { window = { open = 'alternate' } }, lazy = false },
+	{ 'willothy/flatten.nvim', opts = { window = { open = 'tab' } }, lazy = false, priority = 1001 },
 	{ 'rcarriga/nvim-notify', opts = { background_colour = '#000000' } },
 	{
 		'folke/noice.nvim',
@@ -253,7 +214,14 @@ return {
 	{
 		'folke/flash.nvim',
 		event = 'VeryLazy',
-		opts = {},
+		opts = {
+			-- mode = "exact"
+			modes = {
+				search = {
+					enabled = true,
+				},
+			},
+		},
 	},
 
 	-- NOTE: telescope
