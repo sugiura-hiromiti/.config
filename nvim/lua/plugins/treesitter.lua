@@ -1,32 +1,33 @@
 return {
 	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
+		'nvim-treesitter/nvim-treesitter',
+		build = ':TSUpdate',
 		config = function()
-			require("nvim-treesitter.configs").setup({
+			vim.treesitter.language.register('markdown', 'octo')
+			require('nvim-treesitter.configs').setup {
 				auto_install = true,
 				highlight = { enable = true, additional_vim_regex_highlighting = false },
 				textsubjects = {
 					enable = true,
-					prev_selection = "/",
+					prev_selection = '/',
 					keymaps = {
-						["."] = "textsubjects-smart",
-						[","] = "textsubjects-container-outer",
-						["i,"] = "textsubjects-container-inner",
+						['.'] = 'textsubjects-smart',
+						[','] = 'textsubjects-container-outer',
+						['i,'] = 'textsubjects-container-inner',
 					},
 				},
-			})
+			}
 		end,
 	},
 	{
-		"cshuaimin/ssr.nvim",
+		'cshuaimin/ssr.nvim',
 		config = function()
-			require("ssr").setup({
+			require('ssr').setup {
 				max_height = 50,
 				keymaps = {
-					replace_all = "<s-cr>",
+					replace_all = '<s-cr>',
 				},
-			})
+			}
 		end,
 	},
 	-- "RRethy/nvim-treesitter-textsubjects",
