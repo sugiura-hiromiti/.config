@@ -5,7 +5,12 @@ return {
 	--  TODO: later
 	-- { 'stevearc/overseer.nvim', opts = {} },
 	-- { '3rd/image.nvim' },
-	{ 'pwntester/octo.nvim' },
+	{
+		'pwntester/octo.nvim',
+		opts = {
+			-- ssh_aliases = { ['github.flkt'] = 'github.com' },
+		},
+	},
 	{
 		'xemptuous/sqlua.nvim',
 		lazy = true,

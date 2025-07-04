@@ -19,7 +19,7 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home/
 
 #aliases
 # to remove alias in zsh, simply just remove it
-alias s='eza -ahlF --icons --group-directories-first --sort=extension --time-style=iso --git --no-user --no-time'
+alias s='eza -ahlF --icons --group-directories-first --sort=extension --time-style=iso --git'
 alias n='nvim'
 alias u='yabai --stop-service ; yabai --uninstall-service ; brew upgrade ;
 echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai ;
