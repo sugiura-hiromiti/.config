@@ -29,5 +29,5 @@ return {
 			})
 		end,
 	},
-	"RRethy/nvim-treesitter-textsubjects",
+	-- "RRethy/nvim-treesitter-textsubjects",
 }
