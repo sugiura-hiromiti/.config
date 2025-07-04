@@ -2,7 +2,7 @@ vim.cmd 'smapclear'
 
 local m = vim.keymap.set
 local tsb = require 'telescope.builtin'
-local td = require 'todo-comments'
+-- local td = require 'todo-comments'
 
 local dial_pair = {
 	mode = { 'normal', 'visual' },
