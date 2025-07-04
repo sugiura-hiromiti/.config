@@ -63,6 +63,7 @@
   pkgs.docker
   pkgs.zsh
   pkgs.binutils
+  pkgs.nil
   # pkgs.clang
   # pkgs.libllvm
   # legacy.ghostty
