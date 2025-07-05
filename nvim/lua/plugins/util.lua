@@ -9,6 +9,7 @@ return {
 		'pwntester/octo.nvim',
 		opts = {
 			-- ssh_aliases = { ['github.flkt'] = 'github.com' },
+			ssh_aliases = { ['github.personal'] = 'github.com' },
 		},
 	},
 	{
