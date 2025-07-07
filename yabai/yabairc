@@ -28,13 +28,39 @@ yabai -m rule --add subrole="AXDialog" opacity=1.0
 ## signals
 # yabai -m signal --add event=space_changed action="nohup open -g raycast://extensions/krzysztoff1/yabai/screens-menu-bar?launchType=background > /dev/null 2>&1 &"
 
-## other
-
-### label spaces
 yabai -m space 1 --label main
 yabai -m space 2 --label sub
 yabai -m space 3 --label ex_main
 yabai -m space 4 --label ex_sub
+
+## other
+
+# for _ in $(yabai -m query --spaces | jq '.[].index | select(. > 6)'); do
+# 	yabai -m space --destroy 5
+# done
+#
+# function setup_space {
+# 	local idx="$1"
+# 	local name="$2"
+# 	local space=
+# 	echo "setup space $idx : $name"
+# 	space=$(yabai -m query --spaces --space "$idx")
+# 	if [ -z "$space" ]; then
+# 		yabai -m space --create
+# 	fi
+# }
+#
+# ### label spaces
+# setup_space 1 main
+# setup_space 2 sub
+# setup_space 3 ex_main
+# setup_space 4 ex_sub
+#
+# yabai -m rule --add app="^Firefox$" space=^1
+# yabai -m rule --add app="^Obsidian$" space=1
+# yabai -m rule --add app="^Slack$" space=3
+# yabai -m rule --add app="^ChatGPT$" space=^3
+# yabai -m rule --add app="^FaceTime$" space=^4
 
 borders active_color=0xff00d4ff inactive_color=0x88e1e3e4 width=2.0 &
 
