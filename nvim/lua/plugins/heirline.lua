@@ -1,22 +1,22 @@
 return {
-	"rebelot/heirline.nvim",
+	'rebelot/heirline.nvim',
 	config = function()
-		local symbols = require("my_lua_api.symbols")
-		local hl = require("heirline.utils").get_highlight
-		local cond = require("heirline.conditions")
-		local lsp_symbol = require("lspsaga.symbol.winbar").get_bar
+		local symbols = require 'my_lua_api.symbols'
+		local hl = require('heirline.utils').get_highlight
+		local cond = require 'heirline.conditions'
+		local lsp_symbol = require('lspsaga.symbol.winbar').get_bar
 		--		local gps = require 'nvim-gps'
 
-		local align = { provider = "%=" }
+		local align = { provider = '%=' }
 
 		local mode = {
-			{ provider = vim.fn.mode() .. " ", update = "ModeChanged" },
+			{ provider = vim.fn.mode() .. ' ', update = 'ModeChanged' },
 			{
 				provider = function()
-					return require("hydra.statusline").get_name() .. " "
+					return require('hydra.statusline').get_name() .. ' '
 				end,
 				condition = function()
-					return require("hydra.statusline").is_active()
+					return require('hydra.statusline').is_active()
 				end,
 			},
 		}
@@ -34,7 +34,11 @@ return {
 					end
 				end,
 				provider = function()
-					return vim.bo.ft
+					local ft = vim.bo.ft
+					if ft == 'toggleterm' then
+						ft = ft .. vim.b.toggle_number .. ' ' .. vim.b.term_title .. ' ' .. vim.b.terminal_job_pid
+					end
+					return ft
 				end,
 			},
 			--[[
@@ -175,37 +179,37 @@ return {
 				self.hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
 				self.info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
 			end,
-			update = { "DiagnosticChanged", "BufEnter" },
+			update = { 'DiagnosticChanged', 'BufEnter' },
 			{
-				provider = "![",
+				provider = '![',
 			},
 			{
 				provider = function(self)
 					-- 0 is just another output, we can decide to print it or not!
-					return self.errors > 0 and (self.error_icon .. " " .. self.errors .. " ")
+					return self.errors > 0 and (self.error_icon .. ' ' .. self.errors .. ' ')
 				end,
-				hl = hl("@comment.error"),
+				hl = hl '@comment.error',
 			},
 			{
 				provider = function(self)
-					return self.warnings > 0 and (self.warn_icon .. " " .. self.warnings .. " ")
+					return self.warnings > 0 and (self.warn_icon .. ' ' .. self.warnings .. ' ')
 				end,
-				hl = hl("@comment.warning"),
+				hl = hl '@comment.warning',
 			},
 			{
 				provider = function(self)
-					return self.info > 0 and (self.info_icon .. " " .. self.info .. " ")
+					return self.info > 0 and (self.info_icon .. ' ' .. self.info .. ' ')
 				end,
-				hl = hl("@comment.note"),
+				hl = hl '@comment.note',
 			},
 			{
 				provider = function(self)
-					return self.hints > 0 and (self.hint_icon .. " " .. self.hints)
+					return self.hints > 0 and (self.hint_icon .. ' ' .. self.hints)
 				end,
-				hl = hl("@comment.hint"),
+				hl = hl '@comment.hint',
 			},
 			{
-				provider = "]",
+				provider = ']',
 			},
 		}
 
@@ -220,7 +224,7 @@ return {
 			end,
 			{
 				provider = function(self)
-					return " " .. self.status_dict.head
+					return ' ' .. self.status_dict.head
 				end,
 				hl = { bold = true },
 			},
@@ -228,43 +232,43 @@ return {
 				condition = function(self)
 					return self.has_changes
 				end,
-				provider = "(",
+				provider = '(',
 			},
 			{
 				provider = function(self)
 					local count = self.status_dict.added or 0
-					return count > 0 and ("+" .. count)
+					return count > 0 and ('+' .. count)
 				end,
-				hl = { fg = hl("GitSignsAdd").fg },
+				hl = { fg = hl('GitSignsAdd').fg },
 			},
 			{
 				provider = function(self)
 					local count = self.status_dict.removed or 0
-					return count > 0 and ("-" .. count)
+					return count > 0 and ('-' .. count)
 				end,
-				hl = { fg = hl("GitSignsDelete").fg },
+				hl = { fg = hl('GitSignsDelete').fg },
 			},
 			{
 				provider = function(self)
 					local count = self.status_dict.changed or 0
-					return count > 0 and ("~" .. count)
+					return count > 0 and ('~' .. count)
 				end,
-				hl = { fg = hl("GitSignsChange").fg },
+				hl = { fg = hl('GitSignsChange').fg },
 			},
 			{
 				condition = function(self)
 					return self.has_changes
 				end,
-				provider = ")",
+				provider = ')',
 			},
 		}
 
 		local location = {
-			provider = " %l:%c",
+			provider = ' %c',
 		}
 
-		require("heirline").setup({
+		require('heirline').setup {
 			statusline = { mode, diag, align, symbol_bar_or_ft, align, git, location },
-		})
+		}
 	end,
 }

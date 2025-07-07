@@ -9,4 +9,5 @@ require 'base'
 require 'item'
 SBAR.end_config()
 
+print 'before loop'
 SBAR.event_loop()

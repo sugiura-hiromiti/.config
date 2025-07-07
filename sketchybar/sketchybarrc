@@ -27,5 +27,8 @@ package.path = package.path
 	.. HOME_DIR
 	.. '/.config/sketchybar/?.lua'
 
+print(package.path)
+print(package.cpath)
+
 -- load the sketchybar-package and prepare the helper binaries
 require 'sbar_conf'

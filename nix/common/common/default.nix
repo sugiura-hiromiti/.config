@@ -1,5 +1,6 @@
 # common/common
-{pkgs}: [
+{ pkgs }:
+[
   pkgs.git
   pkgs.curl
   pkgs.chibi
@@ -27,7 +28,7 @@
   pkgs.nasm
   pkgs.neovim
   pkgs.ninja
-  # pkgs.nodejs_24
+  pkgs.nodejs-slim
   pkgs.pkgconf
   pkgs.qemu
   pkgs.ripgrep
