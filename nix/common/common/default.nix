@@ -51,20 +51,18 @@
   pkgs.docker-compose-language-service
   pkgs.haskell-language-server
   pkgs.vscode-langservers-extracted
-  # pkgs.nil
   pkgs.typescript-language-server
   pkgs.zls
   pkgs.tailwindcss-language-server
   pkgs.phpactor
   pkgs.obsidian
-  # pkgs.firefox
   pkgs.neovide
   pkgs.reaper
   pkgs.docker
   pkgs.zsh
   pkgs.binutils
   pkgs.nil
-  # pkgs.tailscale
+  pkgs.tailscale
   # pkgs.clang
   # pkgs.libllvm
   # legacy.ghostty
