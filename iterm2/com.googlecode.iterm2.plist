@@ -1179,7 +1179,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>No</string>
+			<string>Recycle</string>
 			<key>Custom Locale</key>
 			<string>en_US.UTF-8</string>
 			<key>Default Bookmark</key>
@@ -1277,6 +1277,8 @@
 				<key>Red Component</key>
 				<real>0.14513972401618958</real>
 			</dict>
+			<key>Load Shell Integration Automatically</key>
+			<true/>
 			<key>Match Background Color (Dark)</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -2587,6 +2589,8 @@
 				<key>Red Component</key>
 				<real>0.19802422821521759</real>
 			</dict>
+			<key>Load Shell Integration Automatically</key>
+			<true/>
 			<key>Match Background Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -2769,6 +2773,8 @@
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>ShowPaneTitles</key>
+	<false/>
+	<key>SilentUserNotifications</key>
 	<false/>
 	<key>SoundForEsc</key>
 	<false/>
