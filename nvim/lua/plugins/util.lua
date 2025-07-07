@@ -8,8 +8,7 @@ return {
 	{
 		'pwntester/octo.nvim',
 		opts = {
-			-- ssh_aliases = { ['github.flkt'] = 'github.com' },
-			ssh_aliases = { ['github.personal'] = 'github.com' },
+			ssh_aliases = { ['github.flect'] = 'github.com', ['github.personal'] = 'github.com' },
 		},
 	},
 	{
@@ -58,11 +57,11 @@ return {
 		'akinsho/toggleterm.nvim',
 		version = '*',
 		opts = {
-			size = 50,
+			-- size = 50,
 			hide_numbers = false,
 			autochdir = true,
 			insert_mappings = false,
-			direction = 'vertical',
+			direction = 'tab',
 		},
 	},
 	-- { 'f-person/auto-dark-mode.nvim', opts = {} },

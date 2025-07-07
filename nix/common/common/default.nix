@@ -1,6 +1,5 @@
 # common/common
-{ pkgs }:
-[
+{pkgs}: [
   pkgs.git
   pkgs.curl
   pkgs.chibi
@@ -28,7 +27,7 @@
   pkgs.nasm
   pkgs.neovim
   pkgs.ninja
-  pkgs.nodejs_24
+  # pkgs.nodejs_24
   pkgs.pkgconf
   pkgs.qemu
   pkgs.ripgrep
@@ -65,7 +64,7 @@
   pkgs.zsh
   pkgs.binutils
   pkgs.nil
-  pkgs.tailscale
+  # pkgs.tailscale
   # pkgs.clang
   # pkgs.libllvm
   # legacy.ghostty
