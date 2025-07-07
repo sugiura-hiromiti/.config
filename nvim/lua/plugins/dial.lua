@@ -16,6 +16,7 @@ return {
 					augend.constant.new { elements = { 'let', 'const' }, cyclic = true },
 					augend.constant.new { elements = { 'and', 'or' }, word = true, cyclic = true },
 					augend.constant.new { elements = { '&&', '||' }, word = true, cyclic = true },
+					augend.constant.new { elements = { '- [ ]', '- [x]' }, word = true, cyclic = true },
 					augend.hexcolor.new { case = 'lower' },
 					augend.user.new {
 						find = my_dial_api.inline_constant_find,

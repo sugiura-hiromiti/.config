@@ -57,11 +57,11 @@ return {
 		'akinsho/toggleterm.nvim',
 		version = '*',
 		opts = {
-			-- size = 50,
+			-- size = 20,
 			hide_numbers = false,
 			autochdir = true,
 			insert_mappings = false,
-			direction = 'tab',
+			direction = 'horizontal',
 		},
 	},
 	-- { 'f-person/auto-dark-mode.nvim', opts = {} },
