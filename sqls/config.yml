@@ -1,0 +1,8 @@
+lowercaseKeywords: true
+connections:
+  - alias: smart_open_job
+    driver: sqlite3
+	 dataSourceName: file:/Users/hiromichi.sugiura/.local/share/nvim/smart_open.sqlite3
+  - alias: smart_open_personal
+    driver: sqlite3
+	 dataSourceName: file:/Users/a/.local/share/nvim/smart_open.sqlite3
