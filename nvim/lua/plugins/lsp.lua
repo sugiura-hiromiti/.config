@@ -2,9 +2,6 @@ local on_attach = function(client, bufnr)
 	if client.server_capabilities.inlayHintProvider then
 		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 	end
-	-- if client.server_capabilities.documentSymbolProvider then
-	-- 	print 'attaching'
-	-- end
 end
 
 return {
@@ -12,11 +9,13 @@ return {
 		'neovim/nvim-lspconfig',
 		config = function()
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
-			local lsp_conf = require 'lspconfig'
-			--			vim.no
-			lsp_conf.rust_analyzer.setup {
+
+			vim.lsp.config('*', {
 				capabilities = capabilities,
 				on_attach = on_attach,
+			})
+
+			vim.lsp.config('rust-analyzer', {
 				settings = {
 					['rust-analyzer'] = {
 						-- cargo = {
@@ -51,14 +50,8 @@ return {
 						},
 					},
 				},
-			}
-			lsp_conf.hls.setup {
-				capabilities = capabilities,
-				on_attach = on_attach,
-			}
-			lsp_conf.lua_ls.setup {
-				capabilities = capabilities,
-				on_attach = on_attach,
+			})
+			vim.lsp.config('lua_ls', {
 				settings = {
 					Lua = {
 						runtime = { version = 'LuaJIT' },
@@ -70,8 +63,8 @@ return {
 						format = { enable = false },
 					},
 				},
-			}
-			lsp_conf.markdown_oxide.setup {
+			})
+			vim.lsp.config('markdown_oxide', {
 				capabilities = vim.tbl_deep_extend('force', capabilities, {
 					workspace = {
 						didChangeWatchedFiles = {
@@ -79,18 +72,12 @@ return {
 						},
 					},
 				}),
-				on_attach = on_attach,
-			}
-			lsp_conf.zls.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.sourcekit.setup {
+			})
+			vim.lsp.config('sourcekit', {
 				filetypes = { 'swift', 'objective-c', 'objective-cpp' },
 				single_file_support = true,
-				capabilities = capabilities,
-				on_attach = on_attach,
-			}
-			lsp_conf.gopls.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.jsonls.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.dprint.setup {
+			})
+			vim.lsp.config('dprint', {
 				filetypes = {
 					'javascript',
 					'typescript',
@@ -102,62 +89,32 @@ return {
 					'toml',
 					'yaml',
 				},
-				capabilities = capabilities,
-				on_attach = on_attach,
+			})
+			vim.lsp.config('html', { init_options = { embeddedLanguages = { markdown = true } } })
+			vim.lsp.config('vuels', { filetypes = { 'vue' } })
+
+			vim.lsp.enable {
+				'rust-analyzer',
+				'lua_ls',
+				'hls',
+				'asm_lsp',
+				'zls',
+				'clangd',
+				'nil_ls',
+				'cssls',
+				'docker_compose_language_service',
+				'dockerls',
+				'taplo',
+				'sourcekit',
+				'sqls',
+				'marksman',
+				'markdown_oxide',
+				'jsonls',
+				'gopls',
+				'dprint',
+				'html',
+				'vuels',
 			}
-			lsp_conf.clangd.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.marksman.setup { capabilities = capabilities, on_attach = on_attach }
-			-- lsp_conf.sqlls.setup {
-			-- 	capabilities = capabilities,
-			-- 	on_attach = on_attach,
-			-- 	root_dir = '~/.config/sql-language-server/',
-			-- }
-			-- lsp_conf.sqls.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.taplo.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.html.setup {
-				capabilities = capabilities,
-				on_attach = on_attach,
-				init_options = { embeddedLanguages = { markdown = true } },
-			}
-			lsp_conf.cssls.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.docker_compose_language_service.setup {
-				capabilities = capabilities,
-				on_attach = on_attach,
-			}
-			lsp_conf.dockerls.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.ts_ls.setup {
-				capabilities = capabilities,
-				on_attach = on_attach,
-				-- init_options = {
-				-- 	plugins = {
-				-- 		{
-				-- 			name = '`vue/typescript-plugin',
-				-- 			location = '/home/xsugiurah/.nvm/versions/node/v20.10.0/lib/node_modules/@vue/typescript-plugin',
-				-- 			languages = { 'javascript', 'typescript', 'vue' },
-				-- 		},
-				-- 	},
-				-- },
-				-- filetypes = {
-				-- 	'javascript',
-				-- 	'typescript',
-				-- 	'vue',
-				-- },
-			}
-			lsp_conf.nil_ls.setup {
-				capabilities = capabilities,
-				on_attach = on_attach,
-				-- settings = {
-				-- 	['nil'] = {
-				-- 		formatting = {
-				-- 			command = { 'alejandra' },
-				-- 		},
-				-- 	},
-				-- },
-			}
-			lsp_conf.asm_lsp.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.phpactor.setup { capabilities = capabilities, on_attach = on_attach }
-			lsp_conf.vuels.setup { filetypes = { 'vue' }, capabilities = capabilities, on_attach = on_attach }
-			-- lsp_conf.volar.setup { capabilities = capabilities, on_attach = on_attach }
 		end,
 	},
 	{
@@ -211,35 +168,6 @@ return {
 			}
 		end,
 	},
-	-- {
-	-- 	'nvim-java/nvim-java',
-	-- 	config = function()
-	-- 		require('java').setup {
-	-- 			jdk = {
-	-- 				auto_install = false,
-	-- 			},
-	-- 		}
-	--
-	-- 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
-	-- 		require('lspconfig').jdtls.setup {
-	-- 			capabilityes = capabilities,
-	-- 			on_attach = on_attach,
-	-- 			settings = {
-	-- 				java = {
-	-- 					configuration = {
-	-- 						runtimes = {
-	-- 							{
-	-- 								name = '23',
-	-- 								path = '/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home/',
-	-- 								default = true,
-	-- 							},
-	-- 						},
-	-- 					},
-	-- 				},
-	-- 			},
-	-- 		}
-	-- 	end,
-	-- },
 	{
 		'luckasRanarison/tailwind-tools.nvim',
 		name = 'tailwind-tools',
@@ -253,4 +181,5 @@ return {
 			},
 		},
 	},
+	{ 'nanotee/sqls.nvim' },
 }

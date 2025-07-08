@@ -11,14 +11,6 @@ return {
 			ssh_aliases = { ['github.flect'] = 'github.com', ['github.personal'] = 'github.com' },
 		},
 	},
-	{
-		'xemptuous/sqlua.nvim',
-		lazy = true,
-		cmd = 'SQLua',
-		config = function()
-			require('sqlua').setup()
-		end,
-	},
 	-- NOTE: Library
 	'kkharji/sqlite.lua',
 	{ 'echasnovski/mini.nvim', version = false },
