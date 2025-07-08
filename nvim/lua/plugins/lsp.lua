@@ -15,7 +15,8 @@ return {
 				on_attach = on_attach,
 			})
 
-			vim.lsp.config('rust-analyzer', {
+			local rust = vim.lsp.config.rust_analyzer
+			local rust_config = vim.tbl_deep_extend('force', rust, {
 				settings = {
 					['rust-analyzer'] = {
 						-- cargo = {
@@ -51,6 +52,8 @@ return {
 					},
 				},
 			})
+
+			vim.lsp.config('rust_analyzer', rust_config)
 			vim.lsp.config('lua_ls', {
 				settings = {
 					Lua = {
