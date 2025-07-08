@@ -1,6 +1,5 @@
 # common/common
-{ pkgs }:
-[
+{pkgs}: [
   pkgs.git
   pkgs.curl
   pkgs.chibi
@@ -64,6 +63,7 @@
   pkgs.binutils
   pkgs.nil
   pkgs.tailscale
+  pkgs.sqls
   # pkgs.clang
   # pkgs.libllvm
   # legacy.ghostty
