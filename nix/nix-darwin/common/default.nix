@@ -37,6 +37,7 @@
       "slack"
       "homerow"
       "iterm2"
+      "mouseless"
     ];
     taps = [
       "felixkratz/formulae"
