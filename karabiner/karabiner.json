@@ -541,43 +541,39 @@
             "fn_function_keys": [
                 {
                     "from": { "key_code": "f1" },
-                    "to": [{ "mouse_key": { "x": -3072 } }]
+                    "to": [{ "key_code": "f1" }]
                 },
                 {
                     "from": { "key_code": "f2" },
-                    "to": [{ "mouse_key": { "y": 3072 } }]
+                    "to": [{ "key_code": "f2" }]
                 },
                 {
                     "from": { "key_code": "f3" },
-                    "to": [{ "mouse_key": { "y": -3072 } }]
+                    "to": [{ "key_code": "f3" }]
                 },
                 {
                     "from": { "key_code": "f4" },
-                    "to": [{ "mouse_key": { "x": 3072 } }]
+                    "to": [{ "key_code": "f4" }]
                 },
                 {
                     "from": { "key_code": "f5" },
-                    "to": [{ "pointing_button": "button1" }]
-                },
-                {
-                    "from": { "key_code": "f6" },
-                    "to": [{ "pointing_button": "button2" }]
+                    "to": [{ "key_code": "f5" }]
                 },
                 {
                     "from": { "key_code": "f7" },
-                    "to": [{ "mouse_key": { "horizontal_wheel": 64 } }]
+                    "to": [{ "key_code": "f7" }]
                 },
                 {
                     "from": { "key_code": "f8" },
-                    "to": [{ "mouse_key": { "vertical_wheel": 64 } }]
+                    "to": [{ "key_code": "f8" }]
                 },
                 {
                     "from": { "key_code": "f9" },
-                    "to": [{ "mouse_key": { "vertical_wheel": -64 } }]
+                    "to": [{ "key_code": "f9" }]
                 },
                 {
                     "from": { "key_code": "f10" },
-                    "to": [{ "mouse_key": { "horizontal_wheel": -64 } }]
+                    "to": [{ "key_code": "f10" }]
                 },
                 {
                     "from": { "key_code": "f11" },
@@ -594,10 +590,6 @@
                 {
                     "from": { "key_code": "caps_lock" },
                     "to": [{ "key_code": "f13" }]
-                },
-                {
-                    "from": { "key_code": "right_option" },
-                    "to": [{ "mouse_key": { "speed_multiplier": 0.125 } }]
                 }
             ],
             "virtual_hid_keyboard": {
