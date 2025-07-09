@@ -1,5 +1,6 @@
 # common/common
-{pkgs}: [
+{ pkgs }:
+[
   pkgs.git
   pkgs.curl
   pkgs.chibi
@@ -67,6 +68,7 @@
   pkgs.bat
   pkgs.tokei
   pkgs.cargo-expand
+  pkgs.dockerfile-language-server-nodejs
   # pkgs.clang
   # pkgs.libllvm
   # legacy.ghostty
