@@ -63,6 +63,3 @@ yabai -m space 4 --label ex_sub
 # yabai -m rule --add app="^FaceTime$" space=^4
 
 borders active_color=0xff00d4ff inactive_color=0x88e1e3e4 width=2.0 &
-
-#77dbef
-#efdb77
