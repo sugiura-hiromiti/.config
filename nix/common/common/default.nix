@@ -56,7 +56,7 @@
   pkgs.tailwindcss-language-server
   pkgs.phpactor
   pkgs.obsidian
-  pkgs.neovide
+  # pkgs.neovide
   pkgs.reaper
   pkgs.docker
   pkgs.zsh
@@ -64,6 +64,9 @@
   pkgs.nil
   pkgs.tailscale
   pkgs.sqls
+  pkgs.bat
+  pkgs.tokei
+  pkgs.cargo-expand
   # pkgs.clang
   # pkgs.libllvm
   # legacy.ghostty
