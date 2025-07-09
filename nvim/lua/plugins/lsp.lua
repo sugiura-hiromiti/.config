@@ -94,7 +94,7 @@ return {
 				},
 			})
 			vim.lsp.config('html', { init_options = { embeddedLanguages = { markdown = true } } })
-			vim.lsp.config('vuels', { filetypes = { 'vue' } })
+			-- vim.lsp.config('vuels', { filetypes = { 'vue' } })
 
 			vim.lsp.enable {
 				'rust-analyzer',
