@@ -57,7 +57,7 @@
   pkgs.tailwindcss-language-server
   pkgs.phpactor
   pkgs.obsidian
-  # pkgs.neovide
+  pkgs.neovide
   pkgs.reaper
   pkgs.docker
   pkgs.zsh
