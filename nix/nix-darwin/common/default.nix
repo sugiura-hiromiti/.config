@@ -35,7 +35,7 @@
       "firefox"
       "ghostty"
       "slack"
-      "homerow"
+      # "homerow"
       "iterm2"
       "mouseless"
     ];

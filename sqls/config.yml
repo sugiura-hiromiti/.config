@@ -6,3 +6,16 @@ connections:
   - alias: smart_open_personal
     driver: sqlite3
     dataSourceName: file:/Users/a/.local/share/nvim/smart_open.sqlite3
+  - alias: mei_job
+    driver: postgresql
+    proto: tcp
+    user: u8mg2g59pv38hk
+    passwd: p0fea784c6d6fb79f64dade0ba9067083c2ec20470473cb787603cd3e4f433c38
+    host: ec2-54-150-123-155.ap-northeast-1.compute.amazonaws.com
+    port: 5432
+    dbName: d82anirbn03toe
+    params:
+      sslmode: verify-ca
+      sslcert: /Users/hiromichi.sugiura/Downloads/meitec-dev-app(mtls)/postgresql.crt
+      sslkey: /Users/hiromichi.sugiura/Downloads/meitec-dev-app(mtls)/postgresql.key.der
+      sslrootcert: /Users/hiromichi.sugiura/Downloads/meitec-dev-app(mtls)/root.crt
