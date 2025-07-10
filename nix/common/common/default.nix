@@ -69,6 +69,7 @@
   pkgs.tokei
   pkgs.cargo-expand
   pkgs.dockerfile-language-server-nodejs
+  pkgs.yaml-language-server
   # pkgs.clang
   # pkgs.libllvm
   # legacy.ghostty
