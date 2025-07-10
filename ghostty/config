@@ -1,4 +1,4 @@
-#  NOTE: font
+#  NOTE: appearance
 font-family = MesloLGL Nerd Font Mono Regular
 #  TODO:
 # font-feature =
@@ -8,6 +8,9 @@ adjust-cell-width = -1
 adjust-cell-height = -2
 
 theme = dark:catppuccin-frappe,light:catppuccin-latte
+
+cursor-opacity = 0.8
+background-opacity = 0.7
 
 # https://ghostty.org/docs/config/keybind/sequence sequence on global keybind is not allowed currently
 # keybind = global:shift>space=toggle_quick_terminal
@@ -35,5 +38,6 @@ shell-integration = zsh
 macos-titlebar-style = hidden
 macos-option-as-alt = left
 macos-icon = xray
+macos-non-native-fullscreen = true
 
 auto-update = check
