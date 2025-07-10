@@ -118,6 +118,7 @@ return {
 				'html',
 				'vuels',
 				'yamlls',
+				-- 'postgres_lsp',
 			}
 		end,
 	},
