@@ -97,7 +97,7 @@ return {
 			-- vim.lsp.config('vuels', { filetypes = { 'vue' } })
 
 			vim.lsp.enable {
-				'rust-analyzer',
+				'rust_analyzer',
 				'lua_ls',
 				'hls',
 				'asm_lsp',
