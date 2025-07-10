@@ -34,9 +34,9 @@ return {
 		name = 'catppuccin',
 		config = function()
 			require('catppuccin').setup {
-				transparent_background = iterm_profile_is_hotkey,
+				transparent_background = true,
 				term_colors = true,
-				dim_inactive = { enabled = true },
+				-- dim_inactive = { enabled = true },
 				styles = {
 					keywords = { 'bold' },
 					properties = { 'italic', 'bold' },

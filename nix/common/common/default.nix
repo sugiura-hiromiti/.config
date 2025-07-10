@@ -1,6 +1,5 @@
 # common/common
-{ pkgs }:
-[
+{pkgs}: [
   pkgs.git
   pkgs.curl
   pkgs.chibi
@@ -72,6 +71,7 @@
   pkgs.yaml-language-server
   # pkgs.postgres-lsp
   # these 2 packages are required to build sbarlua
+  pkgs.vue-language-server
   # pkgs.clang
   # pkgs.libllvm
 ]
