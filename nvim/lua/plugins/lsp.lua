@@ -117,6 +117,7 @@ return {
 				'dprint',
 				'html',
 				'vuels',
+				'yamlls',
 			}
 		end,
 	},
