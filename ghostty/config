@@ -12,7 +12,8 @@ theme = dark:catppuccin-frappe,light:catppuccin-latte
 # https://ghostty.org/docs/config/keybind/sequence sequence on global keybind is not allowed currently
 # keybind = global:shift>space=toggle_quick_terminal
 #  NOTE: keybind
-keybind = global:alt+l=toggle_quick_terminal
+# keybind = global:alt+l=toggle_quick_terminal
+keybind = global:f5=toggle_visibility
 # https://www.leonerd.org.uk/hacks/fixterms/
 keybind = ctrl+tab=csi:9;5u
 keybind = ctrl+shift+tab=csi:1;5z
