@@ -441,6 +441,8 @@
 	</dict>
 	<key>Default Bookmark Guid</key>
 	<string>4427E810-1BFC-4058-8A4D-BDE0035E0E08</string>
+	<key>DisablePotentiallyInsecureEscapeSequences</key>
+	<false/>
 	<key>EnableDivisionView</key>
 	<false/>
 	<key>GlobalKeyMap</key>
@@ -533,7 +535,7 @@
 	<key>HapticFeedbackForEsc</key>
 	<false/>
 	<key>HideFromDockAndAppSwitcher</key>
-	<true/>
+	<false/>
 	<key>HideMenuBarInFullscreen</key>
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
@@ -1783,6 +1785,8 @@
 	<integer>0</integer>
 	<key>UseLionStyleFullscreen</key>
 	<false/>
+	<key>UseSSHIntegrationForURLOpening</key>
+	<true/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>WindowNumber</key>

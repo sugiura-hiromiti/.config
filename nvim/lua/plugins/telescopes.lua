@@ -1,3 +1,17 @@
+local yank_path_selected = function()
+	local entry = require('telescope.actions.state').get_selected_entry()
+	local cb_opts = vim.opt.clipboard:get()
+	if vim.tbl_contains(cb_opts, 'unnamed') then
+		vim.fn.setreg('*', entry.path)
+	end
+	if vim.tbl_contains(cb_opts, 'unnamedplus') then
+		vim.fn.setreg('+', entry.path)
+	end
+	vim.fn.setreg('', entry.path)
+
+	vim.notify('selected entry:' .. vim.inspect(entry), vim.log.levels.INFO)
+end
+
 return {
 	{
 		'nvim-telescope/telescope.nvim',
@@ -55,10 +69,19 @@ return {
 							['i'] = {
 								-- C have to be upper case to work
 								['<C-t>'] = a.select_tab,
+								['<C-y>'] = yank_path_selected,
 							},
 						},
 					},
-					smart_open = { show_score = true },
+					smart_open = {
+						show_scores = true,
+						mappings = {
+							['i'] = {
+								-- C have to be upper case to work
+								['<C-y>'] = yank_path_selected,
+							},
+						},
+					},
 				},
 			}
 			t.load_extension 'smart_open'
