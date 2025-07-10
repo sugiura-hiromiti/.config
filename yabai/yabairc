@@ -22,6 +22,7 @@ layout bsp \
 ## rules
 yabai -m rule --add app="^(iPhone Mirroring|Microsoft Teams|Notes|Activity Monitor|Finder|System Settings|zoom.us)$" manage=off sub-layer=below
 yabai -m rule --add title=".*Setting.*" manage=off
+yabai -m rule --add app="^Ghostty$" manage=off sub-layer=above opacity=1.0
 yabai -m rule --add app="^Amazon Q$" manage=off sub-layer=above opacity=1.0
 yabai -m rule --add subrole="AXDialog" opacity=1.0
 
