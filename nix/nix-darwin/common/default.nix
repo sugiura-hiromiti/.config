@@ -1,7 +1,8 @@
 {
   username,
   pkgs,
-}: {
+}:
+{
   security = {
     pam = {
       services = {
@@ -35,7 +36,7 @@
       "firefox"
       "ghostty"
       "slack"
-      # "homerow"
+      "homerow"
       "iterm2"
       "mouseless"
     ];
