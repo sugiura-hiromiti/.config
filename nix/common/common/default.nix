@@ -70,6 +70,7 @@
   pkgs.cargo-expand
   pkgs.dockerfile-language-server-nodejs
   pkgs.yaml-language-server
+  # these 2 packages are required to build sbarlua
   # pkgs.clang
   # pkgs.libllvm
   # legacy.ghostty
