@@ -1,34 +1,367 @@
 #!/usr/bin/env lua
+--#!lua
 
--- package.cpath = package.cpath
--- 	.. ';'
--- 	.. '/nix/store/wnkylkmvz8gcsgzj0xf71vmjhl9g7chr-lua5.4-sbarLua-0-unstable-2024-08-12/lib/lua/5.4/sketchybar.so'
--- print(package.cpath)
--- package.path = package.path
--- 	.. ';'
--- 	.. os.getenv 'HOME'
--- 	.. '/.config/sketchybar/?/init.lua'
--- 	.. ';'
--- 	.. os.getenv 'HOME'
--- 	.. '/.config/sketchybar/?.lua'
--- print(package.path)
---
--- -- load the sketchybar-package and prepare the helper binaries
--- require 'init'
-
-HOME_DIR = os.getenv 'HOME'
-
-package.cpath = package.cpath .. ';' .. HOME_DIR .. '/.local/share/sketchybar_lua/?.so'
-package.path = package.path
-	.. ';'
-	.. HOME_DIR
-	.. '/.config/sketchybar/?/init.lua'
-	.. ';'
-	.. HOME_DIR
-	.. '/.config/sketchybar/?.lua'
-
-print(package.path)
+package.cpath = package.cpath .. ';' .. os.getenv 'SBARLUA_DYLIB_PATH' .. '/lib/lua/5.4/sketchybar.so'
+print 'package.cpath'
 print(package.cpath)
+print 'package.path'
+print(package.path)
 
 -- load the sketchybar-package and prepare the helper binaries
-require 'sbar_conf'
+local sbar = require 'sketchybar'
+
+--  NOTE: HELPER
+---------------------------------------------------------------------------------------------
+local icons = {
+	battery = {
+		_10 = '\u{f007a}',
+		_20 = '\u{f007b}',
+		_30 = '\u{f007c}',
+		_40 = '\u{f007d}',
+		_50 = '\u{f007e}',
+		_60 = '\u{f007f}',
+		_70 = '\u{f0080}',
+		_80 = '\u{f0081}',
+		_90 = '\u{f0082}',
+		_100 = '\u{f0079}',
+		charging = '\u{f0084}',
+	},
+	error = '\u{ea87}',
+	check = '\u{eab2}',
+}
+
+local methods = {}
+
+---comment
+---@param tbl table
+---@param prefix string | nil
+methods.print_table = function(tbl, prefix)
+	if prefix == nil then
+		prefix = 'table.'
+	end
+
+	for key, value in pairs(tbl) do
+		if type(value) == 'table' then
+			methods.print_table(value, prefix .. key .. '.')
+		else
+			print(prefix .. key, ': ', value ~= nil and value or 'nil')
+		end
+	end
+end
+
+---comment
+---@param tbl table
+methods.print_keys = function(tbl)
+	print '---'
+	for key, _ in pairs(tbl) do
+		print(key)
+	end
+end
+
+---comment
+---@param tbl table
+---@return string
+methods.stringify_table = function(tbl)
+	local rslt = ''
+	for key, value in pairs(tbl) do
+		if key == nil then
+			key = 'nil'
+		end
+		if value == nil then
+			value = 'nil'
+		end
+		if type(value) == 'table' then
+			rslt = rslt .. ' ' .. methods.stringify_table(value)
+		else
+			rslt = rslt .. ' ' .. key .. ':' .. value
+		end
+	end
+
+	return rslt
+end
+
+---@class catppuccin_frappe
+---@field   rosewater integer  "#f2d5cf"
+---@field   flamingo integer   "#eebebe"
+---@field   pink integer       "#f4b8e4"
+---@field   mauve integer      "#ca9ee6"
+---@field   red integer        "#e78284"
+---@field   maroon integer     "#ea999c"
+---@field   peach integer      "#ef9f76"
+---@field   yellow integer     "#e5c890"
+---@field   green integer      "#a6d189"
+---@field   teal integer       "#81c8be"
+---@field   sky integer        "#99d1db"
+---@field   sapphire integer   "#85c1dc"
+---@field   blue integer       "#8caaee"
+---@field   lavender integer   "#babbf1"
+---@field   text integer       "#c6d0f5"
+---@field   subtext1 integer   "#b5bfe2"
+---@field   subtext0 integer   "#a5adce"
+---@field   overlay2 integer   "#949cbb"
+---@field   overlay1 integer   "#838ba7"
+---@field   overlay0 integer   "#737994"
+---@field   surface2 integer   "#626880"
+---@field   surface1 integer   "#51576d"
+---@field   surface0 integer   "#414559"
+---@field   base integer       "#303446"
+---@field   mantle integer     "#292c3c"
+---@field   crust integer      "#232634"
+
+---@alias color_name
+---|   'rosewater' # "#f2d5cf"
+---|   'flamingo' # "#eebebe"
+---|   'pink' # "#f4b8e4"
+---|   'mauve' # "#ca9ee6"
+---|   'red' # "#e78284"
+---|   'maroon' # "#ea999c"
+---|   'peach' # "#ef9f76"
+---|   'yellow' # "#e5c890"
+---|   'green' # "#a6d189"
+---|   'teal' # "#81c8be"
+---|   'sky' # "#99d1db"
+---|   'sapphire' # "#85c1dc"
+---|   'blue' # "#8caaee"
+---|   'lavender' # "#babbf1"
+---|   'text' # "#c6d0f5"
+---|   'subtext1' # "#b5bfe2"
+---|   'subtext0' # "#a5adce"
+---|   'overlay2' # "#949cbb"
+---|   'overlay1' # "#838ba7"
+---|   'overlay0' # "#737994"
+---|   'surface2' # "#626880"
+---|   'surface1' # "#51576d"
+---|   'surface0' # "#414559"
+---|   'base' # "#303446"
+---|   'mantle' # "#292c3c"
+---|   'crust' # "#232634"
+
+local palette = {}
+
+package.path = package.path
+	.. ';'
+	.. os.getenv 'HOME'
+	.. '/.local/share/nvim/lazy/catppuccin/lua/catppuccin/palettes/frappe.lua'
+
+---@param name color_name name of the color in the palette
+---@param alpha integer|nil "0xXX" representation of alpha color code
+---@return integer
+palette.get_color = function(name, alpha)
+	if alpha == nil then
+		alpha = 0xff000000
+	end
+
+	local rgb = require('frappe')[name]:sub(2, 7)
+	local rgb_code = tonumber(rgb, 16)
+	local color_code = alpha + rgb_code
+
+	return color_code
+end
+
+-- set the bar name, when using multiple bar instance
+-- SBAR.set_bar_name 'first_bar_as_global_info'
+-- SBAR.set_bar_name 'second_bar_as_local_info'
+
+--  NOTE: sbar begin_config
+----------------------------------------------------------------------------------------------------
+
+sbar.begin_config()
+sbar.default {
+	update_freq = 1,
+	position = 'left',
+	ignore_association = false,
+	y_offset = 0,
+	padding_left = 10,
+	padding_right = 10,
+	width = 'dynamic',
+	scroll_texts = true,
+	blur_radius = 25,
+	align = 'center',
+	background = {
+		drawing = true,
+		color = palette.get_color 'surface0',
+		border_color = 0xffffffff,
+		border_width = 1,
+		height = 40,
+		corner_radius = 10,
+	},
+	icon = {
+		font = {
+			family = 'MesloLGL Nerd Font',
+			style = 'Regular',
+			size = 16,
+		},
+	},
+	label = {
+		font = {
+			family = 'MesloLGL Nerd Font',
+			style = 'Regular',
+			size = 16,
+		},
+		padding_left = 10,
+		padding_right = 10,
+	},
+}
+
+sbar.bar {
+	color = 0x00000000,
+	border_color = 0xffffffff,
+	height = 56,
+	margin = 8,
+	y_offset = 8,
+	corner_radius = 30,
+	border_width = 0,
+	blur_radius = 100,
+	padding_left = 10,
+	padding_right = 10,
+	notch_width = 200,
+	display = 'all',
+	sticky = true,
+	font_smoothing = true,
+	shadow = false,
+}
+
+-- NOTE: keyboard -------------------------------
+
+sbar.add('event', 'keyboard_input_change', 'AppleSelectedInputSourcesChangedNotification')
+
+local keyboard_input = sbar.add('item', 'keyboard', {
+	width = 40,
+	padding_right = 10,
+	label = {
+		padding_right = 10,
+	},
+	background = { border_color = palette.get_color 'blue', padding_right = 10 },
+})
+
+keyboard_input:subscribe({ 'keyboard_input_change', 'system_woke', 'forced' }, function(env)
+	sbar.exec('defaults read com.apple.HIToolbox.plist AppleSelectedInputSources | rg ABC', function(rslt, exit_code)
+		local label = 'ja'
+		if rslt:find 'ABC' then
+			label = 'en'
+		end
+		keyboard_input:set {
+			label = label,
+		}
+	end)
+end)
+
+-- NOTE: clock ----------------------------------
+
+-- local raycast_calendar_width = raycast_calendar_event:query().geometry.width
+-- if raycast_calendar_width < 50 then
+-- 	SBAR.remove 'Raycast,raycastCalendarStatusItem'
+-- end
+
+local clock = sbar.add('item', {
+	position = 'left',
+	width = 'dynamic',
+	padding_left = 20,
+	label = {
+		color = palette.get_color 'teal',
+	},
+	background = {
+		border_color = palette.get_color 'teal',
+	},
+})
+
+clock:subscribe({ 'forced', 'routine', 'system_woke' }, function(_)
+	clock:set { label = os.date '%y%m%d %H%M %a' }
+end)
+
+-- NOTE: raycast --------------------------------
+local raycast_calendar_event =
+	sbar.add('alias', 'Raycast,raycastCalendarStatusItem', { y_offset = 0, width = 'dynamic', position = 'left' })
+
+-- NOTE: battery --------------------------------
+
+local battery = sbar.add('item', 'battery', {
+	width = 'dynamic',
+	background = {
+		-- border_color = palette.get_color 'yellow',
+	},
+})
+
+battery:subscribe({ 'routine', 'power_source_change', 'system_woke' }, function()
+	sbar.exec('pmset -g batt', function(batt_info)
+		local icon = '!'
+		local label = '?'
+
+		local found, _, charge = batt_info:find '(%d+)%%'
+		if found then
+			label = charge
+			charge = tonumber(charge)
+		end
+
+		local color = palette.get_color 'yellow'
+		if charge >= 80 then
+			color = palette.get_color 'green'
+		elseif charge <= 20 then
+			color = palette.get_color 'red'
+		end
+
+		local charging, _, _ = batt_info:find 'AC Power'
+
+		if charging then
+			icon = icons.battery.charging
+		else
+			if found then
+				if charge >= 95 then
+					icon = icons.battery._100
+					color = palette.get_color 'blue'
+				elseif charge >= 85 then
+					icon = icons.battery._90
+					color = palette.get_color 'sapphire'
+				elseif charge >= 75 then
+					icon = icons.battery._80
+					color = palette.get_color 'sky'
+				elseif charge >= 65 then
+					icon = icons.battery._70
+					color = palette.get_color 'teal'
+				elseif charge >= 55 then
+					icon = icons.battery._60
+					color = palette.get_color 'green'
+				elseif charge >= 45 then
+					icon = icons.battery._50
+					color = palette.get_color 'yellow'
+				elseif charge >= 35 then
+					icon = icons.battery._40
+					color = palette.get_color 'peach'
+				elseif charge >= 25 then
+					icon = icons.battery._30
+					color = palette.get_color 'maroon'
+				elseif charge >= 15 then
+					icon = icons.battery._20
+					color = palette.get_color 'red'
+				elseif charge >= 5 then
+					icon = icons.battery._10
+					color = palette.get_color 'red'
+				else
+					icon = icons.error
+					color = palette.get_color 'red'
+				end
+			end
+		end
+
+		local lead = ''
+		if found and charge < 10 then
+			lead = '0'
+		end
+
+		battery:set {
+			icon = {
+				string = icon,
+				color = color,
+				padding_left = 10,
+			},
+			label = {
+				string = lead .. label,
+				color = color,
+				padding_right = 10,
+			},
+		}
+	end)
+end)
+
+sbar.end_config()
+sbar.event_loop()
