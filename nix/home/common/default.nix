@@ -2,6 +2,7 @@
   username,
   mypkgs,
   homeDir,
+  pkgs,
   ...
 }: {
   nixpkgs = {
@@ -13,6 +14,9 @@
     username = username;
     homeDirectory = homeDir;
     stateVersion = "25.11";
+    sessionVariables = {
+      SBARLUA_DYLIB_PATH = "${pkgs.sbarlua.out}";
+    };
     file = {
       ".clang-format" = {
         target = ".clang-format";
@@ -61,4 +65,14 @@
     };
     packages = mypkgs;
   };
+  # programs = {
+  #   neovim = {
+  #     plugins = [
+  #       {
+  #         plugin = pkgs.vimPlugins.sqlite-lua;
+  #         config = "let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/ibsqite3.so'";
+  #       }
+  #     ];
+  #   };
+  # };
 }

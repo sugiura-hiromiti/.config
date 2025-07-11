@@ -11,7 +11,8 @@
   common = import ./common {
     inherit username;
     inherit mypkgs;
-	 inherit homeDir;
+    inherit homeDir;
+    inherit pkgs;
   };
 in {
   nixpkgs = common.nixpkgs;

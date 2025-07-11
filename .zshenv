@@ -2,6 +2,7 @@
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 
 set -o emacs
+setopt incappendhistory
 # setopt AUTO_CD
 # cdpath=(.. ~ ~/Downloads)
 
@@ -16,6 +17,7 @@ export MANPAGER=less
 export RIPGREP_CONFIG_PATH=$HOME/.config/rg/config
 export YABAI_CERT=yabai-cert
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home/
+export MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT=''
 
 #aliases
 # to remove alias in zsh, simply just remove it
@@ -57,9 +59,19 @@ function chpwd_print_dir() {
 	fi
 }
 
+function set_current_program_var() {
+	MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT=$history[$((${(%):-%h}))]
+}
+
+function clear_current_program_var() {
+	MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT=''
+}
+
 # register hook function
 autoload -Uz add-zsh-hook
 add-zsh-hook chpwd chpwd_print_dir
+add-zsh-hook preexec set_current_program_var
+add-zsh-hook precmd clear_current_program_var
 
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
@@ -72,6 +84,7 @@ export PATH=$PATH:/Users/a/Library/Python/3.9/bin
 # eval "$(zellij setup --generate-auto-start zsh)"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"

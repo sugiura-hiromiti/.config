@@ -1,8 +1,7 @@
 {
   username,
   pkgs,
-}:
-{
+}: {
   security = {
     pam = {
       services = {
@@ -21,10 +20,10 @@
     enable = true;
     onActivation = {
       autoUpdate = true;
-      # cleanup = "uninstall";
+      cleanup = "uninstall";
     };
     brews = [
-      "felixkratz/formulae/sketchybar"
+      # "felixkratz/formulae/sketchybar"
       "koekeishiya/formulae/yabai"
       "koekeishiya/formulae/skhd"
       "sqlite"
@@ -41,13 +40,18 @@
       "mouseless"
     ];
     taps = [
-      "felixkratz/formulae"
+      # "felixkratz/formulae"
       "koekeishiya/formulae"
     ];
     masApps = {
       "Wallpaper Play" = 1638457121;
     };
   };
+  # services = {
+  #   sketchybar = {
+  #     enable = true;
+  #   };
+  # };
   nix = {
     enable = false;
   };

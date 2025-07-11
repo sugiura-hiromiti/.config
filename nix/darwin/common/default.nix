@@ -3,7 +3,7 @@
   pkgs.mas
   pkgs.pngpaste
   pkgs.jankyborders
-  pkgs.skhd
+  # pkgs.skhd
   # pkgs.yabai
   # need brew
   # amazon-q
@@ -19,6 +19,6 @@
   pkgs.utm
   pkgs.betterdisplay
   pkgs.chatgpt
-  # pkgs.sketchybar
-  # pkgs.sbarlua
+  pkgs.sketchybar
+  pkgs.sbarlua
 ]

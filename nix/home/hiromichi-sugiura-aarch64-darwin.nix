@@ -12,6 +12,7 @@
     inherit username;
     inherit mypkgs;
 	 inherit homeDir;
+    inherit pkgs;
   };
 in {
   nixpkgs = common.nixpkgs;
