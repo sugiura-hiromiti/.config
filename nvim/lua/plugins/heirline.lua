@@ -36,7 +36,8 @@ return {
 				provider = function()
 					local ft = vim.bo.ft
 					if ft == 'toggleterm' then
-						ft = ft .. vim.b.toggle_number .. ' ' .. vim.b.term_title .. ' ' .. vim.b.terminal_job_pid
+						local cur_prg = os.getenv 'MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT' or ''
+						ft = ft .. vim.b.toggle_number .. ' ' .. cur_prg
 					end
 					return ft
 				end,
