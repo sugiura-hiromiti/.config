@@ -9,9 +9,9 @@ connections:
   - alias: mei_job
     driver: postgresql
     proto: tcp
-    user: u8mg2g59pv38hk
+    user: u7rp6piiuj636l
     passwd: p0fea784c6d6fb79f64dade0ba9067083c2ec20470473cb787603cd3e4f433c38
-    host: ec2-54-150-123-155.ap-northeast-1.compute.amazonaws.com
+    host: ec2-54-249-235-35.ap-northeast-1.compute.amazonaws.com
     port: 5432
     dbName: d82anirbn03toe
     params:
