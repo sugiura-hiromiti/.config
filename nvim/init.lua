@@ -1,4 +1,5 @@
 vim.opt.fo = { j = true }
+vim.o.title = true
 vim.bo.shiftwidth = 3
 vim.bo.tabstop = 3
 vim.bo.softtabstop = 3
@@ -36,4 +37,3 @@ require 'user_defined'
 if vim.g.neovide then
 	require 'gui'
 end
-
