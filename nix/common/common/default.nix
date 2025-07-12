@@ -1,6 +1,5 @@
 # common/common
-{ pkgs }:
-[
+{pkgs}: [
   pkgs.git
   pkgs.curl
   pkgs.chibi
@@ -75,5 +74,6 @@
   # pkgs.clang
   # pkgs.libllvm
   pkgs.vue-language-server
+  pkgs.sd
   # pkgs.sqlite
 ]
