@@ -48,7 +48,7 @@ m('i', '<esc>', function()
 		end
 	end
 	if has_format_ability then
-		vim.lsp.buf.format { async = true }
+		vim.lsp.buf.format { async = false }
 	end
 
 	vim.cmd 'wa'
@@ -333,17 +333,7 @@ local function register_todo_as_diagnostic()
 		end
 
 		vim.diagnostic.set(ns, buf, diagnostics, { virtual_text = false, float = false })
-		-- local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
-		-- for i, line in ipairs(lines) do
-		-- 	for mark, severity in pairs(marks) do
-		-- 		local _, col_num = line:find(mark)
-		-- 		if col_num ~= nil then
-		-- 			local diag = { lnum = i - 1, col = col_num, message = line, severity = severity }
-		-- 			vim.diagnostic.set(ns, buf, { diag }, { virtual_text = false, float = false })
-		-- 			--vim.notify('found diag', vim.diagnostic.severity.INFO, { title = 'diag_mark' })
-		-- 		end
-		-- 	end
-		-- end
+
 		::continue::
 	end
 end
