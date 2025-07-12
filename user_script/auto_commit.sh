@@ -1,1 +1,1 @@
-~/.npm-packages/bin/gemini -y true -p "reflect local changes to remote. each commit has isolated semantics and has minimal volume. after execution, print generated commits by you chronologically. you should only do undestructive operation"
+~/.npm-packages/bin/gemini -y true -p "reflect local changes to remote. each commit has isolated semantics and has minimal volume. you should only do undestructive operation. after execution, print generated commits by you chronologically and attach diff view for each commits with colored, rich form."
