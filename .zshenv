@@ -52,6 +52,10 @@ function ga() {
 	git push
 }
 
+function ntfy() {
+	echo -e "\033]777;notify;${1};${2}\007"
+}
+
 function chpwd_print_dir() {
 	if [[ $(pwd) != $HOME ]]; then
 		# alias `s` will be expanded
@@ -61,10 +65,12 @@ function chpwd_print_dir() {
 
 function set_current_program_var() {
 	MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT=$history[$((${(%):-%h}))]
+	echo -ne "\033]0;${MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT}\007"
 }
 
 function clear_current_program_var() {
-	MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT=''
+	MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT=$PWD
+	echo -ne "\033]0;${MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT}\007"
 }
 
 # register hook function
