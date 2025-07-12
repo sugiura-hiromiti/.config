@@ -168,11 +168,11 @@ end
 sbar.begin_config()
 sbar.default {
 	update_freq = 1,
-	position = 'left',
+	position = 'right',
 	ignore_association = false,
 	y_offset = 0,
-	padding_left = 10,
-	padding_right = 10,
+	padding_left = 7,
+	padding_right = 7,
 	width = 'dynamic',
 	scroll_texts = true,
 	blur_radius = 25,
@@ -221,31 +221,6 @@ sbar.bar {
 	shadow = false,
 }
 
--- NOTE: keyboard -------------------------------
-
-sbar.add('event', 'keyboard_input_change', 'AppleSelectedInputSourcesChangedNotification')
-
-local keyboard_input = sbar.add('item', 'keyboard', {
-	width = 40,
-	padding_right = 10,
-	label = {
-		padding_right = 10,
-	},
-	background = { border_color = palette.get_color 'blue', padding_right = 10 },
-})
-
-keyboard_input:subscribe({ 'keyboard_input_change', 'system_woke', 'forced' }, function(env)
-	sbar.exec('defaults read com.apple.HIToolbox.plist AppleSelectedInputSources | rg ABC', function(rslt, exit_code)
-		local label = 'ja'
-		if rslt:find 'ABC' then
-			label = 'en'
-		end
-		keyboard_input:set {
-			label = label,
-		}
-	end)
-end)
-
 -- NOTE: clock ----------------------------------
 
 -- local raycast_calendar_width = raycast_calendar_event:query().geometry.width
@@ -254,14 +229,13 @@ end)
 -- end
 
 local clock = sbar.add('item', {
-	position = 'left',
 	width = 'dynamic',
-	padding_left = 20,
+	position = 'right',
 	label = {
-		color = palette.get_color 'teal',
+		color = palette.get_color 'flamingo',
 	},
 	background = {
-		border_color = palette.get_color 'teal',
+		border_color = palette.get_color 'flamingo',
 	},
 })
 
@@ -270,16 +244,22 @@ clock:subscribe({ 'forced', 'routine', 'system_woke' }, function(_)
 end)
 
 -- NOTE: raycast --------------------------------
-local raycast_calendar_event =
-	sbar.add('alias', 'Raycast,raycastCalendarStatusItem', { y_offset = 0, width = 'dynamic', position = 'left' })
+local raycast_calendar_event = sbar.add('alias', 'Raycast,raycastCalendarStatusItem', {
+	width = 'dynamic',
+	position = 'right',
+	label = {
+		color = palette.get_color 'yellow',
+	},
+	background = {
+		border_color = palette.get_color 'yellow',
+	},
+})
 
 -- NOTE: battery --------------------------------
 
 local battery = sbar.add('item', 'battery', {
 	width = 'dynamic',
-	background = {
-		-- border_color = palette.get_color 'yellow',
-	},
+	position = 'right',
 })
 
 battery:subscribe({ 'routine', 'power_source_change', 'system_woke' }, function()
@@ -360,6 +340,79 @@ battery:subscribe({ 'routine', 'power_source_change', 'system_woke' }, function(
 				padding_right = 10,
 			},
 		}
+	end)
+end)
+
+-- NOTE: keyboard -------------------------------
+
+sbar.add('event', 'keyboard_input_change', 'AppleSelectedInputSourcesChangedNotification')
+
+local keyboard_input = sbar.add('item', 'keyboard', {
+	-- width = 40,
+	width = 'dynamic',
+	position = 'right',
+	background = { border_color = palette.get_color 'blue' },
+})
+
+keyboard_input:subscribe({ 'keyboard_input_change', 'system_woke', 'forced' }, function(env)
+	sbar.exec('defaults read com.apple.HIToolbox.plist AppleSelectedInputSources | rg ABC', function(rslt, exit_code)
+		local label = 'ja'
+		if rslt:find 'ABC' then
+			label = 'en'
+		end
+		keyboard_input:set {
+			label = label,
+		}
+	end)
+end)
+
+--  NOTE: spaces --------------------------------
+local yabai_spaces = sbar.add('item', 'yabai_spaces', {
+	width = 'dynamic',
+	position = 'left',
+	background = { border_color = palette.get_color 'pink' },
+	label = { color = palette.get_color 'pink' },
+})
+sbar.add('event', 'space_changed')
+sbar.add('event', 'display_changed')
+yabai_spaces:subscribe({ 'space_changed', 'display_changed' }, function()
+	sbar.exec('yabai -m query --spaces | jq \'.[] | select(.["has-focus"] == true).label\'', function(rslt, exit_code)
+		local label = rslt:gsub('\\"', "'"):gsub('"', ''):gsub('\\', '')
+		yabai_spaces:set { label = label }
+	end)
+end)
+
+--  NOTE: application name ----------------------
+local app_name = sbar.add('item', 'application_name', {
+	width = 'dynamic',
+	position = 'left',
+	background = { border_color = palette.get_color 'mauve' },
+	label = { color = palette.get_color 'mauve' },
+})
+sbar.add('event', 'application_front_switched')
+app_name:subscribe('application_front_switched', function()
+	sbar.exec('yabai -m query --windows | jq \'.[] | select(.["has-focus"] == true).app\'', function(rslt, exit_code)
+		local label = rslt:gsub('\\"', "'"):gsub('"', ''):gsub('\\', '')
+		if label == '' then
+			label = 'Finder'
+		end
+		app_name:set { label = label }
+	end)
+end)
+
+--  NOTE: window title --------------------------
+local window_title = sbar.add('item', 'window_title', {
+	width = 'dynamic',
+	position = 'left',
+	background = { border_color = palette.get_color 'lavender' },
+	label = { color = palette.get_color 'lavender' },
+})
+sbar.add('event', 'window_title_changed')
+sbar.add('event', 'window_focused')
+window_title:subscribe({ 'window_focused', 'window_title_changed' }, function()
+	sbar.exec('yabai -m query --windows | jq \'.[] | select(.["has-focus"] == true).title\'', function(rslt, exit_code)
+		local label = rslt:gsub('\\"', "'"):gsub('"', ''):gsub('\\', '')
+		window_title:set { label = label }
 	end)
 end)
 
