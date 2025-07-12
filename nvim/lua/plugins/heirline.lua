@@ -25,31 +25,23 @@ return {
 			{
 				provider = lsp_symbol,
 			},
-			{
-				condition = function()
-					if lsp_symbol() ~= nil then
-						return false
-					else
-						return true
-					end
-				end,
-				provider = function()
-					local ft = vim.bo.ft
-					if ft == 'toggleterm' then
-						local cur_prg = os.getenv 'MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT' or ''
-						ft = ft .. vim.b.toggle_number .. ' ' .. cur_prg
-					end
-					return ft
-				end,
-			},
-			--[[
-						{
-				condition = function()
-					return vim.bo.ft == 'lisp' or vim.bo.ft == 'scheme'
-				end,
-				provider = gps.get_location,
-			},
-]]
+			-- 	{
+			-- 		condition = function()
+			-- 			if lsp_symbol() ~= nil then
+			-- 				return false
+			-- 			else
+			-- 				return true
+			-- 			end
+			-- 		end,
+			-- 		provider = function()
+			-- 			local ft = vim.bo.ft
+			-- 			if ft == 'toggleterm' then
+			-- 				local cur_prg = os.getenv 'MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT' or ''
+			-- 				ft = ft .. vim.b.toggle_number .. ' ' .. cur_prg
+			-- 			end
+			-- 			return ft
+			-- 		end,
+			-- 	},
 		}
 
 		--[[
@@ -269,7 +261,7 @@ return {
 		}
 
 		require('heirline').setup {
-			statusline = { mode, diag, align, symbol_bar_or_ft, align, git, location },
+			statusline = { diag, align, symbol_bar_or_ft, align, git, location },
 		}
 	end,
 }
