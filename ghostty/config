@@ -12,6 +12,8 @@ theme = dark:catppuccin-mocha,light:catppuccin-latte
 cursor-opacity = 0.68
 background-opacity = 0.95
 
+mouse-hide-while-typing = true
+
 # https://ghostty.org/docs/config/keybind/sequence sequence on global keybind is not allowed currently
 # keybind = global:shift>space=toggle_quick_terminal
 #  NOTE: keybind
