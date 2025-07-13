@@ -314,6 +314,8 @@ local function register_todo_as_diagnostic()
 			goto continue
 		end
 
+		vim.notify(vim.inspect(comments_pos), vim.log.levels.INFO, { title = 'marker_comment' })
+
 		for _, comment_pos in ipairs(comments_pos) do
 			local comment_lines = vim.api.nvim_buf_get_lines(buf, comment_pos.start_row, comment_pos.end_row + 1, true)
 			for i, line in ipairs(comment_lines) do
