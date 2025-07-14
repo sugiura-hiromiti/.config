@@ -1,4 +1,4 @@
-q chat -a --no-interactive "at first, remember that every your prompt started by '> ' should be set to the window title. \
+q chat -a --no-interactive "at first, remember that every time you think, what you are thinking should be set to the window title. \
 	thus, execute 'title' command by passing your prompt as an argument. \
 	'title' command is my own zsh function. take care that prompt have to be quoted due to 'title' command only accept one argument. \
 	generate commits of local changes. here is instruction. \
@@ -13,16 +13,18 @@ q chat -a --no-interactive "at first, remember that every your prompt started by
 	take care that file name do not include whitespace. use underscore instead. \
 	locate tha file at '$COMMIT_SUMMARY_PATH/<current repository name>/<current year>/<current month>/<current date>/'. \
 	here is requirement and guideline to generate html. \
-		requirement \
-			1: show several execution status on top. you need to display at least operation status, push status, operated git branch, and remote repository url \
-			2: the body of contents is generated commits (chronological order). each commit explanatons has information of \
-				1: commit message's title. when click the title, jumps to https://github.com/<repository path>/commit/<full commit hash> \
-				2: shortern commit hash(copyable) \
-				3: commit author's name and its email address \
-				4: number of files changed, insertions, deletions \
-				5: commit message's body \
-				6: diffs of each files. separate code blocks per file, per hunk. add syntax highlight if possible \
-			3: at the bottom, show overview \
+		1: show several execution status on top. \
+		you need to display at least operation status, push status, operated git branch, \
+		and remote repository site url https://github.com/... link text is '<github username>/<repository name>' \
+			1: top block also contain tags which represents commit and current repository. \
+		2: the body of contents is generated commits (chronological order). each commit explanatons has information of \
+			1: commit message's title. when click the title, jumps to https://github.com/<repository path>/commit/<full commit hash> \
+			2: shortern commit hash(copyable) \
+			3: commit author's name and its email address \
+			4: number of files changed, insertions, deletions \
+			5: commit message's body \
+			6: diffs of each files. separate code blocks per file, per hunk. add syntax highlight if possible \
+		3: at the bottom, show overview \
 	6: if possible, open html file in new browser's tab. \
 	7: go to $COMMIT_SUMMARY_PATH. commit local changes. commit message is 'create <file name>'. then git push \
 "
