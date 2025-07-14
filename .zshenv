@@ -23,25 +23,25 @@ export MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT=''
 # to remove alias in zsh, simply just remove it
 alias s='eza -ahlF --icons --group-directories-first --sort=extension --time-style=iso --git'
 alias n='nvim'
-alias u='yabai --stop-service ; yabai --uninstall-service ; brew upgrade ;
-echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai ;
-yabai --start-service ;
-rustup self update ; rustup update ; cargo install-update -a'
+#alias u='yabai --stop-service ; yabai --uninstall-service ; brew upgrade ;
+#echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa" | sudo tee /private/etc/sudoers.d/yabai ;
+#yabai --start-service ;
+#rustup self update ; rustup update ; cargo install-update -a'
 alias zo='z $OLDPWD'
 # alias gi='git init ; git add . ; git commit -m'
 alias gl='git pull'
 alias gp='git push'
 alias gm='git merge'
-alias bu='brew uninstall'
-alias bi='brew install'
-alias bl='brew list'
-alias bs='brew search'
-alias ba='brew abv'
-alias bb='brew bundle dump --all -f'
+#alias bu='brew uninstall'
+#alias bi='brew install'
+#alias bl='brew list'
+#alias bs='brew search'
+#alias ba='brew abv'
+#alias bb='brew bundle dump --all -f'
 alias wh='which -a'
-alias so='source'
-alias dflt_a='defaults read > /tmp/dotfiles_init/a.log'
-alias dflt_b='defaults read > /tmp/dotfiles_init/b.log ; diff /tmp/dotfiles_init/a.log /tmp/dotfiles_init/b.log'
+#alias so='source'
+#alias dflt_a='defaults read > /tmp/dotfiles_init/a.log'
+#alias dflt_b='defaults read > /tmp/dotfiles_init/b.log ; diff /tmp/dotfiles_init/a.log /tmp/dotfiles_init/b.log'
 # alias zenn='cd ~/Downloads/zenn/articles/ ; my_target_file=$(sk -ic '"'rg "'"{}"'"'"'| sed s"/:published: false//") ; n $my_target_file'
 alias gac='~/.config/user_script/auto_commit.sh'
 
