@@ -54,13 +54,13 @@ return {
 				if term.direction == 'horizontal' then
 					return 30
 				elseif term.direction == 'vertical' then
-					return vim.o.columns * 0.3
+					return vim.o.columns * 0.37
 				end
 			end,
 			hide_numbers = false,
 			autochdir = true,
 			insert_mappings = false,
-			direction = 'vertical',
+			direction = 'tab',
 		},
 	},
 	-- { 'f-person/auto-dark-mode.nvim', opts = {} },
