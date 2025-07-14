@@ -28,8 +28,9 @@ echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut
 yabai --start-service ;
 rustup self update ; rustup update ; cargo install-update -a'
 alias zo='z $OLDPWD'
-alias gi='git init ; git add . ; git commit -m'
+# alias gi='git init ; git add . ; git commit -m'
 alias gl='git pull'
+alias gp='git push'
 alias gm='git merge'
 alias bu='brew uninstall'
 alias bi='brew install'
