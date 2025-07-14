@@ -24,5 +24,5 @@ q chat -a --no-interactive "at first, remember that every your prompt started by
 				6: diffs of each files. separate code blocks per file, per hunk. add syntax highlight if possible \
 			3: at the bottom, show overview \
 	6: if possible, open html file in new browser's tab. \
-	7: go to $COMMIT_SUMMARY_PATH. reflect local changes to remote repository. commit message is 'create <file name>'. \
+	7: go to $COMMIT_SUMMARY_PATH. commit local changes. commit message is 'create <file name>'. then git push \
 "
