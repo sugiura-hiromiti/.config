@@ -1,4 +1,5 @@
-q chat -a --no-interactive "generate commits of local changes. here is instruction. \
+q chat -a --no-interactive "at first, remember that every your prompt started by '> ' should be set to the window title. thus, execute 'title' command by passing your prompt as an argument. 'title' command is my own zsh function. take care that prompt have to be quoted due to 'title' command only accept one argument. \
+    generate commits of local changes. here is instruction. \
 	1: go to root directory of current git repository. if current directory is out of git, finish. \
 	2: generate commits. each commits should be good commits. that means semantically minimal and easy to understand the purpose. \
 	commit message can be multilined. with title & body format. take care of treatment of multilined command in cli. \
@@ -19,6 +20,4 @@ q chat -a --no-interactive "generate commits of local changes. here is instructi
 				6: diffs of each files. separate code blocks per file, per hunk. add syntax highlight if possible \
 			3: at the bottom, show overview
 	6: if possible, open '/tmp/commit_summary.html' in new browser's tab. \
-
-	every your prompt started by '> ' should be set to the window title. thus, execute 'title' command by passing your prompt as an argument. 'title' command is my own zsh function. take care that prompt have to be quoted due to 'title' command only accept one argument.
 "
