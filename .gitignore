@@ -41,3 +41,4 @@ jgit/
 .ssh/flect*
 environment.d/
 configstore/
+commit_summary.html
