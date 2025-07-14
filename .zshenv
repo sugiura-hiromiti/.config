@@ -66,10 +66,16 @@ function chpwd_print_dir() {
 
 function set_current_program_var() {
 	MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT=$history[$((${(%):-%h}))]
+	echo "${MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT}"
 	echo -ne "\033]0;${MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT}\007"
 }
 
 function clear_current_program_var() {
+	local last_exit_code=$?
+	if [[ last_exit_code -ne 0 ]]; then
+		ntfy "\`${MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT}\` has failed" "with exit code: ${last_exit_code}"
+	fi
+
 	MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT=$PWD
 	echo -ne "\033]0;${MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT}\007"
 }
