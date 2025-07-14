@@ -18,6 +18,7 @@ export RIPGREP_CONFIG_PATH=$HOME/.config/rg/config
 export YABAI_CERT=yabai-cert
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home/
 export MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT=''
+export COMMIT_SUMMARY_PATH=$HOME/.local/state/commit_summery
 
 #aliases
 # to remove alias in zsh, simply just remove it
