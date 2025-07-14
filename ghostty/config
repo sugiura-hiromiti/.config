@@ -8,6 +8,7 @@ adjust-cell-width = -1
 adjust-cell-height = -2
 
 theme = dark:catppuccin-mocha,light:catppuccin-latte
+unfocused-split-fill = #2f3e63
 
 cursor-opacity = 0.68
 background-opacity = 0.72
