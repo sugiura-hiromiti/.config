@@ -66,7 +66,6 @@ function chpwd_print_dir() {
 
 function set_current_program_var() {
 	MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT=$history[$((${(%):-%h}))]
-	echo "${MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT}"
 	echo -ne "\033]0;${MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT}\007"
 }
 
