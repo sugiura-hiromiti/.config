@@ -305,16 +305,16 @@ local function register_todo_as_diagnostic()
 		[' TEST: '] = vim.diagnostic.severity.INFO,
 	}
 
+	local logger = require 'my_lua_api.nvim_logger'
+	local found_lines = ''
+
 	local ns = vim.api.nvim_create_namespace 'my_todos'
 	for _, buf in pairs(bufs) do
-		local diagnostics = {}
 		local comments_pos = require('my_lua_api.ts').get_comment_positions(buf)
 
 		if #comments_pos == 0 then
 			goto continue
 		end
-
-		vim.notify(vim.inspect(comments_pos), vim.log.levels.INFO, { title = 'marker_comment' })
 
 		for _, comment_pos in ipairs(comments_pos) do
 			local comment_lines = vim.api.nvim_buf_get_lines(buf, comment_pos.start_row, comment_pos.end_row + 1, true)
@@ -328,16 +328,16 @@ local function register_todo_as_diagnostic()
 							message = line:sub(column_start, -1),
 							severity = severity,
 						}
-						table.insert(diagnostics, diag)
+						found_lines = found_lines .. '\n- ' .. diag.message
+						vim.diagnostic.set(ns, buf, { diag }, { virtual_text = false, float = false })
 					end
 				end
 			end
 		end
 
-		vim.diagnostic.set(ns, buf, diagnostics, { virtual_text = false, float = false })
-
 		::continue::
 	end
+	logger.info('marker_comments', 'markdown', found_lines)
 end
 
 a({ 'bufwritepost' }, {
