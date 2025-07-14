@@ -10,7 +10,7 @@ adjust-cell-height = -2
 theme = dark:catppuccin-mocha,light:catppuccin-latte
 
 cursor-opacity = 0.68
-background-opacity = 0.78
+background-opacity = 0.72
 
 mouse-hide-while-typing = true
 
