@@ -18,6 +18,7 @@ window_opacity on \
 active_window_opacity 1.0 \
 normal_window_opacity 0.9 \
 layout bsp \
+external_bar all:50:0
 
 ## rules
 yabai -m rule --add app="^(iPhone Mirroring|Microsoft Teams|Notes|Activity Monitor|Finder|System Settings|zoom.us)$" manage=off sub-layer=below
