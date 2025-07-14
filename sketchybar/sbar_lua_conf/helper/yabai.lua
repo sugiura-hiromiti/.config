@@ -1,0 +1,73 @@
+---@alias display_type string
+---| 'builtin'
+---| 'external'
+
+local m = {}
+local display_uuid_list =
+	{ builtin = { '37D8832A-2D66-02CA-B9F7-8F30A301B230' }, external = { '16DAB7E0-4640-4786-BD7C-4B21D071C236' } }
+
+--- apply `jq` query for yabai query info
+---@alias yqt
+---| 'window'
+---| 'space'
+---| 'display'
+---@param query_type yqt
+---@param jq_query string
+---@return string[]
+m.query = function(query_type, jq_query)
+	local cmd = 'yabai -m query --' .. query_type .. "s | jq '" .. jq_query .. "'"
+	local cmd_rslt = assert(io.popen(cmd, 'r'), 'failed to execute `' .. cmd .. '`')
+
+	local rslt_list = {}
+	for line in cmd_rslt:lines '*l' do
+		table.insert(rslt_list, line)
+	end
+
+	cmd_rslt:close()
+	return rslt_list
+end
+
+---@return string[]
+m.active_displays = function()
+	return m.query('display', '.[].uuid')
+end
+
+---comment
+---@param display_type display_type
+---@return string[]
+local display_filter = function(display_type)
+	local uuid_candidates = display_uuid_list[display_type]
+	local active_displays = m.active_displays()
+
+	local rslt = {}
+	for _, candidate in ipairs(uuid_candidates) do
+		for _, display in ipairs(active_displays) do
+			if candidate == display then
+				table.insert(rslt, display)
+			end
+		end
+	end
+
+	return rslt
+end
+
+---@return string
+m.builtin_display = function()
+	return display_filter('builtin')[1]
+end
+
+---@return string[]
+m.external_display = function()
+	return display_filter 'external'
+end
+
+---@param display_type display_type
+---@return integer[]
+local display_index_of = function(display_type)
+	local uuid_list = display_filter(display_type)
+	-- yabai -m query --displays | jq '.[] | select(.index == 1 or .index == 2)'
+	for _, uuid in ipairs(uuid_list) do
+	end
+end
+
+return m
