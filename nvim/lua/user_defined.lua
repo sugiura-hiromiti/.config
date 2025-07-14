@@ -270,7 +270,7 @@ a({ 'filetype', 'bufreadpost' }, {
 	end,
 })
 
-a({ 'filetype', 'bufreadpost', 'ModeChanged' }, {
+a({ 'winenter', 'ModeChanged' }, {
 	group = au_id,
 	callback = function()
 		local path = vim.fn.expand '%:p'
