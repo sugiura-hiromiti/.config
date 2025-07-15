@@ -37,8 +37,9 @@ quick-terminal-screen = mouse
 quick-terminal-animation-duration = 0
 quick-terminal-autohide = false
 
-#  NOTE: shell integration
+#  NOTE: shell
 shell-integration = zsh
+window-inherit-working-directory = true
 
 #  NOTE: macos
 macos-titlebar-style = hidden
