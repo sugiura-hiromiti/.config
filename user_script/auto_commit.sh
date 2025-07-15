@@ -9,7 +9,8 @@ q chat -a --no-interactive "at first, remember that every time you think, what y
 	3: reflect commits to remote. if failed to push, prompt the reason then finish. \
 	4: show commit summary with commits you generated chronologically. remember showing diff of each commits. \
 	your output shhould be well colorized and clear with markdown format. \
-	5: convert your commit summary into well designed html. save it to file. file name is '<current repository name>_<current year>_<current month>_<current date>_<current timestamp>.html' \
+	5: convert your commit summary into well designed html. save it to file. \
+	file name is '<current repository name>_<current year>_<current month>_<current date>_<hour on latest commit>_<minutes of latest commit>_<second of lates commit>.html' \
 	take care that file name do not include whitespace. use underscore instead. \
 	locate tha file at '$COMMIT_SUMMARY_PATH/doc'. \
 	here is requirement and guideline to generate html. \
