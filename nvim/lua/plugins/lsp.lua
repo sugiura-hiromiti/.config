@@ -110,7 +110,7 @@ return {
 				'dockerls',
 				'taplo',
 				'sourcekit',
-				'sqls',
+				-- 'sqls',
 				'marksman',
 				'markdown_oxide',
 				'jsonls',
@@ -187,5 +187,5 @@ return {
 			},
 		},
 	},
-	{ 'nanotee/sqls.nvim' },
+	-- { 'nanotee/sqls.nvim' },
 }

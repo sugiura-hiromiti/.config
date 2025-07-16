@@ -1,4 +1,6 @@
-return function(bar_name, bar)
+---@param display_index integer
+---@param bar table bar object
+return function(display_index, bar)
 	local battery = bar.add('item', 'battery', {
 		width = 'dynamic',
 		position = 'right',

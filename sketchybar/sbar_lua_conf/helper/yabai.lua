@@ -51,12 +51,12 @@ local display_filter = function(display_type)
 	return rslt
 end
 
----@return string
+---@return string uuid
 m.builtin_display = function()
 	return display_filter('builtin')[1]
 end
 
----@return string[]
+---@return string[] uuid
 m.external_display = function()
 	return display_filter 'external'
 end
@@ -65,9 +65,24 @@ end
 ---@return integer[]
 local display_index_of = function(display_type)
 	local uuid_list = display_filter(display_type)
+
+	local jq_query = '.[] | select('
 	-- yabai -m query --displays | jq '.[] | select(.index == 1 or .index == 2)'
 	for _, uuid in ipairs(uuid_list) do
+		jq_query = jq_query .. '.uuid == ' .. uuid .. ' or '
 	end
+
+	jq_query = jq_query:sub(1, -5) .. ')'
+
+	local matched_display = m.query('display', jq_query)
+end
+
+m.builtin_display_index = function()
+	return display_index_of('builtin')[1]
+end
+
+m.external_display_indices = function()
+	return display_index_of 'external'
 end
 
 return m
