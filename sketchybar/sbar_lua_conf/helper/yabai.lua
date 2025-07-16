@@ -3,8 +3,10 @@
 ---| 'external'
 
 local m = {}
-local display_uuid_list =
-	{ builtin = { '37D8832A-2D66-02CA-B9F7-8F30A301B230' }, external = { '16DAB7E0-4640-4786-BD7C-4B21D071C236' } }
+local display_uuid_list = {
+	builtin = { '"37D8832A-2D66-02CA-B9F7-8F30A301B230"', '"37D8832A-2D66-02CA-B9F7-8F30A301B230"' },
+	external = { '"16DAB7E0-4640-4786-BD7C-4B21D071C236"', '"5573DD48-47D0-44E6-837D-8E468DE2E329"' },
+}
 
 --- apply `jq` query for yabai query info
 ---@alias yqt
@@ -16,6 +18,7 @@ local display_uuid_list =
 ---@return string[]
 m.query = function(query_type, jq_query)
 	local cmd = 'yabai -m query --' .. query_type .. "s | jq '" .. jq_query .. "'"
+	print(cmd)
 	local cmd_rslt = assert(io.popen(cmd, 'r'), 'failed to execute `' .. cmd .. '`')
 
 	local rslt_list = {}
@@ -29,7 +32,7 @@ end
 
 ---@return string[]
 m.active_displays = function()
-	return m.query('display', '.[].uuid')
+	local uuids = m.query('display', '.[].uuid')
 end
 
 ---comment
@@ -72,9 +75,12 @@ local display_index_of = function(display_type)
 		jq_query = jq_query .. '.uuid == ' .. uuid .. ' or '
 	end
 
-	jq_query = jq_query:sub(1, -5) .. ')'
+	-- we don't need to care about when uuid not found
+	jq_query = jq_query:sub(1, -5) .. ') | .index'
 
 	local matched_display = m.query('display', jq_query)
+	print(matched_display)
+	return matched_display
 end
 
 m.builtin_display_index = function()
