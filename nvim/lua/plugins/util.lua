@@ -228,6 +228,19 @@ return {
 			},
 		},
 	},
+	{
+		'kndndrj/nvim-dbee',
+		build = function()
+			require('dbee').install()
+		end,
+		config = function()
+			require('dbee').setup {
+				sources = {
+					require('dbee.sources').FileSource:new(os.getenv 'HOME' .. '/dbee_mei_dev.json'),
+				},
+			}
+		end,
+	},
 
 	-- NOTE: telescope
 	{
