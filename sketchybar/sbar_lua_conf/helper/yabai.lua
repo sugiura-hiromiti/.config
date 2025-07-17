@@ -42,10 +42,15 @@ local display_filter = function(display_type)
 	local uuid_candidates = display_uuid_list[display_type]
 	local active_displays = m.active_displays()
 
+	local dbgr = require('sbar_lua_conf.helper.dbg').print_table
+	dbgr(uuid_candidates, 'uuid_candidates')
+	dbgr(active_displays, 'active_displays')
 	local rslt = {}
 	for _, candidate in ipairs(uuid_candidates) do
 		for _, display in ipairs(active_displays) do
 			if candidate == display then
+				print('candidate ' .. candidate)
+				print('display ' .. display)
 				table.insert(rslt, display)
 			end
 		end
