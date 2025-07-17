@@ -4,7 +4,7 @@
 
 local m = {}
 local display_uuid_list = {
-	builtin = { '"37D8832A-2D66-02CA-B9F7-8F30A301B230"', '"37D8832A-2D66-02CA-B9F7-8F30A301B230"' },
+	builtin = { '"37D8832A-2D66-02CA-B9F7-8F30A301B230"' },
 	external = { '"16DAB7E0-4640-4786-BD7C-4B21D071C236"', '"5573DD48-47D0-44E6-837D-8E468DE2E329"' },
 }
 
@@ -33,6 +33,7 @@ end
 ---@return string[]
 m.active_displays = function()
 	local uuids = m.query('display', '.[].uuid')
+	return uuids
 end
 
 ---comment
@@ -70,7 +71,6 @@ local display_index_of = function(display_type)
 	local uuid_list = display_filter(display_type)
 
 	local jq_query = '.[] | select('
-	-- yabai -m query --displays | jq '.[] | select(.index == 1 or .index == 2)'
 	for _, uuid in ipairs(uuid_list) do
 		jq_query = jq_query .. '.uuid == ' .. uuid .. ' or '
 	end
@@ -79,7 +79,6 @@ local display_index_of = function(display_type)
 	jq_query = jq_query:sub(1, -5) .. ') | .index'
 
 	local matched_display = m.query('display', jq_query)
-	print(matched_display)
 	return matched_display
 end
 

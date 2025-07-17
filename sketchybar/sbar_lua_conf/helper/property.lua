@@ -60,7 +60,7 @@ return function(display_index)
 		align = 'center',
 		background = {
 			drawing = true,
-			color = require('sbar_config.helper.color').get_color 'surface0',
+			color = require('sbar_lua_conf.helper.color').get_color 'surface0',
 			border_color = 0xffffffff,
 			border_width = 1,
 			height = background.height,
