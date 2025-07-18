@@ -1,13 +1,6 @@
 #!/usr/bin/env lua
 
-package.cpath = package.cpath .. ';' .. os.getenv 'SBARLUA_DYLIB_PATH' .. '/lib/lua/5.4/sketchybar.so'
-package.path = package.path
-	.. ';'
-	.. os.getenv 'HOME'
-	.. '/.local/share/nvim/lazy/catppuccin/lua/catppuccin/palettes/frappe.lua'
-	.. ';'
-	.. os.getenv 'HOME'
-	.. '/.config/sketchybar/sbar_lua_config/?.lua'
+package.cpath = os.getenv 'SBARLUA_DYLIB_PATH' .. '/lib/lua/5.4/?.so' .. ';' .. package.cpath
 
-require 'sbar_lua_conf.sbar_builtin_display'
-require 'sbar_lua_conf.sbar_external_display'
+local builtin_bar = require 'sbar_lua_conf.sbar_builtin_display'
+local external_bars = require 'sbar_lua_conf.sbar_external_display'
