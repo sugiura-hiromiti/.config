@@ -1,5 +1,4 @@
-# q chat -a --no-interactive "at first, remember that every time you think, what you are thinking should be set to the window title. \
-codex e --full-auto "at first, remember that every time you think, what you are thinking should be set to the window title. \
+q chat -a --no-interactive "at first, remember that every time you think, what you are thinking should be set to the window title. \
 	thus, execute 'title' command by passing your prompt as an argument. \
 	'title' command is my own zsh function. take care that prompt have to be quoted due to 'title' command only accept one argument. \
 	generate commits of local changes. here is instruction. \
