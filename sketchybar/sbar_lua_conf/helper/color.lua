@@ -54,6 +54,14 @@
 ---|   'mantle' # "#292c3c"
 ---|   'crust' # "#232634"
 
+package.path = package.path
+	-- .. ';'
+	-- .. os.getenv 'HOME'
+	-- .. '/.config/sketchybar/sbar_lua_conf/?.lua'
+	.. ';'
+	.. os.getenv 'HOME'
+	.. '/.local/share/nvim/lazy/catppuccin/lua/catppuccin/palettes/frappe.lua'
+
 local palette = {}
 
 ---@param name color_name name of the color in the palette

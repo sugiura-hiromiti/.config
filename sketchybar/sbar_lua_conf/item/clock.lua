@@ -2,6 +2,8 @@
 ---@param bar table bar object
 return function(display_index, bar)
 	local palette = require 'sbar_lua_conf.helper.color'
+
+	require('sbar_lua_conf.helper.dbg').print_table(palette, 'palette.')
 	local clock = bar.add('item', {
 		width = 'dynamic',
 		position = 'right',

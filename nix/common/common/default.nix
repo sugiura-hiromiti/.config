@@ -75,5 +75,6 @@
   # pkgs.libllvm
   pkgs.vue-language-server
   pkgs.sd
+  pkgs.codex
   # pkgs.sqlite
 ]
