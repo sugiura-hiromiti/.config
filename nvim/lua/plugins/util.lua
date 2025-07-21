@@ -60,7 +60,7 @@ return {
 			hide_numbers = false,
 			autochdir = true,
 			insert_mappings = false,
-			direction = 'tab',
+			direction = 'vertical',
 		},
 	},
 	-- { 'f-person/auto-dark-mode.nvim', opts = {} },
