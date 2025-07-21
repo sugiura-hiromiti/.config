@@ -99,10 +99,10 @@ fn + shift - h: yabai -m window --space sub
 fn + shift - l: yabai -m window --space ex_sub
 
 # Window Move: 4
-alt - left:  yabai -m window --move rel:-20:0 || yabai -m window --warp west
-alt - down:  yabai -m window --move rel:0:20 || yabai -m window --warp south
-alt - up:    yabai -m window --move rel:0:-20 || yabai -m window --warp north
-alt - right: yabai -m window --move rel:20:0 || yabai -m window --warp east
+alt - left:  yabai -m window --move rel:-40:0 || yabai -m window --warp west
+alt - down:  yabai -m window --move rel:0:40 || yabai -m window --warp south
+alt - up:    yabai -m window --move rel:0:-40 || yabai -m window --warp north
+alt - right: yabai -m window --move rel:40:0 || yabai -m window --warp east
 
 # Space Focus (Logically): 1
 fn - 0x29: yabai -m space --focus next || yabai -m space --focus first
