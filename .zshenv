@@ -61,6 +61,7 @@ function ntfy() {
 
 function title() {
 	echo -ne "\033]0;${1}\007"
+	external_1 --trigger zsh_title TITLE="${1}"
 }
 
 function chpwd_print_dir() {
