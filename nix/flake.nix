@@ -121,6 +121,8 @@
             echo "update complete!"
             echo "-------------------------------------------
             "
+
+            echo -e "\033]777;notify;nix;update completed\007"
           ''
         );
       };

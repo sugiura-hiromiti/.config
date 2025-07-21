@@ -1,5 +1,6 @@
 # common/common
-{pkgs}: [
+{ pkgs }:
+[
   pkgs.git
   pkgs.curl
   pkgs.chibi
@@ -60,7 +61,7 @@
   pkgs.reaper
   pkgs.docker
   pkgs.zsh
-  pkgs.binutils
+  # pkgs.binutils
   pkgs.nil
   pkgs.tailscale
   pkgs.sqls
@@ -71,8 +72,8 @@
   pkgs.yaml-language-server
   # pkgs.postgres-lsp
   # these 2 packages are required to build sbarlua
-  # pkgs.clang
-  # pkgs.libllvm
+  pkgs.clang
+  pkgs.libllvm
   pkgs.vue-language-server
   pkgs.sd
   pkgs.codex

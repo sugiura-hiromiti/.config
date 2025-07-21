@@ -1,7 +1,8 @@
 {
   username,
   pkgs,
-}: {
+}:
+{
   security = {
     pam = {
       services = {
@@ -23,7 +24,7 @@
       cleanup = "uninstall";
     };
     brews = [
-      # "felixkratz/formulae/sketchybar"
+      # "FelixKratz/formulae/sketchybar"
       "koekeishiya/formulae/yabai"
       "koekeishiya/formulae/skhd"
       "sqlite"
@@ -40,18 +41,13 @@
       "mouseless"
     ];
     taps = [
-      # "felixkratz/formulae"
-      "koekeishiya/formulae"
+      # "koekeishiya/formulae"
+      "FelixKratz/formulae"
     ];
     masApps = {
       "Wallpaper Play" = 1638457121;
     };
   };
-  # services = {
-  #   sketchybar = {
-  #     enable = true;
-  #   };
-  # };
   nix = {
     enable = false;
   };
@@ -89,9 +85,6 @@
         wvous-br-corner = 1;
         wvous-tl-corner = 1;
         wvous-tr-corner = 1;
-      };
-      WindowManager = {
-        # EnableStandardClickToShowDesktop=
       };
       # add custom pref as you like
       # CustomSystemPreferences = {};
