@@ -33,6 +33,7 @@
 ~/.npm-packages/bin/gemini -y -p "generate commits of local changes. here is instruction. \
 	1: go to root directory of current git repository. if current directory is out of git, finish. \
 	2: generate commits. each commits should be good commits. that means semantically minimal and easy to understand the purpose. \
+	remember changes in a same file can be committed separatery per hunk. \
 	commit message can be multilined. with title & body format. take care of treatment of multilined command in cli. \
 	commit message uses markdown format. \
 	3: reflect commits to remote. if failed to push, prompt the reason then finish. \
