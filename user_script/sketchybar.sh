@@ -8,10 +8,10 @@
 
 # Optional parameters:
 # @raycast.icon 🤖
-# @raycast.packageName sketchybar_daemon
+# @raycast.packageName sketchybar
 
 # Documentation:
-# @raycast.description sketchybar daemon
+# @raycast.description sketchybar
 # @raycast.author sugiura-hiromichi
 # @raycast.authorURL https://raycast.com/sugiura-hiromichi
 

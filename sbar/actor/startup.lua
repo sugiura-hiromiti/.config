@@ -1,0 +1,8 @@
+require 'actor.item.clock'
+-- require 'actor.item.raycast_event'
+require 'actor.item.keyboard'
+require 'actor.item.battery'
+require 'actor.item.space'
+require 'actor.item.current_app'
+require 'actor.item.window'
+require 'actor.item.zsh'

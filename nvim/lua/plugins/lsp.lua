@@ -19,36 +19,53 @@ return {
 			local rust_config = vim.tbl_deep_extend('force', rust, {
 				settings = {
 					['rust-analyzer'] = {
-						-- cargo = {
-						-- 	allTargets = false,
-						-- },
-						-- checkOnSave = {
-						-- 	allTargets = false,
-						-- },
-						diagnostics = { styleLints = { enable = true } },
+						assist = {
+							preferSelf = true,
+						},
+						cargo = {
+							allTargets = false,
+						},
+						completion = {
+							fullFunctionSignatures = { enable = true },
+							-- privateEditable = { enable = true },
+							termSearch = { enable = true },
+						},
+						diagnostics = { experimental = { enable = true }, styleLints = { enable = true } },
 						hover = {
 							actions = { reference = { enable = true } },
+							maxSubstitutionLength = 40,
+							memoryLayout = {
+								niches = true,
+							},
 							show = { traitAssocItems = 5 },
 						},
 						inlayHints = {
+							bindingModeHints = { enable = true },
 							closingBraceHints = { minLines = 20 },
-							lifetimeElisionHints = { enable = 'always', ParameterNames = true },
-							maxLength = 20,
-							typeHints = { hideNamedConstructor = false },
-							--						implicitDrops = { enable = true },
+							closureCaptureHints = { enable = true },
+							closureReturnTypeHints = { enable = 'always' },
+							discriminantHints = { enable = 'always' },
+							expressionAdjustmentHints = { enable = 'always' },
+							genericParameterHints = { lifetime = { enable = true }, type = { enable = true } },
+							implicitDrops = { enable = true },
+							implicitSizedBoundHints = { enable = true },
+							lifetimeElisionHints = { enable = 'always', useParameterNames = true },
+							rangeExclusiveHints = { enable = true },
 						},
 						interpret = { tests = true },
-						lens = { implementations = { enable = true } },
+						lens = {
+							enable = true,
+							references = {
+								adt = { enable = true },
+								enumVariant = { enable = true },
+								method = { enable = true },
+								trait = { enable = true },
+							},
+						},
+						lru = { capacity = 512 },
 						rustfmt = { overrideCommand = 'cargo +nightly fmt', rangeFormatting = { enable = true } },
 						semanticHighlighting = { operator = { specialization = { enable = true } } },
-						typing = { autoClosingAngleBrackets = { enable = true } },
 						workspace = { symbol = { search = { kind = 'all_symbols' } } },
-						experimental = { procAttrMacros = true },
-						completion = {
-							fullFunctionSignatures = { enable = true },
-							privateEditable = { enable = true },
-							termSearch = { enable = true },
-						},
 					},
 				},
 			})
@@ -109,7 +126,7 @@ return {
 				'dockerls',
 				'taplo',
 				'sourcekit',
-				'sqls',
+				-- 'sqls',
 				'marksman',
 				'markdown_oxide',
 				'jsonls',
@@ -186,5 +203,5 @@ return {
 			},
 		},
 	},
-	{ 'nanotee/sqls.nvim' },
+	-- { 'nanotee/sqls.nvim' },
 }

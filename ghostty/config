@@ -7,10 +7,13 @@ font-size = 15
 adjust-cell-width = -1
 adjust-cell-height = -2
 
-theme = dark:catppuccin-frappe,light:catppuccin-latte
+theme = dark:catppuccin-mocha,light:catppuccin-latte
+unfocused-split-fill = #2f3e63
 
-cursor-opacity = 0.8
-background-opacity = 0.7
+cursor-opacity = 0.68
+background-opacity = 0.75
+
+mouse-hide-while-typing = true
 
 # https://ghostty.org/docs/config/keybind/sequence sequence on global keybind is not allowed currently
 # keybind = global:shift>space=toggle_quick_terminal
@@ -19,11 +22,14 @@ background-opacity = 0.7
 keybind = global:f5=toggle_visibility
 # https://www.leonerd.org.uk/hacks/fixterms/
 keybind = ctrl+tab=csi:9;5u
-keybind = ctrl+shift+tab=csi:1;5z
+# some terminals represeent shift - tab as csi z, in such case, keybind = ctrl+shift+tab=csi1;5z
+keybind = ctrl+shift+tab=csi:9;6u
 
 #  NOTE: window
 window-padding-x = 0
 window-padding-y = 0
+window-height = 55
+window-width = 170
 
 #  NOTE: quick-terminal (equivalent to iterm's hotkey window)
 quick-terminal-position = center
@@ -31,8 +37,9 @@ quick-terminal-screen = mouse
 quick-terminal-animation-duration = 0
 quick-terminal-autohide = false
 
-#  NOTE: shell integration
+#  NOTE: shell
 shell-integration = zsh
+window-inherit-working-directory = true
 
 #  NOTE: macos
 macos-titlebar-style = hidden

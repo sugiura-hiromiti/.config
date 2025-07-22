@@ -49,11 +49,18 @@ return {
 		'akinsho/toggleterm.nvim',
 		version = '*',
 		opts = {
-			size = 30,
+			-- size = 80,
+			size = function(term)
+				if term.direction == 'horizontal' then
+					return 30
+				elseif term.direction == 'vertical' then
+					return vim.o.columns * 0.37
+				end
+			end,
 			hide_numbers = false,
 			autochdir = true,
 			insert_mappings = false,
-			direction = 'horizontal',
+			direction = 'vertical',
 		},
 	},
 	-- { 'f-person/auto-dark-mode.nvim', opts = {} },
@@ -220,6 +227,19 @@ return {
 				},
 			},
 		},
+	},
+	{
+		'kndndrj/nvim-dbee',
+		build = function()
+			require('dbee').install()
+		end,
+		config = function()
+			require('dbee').setup {
+				sources = {
+					require('dbee.sources').FileSource:new(os.getenv 'HOME' .. '/dbee_mei_dev.json'),
+				},
+			}
+		end,
 	},
 
 	-- NOTE: telescope

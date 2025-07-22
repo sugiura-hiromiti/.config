@@ -1,0 +1,34 @@
+#!/usr/bin/env lua
+
+package.cpath = os.getenv 'SBARLUA_DYLIB_PATH' .. '/lib/lua/5.4/sketchybar.so' .. ';' .. package.cpath
+
+BAR = require 'sketchybar'
+-- BAR_NAME = 'external_1'
+BAR.set_bar_name 'external_1'
+DISPLAY_INDEX = 1
+GUI_INFO = {
+	active_display = 1,
+	active_space = 1,
+	active_app = '',
+	builtin_display_index = 2,
+	space = {
+		'K(1)', -- ex_main
+		'L(2)', -- ex_sub
+		'J(3)', -- main
+		'H(4)', -- sub
+	},
+}
+
+local property_list = require 'actor.helper.property'
+
+BAR.bar(property_list.bar_properties)
+BAR.default(property_list.default_properties)
+
+BAR.begin_config()
+
+require 'actor.startup'
+
+BAR.hotload(true)
+BAR.end_config()
+
+BAR.event_loop()

@@ -1,3 +1,4 @@
+-- node
 vim.cmd 'smapclear'
 
 local m = vim.keymap.set
@@ -34,7 +35,6 @@ local function is_url(path)
 end
 
 m('i', '<esc>', function()
-	vim.cmd 'wa'
 	vim.cmd 'stopinsert'
 
 	local cur_buf = vim.api.nvim_get_current_buf()
@@ -48,8 +48,10 @@ m('i', '<esc>', function()
 		end
 	end
 	if has_format_ability then
-		vim.lsp.buf.format { async = true }
+		vim.lsp.buf.format { async = false }
 	end
+
+	vim.cmd 'wa'
 end)
 m('n', '<esc>', function()
 	require('notify').dismiss { pending = true, silent = true }
@@ -268,6 +270,16 @@ a({ 'filetype', 'bufreadpost' }, {
 	end,
 })
 
+a({ 'winenter', 'ModeChanged' }, {
+	group = au_id,
+	callback = function()
+		local path = vim.fn.expand '%:p'
+		local home_dir = os.getenv 'HOME'
+		path = path:gsub(home_dir, '~')
+		vim.o.titlestring = vim.fn.mode() .. ' ' .. vim.bo.ft .. ' ' .. path
+	end,
+})
+
 a('bufreadpost', {
 	group = au_id,
 	callback = function()
@@ -275,7 +287,7 @@ a('bufreadpost', {
 	end,
 })
 
-local function diag_mark()
+local function register_todo_as_diagnostic()
 	local all_bufs = vim.api.nvim_list_bufs()
 	local bufs = {}
 	for _, buf in pairs(all_bufs) do
@@ -293,25 +305,44 @@ local function diag_mark()
 		[' TEST: '] = vim.diagnostic.severity.INFO,
 	}
 
-	local ns = vim.api.nvim_create_namespace 'diag_mark'
+	local logger = require 'my_lua_api.nvim_logger'
+	local found_lines = ''
+
+	local ns = vim.api.nvim_create_namespace 'my_todos'
 	for _, buf in pairs(bufs) do
-		local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
-		for i, line in ipairs(lines) do
-			for mark, severity in pairs(marks) do
-				local _, col_num = line:find(mark)
-				if col_num ~= nil then
-					local diag = { lnum = i - 1, col = col_num, message = line, severity = severity }
-					vim.diagnostic.set(ns, buf, { diag }, { virtual_text = false, float = false })
-					--vim.notify('found diag', vim.diagnostic.severity.INFO, { title = 'diag_mark' })
+		local comments_pos = require('my_lua_api.ts').get_comment_positions(buf)
+
+		if #comments_pos == 0 then
+			goto continue
+		end
+
+		for _, comment_pos in ipairs(comments_pos) do
+			local comment_lines = vim.api.nvim_buf_get_lines(buf, comment_pos.start_row, comment_pos.end_row + 1, true)
+			for i, line in ipairs(comment_lines) do
+				for mark, severity in pairs(marks) do
+					local column_start, column_end = line:find(mark)
+					if column_end ~= nil then
+						local diag = {
+							lnum = comment_pos.start_row + i - 1,
+							col = column_end,
+							message = line:sub(column_start, -1),
+							severity = severity,
+						}
+						found_lines = found_lines .. '\n- ' .. diag.message
+						vim.diagnostic.set(ns, buf, { diag }, { virtual_text = false, float = false })
+					end
 				end
 			end
 		end
+
+		::continue::
 	end
+	logger.info('marker_comments', 'markdown', found_lines)
 end
 
-a({ 'insertLeave' }, {
+a({ 'bufwritepost' }, {
 	group = au_id,
-	callback = diag_mark,
+	callback = register_todo_as_diagnostic,
 })
 
 -- a({ 'vimenter' }, {
