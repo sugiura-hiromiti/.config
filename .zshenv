@@ -3,6 +3,9 @@
 
 set -o emacs
 setopt incappendhistory
+# autoload -Uz colors
+
+
 # setopt AUTO_CD
 # cdpath=(.. ~ ~/Downloads)
 
