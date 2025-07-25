@@ -1,5 +1,4 @@
-q chat -a --no-interactive \
-	"generate commits of local changes. here is instruction. \
+prompt="generate commits of local changes. here is instruction. \
 	1: go to root directory of current git repository. if current directory is out of git, finish. \
 	2: create branches for changes. you should create several branches to keep git history to be clean. \
 	each branch represents one block of semantics within changes. \
@@ -13,3 +12,11 @@ q chat -a --no-interactive \
 	4: show commit summary with branches you created and chronological list of commits you generated. \
 	your output shhould be well colorized and clear with markdown format. \
 "
+
+if [ $(uname) = "Darwin" ]; then
+	q chat -a --no-interactive ${prompt}
+elif [ $(uname) = "Linux" ]; then
+	amazon-q chat -a --no-interactive ${prompt}
+fi
+
+
