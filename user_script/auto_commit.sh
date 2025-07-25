@@ -14,9 +14,9 @@ prompt="generate commits of local changes. here is instruction. \
 "
 
 if [ $(uname) = "Darwin" ]; then
-	q chat -a --no-interactive ${prompt}
+	q chat -a --no-interactive "${prompt}"
 elif [ $(uname) = "Linux" ]; then
-	amazon-q chat -a --no-interactive ${prompt}
+	amazon-q chat -a --no-interactive "${prompt}"
 fi
 
 
