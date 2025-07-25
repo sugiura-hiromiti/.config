@@ -2,7 +2,7 @@ local palette = require 'actor.helper.color'
 
 local window_title = BAR.add('item', 'window_title', {
 	width = 'dynamic',
-	position = require('actor.helper.yabai').position 'left',
+	position = 'left',
 	background = { border_color = palette.lavender },
 	label = { color = palette.lavender },
 })
