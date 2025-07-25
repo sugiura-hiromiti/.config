@@ -2,7 +2,7 @@ local palette = require 'actor.helper.color'
 
 local app_name = BAR.add('item', 'application_name', {
 	width = 'dynamic',
-	position = require('actor.helper.yabai').position 'left',
+	position = 'left',
 	background = { border_color = palette.mauve },
 	label = { color = palette.mauve },
 })
