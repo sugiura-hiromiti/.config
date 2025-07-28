@@ -490,10 +490,6 @@
                         {
                             "from": { "consumer_key_code": "mute" },
                             "to": [{ "consumer_key_code": "display_brightness_decrement" }]
-                        },
-                        {
-                            "from": { "key_code": "left_command" },
-                            "to": [{ "apple_vendor_top_case_key_code": "keyboard_fn" }]
                         }
                     ]
                 },
@@ -501,16 +497,12 @@
                     "identifiers": { "is_keyboard": true },
                     "simple_modifications": [
                         {
-                            "from": { "key_code": "caps_lock" },
-                            "to": [{ "key_code": "left_control" }]
-                        },
-                        {
-                            "from": { "key_code": "left_command" },
-                            "to": [{ "apple_vendor_top_case_key_code": "keyboard_fn" }]
-                        },
-                        {
                             "from": { "apple_vendor_top_case_key_code": "keyboard_fn" },
                             "to": [{ "key_code": "left_command" }]
+                        },
+                        {
+                            "from": { "key_code": "caps_lock" },
+                            "to": [{ "key_code": "left_control" }]
                         },
                         {
                             "from": { "key_code": "left_control" },
@@ -596,12 +588,16 @@
                     "to": [{ "key_code": "f12" }]
                 }
             ],
-            "name": "Default profile",
+            "name": "dflt",
             "selected": true,
             "simple_modifications": [
                 {
                     "from": { "key_code": "caps_lock" },
                     "to": [{ "key_code": "left_command" }]
+                },
+                {
+                    "from": { "key_code": "left_command" },
+                    "to": [{ "apple_vendor_top_case_key_code": "keyboard_fn" }]
                 }
             ],
             "virtual_hid_keyboard": {
@@ -610,7 +606,57 @@
             }
         },
         {
-            "name": "New profile",
+            "name": "mouse_move",
+            "simple_modifications": [
+                {
+                    "from": { "key_code": "4" },
+                    "to": [{ "pointing_button": "button2" }]
+                },
+                {
+                    "from": { "key_code": "5" },
+                    "to": [{ "pointing_button": "button1" }]
+                },
+                {
+                    "from": { "key_code": "down_arrow" },
+                    "to": [{ "mouse_key": { "y": 3072 } }]
+                },
+                {
+                    "from": { "key_code": "h" },
+                    "to": [{ "mouse_key": { "horizontal_wheel": 64 } }]
+                },
+                {
+                    "from": { "key_code": "j" },
+                    "to": [{ "mouse_key": { "vertical_wheel": 64 } }]
+                },
+                {
+                    "from": { "key_code": "k" },
+                    "to": [{ "mouse_key": { "vertical_wheel": -64 } }]
+                },
+                {
+                    "from": { "key_code": "l" },
+                    "to": [{ "mouse_key": { "horizontal_wheel": -64 } }]
+                },
+                {
+                    "from": { "key_code": "left_arrow" },
+                    "to": [{ "mouse_key": { "x": -3072 } }]
+                },
+                {
+                    "from": { "key_code": "left_command" },
+                    "to": [{ "mouse_key": { "speed_multiplier": 0.125 } }]
+                },
+                {
+                    "from": { "key_code": "right_arrow" },
+                    "to": [{ "mouse_key": { "x": 3072 } }]
+                },
+                {
+                    "from": { "key_code": "right_command" },
+                    "to": [{ "mouse_key": { "speed_multiplier": 2 } }]
+                },
+                {
+                    "from": { "key_code": "up_arrow" },
+                    "to": [{ "mouse_key": { "y": -3072 } }]
+                }
+            ],
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         }
     ]
