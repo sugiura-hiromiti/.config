@@ -21,8 +21,8 @@ layout bsp \
 external_bar main:0:25
 
 yabai -m config --space \
-	$(yabai -m query --displays | jq '.[] | select(.frame.y !=  0) | .spaces[1]') \
-		layout stack \
+	$(yabai -m query --displays | jq '.[] | select(.frame.y ==  0) | .spaces[0]') \
+		layout float \
 		top_padding 0 \
 		bottom_padding 0 \
 		left_padding 0 \
