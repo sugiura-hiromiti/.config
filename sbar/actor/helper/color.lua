@@ -83,19 +83,19 @@ local palette = {
 	base = 0xff303446,
 	mantle = 0xff292c3c,
 	crust = 0xff232634,
+
+	---@param name color_name name of the color in the palette
+	---@param alpha integer|nil "0xXX" representation of alpha color code
+	---@return integer
+	get_color = function(name, alpha)
+		if alpha == nil then
+			alpha = 0xff
+		end
+
+		local rgb = palette[name] - 0xff000000 + alpha * 0x1000000
+
+		return rgb
+	end,
 }
-
----@param name color_name name of the color in the palette
----@param alpha integer|nil "0xXX" representation of alpha color code
----@return integer
-palette.get_color = function(name, alpha)
-	if alpha == nil then
-		alpha = 0xff
-	end
-
-	local rgb = palette[name] - 0xff000000 + alpha * 0x1000000
-
-	return rgb
-end
 
 return palette

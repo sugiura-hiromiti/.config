@@ -5,11 +5,11 @@ sudo yabai --load-sa
 
 ## setting
 yabai -m config \
-window_gap 8 \
-top_padding 7 \
-bottom_padding 8 \
-left_padding 8 \
-right_padding 8 \
+window_gap 5 \
+top_padding 5 \
+bottom_padding 5 \
+left_padding 5 \
+right_padding 5 \
 focus_follows_mouse autofocus \
 mouse_follows_focus on \
 window_placement first_child \
@@ -18,7 +18,16 @@ window_opacity on \
 active_window_opacity 1.0 \
 normal_window_opacity 0.9 \
 layout bsp \
-external_bar main:0:20
+external_bar main:0:25
+
+yabai -m config --space \
+	$(yabai -m query --displays | jq '.[] | select(.frame.y !=  0) | .spaces[1]') \
+		layout stack \
+		top_padding 0 \
+		bottom_padding 0 \
+		left_padding 0 \
+		right_padding 0 \
+		window_gap 0
 
 ## rules
 yabai -m rule --add app="^(iPhone Mirroring|Microsoft Teams|Notes|Activity Monitor|Finder|System Settings|zoom.us)$" manage=off sub-layer=below
@@ -30,42 +39,15 @@ yabai -m rule --add subrole="AXDialog" opacity=1.0
 ## signals
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focused ; external_1 --trigger window_focused"
 yabai -m signal --add event=window_title_changed action="sketchybar --trigger window_title_changed ; external_1 --trigger window_title_changed"
-# yabai -m signal --add event=application_front_switched action="sketchybar --trigger application_front_switched ; external_1 --trigger application_front_switched"
-# yabai -m signal --add event=space_changed action="sketchybar --trigger space_changed ; external_1 --trigger space_changed"
-# yabai -m signal --add event=display_changed action="sketchybar --trigger display_changed ; external_1 --trigger display_changed"
 
-yabai -m space 1 --label ex_main
-yabai -m space 2 --label ex_sub
-yabai -m space 3 --label main
-yabai -m space 4 --label sub
+yabai -m signal --add event=application_front_switched action="sketchybar --trigger application_front_switched ; external_1 --trigger application_front_switched"
 
-## other
+yabai -m signal --add event=space_changed action="sketchybar --trigger space_changed ; external_1 --trigger space_changed"
+yabai -m signal --add event=space_created action="sketchybar --trigger space_created ; external_1 --trigger space_created"
+yabai -m signal --add event=space_destroyed action="sketchybar --trigger space_destroyed ; external_1 --trigger space_destroyed"
 
-# for _ in $(yabai -m query --spaces | jq '.[].index | select(. > 6)'); do
-# 	yabai -m space --destroy 5
-# done
-#
-# function setup_space {
-# 	local idx="$1"
-# 	local name="$2"
-# 	local space=
-# 	echo "setup space $idx : $name"
-# 	space=$(yabai -m query --spaces --space "$idx")
-# 	if [ -z "$space" ]; then
-# 		yabai -m space --create
-# 	fi
-# }
-#
-# ### label spaces
-# setup_space 1 main
-# setup_space 2 sub
-# setup_space 3 ex_main
-# setup_space 4 ex_sub
-#
-# yabai -m rule --add app="^Firefox$" space=^1
-# yabai -m rule --add app="^Obsidian$" space=1
-# yabai -m rule --add app="^Slack$" space=3
-# yabai -m rule --add app="^ChatGPT$" space=^3
-# yabai -m rule --add app="^FaceTime$" space=^4
+yabai -m signal --add event=display_changed action="sketchybar --trigger display_changed ; external_1 --trigger display_changed"
+yabai -m signal --add event=display_added action="sketchybar --trigger display_added ; external_1 --trigger display_added"
+yabai -m signal --add event=display_removed action="sketchybar --trigger display_removed ; external_1 --trigger display_removed"
 
 borders active_color=0xff00d4ff inactive_color=0x88e1e3e4 width=2.0 &

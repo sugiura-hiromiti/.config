@@ -5,7 +5,7 @@ local keyboard_input = BAR.add('item', 'keyboard', {
 	width = 'dynamic',
 	position = 'right',
 	background = { border_color = palette.sky },
-	associated_display = GUI_INFO.builtin_display_index,
+	associated_display = require('actor.helper.yabai').display.builtin().index,
 })
 
 BAR.add('event', 'keyboard_input_change', 'AppleSelectedInputSourcesChangedNotification')

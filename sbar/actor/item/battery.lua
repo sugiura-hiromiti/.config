@@ -1,7 +1,7 @@
 local battery = BAR.add('item', 'battery', {
 	width = 'dynamic',
 	position = 'right',
-	associated_display = GUI_INFO.builtin_display_index,
+	associated_display = require('actor.helper.yabai').display.builtin().index,
 })
 
 local icons = require 'actor.helper.icon'

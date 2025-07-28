@@ -5,7 +5,7 @@ local zsh = BAR.add('item', 'zsh', {
 	position = 'right',
 	background = { border_color = palette.text, color = palette.text },
 	label = { color = palette.surface0 },
-	associated_display = 1,
+	associated_display = require('actor.helper.yabai').display.external_indices()[1],
 })
 
 BAR.add('event', 'zsh_title')
