@@ -35,7 +35,7 @@ local bar = {
 	-- clip = 0,
 }
 
-if DISPLAY_INDEX ~= GUI_INFO.builtin_display_index then
+if DISPLAY_INDEX ~= require('actor.helper.yabai').display.builtin().index then
 	padding = {
 		dflt = 2,
 		label = 4,

@@ -2,22 +2,12 @@
 
 package.cpath = os.getenv 'SBARLUA_DYLIB_PATH' .. '/lib/lua/5.4/sketchybar.so' .. ';' .. package.cpath
 
+local yabai = require 'actor.helper.yabai'
+
 BAR = require 'sketchybar'
--- BAR_NAME = 'builtin'
-BAR.set_bar_name 'sketchybar'
-DISPLAY_INDEX = 2
-GUI_INFO = {
-	active_display = 2,
-	active_space = 3,
-	active_app = '',
-	builtin_display_index = 2,
-	space = {
-		'K(1)', -- ex_main
-		'L(2)', -- ex_sub
-		'J(3)', -- main
-		'H(4)', -- sub
-	},
-}
+BAR_NAME = 'sketchybar'
+BAR.set_bar_name(BAR_NAME)
+DISPLAY_INDEX = yabai.display.builtin().index
 
 local property_list = require 'actor.helper.property'
 
