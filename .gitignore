@@ -42,3 +42,4 @@ jgit/
 environment.d/
 configstore/
 commit_summary.html
+gh/
