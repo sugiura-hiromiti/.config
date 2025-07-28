@@ -64,7 +64,9 @@ function ntfy() {
 
 function title() {
 	echo -ne "\033]0;${1}\007"
-	external_1 --trigger zsh_title TITLE="${1}"
+	if [ $(uname) = "Darwin" ]; then
+		external_1 --trigger zsh_title TITLE="${1}"
+	fi
 }
 
 function chpwd_print_dir() {

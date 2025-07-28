@@ -2,5 +2,5 @@
 {pkgs}: [
   pkgs.alacritty
   pkgs.firefox
-  pkgs.amazon-q
+  pkgs.amazon-q-cli
 ]
