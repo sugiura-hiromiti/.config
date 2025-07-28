@@ -65,6 +65,14 @@ local item_register = function()
 			end
 		end
 
+		local ty = space_info.type
+
+		if space_info['is-native-fullscreen'] then
+			ty = 'full'
+		end
+
+		label = label .. ':' .. ty
+
 		if space_info['s-native-fullscree'] and is_first_fullscreen then
 			label = 'H'
 			is_first_fullscreen = false

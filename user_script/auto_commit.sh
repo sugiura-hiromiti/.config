@@ -3,7 +3,6 @@ prompt="generate commits of local changes. here is instruction. \
 	2: create branches for changes. you should create several branches to keep git history to be clean. \
 	each branch represents one block of semantics within changes. \
 	2: generate commits at each branches. each commits should be good commit. that means semantically minimal and easy to understand the purpose. \
-	remember changes in a same file can be committed separatery by separating per hunk. \
 	commit message can be multilined. with title & body format. take care of treatment of multilined command in cli. \
 	commit message uses markdown format. \
 	3: create Pull Request for each branches. you can use 'gh' command which is installed in this environment. \
@@ -18,5 +17,3 @@ if [ $(uname) = "Darwin" ]; then
 elif [ $(uname) = "Linux" ]; then
 	amazon-q chat --trust-all-tools --no-interactive "${prompt}"
 fi
-
-
