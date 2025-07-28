@@ -3,8 +3,8 @@ local palette = require 'actor.helper.color'
 local window_title = BAR.add('item', 'window_title', {
 	width = 'dynamic',
 	position = 'left',
-	background = { border_color = palette.lavender },
-	label = { color = palette.lavender },
+	background = { border_color = palette.green },
+	label = { color = palette.green },
 })
 
 BAR.add('event', 'window_title_changed')
