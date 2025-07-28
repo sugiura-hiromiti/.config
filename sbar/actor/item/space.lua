@@ -1,119 +1,99 @@
+BAR.add('event', 'display_changed')
+BAR.add('event', 'space_changed')
+BAR.add('event', 'space_created')
+BAR.add('event', 'space_destroyed')
+
 local palette = require 'actor.helper.color'
+local yabai = require 'actor.helper.yabai'
 
-local yabai_spaces1 = BAR.add('item', 'yabai_spaces1', {
-	width = 'dynamic',
-	position = 'left',
-	background = { border_color = palette.pink },
-	label = GUI_INFO.space[1],
-	associated_display = 1,
-})
-yabai_spaces1:set { label = { color = palette.pink } }
-
-local yabai_spaces2 = BAR.add('item', 'yabai_spaces2', {
-	width = 'dynamic',
-	position = 'left',
-	background = { border_color = palette.pink },
-	label = GUI_INFO.space[2],
-	associated_display = 1,
-})
-yabai_spaces2:set { label = { color = palette.pink } }
-
-local yabai_spaces3 = BAR.add('item', 'yabai_spaces3', {
-	width = 'dynamic',
-	position = 'left',
-	background = { border_color = palette.pink },
-	label = GUI_INFO.space[3],
-	associated_display = 2,
-})
-yabai_spaces3:set { label = { color = palette.pink } }
-
-local yabai_spaces4 = BAR.add('item', 'yabai_spaces4', {
-	width = 'dynamic',
-	position = 'left',
-	background = { border_color = palette.pink },
-	label = GUI_INFO.space[4],
-	associated_display = 2,
-})
-yabai_spaces4:set { label = { color = palette.pink } }
-
---  NOTE: what's make this quicker
-
-yabai_spaces1:subscribe({ 'space_change', 'display_change' }, function(env)
-	require('actor.helper.gui').update_property(env)
-
-	if GUI_INFO.active_display ~= 1 then
-		return
-	elseif GUI_INFO.active_space == 1 then
-		yabai_spaces1:set {
-			label = { color = palette.surface0 },
+---@param space_info space_info
+---@return table
+local prop_of_item = function(space_info)
+	local prop = {}
+	if space_info['is-visible'] then
+		if space_info['has-focus'] then
+			prop = {
+				label = {
+					color = palette.surface0,
+				},
+				background = {
+					color = palette.mauve,
+				},
+			}
+		else
+			prop = {
+				label = {
+					color = palette.mauve,
+				},
+				background = {
+					color = palette.surface2,
+				},
+			}
+		end
+	else
+		prop = {
+			label = {
+				color = palette.mauve,
+			},
 			background = {
-				color = palette.pink,
+				color = palette.surface0,
 			},
 		}
-	else
-		yabai_spaces1:set {
-			label = { color = palette.pink },
-			background = { color = palette.surface0 },
-		}
 	end
-end)
 
-yabai_spaces2:subscribe({ 'space_change', 'display_change' }, function(env)
-	require('actor.helper.gui').update_property(env)
+	return prop
+end
 
-	if GUI_INFO.active_display ~= 1 then
-		return
-	elseif GUI_INFO.active_space == 2 then
-		yabai_spaces2:set {
-			label = { color = palette.surface0 },
+local item_register = function()
+	local space_infos = yabai.space.all()
+	local is_first_fullscreen = true
+
+	for _, space_info in ipairs(space_infos) do
+		local label = '' .. space_info.index
+		local builtin_display = yabai.display.builtin()
+		local external_display1 = yabai.display.external()[1]
+
+		if space_info.display == builtin_display.index then
+			if space_info.index == builtin_display.spaces[1] then
+				label = 'J'
+			elseif space_info.index == builtin_display.spaces[2] then
+				label = 'K'
+			end
+		elseif space_info.display == external_display1.index then
+			if space_info.index == external_display1.spaces[1] then
+				label = 'L'
+			end
+		end
+
+		if space_info['s-native-fullscree'] and is_first_fullscreen then
+			label = 'H'
+			is_first_fullscreen = false
+		end
+
+		local space = BAR.add('item', 'yabai_space' .. space_info.index, {
+			width = 'dynamic',
+			position = 'left',
 			background = {
-				color = palette.pink,
+				border_color = palette.mauve,
 			},
-		}
-	else
-		yabai_spaces2:set {
-			label = { color = palette.pink },
-			background = { color = palette.surface0 },
-		}
+			label = label,
+			associated_display = space_info.display,
+		})
+
+		space:set(prop_of_item(space_info))
+
+		space:subscribe({ 'space_changed', 'display_changed' }, function(env)
+			local space_index = assert(tonumber(space:query().name:sub(-1, -1)), 'failed to detect space_index')
+			local this_space_info = yabai.space.with_index(space_index)
+			space:set(prop_of_item(this_space_info))
+		end)
 	end
-end)
+end
 
-yabai_spaces3:subscribe({ 'space_change', 'display_change' }, function(env)
-	require('actor.helper.gui').update_property(env)
+item_register()
 
-	if GUI_INFO.active_display ~= 2 then
-		return
-	elseif GUI_INFO.active_space == 3 then
-		yabai_spaces3:set {
-			label = { color = palette.surface0 },
-			background = {
-				color = palette.pink,
-			},
-		}
-	else
-		yabai_spaces3:set {
-			label = { color = palette.pink },
-			background = { color = palette.surface0 },
-		}
-	end
-end)
+local event_listener = BAR.add('item', 'event_listener', { drawing = false })
 
-yabai_spaces4:subscribe({ 'space_change', 'display_change' }, function(env)
-	require('actor.helper.gui').update_property(env)
-
-	if GUI_INFO.active_display ~= 2 then
-		return
-	elseif GUI_INFO.active_space == 4 then
-		yabai_spaces4:set {
-			label = { color = palette.surface0 },
-			background = {
-				color = palette.pink,
-			},
-		}
-	else
-		yabai_spaces4:set {
-			label = { color = palette.pink },
-			background = { color = palette.surface0 },
-		}
-	end
+event_listener:subscribe({ 'space_created', 'space_destroyed' }, function(env)
+	item_register()
 end)

@@ -10,7 +10,7 @@ local clock = BAR.add('item', 'clock', {
 	background = {
 		border_color = palette.flamingo,
 	},
-	associated_display = GUI_INFO.builtin_display_index,
+	associated_display = require('actor.helper.yabai').display.builtin().index,
 })
 
 clock:subscribe({ 'system_woke', 'routine' }, function(env)

@@ -12,7 +12,10 @@ methods.print_table = function(tbl, prefix)
 		if type(value) == 'table' then
 			methods.print_table(value, prefix .. key .. '.')
 		else
-			print(prefix .. key, ': ', value ~= nil and value or 'nil')
+			if value == nil then
+				value = 'nil'
+			end
+			print(prefix .. key, ': ', value)
 		end
 	end
 end
