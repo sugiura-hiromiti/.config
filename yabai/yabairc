@@ -22,7 +22,7 @@ external_bar main:0:25
 
 yabai -m config --space \
 	$(yabai -m query --displays | jq '.[] | select(.frame.y ==  0) | .spaces[0]') \
-		layout float \
+		layout stack \
 		top_padding 0 \
 		bottom_padding 0 \
 		left_padding 0 \
