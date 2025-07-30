@@ -4,17 +4,19 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   username = "xsugiurah";
   homeDir = "/home/xsugiurah";
-  mypkgs = import ../linux/x86 {inherit pkgs;} ++ [];
+  mypkgs = import ../linux/x86 { inherit pkgs; } ++ [ ];
   common = import ./common {
     inherit username;
     inherit mypkgs;
-	 inherit homeDir;
+    inherit homeDir;
     inherit pkgs;
   };
-in {
+in
+{
   nixpkgs = common.nixpkgs;
   home = common.home;
 }
