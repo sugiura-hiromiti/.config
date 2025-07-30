@@ -1,8 +1,7 @@
 {
   username,
   pkgs,
-}:
-{
+}: {
   security = {
     pam = {
       services = {
@@ -39,6 +38,7 @@
       "homerow"
       "iterm2"
       "mouseless"
+      "docker-desktop"
     ];
     taps = [
       # "koekeishiya/formulae"

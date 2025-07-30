@@ -1,6 +1,5 @@
 # common/common
-{ pkgs }:
-[
+{pkgs}: [
   pkgs.git
   pkgs.curl
   pkgs.chibi
@@ -44,7 +43,6 @@
   pkgs.zig
   pkgs.zoxide
   pkgs.zsh-fast-syntax-highlighting
-  pkgs.docker
   pkgs.nerd-fonts.meslo-lg
   pkgs.alejandra
   pkgs.asm-lsp
@@ -59,9 +57,8 @@
   pkgs.obsidian
   pkgs.neovide
   pkgs.reaper
-  pkgs.docker
   pkgs.zsh
-  # pkgs.binutils
+  pkgs.binutils
   pkgs.nil
   pkgs.tailscale
   pkgs.sqls
@@ -72,10 +69,11 @@
   pkgs.yaml-language-server
   # pkgs.postgres-lsp
   # these 2 packages are required to build sbarlua
-  pkgs.clang
-  pkgs.libllvm
+  # pkgs.clang
+  # pkgs.libllvm
   pkgs.vue-language-server
   pkgs.sd
   pkgs.codex
+  pkgs.act
   # pkgs.sqlite
 ]
