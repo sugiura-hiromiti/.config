@@ -1,19 +1,22 @@
-# Rusty Sbar 🦀
+# SketchyBar Daemon 🦀
 
-A complete SketchyBar configuration written in Rust using the `sketchybar-rs` crate. This project provides a modular, type-safe alternative to Lua-based SketchyBar configurations.
+A complete SketchyBar configuration daemon written in Rust. This project provides a standalone, type-safe alternative to shell script-based SketchyBar configurations with real-time updates and multi-display support.
 
 ## Features
 
-- **Multi-display support**: Automatically detects and configures bars for builtin and external displays
-- **Modular architecture**: Clean separation of concerns with dedicated modules for items, helpers, and configuration
-- **Type safety**: Leverages Rust's type system to prevent configuration errors
-- **Async/await**: Modern async programming for responsive UI updates
-- **Catppuccin theme**: Beautiful color scheme matching your existing setup
-- **Battery monitoring**: Smart battery indicator with charging status and color coding
-- **Space management**: Workspace indicators for yabai integration
-- **Clock display**: Real-time clock with custom formatting
-- **Keyboard layout**: Current input source display
-- **Window/app tracking**: Current application and window information
+- **🔄 Standalone Daemon**: Runs as a background service, no shell scripts needed
+- **📺 Multi-display Support**: Automatically detects and configures bars for builtin and external displays
+- **🔄 Dynamic Display Detection**: Monitors for display changes and reconfigures bars automatically
+- **⚡ Real-time Updates**: Live updates for all bar items with configurable intervals
+- **🛡️ Type Safety**: Leverages Rust's type system to prevent configuration errors
+- **🔧 Modular Architecture**: Clean separation of concerns with dedicated modules
+- **📊 Comprehensive Logging**: Structured logging with tracing for debugging
+- **🎨 Catppuccin Theme**: Beautiful color scheme matching your existing setup
+- **🔋 Smart Battery Monitoring**: Battery indicator with charging status and color coding
+- **🏠 Workspace Management**: Space indicators with yabai integration
+- **🕐 Live Clock**: Real-time clock with custom formatting
+- **⌨️ Keyboard Layout**: Current input source display
+- **📱 App/Window Tracking**: Current application and window information
 
 ## Architecture
 
@@ -21,18 +24,18 @@ A complete SketchyBar configuration written in Rust using the `sketchybar-rs` cr
 
 ```
 src/
-├── main.rs              # Entry point and multi-bar orchestration
+├── main.rs              # Daemon entry point and orchestration
 ├── sketchybar.rs        # High-level SketchyBar API wrapper
 ├── config/              # Bar configuration
 │   └── mod.rs          # Bar and default property setup
-├── items/               # Individual bar items
+├── items/               # Individual bar items with update functions
 │   ├── mod.rs          # Item orchestration
-│   ├── clock.rs        # Time display
-│   ├── battery.rs      # Battery status
-│   ├── keyboard.rs     # Input source
-│   ├── space.rs        # Workspace indicators
-│   ├── current_app.rs  # Active application
-│   └── window.rs       # Window information
+│   ├── clock.rs        # Time display with real-time updates
+│   ├── battery.rs      # Battery status with smart monitoring
+│   ├── keyboard.rs     # Input source detection
+│   ├── space.rs        # Workspace indicators with yabai integration
+│   ├── current_app.rs  # Active application tracking
+│   └── window.rs       # Window information display
 └── helpers/             # Utility modules
     ├── mod.rs          # Helper module exports
     ├── yabai.rs        # Display detection and yabai integration
@@ -43,26 +46,28 @@ src/
 
 ### Design Decisions
 
-1. **High-level API Wrapper**: Since `sketchybar-rs` only provides a low-level `message()` function, we built a high-level `SketchyBar` struct that provides convenient methods like `bar()`, `add()`, `set()`, etc.
+1. **Daemon Architecture**: The application runs as a standalone daemon that directly communicates with SketchyBar, eliminating the need for shell scripts and providing better performance and reliability.
 
-2. **Multi-bar Architecture**: The main function spawns separate async tasks for each display, allowing independent configuration and operation of multiple bars.
+2. **Dynamic Display Management**: The daemon continuously monitors for display changes and automatically configures/removes bars as displays are connected/disconnected.
 
-3. **Display-aware Configuration**: Properties are dynamically adjusted based on whether the display is builtin (larger, top position) or external (smaller, bottom position).
+3. **Async Update System**: Each bar item has its own update function that runs on configurable intervals, allowing for efficient real-time updates without blocking.
 
-4. **Modular Items**: Each bar item is implemented as a separate module with its own `setup()` function, making it easy to add, remove, or modify individual components.
+4. **Graceful Error Handling**: Individual item update failures don't crash the entire daemon, ensuring maximum uptime.
 
-5. **Type-safe Properties**: Configuration properties are defined as structs with proper types, preventing common configuration errors.
+5. **Multi-bar Support**: Each display gets its own SketchyBar instance with display-specific configuration.
 
-## Setup Instructions
+6. **Type-safe Configuration**: All configuration is done through Rust structs with proper types, preventing common configuration errors.
+
+## Installation
 
 ### Prerequisites
 
-- macOS with SketchyBar installed
-- Rust nightly toolchain
-- yabai (optional, for multi-display support)
+- macOS with SketchyBar installed (`brew install sketchybar`)
+- Rust toolchain (`curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`)
+- yabai (optional, for multi-display and workspace support)
 - MesloLGL Nerd Font (for icons)
 
-### Installation
+### Quick Setup
 
 1. **Clone and build the project:**
    ```bash
@@ -72,50 +77,185 @@ src/
    cargo build --release
    ```
 
-2. **Create a SketchyBar configuration file:**
+2. **Install the daemon:**
    ```bash
-   # Create sketchybarrc that launches the Rust binary
-   echo '#!/bin/bash' > ~/.config/sketchybar/sketchybarrc
-   echo 'exec ~/.config/sbar-rs/target/release/sketchybar-config' >> ~/.config/sketchybar/sketchybarrc
+   # Copy binary to a system location
+   sudo cp target/release/sketchybar-daemon /usr/local/bin/
+   
+   # Or create a symlink
+   ln -sf ~/.config/sbar-rs/target/release/sketchybar-daemon /usr/local/bin/sketchybar-daemon
+   ```
+
+3. **Create SketchyBar configuration:**
+   ```bash
+   # Create sketchybarrc that launches the daemon
+   mkdir -p ~/.config/sketchybar
+   cat > ~/.config/sketchybar/sketchybarrc << 'EOF'
+   #!/bin/bash
+   # Kill any existing daemon
+   pkill -f sketchybar-daemon
+   
+   # Start the Rust daemon
+   exec /usr/local/bin/sketchybar-daemon
+   EOF
    chmod +x ~/.config/sketchybar/sketchybarrc
    ```
 
-3. **Restart SketchyBar:**
+4. **Start SketchyBar:**
    ```bash
    brew services restart sketchybar
    ```
 
-### Configuration Comparison
+### Advanced Setup with LaunchAgent
 
-This Rust implementation reproduces your original Lua configuration:
+For automatic startup and better process management:
 
-| Lua Original | Rust Implementation |
-|--------------|-------------------|
-| `actor/startup.lua` | `items/mod.rs::setup_all_items()` |
-| `actor/helper/property.lua` | `helpers/properties.rs` |
-| `actor/helper/color.lua` | `helpers/colors.rs` |
-| `actor/helper/icon.lua` | `helpers/icons.rs` |
-| `actor/helper/yabai.lua` | `helpers/yabai.rs` |
-| `actor/item/clock.lua` | `items/clock.rs` |
-| `actor/item/battery.lua` | `items/battery.rs` |
-| `external_1` & `builtin` | Multi-bar logic in `main.rs` |
+1. **Create LaunchAgent plist:**
+   ```bash
+   mkdir -p ~/Library/LaunchAgents
+   cat > ~/Library/LaunchAgents/com.sketchybar.daemon.plist << 'EOF'
+   <?xml version="1.0" encoding="UTF-8"?>
+   <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+   <plist version="1.0">
+   <dict>
+       <key>Label</key>
+       <string>com.sketchybar.daemon</string>
+       <key>ProgramArguments</key>
+       <array>
+           <string>/usr/local/bin/sketchybar-daemon</string>
+       </array>
+       <key>RunAtLoad</key>
+       <true/>
+       <key>KeepAlive</key>
+       <true/>
+       <key>StandardOutPath</key>
+       <string>/tmp/sketchybar-daemon.log</string>
+       <key>StandardErrorPath</key>
+       <string>/tmp/sketchybar-daemon.error.log</string>
+   </dict>
+   </plist>
+   EOF
+   ```
 
-### Key Improvements
+2. **Load the LaunchAgent:**
+   ```bash
+   launchctl load ~/Library/LaunchAgents/com.sketchybar.daemon.plist
+   ```
 
-1. **Type Safety**: Compile-time checking prevents configuration errors
-2. **Better Error Handling**: Comprehensive error handling with `anyhow`
-3. **Async Architecture**: Non-blocking operations for better responsiveness
-4. **Memory Safety**: Rust's ownership system prevents memory leaks
-5. **Performance**: Compiled binary is faster than interpreted Lua
+3. **Update SketchyBar config to use the service:**
+   ```bash
+   cat > ~/.config/sketchybar/sketchybarrc << 'EOF'
+   #!/bin/bash
+   # The daemon is managed by LaunchAgent
+   # This script just ensures SketchyBar is ready
+   exit 0
+   EOF
+   ```
+
+## Configuration
+
+### Update Intervals
+
+The daemon uses different update intervals for different items:
+
+- **Clock**: 1 second (real-time)
+- **Battery**: 30 seconds (power efficient)
+- **Keyboard**: 5 seconds (responsive to changes)
+- **Spaces**: 2 seconds (workspace changes)
+- **Current App**: 3 seconds (app switching)
+- **Window**: 3 seconds (window changes)
+
+### Display Configuration
+
+The daemon automatically configures different properties based on display type:
+
+| Property | Builtin Display | External Display |
+|----------|----------------|------------------|
+| Position | Top | Bottom |
+| Height | 56px | 26px |
+| Font Size | 16px | 14px |
+| Padding | 4px | 2px |
+| Corner Radius | 10px | 5px |
+
+### Color Scheme
+
+Uses the Catppuccin color palette:
+
+- **Background**: Surface0 (`0xff313244`)
+- **Text**: Text (`0xffcdd6f4`)
+- **Accent Colors**: Blue, Green, Yellow, Red based on context
+- **Battery**: Color-coded based on charge level and status
+
+## Usage
+
+### Running the Daemon
+
+```bash
+# Run directly
+sketchybar-daemon
+
+# Run with debug logging
+RUST_LOG=debug sketchybar-daemon
+
+# Run with trace logging (very verbose)
+RUST_LOG=trace sketchybar-daemon
+```
+
+### Monitoring
+
+```bash
+# Check if daemon is running
+pgrep -f sketchybar-daemon
+
+# View logs (if using LaunchAgent)
+tail -f /tmp/sketchybar-daemon.log
+
+# View error logs
+tail -f /tmp/sketchybar-daemon.error.log
+```
+
+### Stopping
+
+```bash
+# Stop the daemon
+pkill -f sketchybar-daemon
+
+# Or if using LaunchAgent
+launchctl unload ~/Library/LaunchAgents/com.sketchybar.daemon.plist
+```
 
 ## Development
+
+### Building
+
+```bash
+# Debug build
+cargo build
+
+# Release build (optimized)
+cargo build --release
+
+# Check for errors without building
+cargo check
+```
+
+### Testing
+
+```bash
+# Run with debug output
+RUST_LOG=debug cargo run
+
+# Test specific functionality
+cargo test
+```
 
 ### Adding New Items
 
 1. Create a new file in `src/items/` (e.g., `cpu.rs`)
-2. Implement the `setup()` function
+2. Implement `setup()` and `update()` functions
 3. Add the module to `src/items/mod.rs`
-4. Call the setup function in `setup_all_items()`
+4. Add setup call in `setup_all_items()`
+5. Add update task in `run_update_loops()`
 
 Example:
 ```rust
@@ -133,66 +273,120 @@ pub async fn setup(bar: &mut SketchyBar, display_info: &DisplayInfo) -> Result<(
     ]).await?;
     Ok(())
 }
+
+pub async fn update(bar: &SketchyBar) -> Result<()> {
+    // Get CPU usage and update the item
+    let usage = get_cpu_usage().await?;
+    let cmd = format!("--set cpu label={}%", usage);
+    bar.message(&cmd).await?;
+    Ok(())
+}
 ```
 
 ### Customizing Colors
 
-Modify `src/helpers/colors.rs` to change the color scheme:
+Modify `src/helpers/colors.rs`:
 
 ```rust
 impl Colors {
-    pub const SURFACE0: u32 = 0xff313244; // Change this for different background
+    pub const SURFACE0: u32 = 0xff313244; // Change background color
+    pub const TEXT: u32 = 0xffcdd6f4;     // Change text color
     // ... other colors
 }
 ```
 
-### Testing
+### Customizing Update Intervals
 
-```bash
-# Check for compilation errors
-cargo check
+Modify the intervals in `src/main.rs` in the `run_update_loops()` function:
 
-# Run with debug output
-RUST_LOG=debug cargo run
-
-# Build optimized release
-cargo build --release
+```rust
+// Change clock update to 5 seconds instead of 1
+let mut timer = interval(Duration::from_secs(5));
 ```
-
-## Future Enhancements
-
-1. **Event System**: Implement proper event handling for real-time updates
-2. **Plugin System**: Dynamic loading of custom items
-3. **Configuration File**: TOML/YAML configuration for easier customization
-4. **Hot Reloading**: File watching for configuration changes
-5. **Performance Monitoring**: Built-in performance metrics
-6. **Theme System**: Multiple color schemes
-7. **Widget Library**: Pre-built widgets for common use cases
 
 ## Troubleshooting
 
 ### Common Issues
 
-1. **Build Errors**: Ensure you have Rust nightly installed
-2. **Missing Icons**: Install MesloLGL Nerd Font
-3. **yabai Integration**: Install yabai for multi-display support
-4. **Permission Issues**: Ensure the binary is executable
+1. **Daemon won't start**
+   - Check if SketchyBar is installed: `brew list sketchybar`
+   - Verify binary permissions: `ls -la /usr/local/bin/sketchybar-daemon`
+   - Check logs: `RUST_LOG=debug sketchybar-daemon`
+
+2. **Items not updating**
+   - Check if yabai is running (for spaces/app/window items)
+   - Verify system permissions for AppleScript
+   - Check error logs for specific item failures
+
+3. **Multiple displays not working**
+   - Install yabai: `brew install yabai`
+   - Check yabai is running: `yabai -m query --displays`
+   - Verify display detection: `RUST_LOG=debug sketchybar-daemon`
+
+4. **High CPU usage**
+   - Reduce update intervals in the code
+   - Check for infinite loops in update functions
+   - Monitor with: `top -p $(pgrep sketchybar-daemon)`
 
 ### Debug Mode
 
-Run with debug logging:
+Run with full debug logging:
+
 ```bash
-RUST_LOG=debug ./target/release/sketchybar-config
+RUST_LOG=trace sketchybar-daemon 2>&1 | tee debug.log
 ```
+
+### Performance Monitoring
+
+```bash
+# Monitor resource usage
+top -p $(pgrep sketchybar-daemon)
+
+# Check memory usage
+ps -o pid,vsz,rss,comm -p $(pgrep sketchybar-daemon)
+```
+
+## Comparison with Shell Scripts
+
+| Feature | Shell Scripts | Rust Daemon |
+|---------|---------------|-------------|
+| **Performance** | Slower (process spawning) | Faster (single process) |
+| **Memory Usage** | Higher (multiple processes) | Lower (single process) |
+| **Error Handling** | Basic | Comprehensive |
+| **Type Safety** | None | Full Rust type system |
+| **Real-time Updates** | Difficult | Built-in |
+| **Multi-display** | Manual setup | Automatic |
+| **Debugging** | Limited | Structured logging |
+| **Maintenance** | Script management | Single binary |
+
+## Future Enhancements
+
+1. **Configuration File**: TOML/YAML configuration for easier customization
+2. **Plugin System**: Dynamic loading of custom items
+3. **Hot Reloading**: Configuration changes without restart
+4. **Performance Metrics**: Built-in performance monitoring
+5. **Theme System**: Multiple color schemes
+6. **Widget Library**: Pre-built widgets for common use cases
+7. **Event System**: More sophisticated event handling
+8. **Web Interface**: Browser-based configuration and monitoring
 
 ## Contributing
 
 1. Fork the repository
-2. Create a feature branch
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
 3. Make your changes
 4. Add tests if applicable
-5. Submit a pull request
+5. Commit your changes: `git commit -m 'Add amazing feature'`
+6. Push to the branch: `git push origin feature/amazing-feature`
+7. Submit a pull request
 
 ## License
 
 MIT License - see LICENSE file for details.
+
+## Acknowledgments
+
+- [SketchyBar](https://github.com/FelixKratz/SketchyBar) - The amazing macOS status bar
+- [sketchybar-rs](https://github.com/FelixKratz/sketchybar-rs) - Rust bindings for SketchyBar
+- [Catppuccin](https://github.com/catppuccin/catppuccin) - The beautiful color scheme
+- [yabai](https://github.com/koekeishiya/yabai) - Tiling window manager for macOS
