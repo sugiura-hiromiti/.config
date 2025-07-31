@@ -37,7 +37,8 @@ Your mission: fully automate the workflow of generating semantic branches, clean
     - PR body = summary of branch purpose and details. \
  \
 #### 5. Merge Pull Requests (Custom Merge Message) \
-- Merge PRs using **merge commit strategy**: \
+- Wait for CI ends. ('gh run watch' command streams CI logs then, exits you can use this)
+- If CI ends successfully, merge PRs using **merge commit strategy**: \
   'gh pr merge --merge --subject <custom message>' \
 - The custom merge commit message must follow this pattern: \
 Merge : \
