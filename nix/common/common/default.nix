@@ -29,7 +29,6 @@
   pkgs.ninja
   pkgs.nodejs-slim
   pkgs.pkgconf
-  pkgs.qemu
   pkgs.ripgrep
   pkgs.rm-improved
   pkgs.sbcl
@@ -75,5 +74,6 @@
   pkgs.sd
   pkgs.codex
   pkgs.act
+  pkgs.direnv
   # pkgs.sqlite
 ]
