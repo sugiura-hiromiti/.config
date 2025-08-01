@@ -57,7 +57,7 @@
   pkgs.neovide
   pkgs.reaper
   pkgs.zsh
-  pkgs.binutils
+  # pkgs.binutils
   pkgs.nil
   pkgs.tailscale
   pkgs.sqls
@@ -75,5 +75,6 @@
   pkgs.codex
   pkgs.act
   pkgs.direnv
+  pkgs.amazon-q-cli
   # pkgs.sqlite
 ]

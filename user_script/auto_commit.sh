@@ -38,7 +38,7 @@ Your mission: fully automate the workflow of generating semantic branches, clean
  \
 #### 5. Merge Pull Requests (Custom Merge Message) \
 - Wait for CI ends. ('gh run watch' command streams CI logs then, exits you can use this)
-- If CI ends successfully, merge PRs using **merge commit strategy**: \
+- If CI ends, merge PRs using **merge commit strategy**: \
   'gh pr merge --merge --subject <custom message>' \
 - The custom merge commit message must follow this pattern: \
 Merge : \
