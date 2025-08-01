@@ -45,3 +45,4 @@ commit_summary.html
 obsidian/
 dconf/
 gh/
+**/target/
