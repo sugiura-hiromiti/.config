@@ -553,11 +553,11 @@
                 },
                 {
                     "from": { "key_code": "f3" },
-                    "to": [{ "key_code": "f3" }]
+                    "to": [{ "pointing_button": "button2" }]
                 },
                 {
                     "from": { "key_code": "f4" },
-                    "to": [{ "key_code": "f4" }]
+                    "to": [{ "pointing_button": "button1" }]
                 },
                 {
                     "from": { "key_code": "f5" },
