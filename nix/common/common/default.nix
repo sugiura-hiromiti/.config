@@ -75,6 +75,5 @@
   pkgs.codex
   pkgs.act
   pkgs.direnv
-  pkgs.amazon-q-cli
   # pkgs.sqlite
 ]

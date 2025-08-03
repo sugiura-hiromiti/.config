@@ -37,8 +37,8 @@ Your mission: fully automate the workflow of generating semantic branches, clean
     - PR body = summary of branch purpose and details. \
  \
 #### 5. Merge Pull Requests (Custom Merge Message) \
-- Wait for CI ends. ('gh run watch' command streams CI logs then, exits you can use this)
-- If CI ends, merge PRs using **merge commit strategy**: \
+- if there is no conflict, merge Pull Request.
+- Merge PRs using **merge commit strategy**: \
   'gh pr merge --merge --subject <custom message>' \
 - The custom merge commit message must follow this pattern: \
 Merge : \
@@ -47,7 +47,10 @@ Merge : \
  \
 - If any PR has conflicts, leave it unmerged and clearly report it. \
  \
-#### 6. Output Summary \
+#### 6. Sync main Branch
+- pull remote repository and merge it.
+ \
+#### 7. Output Summary \
 - After all merges: \
 - Display a **Markdown summary**: \
     - List of branches, PR URLs, and merge status (':white_check_mark: merged' or ':x: conflict'). \
@@ -62,6 +65,7 @@ Merge : \
 - **Error safety**: gracefully exit if repository is invalid or no changes found. \
 - **Preserve full commit history**: never squash or rebase. \
 - **Custom merge messages required**: never use GitHub’s default message. \
+- **Avoid using backtick**: avoid using backtick. if you use, escape it by backslash \
  \
 --- \
  \
