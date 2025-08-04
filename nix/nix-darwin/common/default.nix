@@ -33,10 +33,10 @@
       "amazon-q"
       "crystalfetch"
       "firefox"
-      "ghostty"
+      # "ghostty"
       "slack"
       "homerow"
-      "iterm2"
+      # "iterm2"
       "mouseless"
       "docker-desktop"
     ];

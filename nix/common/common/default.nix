@@ -57,7 +57,6 @@
   pkgs.neovide
   pkgs.reaper
   pkgs.zsh
-  # pkgs.binutils
   pkgs.nil
   pkgs.tailscale
   pkgs.sqls

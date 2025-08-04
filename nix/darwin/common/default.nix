@@ -1,5 +1,6 @@
 # darwin/common
-{pkgs}: [
+{ pkgs }:
+[
   pkgs.mas
   pkgs.pngpaste
   pkgs.jankyborders
@@ -21,4 +22,5 @@
   pkgs.chatgpt
   pkgs.sketchybar
   pkgs.sbarlua
+  pkgs.ghostty-bin
 ]
