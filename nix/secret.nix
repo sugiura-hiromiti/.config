@@ -1,8 +1,7 @@
-{ }:
+{}:
 {
-  username = "hiromichi.sugiura";
-  # username = "xsugiurah";
-  # username = "a";
-  system = "aarch64-darwin";
-  # system = "x86_64-linux";
+  user = "xsugiurah";
+  arch = "x86_64";
+  os ="linux";
+  home = /home/xsugiurah;
 }
