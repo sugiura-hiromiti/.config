@@ -1,0 +1,81 @@
+{
+  inputs,
+  user,
+  os,
+  arch,
+  home,
+  system,
+  user-system,
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
+  mypkgs = import ../pkg {
+    inherit user;
+    inherit os;
+    inherit arch;
+    inherit pkgs;
+  };
+in {
+  # NOTE: idk this is required or not
+    nixpkgs = {
+      config = {
+        allowUnfree = true;
+      };
+    };
+  home = {
+    username = user;
+    homeDirectory = home;
+    stateVersion = "25.11";
+    sessionVariables = {
+      SBARLUA_DYLIB_PATH =
+        if os == "darwin"
+        then "${pkgs.sbarlua.out}"
+        else "";
+    };
+    file = {
+      ".clang-format" = {
+        target = ".clang-format";
+        source = ../../.clang-format;
+      };
+      ".editorconfig" = {
+        target = ".editorconfig";
+        source = ../../.editorconfig;
+      };
+      ".gitconfig" = {
+        target = ".gitconfig";
+        source = ../../.gitconfig;
+      };
+      ".gitconfig_p" = {
+        target = ".gitconfig_p";
+        source = ../../.gitconfig_p;
+      };
+      ".dprint.json" = {
+        target = ".dprint.json";
+        source = ../../.dprint.json;
+      };
+      ".rustfmt.toml" = {
+        target = ".rustfmt.toml";
+        source = ../../.rustfmt.toml;
+      };
+      ".stylua.toml" = {
+        target = ".stylua.toml";
+        source = ../../.stylua.toml;
+      };
+      # ".zshenv" = {
+      #   target = ".zshenv";
+      #   source = ../../.zshenv;
+      # };
+      ".zshrc" = {
+        target = ".zshrc";
+        source = ../../.zshrc;
+      };
+      ".npmrc" = {
+        target = ".npmrc";
+        source = ../../.npmrc;
+      };
+    };
+    packages = mypkgs;
+  };
+}

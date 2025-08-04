@@ -1,5 +1,11 @@
 {
   inputs,
+  user,
+  os,
+  arch,
+  home,
+  system,
+  user-system,
   lib,
   config,
   pkgs,
