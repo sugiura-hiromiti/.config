@@ -1,7 +1,11 @@
 {
-  username,
+  user,
+  arch,
+  os,
   pkgs,
-}: {
+  ...
+}:
+{
   security = {
     pam = {
       services = {
@@ -37,8 +41,8 @@
       "slack"
       "homerow"
       # "iterm2"
-      "mouseless"
-      "docker-desktop"
+      # "mouseless"
+      # "docker-desktop"
     ];
     taps = [
       # "koekeishiya/formulae"
@@ -52,7 +56,7 @@
     enable = false;
   };
   system = {
-    primaryUser = username;
+    primaryUser = user;
     stateVersion = 6;
     defaults = {
       NSGlobalDomain = {
