@@ -17,6 +17,7 @@ vim.opt.cursorcolumn = true
 vim.opt.laststatus = 3
 vim.opt.termguicolors = true
 vim.diagnostic.config { virtual_text = true }
+vim.lsp.inlay_hint.enable()
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
