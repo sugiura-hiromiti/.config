@@ -48,7 +48,15 @@ alias wh='which -a'
 #alias dflt_b='defaults read > /tmp/dotfiles_init/b.log ; diff /tmp/dotfiles_init/a.log /tmp/dotfiles_init/b.log'
 # alias zenn='cd ~/Downloads/zenn/articles/ ; my_target_file=$(sk -ic '"'rg "'"{}"'"'"'| sed s"/:published: false//") ; n $my_target_file'
 alias gac='~/.config/user_script/auto_commit.sh'
-alias u='(cd $HOME/.config/nix && nix run .#update)'
+alias u='(cd $HOME/.config/nix && \
+echo "{}:
+{
+  user = \"$(whoami)\";
+  arch = \"$(uname -m | sd arm aarch)\";
+  os =\"$(uname -s | sd L l | sd D d)\";
+  home = ${HOME};
+}" > secret.nix && \
+nix run .#update)'
 
 #functions
 # To remove function in zsh, `unset -f [function name]`
