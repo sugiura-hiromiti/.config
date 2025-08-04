@@ -1,5 +1,6 @@
 {
     "global": { "show_in_menu_bar": false },
+    "machine_specific": { "krbn-c150eb38-b3e9-4c0e-b8e9-2249af2d7930": { "enable_multitouch_extension": true } },
     "profiles": [
         {
             "complex_modifications": {
