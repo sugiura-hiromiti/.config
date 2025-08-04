@@ -25,115 +25,118 @@
       url = "github:nix-community/neovim-nightly-overlay";
     };
   };
-  outputs = {
-    self,
-    nixpkgs,
-    neovim-nightly-overlay,
-    home-manager,
-    nix-darwin,
-  } @ inputs: let
-    secret = import ./secret.nix {};
-    user = builtins.replaceStrings ["."] ["-"] secret.user;
-    arch = secret.arch;
-    os = secret.os;
-    home = secret.home;
-    system = "${arch}-${os}";
-    user-system = "${user}-${system}";
-    nixpkgs-overlayed = import nixpkgs {
-      overlays = [inputs.neovim-nightly-overlay.overlays.default];
-      inherit system;
-    };
-  in {
-    homeConfigurations = {
-      conf = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs-overlayed;
-        extraSpecialArgs = {
-          inherit inputs;
-          inherit user;
-          inherit os;
-          inherit arch;
-          inherit home;
-          inherit system;
-          inherit user-system;
-        };
-        modules = [
-          ./home
-        ];
-      };
-    };
-
-    darwinConfigurations = {
-      conf = nix-darwin.lib.darwinSystem {
+  outputs =
+    {
+      self,
+      nixpkgs,
+      neovim-nightly-overlay,
+      home-manager,
+      nix-darwin,
+    }@inputs:
+    let
+      secret = import ./secret.nix { };
+      user = secret.user;
+      arch = secret.arch;
+      os = secret.os;
+      home = secret.home;
+      system = "${arch}-${os}";
+      user-system = "${builtins.replaceStrings [ "." ] [ "-" ] user}-${system}";
+      nixpkgs-overlayed = import nixpkgs {
+        overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
         inherit system;
-        modules = [
-          ./nix-darwin/${user-system}.nix
-        ];
+      };
+    in
+    {
+      homeConfigurations = {
+        conf = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs-overlayed;
+          extraSpecialArgs = {
+            inherit inputs;
+            inherit user;
+            inherit os;
+            inherit arch;
+            inherit home;
+            inherit system;
+            inherit user-system;
+          };
+          modules = [
+            ./home
+          ];
+        };
+      };
+
+      darwinConfigurations = {
+        conf = nix-darwin.lib.darwinSystem {
+          inherit system;
+          modules = [
+            ./nix-darwin/${user-system}.nix
+          ];
+        };
+      };
+
+      apps.${system}.update = {
+        type = "app";
+        program = toString (
+          nixpkgs-overlayed.writeShellScript "update-script" ''
+            set -e
+            echo "
+            -------------------------------------------"
+            echo "user: ${user}"
+            echo "system: ${system}"
+            echo "-------------------------------------------
+            "
+            git stage .
+            echo "
+
+            -------------------------------------------"
+            echo "updating flake"
+            echo "-------------------------------------------
+            "
+            echo -ne "\033]0;updating flake\007"
+            nix flake update
+            echo "
+
+            -------------------------------------------"
+            echo "updating home-manager"
+            echo "-------------------------------------------
+            "
+            echo -ne "\033]0;updating home-manager\007"
+            nix run nixpkgs#home-manager -- switch --flake .#conf
+
+            if [ $(uname) = "Darwin" ]; then
+
+              echo "
+
+              -------------------------------------------"
+              echo "updating nix-darwin"
+              echo "-------------------------------------------
+              "
+              echo -ne "\033]0;updating nix-darwin\007"
+              sudo nix run nix-darwin -- switch --flake .#conf
+
+              echo "
+
+              -------------------------------------------"
+              echo "restarting launchd services"
+              echo "-------------------------------------------
+              "
+              yabai --stop-service
+              yabai --uninstall-service
+              yabai --install-service
+              yabai --start-service
+
+            fi
+
+            echo "
+
+            -------------------------------------------"
+            echo "update complete!"
+            echo "-------------------------------------------
+            "
+
+            echo -e "\033]777;notify;nix;update completed\007"
+          ''
+        );
       };
     };
-
-    apps.${system}.update = {
-      type = "app";
-      program = toString (
-        nixpkgs-overlayed.writeShellScript "update-script" ''
-          set -e
-          echo "
-          -------------------------------------------"
-          echo "user: ${user}"
-          echo "system: ${system}"
-          echo "-------------------------------------------
-          "
-          git stage .
-          echo "
-
-          -------------------------------------------"
-          echo "updating flake"
-          echo "-------------------------------------------
-          "
-          echo -ne "\033]0;updating flake\007"
-          nix flake update
-          echo "
-
-          -------------------------------------------"
-          echo "updating home-manager"
-          echo "-------------------------------------------
-          "
-          echo -ne "\033]0;updating home-manager\007"
-          nix run nixpkgs#home-manager -- switch --flake .#conf
-
-          if [ $(uname) = "Darwin" ]; then
-
-            echo "
-
-            -------------------------------------------"
-            echo "updating nix-darwin"
-            echo "-------------------------------------------
-            "
-            echo -ne "\033]0;updating nix-darwin\007"
-            sudo nix run nix-darwin -- switch --flake .#conf
-
-            echo "
-
-            -------------------------------------------"
-            echo "restarting launchd services"
-            echo "-------------------------------------------
-            "
-            yabai --stop-service
-            yabai --uninstall-service
-            yabai --install-service
-            yabai --start-service
-
-          fi
-
-          echo "
-
-          -------------------------------------------"
-          echo "update complete!"
-          echo "-------------------------------------------
-          "
-
-          echo -e "\033]777;notify;nix;update completed\007"
-        ''
-      );
-    };
-  };
 }

@@ -10,29 +10,28 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   mypkgs = import ../pkg {
     inherit user;
     inherit os;
     inherit arch;
     inherit pkgs;
   };
-in {
+in
+{
   # NOTE: idk this is required or not
-    nixpkgs = {
-      config = {
-        allowUnfree = true;
-      };
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
     };
+  };
   home = {
     username = user;
     homeDirectory = home;
     stateVersion = "25.11";
     sessionVariables = {
-      SBARLUA_DYLIB_PATH =
-        if os == "darwin"
-        then "${pkgs.sbarlua.out}"
-        else "";
+      SBARLUA_DYLIB_PATH = if os == "darwin" then "${pkgs.sbarlua.out}" else "";
     };
     file = {
       ".clang-format" = {

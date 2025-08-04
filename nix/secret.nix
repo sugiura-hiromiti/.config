@@ -1,7 +1,7 @@
 {}:
 {
-  user = "xsugiurah";
-  arch = "x86_64";
-  os ="linux";
-  home = /home/xsugiurah;
+  user = "hiromichi.sugiura";
+  arch = "aarch64";
+  os ="darwin";
+  home = /Users/hiromichi.sugiura;
 }
