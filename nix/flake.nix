@@ -68,8 +68,13 @@
       darwinConfigurations = {
         conf = nix-darwin.lib.darwinSystem {
           inherit system;
+          specialArgs = {
+            inherit user;
+            inherit arch;
+            inherit os;
+          };
           modules = [
-            ./nix-darwin/${user-system}.nix
+            ./nix-darwin
           ];
         };
       };
