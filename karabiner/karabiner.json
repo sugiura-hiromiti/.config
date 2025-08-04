@@ -3,6 +3,7 @@
     "profiles": [
         {
             "complex_modifications": {
+                "parameters": { "mouse_motion_to_scroll.speed": 160 },
                 "rules": [
                     {
                         "description": "swap fn-shift-down & opt-shift-down",
@@ -602,10 +603,11 @@
             ],
             "virtual_hid_keyboard": {
                 "keyboard_type_v2": "ansi",
-                "mouse_key_xy_scale": 150
+                "mouse_key_xy_scale": 300
             }
         },
         {
+            "complex_modifications": { "parameters": { "mouse_motion_to_scroll.speed": 200 } },
             "fn_function_keys": [
                 {
                     "from": { "key_code": "f11" },
@@ -675,7 +677,10 @@
                     "to": [{ "mouse_key": { "vertical_wheel": -64 } }]
                 }
             ],
-            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+            "virtual_hid_keyboard": {
+                "keyboard_type_v2": "ansi",
+                "mouse_key_xy_scale": 250
+            }
         }
     ]
 }
