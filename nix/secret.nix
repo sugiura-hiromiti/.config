@@ -1,7 +1,7 @@
 {}:
 {
-  user = "a";
-  arch = "aarch64";
-  os ="darwin";
-  home = /Users/a;
+  user = "xsugiurah";
+  arch = "x86_64";
+  os ="linux";
+  home = /home/xsugiurah;
 }
