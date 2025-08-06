@@ -50,7 +50,29 @@ _g_ gitui _s_ ssr <esc> exit
 				{ 'g', '<cmd>Gitui<cr>' },
 				{ 's', require('ssr').open },
 				{ 'c', tb.help_tags },
-				{ 'x', '<cmd>ToggleTerm<cr>' },
+				{
+					'x',
+					function()
+						vim.ui.select(
+							{ 'normal', 'vertical', 'horizontal', 'tab' },
+							{ prompt = 'how to open terminal' },
+							function(choice)
+								local bufnr = 0
+								local conf = {}
+								-- local bufnr = vim.api.nvim_create_buf(true, true)
+								if choice == 'normal' then
+									--do nothing
+									-- vim.api.nvim_open_win(0, true, {})
+								else
+									bufnr = vim.api.nvim_create_buf(true, true)
+									if choice == 'vertical' then
+										conf = { split = 'right' }
+									end
+								end
+							end
+						)
+					end,
+				},
 				{ '<esc>', nil, { exit = true } },
 			},
 		}

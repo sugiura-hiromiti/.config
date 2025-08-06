@@ -80,7 +80,7 @@ m({ 'n', 'x' }, '<s-cr>', function()
 	if vim.bo.ft == 'ssr' then
 		return '<s-cr>'
 	else
-		return ':!'
+		return ''
 	end
 end, { expr = true })
 m({ 'n', 'x' }, '<del>', '<c-d>')
@@ -103,6 +103,7 @@ m('n', '<s-left>', '<cmd>Treewalker SwapLeft<CR>')
 m({ 'n', 'v' }, '{', '<c-b>')
 m({ 'n', 'v' }, '}', '<c-f>')
 
+--  TODO: add hydra mode for `gf` simply select opening option normal, vertical, horizontal and tab
 -- m('n', 'gf', function()
 -- 	local cfile = vim.fn.expand '<cfile>'
 -- 	if cfile:match 'https?://' then

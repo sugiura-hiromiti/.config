@@ -82,6 +82,9 @@ return {
 							},
 						},
 					},
+					['ui-select'] = {
+						require('telescope.themes').get_dropdown {},
+					},
 				},
 			}
 			t.load_extension 'smart_open'
