@@ -64,10 +64,19 @@ _g_ gitui _s_ ssr <esc> exit
 									--do nothing
 									-- vim.api.nvim_open_win(0, true, {})
 								else
+									conf = { split = 'top', win = 0 }
 									bufnr = vim.api.nvim_create_buf(true, true)
+
 									if choice == 'vertical' then
-										conf = { split = 'right' }
+										conf = { split = 'right', win = 0 }
 									end
+								end
+
+								vim.api.nvim_open_win(bufnr, true, conf)
+								vim.api.nvim_open_term(bufnr, {})
+
+								if choice == 'tab' then
+									vim.cmd 'tab split'
 								end
 							end
 						)
