@@ -121,7 +121,7 @@
     )
     ++ (
       if arch == "aarch64" && os == "darwin"
-      then [container]
+      then []
       else []
     )
     ++ (

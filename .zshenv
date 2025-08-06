@@ -107,8 +107,6 @@ add-zsh-hook precmd clear_current_program_var
 
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
-# export PATH=/opt/homebrew/opt/llvm@17/bin:$PATH
-# export PATH=/opt/homebrew/sbin:$PATH
 export PATH=$PATH:/Users/a/Library/Python/3.9/bin
 # eval "$(zoxide init zsh)"
 # eval "$(starship init zsh)"
