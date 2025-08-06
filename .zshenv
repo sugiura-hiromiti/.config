@@ -112,6 +112,7 @@ export PATH=$PATH:/Users/a/Library/Python/3.9/bin
 # eval "$(starship init zsh)"
 # export ZELLIJ_AUTO_ATTACH=true
 # eval "$(zellij setup --generate-auto-start zsh)"
+eval "$(direnv hook zsh)"
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"

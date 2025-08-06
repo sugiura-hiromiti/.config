@@ -78,10 +78,10 @@ Merge :
 ---
 "
 
-~/.npm-packages/bin/gemini -y -p "${prompt}"
+# ~/.npm-packages/bin/gemini -y -p "${prompt}"
 
-# if [ $(uname) = "Darwin" ]; then
-# 	q chat --trust-all-tools "${prompt}"
-# elif [ $(uname) = "Linux" ]; then
-# 	amazon-q chat --trust-all-tools "${prompt}"
-# fi
+if [ $(uname) = "Darwin" ]; then
+	q chat --trust-all-tools "${prompt}"
+elif [ $(uname) = "Linux" ]; then
+	amazon-q chat --trust-all-tools "${prompt}"
+fi
