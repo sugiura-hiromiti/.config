@@ -1,4 +1,3 @@
--- node
 vim.cmd 'smapclear'
 
 local m = vim.keymap.set
@@ -298,12 +297,12 @@ local function register_todo_as_diagnostic()
 	end
 
 	local marks = {
-		[' TODO: '] = vim.diagnostic.severity.INFO,
-		[' HACK: '] = vim.diagnostic.severity.HINT,
-		[' WARN: '] = vim.diagnostic.severity.WARN,
-		[' PERF: '] = vim.diagnostic.severity.INFO,
-		[' NOTE: '] = vim.diagnostic.severity.HINT,
-		[' TEST: '] = vim.diagnostic.severity.INFO,
+		[' TODO:'] = vim.diagnostic.severity.INFO,
+		[' HACK:'] = vim.diagnostic.severity.HINT,
+		[' WARN:'] = vim.diagnostic.severity.WARN,
+		[' PERF:'] = vim.diagnostic.severity.INFO,
+		[' NOTE:'] = vim.diagnostic.severity.HINT,
+		[' TEST:'] = vim.diagnostic.severity.INFO,
 	}
 
 	local logger = require 'my_lua_api.nvim_logger'
@@ -317,8 +316,15 @@ local function register_todo_as_diagnostic()
 			goto continue
 		end
 
+		logger.info(
+			'first line',
+			'lua',
+			vim.inspect(vim.api.nvim_buf_get_lines(buf, comments_pos[1].start_row, comments_pos[1].end_row + 1, true))
+		)
+
 		for _, comment_pos in ipairs(comments_pos) do
 			local comment_lines = vim.api.nvim_buf_get_lines(buf, comment_pos.start_row, comment_pos.end_row + 1, true)
+
 			for i, line in ipairs(comment_lines) do
 				for mark, severity in pairs(marks) do
 					local column_start, column_end = line:find(mark)

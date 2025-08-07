@@ -1,3 +1,4 @@
+local log = require 'my_lua_api.nvim_logger'
 local m = {}
 
 ---comment
@@ -19,7 +20,6 @@ m.flat_filter_node = function(ts_node, condition)
 			local typed_nodes_in_child_node = m.flat_filter_node(ts_node:child(i), condition)
 			for _, node in ipairs(typed_nodes_in_child_node) do
 				table.insert(rslt, node)
-				-- rslt.insert(node)
 			end
 		end
 
