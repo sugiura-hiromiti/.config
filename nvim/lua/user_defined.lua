@@ -287,7 +287,8 @@ a('bufreadpost', {
 	end,
 })
 
-local function register_todo_as_diagnostic()
+--  - [] TODO: integrate with lsp
+local function marker_comment()
 	local all_bufs = vim.api.nvim_list_bufs()
 	local bufs = {}
 	for _, buf in pairs(all_bufs) do
@@ -297,15 +298,14 @@ local function register_todo_as_diagnostic()
 	end
 
 	local marks = {
-		[' TODO:'] = vim.diagnostic.severity.INFO,
-		[' HACK:'] = vim.diagnostic.severity.HINT,
-		[' WARN:'] = vim.diagnostic.severity.WARN,
-		[' PERF:'] = vim.diagnostic.severity.INFO,
-		[' NOTE:'] = vim.diagnostic.severity.HINT,
-		[' TEST:'] = vim.diagnostic.severity.INFO,
+		[' TODO: '] = vim.diagnostic.severity.INFO,
+		[' HACK: '] = vim.diagnostic.severity.HINT,
+		[' WARN: '] = vim.diagnostic.severity.WARN,
+		[' PERF: '] = vim.diagnostic.severity.INFO,
+		[' NOTE: '] = vim.diagnostic.severity.HINT,
+		[' TEST: '] = vim.diagnostic.severity.INFO,
 	}
 
-	local logger = require 'my_lua_api.nvim_logger'
 	local found_lines = ''
 
 	local ns = vim.api.nvim_create_namespace 'my_todos'
@@ -315,12 +315,6 @@ local function register_todo_as_diagnostic()
 		if #comments_pos == 0 then
 			goto continue
 		end
-
-		logger.info(
-			'first line',
-			'lua',
-			vim.inspect(vim.api.nvim_buf_get_lines(buf, comments_pos[1].start_row, comments_pos[1].end_row + 1, true))
-		)
 
 		for _, comment_pos in ipairs(comments_pos) do
 			local comment_lines = vim.api.nvim_buf_get_lines(buf, comment_pos.start_row, comment_pos.end_row + 1, true)
@@ -335,7 +329,7 @@ local function register_todo_as_diagnostic()
 							message = line:sub(column_start, -1),
 							severity = severity,
 						}
-						found_lines = found_lines .. '\n- ' .. diag.message
+						found_lines = found_lines .. '\n' .. diag.message
 						vim.diagnostic.set(ns, buf, { diag }, { virtual_text = false, float = false })
 					end
 				end
@@ -344,12 +338,11 @@ local function register_todo_as_diagnostic()
 
 		::continue::
 	end
-	logger.info('marker_comments', 'markdown', found_lines)
 end
 
 a({ 'bufwritepost' }, {
 	group = au_id,
-	callback = register_todo_as_diagnostic,
+	callback = marker_comment,
 })
 
 -- a({ 'vimenter' }, {

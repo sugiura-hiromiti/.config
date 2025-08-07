@@ -1,4 +1,3 @@
-local log = require 'my_lua_api.nvim_logger'
 local m = {}
 
 ---comment
@@ -6,16 +5,16 @@ local m = {}
 ---@param condition function this function takes one argument ts_node and returns bool
 ---@return table
 m.flat_filter_node = function(ts_node, condition)
+	local rslt = {}
+	if condition(ts_node) then
+		table.insert(rslt, ts_node)
+	end
+
 	if ts_node:child(0) == nil then
-		if condition(ts_node) then
-			return { ts_node }
-		else
-			return {}
-		end
+		return rslt
 	else
 		local child_count = ts_node:child_count()
 
-		local rslt = {}
 		for i = 0, child_count - 1, 1 do
 			local typed_nodes_in_child_node = m.flat_filter_node(ts_node:child(i), condition)
 			for _, node in ipairs(typed_nodes_in_child_node) do
