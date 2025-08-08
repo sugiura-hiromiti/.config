@@ -5,6 +5,8 @@
 	editor = nvim
 [init]
 	defaultBranch = main
+[include]
+	path = ~/.github_auth
 [includeIf "gitdir:~/Downloads/job/"]
 	path = ~/.gitconfig_p
 [pull]
