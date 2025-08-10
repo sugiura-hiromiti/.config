@@ -24,14 +24,23 @@
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
     };
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
+    };
   };
   outputs =
     {
       self,
       nixpkgs,
-      neovim-nightly-overlay,
       home-manager,
       nix-darwin,
+      neovim-nightly-overlay,
+      fenix,
     }@inputs:
     let
       secret = import ./secret.nix { };
@@ -42,7 +51,7 @@
       system = "${arch}-${os}";
       user-system = "${builtins.replaceStrings [ "." ] [ "-" ] user}-${system}";
       nixpkgs-overlayed = import nixpkgs {
-        overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
+        overlays = [ neovim-nightly-overlay.overlays.default ];
         inherit system;
       };
     in
@@ -58,6 +67,7 @@
             inherit home;
             inherit system;
             inherit user-system;
+            inherit fenix;
           };
           modules = [
             ./home

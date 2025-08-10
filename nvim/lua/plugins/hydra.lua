@@ -20,7 +20,7 @@ telescope
 _b_ builtin _n_ notify
 _f_ smart open _t_ todo
 _e_ file browser _c_ help
-_x_ float term
+_x_ term
 
 else
 _g_ gitui _s_ ssr <esc> exit
@@ -72,8 +72,11 @@ _g_ gitui _s_ ssr <esc> exit
 									end
 								end
 
-								vim.api.nvim_open_win(bufnr, true, conf)
-								vim.api.nvim_open_term(bufnr, {})
+								if choice ~= 'normal' then
+									vim.api.nvim_open_win(bufnr, true, conf)
+								end
+
+								vim.cmd 'term'
 
 								if choice == 'tab' then
 									vim.cmd 'tab split'

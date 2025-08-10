@@ -6,6 +6,7 @@
   home,
   system,
   user-system,
+  fenix,
   lib,
   config,
   pkgs,
@@ -16,7 +17,9 @@ let
     inherit user;
     inherit os;
     inherit arch;
+    inherit system;
     inherit pkgs;
+    inherit fenix;
   };
 in
 {
