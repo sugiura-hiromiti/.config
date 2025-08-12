@@ -7,6 +7,65 @@ local on_attach = function(client, bufnr)
 	-- end
 end
 
+vim.g.rustaceanvim = {
+	tools = {
+		test_executor = 'background',
+	},
+	server = {
+		default_settings = {
+			['rust-analyzer'] = {
+				assist = {
+					preferSelf = true,
+				},
+				cargo = {
+					allTargets = false,
+				},
+				completion = {
+					fullFunctionSignatures = { enable = true },
+					-- privateEditable = { enable = true },
+					termSearch = { enable = true },
+				},
+				diagnostics = { experimental = { enable = true }, styleLints = { enable = true } },
+				hover = {
+					actions = { reference = { enable = true } },
+					maxSubstitutionLength = 40,
+					memoryLayout = {
+						niches = true,
+					},
+					show = { traitAssocItems = 5 },
+				},
+				inlayHints = {
+					bindingModeHints = { enable = true },
+					closingBraceHints = { minLines = 20 },
+					closureCaptureHints = { enable = true },
+					closureReturnTypeHints = { enable = 'always' },
+					discriminantHints = { enable = 'always' },
+					expressionAdjustmentHints = { enable = 'always' },
+					genericParameterHints = { lifetime = { enable = true }, type = { enable = true } },
+					implicitDrops = { enable = true },
+					implicitSizedBoundHints = { enable = true },
+					lifetimeElisionHints = { enable = 'always', useParameterNames = true },
+					rangeExclusiveHints = { enable = true },
+				},
+				interpret = { tests = true },
+				lens = {
+					enable = true,
+					references = {
+						adt = { enable = true },
+						enumVariant = { enable = true },
+						method = { enable = true },
+						trait = { enable = true },
+					},
+				},
+				lru = { capacity = 512 },
+				rustfmt = { overrideCommand = 'cargo fmt', rangeFormatting = { enable = true } },
+				semanticHighlighting = { operator = { specialization = { enable = true } } },
+				workspace = { symbol = { search = { kind = 'all_symbols' } } },
+			},
+		},
+	},
+}
+
 return {
 	{
 		'neovim/nvim-lspconfig',
@@ -17,63 +76,6 @@ return {
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
-
-			local rust = vim.lsp.config.rust_analyzer
-			local rust_config = vim.tbl_deep_extend('force', rust, {
-				settings = {
-					['rust-analyzer'] = {
-						assist = {
-							preferSelf = true,
-						},
-						cargo = {
-							allTargets = false,
-						},
-						completion = {
-							fullFunctionSignatures = { enable = true },
-							-- privateEditable = { enable = true },
-							termSearch = { enable = true },
-						},
-						diagnostics = { experimental = { enable = true }, styleLints = { enable = true } },
-						hover = {
-							actions = { reference = { enable = true } },
-							maxSubstitutionLength = 40,
-							memoryLayout = {
-								niches = true,
-							},
-							show = { traitAssocItems = 5 },
-						},
-						inlayHints = {
-							bindingModeHints = { enable = true },
-							closingBraceHints = { minLines = 20 },
-							closureCaptureHints = { enable = true },
-							closureReturnTypeHints = { enable = 'always' },
-							discriminantHints = { enable = 'always' },
-							expressionAdjustmentHints = { enable = 'always' },
-							genericParameterHints = { lifetime = { enable = true }, type = { enable = true } },
-							implicitDrops = { enable = true },
-							implicitSizedBoundHints = { enable = true },
-							lifetimeElisionHints = { enable = 'always', useParameterNames = true },
-							rangeExclusiveHints = { enable = true },
-						},
-						interpret = { tests = true },
-						lens = {
-							enable = true,
-							references = {
-								adt = { enable = true },
-								enumVariant = { enable = true },
-								method = { enable = true },
-								trait = { enable = true },
-							},
-						},
-						lru = { capacity = 512 },
-						rustfmt = { overrideCommand = 'cargo +nightly fmt', rangeFormatting = { enable = true } },
-						semanticHighlighting = { operator = { specialization = { enable = true } } },
-						workspace = { symbol = { search = { kind = 'all_symbols' } } },
-					},
-				},
-			})
-
-			vim.lsp.config('rust_analyzer', rust_config)
 			vim.lsp.config('lua_ls', {
 				settings = {
 					Lua = {
@@ -117,7 +119,7 @@ return {
 			-- vim.lsp.config('vuels', { filetypes = { 'vue' } })
 
 			vim.lsp.enable {
-				'rust_analyzer',
+				-- 'rust_analyzer',
 				'lua_ls',
 				'hls',
 				'asm_lsp',
@@ -205,6 +207,10 @@ return {
 				},
 			},
 		},
+	},
+	{
+		'mrcjkb/rustaceanvim',
+		lazy = false,
 	},
 	-- { 'nanotee/sqls.nvim' },
 }

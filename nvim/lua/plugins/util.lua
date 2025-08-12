@@ -5,12 +5,12 @@ return {
 	--  TODO: later
 	-- { 'stevearc/overseer.nvim', opts = {} },
 	-- { '3rd/image.nvim' },
-	{
-		'pwntester/octo.nvim',
-		opts = {
-			ssh_aliases = { ['github.flect'] = 'github.com', ['github.personal'] = 'github.com' },
-		},
-	},
+	-- {
+	-- 	'pwntester/octo.nvim',
+	-- 	opts = {
+	-- 		ssh_aliases = { ['github.flect'] = 'github.com', ['github.personal'] = 'github.com' },
+	-- 	},
+	-- },
 	-- NOTE: Library
 	'kkharji/sqlite.lua',
 	{ 'echasnovski/mini.nvim', version = false },
@@ -45,6 +45,7 @@ return {
 			vim.cmd 'colo catppuccin'
 		end,
 	},
+
 	-- { 'f-person/auto-dark-mode.nvim', opts = {} },
 	-- NOTE: LSP
 	{

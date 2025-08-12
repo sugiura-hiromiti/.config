@@ -19,11 +19,20 @@ mouse-hide-while-typing = true
 # keybind = global:shift>space=toggle_quick_terminal
 #  NOTE: keybind
 # keybind = global:alt+l=toggle_quick_terminal
-keybind = global:f5=toggle_visibility
+keybind = clear
+keybind = global:ctrl+[=toggle_visibility
 # https://www.leonerd.org.uk/hacks/fixterms/
 keybind = ctrl+tab=csi:9;5u
 # some terminals represeent shift - tab as csi z, in such case, keybind = ctrl+shift+tab=csi1;5z
 keybind = ctrl+shift+tab=csi:9;6u
+keybind = super+ctrl+f=toggle_fullscreen
+keybind = super+shift+comma=reload_config
+keybind = super+0=reset_font_size
+keybind = super+minus=decrease_font_size:1
+keybind = super+plus=increase_font_size:1
+keybind = super+n=new_window
+keybind = super+q=quit
+keybind = super+v=paste_from_clipboard
 
 #  NOTE: window
 window-padding-x = 0

@@ -64,7 +64,7 @@ _g_ gitui _s_ ssr <esc> exit
 									--do nothing
 									-- vim.api.nvim_open_win(0, true, {})
 								else
-									conf = { split = 'top', win = 0 }
+									conf = { split = 'above', win = 0 }
 									bufnr = vim.api.nvim_create_buf(true, true)
 
 									if choice == 'vertical' then

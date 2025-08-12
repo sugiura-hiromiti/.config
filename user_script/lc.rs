@@ -1,4 +1,4 @@
-#!/usr/bin/env -S cargo +nightly --quiet -Zscript run --release --manifest-path
+#!/usr/bin/env -S cargo --quiet -Zscript run --release --manifest-path
 ---
 [package]
 version="0.0.1"
@@ -49,10 +49,6 @@ fn run(service: &Service, action: &Action,) {
 enum Service {
 	#[strum(props(FullName = "org.nixos.borders.plist"))]
 	Borders,
-	#[strum(props(FullName = "org.nixos.bottombar.plist"))]
-	Bottombar,
-	#[strum(props(FullName = "org.nixos.mpd.plist"))]
-	Mpd,
 	#[strum(props(FullName = "com.sugiura-hiromiti.sketchybar_builtin.plist \
 	                          com.sugiura-hiromiti.sketchybar_external_1.plist"))]
 	Sketchybar,

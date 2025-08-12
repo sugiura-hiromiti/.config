@@ -14,7 +14,7 @@ setopt incappendhistory
 #environment variables
 export EDITOR=nvim
 export VISUAL=nvim
-export MANPAGER=nvim
+export MANPAGER=less
 export RIPGREP_CONFIG_PATH=$HOME/.config/rg/config
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home/
 export MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT=''

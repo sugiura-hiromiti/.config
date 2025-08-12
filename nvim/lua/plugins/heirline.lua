@@ -7,156 +7,43 @@ return {
 		local lsp_symbol = require('lspsaga.symbol.winbar').get_bar
 		--		local gps = require 'nvim-gps'
 
-		local align = { provider = '%=' }
+		local base_hl_color = {
+			bg = '#181825',
+		}
+
+		local light_bg = '#8080f5'
+		local space = { provider = ' ' }
+		local base_hl = { provider = '', hl = base_hl_color }
+		local align = { { provider = '%=' }, base_hl }
 
 		local mode = {
-			{ provider = vim.fn.mode() .. ' ', update = 'ModeChanged' },
+			hl = {
+				bg = '#0b7af0',
+				fg = '#ffffff',
+			},
+			{
+				provider = vim.fn.mode(),
+				update = 'ModeChanged',
+				condition = function()
+					return not require('hydra.statusline').is_active()
+				end,
+			},
 			{
 				provider = function()
-					return require('hydra.statusline').get_name() .. ' '
+					return require('hydra.statusline').get_name()
 				end,
 				condition = function()
 					return require('hydra.statusline').is_active()
 				end,
 			},
+			space,
 		}
 
 		local symbol_bar_or_ft = {
 			{
 				provider = lsp_symbol,
 			},
-			-- 	{
-			-- 		condition = function()
-			-- 			if lsp_symbol() ~= nil then
-			-- 				return false
-			-- 			else
-			-- 				return true
-			-- 			end
-			-- 		end,
-			-- 		provider = function()
-			-- 			local ft = vim.bo.ft
-			-- 			if ft == 'toggleterm' then
-			-- 				local cur_prg = os.getenv 'MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT' or ''
-			-- 				ft = ft .. vim.b.toggle_number .. ' ' .. cur_prg
-			-- 			end
-			-- 			return ft
-			-- 		end,
-			-- 	},
 		}
-
-		--[[
-				local path = {
-			provider = function()
-				local path = vim.api.nvim_buf_get_name(0)
-				if path == '' then
-					path = vim.bo.ft
-				else
-					local slash_pos = path:find '/'
-					local next_slash_pos = path:find('/', slash_pos + 1)
-					while next_slash_pos do
-						path = path:sub(slash_pos + 1)
-						slash_pos = path:find '/'
-						next_slash_pos = path:find('/', slash_pos + 1)
-					end
-				end
-
-				return path
-			end,
-			hl = hl '@string.special.path',
-		}
-		local navic = {
-			provider = function(self)
-				return self.child:eval()
-			end,
-			static = {
-				-- create a type highlight map
-				type_hl = {
-					File = 'Directory',
-					Module = '@include',
-					Namespace = '@namespace',
-					Package = '@include',
-					Class = '@structure',
-					Method = '@method',
-					Property = '@property',
-					Field = '@field',
-					Constructor = '@constructor',
-					Enum = '@field',
-					Interface = '@type',
-					Function = '@function',
-					Variable = '@variable',
-					Constant = '@constant',
-					String = '@string',
-					Number = '@number',
-					Boolean = '@boolean',
-					Array = '@field',
-					Object = '@type',
-					Key = '@keyword',
-					Null = '@comment',
-					EnumMember = '@field',
-					Struct = '@structure',
-					Event = '@keyword',
-					Operator = '@operator',
-					TypeParameter = '@type',
-				},
-				-- bit operation dark magic, see below...
-				enc = function(line, col, winnr)
-					return bit.bor(bit.lshift(line, 16), bit.lshift(col, 6), winnr)
-				end,
-				-- line: 16 bit (65535); col: 10 bit (1023); winnr: 6 bit (63)
-				dec = function(c)
-					local line = bit.rshift(c, 16)
-					local col = bit.band(bit.rshift(c, 6), 1023)
-					local winnr = bit.band(c, 63)
-					return line, col, winnr
-				end,
-			},
-			init = function(self)
-				local data = require('nvim-navic').get_data() or {}
-				local children = {}
-				-- create a child for each level
-				for i, d in ipairs(data) do
-					-- encode line and column numbers into a single integer
-					local pos = self.enc(d.scope.start.line, d.scope.start.character, self.winnr)
-					local child = {
-						{
-							provider = ' ' .. d.icon .. ' ',
-							hl = self.type_hl[d.type],
-						},
-						{
-							-- escape `%`s (elixir) and buggy default separators
-							provider = d.name:gsub('%%', '%%%%'):gsub('%s*->%s*', ''),
-							-- highlight icon only or location name as well
-							-- hl = self.type_hl[d.type],
-
-							on_click = {
-								-- pass the encoded position through minwid
-								minwid = pos,
-								callback = function(_, minwid)
-									-- decode
-									local line, col, winnr = self.dec(minwid)
-									vim.api.nvim_win_set_cursor(vim.fn.win_getid(winnr), { line, col })
-								end,
-								name = 'heirline_navic',
-							},
-						},
-					}
-					-- add a separator only if needed
-					if #data > 1 and i < #data then
-						table.insert(child, {
-							provider = ' >',
-							--hl = { fg = 'bright_fg' },
-						})
-					end
-					table.insert(children, child)
-				end
-				-- instantiate the new child, overwriting the previous one
-				self.child = self:new(children, 1)
-			end,
-			condition = function()
-				return require('nvim-navic').is_available()
-			end,
-		}
-		]]
 
 		local diag = {
 			condition = cond.has_diagnostics,
@@ -173,9 +60,6 @@ return {
 				self.info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
 			end,
 			update = { 'DiagnosticChanged', 'BufEnter' },
-			{
-				provider = '![',
-			},
 			{
 				provider = function(self)
 					-- 0 is just another output, we can decide to print it or not!
@@ -197,12 +81,9 @@ return {
 			},
 			{
 				provider = function(self)
-					return self.hints > 0 and (self.hint_icon .. ' ' .. self.hints)
+					return self.hints > 0 and (self.hint_icon .. ' ' .. self.hints .. ' ')
 				end,
 				hl = hl '@comment.hint',
-			},
-			{
-				provider = ']',
 			},
 		}
 
@@ -215,6 +96,7 @@ return {
 					or self.status_dict.removed ~= 0
 					or self.status_dict.changed ~= 0
 			end,
+			hl = { bg = light_bg },
 			{
 				provider = function(self)
 					return ' ' .. self.status_dict.head
@@ -225,7 +107,7 @@ return {
 				condition = function(self)
 					return self.has_changes
 				end,
-				provider = '(',
+				provider = ' ',
 			},
 			{
 				provider = function(self)
@@ -236,23 +118,23 @@ return {
 			},
 			{
 				provider = function(self)
-					local count = self.status_dict.removed or 0
-					return count > 0 and ('-' .. count)
-				end,
-				hl = { fg = hl('GitSignsDelete').fg },
-			},
-			{
-				provider = function(self)
 					local count = self.status_dict.changed or 0
 					return count > 0 and ('~' .. count)
 				end,
 				hl = { fg = hl('GitSignsChange').fg },
 			},
 			{
+				provider = function(self)
+					local count = self.status_dict.removed or 0
+					return count > 0 and ('-' .. count)
+				end,
+				hl = { fg = hl('GitSignsDelete').fg },
+			},
+			{
 				condition = function(self)
 					return self.has_changes
 				end,
-				provider = ')',
+				provider = ' ',
 			},
 		}
 
@@ -260,8 +142,30 @@ return {
 			provider = ' %c',
 		}
 
+		local tab_page = {
+			update = { 'BufEnter' },
+			hl = function(self)
+				if self.is_active then
+					return 'TabLineSel'
+				else
+					return 'TabLine'
+				end
+			end,
+			provider = function(self)
+				local wins = vim.api.nvim_tabpage_list_wins(self.tabpage)
+				local buf = vim.api.nvim_win_get_buf(wins[1])
+
+				local name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf), ':t')
+				return '%' .. self.tabnr .. 'T ' .. name .. ' %T'
+			end,
+		}
+
+		local tab_pages = {
+			require('heirline.utils').make_tablist(tab_page),
+		}
+
 		require('heirline').setup {
-			statusline = { diag, align, symbol_bar_or_ft, align, git, location },
+			tabline = { mode, git, diag, symbol_bar_or_ft, align, tab_pages },
 		}
 	end,
 }

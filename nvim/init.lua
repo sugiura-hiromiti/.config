@@ -14,7 +14,8 @@ vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.autochdir = true
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
-vim.opt.laststatus = 3
+vim.opt.laststatus = 0
+vim.opt.showtabline = 2
 vim.opt.termguicolors = true
 vim.diagnostic.config { virtual_text = true }
 vim.lsp.inlay_hint.enable()

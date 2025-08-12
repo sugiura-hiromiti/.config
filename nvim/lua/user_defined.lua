@@ -317,7 +317,7 @@ local function marker_comment()
 		end
 
 		for _, comment_pos in ipairs(comments_pos) do
-			local comment_lines = vim.api.nvim_buf_get_lines(buf, comment_pos.start_row, comment_pos.end_row + 1, true)
+			local comment_lines = vim.api.nvim_buf_get_lines(buf, comment_pos.start_row, comment_pos.end_row, true)
 
 			for i, line in ipairs(comment_lines) do
 				for mark, severity in pairs(marks) do
