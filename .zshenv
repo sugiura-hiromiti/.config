@@ -38,6 +38,7 @@ echo "{}:
   home = ${HOME};
 }" > secret.nix && \
 nix run .#update)'
+alias sn="sk -m --ansi -ic 'rg {}' | sd ':.*' '' | xargs nvim"
 
 #functions
 # To remove function in zsh, `unset -f [function name]`
