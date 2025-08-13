@@ -39,6 +39,7 @@ echo "{}:
 }" > secret.nix && \
 nix run .#update)'
 alias sn="sk -m --ansi -ic 'rg {}' | sd ':.*' '' | xargs nvim"
+alias g='~/.npm-packages/bin/gemini'
 
 #functions
 # To remove function in zsh, `unset -f [function name]`
