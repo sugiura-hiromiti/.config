@@ -7,6 +7,60 @@
                 "parameters": { "mouse_motion_to_scroll.speed": 160 },
                 "rules": [
                     {
+                        "description": "Change left_shift x2 to f13",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "left_shift pressed",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "left_shift",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "f13" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "left_shift",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "left_shift pressed",
+                                            "value": 1
+                                        }
+                                    },
+                                    { "key_code": "left_shift" }
+                                ],
+                                "to_delayed_action": {
+                                    "to_if_canceled": [
+                                        {
+                                            "set_variable": {
+                                                "name": "left_shift pressed",
+                                                "value": 0
+                                            }
+                                        }
+                                    ],
+                                    "to_if_invoked": [
+                                        {
+                                            "set_variable": {
+                                                "name": "left_shift pressed",
+                                                "value": 0
+                                            }
+                                        }
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "swap fn-shift-down & opt-shift-down",
                         "manipulators": [
                             {
@@ -218,94 +272,6 @@
                                     "key_code": "left_arrow",
                                     "modifiers": ["fn"]
                                 },
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "move mouse cursor left by fn - h",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "h",
-                                    "modifiers": { "mandatory": ["fn"] }
-                                },
-                                "to": [{ "mouse_key": { "x": -4096 } }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "h",
-                                    "modifiers": { "mandatory": ["fn", "shift"] }
-                                },
-                                "to": [{ "mouse_key": { "x": -512 } }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "move mouse cursor down by fn - j",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": { "mandatory": ["fn"] }
-                                },
-                                "to": [{ "mouse_key": { "y": 4096 } }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": { "mandatory": ["fn", "shift"] }
-                                },
-                                "to": [{ "mouse_key": { "y": 512 } }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "move mouse cursor up by fn - k",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": { "mandatory": ["fn"] }
-                                },
-                                "to": [{ "mouse_key": { "y": -4096 } }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": { "mandatory": ["fn", "shift"] }
-                                },
-                                "to": [{ "mouse_key": { "y": -512 } }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "move mouse cursor right by fn - l",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "l",
-                                    "modifiers": { "mandatory": ["fn"] }
-                                },
-                                "to": [{ "mouse_key": { "x": 4096 } }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "l",
-                                    "modifiers": { "mandatory": ["fn", "shift"] }
-                                },
-                                "to": [{ "mouse_key": { "x": 512 } }],
                                 "type": "basic"
                             }
                         ]
@@ -608,7 +574,115 @@
             }
         },
         {
-            "complex_modifications": { "parameters": { "mouse_motion_to_scroll.speed": 200 } },
+            "complex_modifications": {
+                "parameters": { "mouse_motion_to_scroll.speed": 200 },
+                "rules": [
+                    {
+                        "description": "move mouse cursor left by h",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": { "mandatory": [] }
+                                },
+                                "to": [{ "mouse_key": { "x": -4096 } }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "move mouse cursor down by j",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": { "mandatory": [] }
+                                },
+                                "to": [{ "mouse_key": { "y": 4096 } }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "move mouse cursor right by l",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "mandatory": [] }
+                                },
+                                "to": [{ "mouse_key": { "x": 4096 } }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "move mouse cursor up by k",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": { "mandatory": [] }
+                                },
+                                "to": [{ "mouse_key": { "y": -4096 } }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "scroll left by H",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": { "mandatory": ["shift"] }
+                                },
+                                "to": [{ "mouse_key": { "horizontal_wheel": 80 } }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "scroll down by J",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": { "mandatory": ["shift"] }
+                                },
+                                "to": [{ "mouse_key": { "vertical_wheel": 80 } }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "scroll right by L",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "mandatory": ["shift"] }
+                                },
+                                "to": [{ "mouse_key": { "horizontal_wheel": -80 } }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "scroll up by k",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": { "mandatory": ["shift"] }
+                                },
+                                "to": [{ "mouse_key": { "vertical_wheel": -80 } }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
             "fn_function_keys": [
                 {
                     "from": { "key_code": "f1" },
@@ -666,40 +740,12 @@
                     "to": [{ "pointing_button": "button2" }]
                 },
                 {
-                    "from": { "key_code": "down_arrow" },
-                    "to": [{ "mouse_key": { "vertical_wheel": 64 } }]
-                },
-                {
                     "from": { "key_code": "f" },
                     "to": [{ "pointing_button": "button1" }]
                 },
                 {
-                    "from": { "key_code": "h" },
-                    "to": [{ "mouse_key": { "x": -3072 } }]
-                },
-                {
-                    "from": { "key_code": "j" },
-                    "to": [{ "mouse_key": { "y": 3072 } }]
-                },
-                {
-                    "from": { "key_code": "k" },
-                    "to": [{ "mouse_key": { "y": -3072 } }]
-                },
-                {
-                    "from": { "key_code": "l" },
-                    "to": [{ "mouse_key": { "x": 3072 } }]
-                },
-                {
-                    "from": { "key_code": "left_arrow" },
-                    "to": [{ "mouse_key": { "horizontal_wheel": 64 } }]
-                },
-                {
                     "from": { "key_code": "left_command" },
                     "to": [{ "mouse_key": { "speed_multiplier": 2 } }]
-                },
-                {
-                    "from": { "key_code": "right_arrow" },
-                    "to": [{ "mouse_key": { "horizontal_wheel": -64 } }]
                 },
                 {
                     "from": { "key_code": "right_command" },
@@ -708,10 +754,6 @@
                 {
                     "from": { "key_code": "spacebar" },
                     "to": [{ "mouse_key": { "speed_multiplier": 0.125 } }]
-                },
-                {
-                    "from": { "key_code": "up_arrow" },
-                    "to": [{ "mouse_key": { "vertical_wheel": -64 } }]
                 }
             ],
             "virtual_hid_keyboard": {

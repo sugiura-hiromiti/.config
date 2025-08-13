@@ -124,5 +124,5 @@ alt + shift - right : yabai -m window --resize right:10:0 || yabai -m window --r
 # mouse move mode
 :: mouse_move @ : karabiner_cli --select-profile mouse_move && borders active_color=0xffff0000 inactive_color=0x88ffffff width=4.0 &
 
-f1 ; mouse_move
-mouse_move < f1 ; default
+ctrl - 0x21 ; mouse_move
+mouse_move < escape ; default

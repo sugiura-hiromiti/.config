@@ -84,7 +84,6 @@
     direnv
     amazon-q-cli
     zellij
-    kanata
     # sqlite
   ]
   ++ (if arch == "aarch64" then [ ] else [ ])
