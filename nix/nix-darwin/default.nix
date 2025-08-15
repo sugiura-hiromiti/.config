@@ -4,8 +4,7 @@
   os,
   pkgs,
   ...
-}:
-{
+}: {
   security = {
     pam = {
       services = {
@@ -28,8 +27,8 @@
     };
     brews = [
       # "FelixKratz/formulae/sketchybar"
-      "koekeishiya/formulae/yabai"
-      "koekeishiya/formulae/skhd"
+      # "koekeishiya/formulae/yabai"
+      # "koekeishiya/formulae/skhd"
       "sqlite"
     ];
     casks = [

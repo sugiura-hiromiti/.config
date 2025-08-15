@@ -12,7 +12,7 @@ left_padding 5 \
 right_padding 5 \
 focus_follows_mouse autofocus \
 mouse_follows_focus on \
-window_placement first_child \
+window_placement second_child \
 window_shadow off \
 window_opacity on \
 active_window_opacity 1.0 \

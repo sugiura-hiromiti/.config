@@ -8,6 +8,7 @@ edition="2024"
 strum = "0.25"
 strum_macros = "0.25"
 ---
+
 use std::str::FromStr;
 
 use strum::EnumProperty;
@@ -16,7 +17,8 @@ use strum_macros;
 const PATH: &str = "Library/LaunchAgents";
 
 fn main() {
-	let service = Service::from_str(&std::env::args().nth(1,).unwrap(),).unwrap();
+	let service =
+		Service::from_str(&std::env::args().nth(1,).unwrap(),).unwrap();
 	let action = Action::from_str(&std::env::args().nth(2,).unwrap(),).unwrap();
 
 	match action {
@@ -31,31 +33,38 @@ fn main() {
 fn run(service: &Service, action: &Action,) {
 	println!("{action} service {service}");
 
-	let name = service.get_str("FullName",).unwrap();
+	let name = service.get_str("FullName",).unwrap().split(' ',);
 	let home = std::env::var("HOME",).unwrap();
-	let service_path = format!("{home}/{PATH}/{name}");
+	let service_path = name.map(|name| format!("{home}/{PATH}/{name}"),);
 
 	std::process::Command::new("launchctl",)
 		.arg(action.get_str("FullName",).unwrap(),)
-		.arg(service_path,)
+		.args(service_path,)
 		.output()
 		.expect("failed to execute process",);
 }
 
 #[derive(
-	Clone, Debug, strum_macros::Display, strum_macros::EnumString, strum_macros::EnumProperty,
+	Clone,
+	Debug,
+	strum_macros::Display,
+	strum_macros::EnumString,
+	strum_macros::EnumProperty,
 )]
 #[strum(serialize_all = "snake_case")]
 enum Service {
-	#[strum(props(FullName = "org.nixos.borders.plist"))]
-	Borders,
-	#[strum(props(FullName = "com.sugiura-hiromiti.sketchybar_builtin.plist \
-	                          com.sugiura-hiromiti.sketchybar_external_1.plist"))]
+	#[strum(props(FullName = "com.sugiura-hiromiti.sketchybar_builtin.\
+	                          plist com.sugiura-hiromiti.\
+	                          sketchybar_external_1.plist"))]
 	Sketchybar,
 }
 
 #[derive(
-	Clone, Debug, strum_macros::Display, strum_macros::EnumString, strum_macros::EnumProperty,
+	Clone,
+	Debug,
+	strum_macros::Display,
+	strum_macros::EnumString,
+	strum_macros::EnumProperty,
 )]
 #[strum(serialize_all = "snake_case")]
 enum Action {
