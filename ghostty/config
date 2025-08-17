@@ -7,11 +7,12 @@ font-size = 15
 adjust-cell-width = -1
 adjust-cell-height = -2
 
-theme = dark:jubi,light:iceberg-light
-unfocused-split-fill = #2f3e63
+# theme = dark:jubi,light:iceberg-light
+theme = dark:iceberg-dark,light:iceberg-light
+# unfocused-split-fill = #2f3e63
 
-cursor-opacity = 0.68
-background-opacity = 0.87
+cursor-opacity = 0.60
+background-opacity = 0.91
 
 mouse-hide-while-typing = true
 
@@ -37,8 +38,8 @@ keybind = super+v=paste_from_clipboard
 #  NOTE: window
 window-padding-x = 0
 window-padding-y = 0
-window-height = 70
-window-width = 200
+window-height = 100
+window-width = 340
 
 #  NOTE: quick-terminal (equivalent to iterm's hotkey window)
 quick-terminal-position = center

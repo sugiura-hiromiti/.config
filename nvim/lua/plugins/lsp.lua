@@ -20,6 +20,9 @@ vim.g.rustaceanvim = {
 				cargo = {
 					allTargets = false,
 				},
+				check = {
+					command = 'clippy',
+				},
 				completion = {
 					fullFunctionSignatures = { enable = true },
 					-- privateEditable = { enable = true },

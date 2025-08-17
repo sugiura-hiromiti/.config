@@ -69,10 +69,10 @@ in
       #   target = ".zshenv";
       #   source = ../../.zshenv;
       # };
-      ".zshrc" = {
-        target = ".zshrc";
-        source = ../../.zshrc;
-      };
+      # ".zshrc" = {
+      #   target = ".zshrc";
+      #   source = ../../.zshrc;
+      # };
       ".npmrc" = {
         target = ".npmrc";
         source = ../../.npmrc;

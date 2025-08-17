@@ -165,7 +165,8 @@ return {
 		}
 
 		require('heirline').setup {
-			tabline = { mode, git, diag, symbol_bar_or_ft, align, tab_pages },
+			-- tabline = { mode, git, diag, symbol_bar_or_ft, align, tab_pages },
+			statusline = { mode, git, diag, symbol_bar_or_ft, align, tab_pages },
 		}
 	end,
 }

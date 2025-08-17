@@ -16,9 +16,9 @@ window_placement second_child \
 window_shadow off \
 window_opacity on \
 active_window_opacity 1.0 \
-normal_window_opacity 0.9 \
+normal_window_opacity 0.982 \
 layout bsp \
-external_bar main:0:25
+# external_bar main:0:25
 
 yabai -m config --space \
 	$(yabai -m query --displays | jq '.[] | select(.frame.y ==  0) | .spaces[0]') \

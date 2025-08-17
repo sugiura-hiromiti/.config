@@ -30,34 +30,15 @@ return {
 	'Hiphish/rainbow-delimiters.nvim',
 	'chrisgrieser/nvim-spider',
 	{
-		'rebelot/kanagawa.nvim',
-		config=function()
-			require'kanagawa'.setup{
-				compile = true,
-				transparent = true,
-			}
-
-			vim.cmd'colo kanagawa'
-		end
+		'rmehri01/onenord.nvim',
+		opts = {
+			borders = false,
+			disable = {
+				background = true,
+				float_background = true,
+			},
+		},
 	},
-	-- {
-	-- 	'catppuccin/nvim',
-	-- 	name = 'catppuccin',
-	-- 	config = function()
-	-- 		require('catppuccin').setup {
-	-- 			transparent_background = true,
-	-- 			term_colors = true,
-	-- 			-- dim_inactive = { enabled = true },
-	-- 			styles = {
-	-- 				keywords = { 'bold' },
-	-- 				properties = { 'italic', 'bold' },
-	-- 			},
-	-- 		}
-	-- 		vim.cmd 'colo catppuccin'
-	-- 	end,
-	-- },
-
-	-- { 'f-person/auto-dark-mode.nvim', opts = {} },
 	-- NOTE: LSP
 	{
 		'onsails/lspkind.nvim',

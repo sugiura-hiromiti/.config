@@ -50,7 +50,6 @@
       wget
       zig
       zoxide
-      zsh-fast-syntax-highlighting
       nerd-fonts.meslo-lg
       alejandra
       asm-lsp

@@ -9,7 +9,7 @@ logs/
 apps/
 animations/
 shell/
-themes/
+# themes/
 tools/
 user/
 extensions/

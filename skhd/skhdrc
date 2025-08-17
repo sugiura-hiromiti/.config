@@ -81,7 +81,7 @@
 # 0x29: ;
 # 0x27: '
 
-:: default : karabiner_cli --select-profile dflt && borders active_color=0xff00d4ff inactive_color=0x88e1e3e4 width=2.0 &
+:: default : karabiner_cli --select-profile dflt && borders active_color=0xff6aceef inactive_color=0x88e1e3e4 width=1.0 &
 
 # utility
 fn - f : yabai -m window --toggle float
@@ -122,7 +122,7 @@ alt + shift - up : yabai -m window --resize top:0:10 || yabai -m window --resize
 alt + shift - right : yabai -m window --resize right:10:0 || yabai -m window --resize left:-10:0
 
 # mouse move mode
-:: mouse_move @ : karabiner_cli --select-profile mouse_move && borders active_color=0xffff0000 inactive_color=0x88ffffff width=4.0 &
+:: mouse_move : karabiner_cli --select-profile mouse_move && borders active_color=0xffff0000 inactive_color=0x88ffffff width=4.0 &
 
 ctrl - 0x21 ; mouse_move
 mouse_move < escape ; default

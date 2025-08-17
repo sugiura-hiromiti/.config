@@ -36,12 +36,10 @@
       "amazon-q"
       "crystalfetch"
       "firefox"
-      # "ghostty"
       "slack"
       "homerow"
-      # "iterm2"
+      "orion"
       # "mouseless"
-      # "docker-desktop"
     ];
     taps = [
       # "koekeishiya/formulae"

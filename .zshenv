@@ -5,18 +5,11 @@
 set -o emacs
 setopt incappendhistory
 
-# setopt AUTO_CD
-# cdpath=(.. ~ ~/Downloads)
-
-. $HOME/.profile
-# source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-
 #environment variables
 export EDITOR=nvim
 export VISUAL=nvim
 export MANPAGER=less
 export RIPGREP_CONFIG_PATH=$HOME/.config/rg/config
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home/
 export MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT=''
 
 #aliases
@@ -27,7 +20,6 @@ alias gl='git pull'
 alias gp='git push'
 alias gm='git merge'
 alias wh='which -a'
-# alias zenn='cd ~/Downloads/zenn/articles/ ; my_target_file=$(sk -ic '"'rg "'"{}"'"'"'| sed s"/:published: false//") ; n $my_target_file'
 alias gac='~/.config/user_script/auto_commit.sh'
 alias u='(cd $HOME/.config/nix && \
 echo "{}:
@@ -40,6 +32,7 @@ echo "{}:
 nix run .#update)'
 alias sn="sk -m --ansi -ic 'rg {}' | sd ':.*' '' | xargs nvim"
 alias g='~/.npm-packages/bin/gemini'
+alias l='~/.config/user_script/lc.rs'
 
 #functions
 # To remove function in zsh, `unset -f [function name]`
@@ -89,7 +82,6 @@ add-zsh-hook precmd clear_current_program_var
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=$PATH:/Users/a/Library/Python/3.9/bin
 eval "$(direnv hook zsh)"
-
 
 . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 

@@ -72,7 +72,11 @@ m({ 'n', 'x' }, '<cr>', function()
 	elseif table_contains(special_ft, vim.bo.ft) then
 		return '<cr>'
 	else
-		return ':Make '
+		if vim.bo.filetype == 'rust' then
+			return ':RustLsp '
+		else
+			return ':Make '
+		end
 	end
 end, { expr = true })
 m({ 'n', 'x' }, '<s-cr>', function()
@@ -164,26 +168,26 @@ c('Make', function(opts)
 	local ft = vim.bo.filetype
 	local path = vim.fn.expand '%:p'
 	if ft == 'rust' then -- langs which have to be compiled
-		cmd = '!cargo '
-		if args == '' then
-			local file_name = type(path) == 'string' and path or path[1]
-
-			args = 'r '
-			if string.find(file_name, '/src/bin/') ~= nil then
-				local _, l = string.find(file_name, '/src/bin/')
-				local r = string.find(string.sub(file_name, l + 1), '/') or string.find(string.sub(file_name, l + 1), '%.')
-
-				args = args .. '--bin ' .. string.sub(file_name, l + 1, l + r - 1)
-			elseif vim.fn.expand '%' ~= 'main.rs' then
-				args = 't '
-			end
-		else
-			args = table.remove(opts.fargs, 1) -- insert 1st argument to `args`
-		end
-		table.insert(opts.fargs, 1, '-q')
-		for _, a in ipairs(opts.fargs) do
-			extra = extra .. ' ' .. a
-		end
+		-- cmd = '!cargo '
+		-- if args == '' then
+		-- 	local file_name = type(path) == 'string' and path or path[1]
+		--
+		-- 	args = 'r '
+		-- 	if string.find(file_name, '/src/bin/') ~= nil then
+		-- 		local _, l = string.find(file_name, '/src/bin/')
+		-- 		local r = string.find(string.sub(file_name, l + 1), '/') or string.find(string.sub(file_name, l + 1), '%.')
+		--
+		-- 		args = args .. '--bin ' .. string.sub(file_name, l + 1, l + r - 1)
+		-- 	elseif vim.fn.expand '%' ~= 'main.rs' then
+		-- 		args = 't '
+		-- 	end
+		-- else
+		-- 	args = table.remove(opts.fargs, 1) -- insert 1st argument to `args`
+		-- end
+		-- table.insert(opts.fargs, 1, '-q')
+		-- for _, a in ipairs(opts.fargs) do
+		-- 	extra = extra .. ' ' .. a
+		-- end
 	elseif ft == 'haskell' then
 		cmd = '!runghc '
 		args = args .. ' ' .. path .. ' '

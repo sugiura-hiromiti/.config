@@ -27,7 +27,8 @@ local bar = {
 	display = DISPLAY_INDEX,
 	-- blur_radius = 0,
 	-- drawing = true,
-	topmost = true,
+	-- topmost = true,
+	topmost = false,
 	-- hidden = false,
 	-- border_color = 0x00000000,
 	-- border_width = 0,
@@ -49,6 +50,7 @@ if DISPLAY_INDEX ~= require('actor.helper.yabai').display.builtin().index then
 	bar.height = 26
 	bar.y_offset = 0
 	bar.display = DISPLAY_INDEX
+	bar.topmost = true
 end
 
 -- ↑ those values are default value(builtin display)
