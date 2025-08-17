@@ -47,6 +47,7 @@
     ];
     masApps = {
       "Wallpaper Play" = 1638457121;
+      "Logic Pro" = 634148309;
     };
   };
   nix = {

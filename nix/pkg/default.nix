@@ -63,7 +63,6 @@
       phpactor
       obsidian
       neovide
-      reaper
       zsh
       nil
       tailscale
