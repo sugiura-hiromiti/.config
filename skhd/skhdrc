@@ -81,7 +81,7 @@
 # 0x29: ;
 # 0x27: '
 
-:: default : karabiner_cli --select-profile dflt && borders active_color=0xff6aceef inactive_color=0x88e1e3e4 width=1.0 &
+:: default : karabiner_cli --select-profile dflt && borders active_color=0xff6aceef inactive_color=0x88e1e3e4 width=1.7 &
 
 # utility
 fn - f : yabai -m window --toggle float
