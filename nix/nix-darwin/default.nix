@@ -48,6 +48,7 @@
     masApps = {
       "Wallpaper Play" = 1638457121;
       "Logic Pro" = 634148309;
+      "Obsidian Web Clipper" = 6720708363;
     };
   };
   nix = {
