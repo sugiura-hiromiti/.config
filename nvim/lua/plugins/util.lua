@@ -2,15 +2,6 @@ local symbols = require 'my_lua_api.symbols'
 local iterm_profile_is_hotkey = os.getenv 'ITERM_PROFILE' == 'Hotkey Window'
 
 return {
-	--  TODO: later
-	-- { 'stevearc/overseer.nvim', opts = {} },
-	-- { '3rd/image.nvim' },
-	-- {
-	-- 	'pwntester/octo.nvim',
-	-- 	opts = {
-	-- 		ssh_aliases = { ['github.flect'] = 'github.com', ['github.personal'] = 'github.com' },
-	-- 	},
-	-- },
 	-- NOTE: Library
 	'kkharji/sqlite.lua',
 	{ 'echasnovski/mini.nvim', version = false },
@@ -29,16 +20,6 @@ return {
 	{ 'OXY2DEV/helpview.nvim', lazy = false },
 	'Hiphish/rainbow-delimiters.nvim',
 	'chrisgrieser/nvim-spider',
-	{
-		'rmehri01/onenord.nvim',
-		opts = {
-			borders = false,
-			disable = {
-				background = true,
-				float_background = true,
-			},
-		},
-	},
 	-- NOTE: LSP
 	{
 		'onsails/lspkind.nvim',

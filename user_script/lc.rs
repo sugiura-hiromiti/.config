@@ -74,5 +74,3 @@ enum Action {
 	Stop,
 	Restart,
 }
-
-// vim: ft=rust

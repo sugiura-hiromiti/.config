@@ -1,7 +1,7 @@
 {}:
 {
-  user = "a";
+  user = "hiromichi.sugiura";
   arch = "aarch64";
   os ="darwin";
-  home = /Users/a;
+  home = /Users/hiromichi.sugiura;
 }
