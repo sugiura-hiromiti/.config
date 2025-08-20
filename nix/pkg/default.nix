@@ -77,7 +77,6 @@
       vue-language-server
       sd
       codex
-      act
       direnv
       amazon-q-cli
       zellij

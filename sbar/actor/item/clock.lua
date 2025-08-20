@@ -14,5 +14,5 @@ local clock = BAR.add('item', 'clock', {
 })
 
 clock:subscribe({ 'system_woke', 'routine' }, function(env)
-	clock:set { label = os.date '%y%m%d %H%M %a' }
+	clock:set { label = os.date '%H:%M %a' }
 end)
