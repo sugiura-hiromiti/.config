@@ -77,6 +77,10 @@ in
         target = ".npmrc";
         source = ../../.npmrc;
       };
+      "codex" = {
+        target = ".codex/config.toml";
+        source = ../../codex/config.toml;
+      };
     };
     packages = mypkgs;
   };
