@@ -85,4 +85,5 @@ Merge :
 # elif [ $(uname) = "Linux" ]; then
 # 	amazon-q chat --trust-all-tools "${prompt}"
 # fi
-amazon-q chat --trust-all-tools "${prompt}"
+# amazon-q chat --trust-all-tools "${prompt}"
+codex e -s danger-full-access "${prompt}"
