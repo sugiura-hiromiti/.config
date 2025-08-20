@@ -7,8 +7,8 @@ font-size = 15
 adjust-cell-width = -1
 adjust-cell-height = -2
 
-# theme = dark:jubi,light:iceberg-light
-theme = dark:iceberg-dark,light:iceberg-light
+theme = dark:cyberdream,light:cyberdream_light
+# theme = dark:iceberg-dark,light:iceberg-light
 # unfocused-split-fill = #2f3e63
 
 cursor-opacity = 0.60
