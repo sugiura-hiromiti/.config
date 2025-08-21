@@ -7,7 +7,7 @@ font-size = 15
 adjust-cell-width = -1
 adjust-cell-height = -2
 
-theme = dark:cyberdream,light:cyberdream_light
+theme = dark:jubi,light:cyberdream_light
 # theme = dark:iceberg-dark,light:iceberg-light
 # unfocused-split-fill = #2f3e63
 
