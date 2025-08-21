@@ -7,6 +7,16 @@
                 "parameters": { "mouse_motion_to_scroll.speed": 160 },
                 "rules": [
                     {
+                        "description": "change profiles to mouse_move by pys esc key",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "escape" },
+                                "to": [{ "shell_command": "'/opt/homebrew/bin/karabiner_cli' --select-profile 'mouse_move' && $HOME/.nix-profile/bin/borders active_color=0xffdb5f00 inactive_color=0x88ffffff width=4.0 &" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Change left_shift x2 to f13",
                         "manipulators": [
                             {
@@ -575,8 +585,18 @@
         },
         {
             "complex_modifications": {
-                "parameters": { "mouse_motion_to_scroll.speed": 200 },
+                "parameters": { "mouse_motion_to_scroll.speed": 410 },
                 "rules": [
+                    {
+                        "description": "change profiles to dflt by pys esc key",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "escape" },
+                                "to": [{ "shell_command": "'/opt/homebrew/bin/karabiner_cli' --select-profile 'dflt' && $HOME/.nix-profile/bin/borders active_color=0xff03d5ff inactive_color=0x88e1e3e4 width=2.0 &" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
                     {
                         "description": "move mouse cursor left by h",
                         "manipulators": [
@@ -758,7 +778,7 @@
             ],
             "virtual_hid_keyboard": {
                 "keyboard_type_v2": "ansi",
-                "mouse_key_xy_scale": 120
+                "mouse_key_xy_scale": 130
             }
         }
     ]

@@ -38,6 +38,7 @@ Your mission: fully automate the workflow of generating semantic branches, clean
 
 #### 5. Merge Pull Requests (Custom Merge Message)
 - if there is no conflict, merge Pull Request.
+- you can ignore CI state currently. merge Pull Request if there is no conflict anyway.
 - Merge PRs using **merge commit strategy**:
   'gh pr merge --merge --subject <custom message>'
 - The custom merge commit message must follow this pattern:
