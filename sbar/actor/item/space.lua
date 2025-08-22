@@ -55,13 +55,13 @@ local item_register = function()
 
 		if space_info.display == builtin_display.index then
 			if space_info.index == builtin_display.spaces[1] then
-				label = 'J'
-			elseif space_info.index == builtin_display.spaces[2] then
-				label = 'K'
+				label = 'L'
 			end
 		elseif space_info.display == external_display1.index then
-			if space_info.index == external_display1.spaces[1] then
-				label = 'L'
+			if space_info.index == external_display1.spaces[2] then
+				label = 'K'
+			elseif space_info.index == external_display1.spaces[1] then
+				label = 'J'
 			end
 		end
 
