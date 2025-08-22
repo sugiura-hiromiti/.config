@@ -37,6 +37,7 @@
       "crystalfetch"
       "slack"
       "homerow"
+      "orion"
       # "mouseless"
     ];
     taps = [
@@ -46,8 +47,6 @@
     masApps = {
       "Wallpaper Play" = 1638457121;
       "Logic Pro" = 634148309;
-      "Obsidian Web Clipper" = 6720708363;
-      # "Vimlike" = 1584519802;
     };
   };
   nix = {
