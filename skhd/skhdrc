@@ -95,9 +95,9 @@ fn - 0x21 : $HOME/.config/skhd/window_focus_prev.sh
 
 # Space Focus (Semantically):  4
 fn - h : yabai -m space --focus $(yabai -m query --spaces | jq '.[] | select(."is-native-fullscreen").index')
-fn - j : yabai -m space --focus $(yabai -m query --displays | jq '.[] | select(.frame.y !=  0) | .spaces[0]')
-fn - k : yabai -m space --focus $(yabai -m query --displays | jq '.[] | select(.frame.y !=  0) | .spaces[1]')
-fn - l : yabai -m space --focus $(yabai -m query --displays | jq '.[] | select(.frame.y ==  0) | .spaces[0]')
+fn - j : yabai -m space --focus $(yabai -m query --displays | jq '.[] | select(.frame.y ==  0) | .spaces[0]')
+fn - k : yabai -m space --focus $(yabai -m query --displays | jq '.[] | select(.frame.y ==  0) | .spaces[1]')
+fn - l : yabai -m space --focus $(yabai -m query --displays | jq '.[] | select(.frame.y !=  0) | .spaces[0]')
 
 # Window Send (Semantically): 4
 fn + shift - h : yabai -m window --space $(yabai -m query --spaces | jq '.[] | select(."is-native-fullscreen").index')
