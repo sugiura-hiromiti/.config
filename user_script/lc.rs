@@ -10,9 +10,7 @@ strum_macros = "0.25"
 ---
 
 use std::str::FromStr;
-
 use strum::EnumProperty;
-use strum_macros;
 
 const PATH: &str = "Library/LaunchAgents";
 

@@ -28,9 +28,7 @@ end
 
 ---@class buf_range
 ---@field start_row integer
----@field start_column integer
 ---@field end_row integer
----@field end_column integer
 ---@param buf_nr integer?
 ---@return [buf_range]
 m.get_comment_positions = function(buf_nr)
@@ -53,10 +51,19 @@ m.get_comment_positions = function(buf_nr)
 	local comments = {}
 	for _, comment_node in ipairs(comment_nodes) do
 		local start_row, start_column, end_row, end_column = comment_node:range()
-		---@type buf_range
-		local range = { start_row = start_row, start_column = start_column, end_row = end_row, end_column = end_column }
+		if start_row == end_row then
+			end_row = end_row + 1
+			end_column = 0
+		end
 
-		table.insert(comments, range)
+		---@type buf_range
+		local range = { start_row = start_row, end_row = end_row }
+
+		local last = comments[#comments]
+		if last == nil or not (last.start_row == range.start_row and last.end_row == range.end_row) then
+			comments[#comments + 1] = range
+		end
+
 	end
 
 	return comments

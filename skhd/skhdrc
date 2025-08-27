@@ -101,9 +101,9 @@ fn - l : yabai -m space --focus $(yabai -m query --displays | jq '.[] | select(.
 
 # Window Send (Semantically): 4
 fn + shift - h : yabai -m window --space $(yabai -m query --spaces | jq '.[] | select(."is-native-fullscreen").index')
-fn + shift - j : yabai -m window --space $(yabai -m query --displays | jq '.[] | select(.frame.y !=  0) | .spaces[0]')
-fn + shift - k : yabai -m window --space $(yabai -m query --displays | jq '.[] | select(.frame.y !=  0) | .spaces[1]')
-fn + shift - l : yabai -m window --space $(yabai -m query --displays | jq '.[] | select(.frame.y ==  0) | .spaces[0]')
+fn + shift - j : yabai -m window --space $(yabai -m query --displays | jq '.[] | select(.frame.y ==  0) | .spaces[0]')
+fn + shift - k : yabai -m window --space $(yabai -m query --displays | jq '.[] | select(.frame.y ==  0) | .spaces[1]')
+fn + shift - l : yabai -m window --space $(yabai -m query --displays | jq '.[] | select(.frame.y !=  0) | .spaces[0]')
 
 # Window Move: 4
 alt - left :  yabai -m window --move rel:-40:0 || yabai -m window --warp west

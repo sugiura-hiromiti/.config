@@ -65,22 +65,22 @@ in
         target = ".stylua.toml";
         source = ../../.stylua.toml;
       };
-      # ".zshenv" = {
-      #   target = ".zshenv";
-      #   source = ../../.zshenv;
-      # };
-      # ".zshrc" = {
-      #   target = ".zshrc";
-      #   source = ../../.zshrc;
-      # };
+      ".zshenv" = {
+        target = ".zshenv";
+        source = ../../.zshenv;
+      };
+      ".zshrc" = {
+        target = ".zshrc";
+        source = ../../.zshrc;
+      };
       ".npmrc" = {
         target = ".npmrc";
         source = ../../.npmrc;
       };
-      "codex" = {
-        target = ".codex/config.toml";
-        source = ../../codex/config.toml;
-      };
+      # "codex" = {
+      #   target = ".codex/config.toml";
+      #   source = ../../codex/config.toml;
+      # };
     };
     packages = mypkgs;
   };

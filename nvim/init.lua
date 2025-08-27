@@ -12,8 +12,8 @@ vim.opt.number = true
 vim.opt.autowriteall = true
 vim.opt.clipboard:append { 'unnamedplus' }
 vim.opt.autochdir = true
--- vim.opt.cursorline = true
--- vim.opt.cursorcolumn = true
+vim.opt.cursorline = true
+vim.opt.cursorcolumn = true
 vim.opt.laststatus = 3
 vim.opt.showtabline = 0
 vim.opt.termguicolors = true

@@ -156,6 +156,10 @@ m.display = {
 	builtin = function()
 		local dis = m.display.all()
 
+		if #dis == 1 then
+			return dis[1]
+		end
+
 		local display_info
 		for idx, di in ipairs(dis) do
 			if di.frame.y ~= 0 then

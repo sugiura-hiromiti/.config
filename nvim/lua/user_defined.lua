@@ -291,7 +291,6 @@ a('bufreadpost', {
 	end,
 })
 
---  - [] TODO: integrate with lsp
 local function marker_comment()
 	local all_bufs = vim.api.nvim_list_bufs()
 	local bufs = {}
@@ -310,9 +309,9 @@ local function marker_comment()
 		[' TEST: '] = vim.diagnostic.severity.INFO,
 	}
 
-	local found_lines = ''
+	local dbg = ''
 
-	local ns = vim.api.nvim_create_namespace 'my_todos'
+	local ns = vim.api.nvim_create_namespace 'marker_comment'
 	for _, buf in pairs(bufs) do
 		local comments_pos = require('my_lua_api.ts').get_comment_positions(buf)
 
@@ -320,26 +319,30 @@ local function marker_comment()
 			goto continue
 		end
 
+		dbg = dbg .. '# buf ' .. buf .. '\n\n**pos**: ' .. #comments_pos
+
+		local diags = {}
 		for _, comment_pos in ipairs(comments_pos) do
 			local comment_lines = vim.api.nvim_buf_get_lines(buf, comment_pos.start_row, comment_pos.end_row, true)
 
-			for i, line in ipairs(comment_lines) do
+			for _, line in ipairs(comment_lines) do
 				for mark, severity in pairs(marks) do
 					local column_start, column_end = line:find(mark)
 					if column_end ~= nil then
 						local diag = {
-							lnum = comment_pos.start_row + i - 1,
+							lnum = comment_pos.start_row,
 							col = column_end,
 							message = line:sub(column_start, -1),
 							severity = severity,
+							source = 'marker comment',
 						}
-						found_lines = found_lines .. '\n' .. diag.message
-						vim.diagnostic.set(ns, buf, { diag }, { virtual_text = false, float = false })
+						diags[#diags + 1] = diag
 					end
 				end
 			end
 		end
 
+		vim.diagnostic.set(ns, buf, diags, { virtual_text = false, float = false })
 		::continue::
 	end
 end

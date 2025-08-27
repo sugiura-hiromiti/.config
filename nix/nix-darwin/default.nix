@@ -27,8 +27,8 @@
     };
     brews = [
       # "FelixKratz/formulae/sketchybar"
-      # "koekeishiya/formulae/yabai"
-      # "koekeishiya/formulae/skhd"
+      "koekeishiya/formulae/yabai"
+      "koekeishiya/formulae/skhd"
       "sqlite"
     ];
     casks = [
@@ -37,16 +37,17 @@
       "crystalfetch"
       "slack"
       "homerow"
-      "orion"
+      "utm"
       # "mouseless"
     ];
     taps = [
-      # "koekeishiya/formulae"
+      "koekeishiya/formulae"
       "FelixKratz/formulae"
     ];
     masApps = {
       "Wallpaper Play" = 1638457121;
       "Logic Pro" = 634148309;
+      "Dark Reader for Safari" = 1438243180;
     };
   };
   nix = {
