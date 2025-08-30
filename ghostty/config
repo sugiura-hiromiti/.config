@@ -7,12 +7,13 @@ font-size = 15
 adjust-cell-width = -1
 adjust-cell-height = -2
 
-theme = dark:jubi,light:cyberdream_light
-# theme = dark:iceberg-dark,light:iceberg-light
+theme = dark:cyberdream,light:cyberdream_light
+# theme = dark:jubi,light:cyberdream_light
 # unfocused-split-fill = #2f3e63
 
-cursor-opacity = 0.60
-background-opacity = 0.91
+cursor-opacity = 1.0
+background-opacity = 0.87
+background-blur = 5
 
 mouse-hide-while-typing = true
 

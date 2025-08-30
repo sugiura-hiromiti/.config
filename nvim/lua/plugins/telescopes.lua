@@ -8,8 +8,6 @@ local yank_path_selected = function()
 		vim.fn.setreg('+', entry.path)
 	end
 	vim.fn.setreg('', entry.path)
-
-	vim.notify('selected entry:' .. vim.inspect(entry), vim.log.levels.INFO)
 end
 
 return {
@@ -25,14 +23,17 @@ return {
 					layout_config = {
 						flex = {
 							flip_columns = 160,
+							horizontal = {
+								preview_width = 0.7,
+							},
 						},
 					},
 					mappings = {
 						i = {
-							['<c-j>'] = a.preview_scrolling_down,
-							['<c-k>'] = a.preview_scrolling_up,
-							['<c-d>'] = a.nop,
-							['<c-u>'] = a.nop,
+							['<C-j>'] = a.preview_scrolling_down,
+							['<C-k>'] = a.preview_scrolling_up,
+							['<C-d>'] = a.nop,
+							['<C-u>'] = a.nop,
 						},
 					},
 					winblend = 40,
@@ -52,7 +53,7 @@ return {
 					buffers = {
 						mappings = {
 							i = {
-								['<c-d>'] = a.delete_buffer,
+								['<C-d>'] = a.delete_buffer,
 							},
 						},
 					},
@@ -77,7 +78,6 @@ return {
 						show_scores = true,
 						mappings = {
 							['i'] = {
-								-- C have to be upper case to work
 								['<C-y>'] = yank_path_selected,
 							},
 						},

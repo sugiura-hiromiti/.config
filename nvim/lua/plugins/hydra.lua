@@ -1,3 +1,18 @@
+local split_win_to_tab = function()
+	local win = vim.api.nvim_get_current_win()
+	local buf = vim.api.nvim_get_current_buf()
+
+	-- saves the buffer
+	vim.api.nvim_buf_call(buf, function()
+		vim.cmd 'update'
+	end)
+
+	-- split window
+	vim.api.nvim_win_close(win, true)
+	vim.cmd 'tabnew'
+	vim.api.nvim_set_current_buf(buf)
+end
+
 return {
 	'nvimtools/hydra.nvim',
 	config = function()
@@ -79,7 +94,7 @@ _g_ gitui _s_ ssr <esc> exit
 								vim.cmd 'term'
 
 								if choice == 'tab' then
-									vim.cmd 'tab split'
+									split_win_to_tab()
 								end
 							end
 						)
@@ -119,18 +134,7 @@ _t_ split new tab _c_ close _x_ exit
 				{
 					't',
 					function()
-						local win = vim.api.nvim_get_current_win()
-						local buf = vim.api.nvim_get_current_buf()
-
-						-- saves the buffer
-						vim.api.nvim_buf_call(buf, function()
-							vim.cmd 'update'
-						end)
-
-						-- split window
-						vim.api.nvim_win_close(win, true)
-						vim.cmd 'tabnew'
-						vim.api.nvim_set_current_buf(buf)
+						split_win_to_tab()
 					end,
 				},
 				{ 'c', 'ZZ' },

@@ -34,9 +34,31 @@ return {
 				},
 			}
 			vim.cmd 'colo catppuccin'
+			-- Force transparency everywhere
+			local groups = {
+				'Normal',
+				'NormalNC',
+				'NormalFloat',
+				'FloatBorder',
+				'SignColumn',
+				'LineNr',
+				'CursorLineNr',
+				'CursorLine',
+				'CursorColumn',
+				'EndOfBuffer',
+				'StatusLine',
+				'StatusLineNC',
+				'VertSplit',
+				'WinSeparator',
+				'TabLine',
+				'TabLineFill',
+			}
+
+			for _, group in ipairs(groups) do
+				vim.api.nvim_set_hl(0, group, { bg = 'none' })
+			end
 		end,
 	},
-	-- Lua
 	{
 		'f-person/auto-dark-mode.nvim',
 		opts = {
@@ -61,7 +83,6 @@ return {
 			require('null-ls').setup {
 				sources = {
 					b.formatting.stylua, --.with { args = { '--config-path ~/.stylua.toml' } },
-					b.formatting.google_java_format,
 					b.formatting.alejandra,
 				},
 			}
