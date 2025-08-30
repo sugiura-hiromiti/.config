@@ -3,7 +3,7 @@ local palette = require 'actor.helper.color'
 local keyboard_input = BAR.add('item', 'keyboard', {
 	-- width = 40,
 	width = 'dynamic',
-	position = 'right',
+	position = 'left',
 	background = { border_color = palette.sky },
 	associated_display = require('actor.helper.yabai').display.builtin().index,
 })

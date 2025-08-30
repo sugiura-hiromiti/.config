@@ -3,7 +3,7 @@ local palette = require 'actor.helper.color'
 local clock = BAR.add('item', 'clock', {
 	update_freq = 1,
 	width = 'dynamic',
-	position = 'right',
+	position = 'left',
 	label = {
 		color = palette.flamingo,
 	},

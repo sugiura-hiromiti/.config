@@ -44,9 +44,16 @@ local prop_of_item = function(space_info)
 	return prop
 end
 
+local spaces = {}
+
 local item_register = function()
 	local space_infos = yabai.space.all()
 	local is_first_fullscreen = true
+
+	for _, s in ipairs(spaces) do
+		local space_item_name = s:query().name
+		BAR.remove(space_item_name)
+	end
 
 	for _, space_info in ipairs(space_infos) do
 		local label = '' .. space_info.index
@@ -69,14 +76,14 @@ local item_register = function()
 
 		if space_info['is-native-fullscreen'] then
 			ty = 'full'
+
+			if is_first_fullscreen then
+				label = 'H'
+				is_first_fullscreen = false
+			end
 		end
 
 		label = label .. ':' .. ty
-
-		if space_info['s-native-fullscree'] and is_first_fullscreen then
-			label = 'H'
-			is_first_fullscreen = false
-		end
 
 		local space = BAR.add('item', 'yabai_space' .. space_info.index, {
 			width = 'dynamic',
@@ -95,6 +102,7 @@ local item_register = function()
 			local this_space_info = yabai.space.with_index(space_index)
 			space:set(prop_of_item(this_space_info))
 		end)
+		table.insert(spaces, space)
 	end
 end
 

@@ -103,6 +103,10 @@
 
 local jp = require 'actor.helper.json_parser_lua.json_parser'
 
+local uuid_list = {
+	builtin = '37D8832A-2D66-02CA-B9F7-8F30A301B230',
+}
+
 local m = {}
 
 --- apply `jq` query for yabai query info
@@ -156,13 +160,9 @@ m.display = {
 	builtin = function()
 		local dis = m.display.all()
 
-		if #dis == 1 then
-			return dis[1]
-		end
-
 		local display_info
 		for idx, di in ipairs(dis) do
-			if di.frame.y ~= 0 then
+			if di.uuid == uuid_list.builtin then
 				display_info = di
 				goto rarara
 			end
@@ -179,7 +179,7 @@ m.display = {
 
 		local display_infos = {}
 		for idx, di in ipairs(dis) do
-			if di.frame.y == 0 then
+			if di.uuid ~= uuid_list.builtin then
 				table.insert(display_infos, di)
 			end
 		end

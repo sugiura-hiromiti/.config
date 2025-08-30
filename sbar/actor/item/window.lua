@@ -2,7 +2,7 @@ local palette = require 'actor.helper.color'
 
 local window_title = BAR.add('item', 'window_title', {
 	width = 'dynamic',
-	position = 'left',
+	position = 'right',
 	background = { border_color = palette.blue },
 	label = { color = palette.blue },
 })

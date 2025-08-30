@@ -95,15 +95,15 @@ fn - 0x21 : $HOME/.config/skhd/window_focus_prev.sh
 
 # Space Focus (Semantically):  4
 fn - h : yabai -m space --focus $(yabai -m query --spaces | jq '.[] | select(."is-native-fullscreen").index')
-fn - j : yabai -m space --focus $(yabai -m query --displays | jq '.[] | select(.frame.y ==  0) | .spaces[0]')
-fn - k : yabai -m space --focus $(yabai -m query --displays | jq '.[] | select(.frame.y ==  0) | .spaces[1]')
-fn - l : yabai -m space --focus $(yabai -m query --displays | jq '.[] | select(.frame.y !=  0) | .spaces[0]')
+fn - j : yabai -m space --focus $(yabai -m query --displays | jq '.[] | select(.uuid !=  "37D8832A-2D66-02CA-B9F7-8F30A301B230") | .spaces[0]')
+fn - k : yabai -m space --focus $(yabai -m query --displays | jq '.[] | select(.uuid !=  "37D8832A-2D66-02CA-B9F7-8F30A301B230") | .spaces[1]')
+fn - l : yabai -m space --focus $(yabai -m query --displays | jq '.[] | select(.uuid ==  "37D8832A-2D66-02CA-B9F7-8F30A301B230") | .spaces[0]')
 
 # Window Send (Semantically): 4
 fn + shift - h : yabai -m window --space $(yabai -m query --spaces | jq '.[] | select(."is-native-fullscreen").index')
-fn + shift - j : yabai -m window --space $(yabai -m query --displays | jq '.[] | select(.frame.y ==  0) | .spaces[0]')
-fn + shift - k : yabai -m window --space $(yabai -m query --displays | jq '.[] | select(.frame.y ==  0) | .spaces[1]')
-fn + shift - l : yabai -m window --space $(yabai -m query --displays | jq '.[] | select(.frame.y !=  0) | .spaces[0]')
+fn + shift - j : yabai -m window --space $(yabai -m query --displays | jq '.[] | select(.uuid !=  "37D8832A-2D66-02CA-B9F7-8F30A301B230") | .spaces[0]')
+fn + shift - k : yabai -m window --space $(yabai -m query --displays | jq '.[] | select(.uuid !=  "37D8832A-2D66-02CA-B9F7-8F30A301B230") | .spaces[1]')
+fn + shift - l : yabai -m window --space $(yabai -m query --displays | jq '.[] | select(.uuid ==  "37D8832A-2D66-02CA-B9F7-8F30A301B230") | .spaces[0]')
 
 # Window Move: 4
 alt - left :  yabai -m window --move rel:-40:0 || yabai -m window --warp west
