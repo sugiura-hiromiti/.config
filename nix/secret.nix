@@ -2,6 +2,6 @@
 {
   user = "a";
   arch = "aarch64";
-  os ="linux";
-  home = /home/a;
+  os ="darwin";
+  home = /Users/a;
 }

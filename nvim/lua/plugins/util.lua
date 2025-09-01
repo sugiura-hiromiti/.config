@@ -83,7 +83,6 @@ return {
 			require('null-ls').setup {
 				sources = {
 					b.formatting.stylua, --.with { args = { '--config-path ~/.stylua.toml' } },
-					b.formatting.alejandra,
 				},
 			}
 		end,
