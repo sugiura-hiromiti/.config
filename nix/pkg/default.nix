@@ -15,7 +15,7 @@
       eza
       fd
       gh
-      # gitui
+      gitui
       lua5_4_compat
       lua-language-server
       luajitPackages.luarocks
@@ -49,6 +49,7 @@
       codex
       chatgpt
       nil
+      brave
     ]
     ++ (
       if arch == "aarch64"
@@ -83,6 +84,16 @@
         docker
         ghostty
         swift
+        niri
+        regreet
+        ironbar
+        sherlock
+        # not rusty
+        mako
+        # not rusty, but ziggy
+        waylock
+        swww
+        clipcat
       ]
       else []
     )
