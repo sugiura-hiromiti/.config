@@ -30,7 +30,7 @@
       taplo
       zoxide
       nerd-fonts.meslo-lg
-      alejandra
+      # alejandra
       obsidian
       zsh
       tailscale
@@ -81,6 +81,7 @@
       if os == "linux"
       then [
         anki
+        unixtools.xxd
         firefox
         docker
         ghostty
