@@ -45,9 +45,7 @@
       direnv
       amazon-q-cli
       zellij
-      anki-bin
       codex
-      chatgpt
       nil
       brave
     ]
@@ -64,6 +62,7 @@
     ++ (
       if os == "darwin"
       then [
+        chatgpt
         mas
         pngpaste
         jankyborders
@@ -74,12 +73,14 @@
         sketchybar
         sbarlua
         ghostty-bin
+        anki-bin
       ]
       else []
     )
     ++ (
       if os == "linux"
       then [
+        anki
         firefox
         docker
         ghostty
@@ -93,7 +94,7 @@
         # not rusty, but ziggy
         waylock
         swww
-        clipcat
+        # clipcat
       ]
       else []
     )
