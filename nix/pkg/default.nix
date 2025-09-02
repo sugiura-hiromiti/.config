@@ -76,7 +76,7 @@
       [
         anki
         unixtools.xxd
-        firefox
+        # firefox
         docker
         ghostty
         swift
