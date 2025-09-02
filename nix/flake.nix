@@ -57,7 +57,7 @@
     in
     {
       nixosConfigurations = {
-        conf = nixpkgs-overlayed.lib.nixosSystem {
+        conf = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             ./nixos/configuration.nix
