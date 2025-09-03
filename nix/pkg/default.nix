@@ -80,8 +80,8 @@
         docker
         ghostty
         swift
-        niri
-        # hyprland
+        # niri
+        hyprland
         regreet
         ironbar
         sherlock
