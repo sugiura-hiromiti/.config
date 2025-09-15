@@ -101,11 +101,11 @@
       "wheel"
     ];
     packages = with pkgs; [ ];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
   programs = {
-    zsh = {
+    fish = {
       enable = true;
     };
   };

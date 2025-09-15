@@ -1,7 +1,3 @@
-# Amazon Q pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
-
-
 set -o emacs
 setopt incappendhistory
 
@@ -81,6 +77,3 @@ export PATH=$PATH:/Users/a/Library/Python/3.9/bin
 eval "$(direnv hook zsh)"
 
 . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-
-# Amazon Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"

@@ -1,17 +1,5 @@
-local split_win_to_tab = function()
-	local win = vim.api.nvim_get_current_win()
-	local buf = vim.api.nvim_get_current_buf()
-
-	-- saves the buffer
-	vim.api.nvim_buf_call(buf, function()
-		vim.cmd 'update'
-	end)
-
-	-- split window
-	vim.api.nvim_win_close(win, true)
-	vim.cmd 'tabnew'
-	vim.api.nvim_set_current_buf(buf)
-end
+local ui = require 'my_lua_api.ui'
+local select = require 'my_lua_api.select'
 
 return {
 	'nvimtools/hydra.nvim',
@@ -25,81 +13,66 @@ return {
 			name = 'palette',
 			mode = { 'n', 'x' },
 			body = '<space>',
-			config = { color = 'teal', hint = { type = 'window', position = 'middle-right' } },
-			hint = [[lsp
+			config = { color = 'teal', hint = { type = 'window', position = 'middle' } },
+			hint = [[
 _a_ code action  _l_ finder
-_r_ rename _d_ diagnostic
-_o_ symbol _h_ hover
+_r_ rename       _d_ diagnostic
+_o_ symbol       _h_ hover
+_b_ builtin      _n_ notify
+_f_ smart open   _t_ text search
+_e_ file browser _m_ manual
+_x_ term         _w_ window opener
+_g_ gitui        _s_ ssr
 
-telescope
-_b_ builtin _n_ notify
-_f_ smart open _t_ todo
-_e_ file browser _c_ help
-_x_ term
-
-else
-_g_ gitui _s_ ssr <esc> exit
+<esc> exit
 ]],
 			heads = {
-				{ 'a', '<cmd>Lspsaga code_action<cr>' },
-				{ 'r', l.rename },
-				{ 'h', l.hover },
-				{ 'l', '<cmd>Lspsaga finder<cr>' },
-				--{ 'd', '<cmd>Lspsaga show_workspace_diagnostics<cr>' },
-				{ 'd', tb.diagnostics },
 				{
-					'o',
+					'a',
 					function()
-						if vim.bo.ft == 'lua' or vim.bo.ft == 'markdown' then
-							tb.lsp_document_symbols { show_line = true }
+						local ft = vim.bo.filetype
+						if ft == 'rust' then
+							vim.cmd 'RustLsp codeAction'
 						else
-							tb.lsp_workspace_symbols { show_line = true }
+							l.code_action()
 						end
 					end,
 				},
+				{ 'r', l.rename },
+				{
+					'h',
+					function()
+						local ft = vim.bo.filetype
+						if ft == 'rust' then
+							vim.cmd 'RustLsp hover'
+						else
+							l.hover()
+						end
+					end,
+				},
+				{ 'l', tb.lsp_references },
+				{ 'd', tb.diagnostics },
+				{ 'o', select.symbols },
 				{ 'b', tb.builtin },
 				{ 'f', te.smart_open.smart_open },
 				{ 'n', te.notify.notify },
 				{ 'e', te.file_browser.file_browser },
-				{ 't', '<cmd>TodoTelescope<cr>' },
-				{ 'g', '<cmd>Gitui<cr>' },
-				{ 's', require('ssr').open },
-				{ 'c', tb.help_tags },
+				{ 'g', select.git },
 				{
-					'x',
+					's',
 					function()
-						vim.ui.select(
-							{ 'normal', 'vertical', 'horizontal', 'tab' },
-							{ prompt = 'how to open terminal' },
-							function(choice)
-								local bufnr = 0
-								local conf = {}
-								-- local bufnr = vim.api.nvim_create_buf(true, true)
-								if choice == 'normal' then
-									--do nothing
-									-- vim.api.nvim_open_win(0, true, {})
-								else
-									conf = { split = 'above', win = 0 }
-									bufnr = vim.api.nvim_create_buf(true, true)
-
-									if choice == 'vertical' then
-										conf = { split = 'right', win = 0 }
-									end
-								end
-
-								if choice ~= 'normal' then
-									vim.api.nvim_open_win(bufnr, true, conf)
-								end
-
-								vim.cmd 'term'
-
-								if choice == 'tab' then
-									split_win_to_tab()
-								end
-							end
-						)
+						local ft = vim.bo.filetype
+						if ft == 'rust' then
+							vim.cmd.RustLsp 'ssr'
+						else
+							require('ssr').open()
+						end
 					end,
 				},
+				{ 'm', select.references },
+				{ 'x', select.terminal },
+				{ 't', select.text_search },
+				{ 'w', select.file_nav },
 				{ '<esc>', nil, { exit = true } },
 			},
 		}
@@ -134,7 +107,7 @@ _t_ split new tab _c_ close _x_ exit
 				{
 					't',
 					function()
-						split_win_to_tab()
+						ui.split_win_to_tab()
 					end,
 				},
 				{ 'c', 'ZZ' },

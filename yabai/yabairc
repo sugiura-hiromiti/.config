@@ -49,4 +49,4 @@ yabai -m signal --add event=space_destroyed action="sketchybar --trigger space_d
 yabai -m signal --add event=display_changed action="sketchybar --trigger display_changed ; external_1 --trigger display_changed"
 yabai -m signal --add event=display_added action="sketchybar --trigger display_added ; external_1 --trigger display_added"
 yabai -m signal --add event=display_removed action="sketchybar --trigger display_removed ; external_1 --trigger display_removed"
-yabai -m signal --add event=system_woke action="yabai --restart-service" # add sbar restarting operation
+# yabai -m signal --add event=system_woke action="yabai --restart-service" # add sbar restarting operation

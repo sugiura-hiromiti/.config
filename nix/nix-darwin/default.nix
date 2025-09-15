@@ -4,7 +4,8 @@
   os,
   pkgs,
   ...
-}: {
+}:
+{
   security = {
     pam = {
       services = {
@@ -16,7 +17,7 @@
   };
   fonts = {
     packages = [
-      pkgs.nerd-fonts.meslo-lg
+      pkgs.plemoljp-nf
     ];
   };
   homebrew = {
@@ -33,11 +34,17 @@
     ];
     casks = [
       "karabiner-elements"
-      "amazon-q"
-      "crystalfetch"
       "slack"
+      "discord"
+      "raycast"
+      "the-unarchiver"
+      "betterdisplay"
+      "ghostty"
+      "anki"
+      "iterm2"
       "homerow"
-      "utm"
+      "firefox"
+      "obsidian"
       # "mouseless"
     ];
     taps = [
@@ -45,9 +52,9 @@
       "FelixKratz/formulae"
     ];
     masApps = {
-      "Wallpaper Play" = 1638457121;
+      # "Wallpaper Play" = 1638457121;
       "Logic Pro" = 634148309;
-      "Dark Reader for Safari" = 1438243180;
+      # "Dark Reader for Safari" = 1438243180;
     };
   };
   nix = {

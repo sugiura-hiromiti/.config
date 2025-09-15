@@ -65,33 +65,11 @@ in
         target = ".stylua.toml";
         source = ../../.stylua.toml;
       };
-      ".zshenv" = {
-        target = ".zshenv";
-        source = ../../.zshenv;
-      };
-      ".zshrc" = {
-        target = ".zshrc";
-        source = ../../.zshrc;
-      };
       ".npmrc" = {
         target = ".npmrc";
         source = ../../.npmrc;
       };
-      # "codex" = {
-      #   target = ".codex/config.toml";
-      #   source = ../../codex/config.toml;
-      # };
     };
     packages = mypkgs;
-  };
-  wayland = {
-    windowManager = {
-      hyprland = {
-        enable = true;
-        settings = {
-          "$mod" = "SUPER";
-        };
-      };
-    };
   };
 }

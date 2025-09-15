@@ -1,5 +1,6 @@
 local battery = BAR.add('item', 'battery', {
 	width = 'dynamic',
+	update_freq = 1,
 	position = 'left',
 	associated_display = require('actor.helper.yabai').display.builtin().index,
 })

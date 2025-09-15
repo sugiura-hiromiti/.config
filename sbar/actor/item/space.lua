@@ -60,14 +60,14 @@ local item_register = function()
 		local builtin_display = yabai.display.builtin()
 		local external_display1 = yabai.display.external()[1]
 
-		if space_info.display == builtin_display.index then
-			if space_info.index == builtin_display.spaces[1] then
+		if external_display1 ~= nil and space_info.display == external_display1.index then
+			if space_info.index == external_display1.spaces[1] then
 				label = 'L'
 			end
-		elseif space_info.display == external_display1.index then
-			if space_info.index == external_display1.spaces[2] then
+		elseif space_info.display == builtin_display.index then
+			if space_info.index == builtin_display.spaces[2] then
 				label = 'K'
-			elseif space_info.index == external_display1.spaces[1] then
+			elseif space_info.index == builtin_display.spaces[1] then
 				label = 'J'
 			end
 		end

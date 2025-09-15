@@ -1,0 +1,100 @@
+:q
+:r
+map' (`take` [1,2,3,4,5,6,7,8]) [1,2,3,4,5,6,7,8]
+map' (take 3) [1,2,3,4,5,6,7,8]
+:r
+zipWith' (+) [1,2,3] [4,5,6]
+:r
+quicksort [4,2,6,4,2,6,8]
+:r
+squares [1,2,3]
+:l doubleMe.hs 
+:q
+squares [1,2,3]
+:r
+let squares x:xs  = (square x):(squares xs) where square x | [] = [] | x = x * x in squares [1,2,3]
+:q
+:q
+densityTell'' "10"
+densityTell'' "0"
+:r
+densityTell' 3000 1
+densityTell' 2000 1001
+densityTell' 2000 1000
+densityTell' 2 1
+densityTell' 1 2
+densityTell' 1 1
+densityTell' 0 1
+:r
+cap' "\0"
+cap' "\null"
+cap' "\n"
+cap' "X"
+cap' "XXXXXXXX"
+cap' "agc"
+cap' ""
+:r
+addVector (7,4) (2,1)
+addVector (2,4) (2,1)
+addVector (0,0) (2,1)
+:r
+addVector (1,2) (3,4)
+:r
+charName 'b'
+:r
+fctrl 5
+fctrl 4
+fctrl 3
+:r
+fctrl 3
+:r
+hand 11
+hand x
+hand 5
+hand 0
+:r
+lucky 7
+lucky 0
+:l doubleMe.hs 
+:q
+:t minBound
+minBound :: Bool
+minBound :: Int
+minBound :: Char
+pred 'b'
+succ 'b'
+read "8" :: Int
+read "abc" :: Int
+read "abc" :: String
+read "8" :: String
+read "8" :: Char
+read "'8'" :: [Char]
+read "'8'" :: Char
+read "'8'" :: String
+read "'8'" ++ "34"
+read "8" ++ "34"
+read ['a','a','b'] ++ ['x']
+read "abc" ++ ['a','x']
+read "[1,2,3,4]" ++ [0]
+read "True"
+read 8
+read 8 ++ "abc"
+read "8" ++ "abc"
+read "8" - read "2"
+read "8" - 2
+read "True" || False
+show True
+show [1,2,3]
+show ['a','b','c']
+show "abc"
+:t (>)
+:t (==)
+:t fst
+:t head
+head [1,2,3]
+head "abc"
+:t ['a','b','c']
+:t [['a', 'b']]
+:t "abc"
+:t 0
+:t 666

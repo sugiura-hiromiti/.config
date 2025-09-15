@@ -36,22 +36,7 @@ Your mission: fully automate the workflow of generating semantic branches, clean
     - PR title = first commit title.
     - PR body = summary of branch purpose and details.
 
-#### 5. Merge Pull Requests (Custom Merge Message)
-- if there is no conflict, merge Pull Request.
-- you can ignore CI state currently. merge Pull Request if there is no conflict anyway.
-- Merge PRs using **merge commit strategy**:
-  'gh pr merge --merge --subject <custom message>'
-- The custom merge commit message must follow this pattern:
-Merge :
-  - Highlights of what was introduced or fixed
-  - Links to issues or related discussions (if any)
-
-- If any PR has conflicts, leave it unmerged and clearly report it.
-
-#### 6. Sync main Branch
-- pull remote repository and merge it.
-
-#### 7. Output Summary
+#### 5. Output Summary
 - After all merges:
 - Display a **Markdown summary**:
     - List of branches, PR URLs, and merge status (':white_check_mark: merged' or ':x: conflict').
@@ -65,7 +50,6 @@ Merge :
 - **No dry runs**: apply changes directly.
 - **Error safety**: gracefully exit if repository is invalid or no changes found.
 - **Preserve full commit history**: never squash or rebase.
-- **Custom merge messages required**: never use GitHub’s default message.
 - **Avoid using backtick**: avoid using backtick. if you use, escape it by backslash
 
 ---
@@ -73,7 +57,6 @@ Merge :
 ### Expected Output
 - Final summary with:
 - PR links and statuses.
-- Clear merge commit messages used.
 - Chronological commits per branch.
 
 ---

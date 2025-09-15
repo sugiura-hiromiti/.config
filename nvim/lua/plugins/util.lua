@@ -21,44 +21,57 @@ return {
 	'Hiphish/rainbow-delimiters.nvim',
 	'chrisgrieser/nvim-spider',
 	{
-		'catppuccin/nvim',
-		name = 'catppuccin',
+		'sugiura-hiromiti/primary.nvim',
+		lazy = false, -- load during startup
+		priority = 1000, -- load before other UI plugins
 		config = function()
-			require('catppuccin').setup {
-				transparent_background = true,
-				term_colors = true,
-				-- dim_inactive = { enabled = true },
-				styles = {
-					keywords = { 'bold' },
-					properties = { 'italic', 'bold' },
-				},
-			}
-			vim.cmd 'colo catppuccin'
-			-- Force transparency everywhere
-			local groups = {
-				'Normal',
-				'NormalNC',
-				'NormalFloat',
-				'FloatBorder',
-				'SignColumn',
-				'LineNr',
-				'CursorLineNr',
-				'CursorLine',
-				'CursorColumn',
-				'EndOfBuffer',
-				'StatusLine',
-				'StatusLineNC',
-				'VertSplit',
-				'WinSeparator',
-				'TabLine',
-				'TabLineFill',
-			}
+			-- Optional: set options before loading
+			-- vim.g.colorscheme_primary_disable_italic = true
+			-- vim.g.colorscheme_primary_enable_transparent_bg = true
 
-			for _, group in ipairs(groups) do
-				vim.api.nvim_set_hl(0, group, { bg = 'none' })
-			end
+			-- Load the colorscheme (pure-Lua entrypoint in Neovim)
+			require('primary').load()
 		end,
 	},
+	-- {
+	-- 	'catppuccin/nvim',
+	-- 	name = 'catppuccin',
+	-- 	config = function()
+	-- 		require('catppuccin').setup {
+	-- 			transparent_background = true,
+	-- 			term_colors = true,
+	-- 			-- dim_inactive = { enabled = true },
+	-- 			styles = {
+	-- 				keywords = { 'bold' },
+	-- 				properties = { 'italic', 'bold' },
+	-- 			},
+	-- 		}
+	-- 		vim.cmd 'colo catppuccin'
+	-- 		-- Force transparency everywhere
+	-- 		local groups = {
+	-- 			'Normal',
+	-- 			'NormalNC',
+	-- 			'NormalFloat',
+	-- 			'FloatBorder',
+	-- 			'SignColumn',
+	-- 			'LineNr',
+	-- 			'CursorLineNr',
+	-- 			'CursorLine',
+	-- 			'CursorColumn',
+	-- 			'EndOfBuffer',
+	-- 			'StatusLine',
+	-- 			'StatusLineNC',
+	-- 			'VertSplit',
+	-- 			'WinSeparator',
+	-- 			'TabLine',
+	-- 			'TabLineFill',
+	-- 		}
+	--
+	-- 		for _, group in ipairs(groups) do
+	-- 			vim.api.nvim_set_hl(0, group, { bg = 'none' })
+	-- 		end
+	-- 	end,
+	-- },
 	{
 		'f-person/auto-dark-mode.nvim',
 		opts = {

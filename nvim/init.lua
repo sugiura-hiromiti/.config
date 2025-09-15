@@ -17,6 +17,7 @@ vim.opt.cursorcolumn = true
 vim.opt.laststatus = 3
 vim.opt.showtabline = 0
 vim.opt.termguicolors = true
+
 vim.diagnostic.config { virtual_text = true }
 vim.lsp.inlay_hint.enable()
 
@@ -34,7 +35,8 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 require('lazy').setup 'plugins'
-require 'user_defined'
+require 'usrcmd'
+require 'keymap'
 
 if vim.g.neovide then
 	require 'gui'

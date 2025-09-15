@@ -124,28 +124,25 @@ return {
 			-- vim.lsp.config('vuels', { filetypes = { 'vue' } })
 
 			vim.lsp.enable {
-				-- 'rust_analyzer',
 				'lua_ls',
-				'hls',
 				'asm_lsp',
 				'zls',
 				'clangd',
 				'nil_ls',
 				'cssls',
-				'docker_compose_language_service',
-				'dockerls',
+				-- 'docker_compose_language_service',
+				-- 'dockerls',
 				'taplo',
 				'sourcekit',
 				-- 'sqls',
 				'marksman',
 				'markdown_oxide',
 				'jsonls',
-				'gopls',
+				-- 'gopls',
 				'dprint',
 				'html',
-				'vuels',
-				'yamlls',
-				-- 'postgres_lsp',
+				-- 'yamlls',
+				'fish_lsp',
 			}
 		end,
 	},
@@ -216,6 +213,13 @@ return {
 	{
 		'mrcjkb/rustaceanvim',
 		lazy = false,
+	},
+	{
+		'mrcjkb/haskell-tools.nvim',
+		lazy = false, -- This plugin is already lazy
+		config = function()
+			require('telescope').load_extension 'ht'
+		end,
 	},
 	-- { 'nanotee/sqls.nvim' },
 }

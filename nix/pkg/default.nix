@@ -30,10 +30,8 @@
     stylua
     taplo
     zoxide
-    nerd-fonts.meslo-lg
-    # alejandra
-    obsidian
-    zsh
+    plemoljp-nf
+    fish
     tailscale
     bat
     tokei
@@ -44,29 +42,23 @@
     # libllvm
     sd
     direnv
-    amazon-q-cli
-    zellij
     codex
     nil
-    brave
+    viu
+    fish-lsp
+    fzf
   ]
   ++ (if arch == "aarch64" then [ ] else [ ])
   ++ (if arch == "x86_64" then [ ] else [ ])
   ++ (
     if os == "darwin" then
       [
-        chatgpt
+        # chatgpt
         mas
         pngpaste
         jankyborders
-        discord
-        raycast
-        the-unarchiver
-        betterdisplay
         sketchybar
         sbarlua
-        ghostty-bin
-        anki-bin
       ]
     else
       [ ]
@@ -74,14 +66,13 @@
   ++ (
     if os == "linux" then
       [
+        obsidian
+        firefox
         anki
         unixtools.xxd
-        # firefox
         docker
         ghostty
         swift
-        # niri
-        hyprland
         regreet
         ironbar
         sherlock

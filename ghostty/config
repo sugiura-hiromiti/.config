@@ -9,11 +9,11 @@ adjust-cell-height = -2
 
 theme = dark:cyberdream,light:cyberdream_light
 # theme = dark:jubi,light:cyberdream_light
-# unfocused-split-fill = #2f3e63
+unfocused-split-fill = #2f3e63
 
 cursor-opacity = 1.0
-background-opacity = 0.87
-background-blur = 5
+background-opacity = 0.88
+# background-blur = 100
 
 mouse-hide-while-typing = true
 
@@ -35,6 +35,12 @@ keybind = super+equal=increase_font_size:1
 keybind = super+n=new_window
 keybind = super+q=quit
 keybind = super+v=paste_from_clipboard
+keybind = super+d=new_split:right
+keybind = super+shift+d=new_split:down
+keybind = super+w=close_surface
+keybind = super+left_bracket=goto_split:previous
+keybind = super+right_bracket=goto_split:next
+keybind = super+i=inspector:toggle
 
 #  NOTE: window
 window-padding-x = 0
@@ -51,6 +57,7 @@ quick-terminal-autohide = false
 #  NOTE: shell
 shell-integration = zsh
 window-inherit-working-directory = true
+confirm-close-surface = false
 
 #  NOTE: macos
 macos-titlebar-style = hidden
