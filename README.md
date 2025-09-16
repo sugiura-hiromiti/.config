@@ -8,3 +8,5 @@ ss
 aasssssf
 
 curl -fsSL https://install.determinate.systems/nix | sh -s -- install
+
+(restart shell)
