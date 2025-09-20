@@ -96,7 +96,6 @@ m.terminal = function()
 			vim.api.nvim_open_win(bufnr, true, conf)
 		end
 
-		vim.cmd 'cd ~'
 		vim.cmd 'term'
 
 		if choice == 'tab' then

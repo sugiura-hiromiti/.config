@@ -44,7 +44,13 @@ _g_ gitui        _s_ ssr
 					function()
 						local ft = vim.bo.filetype
 						if ft == 'rust' then
-							vim.cmd 'RustLsp hover'
+							local mode = vim.api.nvim_get_mode().mode
+							if mode == 'n' then
+								mode = 'actions'
+							elseif mode == 'v' or mode == 'V' then
+								mode = 'range'
+							end
+							vim.cmd.RustLsp { 'hover', mode }
 						else
 							l.hover()
 						end

@@ -47,6 +47,10 @@
     viu
     fish-lsp
     fzf
+    brave
+    # amazon-q-cli
+    uv
+    reaper
   ]
   ++ (if arch == "aarch64" then [ ] else [ ])
   ++ (if arch == "x86_64" then [ ] else [ ])
@@ -57,8 +61,8 @@
         mas
         pngpaste
         jankyborders
-        sketchybar
-        sbarlua
+        # sketchybar
+        # sbarlua
       ]
     else
       [ ]
@@ -67,7 +71,6 @@
     if os == "linux" then
       [
         obsidian
-        firefox
         anki
         unixtools.xxd
         docker

@@ -39,12 +39,10 @@
       "raycast"
       "the-unarchiver"
       "betterdisplay"
-      "ghostty"
       "anki"
-      "iterm2"
       "homerow"
-      "firefox"
       "obsidian"
+      "ghostty"
       # "mouseless"
     ];
     taps = [
@@ -53,7 +51,7 @@
     ];
     masApps = {
       # "Wallpaper Play" = 1638457121;
-      "Logic Pro" = 634148309;
+      # "Logic Pro" = 634148309;
       # "Dark Reader for Safari" = 1438243180;
     };
   };
@@ -77,7 +75,7 @@
         NSAutomaticWindowAnimationsEnabled = false;
         NSDocumentSaveNewDocumentsToCloud = false;
         NSTableViewDefaultSizeMode = 1;
-        _HIHideMenuBar = true;
+        _HIHideMenuBar = false;
         "com.apple.mouse.tapBehavior" = 1;
         # "com.apple.trackpad.scaling" = 5;
       };

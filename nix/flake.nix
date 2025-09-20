@@ -79,7 +79,7 @@
             inherit fenix;
           };
           modules = [
-            ./home
+            ./home.nix
           ];
         };
       };
@@ -137,17 +137,6 @@
               "
               echo -ne "\033]0;updating nix-darwin\007"
               sudo nix run nix-darwin -- switch --flake .#conf
-
-              echo "
-
-              -------------------------------------------"
-              echo "restarting launchd services"
-              echo "-------------------------------------------
-              "
-              yabai --stop-service
-              yabai --uninstall-service
-              yabai --install-service
-              yabai --start-service
 
             fi
 

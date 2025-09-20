@@ -13,7 +13,7 @@
   ...
 }:
 let
-  mypkgs = import ../pkg {
+  mypkgs = import ./pkg {
     inherit user;
     inherit os;
     inherit arch;
@@ -39,35 +39,35 @@ in
     file = {
       ".clang-format" = {
         target = ".clang-format";
-        source = ../../.clang-format;
+        source = ../.clang-format;
       };
       ".editorconfig" = {
         target = ".editorconfig";
-        source = ../../.editorconfig;
+        source = ../.editorconfig;
       };
       ".gitconfig" = {
         target = ".gitconfig";
-        source = ../../.gitconfig;
+        source = ../.gitconfig;
       };
       ".gitconfig_p" = {
         target = ".gitconfig_p";
-        source = ../../.gitconfig_p;
+        source = ../.gitconfig_p;
       };
       ".dprint.json" = {
         target = ".dprint.json";
-        source = ../../.dprint.json;
+        source = ../.dprint.json;
       };
       ".rustfmt.toml" = {
         target = ".rustfmt.toml";
-        source = ../../.rustfmt.toml;
+        source = ../.rustfmt.toml;
       };
       ".stylua.toml" = {
         target = ".stylua.toml";
-        source = ../../.stylua.toml;
+        source = ../.stylua.toml;
       };
       ".npmrc" = {
         target = ".npmrc";
-        source = ../../.npmrc;
+        source = ../.npmrc;
       };
     };
     packages = mypkgs;
