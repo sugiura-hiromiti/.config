@@ -41,6 +41,7 @@
       "betterdisplay"
       "anki"
       "homerow"
+      "firefox"
       "obsidian"
       "ghostty"
       # "mouseless"
@@ -51,7 +52,7 @@
     ];
     masApps = {
       # "Wallpaper Play" = 1638457121;
-      # "Logic Pro" = 634148309;
+      "Logic Pro" = 634148309;
       # "Dark Reader for Safari" = 1438243180;
     };
   };

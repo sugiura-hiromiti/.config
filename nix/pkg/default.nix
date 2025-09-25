@@ -47,10 +47,8 @@
     viu
     fish-lsp
     fzf
-    brave
     # amazon-q-cli
     uv
-    reaper
   ]
   ++ (if arch == "aarch64" then [ ] else [ ])
   ++ (if arch == "x86_64" then [ ] else [ ])

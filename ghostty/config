@@ -3,16 +3,15 @@ font-family = PlemolJP Console NF ExtraLight
 font-family-bold = PlemolJP Console NF Light
 font-family-italic = PlemolJP Console NF ExtraLight Italic
 font-family-bold-italic = PlemolJP Console NF Light Italic
-font-size = 20
-# font-size = 35
+font-size = 21
 adjust-cell-width = -1
 adjust-cell-height = -1
 
 theme = dark:cyberdream,light:cyberdream_light
-unfocused-split-fill = #1f1e33
+unfocused-split-fill = #000000
 
 # cursor-opacity = 0.5
-background-opacity = 0.76
+background-opacity = 0.83
 background-opacity-cells = true
 # background-blur = 100
 
