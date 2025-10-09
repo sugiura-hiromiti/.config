@@ -20,43 +20,60 @@ return {
 	{ 'OXY2DEV/helpview.nvim', lazy = false },
 	'Hiphish/rainbow-delimiters.nvim',
 	'chrisgrieser/nvim-spider',
+	-- {
+	-- 	'catppuccin/nvim',
+	-- 	name = 'catppuccin',
+	-- 	config = function()
+	-- 		require('catppuccin').setup {
+	-- 			-- transparent_background = true,
+	-- 			term_colors = true,
+	-- 			-- dim_inactive = { enabled = true },
+	-- 			styles = {
+	-- 				keywords = { 'bold' },
+	-- 				properties = { 'italic', 'bold' },
+	-- 			},
+	-- 		}
+	-- 		vim.cmd 'colo catppuccin'
+	-- 		-- Force transparency everywhere
+	-- 		-- local groups = {
+	-- 		-- 	'Normal',
+	-- 		-- 	'NormalNC',
+	-- 		-- 	'NormalFloat',
+	-- 		-- 	'FloatBorder',
+	-- 		-- 	'SignColumn',
+	-- 		-- 	'LineNr',
+	-- 		-- 	'CursorLineNr',
+	-- 		-- 	'CursorLine',
+	-- 		-- 	'CursorColumn',
+	-- 		-- 	'EndOfBuffer',
+	-- 		-- 	'StatusLine',
+	-- 		-- 	'StatusLineNC',
+	-- 		-- 	'VertSplit',
+	-- 		-- 	'WinSeparator',
+	-- 		-- 	'TabLine',
+	-- 		-- 	'TabLineFill',
+	-- 		-- }
+	-- 		--
+	-- 		-- for _, group in ipairs(groups) do
+	-- 		-- 	vim.api.nvim_set_hl(0, group, { bg = 'none' })
+	-- 		-- end
+	-- 	end,
+	-- },
+	-- {
+	-- 	'mcauley-penney/techbase.nvim',
+	-- 	config = function(_, opts)
+	-- 		vim.cmd.colorscheme 'techbase'
+	-- 	end,
+	-- 	priority = 1000,
+	-- },
 	{
-		'catppuccin/nvim',
-		name = 'catppuccin',
+		'sugiura-hiromiti/newt.nvim',
 		config = function()
-			require('catppuccin').setup {
-				-- transparent_background = true,
-				term_colors = true,
-				-- dim_inactive = { enabled = true },
-				styles = {
-					keywords = { 'bold' },
-					properties = { 'italic', 'bold' },
-				},
-			}
-			vim.cmd 'colo catppuccin'
-			-- Force transparency everywhere
-			-- local groups = {
-			-- 	'Normal',
-			-- 	'NormalNC',
-			-- 	'NormalFloat',
-			-- 	'FloatBorder',
-			-- 	'SignColumn',
-			-- 	'LineNr',
-			-- 	'CursorLineNr',
-			-- 	'CursorLine',
-			-- 	'CursorColumn',
-			-- 	'EndOfBuffer',
-			-- 	'StatusLine',
-			-- 	'StatusLineNC',
-			-- 	'VertSplit',
-			-- 	'WinSeparator',
-			-- 	'TabLine',
-			-- 	'TabLineFill',
+			-- require('thaoe').setup {
+			-- 	-- background='',
+			-- 	-- style = 'bright',
 			-- }
-			--
-			-- for _, group in ipairs(groups) do
-			-- 	vim.api.nvim_set_hl(0, group, { bg = 'none' })
-			-- end
+			vim.cmd.colorscheme 'newt'
 		end,
 	},
 	{

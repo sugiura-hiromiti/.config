@@ -10,7 +10,12 @@ set -gx MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT ""
 
 fish_add_path $HOME/.nix-profile/bin
 fish_add_path /nix/var/nix/profiles/default/bin
+fish_add_path $HOME/.config/bin
+
+abbr -a ga --set-cursor "git stage . && git commit -m '%' && git push"
 
 direnv hook fish | source
 zoxide init fish | source
 starship init fish | source
+
+#  TODO: set abbreviation

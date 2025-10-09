@@ -5,11 +5,11 @@ sudo yabai --load-sa
 
 ## setting
 yabai -m config \
-window_gap 5 \
-top_padding 5 \
-bottom_padding 5 \
-left_padding 5 \
-right_padding 5 \
+window_gap 0 \
+top_padding 0 \
+bottom_padding 0 \
+left_padding 0 \
+right_padding 0 \
 focus_follows_mouse autofocus \
 mouse_follows_focus on \
 window_placement second_child \
@@ -18,6 +18,7 @@ window_opacity on \
 active_window_opacity 1.0 \
 normal_window_opacity 0.982 \
 layout bsp
+# external_bar main:-25:0
 # external_bar main:0:25
 
 # yabai -m config --space \

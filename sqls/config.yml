@@ -1,23 +1,24 @@
 lowercaseKeywords: true
 connections:
-  - alias: smart_open_job
-    driver: sqlite3
-    dataSourceName: file:/Users/hiromichi.sugiura/.local/share/nvim/smart_open.sqlite3
-  - alias: smart_open_personal
-    driver: sqlite3
-    dataSourceName: file:/Users/a/.local/share/nvim/smart_open.sqlite3
-  - alias: mei_job_dev
-    driver: postgresql
-    dataSourceName: postgres://u8mg2g59pv38hk:p7f49388ab599de60fa98e5e853a77cfffdbf27ccce8636f41a868e8b05dbe690@ec2-54-150-123-155.ap-northeast-1.compute.amazonaws.com:5432/dflfk85p6vo131?sslmode=verify-ca&sslcert=/Users/hiromichi.sugiura/Downloads/mei_db_dev_cert/postgresql.crt&sslkey=/Users/hiromichi.sugiura/Downloads/mei_db_dev_cert/postgresql.key.der&sslrootcert=/Users/hiromichi.sugiura/Downloads/mei_db_dev_cert/root.crt
-    # dataSourceName: host=ec2-54-150-123-155.ap-northeast-1.compute.amazonaws.com port=5432 user=u8mg2g59pv38hk password=p7f49388ab599de60fa98e5e853a77cfffdbf27ccce8636f41a868e8b05dbe690 dbname=dflfk85p6vo131 sslmode=verify-ca sslcert=/Users/hiromichi.sugiura/Downloads/meitec-dev-app(mtls)/postgresql.crt sslkey=/Users/hiromichi.sugiura/Downloads/meitec-dev-app(mtls)/postgresql.key.der sslrootcert=/Users/hiromichi.sugiura/Downloads/meitec-dev-app(mtls)/root.crt
-    # proto: tcp
-    # user: u8mg2g59pv38hk
-    # passwd: p7f49388ab599de60fa98e5e853a77cfffdbf27ccce8636f41a868e8b05dbe690
-    # host: ec2-54-150-123-155.ap-northeast-1.compute.amazonaws.com
-    # port: 5432
-    # dbName: dflfk85p6vo131
-    # params:
-    #   sslmode: verify-ca
-    #   sslcert: /Users/hiromichi.sugiura/Downloads/meitec-dev-app(mtls)/postgresql.crt
-    #   sslkey: /Users/hiromichi.sugiura/Downloads/meitec-dev-app(mtls)/postgresql.key.der
-    #   sslrootcert: /Users/hiromichi.sugiura/Downloads/meitec-dev-app(mtls)/root.crt
+   - alias: smart_open_job
+     driver: sqlite3
+     dataSourceName: file:/Users/hiromichi.sugiura/.local/share/nvim/smart_open.sqlite3
+   - alias: smart_open_personal
+     driver: sqlite3
+     dataSourceName: file:/Users/a/.local/share/nvim/smart_open.sqlite3
+   - alias: mei_job_dev
+     driver: postgresql
+     dataSourceName: postgres://u8mg2g59pv38hk:p7f49388ab599de60fa98e5e853a77cfffdbf27ccce8636f41a868e8b05dbe690@ec2-54-150-123-155.ap-northeast-1.compute.amazonaws.com:5432/dflfk85p6vo131?sslmode=verify-ca&sslcert=/Users/hiromichi.sugiura/Downloads/mei_db_dev_cert/postgresql.crt&sslkey=/Users/hiromichi.sugiura/Downloads/mei_db_dev_cert/postgresql.key.der&sslrootcert=/Users/hiromichi.sugiura/Downloads/mei_db_dev_cert/root.crt
+
+     # dataSourceName: host=ec2-54-150-123-155.ap-northeast-1.compute.amazonaws.com port=5432 user=u8mg2g59pv38hk password=p7f49388ab599de60fa98e5e853a77cfffdbf27ccce8636f41a868e8b05dbe690 dbname=dflfk85p6vo131 sslmode=verify-ca sslcert=/Users/hiromichi.sugiura/Downloads/meitec-dev-app(mtls)/postgresql.crt sslkey=/Users/hiromichi.sugiura/Downloads/meitec-dev-app(mtls)/postgresql.key.der sslrootcert=/Users/hiromichi.sugiura/Downloads/meitec-dev-app(mtls)/root.crt
+     # proto: tcp
+     # user: u8mg2g59pv38hk
+     # passwd: p7f49388ab599de60fa98e5e853a77cfffdbf27ccce8636f41a868e8b05dbe690
+     # host: ec2-54-150-123-155.ap-northeast-1.compute.amazonaws.com
+     # port: 5432
+     # dbName: dflfk85p6vo131
+     # params:
+     #   sslmode: verify-ca
+     #   sslcert: /Users/hiromichi.sugiura/Downloads/meitec-dev-app(mtls)/postgresql.crt
+     #   sslkey: /Users/hiromichi.sugiura/Downloads/meitec-dev-app(mtls)/postgresql.key.der
+     #   sslrootcert: /Users/hiromichi.sugiura/Downloads/meitec-dev-app(mtls)/root.crt

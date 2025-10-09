@@ -51,9 +51,10 @@ fn run(service: &Service, action: &Action,) {
 )]
 #[strum(serialize_all = "snake_case")]
 enum Service {
-	#[strum(props(FullName = "com.sugiura-hiromiti.sketchybar_builtin.\
-	                          plist com.sugiura-hiromiti.\
-	                          sketchybar_external_1.plist"))]
+	// #[strum(props(FullName = "com.sugiura-hiromiti.sketchybar_builtin.\
+	//                           plist com.sugiura-hiromiti.\
+	//                           sketchybar_external_1.plist"))]
+	#[strum(props(FullName = "com.sugiura-hiromiti.sketchybar_builtin.plist"))]
 	Sketchybar,
 }
 

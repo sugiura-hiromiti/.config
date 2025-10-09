@@ -69,6 +69,15 @@ in
         target = ".npmrc";
         source = ../.npmrc;
       };
+      "AGENTS.md" = {
+        target = ".codex/AGENTS.md";
+        source = ../codex/AGENTS.md;
+      };
+      "prompts" = {
+        target = ".codex/prompts";
+        source = ../codex/prompts;
+        recursive = false;
+      };
     };
     packages = mypkgs;
   };

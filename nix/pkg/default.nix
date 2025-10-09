@@ -16,11 +16,11 @@
     eza
     fd
     gh
-    gitui
+    # gitui
     lua5_4_compat
     lua-language-server
     luajitPackages.luarocks
-    marksman
+    # marksman
     markdown-oxide
     neovim
     ripgrep
@@ -49,6 +49,9 @@
     fzf
     # amazon-q-cli
     uv
+    mcp-proxy
+    termusic
+    vscode-langservers-extracted
   ]
   ++ (if arch == "aarch64" then [ ] else [ ])
   ++ (if arch == "x86_64" then [ ] else [ ])
@@ -60,7 +63,7 @@
         pngpaste
         jankyborders
         # sketchybar
-        # sbarlua
+        sbarlua
       ]
     else
       [ ]

@@ -1,2 +1,0 @@
-model_reasoning_effort = "high"
-projects = { "/Users/hiromichi.sugiura/Downloads/ws/oso" = { trust_level = "trusted" } , "/Users/a/Downloads/awa/oso" = { trust_level = "trusted" } , "/Users/a/Downloads/awa/oso/.github/workflows" = { trust_level = "trusted" } }

@@ -24,24 +24,24 @@
     enable = true;
     onActivation = {
       autoUpdate = true;
-      cleanup = "uninstall";
+      cleanup = "zap";
     };
     brews = [
-      # "FelixKratz/formulae/sketchybar"
-      "koekeishiya/formulae/yabai"
+      "FelixKratz/formulae/sketchybar"
+      {
+        name = "koekeishiya/formulae/yabai";
+        args = [ "HEAD" ];
+      }
       "koekeishiya/formulae/skhd"
       "sqlite"
     ];
     casks = [
       "karabiner-elements"
-      "slack"
-      "discord"
       "raycast"
       "the-unarchiver"
       "betterdisplay"
       "anki"
       "homerow"
-      "firefox"
       "obsidian"
       "ghostty"
       # "mouseless"
@@ -53,7 +53,10 @@
     masApps = {
       # "Wallpaper Play" = 1638457121;
       "Logic Pro" = 634148309;
-      # "Dark Reader for Safari" = 1438243180;
+      "Final Cut Pro" = 424389933;
+      "Vimlike" = 1584519802;
+      "AdBlock Pro for Safari" = 1018301773;
+      "Dark Reader for Safari" = 1438243180;
     };
   };
   nix = {

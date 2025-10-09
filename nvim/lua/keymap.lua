@@ -1,7 +1,7 @@
 vim.cmd 'smapclear'
 
 local m = vim.keymap.set
-local tsb = require 'telescope.builtin'
+-- local tsb = require 'telescope.builtin'
 local select = require 'my_lua_api.select'
 local log = require 'my_lua_api.nvim_logger'
 
@@ -136,5 +136,5 @@ m({ 'n', 'i', 'c', 'x' }, '<c-s-tab>', '<cmd>tabprevious<cr>')
 -- NOTE: select ui
 m({ 'n', 'x' }, '/', select.text_search)
 m({ 'n', 'x' }, '?', select.references)
-m({ 'n', 'x' }, 'K', select.git)
-m({ 'n', 'x' }, ';', select.terminal)
+m({ 'n', 'x' }, '<c-h>', select.git)
+m({ 'n', 'x' }, "'", select.terminal)

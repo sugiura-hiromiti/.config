@@ -1,3 +1,78 @@
+M.null . M.insert 'a' 0 $ M.empty
+M.null M.empty 
+M.insert 5 600 . M.insert 4 200 . M.insert 3 100 $ M.empty  
+Map.insert 5 600 . Map.insert 4 200 . Map.insert 3 100 $ Map.empty  
+M.insert 3 'a' M.empty 
+M.empty 
+M.fromList [(1,2),(3,4),(3,2),(5,5)]  
+M.fromList [("amelia","555-2938"),("freya","452-2928"),("neil","205-2928")]
+:l canvas.hs 
+sum' [3,5,2,1,6, -3]
+sum' [3,5,2,1,6]
+:r
+sum' [3,5,2,1,6]
+sum' [3,5,2,1]
+:r
+numLongChains'
+numLongChains
+:r
+[((map (*) [0..100]) !! x) x | x <- [0..100]]
+map (map (*) [0 .. 100]) [0..100]
+(listOfFuncs !! 3) 3
+(listOfFuncs !! 2) 3
+(listOfFuncs !! 1) 3
+(listOfFuncs !! 0) 3
+listOfFuncs !! 0
+:r
+numLongChains 
+:r
+collatz 30
+:r
+collatz 30
+:l doubleMe.hs 
+sum (takeWhile' (<10_000) (filter odd (map (^2) [1..])))
+sum (takeWhile' (<10_000) (filter odd (^2) [1..])))
+takeWhile' (/= ' ') "get first word"
+:l doubleMe.hs 
+:q
+takeWhile' (==3) []
+takeWhile' (==3) [3,3,3,3]
+:r
+takeWhile' (==3) [3,3,3,3]
+takeWhile' (==3) [3,3,3,3,0]
+takeWhile' (==3) [0,3,0,3,0,3,3]
+takeWhile' (==3) [3,0,3,0,3,3]
+takeWhile' (==3) [3,3,0,3,3]
+:r
+:r
+largestDivisible 
+:r
+filter' (0 == (`mod` 5)) [1,2,3,4,5,6,7,8,9,10]
+filter' 0 == (`mod` 5) [1,2,3,4,5,6,7,8,9,10]
+0 == (`mod` 5) 10
+((`mod` 5) == 0) 5
+(10 `mod`) 5
+(`mod` 5) 10
+(mod 10) 5
+mod 10 5
+10 `mod` 5
+10 mod 5
+10 % 5
+(% 5) 10
+(+5) 10
+(%5) 10
+quicksort [1,2,6,3,5,4,9]
+:r
+quicksort [1,2,6,3,5,4,9]
+:r
+quicksort [1,2,6,3,5,4,9]
+:r
+filter' isAlpha "ab0=sxx*"
+filter' isAlpha ['a','b','0','=']
+:l doubleMe.hs 
+:q
+map' (+3) [1,2,3]
+:l doubleMe.hs 
 :q
 :r
 map' (`take` [1,2,3,4,5,6,7,8]) [1,2,3,4,5,6,7,8]
@@ -23,78 +98,3 @@ densityTell' 2000 1001
 densityTell' 2000 1000
 densityTell' 2 1
 densityTell' 1 2
-densityTell' 1 1
-densityTell' 0 1
-:r
-cap' "\0"
-cap' "\null"
-cap' "\n"
-cap' "X"
-cap' "XXXXXXXX"
-cap' "agc"
-cap' ""
-:r
-addVector (7,4) (2,1)
-addVector (2,4) (2,1)
-addVector (0,0) (2,1)
-:r
-addVector (1,2) (3,4)
-:r
-charName 'b'
-:r
-fctrl 5
-fctrl 4
-fctrl 3
-:r
-fctrl 3
-:r
-hand 11
-hand x
-hand 5
-hand 0
-:r
-lucky 7
-lucky 0
-:l doubleMe.hs 
-:q
-:t minBound
-minBound :: Bool
-minBound :: Int
-minBound :: Char
-pred 'b'
-succ 'b'
-read "8" :: Int
-read "abc" :: Int
-read "abc" :: String
-read "8" :: String
-read "8" :: Char
-read "'8'" :: [Char]
-read "'8'" :: Char
-read "'8'" :: String
-read "'8'" ++ "34"
-read "8" ++ "34"
-read ['a','a','b'] ++ ['x']
-read "abc" ++ ['a','x']
-read "[1,2,3,4]" ++ [0]
-read "True"
-read 8
-read 8 ++ "abc"
-read "8" ++ "abc"
-read "8" - read "2"
-read "8" - 2
-read "True" || False
-show True
-show [1,2,3]
-show ['a','b','c']
-show "abc"
-:t (>)
-:t (==)
-:t fst
-:t head
-head [1,2,3]
-head "abc"
-:t ['a','b','c']
-:t [['a', 'b']]
-:t "abc"
-:t 0
-:t 666

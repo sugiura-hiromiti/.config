@@ -6,7 +6,7 @@ vim.bo.softtabstop = 3
 vim.opt.fileencoding = 'utf-8'
 vim.opt.list = true
 vim.opt.listchars = { tab = '│ ' }
-vim.opt.pumblend = 40
+vim.opt.pumblend = 20
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.autowriteall = true
@@ -17,6 +17,8 @@ vim.opt.cursorcolumn = true
 vim.opt.laststatus = 3
 vim.opt.showtabline = 0
 vim.opt.termguicolors = true
+vim.g.editorconfig = true
+vim.env.XDG_STATE_HOME = '/tmp'
 
 vim.diagnostic.config { virtual_text = true }
 vim.lsp.inlay_hint.enable()
