@@ -1,4 +1,4 @@
-#!/usr/bin/env -S cargo +nightly -q -Zscript run --release --manifest-path
+#!/usr/bin/env -S cargo -q -Zscript run --release --manifest-path
 ---
 [package]
 version="0.0.1"

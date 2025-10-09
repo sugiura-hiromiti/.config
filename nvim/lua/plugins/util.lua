@@ -69,7 +69,7 @@ return {
 	{
 		'sugiura-hiromiti/newt.nvim',
 		config = function()
-			-- require('thaoe').setup {
+			-- require('newt').setup {
 			-- 	-- background='',
 			-- 	-- style = 'bright',
 			-- }

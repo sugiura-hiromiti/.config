@@ -7,18 +7,19 @@ font-size = 20
 adjust-cell-width = -1
 adjust-cell-height = -1
 
-theme = dark:cyberdream,light:cyberdream_light
+theme = dark:newt_dark,light:newt_light
 unfocused-split-fill = #000000
 
 # cursor-opacity = 0.5
-background-opacity = 0.75
-background-opacity-cells = true
-background-blur = false
+# background-opacity = 0.75
+# background-opacity-cells = true
+# background-blur = false
 
 cursor-color = cell-foreground
 cursor-text = cell-background
 
 mouse-hide-while-typing = true
+custom-shader = ~/.config/ghostty/shader/cursor.glsl
 
 # https://ghostty.org/docs/config/keybind/sequence sequence on global keybind is not allowed currently
 #  NOTE: keybind
@@ -62,7 +63,7 @@ focus-follows-mouse = true
 
 #  NOTE: quick-terminal (equivalent to iterm's hotkey window)
 quick-terminal-position = center
-quick-terminal-size = 100%,100%
+quick-terminal-size = 85%,85%
 quick-terminal-screen = mouse
 quick-terminal-animation-duration = 0
 quick-terminal-autohide = false

@@ -20,7 +20,6 @@
     lua5_4_compat
     lua-language-server
     luajitPackages.luarocks
-    # marksman
     markdown-oxide
     neovim
     ripgrep
@@ -52,6 +51,7 @@
     mcp-proxy
     termusic
     vscode-langservers-extracted
+    babelfish
   ]
   ++ (if arch == "aarch64" then [ ] else [ ])
   ++ (if arch == "x86_64" then [ ] else [ ])
@@ -62,7 +62,7 @@
         mas
         pngpaste
         jankyborders
-        # sketchybar
+        sketchybar
         sbarlua
       ]
     else
@@ -76,6 +76,7 @@
         unixtools.xxd
         docker
         ghostty
+        firefox
         swift
         regreet
         ironbar

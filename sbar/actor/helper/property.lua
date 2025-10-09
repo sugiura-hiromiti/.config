@@ -75,15 +75,15 @@ m.default_properties = {
 	},
 	icon = {
 		font = {
-			family = 'MesloLGL Nerd Font',
-			style = 'Regular',
+			family = 'PlemolJP Console NF',
+			-- style = 'Regular',
 			size = font.size,
 		},
 	},
 	label = {
 		font = {
-			family = 'MesloLGL Nerd Font',
-			style = 'Regular',
+			family = 'PlemolJP Console NF',
+			-- style = 'Regular',
 			size = font.size,
 		},
 		padding_left = padding.label,

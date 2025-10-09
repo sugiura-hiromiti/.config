@@ -27,11 +27,12 @@
       cleanup = "zap";
     };
     brews = [
-      "FelixKratz/formulae/sketchybar"
-      {
-        name = "koekeishiya/formulae/yabai";
-        args = [ "HEAD" ];
-      }
+      # "FelixKratz/formulae/sketchybar"
+      # {
+      #   name = "koekeishiya/formulae/yabai";
+      #   args = [ "HEAD" ];
+      # }
+      "koekeishiya/formulae/yabai"
       "koekeishiya/formulae/skhd"
       "sqlite"
     ];
@@ -44,6 +45,7 @@
       "homerow"
       "obsidian"
       "ghostty"
+      "zen"
       # "mouseless"
     ];
     taps = [
@@ -54,9 +56,9 @@
       # "Wallpaper Play" = 1638457121;
       "Logic Pro" = 634148309;
       "Final Cut Pro" = 424389933;
-      "Vimlike" = 1584519802;
-      "AdBlock Pro for Safari" = 1018301773;
-      "Dark Reader for Safari" = 1438243180;
+      # "Vimlike" = 1584519802;
+      # "AdBlock Pro for Safari" = 1018301773;
+      # "Dark Reader for Safari" = 1438243180;
     };
   };
   nix = {
@@ -79,7 +81,7 @@
         NSAutomaticWindowAnimationsEnabled = false;
         NSDocumentSaveNewDocumentsToCloud = false;
         NSTableViewDefaultSizeMode = 1;
-        _HIHideMenuBar = false;
+        _HIHideMenuBar = true;
         "com.apple.mouse.tapBehavior" = 1;
         # "com.apple.trackpad.scaling" = 5;
       };
