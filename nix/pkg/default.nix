@@ -52,6 +52,7 @@
     termusic
     vscode-langservers-extracted
     babelfish
+    gemini-cli
   ]
   ++ (if arch == "aarch64" then [ ] else [ ])
   ++ (if arch == "x86_64" then [ ] else [ ])

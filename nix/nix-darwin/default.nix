@@ -45,7 +45,7 @@
       "homerow"
       "obsidian"
       "ghostty"
-      "zen"
+      "firefox"
       # "mouseless"
     ];
     taps = [
