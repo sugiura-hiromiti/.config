@@ -72,7 +72,7 @@ return {
 			require('newt').setup {
 				-- background='',
 				-- style = 'bright',
-				transparent = true,
+				-- transparent = true,
 			}
 			vim.cmd.colorscheme 'newt'
 		end,
