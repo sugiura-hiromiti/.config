@@ -69,10 +69,11 @@ return {
 	{
 		'sugiura-hiromiti/newt.nvim',
 		config = function()
-			-- require('newt').setup {
-			-- 	-- background='',
-			-- 	-- style = 'bright',
-			-- }
+			require('newt').setup {
+				-- background='',
+				-- style = 'bright',
+				transparent = true,
+			}
 			vim.cmd.colorscheme 'newt'
 		end,
 	},

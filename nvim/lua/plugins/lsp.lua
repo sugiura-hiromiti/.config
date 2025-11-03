@@ -194,19 +194,19 @@ return {
 			}
 		end,
 	},
-	{
-		'luckasRanarison/tailwind-tools.nvim',
-		name = 'tailwind-tools',
-		build = 'UpdateRemotePlugins',
-		opts = {
-			server = { settings = { includeLanguages = { rust = 'html' } }, on_attach = on_attach },
-			extension = {
-				patterns = {
-					rust = { 'class:%s*["\']([^"\']+)["\']' },
-				},
-			},
-		},
-	},
+	-- {
+	-- 	'luckasRanarison/tailwind-tools.nvim',
+	-- 	name = 'tailwind-tools',
+	-- 	build = 'UpdateRemotePlugins',
+	-- 	opts = {
+	-- 		server = { settings = { includeLanguages = { rust = 'html' } }, on_attach = on_attach },
+	-- 		extension = {
+	-- 			patterns = {
+	-- 				rust = { 'class:%s*["\']([^"\']+)["\']' },
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 	{
 		'mrcjkb/rustaceanvim',
 		lazy = false,

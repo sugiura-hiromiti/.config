@@ -36,9 +36,6 @@
     tokei
     cargo-expand
     yaml-language-server
-    # sbarlua build dependencies
-    # clang
-    # libllvm
     sd
     direnv
     codex
@@ -46,13 +43,12 @@
     viu
     fish-lsp
     fzf
-    # amazon-q-cli
     uv
     mcp-proxy
-    termusic
     vscode-langservers-extracted
     babelfish
     gemini-cli
+    alacritty
   ]
   ++ (if arch == "aarch64" then [ ] else [ ])
   ++ (if arch == "x86_64" then [ ] else [ ])

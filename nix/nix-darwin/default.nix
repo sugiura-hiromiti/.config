@@ -46,6 +46,7 @@
       "obsidian"
       "ghostty"
       "firefox"
+      "slack"
       # "mouseless"
     ];
     taps = [

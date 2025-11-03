@@ -15,6 +15,7 @@ fish_add_path /nix/var/nix/profiles/default/bin
 fish_add_path $HOME/.config/bin
 
 abbr -a ga --set-cursor "git stage . && git commit -m '%' && git push"
+abbr -a bi --set-cursor "lsappinfo info -only bundleid \"%\""
 
 direnv hook fish | source
 zoxide init fish | source

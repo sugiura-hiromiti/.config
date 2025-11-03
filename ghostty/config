@@ -11,9 +11,9 @@ theme = dark:newt_dark,light:newt_light
 unfocused-split-fill = #000000
 
 # cursor-opacity = 0.5
-background-opacity = 0.75
-background-opacity-cells = true
-background-blur = false
+background-opacity = 0.92
+background-opacity-cells = false
+background-blur = 150
 
 cursor-color = cell-foreground
 cursor-text = cell-background
@@ -24,6 +24,7 @@ custom-shader = ~/.config/ghostty/shader/cursor.glsl
 # https://ghostty.org/docs/config/keybind/sequence sequence on global keybind is not allowed currently
 #  NOTE: keybind
 keybind = clear
+# keybind = global:f13=toggle_visibility
 keybind = global:f13=toggle_quick_terminal
 # https://www.leonerd.org.uk/hacks/fixterms/
 keybind = ctrl+tab=csi:9;5u
@@ -80,7 +81,7 @@ macos-titlebar-style = hidden
 macos-option-as-alt = left
 macos-icon = xray
 macos-non-native-fullscreen = true
-macos-hidden = never
+# macos-hidden = always
 macos-shortcuts = allow
 
 bell-features = system
