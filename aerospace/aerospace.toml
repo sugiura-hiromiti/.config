@@ -38,7 +38,7 @@ default-root-container-orientation = 'auto'
 # See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
 # See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
 # Fallback value (if you omit the key): on-focused-monitor-changed = []
-# on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = ['move-mouse window-lazy-center']
 
 # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
@@ -48,6 +48,7 @@ automatically-unhide-macos-hidden-apps = true
 
 [workspace-to-monitor-force-assignment]
 1 = 'secondary'
+2 = 'secondary'
 
 # Possible values: (qwerty|dvorak|colemak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
@@ -127,8 +128,6 @@ f1 = 'workspace 1'
 f2 = 'workspace 2'
 f3 = 'workspace 3'
 f4 = 'workspace 4'
-f5 = 'workspace --wrap-around next'
-f6 = 'workspace --wrap-around prev'
 # alt-1 = 'workspace 1'
 # alt-2 = 'workspace 2'
 # alt-3 = 'workspace 3'
@@ -166,8 +165,6 @@ shift-f1 = 'move-node-to-workspace 1'
 shift-f2 = 'move-node-to-workspace 2'
 shift-f3 = 'move-node-to-workspace 3'
 shift-f4 = 'move-node-to-workspace 4'
-shift-f5 = 'move-node-to-workspace --wrap-around next'
-shift-f6 = 'move-node-to-workspace --wrap-around prev'
 # alt-shift-5 = 'move-node-to-workspace 5'
 # alt-shift-6 = 'move-node-to-workspace 6'
 # alt-shift-7 = 'move-node-to-workspace 7'
@@ -202,12 +199,12 @@ shift-f6 = 'move-node-to-workspace --wrap-around prev'
 f13 = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-ctrl-leftSquareBracket = 'mode service'
+ctrl-rightSquareBracket = 'mode service'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
-ctrl-leftSquareBracket = ['reload-config', 'mode main']
+ctrl-rightSquareBracket = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
 f = [
 	'layout floating tiling',

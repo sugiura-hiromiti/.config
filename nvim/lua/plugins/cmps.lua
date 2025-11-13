@@ -26,7 +26,7 @@ return {
 						vim_item.menu = my_str.truncate_end(vim_item.menu, menu_width)
 
 						return lspkind.cmp_format {
-					mode = 'symbol', -- before = require('tailwind-tools.cmp').lspkind_format
+							mode = 'symbol', -- before = require('tailwind-tools.cmp').lspkind_format
 						}(entry, vim_item)
 					end,
 

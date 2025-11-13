@@ -87,16 +87,17 @@ _g_ gitui        _s_ ssr
 			name = 'window',
 			mode = { 'n', 'x' },
 			body = '<tab>',
-			config = { hint = { type = 'window', position = 'middle' } },
-			hint = [[_q_ _w_ cycle
+			config = { invoke_on_body = true, hint = { type = 'window', position = 'middle' } },
+			hint = [[
+_q_ _w_ tab
 _h_ _j_ _k_ _l_ focus
 _H_ _J_ _K_ _L_ move
 _<c-b>_ _<c-n>_ _<c-p>_ _<c-f>_ resize
 _t_ split new tab _c_ close _x_ exit
 ]],
 			heads = {
-				{ 'q', '<c-w>W' },
-				{ 'w', '<c-w>w' },
+				{ 'q', '<cmd>tabprevious<cr>' },
+				{ 'w', '<cmd>tabnext<cr>' },
 				{ 'h', '<c-w>h' },
 				{ 'j', '<c-w>j' },
 				{ 'k', '<c-w>k' },

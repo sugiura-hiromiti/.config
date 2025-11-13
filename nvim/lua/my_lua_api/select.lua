@@ -8,7 +8,7 @@ m.text_search = function()
 	vim.ui.select({
 		'live grep',
 		'live grep (only open files)',
-		"vim's find",
+		'current buffer',
 		'grep string under cursor',
 		'text on screen',
 		'select',
@@ -20,8 +20,9 @@ m.text_search = function()
 				opt.grep_open_files = true
 			end
 			tb.live_grep(opt)
-		elseif choice == "vim's find" then
-			vim.api.nvim_feedkeys('/', 'n', false)
+		elseif choice == 'current buffer' then
+			tb.current_buffer_fuzzy_find()
+			-- vim.api.nvim_feedkeys('/', 'n', false)
 		elseif choice == 'grep string under cursor' then
 			tb.grep_string()
 		elseif choice == 'text on screen' then
@@ -76,11 +77,11 @@ m.git = function()
 end
 
 m.terminal = function()
-	vim.ui.select({ 'normal', 'vertical', 'horizontal', 'tab' }, { prompt = 'how to open terminal' }, function(choice)
+	vim.ui.select({ 'tab', 'vertical', 'horizontal', 'in place' }, { prompt = 'how to open terminal' }, function(choice)
 		local bufnr = 0
 		local conf = {}
 		-- local bufnr = vim.api.nvim_create_buf(true, true)
-		if choice == 'normal' then
+		if choice == 'in place' then
 			--do nothing
 			-- vim.api.nvim_open_win(0, true, {})
 		else
@@ -92,7 +93,7 @@ m.terminal = function()
 			end
 		end
 
-		if choice ~= 'normal' then
+		if choice ~= 'in place' then
 			vim.api.nvim_open_win(bufnr, true, conf)
 		end
 

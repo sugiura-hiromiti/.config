@@ -1,7 +1,4 @@
 function u
-    nix profile wipe-history
-    nix store gc
-
     pushd "$HOME/.config/nix" >/dev/null
     # build secret.nix content (note fish command substitutions)
     set who (whoami)

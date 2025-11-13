@@ -19,6 +19,7 @@ vim.g.rustaceanvim = {
 				},
 				cargo = {
 					allTargets = false,
+					targetDir = vim.fn.expand '~/.cache/rust-analyzer/target',
 				},
 				check = {
 					command = 'clippy',
@@ -139,6 +140,8 @@ return {
 				'html',
 				'yamlls',
 				'fish_lsp',
+				'terraformls',
+				'graphql',
 				-- 'gh_actions_ls',
 			}
 		end,

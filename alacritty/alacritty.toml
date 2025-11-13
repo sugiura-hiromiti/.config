@@ -1,5 +1,8 @@
 [general]
-import = ["~/.config/alacritty/newt-dark-normal.toml"]
+import = [
+	"~/.config/alacritty/newt-dark-normal.toml",
+	# "~/.config/alacritty/newt-light-normal.toml",
+]
 
 [window]
 decorations = "None"
@@ -14,13 +17,16 @@ italic = { style = "Thin Italic", family = "PlemolJP Console NF" }
 bold = { style = "Regular", family = "PlemolJP Console NF" }
 bold_italic = { style = "Italic", family = "PlemolJP Console NF" }
 
-size = 21
-offset = { x = -1, y = -4 }
-glyph_offset = { y = -2 }
+size = 20
+offset = { y = -3 }
+glyph_offset = { x = -1, y = -1 }
 builtin_box_drawing = false
 
 [keyboard]
 bindings = [
 	# applenotes://showNote?identifier=19C0DA4D-7B19-4179-A189-3724532D0CC4
 	{ key = "Enter", mods = "Shift", chars = "\u001b[13;2u" },
+	{ key = "t", mods = "Super", action = "ReceiveChar" },
+	{ key = "f", mods = "Super", action = "ReceiveChar" },
+	{ key = "w", mods = "Super", action = "ReceiveChar" },
 ]

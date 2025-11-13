@@ -1,15 +1,9 @@
 layout {
-	pane
 	pane size=1 borderless=true {
 		plugin location="zellij:status-bar"
 	}
 	pane size=1 borderless=true {
 		plugin location="zellij:tab-bar"
 	}
-	/-pane size=1 borderless=true {
-		plugin location="compact-bar"
-		plugin location="https://github.com/ndavd/zellij-cb/releases/download/v0.1.0/zellij-cb.wasm" {
-			DefaultTabName "tab"
-		}
-	}
+	pane
 }

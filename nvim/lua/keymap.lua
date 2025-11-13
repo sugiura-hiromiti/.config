@@ -130,11 +130,11 @@ m({ 'n', 'v' }, '<c-b>', '<cmd>Treewalker SwapLeft<cr>')
 m({ 'n', 'x' }, '<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
 m({ 'n', 'x' }, '<c-k>', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
 
-m({ 'n', 'i', 'c', 'x' }, '<c-tab>', '<cmd>tabnext<cr>')
-m({ 'n', 'i', 'c', 'x' }, '<c-s-tab>', '<cmd>tabprevious<cr>')
+-- m({ 'n', 'i', 'c', 'x' }, '<c-tab>', '<cmd>tabnext<cr>')
+-- m({ 'n', 'i', 'c', 'x' }, '<c-s-tab>', '<cmd>tabprevious<cr>')
 
 -- NOTE: select ui
 m({ 'n', 'x' }, '/', select.text_search)
 m({ 'n', 'x' }, '?', select.references)
-m({ 'n', 'x' }, '<c-h>', select.git)
+m({ 'n', 'x' }, '"', select.git)
 m({ 'n', 'x' }, "'", select.terminal)

@@ -6,7 +6,7 @@ sudo yabai --load-sa
 ## setting
 yabai -m config \
 window_gap 4 \
-top_padding 4 \
+top_padding 0 \
 bottom_padding 4 \
 left_padding 4 \
 right_padding 4 \

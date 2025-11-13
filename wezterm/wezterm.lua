@@ -36,8 +36,8 @@ wz.on('opacity', function(window, _)
 	local overrides = window:get_config_overrides() or {}
 	local hndl = assert(io.open('/tmp/wz_nvim.txt', 'r'), 'could not opened wz_nvim.txt')
 	if not overrides.window_background_opacity then
-		overrides.window_background_opacity = 0.45
-		overrides.text_background_opacity = 0.4
+		overrides.window_background_opacity = 0.65
+		overrides.text_background_opacity = 0.6
 		if wz.gui.get_appearance():find 'Light' then
 			overrides.color_scheme = 'Nova (base16)'
 			hndl:write 'dark'
@@ -57,26 +57,27 @@ end)
 return {
 	animation_fps = 60,
 	check_for_updates = false,
-	--cell_width = 1.1,
+	cell_width = 0.9,
 	color_scheme = theme_selector(wz.gui.get_appearance()),
 	disable_default_key_bindings = true,
 	--dpi = 36,
 	-- enable_csi_u_key_encoding=false,
-	font = wz.font { family = 'MesloLGL Nerd Font' },
-	font_size = 12,
+	font = wz.font { family = 'PlemolJP Console NF' },
+	font_size = 21,
 	foreground_text_hsb = { saturation = 1.1, brightness = 1.1 },
 	--freetype_load_target = 'HorizontalLcd',
 	front_end = 'WebGpu',
 	hide_tab_bar_if_only_one_tab = true,
 	-- this does not take effects on macOS: ime_preedit_rendering = 'System',
-	line_height = 0.8,
+	line_height = 1.0,
 	keys = {
 		--		{ key = 'PageUp', mods = 'SHIFT', action = act.ScrollByPage(-1) },
 		--		{ key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1) },
 		{ key = 'o', mods = 'CMD', action = act.EmitEvent 'opacity' },
 		{ key = 'c', mods = 'SHIFT|CMD', action = act.ActivateCopyMode },
 		{ key = '[', mods = 'CMD', action = act.ActivatePaneDirection 'Prev' },
-		{ key = 'F13', mods = 'NONE', action = act.ActivateTabRelative(1) },
+		{ key = 'Tab', mods = 'CTRL', action = act.ActivateTabRelative(1) },
+		{ key = 'Tab', mods = 'CTRL|SHIFT', action = act.ActivateTabRelative(-1) },
 		{ key = 'c', mods = 'CMD', action = act.CopyTo 'Clipboard' },
 		{ key = 'w', mods = 'CMD', action = act.CloseCurrentPane { confirm = false } },
 		{ key = 'b', mods = 'CMD', action = act.EmitEvent 'bg' },

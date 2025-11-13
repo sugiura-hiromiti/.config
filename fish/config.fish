@@ -1,5 +1,8 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    # set ZELLIJ_AUTO_ATTACH true
+    # set ZELLIJ_AUTO_EXIT true
+    # eval (zellij setup --generate-auto-start fish | string collect)
 end
 
 set -gx EDITOR nvim
@@ -13,10 +16,12 @@ cat "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" | babelfish | source
 fish_add_path $HOME/.nix-profile/bin
 fish_add_path /nix/var/nix/profiles/default/bin
 fish_add_path $HOME/.config/bin
+fish_add_path $HOME/.cargo/bin
 
 abbr -a ga --set-cursor "git stage . && git commit -m '%' && git push"
 abbr -a bi --set-cursor "lsappinfo info -only bundleid \"%\""
+abbr -a c "sudo nix-collect-garbage -d ; sudo nix-store --optimise ; sudo nix-store --gc ; nix profile wipe-history ; sudo rm -rf ~/.cache/nix/"
 
+starship init fish | source
 direnv hook fish | source
 zoxide init fish | source
-starship init fish | source
