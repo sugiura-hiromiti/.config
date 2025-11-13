@@ -35,16 +35,18 @@ in
     stateVersion = "25.11";
     sessionVariables = {
       SBARLUA_DYLIB_PATH = if os == "darwin" then "${pkgs.sbarlua.out}" else "";
+      MYSQLCLIENT_LIB_DIR = "${pkgs.libmysqlclient.out}/lib/mariadb";
+      MYSQLCLIENT_VERSION = "${pkgs.libmysqlclient.version}";
     };
     file = {
-      ".clang-format" = {
-        target = ".clang-format";
-        source = ../.clang-format;
-      };
-      ".editorconfig" = {
-        target = ".editorconfig";
-        source = ../.editorconfig;
-      };
+      # ".clang-format" = {
+      #   target = ".clang-format";
+      #   source = ../.clang-format;
+      # };
+      # ".editorconfig" = {
+      #   target = ".editorconfig";
+      #   source = ../.editorconfig;
+      # };
       ".gitconfig" = {
         target = ".gitconfig";
         source = ../.gitconfig;
@@ -53,18 +55,18 @@ in
         target = ".gitconfig_p";
         source = ../.gitconfig_p;
       };
-      ".dprint.json" = {
-        target = ".dprint.json";
-        source = ../.dprint.json;
-      };
-      ".rustfmt.toml" = {
-        target = ".rustfmt.toml";
-        source = ../.rustfmt.toml;
-      };
-      ".stylua.toml" = {
-        target = ".stylua.toml";
-        source = ../.stylua.toml;
-      };
+      # ".dprint.json" = {
+      #   target = ".dprint.json";
+      #   source = ../.dprint.json;
+      # };
+      # ".rustfmt.toml" = {
+      #   target = ".rustfmt.toml";
+      #   source = ../.rustfmt.toml;
+      # };
+      # ".stylua.toml" = {
+      #   target = ".stylua.toml";
+      #   source = ../.stylua.toml;
+      # };
       ".npmrc" = {
         target = ".npmrc";
         source = ../.npmrc;

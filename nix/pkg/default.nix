@@ -16,7 +16,7 @@
     eza
     fd
     gh
-    # gitui
+    # lazygit
     lua5_4_compat
     lua-language-server
     luajitPackages.luarocks
@@ -48,7 +48,15 @@
     vscode-langservers-extracted
     babelfish
     gemini-cli
-    alacritty
+    libmysqlclient
+    google-cloud-sdk
+    nodejs
+    cargo-watch
+    terraform
+    terraform-ls
+    wezterm
+    aerospace
+    tart
   ]
   ++ (if arch == "aarch64" then [ ] else [ ])
   ++ (if arch == "x86_64" then [ ] else [ ])
@@ -59,8 +67,8 @@
         mas
         pngpaste
         jankyborders
-        sketchybar
-        sbarlua
+        # sketchybar
+        # sbarlua
       ]
     else
       [ ]
@@ -68,12 +76,11 @@
   ++ (
     if os == "linux" then
       [
+        nyxt
         obsidian
         anki
         unixtools.xxd
         docker
-        ghostty
-        firefox
         swift
         regreet
         ironbar

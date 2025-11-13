@@ -32,9 +32,15 @@
       #   name = "koekeishiya/formulae/yabai";
       #   args = [ "HEAD" ];
       # }
-      "koekeishiya/formulae/yabai"
-      "koekeishiya/formulae/skhd"
+      # "koekeishiya/formulae/yabai"
+      # "koekeishiya/formulae/skhd"
       "sqlite"
+      # "acsandmann/tap/rift"
+      {
+        name = "libpq";
+        link = true;
+      }
+      "gitui"
     ];
     casks = [
       "karabiner-elements"
@@ -44,19 +50,21 @@
       "anki"
       "homerow"
       "obsidian"
-      "ghostty"
+      # "ghostty"
       "firefox"
       "slack"
+      "docker-desktop"
       # "mouseless"
     ];
     taps = [
-      "koekeishiya/formulae"
-      "FelixKratz/formulae"
+      # "koekeishiya/formulae"
+      # "FelixKratz/formulae"
+      # "acsandmann/tap"
     ];
     masApps = {
       # "Wallpaper Play" = 1638457121;
-      "Logic Pro" = 634148309;
-      "Final Cut Pro" = 424389933;
+      # "Logic Pro" = 634148309;
+      # "Final Cut Pro" = 424389933;
       # "Vimlike" = 1584519802;
       # "AdBlock Pro for Safari" = 1018301773;
       # "Dark Reader for Safari" = 1438243180;
@@ -82,9 +90,10 @@
         NSAutomaticWindowAnimationsEnabled = false;
         NSDocumentSaveNewDocumentsToCloud = false;
         NSTableViewDefaultSizeMode = 1;
-        _HIHideMenuBar = true;
+        _HIHideMenuBar = false;
         "com.apple.mouse.tapBehavior" = 1;
         # "com.apple.trackpad.scaling" = 5;
+
       };
       SoftwareUpdate = {
         AutomaticallyInstallMacOSUpdates = true;
@@ -96,7 +105,7 @@
         static-only = true;
         tilesize = 16;
         wvous-bl-corner = 4;
-        wvous-br-corner = 1;
+        wvous-br-corner = 2;
         wvous-tl-corner = 1;
         wvous-tr-corner = 1;
       };
@@ -115,6 +124,9 @@
         FirstClickThreshold = 0;
         SecondClickThreshold = 0;
       };
+      # ".GlobalPreferences" = {
+      #   "com.apple.mouse.scaling" = 5;
+      # };
     };
   };
 }
