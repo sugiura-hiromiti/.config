@@ -46,9 +46,9 @@
   };
 
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       plemoljp-nf
-      noto-fonts-emoji
+      noto-fonts-color-emoji
     ];
     fontDir = {
       enable = true;
