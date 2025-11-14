@@ -49,6 +49,12 @@
     xserver = {
       enable = false;
     };
+    displayManager = {
+      gdm = {
+        enable = true;
+        wayland = true;
+      };
+    };
     printing = {
       enable = true;
     };
@@ -91,16 +97,16 @@
   };
 
   programs = {
-    fish = {
-      enable = true;
-    };
-    niri = {
-      enable = true;
-    };
+    # fish = {
+    #   enable = true;
+    # };
+    # niri = {
+    #   enable = true;
+    # };
   };
 
   # Enable automatic login for the user.
-  services.getty.autologinUser = "a";
+  # services.getty.autologinUser = "a";
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
