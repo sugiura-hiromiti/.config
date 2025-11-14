@@ -55,8 +55,6 @@
     terraform
     terraform-ls
     wezterm
-    aerospace
-    tart
   ]
   ++ (if arch == "aarch64" then [ ] else [ ])
   ++ (if arch == "x86_64" then [ ] else [ ])
@@ -67,6 +65,8 @@
         mas
         pngpaste
         jankyborders
+        aerospace
+        tart
         # sketchybar
         # sbarlua
       ]
