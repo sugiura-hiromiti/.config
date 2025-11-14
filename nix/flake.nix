@@ -144,10 +144,10 @@
             elif grep -qi nixos /etc/os-release; then
               echo "
               -------------------------------------------"
-              echo "updating nix-darwin"
+              echo "updating nixos"
               echo "-------------------------------------------
               "
-              echo -ne "\033]0;updating nix-darwin\007"
+              echo -ne "\033]0;updating nixos\007"
               sudo nixos-rebuild switch --flake .#conf
             fi
 
