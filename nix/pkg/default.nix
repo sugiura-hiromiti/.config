@@ -79,20 +79,18 @@
   ++ (
     if os == "linux" then
       [
-        nyxt
-        obsidian
-        anki
-        unixtools.xxd
-        docker
-        swift
-        regreet
-        ironbar
-        sherlock
+        # obsidian
+        # firefox
+        # anki
+        # unixtools.xxd
+        # regreet
+        # ironbar
+        # sherlock
         # not rusty
-        mako
+        # mako
         # not rusty, but ziggy
-        waylock
-        swww
+        # waylock
+        # swww
         # clipcat
       ]
     else
