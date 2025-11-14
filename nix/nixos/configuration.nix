@@ -45,6 +45,24 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  fonts = {
+    fonts = with pkgs; [
+      plemoljp-nf
+      noto-fonts-emoji
+    ];
+    fontDir = {
+      enable = true;
+    };
+    fontconfig = {
+      defaultFonts = {
+        serif = [ "PlemolJP Console NF" ];
+        sansSerif = [ "PlemolJP Console NF" ];
+        monospace = [ "PlemolJP Console NF" ];
+        emoji = [ "Noto Color Emoji" ];
+      };
+    };
+  };
+
   services = {
     xserver = {
       enable = false;

@@ -39,7 +39,6 @@
     yaml-language-server
     sd
     direnv
-    codex
     nil
     viu
     fish-lsp
