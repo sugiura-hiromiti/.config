@@ -31,6 +31,7 @@
     zoxide
     plemoljp-nf
     fish
+    # well-fish-pkgs.legacyPackages.${system}.fish
     tailscale
     bat
     tokei
@@ -68,7 +69,7 @@
         pngpaste
         jankyborders
         aerospace
-        tart
+        # tart
         # sketchybar
         # sbarlua
       ]

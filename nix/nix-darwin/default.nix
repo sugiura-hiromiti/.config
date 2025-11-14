@@ -50,10 +50,10 @@
       "anki"
       "homerow"
       "obsidian"
-      # "ghostty"
       "firefox"
       "slack"
       "docker-desktop"
+      "utm"
       # "mouseless"
     ];
     taps = [
@@ -125,7 +125,7 @@
         SecondClickThreshold = 0;
       };
       ".GlobalPreferences" = {
-        "com.apple.mouse.scaling" = 5;
+        "com.apple.mouse.scaling" = 2.0;
       };
     };
   };

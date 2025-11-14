@@ -5,6 +5,9 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs?ref=nixos-unstable";
     };
+    well-fish-pkgs = {
+      url = "github:nixos/nixpkgs/31226e56293b90961e0286cabc1976623dcb1985";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs = {
@@ -37,6 +40,7 @@
     {
       self,
       nixpkgs,
+      well-fish-pkgs,
       home-manager,
       nix-darwin,
       neovim-nightly-overlay,
@@ -50,8 +54,15 @@
       home = secret.home;
       system = "${arch}-${os}";
       user-system = "${builtins.replaceStrings [ "." ] [ "-" ] user}-${system}";
+
+      well-fish-pkgs-set = import well-fish-pkgs { inherit system; };
       nixpkgs-overlayed = import nixpkgs {
-        overlays = [ neovim-nightly-overlay.overlays.default ];
+        overlays = [
+          neovim-nightly-overlay.overlays.default
+          (self: super: {
+            fish = well-fish-pkgs-set.fish;
+          })
+        ];
         inherit system;
       };
     in
@@ -69,7 +80,6 @@
         conf = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs-overlayed;
           extraSpecialArgs = {
-            inherit inputs;
             inherit user;
             inherit os;
             inherit arch;
