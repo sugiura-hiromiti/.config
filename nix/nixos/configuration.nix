@@ -49,34 +49,34 @@
     xserver = {
       enable = false;
     };
-    displayManager = {
-      gdm = {
-        enable = true;
-        wayland = true;
-      };
-    };
-    printing = {
-      enable = true;
-    };
-    pulseaudio = {
-      enable = false;
-    };
-    pipewire = {
-      enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-      pulse = {
-        enable = true;
-      };
-    };
+    # displayManager = {
+    #   gdm = {
+    #     enable = true;
+    #     wayland = true;
+    #   };
+    # };
+    # printing = {
+    #   enable = true;
+    # };
+    # pulseaudio = {
+    #   enable = false;
+    # };
+    # pipewire = {
+    #   enable = true;
+    #   alsa = {
+    #     enable = true;
+    #     support32Bit = true;
+    #   };
+    #   pulse = {
+    #     enable = true;
+    #   };
+    # };
   };
-  security = {
-    rtkit = {
-      enable = true;
-    };
-  };
+  # security = {
+  #   rtkit = {
+  #     enable = true;
+  #   };
+  # };
 
   # Configure keymap in X11
   # services.xserver.xkb = {
