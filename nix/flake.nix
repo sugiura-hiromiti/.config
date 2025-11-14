@@ -124,7 +124,6 @@
             nix run nixpkgs#home-manager -- switch --flake .#conf
 
             if [ $(uname) = "Darwin" ]; then
-
               echo "
               -------------------------------------------"
               echo "updating nix-darwin"
@@ -132,7 +131,14 @@
               "
               echo -ne "\033]0;updating nix-darwin\007"
               sudo nix run nix-darwin -- switch --flake .#conf
-
+            elif grep -qi nixos /etc/os-release; then
+              echo "
+              -------------------------------------------"
+              echo "updating nix-darwin"
+              echo "-------------------------------------------
+              "
+              echo -ne "\033]0;updating nix-darwin\007"
+              sudo nixos-rebuild switch --flake .#conf
             fi
 
             echo "

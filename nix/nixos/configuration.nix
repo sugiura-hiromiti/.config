@@ -7,7 +7,7 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+    /etc/nixos/hardware-configuration.nix
   ];
 
   # Bootloader.
@@ -48,20 +48,6 @@
   services = {
     xserver = {
       enable = false;
-    };
-    displayManager = {
-      sddm = {
-        enable = true;
-      };
-      autoLogin = {
-        enable = true;
-        user = "a";
-      };
-    };
-    desktopManager = {
-      plasma6 = {
-        enable = true;
-      };
     };
     printing = {
       enable = true;
@@ -106,6 +92,9 @@
 
   programs = {
     fish = {
+      enable = true;
+    };
+    niri = {
       enable = true;
     };
   };

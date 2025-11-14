@@ -142,6 +142,8 @@ return {
 				'fish_lsp',
 				'terraformls',
 				'graphql',
+				'ts_ls',
+				'eslint',
 				-- 'gh_actions_ls',
 			}
 		end,

@@ -55,6 +55,8 @@
     terraform
     terraform-ls
     wezterm
+    typescript-language-server
+    bun
   ]
   ++ (if arch == "aarch64" then [ ] else [ ])
   ++ (if arch == "x86_64" then [ ] else [ ])

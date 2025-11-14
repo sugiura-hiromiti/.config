@@ -124,9 +124,9 @@
         FirstClickThreshold = 0;
         SecondClickThreshold = 0;
       };
-      # ".GlobalPreferences" = {
-      #   "com.apple.mouse.scaling" = 5;
-      # };
+      ".GlobalPreferences" = {
+        "com.apple.mouse.scaling" = 5;
+      };
     };
   };
 }
