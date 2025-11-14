@@ -97,9 +97,9 @@
   };
 
   programs = {
-    # fish = {
-    #   enable = true;
-    # };
+    fish = {
+      enable = true;
+    };
     # niri = {
     #   enable = true;
     # };
