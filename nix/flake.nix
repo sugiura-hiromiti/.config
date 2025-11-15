@@ -35,14 +35,14 @@
         };
       };
     };
-    niri-flake = {
-      url = "github:sodiboo/niri-flake";
-      inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-      };
-    };
+    # niri-flake = {
+    #   url = "github:sodiboo/niri-flake";
+    #   inputs = {
+    #     nixpkgs = {
+    #       follows = "nixpkgs";
+    #     };
+    #   };
+    # };
   };
   outputs =
     {
@@ -53,7 +53,6 @@
       nix-darwin,
       neovim-nightly-overlay,
       fenix,
-      niri-flake,
     }@inputs:
     let
       secret = import ./secret.nix { };
@@ -68,7 +67,6 @@
       nixpkgs-overlayed = import nixpkgs {
         overlays = [
           neovim-nightly-overlay.overlays.default
-          niri-flake.overlays.niri
           (self: super: {
             fish = well-fish-pkgs-set.fish;
           })
@@ -100,7 +98,6 @@
           };
           modules = [
             ./home.nix
-            niri-flake.homeModules.niri
           ];
         };
       };

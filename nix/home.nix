@@ -83,10 +83,10 @@ in
     };
     packages = mypkgs;
   };
-  programs = {
-    niri = {
-      settings = null;
-      enable = true;
-    };
-  };
+  # programs = {
+  #   niri = {
+  #     settings = null;
+  #     enable = true;
+  #   };
+  # };
 }

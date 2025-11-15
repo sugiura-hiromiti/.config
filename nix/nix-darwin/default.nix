@@ -53,7 +53,7 @@
       "firefox"
       "slack"
       "docker-desktop"
-      "utm"
+      "vmware-fusion"
       # "mouseless"
     ];
     taps = [
