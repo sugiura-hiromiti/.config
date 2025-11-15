@@ -82,5 +82,10 @@ in
       };
     };
     packages = mypkgs;
+    programs = {
+      niri = {
+        settings = null;
+      };
+    };
   };
 }

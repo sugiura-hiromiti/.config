@@ -68,6 +68,7 @@
       nixpkgs-overlayed = import nixpkgs {
         overlays = [
           neovim-nightly-overlay.overlays.default
+          niri-flake.overlays.niri
           (self: super: {
             fish = well-fish-pkgs-set.fish;
           })
@@ -81,7 +82,6 @@
           inherit system;
           modules = [
             ./nixos/configuration.nix
-            niri-flake.nixosModules.niri
           ];
         };
       };
@@ -100,6 +100,7 @@
           };
           modules = [
             ./home.nix
+            niri-flake.homeModules.niri
           ];
         };
       };
