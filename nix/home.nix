@@ -86,6 +86,7 @@ in
   programs = {
     niri = {
       settings = null;
+      enable = true;
     };
   };
 }
