@@ -67,12 +67,14 @@
     xserver = {
       enable = false;
     };
-    # displayManager = {
-    #   gdm = {
-    #     enable = true;
-    #     wayland = true;
-    #   };
-    # };
+    displayManager = {
+      sddm = {
+        enable = true;
+        wayland = {
+          enable = true;
+        };
+      };
+    };
     # printing = {
     #   enable = true;
     # };
