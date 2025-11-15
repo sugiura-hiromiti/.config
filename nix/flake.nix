@@ -35,6 +35,14 @@
         };
       };
     };
+    niri-flake = {
+      url = "github:sodiboo/niri-flake";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
+    };
   };
   outputs =
     {
@@ -45,6 +53,7 @@
       nix-darwin,
       neovim-nightly-overlay,
       fenix,
+      niri-flake,
     }@inputs:
     let
       secret = import ./secret.nix { };

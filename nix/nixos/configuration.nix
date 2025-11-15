@@ -2,12 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, ... }@inputs:
 
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    inputs.niri-flake.nixosModules.niri
   ];
 
   # Bootloader.
@@ -67,14 +68,14 @@
     xserver = {
       enable = false;
     };
-    displayManager = {
-      sddm = {
-        enable = true;
-        wayland = {
-          enable = true;
-        };
-      };
-    };
+    # displayManager = {
+    #   sddm = {
+    #     enable = true;
+    #     wayland = {
+    #       enable = true;
+    #     };
+    #   };
+    # };
     # printing = {
     #   enable = true;
     # };
