@@ -82,10 +82,10 @@ in
       };
     };
     packages = mypkgs;
-    programs = {
-      niri = {
-        settings = null;
-      };
+  };
+  programs = {
+    niri = {
+      settings = null;
     };
   };
 }
