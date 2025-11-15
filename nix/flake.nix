@@ -81,6 +81,7 @@
           inherit system;
           modules = [
             ./nixos/configuration.nix
+            niri-flake.nixosModules.niri
           ];
         };
       };
