@@ -89,6 +89,46 @@ in
     packages = mypkgs;
   };
   programs = {
+    anyrun = {
+      enable = true;
+      config = {
+        y = {
+          fraction = 0.25;
+        };
+        width = {
+          fraction = 0.3;
+        };
+        height = {
+          fraction = 0.3;
+        };
+        closeOnClick = true;
+        showResultsImmediately = true;
+        maxEntries = 40;
+        plugins = [
+          "${pkgs.anyrun}/lib/libapplications.so"
+          "${pkgs.anyrun}/lib/libsymbols.so"
+          "${pkgs.anyrun}/lib/librink.so"
+          "${pkgs.anyrun}/lib/libshell.so"
+          # "${pkgs.anyrun}/lib/libtranslate.so"
+          # "${pkgs.anyrun}/lib/libkidex.so"
+          # "${pkgs.anyrun}/lib/librandr.so" this plugin only support hyprland
+          # "${pkgs.anyrun}/lib/libstdin.so"
+          "${pkgs.anyrun}/lib/libdictionary.so"
+          "${pkgs.anyrun}/lib/libwebsearch.so"
+          # "${pkgs.anyrun}/lib/libnix_run.so"
+          "${pkgs.anyrun}/lib/libniri-focus.so"
+        ];
+      };
+      extraConfigFiles = {
+        "symbols.ron" = {
+          source = ./home/anyrun/symbols.ron;
+        };
+        "applications.ron" = {
+          source = ./home/anyrun/applications.ron;
+        };
+      };
+      extraCss = builtins.readFile ./home/anyrun/anyrun.css;
+    };
     firefox = {
       enable = true;
       profiles = {
@@ -111,11 +151,26 @@ in
       };
     };
   };
-  dconf = {
-    settings = {
-      "org/gnome/desktop/interface".color-scheme = "prefer-dark";
-    };
-  };
+  # services = {
+  #   darkman = {
+  #     enable = true;
+  #   };
+  # };
+  # xdg = {
+  #   portal = {
+  #     enable = true;
+  #     config = {
+  #       common = {
+  #         "org.freedesktop.impl.portal.Settings" = "darkman";
+  #       };
+  #     };
+  #   };
+  # };
+  # dconf = {
+  #   settings = {
+  #     "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  #   };
+  # };
   systemd =
     if os == "darwin" then
       null
@@ -151,6 +206,64 @@ in
             #     WantedBy = [ "default.target" ];
             #   };
             # };
+            system-appearance-sunrise = {
+              Unit = {
+                Description = "set system appearance light";
+              };
+              Service = {
+                ExecStart = "${pkgs.dconf.out}/bin/dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-light'\"";
+              };
+            };
+            system-appearance-sunset = {
+              Unit = {
+                Description = "set system appearance dark";
+              };
+              Service = {
+                ExecStart = "${pkgs.dconf.out}/bin/dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-dark'\"";
+              };
+            };
+            system-appearance-on-login = {
+              Install = {
+                WantedBy = [ "graphical-session.target" ];
+              };
+              Unit = {
+                Description = "determines system appearance of on graphical-session login";
+              };
+              Service = {
+                Type = "oneshot";
+                ExecStart = ''${pkgs.bash.out}/bin/sh -c '[ $(${pkgs.coreutils-full.out}/bin/date +%H) -ge 6 ] && [ $(${pkgs.coreutils-full.out}/bin/date +%H) -lt 18 ] && ${pkgs.dconf.out}/bin/dconf write /org/gnome/desktop/interface/color-scheme "\'prefer-light\'" || ${pkgs.dconf.out}/bin/dconf write /org/gnome/desktop/interface/color-scheme "\'prefer-dark\'"' '';
+              };
+            };
+          };
+          timers = {
+            system-appearance-sunrise = {
+              Unit = {
+                Description = "system-appearance switcher based on time. set light theme on sunrise";
+              };
+              Timer = {
+                OnCalendar = [
+                  "*-*-* 06:00:00"
+                ];
+                Persistent = true;
+              };
+              Install = {
+                WantedBy = [ "graphical-session.target" ];
+              };
+            };
+            system-appearance-sunset = {
+              Unit = {
+                Description = "system-appearance switcher based on time. set dark theme on sunset";
+              };
+              Timer = {
+                OnCalendar = [
+                  "*-*-* 18:00:00"
+                ];
+                Persistent = true;
+              };
+              Install = {
+                WantedBy = [ "graphical-session.target" ];
+              };
+            };
           };
         };
       };

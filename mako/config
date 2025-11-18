@@ -1,2 +1,13 @@
-font=monospace 15
-background-color=#6820cfc0
+font=monospace 14
+background-color=#33333376
+border-size=1
+border-color=#7f87af79
+border-radius=20
+progress-color=source #6870cfaa
+icon-path=~/.nix-profile/share/icons/hicolor
+width=400
+height=200
+max-visible=15
+layer=overlay
+anchor=bottom-left
+format=<b>%s</b> (%a)\n%i: %b

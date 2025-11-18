@@ -61,6 +61,7 @@
     bun
     firefox
     sqlite
+    jq
   ]
   ++ (if arch == "aarch64" then [ ] else [ ])
   ++ (if arch == "x86_64" then [ ] else [ ])
@@ -83,8 +84,9 @@
     if os == "linux" then
       [
         # open-vm-tools
-        zig # required by treesitter neovim plugin to build schema
+        clang
         wl-clipboard-rs
+        ringboard-wayland
         obsidian
         # anki
         unixtools.xxd

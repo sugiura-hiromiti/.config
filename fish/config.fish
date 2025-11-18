@@ -22,6 +22,7 @@ fish_add_path $HOME/.cargo/bin
 abbr -a ga --set-cursor "git stage . && git commit -m '%' && git push"
 abbr -a bi --set-cursor "lsappinfo info -only bundleid \"%\""
 abbr -a c "sudo nix-collect-garbage -d ; sudo nix-store --optimise ; sudo nix-store --gc ; nix profile wipe-history ; sudo rm -rf ~/.cache/nix/"
+abbr -a drv_shw --set-cursor "nix derivation show nixpkgs#% | jq 'to_entries | .[0].value.outputs.out.path'"
 
 starship init fish | source
 direnv hook fish | source
