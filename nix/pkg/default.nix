@@ -5,18 +5,20 @@
   system,
   pkgs,
   fenix,
+  awww,
 }:
 (
   with pkgs;
   [
     fenix.packages.${system}.latest.toolchain
+    awww.packages.${pkgs.system}.awww
     git
     curl
     dprint
     eza
     fd
     gh
-    # lazygit
+    gitui
     lua5_4_compat
     lua-language-server
     luajitPackages.luarocks
@@ -57,6 +59,8 @@
     wezterm
     typescript-language-server
     bun
+    firefox
+    sqlite
   ]
   ++ (if arch == "aarch64" then [ ] else [ ])
   ++ (if arch == "x86_64" then [ ] else [ ])
@@ -78,15 +82,18 @@
   ++ (
     if os == "linux" then
       [
-        # obsidian
-        # firefox
+        # open-vm-tools
+        zig # required by treesitter neovim plugin to build schema
+        wl-clipboard-rs
+        obsidian
         # anki
-        # unixtools.xxd
+        unixtools.xxd
         # regreet
         # ironbar
         # sherlock
+        anyrun
         # not rusty
-        # mako
+        mako
         # not rusty, but ziggy
         # waylock
         # swww
@@ -97,7 +104,7 @@
   )
   ++ (if arch == "aarch64" && os == "darwin" then [ ] else [ ])
   ++ (if arch == "x86_64" && os == "darwin" then [ ] else [ ])
-  ++ (if arch == "aarch64" && os == "linux" then [ slacky ] else [ ])
+  ++ (if arch == "aarch64" && os == "linux" then [ ] else [ ])
   ++ (
     if arch == "x86_64" && os == "linux" then
       [

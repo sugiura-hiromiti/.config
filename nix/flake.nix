@@ -35,14 +35,9 @@
         };
       };
     };
-    # niri-flake = {
-    #   url = "github:sodiboo/niri-flake";
-    #   inputs = {
-    #     nixpkgs = {
-    #       follows = "nixpkgs";
-    #     };
-    #   };
-    # };
+    awww = {
+      url = "git+https://codeberg.org/LGFae/awww";
+    };
   };
   outputs =
     {
@@ -53,6 +48,7 @@
       nix-darwin,
       neovim-nightly-overlay,
       fenix,
+      awww,
     }@inputs:
     let
       secret = import ./secret.nix { };
@@ -95,6 +91,7 @@
             inherit system;
             inherit user-system;
             inherit fenix;
+            inherit awww;
           };
           modules = [
             ./home.nix

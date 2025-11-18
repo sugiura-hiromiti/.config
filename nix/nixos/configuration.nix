@@ -2,7 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }@inputs:
+{
+  config,
+  pkgs,
+  ...
+}@inputs:
 
 {
   imports = [
@@ -17,7 +21,15 @@
   # Use latest kernel.
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking = {
+    hostName = "nixos";
+    networkmanager = {
+      enable = true;
+    };
+    firewall = {
+      allowedTCPPorts = [ 22 ];
+    };
+  };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -25,7 +37,6 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
@@ -64,17 +75,23 @@
   };
 
   services = {
+    openssh = {
+      enable = true;
+    };
     xserver = {
       enable = false;
     };
-    # displayManager = {
-    #   sddm = {
-    #     enable = true;
-    #     wayland = {
-    #       enable = true;
-    #     };
-    #   };
-    # };
+    tailscale = {
+      enable = true;
+    };
+    displayManager = {
+      sddm = {
+        enable = true;
+        wayland = {
+          enable = true;
+        };
+      };
+    };
     # printing = {
     #   enable = true;
     # };
@@ -92,17 +109,18 @@
     #   };
     # };
   };
-  # security = {
-  #   rtkit = {
-  #     enable = true;
-  #   };
-  # };
-
-  # Configure keymap in X11
-  # services.xserver.xkb = {
-  #   layout = "us";
-  #   variant = "";
-  # };
+  virtualisation = {
+    vmware = {
+      guest = {
+        enable = true;
+      };
+    };
+  };
+  xdg = {
+    portal = {
+      enable = true;
+    };
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.a = {
@@ -120,9 +138,9 @@
     fish = {
       enable = true;
     };
-    # niri = {
-    #   enable = true;
-    # };
+    niri = {
+      enable = true;
+    };
   };
 
   # Enable automatic login for the user.
@@ -136,8 +154,11 @@
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
-    git
   ];
+  # environment.sessionVariables = {
+  #   XDG_CURRENT_DESKTOP = "sway";
+  #   XDG_SESSION_DESKTOP = "sway";
+  # };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
