@@ -2,19 +2,19 @@
 local wz = require 'wezterm'
 local act = wz.action
 
-local function theme_selector(app)
-	local handle = assert(io.open('/tmp/wz_nvim.txt', 'w+'), 'could not opened wz_nvim.txt')
-
-	local rslt
-	if app:find 'Dark' then
-		handle:write 'dark'
-		rslt = 'Catppuccin Mocha'
-	else
-		handle:write 'light'
-		rslt = 'Catppuccin Latte'
+local function get_appearance()
+	if wz.gui then
+		return wz.gui.get_appearance()
 	end
-	handle:close()
-	return rslt
+	return 'Light'
+end
+
+local function scheme_for_appearance(appearance)
+	if appearance:find 'Light' then
+		return 'Catppuccin Latte'
+	else
+		return 'Catppuccin Mocha'
+	end
 end
 
 local cp_mode
@@ -58,18 +58,18 @@ return {
 	animation_fps = 60,
 	check_for_updates = false,
 	cell_width = 0.9,
-	color_scheme = theme_selector(wz.gui.get_appearance()),
+	color_scheme = scheme_for_appearance(get_appearance()),
 	disable_default_key_bindings = true,
 	--dpi = 36,
 	-- enable_csi_u_key_encoding=false,
 	font = wz.font { family = 'PlemolJP Console NF' },
-	font_size = 21,
+	font_size = 17,
 	foreground_text_hsb = { saturation = 1.1, brightness = 1.1 },
 	--freetype_load_target = 'HorizontalLcd',
 	front_end = 'WebGpu',
 	hide_tab_bar_if_only_one_tab = true,
 	-- this does not take effects on macOS: ime_preedit_rendering = 'System',
-	line_height = 1.0,
+	line_height = 0.95,
 	keys = {
 		--		{ key = 'PageUp', mods = 'SHIFT', action = act.ScrollByPage(-1) },
 		--		{ key = 'PageDown', mods = 'SHIFT', action = act.ScrollByPage(1) },
@@ -108,7 +108,7 @@ return {
 	tab_bar_at_bottom = true,
 	use_ime = true,
 	window_padding = { left = 0, right = 0, top = 0, bottom = 0 },
-	window_decorations = 'RESIZE',
+	window_decorations = 'NONE',
 	window_close_confirmation = 'NeverPrompt',
 	--mocos_window_background_blur=5,
 	--window_background_image='/path/to/img.jpg' png, gif also vaild extensiton
