@@ -10,6 +10,7 @@ set -gx VISUAL nvim
 set -gx MANPAGER less
 set -gx RIPGREP_CONFIG_PATH "$HOME/.config/rg/config"
 set -gx MY_CUSTOM_ENV_VARS_CURRENTLY_EXECUTING_PROMPT ""
+set -gx XDG_CONFIG_HOME "$HOME/.config"
 
 cat "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" | babelfish | source
 
