@@ -38,7 +38,6 @@ git/
 .ssh/known_host*
 jgit/
 .ssh/flect*
-environment.d/
 configstore/
 commit_summary.html
 obsidian/
@@ -46,3 +45,5 @@ dconf/
 gh/
 **/target/
 gcloud/
+**/*nix.conf
+mozilla/
