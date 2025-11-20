@@ -1,0 +1,38 @@
+{
+	"$schema": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/schemas/settings.schema.json",
+	"general": {
+		"previewFeatures": true,
+		"enablePromptCompletion": true,
+		"sessionRetention": {
+			"enabled": true,
+			"maxAge": "3d"
+		}
+	},
+	"ui": {
+		"theme": "tbd",
+		"showStatusInTitle": true,
+		"hideBanner": true,
+		"footer": {
+			"hideContextPercentage": false
+		},
+		"showMemoryUsage": true
+	},
+	"tools": {
+		"sandbox": false,
+		"shell": {
+			"pager": "bat",
+			"showColor": true
+		}
+	},
+	"mcpServers": {
+		"serena": {
+			"command": "uvx",
+			"args": [
+				"--from",
+				"git+https://github.com/oraios/serena",
+				"serena",
+				"start-mcp-server"
+			]
+		}
+	}
+}
