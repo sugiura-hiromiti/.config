@@ -6,9 +6,9 @@ local m = {}
 
 m.text_search = function()
 	vim.ui.select({
+		'current buffer',
 		'live grep',
 		'live grep (only open files)',
-		'current buffer',
 		'grep string under cursor',
 		'text on screen',
 		'select',
