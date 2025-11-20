@@ -47,3 +47,6 @@ gh/
 gcloud/
 **/*nix.conf
 mozilla/
+pulse/
+servo/
+vesktop/

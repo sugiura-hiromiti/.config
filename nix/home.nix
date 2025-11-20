@@ -27,7 +27,6 @@ in
 {
   imports = [
   ];
-  # NOTE: idk this is required or not
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -89,6 +88,9 @@ in
     packages = mypkgs;
   };
   programs = {
+    vesktop = {
+      enable = true;
+    };
     anyrun = {
       enable = true;
       config = {
@@ -156,16 +158,43 @@ in
   #     enable = true;
   #   };
   # };
-  # xdg = {
-  #   portal = {
-  #     enable = true;
-  #     config = {
-  #       common = {
-  #         "org.freedesktop.impl.portal.Settings" = "darkman";
-  #       };
-  #     };
-  #   };
-  # };
+  xdg = {
+    desktopEntries = {
+      jf = {
+        type = "Application";
+        terminal = true;
+        startupNotify = true;
+        name = "jf";
+        mimeType = [ "text/plain" ];
+        icon = "nvim";
+        genericName = "Text Editor";
+        exec = "nvim";
+        categories = [
+          "Utility"
+          "TextEditor"
+        ];
+      };
+    };
+    mimeApps = {
+      enable = true;
+      # defaultApplications = {
+      #   "inode/directory" = "yazi.desktop";
+      # };
+    };
+    portal = {
+      enable = true;
+      extraPortals = [
+        pkgs.xdg-desktop-portal-termfilechooser
+        pkgs.xdg-desktop-portal-gnome
+        pkgs.xdg-desktop-portal-gtk
+      ];
+      config = {
+        common = {
+          "org.freedesktop.impl.portal.FileChooser" = "termfilechooser";
+        };
+      };
+    };
+  };
   # dconf = {
   #   settings = {
   #     "org/gnome/desktop/interface".color-scheme = "prefer-dark";
@@ -178,6 +207,21 @@ in
       {
         user = {
           services = {
+            clipcat = {
+              Unit = {
+                Description = "clipcat daemon";
+                PartOf = [ "graphical-session.target" ];
+              };
+              Install = {
+                WantedBy = [ "graphical-session.target" ];
+              };
+              Service = {
+                ExecStartPre = "${pkgs.coreutils-full}/bin/rm -f %t/clipcat/grpc.sock";
+                ExecStart = "${pkgs.clipcat.out}/bin/clipcatd --no-daemon --replace";
+                Restart = "on-failure";
+                Type = "simple";
+              };
+            };
             awww-daemon = {
               Install = {
                 WantedBy = [ "graphical-session.target" ];
@@ -193,33 +237,20 @@ in
                 Restart = "on-failure";
               };
             };
-            # tailscaled = {
-            #   Unit = {
-            #     Description = "tailscale daemon";
-            #     After = [ "network.target" ];
-            #   };
-            #   Service = {
-            #     ExecStart = "${pkgs.tailscale}/bin/tailscaled -tun userspace-networking -state ~/.tailscale.state";
-            #     Restart = "always";
-            #   };
-            #   Install = {
-            #     WantedBy = [ "default.target" ];
-            #   };
-            # };
-            system-appearance-sunrise = {
+            awww-random = {
               Unit = {
-                Description = "set system appearance light";
+                Description = "randomly choose wallpaper";
               };
               Service = {
-                ExecStart = "${pkgs.dconf.out}/bin/dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-light'\"";
+                ExecStart = "${pkgs.fish.out}/bin/fish -c 'rw'";
               };
             };
-            system-appearance-sunset = {
+            system-appearance = {
               Unit = {
-                Description = "set system appearance dark";
+                Description = "set system appearance light/dark based on time";
               };
               Service = {
-                ExecStart = "${pkgs.dconf.out}/bin/dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-dark'\"";
+                ExecStart = "${pkgs.fish.out}/bin/fish -c 'auto_theme'";
               };
             };
             system-appearance-on-login = {
@@ -231,31 +262,30 @@ in
               };
               Service = {
                 Type = "oneshot";
-                ExecStart = ''${pkgs.bash.out}/bin/sh -c '[ $(${pkgs.coreutils-full.out}/bin/date +%H) -ge 6 ] && [ $(${pkgs.coreutils-full.out}/bin/date +%H) -lt 18 ] && ${pkgs.dconf.out}/bin/dconf write /org/gnome/desktop/interface/color-scheme "\'prefer-light\'" || ${pkgs.dconf.out}/bin/dconf write /org/gnome/desktop/interface/color-scheme "\'prefer-dark\'"' '';
+                ExecStart = "${pkgs.fish.out}/bin/fish -c 'auto_theme'";
+                Restart = "on-failure";
               };
             };
           };
           timers = {
-            system-appearance-sunrise = {
+            awww-random = {
               Unit = {
-                Description = "system-appearance switcher based on time. set light theme on sunrise";
+                Description = "choose wallpaper randomly";
               };
               Timer = {
-                OnCalendar = [
-                  "*-*-* 06:00:00"
-                ];
-                Persistent = true;
+                OnCalendar = "*:0/5";
               };
               Install = {
                 WantedBy = [ "graphical-session.target" ];
               };
             };
-            system-appearance-sunset = {
+            system-appearance = {
               Unit = {
-                Description = "system-appearance switcher based on time. set dark theme on sunset";
+                Description = "system-appearance switcher based on time. set light theme at daytime and dark theme at night";
               };
               Timer = {
                 OnCalendar = [
+                  "*-*-* 06:00:00"
                   "*-*-* 18:00:00"
                 ];
                 Persistent = true;

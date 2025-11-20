@@ -62,6 +62,9 @@
     firefox
     sqlite
     jq
+    nh
+    yazi
+    servo
   ]
   ++ (if arch == "aarch64" then [ ] else [ ])
   ++ (if arch == "x86_64" then [ ] else [ ])
@@ -86,8 +89,8 @@
         # open-vm-tools
         clang
         wl-clipboard-rs
-        ringboard-wayland
         obsidian
+        clipcat
         # anki
         unixtools.xxd
         # regreet
@@ -99,7 +102,6 @@
         # not rusty, but ziggy
         # waylock
         # swww
-        # clipcat
       ]
     else
       [ ]
