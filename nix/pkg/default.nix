@@ -101,7 +101,7 @@
         mako
         # not rusty, but ziggy
         # waylock
-        # swww
+        catppuccin-cursors.frappePeach
       ]
     else
       [ ]

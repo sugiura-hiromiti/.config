@@ -85,8 +85,8 @@ return {
 		{ key = 'q', mods = 'CMD', action = act.QuitApplication },
 		{ key = 'r', mods = 'CMD', action = act.ReloadConfiguration },
 		{ key = 'f', mods = 'CMD', action = act.Search { CaseSensitiveString = '' } },
-		{ key = 't', mods = 'CMD', action = act.SpawnTab 'DefaultDomain' },
-		{ key = 'n', mods = 'CMD', action = act.SpawnWindow },
+		-- { key = 't', mods = 'CMD', action = act.SpawnTab 'DefaultDomain' },
+		-- { key = 'n', mods = 'CMD', action = act.SpawnWindow },
 		{
 			key = 'd',
 			mods = 'CMD|SHIFT',

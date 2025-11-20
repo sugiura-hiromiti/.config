@@ -143,11 +143,12 @@ in
             "browser.bookmarks.showMobileBookmarks" = false;
             "browser.crashReports.unsubmittedCheck.autoSubmit2" = true;
             "browser.search.region" = "US";
-            "browser.toolbarbuttons.introduced.sidebar-button" = true;
+            "browser.toolbarbuttons.introduced.sidebar-button" = false;
             "extensions.pictureinpicture.enable_picture_in_picture_overrides" = true;
             "media.videocontrols.picture-in-picture.enable-when-switching-tabs.enabled" = true;
             "sidebar.main.tools" = "syncedtabs,bookmarks,passwords";
-            "sidebar.verticalTabs" = true;
+            "sidebar.verticalTabs" = false;
+            "sidebar.visibility" = "hide-sidebar";
           };
         };
       };
