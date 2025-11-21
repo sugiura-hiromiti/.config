@@ -1,9 +1,9 @@
 font=monospace 14
-background-color=#33333376
 border-size=1
+background-color=#33333376
 border-color=#7f87af79
-border-radius=20
 progress-color=source #6870cfaa
+border-radius=20
 icon-path=~/.nix-profile/share/icons/hicolor
 width=400
 height=200

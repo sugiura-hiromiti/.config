@@ -1,0 +1,30 @@
+{
+	"$schema": "https://f.jstanger.dev/github/ironbar/schema.json",
+	"position": "bottom",
+	"height": 40,
+	"margin": {
+		"top": 5,
+		"bottom": 5,
+		"right": 5,
+		"left": 5
+	},
+	"layer": "top",
+	"start": [
+		{
+			"type": "workspaces",
+			"all_monitors": true
+		},
+		{
+			"type": "clipboard"
+		}
+	],
+	"center": [],
+	"end": [
+		{
+			"type": "tray"
+		},
+		{
+			"type": "clock"
+		}
+	]
+}
