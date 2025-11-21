@@ -106,7 +106,7 @@ output "Virtual-1" {
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
     position x=0 y=0
-	 backdrop-color "#1f1e33"
+    backdrop-color "#1f1e33"
 }
 
 output "Virtual-2" {
@@ -148,7 +148,7 @@ output "Virtual-2" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=0 y=-4000
+    position x=400 y=-3840
 	 backdrop-color "#ddddf8"
 }
 
@@ -161,10 +161,10 @@ layout {
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
-    //   or right edge of the screen.
+    //    or right edge of the screen.
     // - "always", the focused column will always be centered.
     // - "on-overflow", focusing a column will center it if it doesn't fit
-    //   together with the previously focused column.
+    //    together with the previously focused column.
     center-focused-column "never"
 	 empty-workspace-above-first
 
@@ -227,13 +227,13 @@ layout {
         // You can use any CSS linear-gradient tool on the web to set these up.
         // Changing the color space is also supported, check the wiki for more info.
         //
-        active-gradient from="#80c8ff" to="#bf6300" angle=15
+        active-gradient from="#80c8ff" to="#bf6300" angle=90
 
         // You can also color the gradient relative to the entire view
         // of the workspace, rather than relative to just the window itself.
         // To do that, set relative-to="workspace-view".
         //
-        inactive-gradient from="#000000" to="#ffffff" angle=75 relative-to="workspace-view"
+        inactive-gradient from="#000000" to="#ffffff" angle=15 relative-to="workspace-view"
         urgent-color "#9b0000"
     }
 
@@ -323,9 +323,10 @@ spawn-at-startup "firefox"
 spawn-at-startup "wezterm"
 spawn-at-startup "vesktop"
 spawn-at-startup "obsidian"
+spawn-at-startup "ironbar"
 
 cursor {
-   xcursor-size 22
+    xcursor-size 22
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -375,6 +376,8 @@ window-rule {
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
+    default-floating-position x=0 y=0 relative-to="bottom-left"
+    open-on-workspace "human_io"
 }
 
 window-rule {
@@ -382,11 +385,48 @@ window-rule {
     opacity 0.9
 }
 
-/-window-rule {
-	match at-startup=true // titile contains Yazi
-	// make float with fixed size
+window-rule {
+    match at-startup=true app-id="^org.wezfurlong.wezterm$"
+    match at-startup=true app-id=r#"firefox$"#
+    open-on-workspace "main"
 }
 
+window-rule {
+    match app-id="^org.wezfurlong.wezterm$" title="Yazi" // titile contains Yazi
+    open-floating true
+    open-on-workspace "human_io"
+    default-column-width { fixed 1000; }
+    default-window-height { proportion 0.6; }
+}
+
+window-rule {
+    match app-id="^org.wezfurlong.wezterm$" title="btm" // titile contains Yazi
+    open-on-workspace "human_io"
+    open-fullscreen true
+}
+
+// Indicate screencasted windows with red colors.
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    border {
+        inactive-color "#7d0d2d"
+    }
+
+    shadow {
+        color "#7d0d2d70"
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+}
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
@@ -512,7 +552,7 @@ binds {
     // Mod+U              { focus-workspace-down; }
     // Mod+I              { focus-workspace-up; }
     // Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
-    // Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+    // Mod+Ctrl+Page_Up    { move-column-to-workspace-up; }
     // Mod+Ctrl+U         { move-column-to-workspace-down; }
     // Mod+Ctrl+I         { move-column-to-workspace-up; }
 
@@ -525,7 +565,7 @@ binds {
 	 Mod+Shift+Ctrl+H { move-workspace-to-monitor-previous; }
 	 Mod+Shift+Ctrl+L { move-workspace-to-monitor-next; }
     // Mod+Shift+Page_Down { move-workspace-down; }
-    // Mod+Shift+Page_Up   { move-workspace-up; }
+    // Mod+Shift+Page_Up    { move-workspace-up; }
     // Mod+Shift+U         { move-workspace-down; }
     // Mod+Shift+I         { move-workspace-up; }
 
@@ -538,10 +578,10 @@ binds {
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
     Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
-    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+    Mod+Ctrl+WheelScrollUp    cooldown-ms=150 { move-column-to-workspace-up; }
 
     Mod+WheelScrollRight      { focus-column-right; }
-    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+WheelScrollLeft        { focus-column-left; }
     Mod+Ctrl+WheelScrollRight { move-column-right; }
     Mod+Ctrl+WheelScrollLeft  { move-column-left; }
 
@@ -550,7 +590,7 @@ binds {
     Mod+Shift+WheelScrollDown      { focus-column-right; }
     Mod+Shift+WheelScrollUp        { focus-column-left; }
     Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
-    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+    Mod+Ctrl+Shift+WheelScrollUp    { move-column-left; }
 
     // Similarly, you can bind touchpad scroll "ticks".
     // Touchpad scrolling is continuous, so for these binds it is split into
@@ -559,7 +599,7 @@ binds {
     // example binds are "inverted", since we have natural-scroll enabled for
     // touchpads by default.
     // Mod+TouchpadScrollDown { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
-    // Mod+TouchpadScrollUp   { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+    // Mod+TouchpadScrollUp    { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
 
     // You can refer to workspaces by index. However, keep in mind that
     // niri is a dynamic workspace system, so these commands are kind of
@@ -636,7 +676,7 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
-    Mod+V       { toggle-window-floating; }
+    Mod+V        { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
     // Toggle tabbed column display mode.
@@ -649,7 +689,7 @@ binds {
     // a matching layout switch hotkey configured in xkb options above.
     // Having both at once on the same hotkey will break the switching,
     // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
-    // Mod+Space       { switch-layout "next"; }
+    // Mod+Space        { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
     Print { screenshot; }
