@@ -43,14 +43,6 @@ in
       LIBSQLITE = "${pkgs.sqlite.out}/lib/libsqlite3.so";
     };
     file = {
-      # ".clang-format" = {
-      #   target = ".clang-format";
-      #   source = ../.clang-format;
-      # };
-      # ".editorconfig" = {
-      #   target = ".editorconfig";
-      #   source = ../.editorconfig;
-      # };
       ".gitconfig" = {
         target = ".gitconfig";
         source = ../.gitconfig;
@@ -59,33 +51,79 @@ in
         target = ".gitconfig_p";
         source = ../.gitconfig_p;
       };
-      # ".dprint.json" = {
-      #   target = ".dprint.json";
-      #   source = ../.dprint.json;
-      # };
-      # ".rustfmt.toml" = {
-      #   target = ".rustfmt.toml";
-      #   source = ../.rustfmt.toml;
-      # };
-      # ".stylua.toml" = {
-      #   target = ".stylua.toml";
-      #   source = ../.stylua.toml;
-      # };
       ".npmrc" = {
         target = ".npmrc";
         source = ../.npmrc;
       };
-      # "AGENTS.md" = {
-      #   target = ".codex/AGENTS.md";
-      #   source = ../codex/AGENTS.md;
-      # };
-      # "prompts" = {
-      #   target = ".codex/prompts";
-      #   source = ../codex/prompts;
-      #   recursive = false;
-      # };
+      "ssh" = {
+        target = ".ssh/config";
+        source = ../.ssh/config;
+      };
     };
     packages = mypkgs;
+  };
+  services = {
+    clipcat = {
+      enable = true;
+      enableSystemdUnit = true;
+      ctlSettings = {
+        server_endpoint = "/run/user/1000/clipcat/grpc.sock";
+        log = {
+          file_path = "/tmp/clpcat/clipcatctl.log";
+          emit_journald = true;
+          emit_stdout = false;
+          emit_stderr = false;
+          level = "INFO";
+        };
+      };
+      daemonSettings = {
+        daemonize = true;
+        max_history = 100;
+        primary_threshold_ms = 5000;
+        log = {
+          file_path = "/tmp/clipcat/clipcatd.log";
+          emit_journald = true;
+          emit_stdout = false;
+          emit_stderr = false;
+          level = "INFO";
+        };
+        watcher = {
+          enable_clipboard = true;
+          enable_primary = true;
+          sensitive_mime_types = [ "x-kde-passwordManagerHint" ];
+          denied_text_regex_patterns = [ ];
+          filter_text_min_length = 1;
+          filter_text_max_length = 65536;
+          capture_image = true;
+          filter_image_max_size = 5242880;
+        };
+        grpc = {
+          enable_http = true;
+          enable_local_socket = true;
+          host = "127.0.0.1";
+          port = 45045;
+        };
+        dbus = {
+          enable = true;
+          identifier = "instance-0";
+        };
+        desktop_notification = {
+          enable = true;
+          timeout_ms = 2000;
+          long_plaintext_length = 2000;
+        };
+      };
+      menuSettings = {
+        server_endpoint = "/run/user/1000/clipcat/grpc.sock";
+        log = {
+          file_path = "/tmp/clipcat/clipcat-menu.log";
+          emit_journald = true;
+          emit_stdout = false;
+          emit_stderr = false;
+          level = "INFO";
+        };
+      };
+    };
   };
   programs = {
     vesktop = {
@@ -136,6 +174,9 @@ in
       profiles = {
         dflt = {
           isDefault = true;
+          extensions = {
+            force = true;
+          };
           settings = {
             "browser.startup.homepage" = "https://www.google.com";
             "browser.toolbars.bookmarks.visibility" = "never";
@@ -144,21 +185,18 @@ in
             "browser.crashReports.unsubmittedCheck.autoSubmit2" = true;
             "browser.search.region" = "US";
             "browser.toolbarbuttons.introduced.sidebar-button" = false;
-            "extensions.pictureinpicture.enable_picture_in_picture_overrides" = true;
-            "media.videocontrols.picture-in-picture.enable-when-switching-tabs.enabled" = true;
             "sidebar.main.tools" = "syncedtabs,bookmarks,passwords";
             "sidebar.verticalTabs" = false;
             "sidebar.visibility" = "hide-sidebar";
+            "widget.use-xdg-desktop-portal.file-picker" = 1;
+            "widget.use-xdg-desktop-portal.mime-handler" = 1;
+            "widget.use-xdg-desktop-portal.settings" = 1;
+            "widget.use-xdg-desktop-portal.open-url" = 1;
           };
         };
       };
     };
   };
-  # services = {
-  #   darkman = {
-  #     enable = true;
-  #   };
-  # };
   xdg = {
     desktopEntries = {
       jf = {
@@ -208,21 +246,21 @@ in
       {
         user = {
           services = {
-            clipcat = {
-              Unit = {
-                Description = "clipcat daemon";
-                PartOf = [ "graphical-session.target" ];
-              };
-              Install = {
-                WantedBy = [ "graphical-session.target" ];
-              };
-              Service = {
-                ExecStartPre = "${pkgs.coreutils-full}/bin/rm -f %t/clipcat/grpc.sock";
-                ExecStart = "${pkgs.clipcat.out}/bin/clipcatd --no-daemon --replace";
-                Restart = "on-failure";
-                Type = "simple";
-              };
-            };
+            # clipcat = {
+            #   Unit = {
+            #     Description = "clipcat daemon";
+            #     PartOf = [ "graphical-session.target" ];
+            #   };
+            #   Install = {
+            #     WantedBy = [ "graphical-session.target" ];
+            #   };
+            #   Service = {
+            #     ExecStartPre = "${pkgs.coreutils-full}/bin/rm -f %t/clipcat/grpc.sock";
+            #     ExecStart = "${pkgs.clipcat.out}/bin/clipcatd --no-daemon --replace";
+            #     Restart = "on-failure";
+            #     Type = "simple";
+            #   };
+            # };
             awww-daemon = {
               Install = {
                 WantedBy = [ "graphical-session.target" ];
@@ -319,4 +357,34 @@ in
           };
         };
       };
+  catppuccin = {
+    enable = true;
+    accent = "sky";
+    flavor = "frappe";
+    cursors = {
+      enable = true;
+    };
+    eza = {
+      accent = "blue";
+    };
+    firefox = {
+      accent = "sapphire";
+      force = true;
+
+    };
+    gtk = {
+      icon = {
+        accent = "blue";
+      };
+    };
+    mako = {
+      accent = "yellow";
+    };
+    vesktop = {
+      accent = "mauve";
+    };
+    yazi = {
+      accent = "green";
+    };
+  };
 }

@@ -64,7 +64,7 @@
     jq
     nh
     yazi
-    servo
+    bottom
   ]
   ++ (if arch == "aarch64" then [ ] else [ ])
   ++ (if arch == "x86_64" then [ ] else [ ])
@@ -86,22 +86,21 @@
   ++ (
     if os == "linux" then
       [
+        docker
         # open-vm-tools
         clang
         wl-clipboard-rs
         obsidian
-        clipcat
         # anki
         unixtools.xxd
         # regreet
-        # ironbar
+        ironbar
         # sherlock
         anyrun
         # not rusty
         mako
         # not rusty, but ziggy
         # waylock
-        catppuccin-cursors.frappePeach
       ]
     else
       [ ]

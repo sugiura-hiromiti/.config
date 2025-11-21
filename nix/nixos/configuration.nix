@@ -5,6 +5,7 @@
 {
   config,
   pkgs,
+  home,
   ...
 }@inputs:
 
@@ -13,13 +14,19 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
+  catppuccin = {
+    enable = true;
+    sddm = {
+      font = "PlemolJP Console NF";
+    };
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking = {
     hostName = "nixos";
@@ -54,6 +61,14 @@
     LC_PAPER = "en_US.UTF-8";
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
+  };
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5 = {
+      waylandFrontend = true;
+      addons = [ pkgs.fcitx5-skk ];
+    };
   };
 
   fonts = {
@@ -110,6 +125,13 @@
     # };
   };
   virtualisation = {
+    docker = {
+      enable = true;
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
+    };
     vmware = {
       guest = {
         enable = true;
@@ -183,6 +205,7 @@
   system.stateVersion = "25.05"; # Did you read the comment?
   nix = {
     settings = {
+      auto-optimise-store = true;
       experimental-features = [
         "nix-command"
         "flakes"

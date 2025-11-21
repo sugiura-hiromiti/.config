@@ -38,6 +38,17 @@
     awww = {
       url = "git+https://codeberg.org/LGFae/awww";
     };
+    catppuccin = {
+      url = "github:catppuccin/nix";
+    };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
+    };
   };
   outputs =
     {
@@ -49,6 +60,8 @@
       neovim-nightly-overlay,
       fenix,
       awww,
+      catppuccin,
+      nur,
     }@inputs:
     let
       secret = import ./secret.nix { };
@@ -63,6 +76,7 @@
       nixpkgs-overlayed = import nixpkgs {
         overlays = [
           neovim-nightly-overlay.overlays.default
+          nur.overlays.default
           (self: super: {
             fish = well-fish-pkgs-set.fish;
           })
@@ -74,8 +88,11 @@
       nixosConfigurations = {
         conf = nixpkgs.lib.nixosSystem {
           inherit system;
+
+          specialArgs = { inherit home; };
           modules = [
             ./nixos/configuration.nix
+            catppuccin.nixosModules.catppuccin
           ];
         };
       };
@@ -95,6 +112,7 @@
           };
           modules = [
             ./home.nix
+            catppuccin.homeModules.catppuccin
           ];
         };
       };
