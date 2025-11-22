@@ -105,7 +105,7 @@ output "Virtual-1" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=0 y=0
+    position x=0 y=3840
     backdrop-color "#1f1e33"
 }
 
@@ -126,7 +126,7 @@ output "Virtual-2" {
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
-    transform "90"
+    transform "normal"
 
     // wait for next release
     /-layout {
@@ -148,7 +148,7 @@ output "Virtual-2" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=400 y=-3840
+    position x=0 y=0
 	 backdrop-color "#ddddf8"
 }
 
@@ -325,6 +325,10 @@ spawn-at-startup "vesktop"
 spawn-at-startup "obsidian"
 spawn-at-startup "ironbar"
 
+hotkey-overlay {
+    skip-at-startup
+}
+
 cursor {
     xcursor-size 22
 }
@@ -393,6 +397,7 @@ window-rule {
 
 window-rule {
     match app-id="^org.wezfurlong.wezterm$" title="Yazi" // titile contains Yazi
+    match is-urgent=true
     open-floating true
     open-on-workspace "human_io"
     default-column-width { fixed 1000; }
@@ -401,6 +406,7 @@ window-rule {
 
 window-rule {
     match app-id="^org.wezfurlong.wezterm$" title="btm" // titile contains Yazi
+    match is-urgent=true
     open-on-workspace "human_io"
     open-fullscreen true
 }
@@ -467,7 +473,7 @@ binds {
     Mod+Space repeat=false hotkey-overlay-title="Toggle a Launcher: anyrun" { spawn "anyrun"; }
 	 //  TODO: install screen locker
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-	 Mod+N { spawn "makoctl" "dismiss" "-a"; }
+	 Mod+N { spawn "swaync-client" "-C"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.

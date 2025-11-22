@@ -63,6 +63,9 @@ in
     packages = mypkgs;
   };
   services = {
+    swaync = {
+      enable = true;
+    };
     clipcat = {
       enable = true;
       enableSystemdUnit = true;
@@ -360,12 +363,17 @@ in
   catppuccin = {
     enable = true;
     accent = "sky";
-    flavor = "frappe";
+    # flavor = "mocha";
     cursors = {
       enable = true;
+      accent = "blue";
     };
     eza = {
       accent = "blue";
+    };
+    fcitx5 = {
+      accent = "peach";
+      enableRounded = true;
     };
     firefox = {
       accent = "sapphire";
@@ -377,8 +385,8 @@ in
         accent = "blue";
       };
     };
-    mako = {
-      accent = "yellow";
+    swaync = {
+      font = "PlemolJP Console NF";
     };
     vesktop = {
       accent = "mauve";

@@ -16,6 +16,7 @@
   ];
   catppuccin = {
     enable = true;
+    # flavor = "latte";
     sddm = {
       font = "PlemolJP Console NF";
     };

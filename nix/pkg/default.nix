@@ -98,7 +98,6 @@
         # sherlock
         anyrun
         # not rusty
-        mako
         # not rusty, but ziggy
         # waylock
       ]
