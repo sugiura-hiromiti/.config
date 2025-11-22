@@ -471,9 +471,9 @@ binds {
     Mod+T hotkey-overlay-title="Open a Terminal: wezterm" { spawn "wezterm" "start" "--always-new-process"; }
     Mod+B hotkey-overlay-title="Open a Browser: firefox" { spawn "firefox"; }
     Mod+Space repeat=false hotkey-overlay-title="Toggle a Launcher: anyrun" { spawn "anyrun"; }
-	 //  TODO: install screen locker
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-	 Mod+N { spawn "swaync-client" "-C"; }
+    //  TODO: install screen locker
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
+    Mod+N { spawn "swaync-client" "-C"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
@@ -643,7 +643,7 @@ binds {
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
     // If the window is already in a column, they will expel it out.
-    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketLeft { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
 
     // Consume one window from the right to the bottom of the focused column.

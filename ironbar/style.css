@@ -1,22 +1,8 @@
-:root {
-	--dark-primary: #232634;
-	--dark-secondary: #414559;
-	--border-dark: #626880;
-	--border-light: #a5adce;
-	--light: #c6d0f5;
-	--active: #8caaee;
-	--xxl: 2.6em;
-	--xl: 2.2em;
-	--lg: 1.5em;
-	--md: 16px;
-}
-
-.background,
-#bar {
+* {
 	font-family: monospace;
-	font-size: var(--lg);
-	color: var(--light);
-	border-radius: var(--md);
-	border: 3px solid var(--border-dark);
-	background: var(--dark-primary);
+	font-size: 17px;
+	color: rgb(198, 208, 245);
+	border-radius: 10px;
+	border: 1px solid rgba(98, 104, 128, 0.3);
+	background: rgba(35, 38, 52, 0.5);
 }

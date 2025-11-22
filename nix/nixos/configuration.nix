@@ -20,6 +20,10 @@
     sddm = {
       font = "PlemolJP Console NF";
     };
+    fcitx5 = {
+      accent = "yellow";
+      enableRounded = true;
+    };
   };
 
   # Bootloader.
@@ -111,19 +115,41 @@
     # printing = {
     #   enable = true;
     # };
-    # pulseaudio = {
-    #   enable = false;
-    # };
-    # pipewire = {
-    #   enable = true;
-    #   alsa = {
-    #     enable = true;
-    #     support32Bit = true;
-    #   };
-    #   pulse = {
-    #     enable = true;
-    #   };
-    # };
+    pulseaudio = {
+      enable = false;
+    };
+    pipewire = {
+      enable = true;
+      alsa = {
+        enable = true;
+        support32Bit = true;
+      };
+      pulse = {
+        enable = true;
+      };
+      wireplumber = {
+        extraConfig = {
+          "50-alsa-config" = {
+            "monitor.alsa.rules" = [
+              {
+                matches = [ { "node.name" = "~alsa_output.*"; } ];
+                actions = {
+                  update-props = {
+                    "api.alsa.period-size" = 1024;
+                    "api.alsa.headroom" = 8192;
+                  };
+                };
+              }
+            ];
+          };
+        };
+      };
+    };
+  };
+  security = {
+    rtkit = {
+      enable = true;
+    };
   };
   virtualisation = {
     docker = {

@@ -72,7 +72,7 @@ in
       ctlSettings = {
         server_endpoint = "/run/user/1000/clipcat/grpc.sock";
         log = {
-          file_path = "/tmp/clpcat/clipcatctl.log";
+          file_path = "/tmp/clipcat/clipcatctl.log";
           emit_journald = true;
           emit_stdout = false;
           emit_stderr = false;
@@ -158,16 +158,31 @@ in
           # "${pkgs.anyrun}/lib/libstdin.so"
           "${pkgs.anyrun}/lib/libdictionary.so"
           "${pkgs.anyrun}/lib/libwebsearch.so"
-          # "${pkgs.anyrun}/lib/libnix_run.so"
+          "${pkgs.anyrun}/lib/libnix_run.so"
           "${pkgs.anyrun}/lib/libniri-focus.so"
         ];
       };
       extraConfigFiles = {
+        "applications.ron" = {
+          source = ./home/anyrun/applications.ron;
+        };
         "symbols.ron" = {
           source = ./home/anyrun/symbols.ron;
         };
-        "applications.ron" = {
-          source = ./home/anyrun/applications.ron;
+        "shell.ron" = {
+          source = ./home/anyrun/shell.ron;
+        };
+        "dictionary.ron" = {
+          source = ./home/anyrun/dictionary.ron;
+        };
+        "websearch.ron" = {
+          source = ./home/anyrun/websearch.ron;
+        };
+        "nix_run.ron" = {
+          source = ./home/anyrun/nix_run.ron;
+        };
+        "niri_focus.ron" = {
+          source = ./home/anyrun/niri_focus.ron;
         };
       };
       extraCss = builtins.readFile ./home/anyrun/anyrun.css;
@@ -233,6 +248,8 @@ in
       config = {
         common = {
           "org.freedesktop.impl.portal.FileChooser" = "termfilechooser";
+          "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
+          # "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
         };
       };
     };
@@ -363,17 +380,13 @@ in
   catppuccin = {
     enable = true;
     accent = "sky";
-    # flavor = "mocha";
+    # flavor = "latte";
     cursors = {
       enable = true;
       accent = "blue";
     };
     eza = {
       accent = "blue";
-    };
-    fcitx5 = {
-      accent = "peach";
-      enableRounded = true;
     };
     firefox = {
       accent = "sapphire";
@@ -385,11 +398,13 @@ in
         accent = "blue";
       };
     };
+
     swaync = {
       font = "PlemolJP Console NF";
     };
     vesktop = {
-      accent = "mauve";
+      accent = "lavender";
+      # flavor = "latte";
     };
     yazi = {
       accent = "green";

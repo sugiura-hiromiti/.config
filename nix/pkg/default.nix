@@ -87,6 +87,7 @@
     if os == "linux" then
       [
         docker
+        docker-buildx
         # open-vm-tools
         clang
         wl-clipboard-rs
@@ -97,6 +98,7 @@
         ironbar
         # sherlock
         anyrun
+        hyprlock
         # not rusty
         # not rusty, but ziggy
         # waylock

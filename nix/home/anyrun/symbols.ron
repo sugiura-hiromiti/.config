@@ -1,4 +1,4 @@
 Config(
-	prefix: ":",
+	prefix: ":sym",
 	max_entries: 5,
 )

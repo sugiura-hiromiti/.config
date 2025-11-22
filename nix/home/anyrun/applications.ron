@@ -1,4 +1,5 @@
 Config(
 	desktop_actions: true,
 	max_entries: 20,
+	hide_description: false,
 )
